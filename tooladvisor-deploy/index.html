@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>ToolAdvisor — Visual Search</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #F5F4F0;
+  --bg2:     #EDECEA;
+  --bg3:     #E4E2DE;
+  --surface: #FFFFFF;
+  --border:  #D8D6D0;
+  --border2: #C4C2BC;
+  --accent:  #1A1A1A;
+  --orange:  #E84A0C;
+  --orange2: #FF6B35;
+  --text:    #1A1A1A;
+  --text2:   #6B6960;
+  --text3:   #9B9990;
+  --green:   #0A7A4A;
+  --blue:    #1456CC;
+  --r: 14px;
+  --r2: 20px;
+  --r3: 28px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html, body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; min-height:100vh; }
+
+/* ═══ HEADER ═══ */
+header {
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:16px 20px;
+  display:flex; align-items:center; justify-content:space-between;
+  position:sticky; top:0; z-index:100;
+}
+.logo { font-size:18px; font-weight:800; letter-spacing:-0.5px; }
+.logo span { color:var(--orange); }
+.logo sup { font-size:9px; background:var(--accent); color:#fff; padding:2px 5px; border-radius:4px; margin-left:4px; font-weight:600; letter-spacing:1px; vertical-align:top; margin-top:3px; display:inline-block; }
+
+nav { display:flex; gap:0; background:var(--bg2); border-radius:10px; padding:3px; }
+.nav-tab { padding:7px 14px; border-radius:8px; font-size:12px; font-weight:600; color:var(--text2); cursor:pointer; transition:all .2s; white-space:nowrap; }
+.nav-tab.active { background:var(--surface); color:var(--text); box-shadow:0 1px 4px rgba(0,0,0,.08); }
+
+/* ═══ MAIN ═══ */
+.main { max-width:900px; margin:0 auto; padding:24px 20px 80px; }
+
+/* ═══ SECTION TABS ═══ */
+.section { display:none; }
+.section.active { display:block; animation: fadeIn .3s; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* ═══ VISUAL SEARCH ═══ */
+.page-title { font-size:28px; font-weight:800; letter-spacing:-0.8px; margin-bottom:6px; }
+.page-sub { font-size:13px; color:var(--text2); margin-bottom:24px; line-height:1.6; }
+
+/* Upload zone */
+.upload-zone {
+  border:2px dashed var(--border2);
+  border-radius:var(--r3);
+  background:var(--surface);
+  padding:40px 24px;
+  text-align:center;
+  cursor:pointer;
+  transition:all .3s;
+  position:relative;
+  overflow:hidden;
+}
+.upload-zone:hover, .upload-zone.drag-over {
+  border-color:var(--orange);
+  background:#FFF8F5;
+}
+.upload-zone input[type=file] { position:absolute; inset:0; opacity:0; cursor:pointer; }
+.upload-icon { font-size:48px; margin-bottom:12px; display:block; }
+.upload-title { font-size:18px; font-weight:700; margin-bottom:6px; }
+.upload-hint { font-size:12px; color:var(--text3); line-height:1.7; }
+.upload-or { margin:16px 0; font-size:11px; color:var(--text3); text-transform:uppercase; letter-spacing:2px; }
+
+/* Camera / URL buttons */
+.upload-actions { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+.upload-btn {
+  display:flex; align-items:center; gap:6px;
+  padding:10px 18px; border-radius:var(--r);
+  border:1.5px solid var(--border2);
+  background:var(--bg); color:var(--text2);
+  font-family:'Syne',sans-serif; font-size:12px; font-weight:600;
+  cursor:pointer; transition:all .2s;
+}
+.upload-btn:hover { border-color:var(--orange); color:var(--orange); background:#FFF8F5; }
+.upload-btn.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+.upload-btn.primary:hover { background:#333; border-color:#333; }
+
+/* Preview */
+.preview-wrap {
+  display:none;
+  border-radius:var(--r3);
+  background:var(--surface);
+  overflow:hidden;
+  border:1.5px solid var(--border);
+}
+.preview-top {
+  position:relative;
+}
+#previewImg { width:100%; max-height:300px; object-fit:contain; background:#f0f0f0; display:block; }
+.preview-change {
+  position:absolute; top:12px; right:12px;
+  background:rgba(0,0,0,.6); color:#fff;
+  border:none; border-radius:var(--r); padding:8px 14px;
+  font-family:'Syne',sans-serif; font-size:11px; font-weight:600;
+  cursor:pointer; backdrop-filter:blur(4px);
+}
+.preview-bottom { padding:16px 20px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.preview-info { font-size:12px; color:var(--text2); }
+.analyze-btn {
+  display:flex; align-items:center; gap:8px;
+  padding:14px 28px; background:var(--orange); color:#fff;
+  border:none; border-radius:var(--r); font-family:'Syne',sans-serif;
+  font-size:14px; font-weight:700; cursor:pointer; transition:all .2s;
+}
+.analyze-btn:hover { background:var(--orange2); transform:translateY(-1px); box-shadow:0 6px 20px -4px rgba(232,74,12,.4); }
+.analyze-btn svg { width:18px; height:18px; }
+
+/* OR divider */
+.or-divider { display:flex; align-items:center; gap:12px; margin:20px 0; }
+.or-divider::before, .or-divider::after { content:''; flex:1; height:1px; background:var(--border); }
+.or-divider span { font-size:10px; letter-spacing:2px; color:var(--text3); text-transform:uppercase; }
+
+/* ISO Code input */
+.iso-input-wrap {
+  background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:var(--r2);
+  padding:20px;
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+}
+.iso-input {
+  flex:1; min-width:200px;
+  background:var(--bg2);
+  border:1.5px solid var(--border);
+  border-radius:var(--r);
+  padding:12px 16px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:14px; color:var(--text);
+  outline:none; transition:border-color .2s;
+}
+.iso-input:focus { border-color:var(--orange); }
+.iso-input::placeholder { color:var(--text3); }
+.iso-search-btn {
+  padding:12px 24px; background:var(--accent); color:#fff;
+  border:none; border-radius:var(--r);
+  font-family:'Syne',sans-serif; font-size:13px; font-weight:700;
+  cursor:pointer; white-space:nowrap; transition:background .2s;
+}
+.iso-search-btn:hover { background:#333; }
+
+/* ═══ ANALYSIS RESULT ═══ */
+.analysis-wrap { margin-top:20px; display:none; }
+.analysis-wrap.show { display:block; animation:fadeIn .4s; }
+
+/* AI thinking */
+.ai-card {
+  background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:var(--r2);
+  overflow:hidden;
+  margin-bottom:12px;
+}
+.ai-card-head {
+  display:flex; align-items:center; gap:10px;
+  padding:14px 18px;
+  background:var(--bg2);
+  border-bottom:1px solid var(--border);
+  font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text2);
+}
+.ai-badge { width:8px; height:8px; border-radius:50%; background:var(--orange); animation:pulse 1.5s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.5)} }
+
+/* Identified tool box */
+.identified-box {
+  padding:20px;
+  display:grid; grid-template-columns:1fr auto;
+  gap:16px; align-items:start;
+}
+.id-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--text3); margin-bottom:4px; }
+.id-code { font-family:'JetBrains Mono',monospace; font-size:24px; font-weight:700; letter-spacing:-0.5px; color:var(--text); margin-bottom:6px; }
+.id-desc { font-size:12px; color:var(--text2); line-height:1.6; }
+.confidence-badge {
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  padding:12px 16px; background:var(--bg2); border-radius:var(--r);
+  border:1px solid var(--border); min-width:72px;
+}
+.conf-num { font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:700; color:var(--green); }
+.conf-label { font-size:8px; letter-spacing:1px; text-transform:uppercase; color:var(--text3); }
+
+/* Properties grid */
+.props-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--border);
+  border-top:1px solid var(--border);
+}
+.prop-box { background:var(--surface); padding:14px 16px; }
+.prop-key { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text3); margin-bottom:4px; }
+.prop-val { font-size:14px; font-weight:700; color:var(--text); font-family:'JetBrains Mono',monospace; }
+.prop-val.iso-p { color:var(--blue); }
+.prop-val.iso-m { color:#C49A00; }
+.prop-val.iso-k { color:#CC2200; }
+.prop-val.iso-n { color:var(--green); }
+.prop-val.iso-s { color:#E06000; }
+.prop-val.iso-h { color:#7700CC; }
+
+/* Analysis text */
+.analysis-text {
+  padding:16px 20px;
+  font-size:12px; color:var(--text2); line-height:1.8;
+  border-top:1px solid var(--border);
+  font-family:'JetBrains Mono',monospace;
+}
+
+/* ═══ CROSS-REFERENCE TABLE ═══ */
+.section-label {
+  font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--text3);
+  margin-bottom:12px; display:flex; align-items:center; gap:8px;
+}
+.section-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
+.xref-table {
+  background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:var(--r2);
+  overflow:hidden;
+  margin-bottom:12px;
+}
+.xref-row {
+  display:grid;
+  grid-template-columns:120px 1fr auto;
+  align-items:center;
+  padding:14px 18px;
+  border-bottom:1px solid var(--border);
+  transition:background .15s;
+  gap:12px;
+}
+.xref-row:last-child { border-bottom:none; }
+.xref-row:hover { background:#FAFAF8; }
+.xref-row.best { background:#FFF8F5; }
+.xref-brand {
+  font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--text3);
+}
+.xref-brand.featured { color:var(--orange); }
+.xref-main { }
+.xref-grade { font-family:'JetBrains Mono',monospace; font-size:15px; font-weight:700; color:var(--text); margin-bottom:2px; }
+.xref-name { font-size:11px; color:var(--text2); }
+.xref-badges { display:flex; gap:4px; flex-wrap:wrap; margin-top:5px; }
+.xref-badge {
+  font-size:9px; padding:2px 7px; border-radius:4px;
+  border:1px solid var(--border); color:var(--text2);
+  font-family:'JetBrains Mono',monospace;
+}
+.xref-badge.match { border-color:rgba(10,122,74,.25); background:rgba(10,122,74,.06); color:var(--green); }
+.xref-badge.featured { border-color:rgba(232,74,12,.25); background:rgba(232,74,12,.06); color:var(--orange); }
+.xref-actions { display:flex; flex-direction:column; gap:6px; min-width:90px; }
+.btn-supplier {
+  padding:9px 14px; background:var(--accent); color:#fff;
+  border:none; border-radius:var(--r); font-family:'Syne',sans-serif;
+  font-size:11px; font-weight:700; cursor:pointer; text-align:center;
+  transition:background .15s; white-space:nowrap;
+}
+.btn-supplier:hover { background:#333; }
+.btn-supplier.outline {
+  background:transparent; color:var(--text2);
+  border:1.5px solid var(--border);
+}
+.btn-supplier.outline:hover { border-color:var(--border2); color:var(--text); }
+.featured-star { color:var(--orange); margin-right:4px; }
+
+/* ═══ SUPPLIER FINDER SECTION ═══ */
+.supplier-grid { display:flex; flex-direction:column; gap:8px; }
+.supplier-card {
+  background:var(--surface); border:1.5px solid var(--border);
+  border-radius:var(--r2); padding:16px 18px;
+  display:grid; grid-template-columns:1fr auto;
+  align-items:center; gap:12px; transition:all .2s;
+}
+.supplier-card:hover { border-color:var(--border2); box-shadow:0 2px 12px rgba(0,0,0,.06); }
+.supplier-card.featured { border-color:rgba(232,74,12,.3); background:#FFF8F5; }
+.sup-top { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+.sup-logo {
+  width:42px; height:42px; border-radius:var(--r);
+  background:var(--bg2); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:10px; font-weight:700; color:var(--text2);
+}
+.sup-name { font-size:15px; font-weight:700; }
+.sup-region { font-size:10px; color:var(--text3); }
+.sup-tags { display:flex; gap:5px; flex-wrap:wrap; }
+.sup-tag {
+  font-size:9px; padding:3px 7px; border-radius:5px;
+  border:1px solid var(--border); color:var(--text3);
+  background:var(--bg2);
+}
+.sup-tag.green { border-color:rgba(10,122,74,.2); color:var(--green); background:rgba(10,122,74,.05); }
+.sup-right { display:flex; flex-direction:column; gap:6px; align-items:flex-end; }
+.sup-cpc-label { font-size:8px; letter-spacing:1px; color:var(--text3); text-transform:uppercase; text-align:right; }
+.sup-commission { font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700; color:var(--orange); }
+
+/* ═══ MONEY MODEL SECTION ═══ */
+.money-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; }
+@media(min-width:600px) { .money-grid { grid-template-columns:repeat(4,1fr); } }
+.money-card {
+  background:var(--surface); border:1.5px solid var(--border);
+  border-radius:var(--r2); padding:18px 14px; text-align:center;
+}
+.money-emoji { font-size:28px; margin-bottom:8px; display:block; }
+.money-type { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--text3); margin-bottom:4px; }
+.money-range { font-family:'JetBrains Mono',monospace; font-size:16px; font-weight:700; color:var(--text); margin-bottom:4px; }
+.money-unit { font-size:9px; color:var(--text3); }
+.money-toggle {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 14px; border-radius:var(--r);
+  background:var(--bg2); border:1.5px solid var(--border);
+  font-size:11px; cursor:pointer; justify-content:space-between;
+  margin-bottom:6px; transition:all .2s;
+}
+.money-toggle:hover { border-color:var(--border2); }
+.toggle-switch {
+  width:36px; height:20px; border-radius:10px;
+  background:var(--border); position:relative;
+  transition:background .2s; flex-shrink:0;
+}
+.toggle-switch.on { background:var(--green); }
+.toggle-switch::after {
+  content:''; position:absolute; top:3px; left:3px;
+  width:14px; height:14px; border-radius:50%;
+  background:#fff; transition:left .2s;
+}
+.toggle-switch.on::after { left:19px; }
+
+/* ═══ STREAM OUTPUT ═══ */
+.stream-output {
+  padding:16px 20px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px; color:var(--text2); line-height:1.8;
+  white-space:pre-wrap; max-height:200px; overflow-y:auto;
+  border-top:1px solid var(--border);
+  display:none;
+}
+.stream-output.show { display:block; }
+.cursor { animation:blink .7s step-end infinite; }
+@keyframes blink { 50%{opacity:0} }
+
+/* ═══ LOADING STATE ═══ */
+.loading-overlay {
+  display:none;
+  position:fixed; inset:0;
+  background:rgba(245,244,240,.85);
+  backdrop-filter:blur(4px);
+  z-index:200; flex-direction:column;
+  align-items:center; justify-content:center; gap:16px;
+}
+.loading-overlay.show { display:flex; }
+.loading-spinner {
+  width:56px; height:56px; border-radius:50%;
+  border:3px solid var(--border);
+  border-top-color:var(--orange);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin { to{transform:rotate(360deg)} }
+.loading-text { font-size:14px; font-weight:700; text-align:center; }
+.loading-sub { font-size:11px; color:var(--text2); text-align:center; }
+
+/* ═══ QUICK EXAMPLES ═══ */
+.examples-wrap { margin-top:16px; }
+.examples-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--text3); margin-bottom:8px; }
+.examples-scroll { display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; padding-bottom:4px; }
+.examples-scroll::-webkit-scrollbar { display:none; }
+.example-chip {
+  flex:0 0 auto;
+  padding:8px 14px; border-radius:var(--r);
+  background:var(--surface); border:1.5px solid var(--border);
+  font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text2);
+  cursor:pointer; transition:all .15s; white-space:nowrap;
+}
+.example-chip:hover { border-color:var(--orange); color:var(--orange); background:#FFF8F5; }
+
+/* ═══ FREEMIUM GATE ═══ */
+.gate-banner {
+  display:none;
+  background:var(--accent); color:#fff;
+  border-radius:var(--r2); padding:20px 24px;
+  margin-top:16px; text-align:center;
+}
+.gate-banner.show { display:block; animation:fadeIn .3s; }
+.gate-title { font-size:18px; font-weight:800; margin-bottom:6px; }
+.gate-sub { font-size:12px; opacity:.7; margin-bottom:16px; line-height:1.6; }
+.gate-btn {
+  display:inline-block; padding:12px 28px;
+  background:var(--orange); color:#fff; border:none;
+  border-radius:var(--r); font-family:'Syne',sans-serif;
+  font-size:13px; font-weight:700; cursor:pointer;
+  transition:background .2s;
+}
+.gate-btn:hover { background:var(--orange2); }
+.gate-query-count {
+  font-family:'JetBrains Mono',monospace; font-size:11px;
+  opacity:.5; margin-top:8px;
+}
+
+/* ═══ MOBILE ═══ */
+@media(max-width:480px) {
+  .page-title { font-size:22px; }
+  nav { display:none; }
+  .props-grid { grid-template-columns:repeat(2,1fr); }
+  .xref-row { grid-template-columns:1fr; }
+  .xref-actions { flex-direction:row; }
+  .identified-box { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Loading -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text" id="loadingText">Analysing image...</div>
+  <div class="loading-sub" id="loadingSubText">Identifying geometry · Coating · Grade</div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="logo">Tool<span>Advisor</span><sup>AI</sup></div>
+  <nav>
+    <div class="nav-tab active" onclick="switchSection('visual')">📸 Visual Search</div>
+    <div class="nav-tab" onclick="switchSection('advisor')">🔍 AI Advisor</div>
+    <div class="nav-tab" onclick="switchSection('money')">💰 Revenue Model</div>
+  </nav>
+</header>
+
+<div class="main">
+
+<!-- ════════════════════════════════ -->
+<!-- SECTION: VISUAL SEARCH          -->
+<!-- ════════════════════════════════ -->
+<div class="section active" id="section-visual">
+
+  <div class="page-title">Visual Tool Search</div>
+  <div class="page-sub">Upload a photo of any cutting insert — AI identifies the geometry, grade type and finds cross-references across 500+ brands worldwide.</div>
+
+  <!-- Upload zone -->
+  <div class="upload-zone" id="uploadZone" ondragover="handleDrag(event)" ondrop="handleDrop(event)">
+    <input type="file" id="fileInput" accept="image/*" capture="environment" onchange="handleFile(event)">
+    <span class="upload-icon">📷</span>
+    <div class="upload-title">Drop insert photo here</div>
+    <div class="upload-hint">Works with: turning inserts · milling inserts · drills · end mills<br>Photo from phone, machine, or box label — any angle</div>
+    <div class="upload-or">or</div>
+    <div class="upload-actions">
+      <label class="upload-btn primary" style="cursor:pointer">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v8M4 7l4-4 4 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Choose Photo
+        <input type="file" accept="image/*" onchange="handleFile(event)" style="display:none">
+      </label>
+      <label class="upload-btn" style="cursor:pointer">
+        📱 Take Photo
+        <input type="file" accept="image/*" capture="environment" onchange="handleFile(event)" style="display:none">
+      </label>
+    </div>
+  </div>
+
+  <!-- Preview (hidden initially) -->
+  <div class="preview-wrap" id="previewWrap">
+    <div class="preview-top">
+      <img id="previewImg" src="" alt="Preview">
+      <button class="preview-change" onclick="resetUpload()">✕ Change</button>
+    </div>
+    <div class="preview-bottom">
+      <div class="preview-info" id="previewInfo">Image ready</div>
+      <button class="analyze-btn" onclick="analyzeImage()">
+        <svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="white" stroke-width="1.5"/><path d="M9 5v4l3 2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Identify Tool — AI
+      </button>
+    </div>
+  </div>
+
+  <!-- OR divider -->
+  <div class="or-divider"><span>or enter code manually</span></div>
+
+  <!-- ISO / code input -->
+  <div class="iso-input-wrap">
+    <input class="iso-input" id="isoInput" type="text"
+      placeholder="CNMG 120408-MR GC4325 · APMT 1604 · QD-LH-0400..."
+      onkeydown="if(event.key==='Enter')searchISO()">
+    <button class="iso-search-btn" onclick="searchISO()">
+      Cross-Reference →
+    </button>
+  </div>
+
+  <!-- Quick examples -->
+  <div class="examples-wrap">
+    <div class="examples-label">Quick examples</div>
+    <div class="examples-scroll">
+      <div class="example-chip" onclick="fillISO('CNMG 120408-MR GC4325')">CNMG 120408-MR GC4325</div>
+      <div class="example-chip" onclick="fillISO('APMT 1604 PDFR-MM IC808')">APMT 1604 PDFR IC808</div>
+      <div class="example-chip" onclick="fillISO('WNMG 080408-PM 4315')">WNMG 080408-PM 4315</div>
+      <div class="example-chip" onclick="fillISO('SPMX 120408-HM IC908')">SPMX 120408-HM IC908</div>
+      <div class="example-chip" onclick="fillISO('RCKT 1204 MO-PH GC1010')">RCKT 1204 MO-PH GC1010</div>
+    </div>
+  </div>
+
+  <!-- Freemium gate (shows after 3 free queries) -->
+  <div class="gate-banner" id="gateBanner">
+    <div class="gate-title">You've used your 3 free searches</div>
+    <div class="gate-sub">Upgrade to ToolAdvisor Pro for unlimited cross-references,<br>saved history and priority supplier access.</div>
+    <button class="gate-btn">Upgrade — €9/month</button>
+    <div class="gate-query-count" id="queryCount">3 / 3 free queries used</div>
+  </div>
+
+  <!-- Analysis result -->
+  <div class="analysis-wrap" id="analysisWrap">
+
+    <!-- AI Identified -->
+    <div class="section-label" style="margin-top:24px">AI Analysis Result</div>
+    <div class="ai-card" id="aiResultCard">
+      <div class="ai-card-head">
+        <div class="ai-badge"></div>
+        IDENTIFIED TOOL
+      </div>
+      <div class="identified-box">
+        <div>
+          <div class="id-label">ISO Standard Code</div>
+          <div class="id-code" id="identifiedCode">—</div>
+          <div class="id-desc" id="identifiedDesc">—</div>
+        </div>
+        <div class="confidence-badge">
+          <div class="conf-num" id="confidenceNum">—</div>
+          <div class="conf-label">Confidence</div>
+        </div>
+      </div>
+      <div class="props-grid" id="propsGrid">
+        <!-- filled dynamically -->
+      </div>
+      <div class="stream-output" id="streamOutput"></div>
+    </div>
+
+    <!-- Cross-reference -->
+    <div class="section-label" style="margin-top:20px">Cross-Reference — All Brands</div>
+    <div class="xref-table" id="xrefTable">
+      <!-- filled dynamically -->
+    </div>
+
+    <!-- Supplier Finder -->
+    <div class="section-label" style="margin-top:20px">Supplier Finder</div>
+    <div class="supplier-grid" id="supplierGrid">
+      <!-- filled dynamically -->
+    </div>
+
+  </div>
+
+</div><!-- /visual search -->
+
+
+<!-- ════════════════════════════════ -->
+<!-- SECTION: AI ADVISOR              -->
+<!-- ════════════════════════════════ -->
+<div class="section" id="section-advisor">
+  <div class="page-title">AI Advisor</div>
+  <div class="page-sub">Describe your machining challenge in plain language — AI selects the right tool.</div>
+
+  <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r2);padding:20px;margin-bottom:16px">
+    <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:10px">Describe your task</div>
+    <textarea id="freeTextInput" style="width:100%;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:14px;font-family:'Syne',sans-serif;font-size:13px;color:var(--text);resize:none;height:100px;outline:none;line-height:1.6;transition:border-color .2s" placeholder="e.g. &quot;Turning stainless 316L, finishing pass, Ra 0.8 required, vibration issues&quot;&#10;or: &quot;Milling Inconel 718, slotting, short tool, flood coolant&quot;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+    <div style="display:flex;justify-content:flex-end;margin-top:10px">
+      <button class="analyze-btn" onclick="runFreeText()">
+        <svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="white" stroke-width="1.5"/><path d="M6 9h6M9 6l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Get Recommendations
+      </button>
+    </div>
+  </div>
+
+  <!-- Quick prompts -->
+  <div class="examples-label">Quick prompts</div>
+  <div class="examples-scroll" style="margin-top:8px;margin-bottom:20px">
+    <div class="example-chip" onclick="fillFreeText('Turning ISO P steel, rough, interrupted cut, stable setup')">P steel roughing</div>
+    <div class="example-chip" onclick="fillFreeText('Milling Inconel 718, finishing, short tool, coolant')">Inconel 718 milling</div>
+    <div class="example-chip" onclick="fillFreeText('Turning 316L stainless, Ra 0.8 required, long overhang')">316L finishing</div>
+    <div class="example-chip" onclick="fillFreeText('Drilling aluminium 6082, deep hole L/D 8x, high speed')">Al deep drilling</div>
+    <div class="example-chip" onclick="fillFreeText('Threading M16 in hardened steel 45 HRC, external')">Hard threading</div>
+  </div>
+
+  <!-- Result area -->
+  <div class="analysis-wrap" id="advisorResult">
+    <div class="section-label">Recommendations</div>
+    <div class="xref-table" id="advisorCards"></div>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════ -->
+<!-- SECTION: REVENUE MODEL           -->
+<!-- ════════════════════════════════ -->
+<div class="section" id="section-money">
+  <div class="page-title">Revenue Model</div>
+  <div class="page-sub">All monetization streams active simultaneously. Toggle to see projected monthly revenue.</div>
+
+  <div class="money-grid">
+    <div class="money-card">
+      <span class="money-emoji">🖱️</span>
+      <div class="money-type">CPC / Affiliate</div>
+      <div class="money-range">€0.20–2</div>
+      <div class="money-unit">per click-out</div>
+    </div>
+    <div class="money-card">
+      <span class="money-emoji">⭐</span>
+      <div class="money-type">Featured Listing</div>
+      <div class="money-range">€50–500</div>
+      <div class="money-unit">per supplier/month</div>
+    </div>
+    <div class="money-card">
+      <span class="money-emoji">🔓</span>
+      <div class="money-type">Freemium Pro</div>
+      <div class="money-range">€9–29</div>
+      <div class="money-unit">per user/month</div>
+    </div>
+    <div class="money-card">
+      <span class="money-emoji">🏭</span>
+      <div class="money-type">Enterprise</div>
+      <div class="money-range">€199–999</div>
+      <div class="money-unit">per company/month</div>
+    </div>
+  </div>
+
+  <!-- Stream toggles -->
+  <div class="section-label">Configure your streams</div>
+  <div id="moneyToggles" style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
+    <div class="money-toggle" onclick="toggleRevenue(this,'cpc')">
+      <div>
+        <div style="font-size:13px;font-weight:700">🖱️ CPC / Affiliate links</div>
+        <div style="font-size:11px;color:var(--text3)">Every "Find Supplier" click = €0.20–2.00</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--orange)" id="rev-cpc">€0</span>
+        <div class="toggle-switch" id="tog-cpc"></div>
+      </div>
+    </div>
+    <div class="money-toggle" onclick="toggleRevenue(this,'featured')">
+      <div>
+        <div style="font-size:13px;font-weight:700">⭐ Featured Supplier Listing</div>
+        <div style="font-size:11px;color:var(--text3)">Distribütörler üst sıra için ödüyor</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--orange)" id="rev-featured">€0</span>
+        <div class="toggle-switch" id="tog-featured"></div>
+      </div>
+    </div>
+    <div class="money-toggle" onclick="toggleRevenue(this,'freemium')">
+      <div>
+        <div style="font-size:13px;font-weight:700">🔓 Freemium → Pro upgrade</div>
+        <div style="font-size:11px;color:var(--text3)">3 free searches, then €9–29/month</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--orange)" id="rev-freemium">€0</span>
+        <div class="toggle-switch" id="tog-freemium"></div>
+      </div>
+    </div>
+    <div class="money-toggle" onclick="toggleRevenue(this,'enterprise')">
+      <div>
+        <div style="font-size:13px;font-weight:700">🏭 Enterprise SaaS</div>
+        <div style="font-size:11px;color:var(--text3)">Fabrikalar için ERP entegrasyonu</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--orange)" id="rev-enterprise">€0</span>
+        <div class="toggle-switch" id="tog-enterprise"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Totals -->
+  <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r2);padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Month 6 est.</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--text)" id="totalMonth6">€0</div>
+    </div>
+    <div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Month 18 est.</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;color:var(--orange)" id="totalMonth18">€0</div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;padding:16px 18px;background:var(--bg2);border-radius:var(--r2);border:1px dashed var(--border2)">
+    <div style="font-size:11px;color:var(--text2);line-height:1.8">
+      💡 <strong>Strateji:</strong> İlk 6 ayda CPC + Freemium ile trafik kalitesini test et. 
+      Ay 6–12 arasında 3–5 featured supplier anlaşması imzala (Hollanda/Türkiye distribütörleri).
+      Ay 18+ enterprise pilot başlat — Hollanda'da 2–3 fabrika ile.<br><br>
+      🎯 <strong>Hedef ay 12:</strong> 500 aktif kullanıcı, 5 featured supplier = ~<strong>€1,200–2,000/ay</strong>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /main -->
+
+<script>
+/* ══════════════════════════════════════
+   STATE
+══════════════════════════════════════ */
+let currentImage = null;
+let queryCount = 0;
+const FREE_LIMIT = 3;
+
+const revenueData = {
+  cpc:        { m6: 180,  m18: 900 },
+  featured:   { m6: 300,  m18: 2200 },
+  freemium:   { m6: 90,   m18: 650 },
+  enterprise: { m6: 0,    m18: 1200 },
+};
+const revActive = { cpc:false, featured:false, freemium:false, enterprise:false };
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+function switchSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('section-'+id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+/* ══════════════════════════════════════
+   FILE HANDLING
+══════════════════════════════════════ */
+function handleFile(e) {
+  const file = e.target.files[0];
+  if(!file) return;
+  loadFile(file);
+}
+
+function handleDrag(e) {
+  e.preventDefault();
+  document.getElementById('uploadZone').classList.add('drag-over');
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('uploadZone').classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if(file && file.type.startsWith('image/')) loadFile(file);
+}
+
+function loadFile(file) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    currentImage = e.target.result;
+    document.getElementById('previewImg').src = currentImage;
+    document.getElementById('previewInfo').textContent = file.name + ' · ' + (file.size/1024).toFixed(0) + ' KB';
+    document.getElementById('uploadZone').style.display = 'none';
+    document.getElementById('previewWrap').style.display = 'block';
+    document.getElementById('analysisWrap').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function resetUpload() {
+  currentImage = null;
+  document.getElementById('uploadZone').style.display = 'block';
+  document.getElementById('previewWrap').style.display = 'none';
+  document.getElementById('analysisWrap').style.display = 'none';
+}
+
+/* ══════════════════════════════════════
+   FREEMIUM GATE
+══════════════════════════════════════ */
+function checkGate() {
+  queryCount++;
+  document.getElementById('queryCount').textContent = queryCount + ' / ' + FREE_LIMIT + ' free queries used';
+  if(queryCount >= FREE_LIMIT) {
+    document.getElementById('gateBanner').classList.add('show');
+  }
+  return queryCount <= FREE_LIMIT + 1; // allow 1 extra gracefully
+}
+
+/* ══════════════════════════════════════
+   ANALYZE IMAGE
+══════════════════════════════════════ */
+async function analyzeImage() {
+  if(!currentImage) return;
+  checkGate();
+  showLoading('Analysing tool geometry...', 'Identifying ISO code · Coating colour · Grade type');
+
+  const base64 = currentImage.split(',')[1];
+  const mediaType = currentImage.split(';')[0].split(':')[1];
+
+  const systemPrompt = `You are a world-class cutting tool identification expert. Analyze images of cutting inserts and tools.
+
+Respond ONLY with valid JSON, no markdown, no preamble:
+{
+  "iso_code": "e.g. CNMG 120408",
+  "grade_guess": "e.g. P25-P35 CVD coated",
+  "confidence": "e.g. 82%",
+  "shape": "e.g. 80° rhombus (C-shape)",
+  "size_ic": "e.g. 12.7mm (IC)",
+  "thickness": "e.g. 4.76mm",
+  "corner_radius": "e.g. 0.8mm",
+  "coating_color": "e.g. gold-brown = TiCN/Al2O3 CVD",
+  "iso_groups": ["P","M"],
+  "analysis": "2-3 sentence technical explanation of identification",
+  "xref": [
+    {"brand":"SANDVIK","grade":"GC4325","name":"CoroTurn 107","match":"Exact","why":"Industry standard P25 CVD grade","search":"Sandvik GC4325 CNMG 120408 buy"},
+    {"brand":"ISCAR","grade":"IC8150","name":"T-CNMG","match":"Equivalent","why":"Similar CVD multi-layer P25","search":"ISCAR IC8150 CNMG buy"},
+    {"brand":"KENNAMETAL","grade":"KC5010","name":"CNMG Insert","match":"Alternative","why":"Tough CVD grade, good for interrupted","search":"Kennametal KC5010 CNMG"},
+    {"brand":"WALTER","grade":"WPP30S","name":"Tiger-tec Gold","match":"Alternative","why":"Tiger-tec Gold CVD excellent tool life","search":"Walter WPP30S CNMG insert"},
+    {"brand":"KYOCERA","grade":"CA5515","name":"CNMG Cermet","match":"Alternative","why":"Kyocera CA cermet for finishing","search":"Kyocera CA5515 CNMG"},
+    {"brand":"HORN","grade":"S100","name":"CNMG Series","match":"Alternative","why":"Horn premium P-grade turning","search":"Horn S100 CNMG turning"}
+  ]
+}`;
+
+  try {
+    const resp = await fetch('/api/claude', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system: systemPrompt,
+        messages:[{
+          role:'user',
+          content:[
+            { type:'image', source:{ type:'base64', media_type:mediaType, data:base64 } },
+            { type:'text', text:'Identify this cutting tool. Provide ISO code, properties and cross-references to 6 major brands.' }
+          ]
+        }]
+      })
+    });
+
+    hideLoading();
+    const data = await resp.json();
+    const text = data.content?.[0]?.text || '';
+
+    try {
+      const clean = text.replace(/```json|```/g,'').trim();
+      const result = JSON.parse(clean);
+      renderAnalysis(result);
+    } catch(e) {
+      renderFallbackAnalysis();
+    }
+
+  } catch(e) {
+    hideLoading();
+    renderFallbackAnalysis();
+  }
+}
+
+/* ══════════════════════════════════════
+   ISO CODE SEARCH
+══════════════════════════════════════ */
+async function searchISO() {
+  const val = document.getElementById('isoInput').value.trim();
+  if(!val) return;
+  checkGate();
+  showLoading('Cross-referencing...', 'Scanning brand databases · Matching grade · Finding suppliers');
+
+  const systemPrompt = `You are a cutting tool cross-reference expert with complete knowledge of all major brands.
+
+Given an ISO tool code or grade designation, respond ONLY with valid JSON:
+{
+  "iso_code": "standardized ISO code",
+  "grade_guess": "ISO material group and application",
+  "confidence": "95%",
+  "shape": "insert shape name",
+  "size_ic": "inscribed circle",
+  "thickness": "insert thickness",
+  "corner_radius": "corner radius",
+  "coating_color": "coating type",
+  "iso_groups": ["P","M"],
+  "analysis": "Brief technical explanation",
+  "xref": [
+    {"brand":"SANDVIK","grade":"GC4325","name":"CoroTurn 107","match":"Original","why":"This IS the original grade referenced","search":"Sandvik GC4325 buy price"},
+    {"brand":"ISCAR","grade":"IC8150","name":"T-CNMG","match":"Equivalent","why":"Same CVD application window","search":"ISCAR IC8150 buy"},
+    {"brand":"KENNAMETAL","grade":"KC5010","name":"CNMG","match":"Alternative","why":"Competing P25 CVD grade","search":"Kennametal KC5010"},
+    {"brand":"WALTER","grade":"WPP30S","name":"Tiger-tec","match":"Alternative","why":"Tiger-tec Gold CVD","search":"Walter WPP30S"},
+    {"brand":"SECO","grade":"TP2500","name":"Duratomic","match":"Alternative","why":"PVD variant for tougher conditions","search":"Seco TP2500"},
+    {"brand":"KYOCERA","grade":"CA5515","name":"CNMG","match":"Alternative","why":"Kyocera ceramic-coated equivalent","search":"Kyocera CA5515"}
+  ]
+}`;
+
+  try {
+    const resp = await fetch('/api/claude', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system: systemPrompt,
+        messages:[{ role:'user', content:'Cross-reference this tool code: ' + val }]
+      })
+    });
+
+    hideLoading();
+    const data = await resp.json();
+    const text = data.content?.[0]?.text || '';
+
+    try {
+      const clean = text.replace(/```json|```/g,'').trim();
+      const result = JSON.parse(clean);
+      document.getElementById('previewWrap').style.display = 'none';
+      document.getElementById('uploadZone').style.display = 'none';
+      renderAnalysis(result);
+    } catch(e) {
+      renderFallbackAnalysis();
+    }
+  } catch(e) {
+    hideLoading();
+    renderFallbackAnalysis();
+  }
+}
+
+function fillISO(val) {
+  document.getElementById('isoInput').value = val;
+  searchISO();
+}
+
+/* ══════════════════════════════════════
+   FREE TEXT ADVISOR
+══════════════════════════════════════ */
+async function runFreeText() {
+  const val = document.getElementById('freeTextInput').value.trim();
+  if(!val) return;
+  showLoading('Thinking...','Analysing machining parameters · Selecting grade');
+
+  const systemPrompt = `You are a machining expert. Given a free-text description of a machining task, respond ONLY with a JSON array of 4 tool recommendations:
+[{
+  "brand":"SANDVIK",
+  "name":"CoroTurn 107",
+  "grade":"GC4325",
+  "iso_groups":["P","M"],
+  "coating":"CVD TiCN+Al2O3",
+  "geometry":"MR chip breaker",
+  "vc_range":"220–320",
+  "fz_range":"0.20–0.40",
+  "ap_max":"8",
+  "best_match":true,
+  "why":"Industry benchmark P25 CVD for steel roughing",
+  "search":"Sandvik GC4325 turning insert buy"
+}]`;
+
+  try {
+    const resp = await fetch('/api/claude', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514', max_tokens:1000,
+        system: systemPrompt,
+        messages:[{ role:'user', content:val }]
+      })
+    });
+    hideLoading();
+    const data = await resp.json();
+    const text = data.content?.[0]?.text || '';
+    try {
+      const tools = JSON.parse(text.replace(/```json|```/g,'').trim());
+      renderAdvisorCards(Array.isArray(tools)?tools:[tools]);
+      document.getElementById('advisorResult').classList.add('show');
+      document.getElementById('advisorResult').style.display='block';
+    } catch(e) { renderFallbackAdvisor(); }
+  } catch(e) {
+    hideLoading(); renderFallbackAdvisor();
+  }
+}
+
+function fillFreeText(val) {
+  document.getElementById('freeTextInput').value = val;
+}
+
+/* ══════════════════════════════════════
+   RENDER ANALYSIS
+══════════════════════════════════════ */
+function renderAnalysis(r) {
+  const isoColors = {P:'iso-p',M:'iso-m',K:'iso-k',N:'iso-n',S:'iso-s',H:'iso-h'};
+
+  document.getElementById('identifiedCode').textContent = r.iso_code || '—';
+  document.getElementById('identifiedDesc').textContent = r.analysis || '—';
+  document.getElementById('confidenceNum').textContent = r.confidence || '—';
+
+  const props = [
+    { k:'Shape', v: r.shape||'—' },
+    { k:'Size (IC)', v: r.size_ic||'—' },
+    { k:'Thickness', v: r.thickness||'—' },
+    { k:'Corner R', v: r.corner_radius||'—' },
+    { k:'Coating', v: r.coating_color||'—' },
+    { k:'ISO Groups', v: (r.iso_groups||[]).join(' · ')||'—', cls: r.iso_groups?.[0] ? isoColors[r.iso_groups[0]] : '' },
+  ];
+  document.getElementById('propsGrid').innerHTML = props.map(p =>
+    `<div class="prop-box"><div class="prop-key">${p.k}</div><div class="prop-val ${p.cls||''}">${p.v}</div></div>`
+  ).join('');
+
+  // Stream the analysis text
+  const streamEl = document.getElementById('streamOutput');
+  streamEl.classList.add('show');
+  streamEl.textContent = '';
+  let i = 0;
+  const txt = '> Geometry: ' + (r.shape||'—') + '\n> Coating: ' + (r.coating_color||'—') + '\n> Grade range: ' + (r.grade_guess||'—') + '\n> ' + (r.analysis||'');
+  const interval = setInterval(() => {
+    streamEl.textContent = txt.substring(0,i) + (i<txt.length?'█':'');
+    i+=3;
+    if(i > txt.length) { clearInterval(interval); streamEl.textContent = txt; }
+  }, 20);
+
+  // XRef table
+  const xrefs = r.xref || [];
+  const isoColorMap = {P:'#1456CC',M:'#C49A00',K:'#CC2200',N:'#0A7A4A',S:'#E06000',H:'#7700CC'};
+
+  document.getElementById('xrefTable').innerHTML = xrefs.map((x, i) => {
+    const isoGroups = (r.iso_groups||[]);
+    const isoDots = ['P','M','K','N','S','H'].map(iso =>
+      `<span class="xref-badge" style="${isoGroups.includes(iso)?`color:${isoColorMap[iso]};border-color:${isoColorMap[iso]}40;background:${isoColorMap[iso]}10`:'opacity:.3'}">${iso}</span>`
+    ).join('');
+    const isFeatured = (i===1); // Second result = "featured" for demo
+    const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(x.search||x.brand+' '+x.grade);
+    return `
+    <div class="xref-row ${i===0?'best':''}">
+      <div class="xref-brand ${isFeatured?'featured'}">${isFeatured?'⭐ ':''}${x.brand}</div>
+      <div class="xref-main">
+        <div class="xref-grade">${x.grade}</div>
+        <div class="xref-name">${x.name||''}</div>
+        <div class="xref-badges">
+          <span class="xref-badge ${x.match==='Equivalent'||x.match==='Exact'||x.match==='Original'?'match':''}">${x.match||'Alternative'}</span>
+          ${isFeatured?'<span class="xref-badge featured">Featured Supplier</span>':''}
+          <span class="xref-badge">${x.why||''}</span>
+          ${isoDots}
+        </div>
+      </div>
+      <div class="xref-actions">
+        <button class="btn-supplier" onclick="window.open('${searchUrl}','_blank')">Find Supplier →</button>
+        <button class="btn-supplier outline">Compare</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Supplier grid
+  renderSuppliers();
+
+  document.getElementById('analysisWrap').style.display = 'block';
+  document.getElementById('analysisWrap').classList.add('show');
+  document.getElementById('analysisWrap').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function renderSuppliers() {
+  const suppliers = [
+    { name:'Hoffmann Group', region:'NL · DE · EU-wide', tags:['Overnight delivery','Min order €50','Net 30 terms'], featured:false, logo:'HG', cpc:'€0.45/click' },
+    { name:'Misumi Europe', region:'EU · Global', tags:['No minimum order','CAD data available','Online stock'], featured:true, logo:'MS', cpc:'Featured ⭐' },
+    { name:'MSC Industrial', region:'NL · UK · EU', tags:['Same-day dispatch','Large stock','Price match'], featured:false, logo:'MSC', cpc:'€0.30/click' },
+    { name:'YG-1 Benelux', region:'Benelux · Turkey', tags:['Direct importer','Turkish manufacturer','Low prices'], featured:false, logo:'YG', cpc:'€0.20/click' },
+  ];
+  document.getElementById('supplierGrid').innerHTML = suppliers.map(s => {
+    const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(s.name + ' cutting tools');
+    return `
+    <div class="supplier-card ${s.featured?'featured':''}">
+      <div>
+        <div class="sup-top">
+          <div class="sup-logo">${s.logo}</div>
+          <div>
+            <div class="sup-name">${s.featured?'⭐ ':''}${s.name}</div>
+            <div class="sup-region">${s.region}</div>
+          </div>
+        </div>
+        <div class="sup-tags">
+          ${s.tags.map(t=>`<span class="sup-tag ${s.featured?'green':''}">${t}</span>`).join('')}
+        </div>
+      </div>
+      <div class="sup-right">
+        <div class="sup-cpc-label">Revenue</div>
+        <div class="sup-commission">${s.cpc}</div>
+        <button class="btn-supplier" style="margin-top:6px;font-size:10px;padding:8px 12px" onclick="window.open('${searchUrl}','_blank')">Visit →</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderAdvisorCards(tools) {
+  const isoColorMap = {P:'#1456CC',M:'#C49A00',K:'#CC2200',N:'#0A7A4A',S:'#E06000',H:'#7700CC'};
+  document.getElementById('advisorCards').innerHTML = tools.map((t,i) => {
+    const isos = (t.iso_groups||[]);
+    const searchUrl = 'https://www.google.com/search?q='+encodeURIComponent(t.search||t.brand+' '+t.grade);
+    return `
+    <div class="xref-row ${t.best_match?'best':''}">
+      <div class="xref-brand">${t.brand}</div>
+      <div class="xref-main">
+        <div class="xref-grade">${t.name} <span style="font-size:11px;color:var(--text3)">${t.grade}</span></div>
+        <div class="xref-name">${t.coating} · ${t.geometry}</div>
+        <div class="xref-badges">
+          ${t.best_match?'<span class="xref-badge match">★ Best Match</span>':''}
+          <span class="xref-badge">Vc ${t.vc_range} m/min</span>
+          <span class="xref-badge">fz ${t.fz_range}</span>
+          <span class="xref-badge">ap ≤${t.ap_max}mm</span>
+          ${isos.map(iso=>`<span class="xref-badge" style="color:${isoColorMap[iso]};border-color:${isoColorMap[iso]}40;background:${isoColorMap[iso]}10">${iso}</span>`).join('')}
+        </div>
+        <div style="font-size:11px;color:var(--text2);margin-top:5px">${t.why||''}</div>
+      </div>
+      <div class="xref-actions">
+        <button class="btn-supplier" onclick="window.open('${searchUrl}','_blank')">Find Supplier →</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ══════════════════════════════════════
+   FALLBACKS
+══════════════════════════════════════ */
+function renderFallbackAnalysis() {
+  renderAnalysis({
+    iso_code:'CNMG 120408-MR',
+    grade_guess:'P25-P35 · CVD coated · Steel turning',
+    confidence:'78%',
+    shape:'80° rhombus (C-shape), 4-corner, negative',
+    size_ic:'12.7mm (½")',
+    thickness:'4.76mm',
+    corner_radius:'0.8mm',
+    coating_color:'Gold-brown → TiCN+Al₂O₃ CVD (medium-thick)',
+    iso_groups:['P','M'],
+    analysis:'Standard negative CNMG turning insert with CVD multi-layer coating. Gold-brown colour indicates TiCN+Al₂O₃ stack typical of P25-P35 steel turning grades. Suitable for roughing and medium turning of carbon and alloy steels.',
+    xref:[
+      {brand:'SANDVIK',grade:'GC4325',name:'CoroTurn 107',match:'Original',why:'Industry reference P25 CVD grade',search:'Sandvik GC4325 CNMG buy'},
+      {brand:'ISCAR',grade:'IC8150',name:'T-CNMG',match:'Equivalent',why:'ISCAR Sumo CVD multi-layer P25',search:'ISCAR IC8150 CNMG buy'},
+      {brand:'KENNAMETAL',grade:'KC5010',name:'CNMG',match:'Alternative',why:'Tough CVD excellent for interrupted',search:'Kennametal KC5010 CNMG'},
+      {brand:'WALTER',grade:'WPP30S',name:'Tiger-tec Gold',match:'Alternative',why:'Tiger-tec Gold CVD best-in-class life',search:'Walter WPP30S CNMG'},
+      {brand:'SECO',grade:'TP3500',name:'Duratomic',match:'Alternative',why:'Seco Duratomic PVD/CVD hybrid',search:'Seco TP3500 CNMG insert'},
+      {brand:'KYOCERA',grade:'CA5515',name:'CNMG',match:'Alternative',why:'Kyocera CA cermet hard/semi-hard',search:'Kyocera CA5515 CNMG'},
+    ]
+  });
+}
+
+function renderFallbackAdvisor() {
+  renderAdvisorCards([
+    {brand:'SANDVIK',name:'CoroTurn 107',grade:'GC4325',iso_groups:['P','M'],coating:'CVD',geometry:'MR',vc_range:'220–320',fz_range:'0.20–0.40',ap_max:'8',best_match:true,why:'Best-in-class P25 CVD for steel turning',search:'Sandvik GC4325'},
+    {brand:'ISCAR',name:'T-CNMG',grade:'IC8150',iso_groups:['P','M','K'],coating:'CVD multi-layer',geometry:'M breaker',vc_range:'200–300',fz_range:'0.15–0.35',ap_max:'6',best_match:false,why:'Sumo grade high productivity',search:'ISCAR IC8150'},
+  ]);
+  document.getElementById('advisorResult').style.display='block';
+}
+
+/* ══════════════════════════════════════
+   LOADING
+══════════════════════════════════════ */
+function showLoading(txt, sub) {
+  document.getElementById('loadingText').textContent = txt;
+  document.getElementById('loadingSubText').textContent = sub;
+  document.getElementById('loadingOverlay').classList.add('show');
+}
+function hideLoading() {
+  document.getElementById('loadingOverlay').classList.remove('show');
+}
+
+/* ══════════════════════════════════════
+   REVENUE CALCULATOR
+══════════════════════════════════════ */
+function toggleRevenue(el, key) {
+  revActive[key] = !revActive[key];
+  const tog = document.getElementById('tog-'+key);
+  tog.classList.toggle('on', revActive[key]);
+
+  const vals = revenueData[key];
+  document.getElementById('rev-'+key).textContent = revActive[key] ? '€'+vals.m6+'/mo' : '€0';
+
+  // Totals
+  let t6=0, t18=0;
+  Object.keys(revActive).forEach(k => {
+    if(revActive[k]) { t6+=revenueData[k].m6; t18+=revenueData[k].m18; }
+  });
+  document.getElementById('totalMonth6').textContent = '€'+t6.toLocaleString();
+  document.getElementById('totalMonth18').textContent = '€'+t18.toLocaleString();
+}
+</script>
+</body>
+</html>
