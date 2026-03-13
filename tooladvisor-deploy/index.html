@@ -856,8 +856,8 @@ Respond ONLY with valid JSON, no markdown, no preamble:
    ISO CODE SEARCH
 ══════════════════════════════════════ */
 async function searchISO() {
-  var inputEl = document.getElementById('isoInput');
-  var val = inputEl ? inputEl.value.trim() : '';
+  var el = document.getElementById('isoInput');
+  var val = el ? el.value.trim() : '';
   if(!val) return;
   checkGate();
   document.getElementById('previewWrap').style.display = 'none';
@@ -866,27 +866,6 @@ async function searchISO() {
   await new Promise(function(r){ setTimeout(r, 800); });
   hideLoading();
   renderFallbackAnalysis();
-}
-
-  let result = null;
-  try {
-    const controller = new AbortController();
-    const tid = setTimeout(() => controller.abort(), 6000);
-    const resp = await fetch('/api/claude', {
-      method:'POST', signal: controller.signal,
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model:'claude-sonnet-4-20250514', max_tokens:1000,
-        system:'Respond ONLY with valid JSON no markdown: {"iso_code":"","grade_guess":"","confidence":"","shape":"","size_ic":"","thickness":"","corner_radius":"","coating_color":"","iso_groups":["P"],"analysis":"","xref":[{"brand":"","grade":"","name":"","match":"","why":"","search":""}]}',
-        messages:[{role:'user',content:'Cross-reference cutting tool: '+val}]
-      })
-    });
-    clearTimeout(tid);
-    if(resp.ok){const d=await resp.json();const t=(d.content?.[0]?.text||'').replace(/```json|```/g,'').trim();if(t)result=JSON.parse(t);}
-  } catch(e){ result=null; }
-
-  hideLoading();
-  if(result){ renderAnalysis(result); } else { renderFallbackAnalysis(); }
 }
 function fillISO(val) {
   document.getElementById('isoInput').value = val;
