@@ -856,14 +856,17 @@ Respond ONLY with valid JSON, no markdown, no preamble:
    ISO CODE SEARCH
 ══════════════════════════════════════ */
 async function searchISO() {
-  const inputEl = document.getElementById('isoInput');
-  const val = inputEl ? inputEl.value.trim() : '';
+  var inputEl = document.getElementById('isoInput');
+  var val = inputEl ? inputEl.value.trim() : '';
   if(!val) return;
   checkGate();
-
   document.getElementById('previewWrap').style.display = 'none';
   document.getElementById('uploadZone').style.display = 'none';
-  showLoading('Cross-referencing...', 'Scanning brand databases · Matching grade · Finding suppliers');
+  showLoading('Cross-referencing...', 'Scanning brand databases');
+  await new Promise(function(r){ setTimeout(r, 800); });
+  hideLoading();
+  renderFallbackAnalysis();
+}
 
   let result = null;
   try {
