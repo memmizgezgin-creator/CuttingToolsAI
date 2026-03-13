@@ -842,6 +842,7 @@ Respond ONLY with valid JSON, no markdown, no preamble:
       const result = JSON.parse(clean);
       renderAnalysis(result);
     } catch(e) {
+      hideLoading();
       renderFallbackAnalysis();
     }
 
@@ -907,10 +908,15 @@ Given an ISO tool code or grade designation, respond ONLY with valid JSON:
       document.getElementById('uploadZone').style.display = 'none';
       renderAnalysis(result);
     } catch(e) {
+      hideLoading();
+      document.getElementById('previewWrap').style.display = 'none';
+      document.getElementById('uploadZone').style.display = 'none';
       renderFallbackAnalysis();
     }
   } catch(e) {
     hideLoading();
+    document.getElementById('previewWrap').style.display = 'none';
+    document.getElementById('uploadZone').style.display = 'none';
     renderFallbackAnalysis();
   }
 }
