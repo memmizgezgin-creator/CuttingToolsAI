@@ -856,71 +856,35 @@ Respond ONLY with valid JSON, no markdown, no preamble:
    ISO CODE SEARCH
 ══════════════════════════════════════ */
 async function searchISO() {
-  const val = document.getElementById('isoInput').value.trim();
+  const inputEl = document.getElementById('isoInput');
+  const val = inputEl ? inputEl.value.trim() : '';
   if(!val) return;
   checkGate();
+
+  document.getElementById('previewWrap').style.display = 'none';
+  document.getElementById('uploadZone').style.display = 'none';
   showLoading('Cross-referencing...', 'Scanning brand databases · Matching grade · Finding suppliers');
 
-  const systemPrompt = `You are a cutting tool cross-reference expert with complete knowledge of all major brands.
-
-Given an ISO tool code or grade designation, respond ONLY with valid JSON:
-{
-  "iso_code": "standardized ISO code",
-  "grade_guess": "ISO material group and application",
-  "confidence": "95%",
-  "shape": "insert shape name",
-  "size_ic": "inscribed circle",
-  "thickness": "insert thickness",
-  "corner_radius": "corner radius",
-  "coating_color": "coating type",
-  "iso_groups": ["P","M"],
-  "analysis": "Brief technical explanation",
-  "xref": [
-    {"brand":"SANDVIK","grade":"GC4325","name":"CoroTurn 107","match":"Original","why":"This IS the original grade referenced","search":"Sandvik GC4325 buy price"},
-    {"brand":"ISCAR","grade":"IC8150","name":"T-CNMG","match":"Equivalent","why":"Same CVD application window","search":"ISCAR IC8150 buy"},
-    {"brand":"KENNAMETAL","grade":"KC5010","name":"CNMG","match":"Alternative","why":"Competing P25 CVD grade","search":"Kennametal KC5010"},
-    {"brand":"WALTER","grade":"WPP30S","name":"Tiger-tec","match":"Alternative","why":"Tiger-tec Gold CVD","search":"Walter WPP30S"},
-    {"brand":"SECO","grade":"TP2500","name":"Duratomic","match":"Alternative","why":"PVD variant for tougher conditions","search":"Seco TP2500"},
-    {"brand":"KYOCERA","grade":"CA5515","name":"CNMG","match":"Alternative","why":"Kyocera ceramic-coated equivalent","search":"Kyocera CA5515"}
-  ]
-}`;
-
+  let result = null;
   try {
+    const controller = new AbortController();
+    const tid = setTimeout(() => controller.abort(), 6000);
     const resp = await fetch('/api/claude', {
-      method:'POST',
+      method:'POST', signal: controller.signal,
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1000,
-        system: systemPrompt,
-        messages:[{ role:'user', content:'Cross-reference this tool code: ' + val }]
+        model:'claude-sonnet-4-20250514', max_tokens:1000,
+        system:'Respond ONLY with valid JSON no markdown: {"iso_code":"","grade_guess":"","confidence":"","shape":"","size_ic":"","thickness":"","corner_radius":"","coating_color":"","iso_groups":["P"],"analysis":"","xref":[{"brand":"","grade":"","name":"","match":"","why":"","search":""}]}',
+        messages:[{role:'user',content:'Cross-reference cutting tool: '+val}]
       })
     });
+    clearTimeout(tid);
+    if(resp.ok){const d=await resp.json();const t=(d.content?.[0]?.text||'').replace(/```json|```/g,'').trim();if(t)result=JSON.parse(t);}
+  } catch(e){ result=null; }
 
-    hideLoading();
-    const data = await resp.json();
-    const text = data.content?.[0]?.text || '';
-
-    try {
-      const clean = text.replace(/```json|```/g,'').trim();
-      const result = JSON.parse(clean);
-      document.getElementById('previewWrap').style.display = 'none';
-      document.getElementById('uploadZone').style.display = 'none';
-      renderAnalysis(result);
-    } catch(e) {
-      hideLoading();
-      document.getElementById('previewWrap').style.display = 'none';
-      document.getElementById('uploadZone').style.display = 'none';
-      renderFallbackAnalysis();
-    }
-  } catch(e) {
-    hideLoading();
-    document.getElementById('previewWrap').style.display = 'none';
-    document.getElementById('uploadZone').style.display = 'none';
-    renderFallbackAnalysis();
-  }
+  hideLoading();
+  if(result){ renderAnalysis(result); } else { renderFallbackAnalysis(); }
 }
-
 function fillISO(val) {
   document.getElementById('isoInput').value = val;
   searchISO();
