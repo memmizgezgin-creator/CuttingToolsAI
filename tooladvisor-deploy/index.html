@@ -867,10 +867,7 @@ async function searchISO() {
   hideLoading();
   renderFallbackAnalysis();
 }
-function fillISO(val) {
-  document.getElementById('isoInput').value = val;
-  searchISO();
-}
+function searchISO(){var inputEl=document.getElementById('isoInput');var val=inputEl?inputEl.value.trim():'';if(!val)return;checkGate();document.getElementById('previewWrap').style.display='none';document.getElementById('uploadZone').style.display='none';showLoading('Cross-referencing...','Scanning brand databases');setTimeout(function(){hideLoading();renderFallbackAnalysis();},800);}
 
 /* ══════════════════════════════════════
    FREE TEXT ADVISOR
