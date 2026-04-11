@@ -1623,7 +1623,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
       <div class="chat-head">
         <div class="chat-live-dot"></div>
         <span class="chat-head-title">AI Cutting Tool Expert</span>
-        <span class="chat-head-sub">Demo mode · Pro for unlimited</span>
+        <span class="chat-head-sub" id="chatModeLabel">AI Live · Pro for unlimited</span>
       </div>
       <div class="chat-messages" id="chatMessages">
         <div class="chat-bubble ai">👋 Hi! I'm your AI cutting tool expert. Ask anything — insert selection, cutting data, troubleshooting, material machinability…</div>
@@ -11935,7 +11935,7 @@ function sendChatMsg() {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: CONFIG.claude.model, max_tokens: 600,
-        system: 'You are a cutting tool expert. Answer concisely in HTML (use <br> and <strong>). Focus on: insert grade, cutting data, brand recommendations.',
+        system: 'You are an expert cutting tool advisor. Respond in the same language the user writes in (Turkish or English). Answer concisely using HTML formatting (use <br> and <strong>). Focus on: insert grade, cutting data, brand recommendations, material-specific advice. For superalloys always mention coolant pressure. Be direct and practical.',
         messages: [{ role: 'user', content: msg }]
       })
     }).then(r => r.json()).then(data => {
