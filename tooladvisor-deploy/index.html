@@ -13729,4 +13729,17 @@ document.addEventListener('click', function (e) {
   }
 
   // Resource / Etsy guide clicks (.res-card with href)
-  const resCard = e.target.closest(
+  const resCard = e.target.closest('.res-card[href]');
+  if (resCard) {
+    const title = resCard.querySelector('.res-card-title');
+    TATracker.track('resource_click', {
+      title: title ? title.textContent.trim() : '',
+      href: resCard.getAttribute('href') || ''
+    });
+    return;
+  }
+});
+
+</script>
+</body>
+</html>
