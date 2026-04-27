@@ -23,29 +23,53 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
 }
 
 // ── Extract data from index.html ──────────────────────────────────────────────
-const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+const html = fs.readFileSync(path.join(__dirname, '..', 'tooladvisor-deploy', 'index.html'), 'utf8');
 
-function extractBlock(startMarker, endMarker) {
-  const start = html.indexOf(startMarker);
-  const end   = html.indexOf(endMarker, start);
-  if (start === -1 || end === -1) return null;
-  return html.slice(start, end + endMarker.length);
+// ── Bracket-counting block extractor ─────────────────────────────────────────
+// Locates "const VARNAME = [" or "const VARNAME = {", then walks forward
+// counting nested brackets while skipping string contents (', ", `).
+// Returns the raw content between the outer brackets, or null if not found.
+function extractJSBlock(src, varName) {
+  const re    = new RegExp('const\\s+' + varName + '\\s*=\\s*([\\[{])');
+  const m     = re.exec(src);
+  if (!m) return null;
+
+  const open  = m[1];                        // '[' or '{'
+  const close = open === '[' ? ']' : '}';
+  const start = m.index + m[0].length - 1;  // index of the opening bracket
+
+  let depth   = 0;
+  let inStr   = false;
+  let strChar = '';
+
+  for (let i = start; i < src.length; i++) {
+    const ch = src[i];
+    if (inStr) {
+      if (ch === '\\')    { i++; continue; }   // skip escaped char
+      if (ch === strChar) { inStr = false; }
+    } else {
+      if (ch === '"' || ch === "'" || ch === '`') { inStr = true; strChar = ch; }
+      else if (ch === open)  { depth++; }
+      else if (ch === close) { if (--depth === 0) return src.slice(start + 1, i); }
+    }
+  }
+  return null;
 }
 
 // PRODUCT_DB
-const prodMatch = html.match(/const PRODUCT_DB=\[([\s\S]*?)\];\s*\nconst CORE_CUTTING/);
-if (!prodMatch) { console.error('❌  PRODUCT_DB not found'); process.exit(1); }
+const prodBlock = extractJSBlock(html, 'PRODUCT_DB');
+if (!prodBlock) { console.error('❌  PRODUCT_DB not found'); process.exit(1); }
 let PRODUCT_DB;
-try { PRODUCT_DB = eval('[' + prodMatch[1] + ']'); }
+try { PRODUCT_DB = eval('[' + prodBlock + ']'); }
 catch(e) { console.error('❌  PRODUCT_DB parse error:', e.message); process.exit(1); }
 
 // CROSSREF_DB (both CROSSREF_DB and CROSSREF_SIGNAL_DB)
 let CROSSREF_DB = {}, CROSSREF_SIGNAL_DB = {};
 try {
-  const crMatch = html.match(/const CROSSREF_DB\s*=\s*\{([\s\S]*?)\};\s*\nconst CROSSREF_SIGNAL_DB/);
-  const csMatch = html.match(/const CROSSREF_SIGNAL_DB\s*=\s*\{([\s\S]*?)\};\s*\n/);
-  if (crMatch) CROSSREF_DB        = eval('({' + crMatch[1]  + '})');
-  if (csMatch) CROSSREF_SIGNAL_DB = eval('({' + csMatch[1]  + '})');
+  const crBlock = extractJSBlock(html, 'CROSSREF_DB');
+  const csBlock = extractJSBlock(html, 'CROSSREF_SIGNAL_DB');
+  if (crBlock) CROSSREF_DB        = eval('({' + crBlock + '})');
+  if (csBlock) CROSSREF_SIGNAL_DB = eval('({' + csBlock + '})');
 } catch(e) {
   console.warn('⚠️   Cross-ref parse warning (non-fatal):', e.message);
 }
