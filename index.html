@@ -376,6 +376,50 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 }
 .trust-method-link:hover{color:var(--purple2)}
 
+/* Advisor quick search */
+.advisor-quick-search{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--r-lg);padding:12px 14px;margin-bottom:12px;
+}
+.aqs-input{
+  width:100%;border:1.5px solid var(--border);border-radius:var(--r-sm);
+  padding:10px 12px;font-size:13px;font-family:'IBM Plex Mono',monospace;
+  color:var(--ink);background:var(--bg);outline:none;transition:border-color .15s,background .15s;
+}
+.aqs-input:focus{border-color:var(--purple);background:var(--white)}
+.aqs-input::placeholder{color:var(--ink3);font-family:'IBM Plex Sans',sans-serif;font-size:12px}
+.aqs-hint{
+  margin-top:6px;font-size:11px;line-height:1.4;color:var(--ink3);
+}
+.aqs-results{
+  margin-top:8px;display:grid;gap:6px;
+}
+.aqs-card{
+  border:1.5px solid var(--border);border-radius:var(--r-sm);
+  background:var(--white);padding:8px 10px;cursor:pointer;text-align:left;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
+  transition:border-color .15s,background .15s;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.aqs-card:hover{border-color:var(--navy);background:var(--bg)}
+.aqs-brand{
+  font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--ink3);margin-bottom:2px;
+}
+.aqs-grade{
+  font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:var(--ink);line-height:1.25;
+}
+.aqs-ops{
+  display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end;
+}
+.aqs-op-tag{
+  font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;
+  border:1px solid var(--border);background:var(--bg2);color:var(--ink2);
+  text-transform:uppercase;letter-spacing:.3px;
+}
+.aqs-empty{
+  font-size:11px;color:var(--ink3);padding:2px 2px 1px;
+}
+
 /* ============================================================
    PANEL system
 ============================================================ */
@@ -1277,6 +1321,8 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 
 /* RESPONSIVE */
 @media(max-width:680px){
+  .aqs-card{flex-direction:column;gap:6px}
+  .aqs-ops{justify-content:flex-start}
   .mat-grid{grid-template-columns:repeat(3,1fr)}
   .op-grid{grid-template-columns:repeat(3,1fr)}
   .cond-grid{grid-template-columns:1fr}
@@ -1473,8 +1519,77 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
   border-bottom:1px solid var(--border);vertical-align:top;
 }
 .compare-table tr:last-child td{border-bottom:none}
-.compare-table .cmp-label{font-weight:700;color:var(--ink3);white-space:nowrap;width:110px}
+.compare-table .cmp-label{font-weight:700;color:var(--ink3);white-space:nowrap;width:120px;font-size:11px}
 .compare-table .cmp-grade{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:500}
+.compare-table .cmp-mono{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink)}
+.compare-table td{vertical-align:top;line-height:1.4}
+
+/* ── Product card Compare button ─────────────────────────────── */
+.prod-cmp-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 10px;border-radius:var(--r-sm);font-size:11px;font-weight:600;
+  border:1.5px solid var(--border);background:var(--white);color:var(--ink3);
+  cursor:pointer;font-family:'IBM Plex Sans',sans-serif;transition:all .15s;flex-shrink:0;
+}
+.prod-cmp-btn:hover{border-color:var(--navy);color:var(--navy)}
+.prod-cmp-btn.on{border-color:var(--navy);background:var(--purple-bg);color:var(--navy);font-weight:700}
+.cmp-chk-box{
+  width:12px;height:12px;border-radius:2px;border:1.5px solid currentColor;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.prod-cmp-btn.on .cmp-chk-box{background:var(--navy);border-color:var(--navy)}
+
+/* ── Compare bar: updated wording ──────────────────────────────── */
+.compare-bar-pills{display:flex;align-items:center;gap:6px;flex-wrap:wrap;max-width:520px}
+.compare-bar-pill{
+  font-size:11px;font-weight:600;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);border-radius:3px;
+  padding:2px 8px;color:rgba(255,255,255,.85);
+  font-family:'IBM Plex Mono',monospace;white-space:nowrap;
+}
+
+/* ── Compare modal ───────────────────────────────────────────── */
+.cmp-modal-overlay{
+  position:fixed;inset:0;background:rgba(26,26,46,.52);
+  z-index:500;display:flex;align-items:flex-start;justify-content:center;
+  padding-top:4vh;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.cmp-modal-overlay.open{opacity:1;pointer-events:auto}
+.cmp-modal{
+  background:var(--white);border-radius:var(--r-lg);
+  width:min(96vw,1120px);max-height:88vh;display:flex;flex-direction:column;
+  border:1.5px solid var(--border);overflow:hidden;
+  transform:translateY(12px);transition:transform .2s;
+}
+.cmp-modal-overlay.open .cmp-modal{transform:translateY(0)}
+.cmp-modal-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-bottom:1.5px solid var(--border);flex-shrink:0;
+  background:var(--bg2);
+}
+.cmp-modal-title{font-size:13px;font-weight:800;letter-spacing:.25px;color:var(--ink)}
+.cmp-modal-meta{font-size:11px;color:var(--ink3);margin-left:8px;font-weight:400}
+.cmp-modal-close{
+  width:28px;height:28px;border-radius:4px;
+  border:1.5px solid var(--border);background:var(--white);color:var(--ink2);
+  cursor:pointer;font-size:18px;line-height:1;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.cmp-modal-close:hover{background:var(--bg);border-color:var(--border2);color:var(--ink)}
+.cmp-modal-body{overflow:auto;flex:1}
+.cmp-modal-body .compare-table{border:none;border-radius:0;margin:0}
+.cmp-modal-body .compare-table table{min-width:600px;width:100%}
+.cmp-modal-body .compare-table th:first-child,
+.cmp-modal-body .compare-table td:first-child{
+  position:sticky;left:0;background:var(--bg2);z-index:1;
+  border-right:1.5px solid var(--border);
+}
+.cmp-modal-body .compare-table th:first-child{background:var(--bg)}
+.cmp-modal-body .compare-decision-strip{
+  margin:16px 20px 0;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+}
 </style>
 </head>
 <body>
@@ -1595,6 +1710,18 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
        TAB: ADVISOR
   ============================================================ -->
   <div id="panel-advisor" class="panel active">
+    <div class="advisor-quick-search">
+      <div class="sec-label" style="margin-bottom:7px">Quick Product Search</div>
+      <input
+        id="advisorQuickSearchInput"
+        class="aqs-input"
+        type="text"
+        placeholder="Search grade, brand, material, operation or ISO code — e.g. stainless steel turning, CNMG120408"
+        oninput="handleAdvisorQuickSearch(this.value)"
+      >
+      <div class="aqs-hint">Live search starts at 2 characters · max 8 results</div>
+      <div class="aqs-results" id="advisorQuickSearchResults"></div>
+    </div>
     <div class="quickstart" id="quickStart">
       <div class="sec-label" style="margin-bottom:0">Start Here</div>
       <div class="quickstart-sub">Start with one clear input, then move into the core workflows: Advisor, Cross-Ref, Products and Visual ID.</div>
@@ -2462,11 +2589,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
     </div>
     <div class="prod-count" id="prodCount"></div>
     <div class="prod-grid" id="prodGrid"></div>
-    <div id="compareSection" style="display:none">
-      <div class="divider"></div>
-      <div class="sec-label">Cutting Tool Comparison</div>
-      <div class="compare-table" id="compareTable"></div>
-    </div>
+    <!-- compareSection removed — comparison now opens in #compareModal modal -->
   </div>
 
 </main>
@@ -2481,9 +2604,25 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 
 <!-- COMPARE BAR (fixed bottom) -->
 <div class="compare-bar" id="compareBar">
-  <span class="compare-bar-text" id="compareBarText">0 selected</span>
-  <button class="compare-bar-btn" onclick="showComparison()">Compare Cutting Tools</button>
-  <button class="compare-bar-clear" onclick="clearComparison()">Clear</button>
+  <div class="compare-bar-pills" id="compareBarPills"></div>
+  <button class="compare-bar-btn" onclick="showComparison()">Compare <span id="compareBarCount">2</span> products</button>
+  <button class="compare-bar-clear" onclick="clearComparison()">✕ Clear</button>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="cmp-modal-overlay" id="compareModal" onclick="if(event.target===this)closeCompareModal()">
+  <div class="cmp-modal">
+    <div class="cmp-modal-head">
+      <div style="display:flex;align-items:baseline">
+        <span class="cmp-modal-title">Cutting Tool Comparison</span>
+        <span class="cmp-modal-meta" id="cmpModalMeta"></span>
+      </div>
+      <button class="cmp-modal-close" onclick="closeCompareModal()" aria-label="Close comparison">×</button>
+    </div>
+    <div class="cmp-modal-body">
+      <div class="compare-table" id="compareTable"></div>
+    </div>
+  </div>
 </div>
 
 <!-- UPGRADE MODAL -->
@@ -3165,6 +3304,46 @@ const PRODUCT_DB=[
   cuttingData:{'Drilling-P':{vc:'80–210',fn:'0.08–0.30',ap:'3.0xD',note:'General steel drilling with strong edge support.'},'Drilling-M':{vc:'55–135',fn:'0.06–0.17',ap:'3.0xD',note:'Stainless drilling with controlled wear.'},'Drilling-N':{vc:'140–320',fn:'0.10–0.30',ap:'2.5xD',note:'Non-ferrous mixed-program coverage.'}}},
 /* 266 */ {id:'DRL-GUHRING-EFDRILL-8XD',brand:'Gühring',productName:'EF-Drill Solid Carbide 8xD',series:'EF-Drill',productType:'solid_tool',grade:'EF-Drill',coating:'TiCN',geometry:'Solid carbide 140deg point 8xD',isoCodes:['P','M','N'],operations:['Drilling'],materials:['P','M','N'],vcRange:'40–155',fnRange:'0.04–0.18',apRange:'3.0–8.0xD',toolLife:'High',applicationNotes:'Deep-hole EF-Drill variant for long-reach drilling where stability and coolant delivery are critical.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Drilling-P','Drilling-M'],
   cuttingData:{'Drilling-P':{vc:'60–155',fn:'0.05–0.18',ap:'8.0xD',note:'Deep steel drilling with stable chip evacuation.'},'Drilling-M':{vc:'40–110',fn:'0.04–0.12',ap:'8.0xD',note:'Deep stainless drilling with conservative parameters.'},'Drilling-N':{vc:'110–250',fn:'0.06–0.18',ap:'6.0xD',note:'Deeper non-ferrous bores under stable clamping.'}}},
+/* 267 */ {id:'THR-EMUGE-M-TAP-001',brand:'Emuge',productName:'EMUGE-M Machine Tap M Spiral Point',series:'EMUGE-M',productType:'solid_tool',grade:'EMUGE-M',coating:'TiCN PVD',geometry:'M thread form 60deg spiral point',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'8–35',fnRange:'Per pitch',apRange:'Full thread depth',toolLife:'High',applicationNotes:'General metric thread tapping in steel with controlled torque and stable chip flow.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M'],
+  cuttingData:{'Threading-P':{vc:'12–35',fn:'Per pitch',ap:'Full thread depth',note:'General steel threading with stable flank quality.'},'Threading-M':{vc:'8–22',fn:'Per pitch',ap:'Full thread depth',note:'Stainless threading with conservative torque.'},'Threading-S':{vc:'5–14',fn:'Per pitch',ap:'Full thread depth',note:'Superalloy threading at low speed.'}}},
+/* 268 */ {id:'THR-EMUGE-M-TAP-002',brand:'Emuge',productName:'EMUGE-M Spiral Flute Blind-Hole Tap',series:'EMUGE-M',productType:'solid_tool',grade:'EMUGE-M',coating:'TiN',geometry:'M thread form 60deg spiral flute',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'6–30',fnRange:'Per pitch',apRange:'Blind hole full depth',toolLife:'High',applicationNotes:'Blind-hole metric tapping with strong chip evacuation from deep thread pockets.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M'],
+  cuttingData:{'Threading-P':{vc:'10–30',fn:'Per pitch',ap:'Full thread depth',note:'Blind-hole steel threading with reduced chip packing.'},'Threading-M':{vc:'6–18',fn:'Per pitch',ap:'Full thread depth',note:'Blind-hole stainless taps with stable edge life.'},'Threading-S':{vc:'4–12',fn:'Per pitch',ap:'Full thread depth',note:'Conservative superalloy blind-hole tapping.'}}},
+/* 269 */ {id:'THR-EMUGE-INOX-TAP-001',brand:'Emuge',productName:'EMUGE-INOX Premium Inox Tap',series:'EMUGE-INOX',productType:'solid_tool',grade:'EMUGE-INOX',coating:'Vapor-treated + TiN',geometry:'M thread form 60deg',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'4–20',fnRange:'Per pitch',apRange:'Full thread depth',toolLife:'Very High',applicationNotes:'Stainless-first tapping profile minimizing work hardening and built-up edge.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-M','Threading-S'],
+  cuttingData:{'Threading-M':{vc:'6–20',fn:'Per pitch',ap:'Full thread depth',note:'Primary stainless tapping with low galling tendency.'},'Threading-S':{vc:'4–12',fn:'Per pitch',ap:'Full thread depth',note:'Heat-resistant alloy threading with careful load control.'},'Threading-P':{vc:'8–22',fn:'Per pitch',ap:'Full thread depth',note:'Usable on low-alloy steel in mixed batches.'}}},
+/* 270 */ {id:'THR-EMUGE-INOX-TAP-002',brand:'Emuge',productName:'EMUGE-INOX Form Tap',series:'EMUGE-INOX',productType:'solid_tool',grade:'EMUGE-INOX',coating:'TiCN',geometry:'Thread forming lobed profile',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'5–24',fnRange:'Per pitch',apRange:'Form depth full profile',toolLife:'Very High',applicationNotes:'Chipless forming in ductile stainless and alloy steels for stronger thread profile.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-M','Threading-P'],
+  cuttingData:{'Threading-M':{vc:'5–18',fn:'Per pitch',ap:'Full thread depth',note:'Chipless inox thread forming with high profile quality.'},'Threading-P':{vc:'8–24',fn:'Per pitch',ap:'Full thread depth',note:'Ductile steel forming with longer tool life.'},'Threading-S':{vc:'4–10',fn:'Per pitch',ap:'Partial-to-full depth',note:'Limited forming in tough alloys under rigid setup.'}}},
+/* 271 */ {id:'THR-EMUGE-HPC-TAP-001',brand:'Emuge',productName:'EMUGE-HPC High Performance Tap',series:'EMUGE-HPC',productType:'solid_tool',grade:'EMUGE-HPC',coating:'AlCrN PVD',geometry:'M thread form 60deg reinforced core',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'10–42',fnRange:'Per pitch',apRange:'Full thread depth',toolLife:'Very High',applicationNotes:'High-speed production tapping with elevated wear resistance and stable thread quality.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P'],
+  cuttingData:{'Threading-P':{vc:'14–42',fn:'Per pitch',ap:'Full thread depth',note:'High-output steel tapping for production cells.'},'Threading-M':{vc:'8–24',fn:'Per pitch',ap:'Full thread depth',note:'Fast stainless tapping with proper coolant.'},'Threading-S':{vc:'5–14',fn:'Per pitch',ap:'Full thread depth',note:'Controlled superalloy threading at reduced speed.'}}},
+/* 272 */ {id:'THR-EMUGE-HPC-TAP-002',brand:'Emuge',productName:'EMUGE-HPC Synchronous Tap',series:'EMUGE-HPC',productType:'solid_tool',grade:'EMUGE-HPC',coating:'TiAlN',geometry:'M thread form 60deg sync geometry',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'9–38',fnRange:'Per pitch',apRange:'Full thread depth',toolLife:'Very High',applicationNotes:'Optimized for synchronous tapping cycles with repeatable torque and thread pitch accuracy.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M'],
+  cuttingData:{'Threading-P':{vc:'12–38',fn:'Per pitch',ap:'Full thread depth',note:'Stable synchronous steel tapping.'},'Threading-M':{vc:'9–22',fn:'Per pitch',ap:'Full thread depth',note:'Synchronous stainless threads with consistent pitch.'},'Threading-S':{vc:'5–13',fn:'Per pitch',ap:'Full thread depth',note:'Lower-speed synchronous superalloy threading.'}}},
+/* 273 */ {id:'THR-EMUGE-TM-MILL-001',brand:'Emuge',productName:'EMUGE-TM Solid Carbide Thread Mill Universal',series:'EMUGE-TM',productType:'solid_tool',grade:'EMUGE-TM',coating:'AlTiN',geometry:'Single-row thread mill 60deg',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'55–190',fnRange:'0.02–0.09',apRange:'Helical interpolation',toolLife:'High',applicationNotes:'Universal thread milling for internal/external metric threads with one cutter family.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M','Threading-S'],
+  cuttingData:{'Threading-P':{vc:'90–190',fn:'0.03–0.09',ap:'Helical interpolation',note:'Steel thread milling with stable profile repeatability.'},'Threading-M':{vc:'55–130',fn:'0.02–0.06',ap:'Helical interpolation',note:'Stainless thread milling with low radial force.'},'Threading-S':{vc:'35–90',fn:'0.02–0.05',ap:'Helical interpolation',note:'Superalloy thread milling under conservative engagement.'}}},
+/* 274 */ {id:'THR-EMUGE-TM-MILL-002',brand:'Emuge',productName:'EMUGE-TM Multi-Row Thread Mill',series:'EMUGE-TM',productType:'solid_tool',grade:'EMUGE-TM',coating:'TiSiN',geometry:'Multi-row full profile thread mill',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'45–170',fnRange:'0.02–0.08',apRange:'Helical interpolation full profile',toolLife:'High',applicationNotes:'Multi-row thread mill for reduced cycle time in repeat thread production.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M'],
+  cuttingData:{'Threading-P':{vc:'80–170',fn:'0.03–0.08',ap:'Helical interpolation',note:'Fast steel thread milling in production.'},'Threading-M':{vc:'45–115',fn:'0.02–0.06',ap:'Helical interpolation',note:'Stainless thread milling with stable flank geometry.'},'Threading-S':{vc:'30–80',fn:'0.02–0.05',ap:'Helical interpolation',note:'Superalloy thread milling with reduced heat load.'}}},
+/* 275 */ {id:'THR-EMUGE-FORM-TAP-001',brand:'Emuge',productName:'EMUGE-FORM Chipless Form Tap',series:'EMUGE-FORM',productType:'solid_tool',grade:'EMUGE-FORM',coating:'TiN',geometry:'Thread forming lobed profile',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'8–30',fnRange:'Per pitch',apRange:'Full form depth',toolLife:'Very High',applicationNotes:'Forming tap for ductile materials where chipless process and stronger thread roots are required.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M'],
+  cuttingData:{'Threading-P':{vc:'10–30',fn:'Per pitch',ap:'Full form depth',note:'Chipless steel thread forming with high thread strength.'},'Threading-M':{vc:'8–20',fn:'Per pitch',ap:'Full form depth',note:'Chipless stainless forming in ductile grades.'},'Threading-S':{vc:'5–12',fn:'Per pitch',ap:'Partial-to-full form',note:'Limited superalloy forming under rigid conditions.'}}},
+/* 276 */ {id:'THR-EMUGE-FORM-TAP-002',brand:'Emuge',productName:'EMUGE-FORM Sync Form Tap',series:'EMUGE-FORM',productType:'solid_tool',grade:'EMUGE-FORM',coating:'TiCN',geometry:'Form tap synchronous geometry',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'7–28',fnRange:'Per pitch',apRange:'Full form depth',toolLife:'Very High',applicationNotes:'Synchronous form tapping for stable torque and high thread integrity in ductile alloys.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M'],
+  cuttingData:{'Threading-P':{vc:'9–28',fn:'Per pitch',ap:'Full form depth',note:'Synchronous form tapping in steel.'},'Threading-M':{vc:'7–18',fn:'Per pitch',ap:'Full form depth',note:'Synchronous stainless form tapping.'},'Threading-S':{vc:'4–10',fn:'Per pitch',ap:'Partial form depth',note:'Cautious use in high-strength alloys.'}}},
+/* 277 */ {id:'THR-DORMER-EP001-TAP-001',brand:'Dormer Pramet',productName:'EP001 Universal Tap',series:'EP',productType:'solid_tool',grade:'EP001',coating:'TiN',geometry:'M thread form 60deg',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'6–30',fnRange:'Per pitch',apRange:'Full thread depth',toolLife:'High',applicationNotes:'General-purpose metric tap for mixed steel and stainless work in job-shop conditions.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M'],
+  cuttingData:{'Threading-P':{vc:'9–30',fn:'Per pitch',ap:'Full thread depth',note:'Reliable steel tapping for general use.'},'Threading-M':{vc:'6–18',fn:'Per pitch',ap:'Full thread depth',note:'Stainless tapping with moderated speed.'},'Threading-S':{vc:'4–11',fn:'Per pitch',ap:'Full thread depth',note:'Superalloy threading at conservative parameters.'}}},
+/* 278 */ {id:'THR-DORMER-EP001-TAP-002',brand:'Dormer Pramet',productName:'EP001 Spiral Flute Tap',series:'EP',productType:'solid_tool',grade:'EP001',coating:'TiN',geometry:'M thread form 60deg spiral flute',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'5–27',fnRange:'Per pitch',apRange:'Blind hole full depth',toolLife:'High',applicationNotes:'Blind-hole tapping with improved chip evacuation for medium-depth thread holes.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M'],
+  cuttingData:{'Threading-P':{vc:'8–27',fn:'Per pitch',ap:'Full thread depth',note:'Blind-hole steel tapping for steady process.'},'Threading-M':{vc:'5–16',fn:'Per pitch',ap:'Full thread depth',note:'Blind-hole stainless threading with reduced risk.'},'Threading-S':{vc:'3–10',fn:'Per pitch',ap:'Full thread depth',note:'Conservative blind-hole superalloy tapping.'}}},
+/* 279 */ {id:'THR-DORMER-EP002-TAP-001',brand:'Dormer Pramet',productName:'EP002 Inox Tap',series:'EP',productType:'solid_tool',grade:'EP002',coating:'TiCN',geometry:'M thread form 60deg polished flute',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'4–22',fnRange:'Per pitch',apRange:'Full thread depth',toolLife:'Very High',applicationNotes:'Inox-oriented tap with polished flute profile for work-hardening materials.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-M','Threading-S'],
+  cuttingData:{'Threading-M':{vc:'6–22',fn:'Per pitch',ap:'Full thread depth',note:'Primary stainless threading performance.'},'Threading-S':{vc:'4–12',fn:'Per pitch',ap:'Full thread depth',note:'Heat-resistant alloy threading with controlled wear.'},'Threading-P':{vc:'8–24',fn:'Per pitch',ap:'Full thread depth',note:'Backup steel tapping capability.'}}},
+/* 280 */ {id:'THR-DORMER-EP002-TAP-002',brand:'Dormer Pramet',productName:'EP002 Spiral Point Tap',series:'EP',productType:'solid_tool',grade:'EP002',coating:'TiCN',geometry:'M thread form 60deg spiral point',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'5–24',fnRange:'Per pitch',apRange:'Through-hole full depth',toolLife:'Very High',applicationNotes:'Through-hole stainless and alloy threading with efficient forward chip evacuation.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-M','Threading-P'],
+  cuttingData:{'Threading-M':{vc:'5–20',fn:'Per pitch',ap:'Full thread depth',note:'Through-hole inox threading with low torque spikes.'},'Threading-P':{vc:'8–24',fn:'Per pitch',ap:'Full thread depth',note:'Through-hole steel tapping in mixed production.'},'Threading-S':{vc:'4–11',fn:'Per pitch',ap:'Full thread depth',note:'Through-hole superalloy threading at low speed.'}}},
+/* 281 */ {id:'THR-DORMER-EP010-MILL-001',brand:'Dormer Pramet',productName:'EP010 Solid Thread Mill Universal',series:'EP',productType:'solid_tool',grade:'EP010',coating:'AlTiN',geometry:'Single-row thread mill 60deg',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'50–180',fnRange:'0.02–0.08',apRange:'Helical interpolation',toolLife:'High',applicationNotes:'Universal thread milling grade for steel, stainless and superalloy programs.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M','Threading-S'],
+  cuttingData:{'Threading-P':{vc:'80–180',fn:'0.03–0.08',ap:'Helical interpolation',note:'Steel thread milling with consistent profile.'},'Threading-M':{vc:'50–120',fn:'0.02–0.06',ap:'Helical interpolation',note:'Stainless thread milling with lower cutting force.'},'Threading-S':{vc:'30–85',fn:'0.02–0.05',ap:'Helical interpolation',note:'Superalloy thread milling under controlled load.'}}},
+/* 282 */ {id:'THR-DORMER-EP010-MILL-002',brand:'Dormer Pramet',productName:'EP010 Multi-Form Thread Mill',series:'EP',productType:'solid_tool',grade:'EP010',coating:'TiSiN',geometry:'Multi-form thread mill',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'45–165',fnRange:'0.02–0.07',apRange:'Helical interpolation',toolLife:'High',applicationNotes:'Thread mill suited for mixed thread standards with stable form repeatability.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M'],
+  cuttingData:{'Threading-P':{vc:'70–165',fn:'0.03–0.07',ap:'Helical interpolation',note:'Mixed steel thread forms with one tool family.'},'Threading-M':{vc:'45–110',fn:'0.02–0.05',ap:'Helical interpolation',note:'Stainless threading with stable flank geometry.'},'Threading-S':{vc:'28–75',fn:'0.02–0.04',ap:'Helical interpolation',note:'Conservative superalloy thread milling.'}}},
+/* 283 */ {id:'THR-DORMER-EP020-TAP-001',brand:'Dormer Pramet',productName:'EP020 High-Performance Tap',series:'EP',productType:'solid_tool',grade:'EP020',coating:'AlCrN',geometry:'M thread form 60deg reinforced profile',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'10–40',fnRange:'Per pitch',apRange:'Full thread depth',toolLife:'Very High',applicationNotes:'High-output production tap with elevated wear resistance for long runs.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P'],
+  cuttingData:{'Threading-P':{vc:'14–40',fn:'Per pitch',ap:'Full thread depth',note:'Production steel tapping at higher speed.'},'Threading-M':{vc:'9–24',fn:'Per pitch',ap:'Full thread depth',note:'Fast stainless tapping with proper coolant.'},'Threading-S':{vc:'5–14',fn:'Per pitch',ap:'Full thread depth',note:'Conservative superalloy production threading.'}}},
+/* 284 */ {id:'THR-DORMER-EP020-TAP-002',brand:'Dormer Pramet',productName:'EP020 Synchronous Tap',series:'EP',productType:'solid_tool',grade:'EP020',coating:'TiAlN',geometry:'M thread form 60deg sync geometry',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'9–36',fnRange:'Per pitch',apRange:'Full thread depth',toolLife:'Very High',applicationNotes:'Synchronous tapping grade for repeatable pitch and lower machine load fluctuation.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M'],
+  cuttingData:{'Threading-P':{vc:'12–36',fn:'Per pitch',ap:'Full thread depth',note:'Synchronous steel tapping with stable torque.'},'Threading-M':{vc:'9–22',fn:'Per pitch',ap:'Full thread depth',note:'Synchronous stainless threading with clean profile.'},'Threading-S':{vc:'5–13',fn:'Per pitch',ap:'Full thread depth',note:'Low-speed synchronous superalloy threading.'}}},
+/* 285 */ {id:'THR-DORMER-EP030-FORM-001',brand:'Dormer Pramet',productName:'EP030 Form Tap',series:'EP',productType:'solid_tool',grade:'EP030',coating:'TiN',geometry:'Thread forming lobed profile',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'7–28',fnRange:'Per pitch',apRange:'Full form depth',toolLife:'Very High',applicationNotes:'Chipless form tap for ductile steels and stainless grades with strong thread root.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M'],
+  cuttingData:{'Threading-P':{vc:'10–28',fn:'Per pitch',ap:'Full form depth',note:'Steel thread forming with enhanced root strength.'},'Threading-M':{vc:'7–18',fn:'Per pitch',ap:'Full form depth',note:'Stainless form threading in ductile grades.'},'Threading-S':{vc:'4–10',fn:'Per pitch',ap:'Partial-to-full form',note:'Limited use in difficult alloys.'}}},
+/* 286 */ {id:'THR-DORMER-EP030-FORM-002',brand:'Dormer Pramet',productName:'EP030 Form Tap Blind-Hole',series:'EP',productType:'solid_tool',grade:'EP030',coating:'TiCN',geometry:'Form tap blind-hole profile',isoCodes:['P','M','S'],operations:['Threading'],materials:['P','M','S'],vcRange:'6–24',fnRange:'Per pitch',apRange:'Full form depth',toolLife:'Very High',applicationNotes:'Blind-hole chipless threading with stable torque and high thread consistency.',exactEquivalents:[],functionalAlternatives:[],valueAlternatives:[],buyLinks:[],imageUrl:'',topFor:['Threading-P','Threading-M'],
+  cuttingData:{'Threading-P':{vc:'8–24',fn:'Per pitch',ap:'Full form depth',note:'Blind-hole steel form threading.'},'Threading-M':{vc:'6–16',fn:'Per pitch',ap:'Full form depth',note:'Blind-hole stainless form threading.'},'Threading-S':{vc:'4–9',fn:'Per pitch',ap:'Partial-to-full form',note:'Conservative blind-hole form threading in superalloys.'}}},
 ];
 
 const CORE_CUTTING_OPERATIONS = new Set(['Turning','Milling','Drilling','Threading','Grooving']);
@@ -8497,6 +8676,123 @@ function checkFindButton() {
   document.getElementById('findBtn').disabled = !(selMat && selOp && selCond);
 }
 
+const QUICK_MATERIAL_TERMS = {
+  P: ['steel'],
+  M: ['stainless', 'inox'],
+  K: ['cast iron', 'castiron'],
+  N: ['aluminium', 'aluminum', 'non-ferrous', 'nonferrous'],
+  S: ['superalloy', 'titanium', 'inconel', 'hrsa'],
+  H: ['hardened', 'hard']
+};
+const QUICK_OPERATION_TERMS = {
+  Turning: ['turning', 'lathe'],
+  Milling: ['milling', 'mill'],
+  Drilling: ['drilling', 'drill'],
+  Threading: ['threading', 'thread', 'tap', 'thread mill'],
+  Grooving: ['grooving', 'parting', 'groove']
+};
+
+function quickNormalizeText(value) {
+  return String(value || '').toLowerCase().trim();
+}
+
+function quickTokens(query) {
+  return quickNormalizeText(query).split(/\s+/).filter(Boolean);
+}
+
+function quickMaterialTermSet(materials) {
+  const terms = new Set();
+  coreArr(materials).forEach(mat => {
+    const key = String(mat || '').toUpperCase();
+    terms.add(key.toLowerCase());
+    (QUICK_MATERIAL_TERMS[key] || []).forEach(term => terms.add(term.toLowerCase()));
+  });
+  return terms;
+}
+
+function quickOperationTermSet(operations) {
+  const terms = new Set();
+  coreArr(operations).forEach(op => {
+    const key = String(op || '');
+    terms.add(key.toLowerCase());
+    (QUICK_OPERATION_TERMS[key] || []).forEach(term => terms.add(term.toLowerCase()));
+  });
+  return terms;
+}
+
+function quickSearchScore(product, tokens) {
+  const grade = quickNormalizeText(product.grade);
+  const brand = quickNormalizeText(product.brand);
+  const isoCodes = coreArr(product.isoCodes).map(x => quickNormalizeText(x));
+  const materials = quickMaterialTermSet(product.materials);
+  const operations = quickOperationTermSet(product.operations);
+  const hay = [
+    grade,
+    brand,
+    ...isoCodes,
+    ...coreArr(product.materials).map(x => quickNormalizeText(x)),
+    ...coreArr(product.operations).map(x => quickNormalizeText(x)),
+    ...materials,
+    ...operations
+  ].join(' ');
+
+  let score = 0;
+  for (const token of tokens) {
+    if (!token) continue;
+    if (grade.includes(token)) score += 7;
+    if (brand.includes(token)) score += 5;
+    if (isoCodes.some(code => code.includes(token))) score += 7;
+    if ([...operations].some(op => op.includes(token))) score += 4;
+    if ([...materials].some(mat => mat.includes(token))) score += 4;
+    if (hay.includes(token)) score += 1;
+  }
+  return score;
+}
+
+function renderAdvisorQuickSearchResults(query) {
+  const target = document.getElementById('advisorQuickSearchResults');
+  if (!target) return;
+  const q = quickNormalizeText(query);
+  if (q.length < 2) {
+    target.innerHTML = q.length === 0 ? '' : '<div class="aqs-empty">Type at least 2 characters to search.</div>';
+    return;
+  }
+
+  const tokens = quickTokens(q);
+  const matches = getDB()
+    .map(product => ({ product, score: quickSearchScore(product, tokens) }))
+    .filter(entry => entry.score > 0)
+    .sort((a, b) => b.score - a.score || (a.product.brand || '').localeCompare(b.product.brand || '') || getProductPrimaryCode(a.product).localeCompare(getProductPrimaryCode(b.product)))
+    .slice(0, 8);
+
+  if (!matches.length) {
+    target.innerHTML = '<div class="aqs-empty">No matches yet. Try grade, brand, operation, ISO code or material keywords.</div>';
+    return;
+  }
+
+  target.innerHTML = matches.map(({ product }) => {
+    const grade = escapeHtmlAttr(getProductPrimaryCode(product));
+    const brand = escapeHtmlAttr(product.brand || 'Unknown brand');
+    const opTags = coreArr(product.operations)
+      .slice(0, 3)
+      .map(op => `<span class="aqs-op-tag">${escapeHtmlAttr(op)}</span>`)
+      .join('');
+    const productId = String(product.id || '').replace(/'/g, '&#39;');
+    return `
+      <button class="aqs-card" type="button" onclick="openProductDetail('${productId}','advisor',event)">
+        <div>
+          <div class="aqs-brand">${brand}</div>
+          <div class="aqs-grade">${grade}</div>
+        </div>
+        <div class="aqs-ops">${opTags}</div>
+      </button>`;
+  }).join('');
+}
+
+function handleAdvisorQuickSearch(value) {
+  renderAdvisorQuickSearchResults(value);
+}
+
 /* ============================================================
    ALTERNATIVES
 ============================================================ */
@@ -8966,6 +9262,7 @@ function resetInteractionLayers() {
     if (e.key !== 'Escape') return;
     closeProductDetail();
     closeUpgradeModal();
+    closeCompareModal();
   });
   window.addEventListener('pageshow', resetInteractionLayers);
 })();
@@ -9093,6 +9390,9 @@ function filterProducts() {
       </div>
       <div class="prod-card-footer">
         <div class="prod-card-ops">${p.operations.map(o => '<span class="prod-op-tag">' + o + '</span>').join('')}</div>
+        <button class="prod-cmp-btn ${isChecked ? 'on' : ''}" type="button" onclick="toggleProdSelect('${p.id}')">
+          <span class="cmp-chk-box">${isChecked ? '<svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-3.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</span>Compare
+        </button>
         <button class="prod-detail-btn" type="button" onclick="openProductDetail('${p.id}','products',event)">View details</button>
         <a class="prod-buy-btn" href="${buyUrl}" target="_blank" rel="noopener">Buy <svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M5 2h3v3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
@@ -9112,7 +9412,14 @@ function toggleProdSelect(id) {
 function updateCompareBar() {
   const bar = document.getElementById('compareBar');
   const n = prodSelected.size;
-  document.getElementById('compareBarText').textContent = n + ' selected';
+  document.getElementById('compareBarCount').textContent = n;
+  const pills = document.getElementById('compareBarPills');
+  if (pills) {
+    const selected = getDB().filter(p => prodSelected.has(p.id));
+    pills.innerHTML = selected.map(p =>
+      `<span class="compare-bar-pill">${p.brand} ${getProductPrimaryCode(p)}</span>`
+    ).join('');
+  }
   const shouldShow = n >= 2;
   bar.classList.toggle('show', shouldShow);
   bar.style.pointerEvents = shouldShow ? 'auto' : 'none';
@@ -9120,8 +9427,14 @@ function updateCompareBar() {
 
 function clearComparison() {
   prodSelected.clear();
-  document.getElementById('compareSection').style.display = 'none';
+  closeCompareModal();
   filterProducts();
+}
+
+function closeCompareModal() {
+  const overlay = document.getElementById('compareModal');
+  if (overlay) overlay.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 function showComparison() {
@@ -9131,44 +9444,62 @@ function showComparison() {
     operation: prodFilters.op !== 'all' ? prodFilters.op : null,
     material: prodFilters.iso !== 'all' ? prodFilters.iso : null,
   };
-  const signalMap = new Map(items.map(p => {
-    const trust = computeRecommendationTrust(p, compareContext);
-    const signals = computeDecisionSignals(p, compareContext, trust);
-    const role = getProductRoleTag(signals);
-    return [p.id, { trust, signals, role }];
-  }));
+
+  // Rows: exactly the fields the user needs to compare
   const rows = [
-    { label: 'Brand', fn: p => p.brand },
-    { label: 'Code / Grade', fn: p => '<span class="cmp-grade">' + getProductPrimaryCode(p) + '</span>' },
-    { label: 'Role', fn: p => signalMap.get(p.id).role.label },
-    { label: 'Confidence', fn: p => {
-      const trust = signalMap.get(p.id).trust;
-      return `Confidence ${trust.score}% · ${trust.band}`;
+    { label: 'Brand',      fn: p => `<strong>${p.brand}</strong>` },
+    { label: 'Grade',      fn: p => `<span class="cmp-grade">${getProductPrimaryCode(p)}</span>` },
+    { label: 'Coating',    fn: p => p.coating || '—' },
+    { label: 'ISO Codes',  fn: p => {
+      const codes = coreArr(p.isoCodes);
+      return codes.length
+        ? `<span class="cmp-mono">${codes.join('<br>')}</span>`
+        : '—';
     }},
-    { label: 'Warning', fn: p => {
-      const trust = signalMap.get(p.id).trust;
-      return trust.warning || 'No major risk warning';
+    { label: 'ISO Groups', fn: p => p.materials.join(', ') || '—' },
+    { label: 'Operations', fn: p => p.operations.join(', ') || '—' },
+    { label: 'Vc (m/min)', fn: p => {
+      const k = Object.keys(p.cuttingData)[0];
+      return `<span class="cmp-mono">${p.cuttingData[k]?.vc || p.vcRange || '—'}</span>`;
     }},
-    { label: 'Coating', fn: p => p.coating },
-    { label: 'Geometry', fn: p => p.geometry },
-    { label: 'ISO Groups', fn: p => p.materials.join(', ') },
-    { label: 'Operations', fn: p => p.operations.join(', ') },
-    { label: 'Vc Range', fn: p => { const k = Object.keys(p.cuttingData)[0]; return p.cuttingData[k]?.vc || p.vcRange || '—'; } },
-    { label: 'Feed fn/fz', fn: p => { const k = Object.keys(p.cuttingData)[0]; return p.cuttingData[k]?.fn || p.fnRange || '—'; } },
-    { label: 'ap max', fn: p => { const k = Object.keys(p.cuttingData)[0]; return p.cuttingData[k]?.ap || p.apRange || '—'; } },
-    { label: 'Application', fn: p => p.applicationNotes },
+    { label: 'fn/fz (mm)', fn: p => {
+      const k = Object.keys(p.cuttingData)[0];
+      return `<span class="cmp-mono">${p.cuttingData[k]?.fn || p.fnRange || '—'}</span>`;
+    }},
+    { label: 'ap (mm)',    fn: p => {
+      const k = Object.keys(p.cuttingData)[0];
+      return `<span class="cmp-mono">${p.cuttingData[k]?.ap || p.apRange || '—'}</span>`;
+    }},
+    { label: 'Tool Life',  fn: p => p.toolLife || '—' },
   ];
 
-  const sec = document.getElementById('compareSection');
-  sec.style.display = 'block';
   const strip = buildCompareDecisionStrip(items, compareContext);
   document.getElementById('compareTable').innerHTML = `
-    ${strip}
+    <div style="padding:16px 20px 0">${strip}</div>
+    <div style="overflow-x:auto">
     <table>
-      <thead><tr><th></th>${items.map(p => '<th>' + p.brand + '</th>').join('')}</tr></thead>
-      <tbody>${rows.map(r => '<tr><td class="cmp-label">' + r.label + '</td>' + items.map(p => '<td>' + r.fn(p) + '</td>').join('') + '</tr>').join('')}</tbody>
-    </table>`;
-  sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      <thead><tr>
+        <th style="min-width:110px"></th>
+        ${items.map(p => `<th style="min-width:180px">${p.brand}<br><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink);font-weight:600;text-transform:none;letter-spacing:0">${getProductPrimaryCode(p)}</span></th>`).join('')}
+      </tr></thead>
+      <tbody>${rows.map(r =>
+        `<tr><td class="cmp-label">${r.label}</td>${items.map(p => `<td>${r.fn(p)}</td>`).join('')}</tr>`
+      ).join('')}</tbody>
+    </table>
+    </div>`;
+
+  // Update modal meta line
+  const meta = document.getElementById('cmpModalMeta');
+  if (meta) meta.textContent = ` · ${items.length} product${items.length !== 1 ? 's' : ''}`;
+
+  // Open modal
+  const overlay = document.getElementById('compareModal');
+  if (overlay) {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  taTrack('compare_open', { count: items.length, ids: items.map(p => p.id) });
 }
 
 // Init products on load
