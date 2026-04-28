@@ -198,6 +198,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 }
 .badge-free{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bd)}
 .badge-pro{background:var(--gold-bg);color:#7A5C1E;border:1px solid var(--gold-bd)}
+.badge-soon{background:#F1F5F9;color:#64748B;border:1px solid #CBD5E1}
 
 /* WELCOME BANNER */
 .welcome-banner{
@@ -217,13 +218,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
   font-family:'IBM Plex Sans',sans-serif;transition:all .15s;
 }
 .wb-try-btn:hover{background:rgba(255,255,255,.3)}
-.wb-pro-btn{
-  background:#fff;color:var(--purple);border:none;
-  padding:6px 14px;border-radius:var(--r-sm);
-  font-size:12px;font-weight:800;cursor:pointer;
-  font-family:'IBM Plex Sans',sans-serif;transition:all .15s;
-}
-.wb-pro-btn:hover{background:#EEEEF4}
 .wb-close{
   color:rgba(255,255,255,.6);background:transparent;border:none;
   font-size:18px;cursor:pointer;line-height:1;padding:0 0 0 4px;
@@ -1607,23 +1601,15 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
     <span class="logo-beta">beta</span>
   </a>
   <div class="topbar-spacer"></div>
-  <div class="quota-info">
-    Remaining: <strong id="quotaDisplay">5</strong> / 5
-  </div>
-  <button class="pro-btn" onclick="openUpgradeModal()">
-    <svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5L8.5 5.5H12.5L9.5 7.5L10.5 11.5L7 9L3.5 11.5L4.5 7.5L1.5 5.5H5.5L7 1.5Z" stroke="white" stroke-width="1.3" stroke-linejoin="round"/></svg>
-    + Go Pro
-  </button>
 </header>
 
 <!-- WELCOME BANNER -->
 <div class="welcome-banner" id="welcomeBanner">
   <div class="wb-text">
-    <strong>Welcome to ToolAdvisor</strong> <span>— Cutting tools intelligence for insert and solid tool decisions. 5 free queries.</span>
+    <strong>Welcome to ToolAdvisor</strong> <span>— Cutting tools intelligence for insert and solid tool decisions.</span>
   </div>
   <div class="wb-actions">
-    <button class="wb-try-btn" onclick="dismissWelcomeBanner()">Start Free ↓</button>
-    <button class="wb-pro-btn" onclick="openUpgradeModal()">Pro €19/mo ✦</button>
+    <button class="wb-try-btn" onclick="dismissWelcomeBanner()">Get Started ↓</button>
     <button class="wb-close" onclick="dismissWelcomeBanner()">×</button>
   </div>
 </div>
@@ -1633,12 +1619,10 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
   <button class="tab primary-tab active" onclick="setTab('advisor',this)">
     <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M7 4.5v3.5M7 10v.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
     AI Advisor
-    <span class="tab-badge badge-free">5 FREE</span>
   </button>
   <button class="tab primary-tab" onclick="setTab('crossref',this)">
     <svg viewBox="0 0 14 14" fill="none"><path d="M1.5 3.5h11M1.5 7h7M1.5 10.5h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
     Cross-Ref
-    <span class="tab-badge badge-free">5 FREE</span>
   </button>
   <button class="tab" onclick="setTab('iso',this)">
     <svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M4 6.5h6M4 9h3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
@@ -1659,20 +1643,15 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
   <button class="tab primary-tab" onclick="setTab('visualid',this)">
     <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M1.5 7S3.5 2.5 7 2.5 12.5 7 12.5 7 10.5 11.5 7 11.5 1.5 7 1.5 7z" stroke="currentColor" stroke-width="1.4"/></svg>
     Visual ID
-    <span class="tab-badge badge-pro">PRO</span>
+    <span class="tab-badge badge-soon">Soon</span>
   </button>
   <button class="tab" onclick="setTab('aichat',this)">
     <svg viewBox="0 0 14 14" fill="none"><path d="M2 10.5l1-2.5A5 5 0 1112 7a5 5 0 01-7.5 3.5L2 10.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
     AI Chat
-    <span class="tab-badge badge-pro">PRO</span>
   </button>
   <button class="tab primary-tab" onclick="setTab('products',this)">
     <svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/><rect x="7.5" y="2.5" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/><rect x="1.5" y="8.5" width="5" height="3" rx="1" stroke="currentColor" stroke-width="1.4"/><rect x="7.5" y="8.5" width="5" height="3" rx="1" stroke="currentColor" stroke-width="1.4"/></svg>
     Products
-  </button>
-  <button class="tab" onclick="setTab('pricing',this)" style="color:var(--orange)">
-    <svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5L8.5 5H12L9.2 7L10.2 10.5L7 8.5L3.8 10.5L4.8 7L2 5H5.5L7 1.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-    Pricing
   </button>
   <button class="tab secondary-tab" onclick="setTab('resources',this)">
     <svg viewBox="0 0 14 14" fill="none"><path d="M2 2h6l3 3v7H2V2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 2v3h3M4 7h5M4 9.5h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
@@ -1680,15 +1659,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
   </button>
 </div>
 
-<!-- PROGRESS BAR -->
-<div class="progress-bar-wrap" id="progressWrap">
-  <span class="progress-label" id="progressLabel">5 free queries left</span>
-  <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:100%"></div></div>
-  <span class="progress-unlimited" onclick="openUpgradeModal()">
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 3.5H11L8.5 6.5l1 3.5L6 8l-3.5 2 1-3.5L1 4.5h3.5L6 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
-    + Unlimited
-  </span>
-</div>
 
 <!-- ============================================================
      MAIN
@@ -1896,17 +1866,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
         </div>
       </div>
       <div class="results-list" id="resultsList"></div>
-      <div class="pro-inline-card" id="proInlineCard" style="margin-top:14px;display:none">
-        <div class="pic-icon">✦</div>
-        <div class="pic-text">
-          <div class="pic-title">Unlock unlimited cutting tool recommendations</div>
-          <div class="pic-desc">Go deeper with process-based guidance, richer cross-reference intelligence, AI assistant workflows and exportable recommendation summaries.</div>
-        </div>
-        <div>
-          <button class="pic-btn" onclick="openUpgradeModal()">Upgrade to Pro</button>
-          <div class="pic-price">€19/mo · First 3 months · then €29</div>
-        </div>
-      </div>
       <!-- FEEDBACK WIDGET -->
       <div id="feedbackWidget" style="display:none;margin-top:16px;padding:14px 18px;
            background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);
@@ -2072,23 +2031,13 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 
   <!-- TAB: VISUAL ID -->
   <div id="panel-visualid" class="panel">
-    <div class="pro-gate-card">
-      <div class="pg-lock"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="11" width="16" height="10" rx="2" stroke="white" stroke-width="1.5"/><path d="M8 11V7.5a4 4 0 018 0V11" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="16" r="1.5" fill="white"/></svg></div>
-      <h3>Visual ID — AI Insert Recognition</h3>
-      <p>Upload a photo of any insert. AI identifies brand, grade, geometry and cross-references to 7 brands in seconds.</p>
-      <div class="pro-gate-feats">
-        <div class="pgf-row"><div class="pgf-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Identify any insert from photo</div>
-        <div class="pgf-row"><div class="pgf-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Auto cross-reference to 7 brands</div>
-        <div class="pgf-row"><div class="pgf-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Unlimited AI Advisor + AI Chat</div>
-        <div class="pgf-row"><div class="pgf-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>PDF export of recommendations</div>
+    <div style="text-align:center;padding:56px 24px 48px;max-width:480px;margin:0 auto">
+      <div style="width:56px;height:56px;border-radius:12px;background:var(--bg2);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+        <svg width="26" height="26" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2.5" stroke="var(--ink2)" stroke-width="1.4"/><path d="M1.5 7S3.5 2.5 7 2.5 12.5 7 12.5 7 10.5 11.5 7 11.5 1.5 7 1.5 7z" stroke="var(--ink2)" stroke-width="1.4"/></svg>
       </div>
-      <div class="price-display">
-        <span class="price-main-num">€19</span>
-        <span class="price-crossed">€29</span>
-        <span class="price-per">/ month</span>
-      </div>
-      <div class="price-promo-tag">🎉 Launch offer — first 3 months at €19, then €29/mo</div>
-      <button class="upgrade-btn-big" onclick="openUpgradeModal()">Upgrade to Pro →</button>
+      <div style="font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Coming Soon</div>
+      <h2 style="font-size:22px;font-weight:800;color:var(--ink);margin-bottom:10px;letter-spacing:-.3px">Visual ID — AI Insert Recognition</h2>
+      <p style="font-size:14px;color:var(--ink2);line-height:1.65;margin:0">Upload a photo of any cutting insert. AI identifies the brand, grade and geometry — then cross-references to 7 brands automatically.</p>
     </div>
   </div>
 
@@ -2096,13 +2045,13 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
   <div id="panel-aichat" class="panel">
     <div class="hero" style="margin-bottom:16px">
       <h1 style="font-size:28px">AI Chat</h1>
-      <p style="font-size:14px">Process Q&A for cutting tool decisions — Pro access</p>
+      <p style="font-size:14px">Process Q&A for cutting tool decisions</p>
     </div>
     <div class="chat-wrap">
       <div class="chat-head">
         <div class="chat-live-dot"></div>
         <span class="chat-head-title">AI Cutting Tool Expert</span>
-        <span class="chat-head-sub">Pro access</span>
+        <span class="chat-head-sub">AI-powered</span>
       </div>
       <div class="chat-messages" id="chatMessages">
         <div class="chat-bubble ai">Use AI Chat for cutting tool Q&A: insert selection, cutting data setup, troubleshooting and material-driven trade-offs.</div>
@@ -2114,168 +2063,17 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
         <button class="chat-send-btn" onclick="sendChatMsg()">Send</button>
       </div>
     </div>
-    <div style="text-align:center;margin-top:10px">
-      <div style="font-size:12px;color:var(--ink3);margin-bottom:8px">Sample conversation shown. Full AI Chat is available in Pro.</div>
-      <button onclick="openUpgradeModal()" style="background:var(--purple);color:#fff;border:none;padding:10px 24px;border-radius:var(--r-sm);font-size:13px;font-weight:700;cursor:pointer;font-family:'IBM Plex Sans',sans-serif">Upgrade to Pro — €19/mo →</button>
-    </div>
   </div>
 
   <!-- TAB: PRICING -->
   <div id="panel-pricing" class="panel">
-    <div class="pricing-page">
-      <div class="pricing-hero">
-        <h1>Cutting tools intelligence pricing</h1>
-        <p>Start free for core workflows, then scale to deeper cutting tool recommendations, cross-reference depth and exportable process guidance.</p>
-        <div class="pricing-trust-anchor">Monthly billing · Auto-renew monthly · Cancel before renewal · Billing support: billing@tooladvisor.com</div>
+    <div style="text-align:center;padding:56px 24px 48px;max-width:480px;margin:0 auto">
+      <div style="width:56px;height:56px;border-radius:12px;background:var(--bg2);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+        <svg width="26" height="26" viewBox="0 0 14 14" fill="none"><path d="M7 1.5L8.5 5H12L9.2 7L10.2 10.5L7 8.5L3.8 10.5L4.8 7L2 5H5.5L7 1.5Z" stroke="var(--ink2)" stroke-width="1.3" stroke-linejoin="round"/></svg>
       </div>
-
-      <div class="pricing-grid">
-        <!-- FREE -->
-        <div class="price-tile">
-          <div class="pt-tier">Free</div>
-          <div class="pt-price-row"><span class="pt-price">€0</span></div>
-          <div class="pt-period">forever</div>
-          <div style="height:32px"></div>
-          <div class="pt-desc">Perfect for occasional cutting tool checks with no commitment.</div>
-          <ul class="pt-feats">
-            <li><div class="ptf-icon ptf-ok"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>5 AI cutting tool recommendations / month</li>
-            <li><div class="ptf-icon ptf-ok"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Cross-reference depth — 5 insert codes</li>
-            <li><div class="ptf-icon ptf-ok"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Why-this-product explanation</li>
-            <li><div class="ptf-icon ptf-ok"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>ISO Decoder — unlimited</li>
-            <li><div class="ptf-icon ptf-ok"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Cutting Calculator — unlimited</li>
-            <li><div class="ptf-icon ptf-ok"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Supplier Directory</li>
-            <li><div class="ptf-icon ptf-no"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 2l4 4M6 2L2 6" stroke="#9CA3AF" stroke-width="1.3" stroke-linecap="round"/></svg></div><span style="color:var(--ink3)">AI Free-Text — Pro only</span></li>
-            <li><div class="ptf-icon ptf-no"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 2l4 4M6 2L2 6" stroke="#9CA3AF" stroke-width="1.3" stroke-linecap="round"/></svg></div><span style="color:var(--ink3)">Visual ID from photo — Pro only</span></li>
-            <li><div class="ptf-icon ptf-no"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 2l4 4M6 2L2 6" stroke="#9CA3AF" stroke-width="1.3" stroke-linecap="round"/></svg></div><span style="color:var(--ink3)">AI Chat — Pro only</span></li>
-          </ul>
-          <button class="pt-cta" onclick="setTab('advisor',document.querySelector('.tab'))">Start Free</button>
-        </div>
-
-        <!-- PRO -->
-        <div class="price-tile featured">
-          <div class="pt-tier">Pro</div>
-          <div class="pt-price-row">
-            <span class="pt-price">€19</span>
-            <span class="pt-price-orig">€29</span>
-          </div>
-          <div class="pt-period">/ month</div>
-          <div class="pt-promo">🎉 Launch offer — first 3 months at €19, then €29/mo</div>
-          <div class="pt-desc">For teams that run daily cutting tool decisions with process accountability.</div>
-          <ul class="pt-feats">
-            <li><div class="ptf-icon ptf-ok"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Unlimited AI cutting tool recommendations</strong></li>
-            <li><div class="ptf-icon ptf-ok"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Full cross-reference intelligence — all supported codes</li>
-            <li><div class="ptf-icon ptf-ok"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Process-based guidance (why, watch-outs, alternatives)</li>
-            <li><div class="ptf-icon ptf-ok"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>AI assistant workflows for cutting tool decisions</li>
-            <li><div class="ptf-icon ptf-ok"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Export-ready recommendation and guide intelligence</li>
-            <li><div class="ptf-icon ptf-ok"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Priority support</li>
-          </ul>
-          <button class="pt-cta main" onclick="openUpgradeModal()">Start Pro — €19/mo →</button>
-          <div class="pt-fine">Stripe secure · Cancel anytime · Price locks at signup</div>
-        </div>
-      </div>
-
-      <!-- FEATURE COMPARE TABLE -->
-      <div class="compare-table-wrap">
-        <div class="ct-hdr">
-          <span class="ct-hdr-label">Feature</span>
-          <span class="ct-hdr-plan">Free</span>
-          <span class="ct-hdr-plan featured-hdr">Pro ✦</span>
-        </div>
-        <div class="ct-row"><span class="ct-feat">AI cutting tool recommendations</span><span class="ct-val ct-yes">5/mo</span><span class="ct-val ct-purple">Unlimited</span></div>
-        <div class="ct-row"><span class="ct-feat">Cross-reference depth</span><span class="ct-val ct-yes">5 codes</span><span class="ct-val ct-purple">All codes</span></div>
-        <div class="ct-row"><span class="ct-feat">Why-this-product intelligence</span><span class="ct-val ct-yes">Basic</span><span class="ct-val ct-purple">Advanced</span></div>
-        <div class="ct-row"><span class="ct-feat">Process-based guidance</span><span class="ct-val ct-no">—</span><span class="ct-val ct-purple">✓</span></div>
-        <div class="ct-row"><span class="ct-feat">Alternatives & compare workflow</span><span class="ct-val ct-yes">✓</span><span class="ct-val ct-yes">✓</span></div>
-        <div class="ct-row"><span class="ct-feat">ISO Insert Decoder</span><span class="ct-val ct-yes">✓</span><span class="ct-val ct-yes">✓</span></div>
-        <div class="ct-row"><span class="ct-feat">Cutting Calculator</span><span class="ct-val ct-yes">✓</span><span class="ct-val ct-yes">✓</span></div>
-        <div class="ct-row"><span class="ct-feat">Supplier Directory</span><span class="ct-val ct-yes">✓</span><span class="ct-val ct-yes">✓</span></div>
-        <div class="ct-row"><span class="ct-feat">AI assistant add-ons (chat / visual)</span><span class="ct-val ct-no">—</span><span class="ct-val ct-purple">✓</span></div>
-        <div class="ct-row"><span class="ct-feat">Direct buy links per result</span><span class="ct-val ct-yes">✓</span><span class="ct-val ct-yes">✓</span></div>
-        <div class="ct-row"><span class="ct-feat">Exportable recommendation reports</span><span class="ct-val ct-no">—</span><span class="ct-val ct-purple">✓</span></div>
-        <div class="ct-row"><span class="ct-feat">Priority support</span><span class="ct-val ct-no">—</span><span class="ct-val ct-purple">✓</span></div>
-      </div>
-
-      <div class="trust-layer" style="margin-top:18px">
-        <div class="trust-layer-head">
-          <div class="sec-label" style="margin-bottom:0">Billing & Subscription Policy</div>
-        </div>
-        <div class="trust-layer-body" style="display:grid">
-          <div class="trust-row">ToolAdvisor Pro is billed monthly and renews automatically each month until canceled.</div>
-          <div class="trust-row">To stop the next charge, contact <a href="mailto:billing@tooladvisor.com" style="color:var(--purple);font-weight:700">billing@tooladvisor.com</a> before renewal. Access remains active until the current paid period ends.</div>
-          <div class="trust-row">If payment fails, we notify you and provide a short grace window before Pro access is paused.</div>
-          <div class="trust-row">If payment succeeds but Pro is not active, manual activation is available after verification.</div>
-          <div class="trust-row">Payment methods are shown at checkout by region. Typical options include iDEAL/Wero, SEPA Direct Debit, and card fallback.</div>
-        </div>
-      </div>
-
-      <!-- FAQ -->
-      <div class="faq-section">
-        <div class="faq-title">Frequently Asked Questions</div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            How do I upgrade?
-            <svg viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="faq-a">Open Pricing, choose Pro, and complete checkout. Activation is usually immediate.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            How do I cancel?
-            <svg viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="faq-a">To cancel, contact <a href="mailto:billing@tooladvisor.com" style="color:var(--purple);font-weight:700">billing@tooladvisor.com</a> before your next renewal date. Pro access remains active until the end of your current paid period.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            Do you offer refunds?
-            <svg viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="faq-a">Yes. Refund requests are reviewed case-by-case by billing support.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            Which payment methods are supported?
-            <svg viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="faq-a">Methods are shown at checkout by region. Typical options include iDEAL/Wero, SEPA Direct Debit, and card fallback.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            What happens when I run out of free queries?
-            <svg viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="faq-a">When free queries are exhausted, you’ll be prompted to upgrade to Pro to continue recommendations.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            What if Pro does not activate automatically?
-            <svg viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="faq-a">Contact <a href="mailto:billing@tooladvisor.com" style="color:var(--purple);font-weight:700">billing@tooladvisor.com</a> with your purchase email and payment timestamp. Manual activation is available after verification.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            Can I contact billing directly?
-            <svg viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="faq-a">Yes. Use <a href="mailto:billing@tooladvisor.com" style="color:var(--purple);font-weight:700">billing@tooladvisor.com</a> for subscription and payment topics.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            How quickly do you respond?
-            <svg viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="faq-a">We usually reply within 1 business day (CET/CEST).</div>
-        </div>
-      </div>
-
-      <!-- BOTTOM CTA -->
-      <div style="background:linear-gradient(135deg,var(--purple),var(--purple2));border-radius:var(--r-lg);padding:32px;text-align:center;color:#fff">
-        <div style="font-size:22px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px">Ready to stop guessing?</div>
-        <div style="font-size:14px;opacity:.8;margin-bottom:22px;max-width:430px;margin-left:auto;margin-right:auto">Join teams using ToolAdvisor to choose the right cutting tool, compare alternatives, and run process decisions with confidence.</div>
-        <button onclick="openUpgradeModal()" style="background:#fff;color:var(--purple);border:none;padding:13px 32px;border-radius:var(--r);font-size:15px;font-weight:800;cursor:pointer;font-family:'IBM Plex Sans',sans-serif;margin-right:10px;transition:opacity .15s" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">Start Pro — €19/mo →</button>
-        <button onclick="setTab('advisor',document.querySelector('.tab'))" style="background:transparent;color:rgba(255,255,255,.8);border:1.5px solid rgba(255,255,255,.35);padding:13px 24px;border-radius:var(--r);font-size:15px;font-weight:600;cursor:pointer;font-family:'IBM Plex Sans',sans-serif;transition:all .15s" onmouseover="this.style.background='rgba(255,255,255,.1)'" onmouseout="this.style.background='transparent'">Try Free First</button>
-      </div>
+      <div style="font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Coming Soon</div>
+      <h2 style="font-size:22px;font-weight:800;color:var(--ink);margin-bottom:10px;letter-spacing:-.3px">Pricing</h2>
+      <p style="font-size:14px;color:var(--ink2);line-height:1.65;margin:0">All features are currently free to use. Pricing plans will be published here when available.</p>
     </div>
   </div>
   <!-- TAB: RESOURCES -->
@@ -2625,22 +2423,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
   </div>
 </div>
 
-<!-- UPGRADE MODAL -->
-<div class="modal-overlay" id="upgradeModal">
-  <div class="modal-card">
-    <h3>Upgrade to Pro</h3>
-    <p>Unlock unlimited cutting tool recommendations, deeper cross-reference intelligence, process-based guidance and export-ready outputs.</p>
-    <div class="modal-price-box">
-      <div class="modal-price-num">€19 <span style="font-size:16px;color:var(--ink3);text-decoration:line-through;font-weight:500">€29</span></div>
-      <div class="modal-price-note">per month · first 3 months · then €29/mo · cancel anytime</div>
-    </div>
-    <div class="modal-promo">🎉 Launch offer — price locks in at signup. Cancel anytime.</div>
-    <input class="modal-email-input" type="email" id="upgradeEmail" placeholder="your@email.com">
-    <button class="modal-submit" onclick="submitUpgrade()">Continue to Payment →</button>
-    <button class="modal-cancel" onclick="closeUpgradeModal()">Cancel</button>
-    <div class="modal-fine">Stripe · Secure payment · GDPR compliant</div>
-  </div>
-</div>
 
 <!-- PRODUCT DETAIL MODAL (minimal restore) -->
 <div class="modal-overlay" id="productDetailOverlay" aria-hidden="true">
@@ -8030,9 +7812,9 @@ function renderProductVisual(product, surface = 'products') {
   return `<div class="${classNames}" data-image-tier="${presentation.imageTier}" data-image-style-key="${presentation.imageStyleKey}" title="${title}">${artSvg}</div>`;
 }
 function syncBodyOverflowLock() {
-  const upgradeOpen = !!document.getElementById('upgradeModal')?.classList.contains('open');
   const detailOpen = !!document.getElementById('productDetailOverlay')?.classList.contains('open');
-  document.body.style.overflow = (upgradeOpen || detailOpen) ? 'hidden' : '';
+  const cmpOpen = !!document.getElementById('compareModal')?.classList.contains('open');
+  document.body.style.overflow = (detailOpen || cmpOpen) ? 'hidden' : '';
 }
 function getProductById(id) {
   return getDB().find(p => p.id === id) || advisorResultCache.get(id) || null;
@@ -8483,44 +8265,10 @@ const CHAT_KB = [
 /* ============================================================
    STATE
 ============================================================ */
-const LS_KEY = 'ta_q_v4';
 const WELCOME_BANNER_KEY = 'ta_welcome_dismissed_v1';
-let quota = 0;
-const MAX_QUOTA = 5;
 let selMat = null, selOp = null, selCond = null;
-let _lastResultsKey = null; // tracks last mat|op|cond that consumed quota — prevents duplicate burns
 let _productsFirstOpenHandled = false;
 const advisorResultCache = new Map();
-
-function normalizeQuotaValue(raw) {
-  const n = Number.parseInt(String(raw ?? ''), 10);
-  if (!Number.isFinite(n)) return 0;
-  return Math.min(MAX_QUOTA, Math.max(0, n));
-}
-function loadQ() {
-  const raw = localStorage.getItem(LS_KEY);
-  const normalized = normalizeQuotaValue(raw);
-  quota = normalized;
-  if (raw === null || String(raw) !== String(normalized)) {
-    saveQ();
-  }
-}
-function saveQ() {
-  quota = normalizeQuotaValue(quota);
-  localStorage.setItem(LS_KEY, String(quota));
-}
-
-/* ============================================================
-   QUOTA & PROGRESS
-============================================================ */
-function renderQuota() {
-  loadQ();
-  const rem = Math.max(0, MAX_QUOTA - quota);
-  document.getElementById('quotaDisplay').textContent = rem;
-  document.getElementById('progressLabel').textContent = rem + ' free quer' + (rem === 1 ? 'y' : 'ies') + ' left';
-  const pct = Math.max(0, (rem / MAX_QUOTA) * 100);
-  document.getElementById('progressFill').style.width = pct + '%';
-}
 
 function initWelcomeBanner() {
   const banner = document.getElementById('welcomeBanner');
@@ -8866,17 +8614,7 @@ async function loadAltStrip(productId, operation, material) {
 
 function showResults() {
   if (!selMat || !selOp || !selCond) return;
-  const _sessionKey = selMat + '|' + selOp + '|' + selCond;
-  loadQ();
-  if (quota >= MAX_QUOTA) {
-    openUpgradeModal(); return;
-  }
-  // Only burn quota when the combination is new — repeat clicks on identical selection are free
-  if (_sessionKey !== _lastResultsKey) {
-    quota++; saveQ(); renderQuota();
-    _lastResultsKey = _sessionKey;
-    taTrack('advisor_search', { material: selMat, operation: selOp, condition: selCond });
-  }
+  taTrack('advisor_search', { material: selMat, operation: selOp, condition: selCond });
 
   const key = selOp + '-' + selMat;
   const context = { operation: selOp, material: selMat };
@@ -8962,19 +8700,14 @@ function showResults() {
 
   // Show results, collapse steps
   document.getElementById('resultsSection').style.display = 'block';
-  document.getElementById('proInlineCard').style.display = 'flex';
   document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   // Load alternatives for each card asynchronously (non-blocking)
   rankedTools.forEach(entry => loadAltStrip(entry.tool.id, selOp, selMat));
-
-  if (quota >= MAX_QUOTA) {
-    setTimeout(() => openUpgradeModal(), 1500);
-  }
 }
 
 function resetAdvisor() {
-  selMat = null; selOp = null; selCond = null; _lastResultsKey = null;
+  selMat = null; selOp = null; selCond = null;
   // Reset circles
   [1,2,3].forEach(n => {
     const circ = document.getElementById('stepCircle' + n);
@@ -9193,27 +8926,8 @@ function sendChatMsg() {
 /* ============================================================
    MODAL
 ============================================================ */
-function openUpgradeModal() {
-  if (CONFIG.stripe.enabled) {
-    // Live Stripe checkout — redirect to Stripe-hosted page
-    const stripe = Stripe(CONFIG.stripe.publishableKey);
-    stripe.redirectToCheckout({ lineItems: [{ price: 'PRICE_ID', quantity: 1 }], mode: 'subscription', successUrl: window.location.origin + '?upgrade=success', cancelUrl: window.location.origin + '?upgrade=cancel' }).then(r => { if (r.error) toast(r.error.message); });
-    return;
-  }
-  document.getElementById('upgradeModal').classList.add('open');
-  syncBodyOverflowLock();
-}
-function closeUpgradeModal() {
-  const el = document.getElementById('upgradeModal');
-  if (el) el.classList.remove('open');
-  syncBodyOverflowLock();
-}
-function submitUpgrade() {
-  const v = document.getElementById('upgradeEmail').value.trim();
-  if (!v || !v.includes('@')) { toast('Please enter a valid email'); return; }
-  closeUpgradeModal();
-  toast('Stripe checkout coming soon — we\'ll email ' + v + ' 🚀');
-}
+function openUpgradeModal() { /* no-op: paywall removed */ }
+function closeUpgradeModal() { /* no-op: paywall removed */ }
 
 /* ============================================================
    TOAST
@@ -9228,8 +8942,6 @@ function toast(msg) {
    INIT
 ============================================================ */
 function resetInteractionLayers() {
-  const upgradeModal = document.getElementById('upgradeModal');
-  if (upgradeModal) upgradeModal.classList.remove('open');
   const detailOverlay = document.getElementById('productDetailOverlay');
   if (detailOverlay) detailOverlay.classList.remove('open');
   const compareBar = document.getElementById('compareBar');
@@ -9237,13 +8949,13 @@ function resetInteractionLayers() {
     compareBar.classList.remove('show');
     compareBar.style.pointerEvents = 'none';
   }
+  closeCompareModal();
   syncBodyOverflowLock();
 }
 
 (function init() {
   resetInteractionLayers();
   initWelcomeBanner();
-  renderQuota();
   loadCR('CNMG120408');
   decodeISO('CNMG120408');
   calcNow();
@@ -9251,17 +8963,12 @@ function resetInteractionLayers() {
   renderSup('all');
   document.getElementById('crInput').addEventListener('keydown', e => { if (e.key === 'Enter') loadCR(e.target.value); });
   document.getElementById('chatInputField').addEventListener('keydown', e => { if (e.key === 'Enter') sendChatMsg(); });
-  // Close modal on overlay click
-  document.getElementById('upgradeModal').addEventListener('click', function(e) {
-    if (e.target === this) closeUpgradeModal();
-  });
   document.getElementById('productDetailOverlay').addEventListener('click', function(e) {
     if (e.target === this) closeProductDetail();
   });
   document.addEventListener('keydown', function(e) {
     if (e.key !== 'Escape') return;
     closeProductDetail();
-    closeUpgradeModal();
     closeCompareModal();
   });
   window.addEventListener('pageshow', resetInteractionLayers);
@@ -9629,17 +9336,7 @@ window.sendChatMsg = function () {
   return _sendChatMsg.apply(this, arguments);
 };
 
-// 9. Upgrade modal opened — note which tab triggered it
-const _openUpgradeModal = openUpgradeModal;
-window.openUpgradeModal = function () {
-  const activeTab = document.querySelector('.tab.active');
-  TATracker.track('upgrade_open', {
-    from_tab: activeTab ? activeTab.textContent.trim().replace(/\s+/g, ' ') : ''
-  });
-  return _openUpgradeModal.apply(this, arguments);
-};
-
-// 10. Reset advisor — hide feedback widget
+// 9. Reset advisor — hide feedback widget
 const _resetAdvisor = resetAdvisor;
 window.resetAdvisor = function () {
   const fw = document.getElementById('feedbackWidget');
