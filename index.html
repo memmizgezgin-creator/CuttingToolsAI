@@ -72,7 +72,7 @@
    RESET & TOKENS
 ============================================================ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-font-smoothing:antialiased;font-size:14px}
+html{height:100vh;overflow:hidden;-webkit-font-smoothing:antialiased;font-size:14px}
 :root{
   --white:#FFF;
   --bg:#F1F0ED;
@@ -120,7 +120,8 @@ body{
   font-family:'Plus Jakarta Sans',system-ui,sans-serif;
   background:var(--bg);
   color:var(--ink);
-  min-height:100vh;
+  height:100vh;
+  overflow:hidden;
 }
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
@@ -1804,8 +1805,8 @@ body{
    DESIGN SYSTEM V2 — INDUSTRIAL CATALOG RC5
    Visual-only integration from A_industrial_catalog.html.
 ============================================================ */
-.app{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh;background:var(--bg)}
-.sidebar{background:#18171A;color:#E4E2EC;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:110}
+.app{display:grid;grid-template-columns:240px minmax(0,1fr);height:100vh;min-height:0;background:var(--bg);overflow:hidden}
+.sidebar{background:#18171A;color:#E4E2EC;display:flex;flex-direction:column;position:fixed;left:0;top:0;width:240px;height:100vh;overflow-y:auto;z-index:110}
 .sb-brand{padding:18px 20px 16px;border-bottom:1px solid #2a2930;display:flex;align-items:center;gap:10px}
 .sb-brand .mark{width:30px;height:30px;background:var(--purple);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .sb-brand .wm{font-weight:800;font-size:15px;color:#fff}
@@ -1833,7 +1834,8 @@ body{
 .quota-fill{height:100%;background:var(--purple);border-radius:99px}
 .pro-cta{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;background:var(--purple);color:#fff;border:none;padding:9px 12px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',system-ui,sans-serif;width:100%}
 .main{
-  max-width:none;margin:0;padding:0;background:var(--bg);display:flex;flex-direction:column;min-width:0;
+  grid-column:2;max-width:none;margin:0;padding:0;background:var(--bg);display:flex;flex-direction:column;min-width:0;
+  height:100vh;overflow-y:auto;overflow-x:hidden;
 }
 .crumb{
   background:var(--white);border-bottom:1px solid var(--line);padding:9px 28px;display:flex;align-items:center;gap:8px;
@@ -1987,7 +1989,7 @@ body{
 .compare-bar{left:calc(240px + 50%);transform:translateX(-50%);max-width:760px}
 .modal-card,.cmp-modal{border-radius:6px}
 .detail-modal-card{border:1px solid var(--line);box-shadow:0 24px 80px rgba(0,0,0,.24)}
-.site-footer{margin-left:240px;background:var(--panel)}
+.site-footer{background:var(--panel)}
 .rx-rank{font-family:'DM Mono',monospace;font-weight:600;font-size:13px;color:var(--ink3);width:28px}
 .rx-rank.top{color:var(--purple)}
 .rx-brand{font-size:10px;font-weight:800;letter-spacing:.8px;color:var(--ink3);text-transform:uppercase;display:block}
@@ -1995,8 +1997,9 @@ body{
 .rx-coat{max-width:360px}
 .num{font-family:'DM Mono',monospace;font-weight:500;text-align:right;color:var(--ink2)}
 @media(max-width:860px){
-  .app{grid-template-columns:1fr}
-  .sidebar{position:relative;height:auto}
+  .app{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+  .sidebar{position:relative;width:100%;height:auto;max-height:42vh;grid-row:1}
+  .main{grid-column:1;grid-row:2;height:auto;min-height:0;overflow-y:auto}
   .sb-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
   .sb-footer{display:none}
   .crumb,.pageheader,.panel{padding-left:14px;padding-right:14px}
@@ -2868,15 +2871,14 @@ body{
     <!-- compareSection removed — comparison now opens in #compareModal modal -->
   </div>
 
-</main>
-</div><!-- /app -->
-
 <div class="site-footer" style="max-width:none;margin:0;padding:10px 16px;border-top:1px solid var(--border);color:var(--ink3);font-size:12px">
   <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center">
     <span>Support: <a href="mailto:support@tooladvisor.com" style="color:var(--purple);font-weight:700">support@tooladvisor.com</a> · Billing: <a href="mailto:billing@tooladvisor.com" style="color:var(--purple);font-weight:700">billing@tooladvisor.com</a></span>
     <span>ToolAdvisor Pro is billed monthly and renews automatically until canceled.</span>
   </div>
 </div>
+</main>
+</div><!-- /app -->
 <!-- Internal ops note: admin@tooladvisor.com is internal-only escalation mailbox; keep off public UI. -->
 
 <!-- COMPARE BAR (fixed bottom) -->
