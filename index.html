@@ -1975,6 +1975,9 @@ body{
 .metric-label{color:#8A8898}
 .metric-value{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:#fff}
 .metric-unit{color:#8A8898;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+.calc-card.calc-out{background:#18171A;color:#fff;border-color:#18171A;display:block}
+.calc-card.calc-out .calc-card-title{color:#fff}
+.calc-card.calc-out .calc-rec,.calc-card.calc-out .calc-fmls{background:#242329;border-color:#2a2930}
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .prod-card{background:var(--white);border:1px solid var(--line);border-radius:6px;box-shadow:none}
 .prod-card:hover{border-color:var(--purple);box-shadow:0 2px 12px rgba(107,63,231,.08)}
@@ -2008,82 +2011,113 @@ body{
 </head>
 <body>
 
-<!-- TOPBAR -->
-<header class="topbar">
-  <a href="#" class="logo" onclick="return false">
-    <div class="logo-box">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M2.5 13L8 2L13.5 13" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M4.5 9.5H11.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
+<div class="app">
+  <aside class="sidebar">
+    <div class="sb-brand">
+      <div class="mark">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M2.5 13L8 2L13.5 13" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4.5 9.5H11.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="wm">ToolAdvisor<small>beta</small></div>
     </div>
-    ToolAdvisor
-    <span class="logo-beta">beta</span>
-  </a>
-  <div class="topbar-spacer"></div>
-</header>
 
-<!-- WELCOME BANNER -->
-<div class="welcome-banner" id="welcomeBanner">
-  <div class="wb-text">
-    <strong>Welcome to ToolAdvisor</strong> <span>— Cutting tools intelligence for insert and solid tool decisions.</span>
-  </div>
-  <div class="wb-actions">
-    <button class="wb-try-btn" onclick="dismissWelcomeBanner()">Get Started ↓</button>
-    <button class="wb-close" onclick="dismissWelcomeBanner()">×</button>
-  </div>
-</div>
+    <div class="sb-section">Selection Tools</div>
+    <nav class="sb-nav">
+      <button class="tab sb-item primary-tab active" onclick="setTab('advisor',this)">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-linecap="round"/></svg>
+        AI Advisor <span class="tab-badge badge-free">Free</span>
+      </button>
+      <button class="tab sb-item primary-tab" onclick="setTab('crossref',this)">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h7M2 12h10" stroke="currentColor" stroke-linecap="round"/></svg>
+        Cross-Ref <span class="tab-badge badge-free">Free</span>
+      </button>
+      <button class="tab sb-item" onclick="setTab('iso',this)">
+        <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1" stroke="currentColor"/><path d="M4 7h8M4 10h4" stroke="currentColor" stroke-linecap="round"/></svg>
+        ISO Decoder
+      </button>
+      <button class="tab sb-item" onclick="setTab('calc',this)">
+        <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor"/><path d="M5 8h6M8 5v6" stroke="currentColor" stroke-linecap="round"/></svg>
+        Calculator
+      </button>
+    </nav>
 
-<!-- TAB BAR -->
-<div class="tabbar">
-  <button class="tab primary-tab active" onclick="setTab('advisor',this)">
-    <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M7 4.5v3.5M7 10v.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-    AI Advisor
-  </button>
-  <button class="tab primary-tab" onclick="setTab('crossref',this)">
-    <svg viewBox="0 0 14 14" fill="none"><path d="M1.5 3.5h11M1.5 7h7M1.5 10.5h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-    Cross-Ref
-  </button>
-  <button class="tab" onclick="setTab('iso',this)">
-    <svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M4 6.5h6M4 9h3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-    ISO Decoder
-  </button>
-  <button class="tab" onclick="setTab('calc',this)">
-    <svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M4.5 7h5M7 4.5v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-    Calculator
-  </button>
-  <button class="tab" onclick="setTab('materials',this)">
-    <svg viewBox="0 0 14 14" fill="none"><path d="M1.5 11.5L5 4.5L9 8.5L12.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    Materials
-  </button>
-  <button class="tab" onclick="setTab('suppliers',this)">
-    <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M1.5 12c0-3 2.5-4.5 5.5-4.5s5.5 1.5 5.5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-    Suppliers
-  </button>
-  <button class="tab primary-tab" onclick="setTab('visualid',this)">
-    <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M1.5 7S3.5 2.5 7 2.5 12.5 7 12.5 7 10.5 11.5 7 11.5 1.5 7 1.5 7z" stroke="currentColor" stroke-width="1.4"/></svg>
-    Visual ID
-    <span class="tab-badge badge-soon">Soon</span>
-  </button>
-  <button class="tab" onclick="setTab('aichat',this)">
-    <svg viewBox="0 0 14 14" fill="none"><path d="M2 10.5l1-2.5A5 5 0 1112 7a5 5 0 01-7.5 3.5L2 10.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-    AI Chat
-  </button>
-  <button class="tab primary-tab" onclick="setTab('products',this)">
-    <svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/><rect x="7.5" y="2.5" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/><rect x="1.5" y="8.5" width="5" height="3" rx="1" stroke="currentColor" stroke-width="1.4"/><rect x="7.5" y="8.5" width="5" height="3" rx="1" stroke="currentColor" stroke-width="1.4"/></svg>
-    Products
-  </button>
-  <button class="tab secondary-tab" onclick="setTab('resources',this)">
-    <svg viewBox="0 0 14 14" fill="none"><path d="M2 2h6l3 3v7H2V2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 2v3h3M4 7h5M4 9.5h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-    Resources
-  </button>
-</div>
+    <div class="sb-section">Reference</div>
+    <nav class="sb-nav">
+      <button class="tab sb-item" onclick="setTab('materials',this)">
+        <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1" stroke="currentColor"/><path d="M2 6h12" stroke="currentColor"/></svg>
+        Materials
+      </button>
+      <button class="tab sb-item" onclick="setTab('suppliers',this)">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M2 13V6l6-3 6 3v7" stroke="currentColor" stroke-linejoin="round"/><path d="M6 13V9h4v4" stroke="currentColor"/></svg>
+        Suppliers
+      </button>
+      <button class="tab sb-item primary-tab" onclick="setTab('products',this)">
+        <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1" stroke="currentColor"/><path d="M4 6h8M4 9h8M4 12h5" stroke="currentColor" stroke-linecap="round"/></svg>
+        Products
+      </button>
+      <button class="tab sb-item secondary-tab" onclick="setTab('resources',this)">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 2h6l4 4v8H3V2z" stroke="currentColor" stroke-linejoin="round"/><path d="M9 2v4h4M5 9h6M5 12h4" stroke="currentColor" stroke-linecap="round"/></svg>
+        Resources
+      </button>
+    </nav>
 
+    <div class="sb-section">AI</div>
+    <nav class="sb-nav">
+      <button class="tab sb-item primary-tab" onclick="setTab('visualid',this)">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor"/><path d="M2 8s2-5 6-5 6 5 6 5-2 5-6 5-6-5-6-5z" stroke="currentColor"/></svg>
+        Visual ID <span class="tab-badge badge-soon">Soon</span>
+      </button>
+      <button class="tab sb-item" onclick="setTab('aichat',this)">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M2 12l1-2.5A5 5 0 1112 8a5 5 0 01-7.5 3.5L2 12z" stroke="currentColor" stroke-linejoin="round"/></svg>
+        AI Chat
+      </button>
+    </nav>
 
-<!-- ============================================================
-     MAIN
-============================================================ -->
+    <div class="sb-footer">
+      <div class="quota-box">
+        <div class="quota-title">Learning Mode</div>
+        <div class="quota-num">Free<em> access</em></div>
+        <div class="quota-bar"><div class="quota-fill" style="width:100%"></div></div>
+        <button class="pro-cta" onclick="setTab('pricing',findTabButton('pricing'))">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 3.5H11L8.5 6.5l1 3.5L6 8l-3.5 2 1-3.5L1 4.5h3.5L6 1z" fill="currentColor"/></svg>
+          Subscription Terms
+        </button>
+      </div>
+    </div>
+  </aside>
+
 <main class="main">
+  <div class="crumb">
+    <span>Selection Tools</span><span class="sep">›</span><strong>AI Advisor</strong>
+    <span class="pill">ENGINEERING CATALOG · RC5</span>
+  </div>
+
+  <div class="pageheader">
+    <div class="pagehead-top">
+      <div>
+        <div class="page-kicker">Cutting Tools Intelligence</div>
+        <div class="page-title">ToolAdvisor</div>
+        <div class="page-sub">Operation and material based cutting tool recommendations, cross-reference, catalogue comparison and explainable confidence signals.</div>
+      </div>
+      <div class="pagehead-meta">
+        <span class="hmeta">ISO 1832</span>
+        <span class="hmeta">CUTTING TOOLS</span>
+        <span class="hmeta">RC5</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="welcome-banner" id="welcomeBanner">
+    <div class="wb-text">
+      <strong>Welcome to ToolAdvisor</strong> <span>— Cutting tools intelligence for insert and solid tool decisions.</span>
+    </div>
+    <div class="wb-actions">
+      <button class="wb-try-btn" onclick="dismissWelcomeBanner()">Get Started</button>
+      <button class="wb-close" onclick="dismissWelcomeBanner()">×</button>
+    </div>
+  </div>
 
   <!-- HERO (visible in advisor) -->
   <div class="hero" id="heroSection">
@@ -2152,7 +2186,7 @@ body{
     </div>
 
     <!-- Step 1: Material -->
-    <div class="step-section" id="stepSec1">
+    <div class="step-section step-row" id="stepSec1">
       <div class="step-header" onclick="toggleStep(1)">
         <div class="step-circle active-c" id="stepCircle1">1</div>
         <div class="step-header-text">
@@ -2162,28 +2196,28 @@ body{
         <span class="step-selected-val" id="stepVal1" style="display:none"></span>
       </div>
       <div class="step-body" id="stepBody1">
-        <div class="mat-grid">
-          <div class="mat-card" onclick="selectMat('P',this)" style="background:var(--p-bg);border-color:var(--p-bd)">
+        <div class="mat-grid mat-table">
+          <div class="mat-card mat-cell" onclick="selectMat('P',this)" style="background:var(--p-bg);border-color:var(--p-bd)">
             <span class="mat-letter" style="color:var(--p-c)">P</span>
             <span class="mat-name" style="color:var(--p-c)">Steel</span>
           </div>
-          <div class="mat-card" onclick="selectMat('M',this)" style="background:var(--m-bg);border-color:var(--m-bd)">
+          <div class="mat-card mat-cell" onclick="selectMat('M',this)" style="background:var(--m-bg);border-color:var(--m-bd)">
             <span class="mat-letter" style="color:var(--m-c)">M</span>
             <span class="mat-name" style="color:var(--m-c)">Stainless</span>
           </div>
-          <div class="mat-card" onclick="selectMat('K',this)" style="background:var(--k-bg);border-color:var(--k-bd)">
+          <div class="mat-card mat-cell" onclick="selectMat('K',this)" style="background:var(--k-bg);border-color:var(--k-bd)">
             <span class="mat-letter" style="color:var(--k-c)">K</span>
             <span class="mat-name" style="color:var(--k-c)">Cast Iron</span>
           </div>
-          <div class="mat-card" onclick="selectMat('N',this)" style="background:var(--n-bg);border-color:var(--n-bd)">
+          <div class="mat-card mat-cell" onclick="selectMat('N',this)" style="background:var(--n-bg);border-color:var(--n-bd)">
             <span class="mat-letter" style="color:var(--n-c)">N</span>
             <span class="mat-name" style="color:var(--n-c)">Non-Ferrous</span>
           </div>
-          <div class="mat-card" onclick="selectMat('S',this)" style="background:var(--s-bg);border-color:var(--s-bd)">
+          <div class="mat-card mat-cell" onclick="selectMat('S',this)" style="background:var(--s-bg);border-color:var(--s-bd)">
             <span class="mat-letter" style="color:var(--s-c)">S</span>
             <span class="mat-name" style="color:var(--s-c)">Superalloy</span>
           </div>
-          <div class="mat-card" onclick="selectMat('H',this)" style="background:var(--h-bg);border-color:var(--h-bd)">
+          <div class="mat-card mat-cell" onclick="selectMat('H',this)" style="background:var(--h-bg);border-color:var(--h-bd)">
             <span class="mat-letter" style="color:var(--h-c)">H</span>
             <span class="mat-name" style="color:var(--h-c)">Hardened</span>
           </div>
@@ -2192,7 +2226,7 @@ body{
     </div>
 
     <!-- Step 2: Operation -->
-    <div class="step-section" id="stepSec2">
+    <div class="step-section step-row" id="stepSec2">
       <div class="step-header" onclick="toggleStep(2)">
         <div class="step-circle pending" id="stepCircle2">2</div>
         <div class="step-header-text">
@@ -2228,7 +2262,7 @@ body{
     </div>
 
     <!-- Step 3: Conditions -->
-    <div class="step-section" id="stepSec3">
+    <div class="step-section step-row" id="stepSec3">
       <div class="step-header" onclick="toggleStep(3)">
         <div class="step-circle pending" id="stepCircle3">3</div>
         <div class="step-header-text">
@@ -2421,7 +2455,7 @@ body{
         <div class="form-row"><label class="form-label">Number of Teeth z</label><input class="form-input" type="number" id="cZ" value="4" min="1" oninput="calcNow()"></div>
         <button class="calc-run-btn" onclick="calcNow()">Calculate</button>
       </div>
-      <div class="calc-card">
+      <div class="calc-card calc-out">
         <div class="calc-card-title">Results</div>
         <div class="metric-block"><div class="metric-label">Spindle Speed n</div><div class="metric-value" id="rN">—<span class="metric-unit">RPM</span></div></div>
         <div class="metric-block"><div class="metric-label">Table Feed vf</div><div class="metric-value" id="rVf">—<span class="metric-unit">mm/min</span></div></div>
@@ -2835,8 +2869,9 @@ body{
   </div>
 
 </main>
+</div><!-- /app -->
 
-<div style="max-width:1160px;margin:0 auto 14px;padding:10px 16px;border-top:1px solid var(--border);color:var(--ink3);font-size:12px">
+<div class="site-footer" style="max-width:none;margin:0;padding:10px 16px;border-top:1px solid var(--border);color:var(--ink3);font-size:12px">
   <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center">
     <span>Support: <a href="mailto:support@tooladvisor.com" style="color:var(--purple);font-weight:700">support@tooladvisor.com</a> · Billing: <a href="mailto:billing@tooladvisor.com" style="color:var(--purple);font-weight:700">billing@tooladvisor.com</a></span>
     <span>ToolAdvisor Pro is billed monthly and renews automatically until canceled.</span>
