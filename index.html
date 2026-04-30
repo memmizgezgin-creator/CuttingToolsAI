@@ -72,7 +72,8 @@
    RESET & TOKENS
 ============================================================ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{height:100vh;overflow:hidden;-webkit-font-smoothing:antialiased;font-size:14px}
+html,body{height:100vh;overflow:hidden;margin:0}
+html{-webkit-font-smoothing:antialiased;font-size:14px}
 :root{
   --white:#FFF;
   --bg:#F1F0ED;
@@ -120,8 +121,6 @@ body{
   font-family:'Plus Jakarta Sans',system-ui,sans-serif;
   background:var(--bg);
   color:var(--ink);
-  height:100vh;
-  overflow:hidden;
 }
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
@@ -273,7 +272,7 @@ body{
 /* ============================================================
    MAIN AREA
 ============================================================ */
-.main{max-width:940px;margin:0 auto;padding:34px 24px 68px}
+/* legacy .main rule — superseded by industrial layout block below */
 
 /* Hero */
 .hero{
@@ -1805,8 +1804,9 @@ body{
    DESIGN SYSTEM V2 — INDUSTRIAL CATALOG RC5
    Visual-only integration from A_industrial_catalog.html.
 ============================================================ */
-.app{display:grid;grid-template-columns:240px minmax(0,1fr);height:100vh;min-height:0;background:var(--bg);overflow:hidden}
-.sidebar{background:#18171A;color:#E4E2EC;display:flex;flex-direction:column;position:fixed;left:0;top:0;width:240px;height:100vh;overflow-y:auto;z-index:110}
+/* LAYOUT CONTRACT: 100vh viewport, sidebar fixed, main scrolls internally */
+.app{display:grid;grid-template-columns:240px minmax(0,1fr);width:100%;height:100%;min-height:0;background:var(--bg);overflow:hidden}
+.sidebar{position:fixed;left:0;top:0;width:240px;height:100vh;background:#18171A;color:#E4E2EC;display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;z-index:110}
 .sb-brand{padding:18px 20px 16px;border-bottom:1px solid #2a2930;display:flex;align-items:center;gap:10px}
 .sb-brand .mark{width:30px;height:30px;background:var(--purple);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .sb-brand .wm{font-weight:800;font-size:15px;color:#fff}
@@ -1834,8 +1834,8 @@ body{
 .quota-fill{height:100%;background:var(--purple);border-radius:99px}
 .pro-cta{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;background:var(--purple);color:#fff;border:none;padding:9px 12px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',system-ui,sans-serif;width:100%}
 .main{
-  grid-column:2;max-width:none;margin:0;padding:0;background:var(--bg);display:flex;flex-direction:column;min-width:0;
-  height:100vh;overflow-y:auto;overflow-x:hidden;
+  grid-column:2;max-width:none;margin:0;padding:0;background:var(--bg);display:flex;flex-direction:column;
+  min-width:0;min-height:0;height:100%;overflow-y:auto;overflow-x:hidden;
 }
 .crumb{
   background:var(--white);border-bottom:1px solid var(--line);padding:9px 28px;display:flex;align-items:center;gap:8px;
@@ -1981,9 +1981,13 @@ body{
 .calc-card.calc-out .calc-card-title{color:#fff}
 .calc-card.calc-out .calc-rec,.calc-card.calc-out .calc-fmls{background:#242329;border-color:#2a2930}
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.prod-card{background:var(--white);border:1px solid var(--line);border-radius:6px;box-shadow:none}
+.prod-card{
+  background:var(--white);border:1px solid var(--line);border-left:4px solid var(--prod-iso-stripe,#1F2937);
+  border-radius:6px;box-shadow:none;
+}
 .prod-card:hover{border-color:var(--purple);box-shadow:0 2px 12px rgba(107,63,231,.08)}
-.prod-card.checked{border-color:var(--purple);border-width:1px;box-shadow:inset 3px 0 0 var(--purple)}
+.prod-card:hover{border-left-color:var(--prod-iso-stripe,#1F2937)}
+.prod-card.checked{border-color:var(--purple);border-left-color:var(--prod-iso-stripe,#1F2937);border-left-width:4px;border-width:1px 1px 1px 4px;box-shadow:inset 3px 0 0 var(--purple)}
 .prod-card-head{padding:14px}
 .prod-card-footer{border-top:1px solid var(--line)}
 .compare-bar{left:calc(240px + 50%);transform:translateX(-50%);max-width:760px}
@@ -9696,6 +9700,7 @@ function filterProducts() {
   });
 
   const isoColorMap = { P: 'rtag-p', M: 'rtag-m', K: 'rtag-k', N: 'rtag-n', S: 'rtag-s', H: 'rtag-h' };
+  const isoStripeColorMap = { P: '#1E4FB8', M: '#047857', K: '#B91C1C', N: '#B45309', S: '#6D28D9', H: '#1F2937' };
   const grid = document.getElementById('prodGrid');
   if (!grid) return;
 
@@ -9723,8 +9728,10 @@ function filterProducts() {
     const secondaryLine = getProductSecondaryLine(p, primaryCode);
     const visual = renderProductVisual(p, 'products');
     const techStrip = renderProductTechnicalStrip(p, 6);
+    const primaryIso = coreArr(p.materials).find(m => isoStripeColorMap[m]) || 'H';
+    const isoStripeColor = isoStripeColorMap[primaryIso] || '#1F2937';
     return `
-    <div class="prod-card ${isChecked ? 'checked' : ''} ${tier === 'secondary' ? 'secondary' : ''}" id="pcard-${p.id}">
+    <div class="prod-card ${isChecked ? 'checked' : ''} ${tier === 'secondary' ? 'secondary' : ''}" id="pcard-${p.id}" style="--prod-iso-stripe:${isoStripeColor}">
       <div class="prod-card-check ${isChecked ? 'on' : ''}" onclick="toggleProdSelect('${p.id}')">
         ${isChecked ? '<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}
       </div>
