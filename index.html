@@ -1683,10 +1683,10 @@ body{
 .compare-bar{
   position:fixed;bottom:0;left:0;right:0;
   background:var(--ink);color:#fff;
-  padding:12px 24px;display:flex;align-items:center;justify-content:center;gap:14px;
-  z-index:200;transform:translateY(100%);transition:transform .25s;pointer-events:none;
+  padding:12px 24px;align-items:center;justify-content:center;gap:14px;
+  z-index:200;display:none;pointer-events:none;
 }
-.compare-bar.show{transform:translateY(0);pointer-events:auto}
+.compare-bar.show{display:flex;pointer-events:auto}
 .compare-bar-text{font-size:13px;font-weight:600}
 .compare-bar-btn{
   background:var(--purple);color:#fff;border:none;
@@ -2111,37 +2111,9 @@ body{
   <div class="pageheader">
     <div class="pagehead-top">
       <div>
-        <div class="page-kicker">Cutting Tools Intelligence</div>
         <div class="page-title">ToolAdvisor</div>
-        <div class="page-sub">Operation and material based cutting tool recommendations, cross-reference, catalogue comparison and explainable confidence signals.</div>
-      </div>
-      <div class="pagehead-meta">
-        <span class="hmeta">ISO 1832</span>
-        <span class="hmeta">CUTTING TOOLS</span>
-        <span class="hmeta">RC5</span>
       </div>
     </div>
-  </div>
-
-  <div class="welcome-banner" id="welcomeBanner">
-    <div class="wb-text">
-      <strong>Welcome to ToolAdvisor</strong> <span>— Cutting tools intelligence for insert and solid tool decisions.</span>
-    </div>
-    <div class="wb-actions">
-      <button class="wb-try-btn" onclick="dismissWelcomeBanner()">Get Started</button>
-      <button class="wb-close" onclick="dismissWelcomeBanner()">×</button>
-    </div>
-  </div>
-
-  <!-- HERO (visible in advisor) -->
-  <div class="hero" id="heroSection">
-    <div class="hero-eyebrow">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 3.5H11L8.5 6.5l1 3.5L6 8l-3.5 2 1-3.5L1 4.5h3.5L6 1z" fill="currentColor"/></svg>
-      Cutting Tools Intelligence
-    </div>
-    <h1>Start with what you know.<br><span>Choose the right cutting tool.</span></h1>
-    <p>Pick one entry path and go directly to recommendation, cross-reference, or visual identification.</p>
-    <div class="hero-trust-anchor">Brand-neutral recommendations · Explainable alternatives · Confidence-aware suggestions</div>
   </div>
 
   <!-- ============================================================
@@ -2895,7 +2867,7 @@ body{
 <!-- COMPARE BAR (fixed bottom) -->
 <div class="compare-bar" id="compareBar">
   <div class="compare-bar-pills" id="compareBarPills"></div>
-  <button class="compare-bar-btn" onclick="showComparison()">Compare <span id="compareBarCount">2</span> products</button>
+  <button class="compare-bar-btn" onclick="showComparison()">Compare <span id="compareBarCount">0</span> <span id="compareBarLabel">products</span></button>
   <button class="compare-bar-clear" onclick="clearComparison()">✕ Clear</button>
 </div>
 
@@ -8757,23 +8729,9 @@ const CHAT_KB = [
 /* ============================================================
    STATE
 ============================================================ */
-const WELCOME_BANNER_KEY = 'ta_welcome_dismissed_v1';
 let selMat = null, selOp = null, selCond = null;
 let _productsFirstOpenHandled = false;
 const advisorResultCache = new Map();
-
-function initWelcomeBanner() {
-  const banner = document.getElementById('welcomeBanner');
-  if (!banner) return;
-  const dismissed = localStorage.getItem(WELCOME_BANNER_KEY) === '1';
-  banner.style.display = dismissed ? 'none' : '';
-}
-
-function dismissWelcomeBanner() {
-  const banner = document.getElementById('welcomeBanner');
-  if (banner) banner.style.display = 'none';
-  localStorage.setItem(WELCOME_BANNER_KEY, '1');
-}
 
 function ensureProductsFirstLoadVisibility() {
   filterProducts();
@@ -8792,9 +8750,6 @@ function setTab(id, btn) {
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
   document.getElementById('panel-' + id).classList.add('active');
   if (btn) btn.classList.add('active');
-  // Show/hide hero
-  const heroEl = document.getElementById('heroSection');
-  if (heroEl) heroEl.style.display = id === 'advisor' ? '' : 'none';
   // Hide compare bar when leaving products tab
   if (id !== 'products') {
     const bar = document.getElementById('compareBar');
@@ -9627,7 +9582,6 @@ function resetInteractionLayers() {
 
 (function init() {
   resetInteractionLayers();
-  initWelcomeBanner();
   loadCR('CNMG120408');
   decodeISO('CNMG120408');
   calcNow();
@@ -9794,7 +9748,10 @@ function toggleProdSelect(id) {
 function updateCompareBar() {
   const bar = document.getElementById('compareBar');
   const n = prodSelected.size;
-  document.getElementById('compareBarCount').textContent = n;
+  const cntEl = document.getElementById('compareBarCount');
+  if (cntEl) cntEl.textContent = n;
+  const labelEl = document.getElementById('compareBarLabel');
+  if (labelEl) labelEl.textContent = n === 1 ? 'product' : 'products';
   const pills = document.getElementById('compareBarPills');
   if (pills) {
     const selected = getDB().filter(p => prodSelected.has(p.id));
@@ -9802,7 +9759,7 @@ function updateCompareBar() {
       `<span class="compare-bar-pill">${p.brand} ${getProductPrimaryCode(p)}</span>`
     ).join('');
   }
-  const shouldShow = n >= 2;
+  const shouldShow = n >= 1;
   bar.classList.toggle('show', shouldShow);
   bar.style.pointerEvents = shouldShow ? 'auto' : 'none';
 }
