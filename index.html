@@ -3,63 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ToolAdvisor — Cutting Tool Selection &amp; Cross-Reference</title>
-<meta name="description" content="Brand-neutral AI advisor for CNC machining inserts. Select by material and operation, cross-reference grades across Sandvik, ISCAR, Kennametal, Walter and more. 5 free queries.">
-<meta name="keywords" content="cutting tool selection, insert cross reference, CNMG, WNMG, ISO P M K N S H, turning inserts, milling inserts, Sandvik Coromant, ISCAR, Kennametal, Walter, Tungaloy, Mitsubishi, grade comparison, CNC tooling">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tooladvisor.eu">
+<title>ToolAdvisor | Cutting Tools Advisor, Cross-Reference & Compare</title>
+<meta name="description" content="ToolAdvisor helps you choose the right cutting tool by operation and material, compare alternatives, and review confidence-aware recommendations with clear reasoning.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="googlebot" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1A1A2E">
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://tooladvisor.eu/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://tooladvisor.eu">
+<meta property="og:url" content="https://tooladvisor.eu/">
 <meta property="og:site_name" content="ToolAdvisor">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="ToolAdvisor — Cutting Tool Selection & Cross-Reference">
-<meta property="og:description" content="Brand-neutral AI advisor for CNC machining inserts. Select by material and operation, cross-reference grades across Sandvik, ISCAR, Kennametal, Walter and more.">
+<meta property="og:title" content="ToolAdvisor | Cutting Tools Advisor, Cross-Reference & Compare">
+<meta property="og:description" content="Choose cutting tools with operation/material context, compare alternatives, and understand recommendation confidence before you buy.">
 <meta property="og:image" content="https://tooladvisor.eu/og.png">
+<meta property="og:image:secure_url" content="https://tooladvisor.eu/og.png">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="ToolAdvisor — Cutting Tool Intelligence Platform">
 
 <!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ToolAdvisor — Cutting Tool Selection & Cross-Reference">
-<meta name="twitter:description" content="Brand-neutral AI advisor for CNC machining inserts. Select by material and operation, cross-reference grades across Sandvik, ISCAR, Kennametal, Walter and more.">
+<meta name="twitter:title" content="ToolAdvisor | Cutting Tools Advisor, Cross-Reference & Compare">
+<meta name="twitter:description" content="Choose cutting tools with operation/material context, compare alternatives, and understand recommendation confidence before you buy.">
 <meta name="twitter:image" content="https://tooladvisor.eu/og.png">
+<meta name="twitter:url" content="https://tooladvisor.eu/">
 
-<!-- JSON-LD Structured Data -->
+<!-- JSON-LD Structured Data (SEO baseline: Organization + WebSite only) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+  "@type": "Organization",
   "name": "ToolAdvisor",
-  "url": "https://tooladvisor.eu",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "description": "Brand-neutral AI advisor for CNC machining insert selection. Select by ISO material group and operation, cross-reference insert grades across all major brands, compare up to 4 products side-by-side.",
-  "featureList": [
-    "AI-powered insert selection by material and operation",
-    "Cross-reference insert codes across all major brands",
-    "ISO material group guide: P, M, K, N, S, H",
-    "Cutting parameter calculator (Vc, fn, ap)",
-    "Side-by-side product comparison",
-    "Confidence-scored recommendations with explainable logic"
-  ],
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "EUR",
-    "description": "5 free queries per session. Pro plan available."
-  },
-  "creator": {
-    "@type": "Organization",
-    "name": "ToolAdvisor",
-    "url": "https://tooladvisor.eu"
-  }
+  "url": "https://tooladvisor.eu/",
+  "logo": "https://tooladvisor.eu/og.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ToolAdvisor",
+  "url": "https://tooladvisor.eu/",
+  "description": "Cutting tools advisor for operation/material-based recommendations, cross-reference, and compare.",
+  "inLanguage": "en"
 }
 </script>
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A1A2E'/><path d='M8 24L16 6L24 24' stroke='%23C8A96E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><path d='M11 18H21' stroke='%23C8A96E' stroke-width='2.5' stroke-linecap='round'/></svg>">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -71,8 +65,9 @@
 html{-webkit-font-smoothing:antialiased;font-size:15px}
 :root{
   --white:#FFFFFF;
-  --bg:#F4F3F0;
-  --bg2:#EBEAE7;
+  --bg:#F1EEE9;
+  --bg2:#E8E4DC;
+  --bg3:#DDD7CC;
   --ink:#1C1C1E;
   --ink2:#6B6B6B;
   --ink3:#9B9B9B;
@@ -108,8 +103,20 @@ html{-webkit-font-smoothing:antialiased;font-size:15px}
   --h-c:#374151;--h-bg:#F5F5F5;--h-bd:#D1D5DB;
   /* Radius — engineering catalog */
   --r:6px;--r-sm:4px;--r-lg:6px;
+  /* Depth */
+  --shadow-sm:0 2px 6px rgba(20,18,14,.06);
+  --shadow-md:0 10px 24px rgba(17,15,12,.10);
+  --shadow-lg:0 18px 42px rgba(17,15,12,.14);
 }
-body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+body{
+  font-family:'IBM Plex Sans',sans-serif;
+  background:
+    radial-gradient(circle at 14% -8%, #F9F4EB 0, rgba(249,244,235,0) 46%),
+    radial-gradient(circle at 86% 0%, #ECEAF5 0, rgba(236,234,245,0) 36%),
+    linear-gradient(180deg, #F7F5F0 0%, var(--bg) 28%, #ECE8DF 100%);
+  color:var(--ink);
+  min-height:100vh;
+}
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
 
@@ -117,24 +124,30 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
    TOPBAR
 ============================================================ */
 .topbar{
-  background:var(--navy);border-bottom:1px solid #0c0c1c;
-  height:52px;padding:0 24px;
+  background:linear-gradient(120deg,#101423 0%,#1A1A2E 45%,#252640 100%);
+  border-bottom:1px solid rgba(231,223,202,.16);
+  box-shadow:0 8px 24px rgba(10,11,20,.35);
+  height:58px;padding:0 28px;
   display:flex;align-items:center;gap:16px;
   position:sticky;top:0;z-index:100;
+  backdrop-filter:saturate(120%) blur(5px);
 }
 .logo{
-  display:flex;align-items:center;gap:8px;
-  font-size:16px;font-weight:700;letter-spacing:.2px;color:#fff;
+  display:flex;align-items:center;gap:10px;
+  font-size:16px;font-weight:700;letter-spacing:.25px;color:#fff;
   text-decoration:none;flex-shrink:0;
+  text-shadow:0 1px 0 rgba(0,0,0,.28);
 }
 .logo-box{
-  width:28px;height:28px;
-  background:rgba(255,255,255,.12);border-radius:4px;border:1px solid rgba(255,255,255,.2);
+  width:30px;height:30px;
+  background:linear-gradient(160deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.08) 100%);
+  border-radius:5px;border:1px solid rgba(255,255,255,.26);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.30), 0 4px 10px rgba(0,0,0,.24);
   display:flex;align-items:center;justify-content:center;
 }
 .logo-beta{
-  font-size:10px;font-weight:600;color:rgba(255,255,255,.4);
-  letter-spacing:.4px;margin-left:2px;
+  font-size:10px;font-weight:600;color:rgba(255,255,255,.58);
+  letter-spacing:.48px;margin-left:2px;
   align-self:flex-end;margin-bottom:1px;
 }
 .topbar-spacer{flex:1}
@@ -158,7 +171,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
    TAB BAR
 ============================================================ */
 .tabbar{
-  background:var(--white);border-bottom:1.5px solid var(--border);
+  background:linear-gradient(180deg,#FFFFFF 0%, #F7F4EE 100%);
+  border-bottom:1.5px solid #D7D1C6;
+  box-shadow:0 1px 0 rgba(255,255,255,.92);
   padding:0 24px;
   display:flex;align-items:center;gap:2px;
   overflow-x:auto;scrollbar-width:none;
@@ -252,92 +267,129 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 /* ============================================================
    MAIN AREA
 ============================================================ */
-.main{max-width:900px;margin:0 auto;padding:28px 24px 60px}
+.main{max-width:940px;margin:0 auto;padding:34px 24px 68px}
 
 /* Hero */
-.hero{text-align:center;padding:32px 0 28px;max-width:680px;margin:0 auto}
+.hero{
+  text-align:center;padding:32px 26px 30px;max-width:760px;margin:0 auto 12px;
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  background:
+    radial-gradient(circle at 8% -30%, rgba(200,169,110,.30) 0, rgba(200,169,110,0) 48%),
+    radial-gradient(circle at 90% -10%, rgba(88,92,148,.20) 0, rgba(88,92,148,0) 45%),
+    linear-gradient(180deg,#FBFAF7 0%, #F2EFE8 100%);
+  box-shadow:var(--shadow-sm);
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:'';
+  position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:linear-gradient(90deg, rgba(200,169,110,.16) 0%, rgba(26,26,46,.55) 50%, rgba(200,169,110,.16) 100%);
+}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:6px;
-  background:var(--navy);border:none;
+  background:linear-gradient(120deg,#171A2B 0%, #252843 100%);
+  border:1px solid rgba(255,255,255,.08);
   color:#fff;padding:4px 12px;border-radius:var(--r-sm);
   font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
-  margin-bottom:18px;
+  margin-bottom:16px;
+  box-shadow:0 6px 14px rgba(20,21,36,.28);
 }
 .hero h1{
-  font-size:clamp(24px,3.5vw,36px);font-weight:700;
-  letter-spacing:-.3px;line-height:1.2;margin-bottom:12px;color:var(--ink);
+  font-size:clamp(28px,3.8vw,42px);font-weight:700;
+  letter-spacing:-.42px;line-height:1.14;margin-bottom:12px;color:var(--ink);
+  text-wrap:balance;
 }
-.hero h1 span{color:var(--navy)}
-.hero p{font-size:15px;color:var(--ink2);line-height:1.65;font-weight:400;max-width:520px;margin:0 auto}
+.hero h1 span{color:#2A2B46}
+.hero p{
+  font-size:15px;color:#58585D;line-height:1.66;font-weight:400;
+  max-width:560px;margin:0 auto;
+}
 .hero-trust-anchor{
-  margin-top:16px;
+  margin-top:15px;
   display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;
   font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
-  color:var(--ink3);
-  border-top:1px solid var(--border);
+  color:#7F7A70;
+  border-top:1px solid #D9D2C7;
   padding-top:14px;width:100%;
 }
 .quickstart{
   margin:0 0 14px;
-  background:var(--white);
-  border:1.5px solid var(--border);
+  background:linear-gradient(180deg,#FEFDFB 0%, #F7F4EE 100%);
+  border:1.5px solid #D8D1C5;
   border-radius:var(--r-lg);
-  padding:16px;
+  padding:18px;
+  box-shadow:var(--shadow-sm);
 }
 .quickstart-sub{
   margin-top:5px;
   font-size:12px;
-  color:var(--ink3);
+  color:#847F75;
   line-height:1.45;
 }
 .quickstart-grid{
-  margin-top:12px;
+  margin-top:14px;
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:10px;
+  gap:12px;
 }
 .quickstart-card{
   text-align:left;
-  background:var(--bg);
-  border:1.5px solid var(--border);
-  border-radius:var(--r);
-  padding:14px 13px;
+  background:linear-gradient(180deg,#FFFFFF 0%, #F8F6F1 100%);
+  border:1.5px solid #DAD4C8;
+  border-radius:8px;
+  padding:16px 15px;
   cursor:pointer;
   transition:all .18s;
   font-family:'IBM Plex Sans',sans-serif;
+  box-shadow:0 2px 6px rgba(32,28,22,.05);
+  position:relative;
+  overflow:hidden;
+}
+.quickstart-card::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,rgba(200,169,110,.82) 0%, rgba(26,26,46,.62) 100%);
+  opacity:.34;transition:opacity .18s,width .18s;
 }
 .quickstart-card:hover{
-  border-color:var(--navy-bd);
+  border-color:#B9B5CC;
   background:var(--white);
+  box-shadow:0 10px 18px rgba(28,25,40,.11);
+  transform:translateY(-2px);
+}
+.quickstart-card:hover::before{
+  opacity:.9;width:4px;
 }
 .qs-kicker{
   display:block;
   font-size:10px;
   font-weight:800;
-  letter-spacing:.42px;
+  letter-spacing:.52px;
   text-transform:uppercase;
-  color:var(--purple);
+  color:#2C2E4A;
   margin-bottom:7px;
 }
 .quickstart-card h3{
-  font-size:15px;
-  line-height:1.25;
-  letter-spacing:-.2px;
+  font-size:16px;
+  line-height:1.24;
+  letter-spacing:-.24px;
   color:var(--ink);
-  margin-bottom:6px;
+  margin-bottom:7px;
 }
 .quickstart-card p{
   font-size:12px;
-  color:var(--ink2);
-  line-height:1.45;
-  margin-bottom:9px;
+  color:#66645D;
+  line-height:1.48;
+  margin-bottom:10px;
 }
 .qs-cta{
   display:inline-flex;
   align-items:center;
   font-size:11px;
   font-weight:800;
-  color:var(--purple);
+  color:#242743;
 }
 .trust-layer{
   background:var(--white);border:1.5px solid var(--border);
@@ -519,9 +571,79 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
   display:flex;align-items:center;justify-content:space-between;
   margin-bottom:14px;
 }
-.results-title{font-size:16px;font-weight:800;color:var(--ink)}
-.results-meta{font-size:12px;color:var(--ink3);font-weight:500}
+.results-title{font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-.18px}
+.results-meta{font-size:12px;color:#7A7469;font-weight:600}
 .results-list{display:flex;flex-direction:column;gap:12px}
+.advisor-context-head{
+  border:1.5px solid #D8D1C4;
+  border-radius:8px;
+  padding:12px 14px;
+  background:linear-gradient(180deg,#FFFDF9 0%, #F5F1E8 100%);
+  box-shadow:0 2px 8px rgba(30,25,18,.05);
+  margin-bottom:10px;
+}
+.ach-main{display:flex;flex-direction:column;gap:4px}
+.ach-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.ach-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  border:1px solid #D6CFBF;background:#FCFAF4;color:#5F5A53;
+  border-radius:999px;padding:3px 9px;font-size:10px;font-weight:600;
+}
+.ach-tag strong{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;font-weight:700;letter-spacing:.45px;text-transform:uppercase;color:#847E72;
+}
+.ach-tag em{font-style:normal;font-weight:700;color:#32312D}
+.advisor-results-controls{
+  position:sticky;top:108px;z-index:20;
+  border:1.5px solid #D4CCBD;
+  border-radius:8px;
+  padding:9px 10px;
+  background:linear-gradient(180deg,rgba(255,255,255,.97) 0%, rgba(245,241,232,.97) 100%);
+  box-shadow:0 10px 18px rgba(24,20,16,.10);
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  margin-bottom:10px;
+  backdrop-filter:saturate(125%) blur(4px);
+}
+.arc-group{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.arc-group-right{margin-left:auto}
+.arc-label{
+  font-size:9px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#8A8479;
+  font-family:'IBM Plex Mono',monospace;padding-right:2px;
+}
+.arc-btn{
+  border:1.5px solid #CBC2B2;background:linear-gradient(180deg,#FFFFFF 0%, #F2EDE3 100%);
+  color:#555249;border-radius:999px;padding:4px 10px;
+  font-size:11px;font-weight:700;cursor:pointer;
+  font-family:'IBM Plex Sans',sans-serif;transition:all .15s;
+}
+.arc-btn:hover{border-color:#AFA79A;background:#F9F6EF;color:#2F2C28}
+.arc-btn.active{
+  background:linear-gradient(120deg,#1A1A2E 0%,#31324F 100%);
+  border-color:#20233C;color:#fff;
+}
+.arc-btn.arc-toggle{
+  background:linear-gradient(180deg,#F8F4EC 0%, #EEE7DA 100%);
+  border-color:#D2C7B3;
+}
+.arc-btn.arc-toggle.active{
+  background:linear-gradient(120deg,#203050 0%,#2A4B76 100%);
+  border-color:#223A5A;color:#fff;
+}
+.arc-trust-link{
+  margin-left:4px;
+  font-size:11px;
+  white-space:nowrap;
+}
+.advisor-results-alert{
+  border:1.5px solid #E6C978;background:linear-gradient(180deg,#FFF8DD 0%, #FDF1C5 100%);
+  color:#765419;border-radius:7px;padding:8px 10px;font-size:11px;font-weight:600;line-height:1.45;
+  margin-bottom:10px;
+}
+.advisor-results-empty{
+  border:1.5px dashed #CBBEA9;background:linear-gradient(180deg,#FCFAF5 0%, #F3EEE2 100%);
+  color:#696459;border-radius:8px;padding:16px 14px;font-size:12px;line-height:1.5;margin-bottom:10px;
+}
 
 /* PRO UPSELL INLINE CARD */
 .pro-inline-card{
@@ -543,12 +665,18 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 .pic-price{font-size:11px;color:var(--ink3);margin-top:4px;text-align:center}
 
 .result-card{
-  background:var(--white);border:1.5px solid var(--border);
-  border-radius:var(--r);overflow:hidden;
-  transition:border-color .15s;
+  background:linear-gradient(180deg,#FFFFFF 0%,#FAF8F4 100%);
+  border:1.5px solid #D8D1C4;
+  border-radius:8px;overflow:hidden;
+  transition:border-color .15s,box-shadow .18s,transform .18s;
   border-left:4px solid var(--border);
+  box-shadow:0 3px 10px rgba(31,25,18,.06);
 }
-.result-card:hover{border-color:var(--border2)}
+.result-card:hover{
+  border-color:#BDB8CD;
+  box-shadow:0 14px 24px rgba(30,25,42,.13);
+  transform:translateY(-2px);
+}
 /* ISO left stripe on result cards */
 .result-card:has(.rtag-p){border-left-color:var(--p-c)}
 .result-card:has(.rtag-m){border-left-color:var(--m-c)}
@@ -556,27 +684,35 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 .result-card:has(.rtag-n){border-left-color:var(--n-c)}
 .result-card:has(.rtag-s){border-left-color:var(--s-c)}
 .result-card:has(.rtag-h){border-left-color:var(--h-c)}
-.result-card.top-pick{border-color:var(--navy);border-width:1.5px;position:relative}
+.result-card.top-pick{
+  border-color:var(--navy);
+  border-width:1.5px;
+  position:relative;
+  box-shadow:0 18px 30px rgba(20,20,35,.16);
+}
 .result-card.top-pick::before{
   content:'#1 RANKED';
   position:absolute;top:0;right:0;
-  background:var(--navy);color:#fff;
+  background:linear-gradient(120deg,#1A1A2E 0%,#2E2E4A 100%);color:#fff;
   font-family:'IBM Plex Mono',monospace;
   font-size:8px;font-weight:600;letter-spacing:.8px;
-  padding:3px 10px;border-bottom-left-radius:4px;
+  padding:4px 11px;border-bottom-left-radius:5px;
+  box-shadow:0 6px 12px rgba(15,16,30,.22);
 }
 
-.result-card-top{display:flex;align-items:flex-start;gap:14px;padding:16px 18px 12px}
+.result-card-top{display:flex;align-items:flex-start;gap:14px;padding:18px 18px 14px}
 .result-rank{
-  width:32px;height:32px;border-radius:var(--r-sm);flex-shrink:0;
+  width:34px;height:34px;border-radius:5px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
   font-size:14px;font-weight:800;font-family:'IBM Plex Mono',monospace;
+  box-shadow:0 6px 12px rgba(17,16,28,.14);
 }
 .result-thumb{
-  width:56px;height:56px;border-radius:var(--r);flex-shrink:0;
-  border:1px solid var(--border2);background:var(--bg);
+  width:58px;height:58px;border-radius:7px;flex-shrink:0;
+  border:1px solid #CBC4B8;background:var(--bg);
   display:flex;align-items:center;justify-content:center;
   color:#5E6472;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.86), 0 6px 14px rgba(42,36,30,.12);
 }
 .result-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .result-thumb.placeholder{
@@ -621,10 +757,23 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 .result-info{flex:1}
 .result-brand{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:3px}
 .result-grade{font-family:'IBM Plex Mono',monospace;font-size:24px;font-weight:600;color:var(--ink);margin-bottom:3px;letter-spacing:-.2px}
-.result-series-line{
-  font-size:11px;color:var(--ink2);line-height:1.35;margin-bottom:5px;
+.result-identity{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:5px;
 }
-.result-desc{font-size:13px;color:var(--ink2);line-height:1.55;margin-bottom:8px}
+.result-score-row{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  padding:5px 0 7px;
+}
+.result-match-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;
+  color:#1B2C47;background:#EAF2FF;border:1px solid #BDD2FB;border-radius:999px;padding:3px 8px;
+}
+.result-match-chip em{font-style:normal;color:#0E1A2F}
+.result-series-line{
+  font-size:11px;color:var(--ink2);line-height:1.35;margin-bottom:1px;
+}
+.result-desc{font-size:12px;color:#6A665E;line-height:1.52;margin-bottom:4px}
 .result-tags{display:flex;gap:5px;flex-wrap:wrap}
 .rtag{font-size:10px;padding:2px 7px;border-radius:4px;font-weight:700}
 .rtag-p{background:var(--p-bg);color:var(--p-c)}
@@ -652,7 +801,15 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
   font-size:10px;font-weight:600;color:var(--ink2);
   padding:2px 6px;white-space:nowrap;line-height:1.2;
 }
-.result-trust{margin-top:8px}
+.result-trust{
+  margin-top:10px;
+  border:1px solid #DDD7CC;
+  background:linear-gradient(180deg,#FFFFFF 0%,#F5F2EB 100%);
+  border-radius:7px;
+  padding:8px 9px;
+  display:grid;
+  gap:4px;
+}
 .result-decision-badge{
   display:inline-flex;align-items:center;gap:5px;
   font-size:10px;font-weight:800;letter-spacing:.35px;text-transform:uppercase;
@@ -666,17 +823,17 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
   color:var(--ink2);
 }
 .result-trust-line{
-  font-size:11px;line-height:1.45;color:var(--ink2);margin-top:3px;
+  font-size:11px;line-height:1.45;color:#5F5A52;
 }
 .result-trust-line strong{color:var(--ink);font-weight:700}
 .result-trust-line.warn{
-  color:#92400E;background:#FEF9C3;border:1px solid #FDE68A;
-  border-radius:5px;padding:3px 7px;display:inline-block;
+  color:#7B4A10;background:#FFF4CC;border:1px solid #F2D17B;
+  border-radius:5px;padding:4px 7px;display:inline-block;
 }
 .result-trust-line.warn.strong{
-  color:#7C2D12;
-  background:#FFEDD5;
-  border-color:#FDBA74;
+  color:#6F2A16;
+  background:#FFE4CF;
+  border-color:#F6B07B;
 }
 .result-confidence-chip{
   display:inline-flex;align-items:center;gap:5px;
@@ -688,25 +845,38 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
   color:#9A3412;background:#FFF7ED;border-color:#FDBA74;
 }
 .result-role-line{
-  margin-top:4px;
-  font-size:10px;line-height:1.4;color:var(--ink3);
+  font-size:10px;line-height:1.4;color:#7A746A;
+}
+.result-risk-row{
+  display:grid;gap:5px;margin-top:7px;
+}
+.risk-flag{
+  border:1px solid #E2C992;background:#FFF7D8;color:#77561C;
+  border-radius:6px;padding:4px 7px;font-size:10px;line-height:1.35;font-weight:700;
+}
+.risk-flag.critical{
+  border-color:#F3B088;background:#FFE7D6;color:#6F2A16;
 }
 
 .result-params{
   display:flex;gap:0;
-  background:var(--bg2);border-top:1.5px solid var(--border);
+  background:linear-gradient(180deg,#EFECE5 0%, #E5E0D6 100%);
+  border-top:1.5px solid #D3CCBE;
 }
 .result-param{
-  flex:1;padding:9px 14px;
-  border-right:1px solid var(--border);
+  flex:1;padding:10px 14px;
+  border-right:1px solid #D7D0C2;
 }
 .result-param:last-child{border-right:none}
 .rp-label{font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
 .rp-val{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:var(--ink)}
 
 .result-links{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:10px 18px;background:linear-gradient(180deg,#FFFFFF 0%, #F7F5F0 100%);border-top:1px solid #D9D2C6;
+}
+.result-cta-row{
   display:flex;align-items:center;gap:7px;flex-wrap:wrap;
-  padding:9px 18px;background:var(--white);border-top:1px solid var(--border);
 }
 .rl-label{font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:var(--ink3);margin-right:2px;flex-shrink:0}
 .rl-link{
@@ -720,6 +890,10 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 .rl-link.primary{background:var(--purple-bg);border-color:var(--purple-bd);color:var(--purple)}
 .rl-link.primary:hover{background:var(--purple);color:#fff}
 .rl-link svg{width:9px;height:9px;opacity:.7}
+.result-buy-links{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  margin-left:auto;
+}
 
 /* Alternative cards strip */
 .alt-strip{
@@ -1251,51 +1425,82 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 .detail-modal-card{
   max-width:760px;width:100%;max-height:88vh;
   padding:0;display:flex;flex-direction:column;overflow:hidden;
-  border-radius:var(--r);
+  border-radius:10px;
+  border:1.5px solid #CDC5B9;
+  box-shadow:var(--shadow-lg);
 }
 .detail-head{
   display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
-  padding:16px 20px;border-bottom:1.5px solid var(--border);background:var(--bg);
+  padding:18px 20px 16px;
+  border-bottom:1.5px solid #D4CCBE;
+  background:
+    radial-gradient(circle at 85% -30%, rgba(200,169,110,.34) 0, rgba(200,169,110,0) 52%),
+    linear-gradient(180deg,#F9F7F2 0%, #ECE8DE 100%);
 }
 .detail-title{
-  font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;
-  letter-spacing:.3px;color:var(--ink);
+  font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;
+  letter-spacing:.25px;color:var(--ink);
 }
-.detail-subtitle{font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--ink3);margin-top:4px}
+.detail-subtitle{
+  font-size:11px;font-weight:700;letter-spacing:.85px;text-transform:uppercase;
+  color:#7B756A;margin-top:4px;
+}
 .detail-close{
-  border:1.5px solid var(--border);background:var(--white);color:var(--ink2);
-  border-radius:var(--r);padding:5px 10px;font-size:11px;font-weight:700;cursor:pointer;
+  border:1.5px solid #CFC7BA;background:#FFFFFF;color:var(--ink2);
+  border-radius:6px;padding:6px 11px;font-size:11px;font-weight:700;cursor:pointer;
   font-family:'IBM Plex Sans',sans-serif;transition:border-color .15s,background .15s;
+  box-shadow:0 2px 5px rgba(28,24,18,.08);
 }
-.detail-close:hover{border-color:var(--border2);background:var(--bg2)}
-.detail-body{padding:14px 20px 18px;overflow:auto;display:grid;gap:8px}
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.detail-close:hover{border-color:#B8B0A2;background:#F4F1EA}
+.detail-body{
+  padding:16px 20px 20px;overflow:auto;display:grid;gap:10px;
+  background:linear-gradient(180deg,#F7F5F0 0%, #EFEBE2 100%);
+}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .detail-chip{
-  border:1.5px solid var(--border);background:var(--white);border-radius:var(--r-sm);
-  padding:8px 10px;
+  border:1.5px solid #D6CFC2;background:linear-gradient(180deg,#FFFFFF 0%, #F8F5EE 100%);
+  border-radius:6px;
+  padding:9px 11px;
+  box-shadow:0 2px 5px rgba(33,27,22,.05);
 }
 .detail-k{
-  font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;
-  letter-spacing:.8px;text-transform:uppercase;color:var(--ink3);margin-bottom:4px;
+  font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:700;
+  letter-spacing:.9px;text-transform:uppercase;color:#7D776D;margin-bottom:4px;
 }
 .detail-v{
-  font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:400;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;
   color:var(--ink);line-height:1.45;
 }
-.detail-v.small{font-size:11px;color:var(--ink2);font-family:'IBM Plex Sans',sans-serif}
-.detail-rel{border:1.5px solid var(--border);background:var(--white);border-radius:var(--r);padding:8px 10px}
+.detail-v.small{font-size:11px;color:#5F5B53;font-family:'IBM Plex Sans',sans-serif}
+.detail-rel{
+  border:1.5px solid #D3CCBE;
+  background:linear-gradient(180deg,#FFFFFF 0%, #F8F6F0 100%);
+  border-radius:7px;padding:9px 11px;
+  box-shadow:0 2px 6px rgba(32,28,22,.05);
+}
 .detail-rel-list{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px}
-.detail-rel-list li{font-size:11px;color:var(--ink2);line-height:1.35}
-.detail-buy-wrap{border:1.5px solid var(--border);background:var(--white);border-radius:var(--r);padding:8px 10px}
+.detail-rel-list li{font-size:11px;color:#5F5B53;line-height:1.35}
+.detail-buy-wrap{
+  border:1.5px solid #CDC6BA;
+  background:linear-gradient(180deg,#FFFDFC 0%, #F4F1E9 100%);
+  border-radius:7px;padding:10px 11px;
+  box-shadow:0 2px 6px rgba(32,28,22,.05);
+}
 .detail-buy-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .detail-empty{font-size:11px;color:var(--ink3)}
 .result-detail-btn,.prod-detail-btn{
   display:inline-flex;align-items:center;justify-content:center;
-  border:1.5px solid var(--border);background:var(--white);color:var(--ink2);
-  border-radius:6px;padding:5px 11px;font-size:11px;font-weight:700;cursor:pointer;
+  border:1.5px solid #CBC3B5;
+  background:linear-gradient(180deg,#FFFFFF 0%, #F4F1EA 100%);
+  color:var(--ink2);
+  border-radius:6px;padding:6px 11px;font-size:11px;font-weight:700;cursor:pointer;
   font-family:'IBM Plex Sans',sans-serif;transition:all .15s;text-decoration:none;
+  box-shadow:0 2px 5px rgba(32,28,22,.07);
 }
-.result-detail-btn:hover,.prod-detail-btn:hover{background:var(--bg2);border-color:var(--border2)}
+.result-detail-btn:hover,.prod-detail-btn:hover{
+  background:linear-gradient(180deg,#F8F5EF 0%, #ECE7DC 100%);
+  border-color:#B8B0A3;
+}
 
 /* TOAST */
 .toast-el{
@@ -1315,6 +1520,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 
 /* RESPONSIVE */
 @media(max-width:680px){
+  .advisor-results-controls{top:92px}
+  .arc-group-right{margin-left:0}
+  .result-identity{flex-direction:column;align-items:flex-start}
+  .result-buy-links{margin-left:0}
+  .result-cta-row{width:100%}
   .aqs-card{flex-direction:column;gap:6px}
   .aqs-ops{justify-content:flex-start}
   .mat-grid{grid-template-columns:repeat(3,1fr)}
@@ -1859,12 +2069,36 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink
 
     <!-- RESULTS (hidden until button click) -->
     <div id="resultsSection" style="display:none">
-      <div class="results-header">
-        <div>
+      <div class="advisor-context-head">
+        <div class="ach-main">
           <div class="results-title" id="resultsTitle">Top Recommendations</div>
           <div class="results-meta" id="resultsMeta">4 results · All brands · Direct buy links</div>
         </div>
+        <div class="ach-tags" id="advisorContextTags">
+          <span class="ach-tag"><strong>Material</strong><em id="ctxMaterial">—</em></span>
+          <span class="ach-tag"><strong>Operation</strong><em id="ctxOperation">—</em></span>
+          <span class="ach-tag"><strong>Condition</strong><em id="ctxCondition">—</em></span>
+        </div>
       </div>
+      <div class="advisor-results-controls" id="advisorResultsControls">
+        <div class="arc-group">
+          <span class="arc-label">Sort</span>
+          <button class="arc-btn active" id="arcSortBest" type="button" onclick="setAdvisorResultSort('best')">Best match</button>
+          <button class="arc-btn" id="arcSortConfidence" type="button" onclick="setAdvisorResultSort('confidence')">Confidence</button>
+        </div>
+        <div class="arc-group">
+          <span class="arc-label">Confidence</span>
+          <button class="arc-btn active" id="arcConfAll" type="button" onclick="setAdvisorResultConfidence('all')">All</button>
+          <button class="arc-btn" id="arcConf70" type="button" onclick="setAdvisorResultConfidence('70')">70+</button>
+          <button class="arc-btn" id="arcConf85" type="button" onclick="setAdvisorResultConfidence('85')">85+</button>
+        </div>
+        <div class="arc-group arc-group-right">
+          <button class="arc-btn arc-toggle" id="arcHighFit" type="button" onclick="toggleAdvisorHighFit()">High-fit focus</button>
+          <button class="trust-method-link arc-trust-link" type="button" data-trust-surface="advisor" onclick="return openTrustLayer('advisor', event)">Why trust this recommendation?</button>
+        </div>
+      </div>
+      <div class="advisor-results-alert" id="advisorResultsAlert" style="display:none"></div>
+      <div class="advisor-results-empty" id="advisorResultsEmpty" style="display:none"></div>
       <div class="results-list" id="resultsList"></div>
       <!-- FEEDBACK WIDGET -->
       <div id="feedbackWidget" style="display:none;margin-top:16px;padding:14px 18px;
@@ -8612,6 +8846,226 @@ async function loadAltStrip(productId, operation, material) {
     </div>`;
 }
 
+const ADVISOR_RESULTS_UI = {
+  entries: [],
+  context: { material: null, operation: null, condition: null },
+  sort: 'best',
+  confidence: 'all',
+  highFit: false
+};
+
+function isAdvisorWeakMapping(entry) {
+  const product = entry.tool || {};
+  const warning = String(entry.trust?.warning || '').toLowerCase();
+  return product.crossRefMapped === false ||
+    Number(product.crossRefConfidence || 0) < 55 ||
+    warning.includes('weak mapping');
+}
+
+function setAdvisorResultSort(mode) {
+  ADVISOR_RESULTS_UI.sort = mode === 'confidence' ? 'confidence' : 'best';
+  renderAdvisorResultsView();
+}
+
+function setAdvisorResultConfidence(mode) {
+  ADVISOR_RESULTS_UI.confidence = ['all', '70', '85'].includes(mode) ? mode : 'all';
+  renderAdvisorResultsView();
+}
+
+function toggleAdvisorHighFit() {
+  ADVISOR_RESULTS_UI.highFit = !ADVISOR_RESULTS_UI.highFit;
+  renderAdvisorResultsView();
+}
+
+function syncAdvisorResultControlState() {
+  document.getElementById('arcSortBest')?.classList.toggle('active', ADVISOR_RESULTS_UI.sort === 'best');
+  document.getElementById('arcSortConfidence')?.classList.toggle('active', ADVISOR_RESULTS_UI.sort === 'confidence');
+  document.getElementById('arcConfAll')?.classList.toggle('active', ADVISOR_RESULTS_UI.confidence === 'all');
+  document.getElementById('arcConf70')?.classList.toggle('active', ADVISOR_RESULTS_UI.confidence === '70');
+  document.getElementById('arcConf85')?.classList.toggle('active', ADVISOR_RESULTS_UI.confidence === '85');
+  document.getElementById('arcHighFit')?.classList.toggle('active', ADVISOR_RESULTS_UI.highFit);
+}
+
+function getAdvisorVisibleEntries() {
+  const threshold = ADVISOR_RESULTS_UI.confidence === '85'
+    ? 85
+    : ADVISOR_RESULTS_UI.confidence === '70'
+      ? 70
+      : 0;
+  const filtered = ADVISOR_RESULTS_UI.entries.filter(entry => {
+    if (entry.trust.score < threshold) return false;
+    if (ADVISOR_RESULTS_UI.highFit) {
+      const highFit = entry.signals.contextMatch || (entry.trust.score >= 75 && !entry.trust.lowConfidence);
+      if (!highFit) return false;
+    }
+    return true;
+  });
+  const sorted = [...filtered].sort((a, b) => {
+    if (ADVISOR_RESULTS_UI.sort === 'confidence') {
+      return b.trust.score - a.trust.score || b.score - a.score;
+    }
+    return b.score - a.score || b.trust.score - a.trust.score;
+  });
+  return sorted;
+}
+
+function addAdvisorResultToCompare(productId, event) {
+  event?.stopPropagation?.();
+  const product = getProductById(productId);
+  if (!product) {
+    toast('Product not found for compare.');
+    return;
+  }
+  if (prodSelected.has(productId)) {
+    toast('Already added to compare.');
+    return;
+  }
+  if (prodSelected.size >= 4) {
+    toast('Maximum 4 products for comparison');
+    return;
+  }
+  prodSelected.add(productId);
+  updateCompareBar();
+  toast('Added to compare. Open Products tab to review compare queue.');
+}
+
+function renderAdvisorResultsView(scrollInto = false) {
+  syncAdvisorResultControlState();
+  const entries = getAdvisorVisibleEntries();
+  const total = ADVISOR_RESULTS_UI.entries.length;
+  const context = ADVISOR_RESULTS_UI.context;
+  const materialLabel = context.material ? (MAT_NAMES[context.material] || context.material) : '—';
+  const operationLabel = context.operation || '—';
+  const conditionLabel = context.condition || '—';
+
+  const ctxMat = document.getElementById('ctxMaterial');
+  const ctxOp = document.getElementById('ctxOperation');
+  const ctxCond = document.getElementById('ctxCondition');
+  if (ctxMat) ctxMat.textContent = materialLabel;
+  if (ctxOp) ctxOp.textContent = operationLabel;
+  if (ctxCond) ctxCond.textContent = conditionLabel;
+
+  const meta = document.getElementById('resultsMeta');
+  if (meta) {
+    meta.textContent = `${entries.length} of ${total} results · Context: ${operationLabel} · ${materialLabel} · ${conditionLabel}`;
+  }
+
+  const alertEl = document.getElementById('advisorResultsAlert');
+  const emptyEl = document.getElementById('advisorResultsEmpty');
+  const listEl = document.getElementById('resultsList');
+  if (!listEl || !alertEl || !emptyEl) return;
+
+  const lowCount = entries.filter(entry => entry.trust.lowConfidence).length;
+  const weakCount = entries.filter(entry => isAdvisorWeakMapping(entry)).length;
+  const limitedCount = entries.filter(entry => entry.trust.limitedComparable).length;
+  const alertChunks = [];
+  if (lowCount) alertChunks.push(`${lowCount} low-confidence recommendation${lowCount > 1 ? 's' : ''}`);
+  if (weakCount) alertChunks.push(`${weakCount} weak-mapping signal${weakCount > 1 ? 's' : ''}`);
+  if (limitedCount) alertChunks.push(`${limitedCount} limited comparable-data case${limitedCount > 1 ? 's' : ''}`);
+  if (alertChunks.length) {
+    alertEl.style.display = 'block';
+    alertEl.textContent = `Review notes: ${alertChunks.join(' · ')}. Validate critical decisions with setup constraints and trial confirmation.`;
+  } else {
+    alertEl.style.display = 'none';
+    alertEl.textContent = '';
+  }
+
+  if (!entries.length) {
+    listEl.innerHTML = '';
+    emptyEl.style.display = 'block';
+    if (total === 0) {
+      emptyEl.innerHTML = `
+        <strong>No recommendation found for this exact context yet.</strong><br>
+        Keep the operation and material, then try a nearby condition to widen candidate coverage.`;
+    } else {
+      emptyEl.innerHTML = `
+        <strong>No recommendations match the current result filters.</strong><br>
+        Try lowering confidence filter or turning off high-fit focus to widen the decision set.`;
+    }
+    return;
+  }
+  emptyEl.style.display = 'none';
+  emptyEl.innerHTML = '';
+
+  const usedRoleKeys = new Set();
+  listEl.innerHTML = entries.map((entry, i) => {
+    const t = entry.tool;
+    const trust = entry.trust;
+    const signals = entry.signals;
+    const rank = i + 1;
+    const isTop = i === 0;
+    const decisionRole = pickDecisionRole(signals, { isFirst: i === 0, usedKeys: usedRoleKeys });
+    if (i > 0) usedRoleKeys.add(decisionRole.key);
+    const key = context.operation && context.material ? `${context.operation}-${context.material}` : '';
+    const isContextTop = !!(key && coreArr(t.topFor).includes(key));
+    const cd = t.cuttingData[key] || { vc: '—', fn: '—', ap: '—', note: t.applicationNotes };
+    const tags = [context.material, ...(isContextTop ? ['top'] : [])]
+      .filter(Boolean)
+      .map(tg => `<span class="rtag ${TAG_COLORS[tg] || 'rtag-def'}">${tg === 'top' ? '★ Top Fit' : TOP_LABELS[tg] || tg}</span>`)
+      .join('');
+    const primaryCode = getProductPrimaryCode(t);
+    const secondaryLine = getProductSecondaryLine(t, primaryCode);
+    const visual = renderProductVisual(t, 'advisor');
+    const techStrip = renderProductTechnicalStrip(t, 6);
+    const matchScore = clamp01Score(entry.score);
+    const riskFlags = [];
+    if (trust.lowConfidence) riskFlags.push({ cls: 'critical', text: 'Low confidence in current context.' });
+    if (isAdvisorWeakMapping(entry)) riskFlags.push({ cls: '', text: 'Weak cross-reference mapping signal.' });
+    if (trust.limitedComparable) riskFlags.push({ cls: '', text: 'Limited comparable data in dataset.' });
+    return `
+    <div class="result-card ${isTop ? 'top-pick' : ''}">
+      <div class="result-card-top">
+        <div class="result-rank rank-${rank}">${rank}</div>
+        ${visual}
+        <div class="result-info">
+          <div class="result-identity">
+            <div>
+              <div class="result-brand">${t.brand}</div>
+              <div class="result-grade">${primaryCode}</div>
+              ${secondaryLine ? `<div class="result-series-line">${secondaryLine}</div>` : ''}
+            </div>
+            <div class="result-tags">${tags}</div>
+          </div>
+          <div class="result-score-row">
+            <span class="result-match-chip">Match <em>${matchScore}</em></span>
+            <span class="result-confidence-chip ${trust.lowConfidence ? 'low' : ''}">Confidence ${trust.score}% · ${trust.band}</span>
+            <span class="result-decision-badge ${i === 0 ? '' : 'secondary'}">${decisionRole.label}</span>
+          </div>
+          <div class="result-trust">
+            <div class="result-trust-line"><strong>WHY THIS:</strong> ${truncLine(trust.why + '. ' + decisionRole.reason, 140)}</div>
+            <div class="result-trust-line"><strong>WHEN NOT:</strong> ${truncLine(signals.whenNot, 132)}</div>
+            <div class="result-role-line"><strong>Trade-off:</strong> ${truncLine(signals.tradeoff.line, 132)}</div>
+          </div>
+          ${techStrip}
+          ${riskFlags.length ? `<div class="result-risk-row">${riskFlags.map(flag => `<div class="risk-flag ${flag.cls}">${flag.text}</div>`).join('')}</div>` : ''}
+        </div>
+      </div>
+      <div class="result-params">
+        <div class="result-param"><div class="rp-label">Vc</div><div class="rp-val">${cd.vc} m/min</div></div>
+        <div class="result-param"><div class="rp-label">fn/fz</div><div class="rp-val">${cd.fn} mm</div></div>
+        <div class="result-param"><div class="rp-label">ap max</div><div class="rp-val">${cd.ap} mm</div></div>
+      </div>
+      <div class="result-links">
+        <div class="result-cta-row">
+          <button class="result-compare-btn" type="button" onclick="addAdvisorResultToCompare('${t.id}',event)">Compare</button>
+          <button class="result-detail-btn" type="button" onclick="openProductDetail('${t.id}','advisor',event)">View details</button>
+        </div>
+        <div class="result-buy-links">
+          <span class="rl-label">Buy</span>
+          ${getBuyLinks(t.brand, t.productName)}
+        </div>
+      </div>
+      <div class="alt-strip" id="alt-${t.id}"></div>
+    </div>`;
+  }).join('');
+
+  entries.forEach(entry => loadAltStrip(entry.tool.id, context.operation, context.material));
+
+  if (scrollInto) {
+    document.getElementById('resultsSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
 function showResults() {
   if (!selMat || !selOp || !selCond) return;
   taTrack('advisor_search', { material: selMat, operation: selOp, condition: selCond });
@@ -8629,81 +9083,18 @@ function showResults() {
     })
     .sort((a, b) => b.score - a.score || b.trust.score - a.trust.score);
 
-  document.getElementById('resultsTitle').textContent =
-    'Top Recommendations — ' + selOp + ' · ' + MAT_NAMES[selMat] + ' · ' + selCond;
-  document.getElementById('resultsMeta').textContent =
-    rankedTools.length + ' results · Brand-neutral ranking · Explainable decision tags';
-
-  const usedRoleKeys = new Set();
+  document.getElementById('resultsTitle').textContent = `Recommendation Results`;
   advisorResultCache.clear();
-  document.getElementById('resultsList').innerHTML = rankedTools.map((entry, i) => {
-    const t = entry.tool;
-    advisorResultCache.set(t.id, t);
-    const trust = entry.trust;
-    const signals = entry.signals;
-    const rank = i + 1;
-    const isTop = i === 0;
-    const decisionRole = pickDecisionRole(signals, { isFirst: i === 0, usedKeys: usedRoleKeys });
-    if (i > 0) usedRoleKeys.add(decisionRole.key);
-    const isContextTop = coreArr(t.topFor).includes(key);
-    const cd = t.cuttingData[key] || {vc:'—', fn:'—', ap:'—', note: t.applicationNotes};
-    const tags = [selMat, ...(isContextTop ? ['top'] : [])].map(tg => `<span class="rtag ${TAG_COLORS[tg] || 'rtag-def'}">${tg === 'top' ? '★ Top Pick' : TOP_LABELS[tg] || tg}</span>`).join('');
-    const warningText = trust.warning || (signals.nicheProfile ? 'Specialist profile: verify process window before substitution.' : '');
-    const riskLine = trust.warning
-      ? trust.warning
-      : (signals.stableSignal ? 'Lower risk under stable setup and controlled chip flow.' : 'Moderate risk profile; validate setup stability.');
-    const tradeoffLine = trust.lowConfidence
-      ? `Tentative: ${signals.tradeoff.line}.`
-      : `${signals.tradeoff.line}.`;
-    const bk = t.brand;
-    const primaryCode = getProductPrimaryCode(t);
-    const secondaryLine = getProductSecondaryLine(t, primaryCode);
-    const visual = renderProductVisual(t, 'advisor');
-    const techStrip = renderProductTechnicalStrip(t, 6);
-    return `
-    <div class="result-card ${isTop ? 'top-pick' : ''}">
-      <div class="result-card-top">
-        <div class="result-rank rank-${rank}">${rank}</div>
-        ${visual}
-        <div class="result-info">
-          <div class="result-brand">${t.brand}</div>
-          <div class="result-grade">${primaryCode}</div>
-          ${secondaryLine ? `<div class="result-series-line">${secondaryLine}</div>` : ''}
-          <div class="result-desc">${cd.note || t.applicationNotes}</div>
-          <div class="result-tags">${tags}</div>
-          ${techStrip}
-          <div class="result-trust">
-            <span class="result-decision-badge ${i === 0 ? '' : 'secondary'}">${decisionRole.label}</span>
-            <span class="result-confidence-chip ${trust.lowConfidence ? 'low' : ''}">Confidence ${trust.score}% · ${trust.band}</span>
-            <div class="result-trust-line"><strong>WHY THIS:</strong> ${truncLine(trust.why + '. ' + decisionRole.reason, 130)}</div>
-            <div class="result-trust-line"><strong>WHEN NOT:</strong> ${truncLine(signals.whenNot, 120)}</div>
-            <div class="result-role-line"><strong>Risk:</strong> ${truncLine(riskLine, 118)}</div>
-            <div class="result-role-line"><strong>Trade-off:</strong> ${truncLine(tradeoffLine, 118)}</div>
-            ${warningText ? `<div class="result-trust-line warn ${trust.lowConfidence ? 'strong' : ''}">⚠ ${truncLine(warningText, 116)}</div>` : ''}
-            <div class="result-trust-line"><button class="trust-method-link" type="button" data-trust-surface="advisor" onclick="return openTrustLayer('advisor', event)">Why trust this recommendation?</button></div>
-          </div>
-        </div>
-      </div>
-      <div class="result-params">
-        <div class="result-param"><div class="rp-label">Cutting Speed Vc</div><div class="rp-val">${cd.vc} m/min</div></div>
-        <div class="result-param"><div class="rp-label">Feed fn/fz</div><div class="rp-val">${cd.fn} mm</div></div>
-        <div class="result-param"><div class="rp-label">ap max</div><div class="rp-val">${cd.ap} mm</div></div>
-      </div>
-      <div class="result-links">
-        <span class="rl-label">Buy:</span>
-        <button class="result-detail-btn" type="button" onclick="openProductDetail('${t.id}','advisor',event)">View details</button>
-        ${getBuyLinks(bk, t.productName)}
-      </div>
-      <div class="alt-strip" id="alt-${t.id}"></div>
-    </div>`;
-  }).join('');
+  rankedTools.forEach(entry => advisorResultCache.set(entry.tool.id, entry.tool));
+  ADVISOR_RESULTS_UI.entries = rankedTools;
+  ADVISOR_RESULTS_UI.context = { material: selMat, operation: selOp, condition: selCond };
+  ADVISOR_RESULTS_UI.sort = 'best';
+  ADVISOR_RESULTS_UI.confidence = 'all';
+  ADVISOR_RESULTS_UI.highFit = false;
 
   // Show results, collapse steps
   document.getElementById('resultsSection').style.display = 'block';
-  document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-  // Load alternatives for each card asynchronously (non-blocking)
-  rankedTools.forEach(entry => loadAltStrip(entry.tool.id, selOp, selMat));
+  renderAdvisorResultsView(true);
 }
 
 function resetAdvisor() {
@@ -8723,8 +9114,31 @@ function resetAdvisor() {
   });
   document.getElementById('findBtn').disabled = true;
   document.getElementById('resultsSection').style.display = 'none';
-  document.getElementById('proInlineCard').style.display = 'none';
+  const proInlineCard = document.getElementById('proInlineCard');
+  if (proInlineCard) proInlineCard.style.display = 'none';
   document.getElementById('resultsList').innerHTML = '';
+  const alertEl = document.getElementById('advisorResultsAlert');
+  const emptyEl = document.getElementById('advisorResultsEmpty');
+  if (alertEl) {
+    alertEl.style.display = 'none';
+    alertEl.textContent = '';
+  }
+  if (emptyEl) {
+    emptyEl.style.display = 'none';
+    emptyEl.textContent = '';
+  }
+  ADVISOR_RESULTS_UI.entries = [];
+  ADVISOR_RESULTS_UI.context = { material: null, operation: null, condition: null };
+  ADVISOR_RESULTS_UI.sort = 'best';
+  ADVISOR_RESULTS_UI.confidence = 'all';
+  ADVISOR_RESULTS_UI.highFit = false;
+  syncAdvisorResultControlState();
+  const ctxMat = document.getElementById('ctxMaterial');
+  const ctxOp = document.getElementById('ctxOperation');
+  const ctxCond = document.getElementById('ctxCondition');
+  if (ctxMat) ctxMat.textContent = '—';
+  if (ctxOp) ctxOp.textContent = '—';
+  if (ctxCond) ctxCond.textContent = '—';
 }
 
 /* ============================================================
@@ -9406,6 +9820,47 @@ document.addEventListener('click', function (e) {
     const price = (resCard.querySelector('.res-price')      || {}).textContent || '';
     TATracker.track('resource_click', { title: title.trim(), price: price.trim() });
   }
+});
+
+// ─── SEO IMPLEMENTATION PREP (Controlled readiness, no route expansion) ────
+window.SEO_INDEX_POLICY_PREP = Object.freeze({
+  canonicalHost: 'https://tooladvisor.eu/',
+  indexNow: [
+    'Homepage / primary application shell'
+  ],
+  noindexNow: [
+    'Dynamic query states (?sort=, ?filter=, ?compare=, etc.)',
+    'Compare-only transient states',
+    'Internal/debug/report objects and QA-only surfaces'
+  ],
+  openLater: [
+    'Dedicated product detail routes (when stable server routes exist)',
+    'Curated resources/guides pages with unique long-form content'
+  ],
+  implementationNote: 'If standalone URLs are introduced for dynamic states, ship route-level noindex until content is canonical and stable.'
+});
+
+window.SEO_MEASUREMENT_EVENT_MAP = Object.freeze({
+  version: '2026-04-29',
+  keyEvents: [
+    { name: 'advisor_search_submit', trigger: 'User runs Advisor search with material + operation + condition', surface: 'Advisor', type: 'primary' },
+    { name: 'advisor_results_view', trigger: 'Advisor results rendered', surface: 'Advisor', type: 'primary' },
+    { name: 'product_detail_open', trigger: 'User opens product detail modal', surface: 'Advisor/Products/Compare', type: 'primary' },
+    { name: 'compare_add', trigger: 'User adds product to compare set', surface: 'Advisor/Products/Detail', type: 'micro' },
+    { name: 'compare_remove', trigger: 'User removes product from compare set', surface: 'Products/Compare', type: 'micro' },
+    { name: 'compare_view', trigger: 'Compare table rendered', surface: 'Compare', type: 'primary' },
+    { name: 'crossref_lookup', trigger: 'Cross-Ref code lookup submit', surface: 'Cross-Ref', type: 'primary' },
+    { name: 'buy_click', trigger: 'User clicks retailer or supplier outbound link', surface: 'Advisor/Products/Cross-Ref/Detail', type: 'primary' },
+    { name: 'trust_layer_open', trigger: 'User opens methodology/trust panel', surface: 'Advisor/Products', type: 'micro' },
+    { name: 'pricing_intent_click', trigger: 'User clicks upgrade/pricing intent CTA', surface: 'Topbar/Pricing', type: 'primary' }
+  ],
+  conversionPriority: [
+    'buy_click',
+    'advisor_search_submit',
+    'compare_view',
+    'product_detail_open',
+    'pricing_intent_click'
+  ]
 });
 
 // ─── QA DEPLOY AUDIT HELPERS (v2.0 — 2026-04-17) ───────────────────────────
