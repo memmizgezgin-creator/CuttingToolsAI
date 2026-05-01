@@ -155,6 +155,25 @@ html{-webkit-font-smoothing:antialiased;font-size:14px}
   --shadow-md:0 10px 24px rgba(17,15,12,.10);
   --shadow-lg:0 18px 42px rgba(17,15,12,.14);
 }
+body.ta-dark{
+  --white:#18171A;
+  --bg:#111114;
+  --bg2:#242329;
+  --bg3:#2f2e35;
+  --panel:#1e1d22;
+  --ink:#F3F1EA;
+  --ink2:#C9C4B8;
+  --ink3:#8F8A82;
+  --line:#34323A;
+  --line2:#4B4854;
+  --border:var(--line);
+  --border2:var(--line2);
+  --purple-bg:#2A2147;
+  --purple-bd:#4D3A80;
+  --gold-bg:#2D271B;
+  --green-bg:#14281D;
+  --orange-bg:#321D1D;
+}
 body{
   font-family:'Plus Jakarta Sans',system-ui,sans-serif;
   background:var(--bg);
@@ -490,6 +509,17 @@ body{
 .aqs-empty{
   font-size:11px;color:var(--ink3);padding:2px 2px 1px;
 }
+.advisor-recent-viewed{
+  margin-top:16px;background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:12px 14px;display:none;
+}
+.advisor-recent-viewed.show{display:block}
+.arv-title{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.arv-list{display:flex;gap:8px;flex-wrap:wrap}
+.arv-chip{border:1px solid var(--border);background:var(--bg);border-radius:6px;padding:7px 9px;cursor:pointer;text-align:left;min-width:150px}
+.arv-chip:hover{border-color:var(--purple);background:var(--purple-bg)}
+.arv-brand{font-size:9px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--ink3)}
+.arv-grade{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;color:var(--ink);margin-top:2px}
 
 /* ============================================================
    PANEL system
@@ -914,6 +944,10 @@ body{
   font-size:11px;line-height:1.45;
 }
 .result-why-list li{margin:3px 0}
+.advisor-confidence-bar{padding:8px 14px 10px;border-top:1px solid var(--border);background:var(--white)}
+.advisor-confidence-head{display:flex;align-items:center;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.advisor-confidence-track{height:6px;background:var(--bg2);border-radius:999px;overflow:hidden;border:1px solid var(--border)}
+.advisor-confidence-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:999px}
 
 .result-params{
   display:flex;gap:0;
@@ -1057,6 +1091,7 @@ body{
 .cr-code{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);flex:1;min-width:120px}
 .cr-coating{font-size:12px;color:var(--ink3);flex:1}
 .cr-app{font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;flex-shrink:0}
+.cr-value-tag{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#7A4B05;background:#FFF4CC;border:1px solid #E9C766;border-radius:999px;padding:2px 7px;flex-shrink:0}
 .cr-actions{display:flex;gap:5px;flex-shrink:0}
 .cr-copy{
   padding:4px 9px;border:1.5px solid var(--border);border-radius:4px;
@@ -1647,6 +1682,15 @@ body{
   position:relative;border-left:4px solid var(--border);
 }
 .prod-card:hover{border-color:var(--border2)}
+.prod-quick-view{
+  display:none;position:absolute;z-index:8;left:14px;right:14px;top:44px;
+  background:var(--navy);color:#fff;border:1px solid #3a3940;border-radius:6px;
+  padding:10px 12px;box-shadow:var(--shadow-md);font-size:11px;line-height:1.45;
+}
+.prod-card:hover .prod-quick-view{display:block}
+.prod-quick-view strong{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#fff}
+.prod-quick-view ul{margin:6px 0 0 16px;color:#d7d4df}
+.prod-quick-view li{margin:2px 0}
 /* ISO left stripe on product cards */
 .prod-card:has(.rtag-p){border-left-color:var(--p-c)}
 .prod-card:has(.rtag-m){border-left-color:var(--m-c)}
@@ -1913,6 +1957,11 @@ body{
 .quota-bar{height:3px;background:#2a2930;border-radius:99px;margin-top:8px;overflow:hidden}
 .quota-fill{height:100%;background:var(--purple);border-radius:99px}
 .pro-cta{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;background:var(--purple);color:#fff;border:none;padding:9px 12px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',system-ui,sans-serif;width:100%}
+.dark-toggle{
+  margin-top:8px;width:100%;border:1px solid #3a3940;background:#242329;color:#d8d4df;
+  border-radius:6px;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;cursor:pointer;
+}
+.dark-toggle:hover{border-color:var(--purple);color:#fff}
 .main{
   grid-column:2;max-width:none;margin:0;padding:0;background:var(--bg);display:flex;flex-direction:column;
   min-width:0;min-height:0;height:100%;overflow-y:auto;overflow-x:hidden;
@@ -1937,6 +1986,13 @@ body{
   padding:20px 28px 40px;
   min-width:0;
 }
+.back-to-top{
+  position:fixed;right:22px;bottom:22px;z-index:120;display:none;
+  border:1px solid var(--border);background:var(--navy);color:#fff;border-radius:999px;
+  padding:9px 12px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:800;cursor:pointer;
+  box-shadow:var(--shadow-md);
+}
+.back-to-top.show{display:block}
 .hero{
   text-align:left;max-width:none;margin:0 0 16px;padding:0;border:none;border-radius:0;background:transparent;box-shadow:none;overflow:visible;
 }
@@ -2212,6 +2268,7 @@ body{
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 3.5H11L8.5 6.5l1 3.5L6 8l-3.5 2 1-3.5L1 4.5h3.5L6 1z" fill="currentColor"/></svg>
           Subscription Terms
         </button>
+        <button class="dark-toggle" id="darkModeToggle" type="button" onclick="toggleDarkMode()">Dark mode</button>
       </div>
     </div>
   </aside>
@@ -2301,27 +2358,27 @@ body{
       </div>
       <div class="step-body" id="stepBody1">
         <div class="mat-grid mat-table">
-          <div class="mat-card mat-cell" onclick="selectMat('P',this)" style="background:var(--p-bg);border-color:var(--p-bd)">
+          <div class="mat-card mat-cell" onclick="selectMat('P',this)" title="P — Steel · 125–350 HB · typical Vc 180–400 m/min" style="background:var(--p-bg);border-color:var(--p-bd)">
             <span class="mat-letter" style="color:var(--p-c)">P</span>
             <span class="mat-name" style="color:var(--p-c)">Steel</span>
           </div>
-          <div class="mat-card mat-cell" onclick="selectMat('M',this)" style="background:var(--m-bg);border-color:var(--m-bd)">
+          <div class="mat-card mat-cell" onclick="selectMat('M',this)" title="M — Stainless steel · 150–300 HB · typical Vc 80–220 m/min" style="background:var(--m-bg);border-color:var(--m-bd)">
             <span class="mat-letter" style="color:var(--m-c)">M</span>
             <span class="mat-name" style="color:var(--m-c)">Stainless</span>
           </div>
-          <div class="mat-card mat-cell" onclick="selectMat('K',this)" style="background:var(--k-bg);border-color:var(--k-bd)">
+          <div class="mat-card mat-cell" onclick="selectMat('K',this)" title="K — Cast iron · 150–280 HB · typical Vc 150–400 m/min" style="background:var(--k-bg);border-color:var(--k-bd)">
             <span class="mat-letter" style="color:var(--k-c)">K</span>
             <span class="mat-name" style="color:var(--k-c)">Cast Iron</span>
           </div>
-          <div class="mat-card mat-cell" onclick="selectMat('N',this)" style="background:var(--n-bg);border-color:var(--n-bd)">
+          <div class="mat-card mat-cell" onclick="selectMat('N',this)" title="N — Non-ferrous · 60–160 HB · typical Vc 300–1500 m/min" style="background:var(--n-bg);border-color:var(--n-bd)">
             <span class="mat-letter" style="color:var(--n-c)">N</span>
             <span class="mat-name" style="color:var(--n-c)">Non-Ferrous</span>
           </div>
-          <div class="mat-card mat-cell" onclick="selectMat('S',this)" style="background:var(--s-bg);border-color:var(--s-bd)">
+          <div class="mat-card mat-cell" onclick="selectMat('S',this)" title="S — Superalloys / titanium · 200–380 HB · typical Vc 20–70 m/min" style="background:var(--s-bg);border-color:var(--s-bd)">
             <span class="mat-letter" style="color:var(--s-c)">S</span>
             <span class="mat-name" style="color:var(--s-c)">Superalloy</span>
           </div>
-          <div class="mat-card mat-cell" onclick="selectMat('H',this)" style="background:var(--h-bg);border-color:var(--h-bd)">
+          <div class="mat-card mat-cell" onclick="selectMat('H',this)" title="H — Hardened steel · 45–68 HRC · typical Vc 60–220 m/min" style="background:var(--h-bg);border-color:var(--h-bd)">
             <span class="mat-letter" style="color:var(--h-c)">H</span>
             <span class="mat-name" style="color:var(--h-c)">Hardened</span>
           </div>
@@ -2487,6 +2544,10 @@ body{
         New Search
       </button>
     </div>
+    <div class="advisor-recent-viewed" id="advisorRecentViewed">
+      <div class="arv-title">Recently viewed</div>
+      <div class="arv-list" id="advisorRecentViewedList"></div>
+    </div>
 
   </div><!-- /panel-advisor -->
 
@@ -2564,6 +2625,7 @@ body{
       <div class="calc-card">
         <div class="calc-card-title">Input Parameters</div>
         <div class="form-row"><label class="form-label">Operation</label><select class="form-select" id="cOp" onchange="calcNow()"><option value="turning">Turning</option><option value="milling">Milling</option><option value="drilling">Drilling</option></select></div>
+        <div class="form-row"><label class="form-label">Material preset</label><select class="form-select" id="cMaterialPreset" onchange="applyMaterialPreset(this.value)"><option value="">Manual values</option><option value="steel-p20">Steel P20</option><option value="stainless-316l">Stainless 316L</option><option value="inconel-718">Inconel 718</option><option value="aluminium-6082">Aluminium 6082</option><option value="hardened-55hrc">Hardened steel 55 HRC</option></select></div>
         <div class="form-row"><label class="form-label">Cutting Speed Vc (m/min)</label><input class="form-input" type="number" id="cVc" value="280" oninput="calcNow()"></div>
         <div class="form-row"><label class="form-label">Tool Diameter D (mm)</label><input class="form-input" type="number" id="cD" value="80" oninput="calcNow()"></div>
         <div class="form-row"><label class="form-label">Feed per Rev / Tooth fz (mm)</label><input class="form-input" type="number" id="cF" value="0.25" step="0.01" oninput="calcNow()"></div>
@@ -2609,12 +2671,12 @@ body{
       <p style="font-size:14px">ISO P/M/K/N/S/H — 26 sub-groups with hardness ranges</p>
     </div>
     <div class="mat-iso-grid" id="matIsoGrid">
-      <div class="mat-iso-card ag" style="background:var(--p-bg)" onclick="pickMatDB('P',this)"><h4 style="color:var(--p-c)">P</h4><p style="color:var(--p-c)">Steel</p><div class="sub-c" style="color:var(--p-c)">7 sub-groups · 125–350 HB</div></div>
-      <div class="mat-iso-card" style="background:var(--m-bg)" onclick="pickMatDB('M',this)"><h4 style="color:var(--m-c)">M</h4><p style="color:var(--m-c)">Stainless Steel</p><div class="sub-c" style="color:var(--m-c)">4 sub-groups · 150–300 HB</div></div>
-      <div class="mat-iso-card" style="background:var(--k-bg)" onclick="pickMatDB('K',this)"><h4 style="color:var(--k-c)">K</h4><p style="color:var(--k-c)">Cast Iron</p><div class="sub-c" style="color:var(--k-c)">5 sub-groups · 150–280 HB</div></div>
-      <div class="mat-iso-card" style="background:var(--n-bg)" onclick="pickMatDB('N',this)"><h4 style="color:var(--n-c)">N</h4><p style="color:var(--n-c)">Non-Ferrous</p><div class="sub-c" style="color:var(--n-c)">4 sub-groups · 60–160 HB</div></div>
-      <div class="mat-iso-card" style="background:var(--s-bg)" onclick="pickMatDB('S',this)"><h4 style="color:var(--s-c)">S</h4><p style="color:var(--s-c)">Superalloys / Ti</p><div class="sub-c" style="color:var(--s-c)">3 sub-groups · 200–380 HB</div></div>
-      <div class="mat-iso-card" style="background:var(--h-bg)" onclick="pickMatDB('H',this)"><h4 style="color:var(--h-c)">H</h4><p style="color:var(--h-c)">Hardened Steel</p><div class="sub-c" style="color:var(--h-c)">3 sub-groups · 45–68 HRC</div></div>
+      <div class="mat-iso-card ag" title="P — Steel · 125–350 HB · typical Vc 180–400 m/min" style="background:var(--p-bg)" onclick="pickMatDB('P',this)"><h4 style="color:var(--p-c)">P</h4><p style="color:var(--p-c)">Steel</p><div class="sub-c" style="color:var(--p-c)">7 sub-groups · 125–350 HB</div></div>
+      <div class="mat-iso-card" title="M — Stainless steel · 150–300 HB · typical Vc 80–220 m/min" style="background:var(--m-bg)" onclick="pickMatDB('M',this)"><h4 style="color:var(--m-c)">M</h4><p style="color:var(--m-c)">Stainless Steel</p><div class="sub-c" style="color:var(--m-c)">4 sub-groups · 150–300 HB</div></div>
+      <div class="mat-iso-card" title="K — Cast iron · 150–280 HB · typical Vc 150–400 m/min" style="background:var(--k-bg)" onclick="pickMatDB('K',this)"><h4 style="color:var(--k-c)">K</h4><p style="color:var(--k-c)">Cast Iron</p><div class="sub-c" style="color:var(--k-c)">5 sub-groups · 150–280 HB</div></div>
+      <div class="mat-iso-card" title="N — Non-ferrous · 60–160 HB · typical Vc 300–1500 m/min" style="background:var(--n-bg)" onclick="pickMatDB('N',this)"><h4 style="color:var(--n-c)">N</h4><p style="color:var(--n-c)">Non-Ferrous</p><div class="sub-c" style="color:var(--n-c)">4 sub-groups · 60–160 HB</div></div>
+      <div class="mat-iso-card" title="S — Superalloys / titanium · 200–380 HB · typical Vc 20–70 m/min" style="background:var(--s-bg)" onclick="pickMatDB('S',this)"><h4 style="color:var(--s-c)">S</h4><p style="color:var(--s-c)">Superalloys / Ti</p><div class="sub-c" style="color:var(--s-c)">3 sub-groups · 200–380 HB</div></div>
+      <div class="mat-iso-card" title="H — Hardened steel · 45–68 HRC · typical Vc 60–220 m/min" style="background:var(--h-bg)" onclick="pickMatDB('H',this)"><h4 style="color:var(--h-c)">H</h4><p style="color:var(--h-c)">Hardened Steel</p><div class="sub-c" style="color:var(--h-c)">3 sub-groups · 45–68 HRC</div></div>
     </div>
     <div class="mat-sg-panel">
       <div class="mat-sg-title" id="matSgTitle">ISO P — Steels</div>
@@ -2964,12 +3026,12 @@ body{
       <div class="prod-filter-group">
         <span class="prod-filter-label">ISO</span>
         <button class="pf-btn active" onclick="setProdFilter('iso','all',this)">All</button>
-        <button class="pf-btn" onclick="setProdFilter('iso','P',this)" style="--fc:var(--p-c)">P</button>
-        <button class="pf-btn" onclick="setProdFilter('iso','M',this)">M</button>
-        <button class="pf-btn" onclick="setProdFilter('iso','K',this)">K</button>
-        <button class="pf-btn" onclick="setProdFilter('iso','N',this)">N</button>
-        <button class="pf-btn" onclick="setProdFilter('iso','S',this)">S</button>
-        <button class="pf-btn" onclick="setProdFilter('iso','H',this)">H</button>
+        <button class="pf-btn" title="P — Steel · 125–350 HB · typical Vc 180–400 m/min" onclick="setProdFilter('iso','P',this)" style="--fc:var(--p-c)">P</button>
+        <button class="pf-btn" title="M — Stainless steel · 150–300 HB · typical Vc 80–220 m/min" onclick="setProdFilter('iso','M',this)">M</button>
+        <button class="pf-btn" title="K — Cast iron · 150–280 HB · typical Vc 150–400 m/min" onclick="setProdFilter('iso','K',this)">K</button>
+        <button class="pf-btn" title="N — Non-ferrous · 60–160 HB · typical Vc 300–1500 m/min" onclick="setProdFilter('iso','N',this)">N</button>
+        <button class="pf-btn" title="S — Superalloys / titanium · 200–380 HB · typical Vc 20–70 m/min" onclick="setProdFilter('iso','S',this)">S</button>
+        <button class="pf-btn" title="H — Hardened steel · 45–68 HRC · typical Vc 60–220 m/min" onclick="setProdFilter('iso','H',this)">H</button>
       </div>
       <div class="prod-filter-group">
         <span class="prod-filter-label">Brand</span>
@@ -3045,6 +3107,7 @@ body{
   <button class="compare-bar-btn" onclick="showComparison()">Compare <span id="compareBarCount">0</span> <span id="compareBarLabel">products</span></button>
   <button class="compare-bar-clear" onclick="clearComparison()">✕ Clear</button>
 </div>
+<button class="back-to-top" id="backToTopBtn" type="button" onclick="scrollMainToTop()">Back to top ↑</button>
 
 <!-- COMPARE MODAL -->
 <div class="cmp-modal-overlay" id="compareModal" onclick="if(event.target===this)closeCompareModal()">
@@ -8541,6 +8604,41 @@ function buildRelationList(title, ids) {
       <ul class="detail-rel-list">${arr.map(id => `<li>${getRelationLabel(id)}</li>`).join('')}</ul>
     </div>`;
 }
+const _RECENT_VIEWED_KEY = 'ta_recent_viewed_products_v1';
+
+function readRecentlyViewedProducts() {
+  try {
+    const raw = localStorage.getItem(_RECENT_VIEWED_KEY);
+    const arr = raw ? JSON.parse(raw) : [];
+    return Array.isArray(arr) ? arr.filter(Boolean).slice(0, 3) : [];
+  } catch (_) { return []; }
+}
+
+function writeRecentlyViewedProducts(ids) {
+  try { localStorage.setItem(_RECENT_VIEWED_KEY, JSON.stringify(ids.slice(0, 3))); } catch (_) {}
+}
+
+function recordRecentlyViewedProduct(productId) {
+  const id = String(productId || '');
+  if (!id) return;
+  const next = [id, ...readRecentlyViewedProducts().filter(existing => existing !== id)].slice(0, 3);
+  writeRecentlyViewedProducts(next);
+  renderRecentlyViewedProducts();
+}
+
+function renderRecentlyViewedProducts() {
+  const wrap = document.getElementById('advisorRecentViewed');
+  const list = document.getElementById('advisorRecentViewedList');
+  if (!wrap || !list) return;
+  const products = readRecentlyViewedProducts().map(id => getProductById(id)).filter(Boolean);
+  wrap.classList.toggle('show', products.length > 0);
+  list.innerHTML = products.map(product => `
+    <button class="arv-chip" type="button" onclick="openProductDetail('${product.id}','advisor',event)">
+      <div class="arv-brand">${escapeHtmlAttr(product.brand || 'Unknown')}</div>
+      <div class="arv-grade">${escapeHtmlAttr(getProductPrimaryCode(product))}</div>
+    </button>`).join('');
+}
+
 function closeProductDetail() {
   const overlay = document.getElementById('productDetailOverlay');
   if (overlay) overlay.classList.remove('open');
@@ -8559,6 +8657,7 @@ function openProductDetail(productId, sourceSurface = 'products', event) {
     return;
   }
   taTrack('product_detail_view', { id: productId, brand: product.brand, surface: sourceSurface });
+  recordRecentlyViewedProduct(productId);
   const opContext = sourceSurface === 'advisor'
     ? (selOp || coreArr(product.operations)[0] || null)
     : (prodFilters.op !== 'all' ? prodFilters.op : (coreArr(product.operations)[0] || null));
@@ -9619,6 +9718,18 @@ function buildAdvisorWhyBullets(entry, context) {
   return bullets.slice(0, 3);
 }
 
+function computeAdvisorFitConfidence(product, context = {}) {
+  const material = context.material || '';
+  const operation = context.operation || '';
+  const isoCodes = coreArr(product.isoCodes).map(code => String(code).toUpperCase());
+  const materials = coreArr(product.materials);
+  const operations = coreArr(product.operations);
+  const isoMatch = material && (materials.includes(material) || isoCodes.includes(material)) ? 40 : 0;
+  const operationMatch = operation && operations.includes(operation) ? 40 : 0;
+  const materialMatch = material && materials.includes(material) ? 20 : 0;
+  return Math.min(100, isoMatch + operationMatch + materialMatch);
+}
+
 function parseAdvisorRange(value) {
   const nums = String(value || '').match(/\d+(?:[.,]\d+)?/g) || [];
   if (!nums.length) return { min: '', max: '' };
@@ -9749,6 +9860,7 @@ function renderAdvisorResultsView(scrollInto = false) {
     const visual = renderProductVisual(t, 'advisor');
     const techStrip = renderProductTechnicalStrip(t, 6);
     const matchScore = clamp01Score(entry.score);
+    const fitConfidence = computeAdvisorFitConfidence(t, context);
     const riskFlags = [];
     if (trust.lowConfidence) riskFlags.push({ cls: 'critical', text: 'Low confidence in current context.' });
     if (isAdvisorWeakMapping(entry)) riskFlags.push({ cls: '', text: 'Weak cross-reference mapping signal.' });
@@ -9792,6 +9904,10 @@ function renderAdvisorResultsView(scrollInto = false) {
         <div class="result-param"><div class="rp-label">Vc</div><div class="rp-val">${cd.vc} m/min</div></div>
         <div class="result-param"><div class="rp-label">fn/fz</div><div class="rp-val">${cd.fn} mm</div></div>
         <div class="result-param"><div class="rp-label">ap max</div><div class="rp-val">${cd.ap} mm</div></div>
+      </div>
+      <div class="advisor-confidence-bar">
+        <div class="advisor-confidence-head"><span>Fit confidence</span><span>${fitConfidence}%</span></div>
+        <div class="advisor-confidence-track"><div class="advisor-confidence-fill" style="width:${fitConfidence}%"></div></div>
       </div>
       <div class="result-links">
         <div class="result-cta-row">
@@ -9971,12 +10087,14 @@ function loadCR(code, options = {}) {
   document.getElementById('crRows').innerHTML = d.rows.map(r => {
     const siteUrl = (BUY_LINKS[r.brand]?.[0]?.u || 'https://google.com/search?q=') + encodeURIComponent(r.code);
     const sa = (s) => escapeHtmlAttr(s == null ? '' : s);
+    const isBestValue = /korloy|taegutec|pramet/i.test(String(r.brand || ''));
     return `
     <div class="cr-row" onclick="openCrossRefRowDetail('${sa(r.brand)}','${sa(r.code)}','${sa(r.coating)}','${sa(r.app)}','${sa(r.apc)}','${sa(code)}')">
       <span class="cr-brand">${r.brand}</span>
       <span class="cr-code">${r.code}</span>
       <span class="cr-coating">${r.coating}</span>
       <span class="cr-app ${r.apc || ''}">${r.app}</span>
+      ${isBestValue ? '<span class="cr-value-tag">Best value</span>' : ''}
       <div class="cr-actions" onclick="event.stopPropagation()">
         <button class="cr-copy" onclick="event.stopPropagation();cpCode(this,'${sa(r.code)}')">Copy</button>
         <a class="cr-buy" href="${siteUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Buy ↗</a>
@@ -10119,6 +10237,25 @@ function calcDrillingMode() {
   if (vcEl) vcEl.textContent = `${vc} m/min`;
 }
 
+function applyMaterialPreset(presetKey) {
+  const presets = {
+    'steel-p20': { vc: 260, fn: 0.24, ap: 2.5 },
+    'stainless-316l': { vc: 160, fn: 0.16, ap: 1.5 },
+    'inconel-718': { vc: 35, fn: 0.08, ap: 1.0 },
+    'aluminium-6082': { vc: 600, fn: 0.20, ap: 2.0 },
+    'hardened-55hrc': { vc: 120, fn: 0.06, ap: 0.3 }
+  };
+  const preset = presets[presetKey];
+  if (!preset) return;
+  const vcEl = document.getElementById('cVc');
+  const fEl = document.getElementById('cF');
+  const apEl = document.getElementById('cAp');
+  if (vcEl) vcEl.value = preset.vc;
+  if (fEl) fEl.value = preset.fn;
+  if (apEl) apEl.value = preset.ap;
+  calcNow();
+}
+
 /* ============================================================
    CALCULATION HISTORY (last 5, localStorage)
 ============================================================ */
@@ -10243,6 +10380,7 @@ function renderSup(filter) {
       <div class="sup-origin"><span>${s.flag}</span>${s.country}</div>
       <div class="sup-cats">${s.cats.map(c => `<span class="sup-cat">${c}</span>`).join('')}</div>
       <a href="${s.url}" target="_blank" rel="noopener" class="sup-link">${s.url.replace('https://','').replace('www.','')} ↗</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.name + ' headquarters ' + s.country)}" target="_blank" rel="noopener" class="sup-link">View on map ↗</a>
       <div class="sup-spec">${s.spec}</div>
     </div>`).join('');
 }
@@ -10375,14 +10513,46 @@ function handleGlobalKeyboardShortcuts(e) {
   }
 }
 
+const _DARK_MODE_KEY = 'ta_dark_mode_v1';
+
+function applyDarkModePreference() {
+  let enabled = false;
+  try { enabled = localStorage.getItem(_DARK_MODE_KEY) === '1'; } catch (_) {}
+  document.body.classList.toggle('ta-dark', enabled);
+  const btn = document.getElementById('darkModeToggle');
+  if (btn) btn.textContent = enabled ? 'Light mode' : 'Dark mode';
+}
+
+function toggleDarkMode() {
+  const next = !document.body.classList.contains('ta-dark');
+  document.body.classList.toggle('ta-dark', next);
+  try { localStorage.setItem(_DARK_MODE_KEY, next ? '1' : '0'); } catch (_) {}
+  const btn = document.getElementById('darkModeToggle');
+  if (btn) btn.textContent = next ? 'Light mode' : 'Dark mode';
+}
+
+function updateBackToTopVisibility() {
+  const main = document.querySelector('.main');
+  const btn = document.getElementById('backToTopBtn');
+  if (!main || !btn) return;
+  btn.classList.toggle('show', main.scrollTop > 300);
+}
+
+function scrollMainToTop() {
+  const main = document.querySelector('.main');
+  if (main) main.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 (function init() {
   resetInteractionLayers();
+  applyDarkModePreference();
   loadCR('CNMG120408', { skipHistory: true });
   decodeISO('CNMG120408');
   calcNow();
   calcDrillingMode();
   renderCalcHistory();
   renderCrossRefHistory();
+  renderRecentlyViewedProducts();
   pickMatDB('P', document.querySelector('.mat-iso-card'));
   renderSup('all');
   document.getElementById('crInput').addEventListener('keydown', e => { if (e.key === 'Enter') loadCR(e.target.value); });
@@ -10391,6 +10561,8 @@ function handleGlobalKeyboardShortcuts(e) {
     if (e.target === this) closeProductDetail();
   });
   document.addEventListener('keydown', handleGlobalKeyboardShortcuts);
+  document.querySelector('.main')?.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+  updateBackToTopVisibility();
   window.addEventListener('pageshow', resetInteractionLayers);
 })();
 
@@ -10434,6 +10606,19 @@ function toolLifeSortWeight(value) {
   if (/medium|balanced|versatile/.test(text)) return 2;
   if (/low|limited/.test(text)) return 1;
   return 0;
+}
+
+function productQuickApplications(product) {
+  const top = coreArr(product.topFor)
+    .map(token => token.replace('-', ' + '))
+    .filter(Boolean);
+  const ops = coreArr(product.operations).map(op => `${op} applications`);
+  const materials = coreArr(product.materials).map(mat => `ISO ${mat}`);
+  const note = String(product.applicationNotes || '')
+    .split(/[.;]/)
+    .map(part => part.trim())
+    .filter(part => part.length > 8);
+  return [...top, ...ops, ...materials, ...note].slice(0, 3);
 }
 
 function filterProducts() {
@@ -10515,8 +10700,13 @@ function filterProducts() {
     const techStrip = renderProductTechnicalStrip(p, 6);
     const primaryIso = coreArr(p.materials).find(m => isoStripeColorMap[m]) || 'H';
     const isoStripeColor = isoStripeColorMap[primaryIso] || '#1F2937';
+    const quickApps = productQuickApplications(p);
     return `
     <div class="prod-card ${isChecked ? 'checked' : ''} ${tier === 'secondary' ? 'secondary' : ''}" id="pcard-${p.id}" style="--prod-iso-stripe:${isoStripeColor};border-left-color:${isoStripeColor}">
+      <div class="prod-quick-view">
+        <div><strong>${p.grade || primaryCode}</strong> · ${p.coating || 'Coating not specified'}</div>
+        ${quickApps.length ? `<ul>${quickApps.map(app => `<li>${escapeHtmlAttr(app)}</li>`).join('')}</ul>` : '<ul><li>Application data not yet assigned.</li></ul>'}
+      </div>
       <div class="prod-card-check ${isChecked ? 'on' : ''}" onclick="toggleProdSelect('${p.id}')">
         ${isChecked ? '<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}
       </div>
