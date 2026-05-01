@@ -1579,6 +1579,22 @@ body{
 .prod-card:has(.rtag-s){border-left-color:var(--s-c)}
 .prod-card:has(.rtag-h){border-left-color:var(--h-c)}
 .prod-card.checked{border-color:var(--purple);border-width:2px}
+/* Skeleton placeholder cards (shown while lazy-loading from Supabase) */
+.prod-card-skeleton{border-left-color:var(--border);pointer-events:none;min-height:200px}
+.prod-card-skeleton .prod-card-head{padding:14px;display:flex;flex-direction:column;gap:8px}
+.prod-card-skeleton .prod-card-params{padding:10px 14px;display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--border)}
+.prod-card-skeleton .prod-card-footer{padding:10px 14px;border-top:1px solid var(--border)}
+.skel{
+  background:linear-gradient(90deg,var(--bg2) 0%,var(--bg3) 50%,var(--bg2) 100%);
+  background-size:200% 100%;border-radius:3px;
+  animation:skelShimmer 1.4s linear infinite;
+}
+.skel-line{height:11px}
+.skel-w-30{width:30%}.skel-w-40{width:40%}.skel-w-50{width:50%}.skel-w-60{width:60%}.skel-w-70{width:70%}
+@keyframes skelShimmer{
+  0%{background-position:200% 0}
+  100%{background-position:-200% 0}
+}
 .prod-card.secondary{
   opacity:.88;
   border-style:dashed;
@@ -2933,32 +2949,81 @@ function _mapRemoteProduct(r) {
   };
 }
 
-/** Async init — loads products + cross-refs from Supabase, falls back silently */
-async function initRemoteData() {
+// ── Product cache (localStorage, 1h TTL) ──────────────────────────────────────
+const _PROD_CACHE_KEY = 'ta_products_cache';
+const _PROD_CACHE_TTL = 60 * 60 * 1000; // 1 hour
+
+function _readProductCache() {
+  try {
+    const raw = localStorage.getItem(_PROD_CACHE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || !Array.isArray(parsed.data) || typeof parsed.timestamp !== 'number') return null;
+    if (Date.now() - parsed.timestamp > _PROD_CACHE_TTL) return null;
+    return parsed.data;
+  } catch(_) { return null; }
+}
+function _writeProductCache(data) {
+  try {
+    localStorage.setItem(_PROD_CACHE_KEY, JSON.stringify({ timestamp: Date.now(), data }));
+  } catch(e) { /* quota exceeded or disabled — silent */ }
+}
+
+/**
+ * Lazy product loader — called when Products tab opens.
+ * Order: in-memory → localStorage cache (fresh ≤1h) → Supabase fetch → cache.
+ * Returns a Promise that resolves to the product array (or null if Supabase off + no cache).
+ * Idempotent: concurrent calls share one in-flight promise.
+ */
+let _productsLoadPromise = null;
+function loadRemoteProducts() {
+  if (_remoteProductDB) return Promise.resolve(_remoteProductDB);
+  if (_productsLoadPromise) return _productsLoadPromise;
+
+  // Cache hit (fresh) — use localStorage, skip Supabase entirely
+  const cached = _readProductCache();
+  if (cached) {
+    _remoteProductDB = cached;
+    return Promise.resolve(_remoteProductDB);
+  }
+
+  const sb = getSupabase();
+  if (!sb) return Promise.resolve(null);
+
+  _productsLoadPromise = (async () => {
+    try {
+      const { data: prods, error } = await sb.from('products').select('*').order('id');
+      if (error || !prods || prods.length === 0) return null;
+      _remoteProductDB = prods.map(_mapRemoteProduct);
+      _writeProductCache(_remoteProductDB);
+      return _remoteProductDB;
+    } catch(e) {
+      console.warn('[ToolAdvisor] Product fetch failed, using local fallback.', e.message);
+      return null;
+    } finally {
+      _productsLoadPromise = null;
+    }
+  })();
+  return _productsLoadPromise;
+}
+
+/** Cross-references — kept at startup (small, used by Cross-Ref tab + Advisor cards) */
+async function initRemoteCrossRefs() {
   const sb = getSupabase();
   if (!sb) return;
   try {
-    const [{ data: prods, error: pe }, { data: crRows, error: ce }] = await Promise.all([
-      sb.from('products').select('*').order('id'),
-      sb.from('cross_references').select('*').order('sort_order'),
-    ]);
-    if (!pe && prods?.length > 0) {
-      _remoteProductDB = prods.map(_mapRemoteProduct);
+    const { data: crRows, error } = await sb.from('cross_references').select('*').order('sort_order');
+    if (error || !crRows || crRows.length === 0) return;
+    _remoteCRDB = {};
+    for (const r of crRows) {
+      if (!_remoteCRDB[r.insert_code]) _remoteCRDB[r.insert_code] = { desc: r.ref_desc, rows: [] };
+      _remoteCRDB[r.insert_code].rows.push({
+        brand: r.brand, code: r.equivalent_code,
+        coating: r.coating, app: r.application, apc: r.apc_class,
+      });
     }
-    if (!ce && crRows?.length > 0) {
-      // Rebuild CROSSREF lookup map from flat rows
-      _remoteCRDB = {};
-      for (const r of crRows) {
-        if (!_remoteCRDB[r.insert_code]) _remoteCRDB[r.insert_code] = { desc: r.ref_desc, rows: [] };
-        _remoteCRDB[r.insert_code].rows.push({
-          brand: r.brand, code: r.equivalent_code,
-          coating: r.coating, app: r.application, apc: r.apc_class,
-        });
-      }
-    }
-    if (_remoteProductDB) renderProductsTab?.();
   } catch(e) {
-    console.warn('[ToolAdvisor] Remote data unavailable, using local fallback.', e.message);
+    console.warn('[ToolAdvisor] Cross-ref load failed, using local fallback.', e.message);
   }
 }
 
@@ -2974,11 +3039,12 @@ function taTrack(eventType, data = {}) {
   }).then(() => {}).catch(() => {});
 }
 
-// Bootstrap remote data (non-blocking — page renders with local data immediately)
+// Bootstrap: cross-refs at startup (small, broadly used).
+// Products are lazy-loaded when the Products tab is opened — see ensureProductsFirstLoadVisibility().
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initRemoteData);
+  document.addEventListener('DOMContentLoaded', initRemoteCrossRefs);
 } else {
-  initRemoteData();
+  initRemoteCrossRefs();
 }
 
 /* ============================================================
@@ -8718,8 +8784,44 @@ let selMat = null, selOp = null, selCond = null;
 let _productsFirstOpenHandled = false;
 const advisorResultCache = new Map();
 
+function _renderSkeletonCards(n) {
+  let out = '';
+  for (let i = 0; i < n; i++) {
+    out += '<div class="prod-card prod-card-skeleton" aria-hidden="true">'
+        +    '<div class="prod-card-head">'
+        +      '<div class="skel skel-line skel-w-30"></div>'
+        +      '<div class="skel skel-line skel-w-70"></div>'
+        +      '<div class="skel skel-line skel-w-50"></div>'
+        +    '</div>'
+        +    '<div class="prod-card-params">'
+        +      '<div class="skel skel-line skel-w-40"></div>'
+        +      '<div class="skel skel-line skel-w-40"></div>'
+        +      '<div class="skel skel-line skel-w-40"></div>'
+        +    '</div>'
+        +    '<div class="prod-card-footer">'
+        +      '<div class="skel skel-line skel-w-30"></div>'
+        +    '</div>'
+        +  '</div>';
+  }
+  return out;
+}
+
 function ensureProductsFirstLoadVisibility() {
-  filterProducts();
+  // If we already have data (local PRODUCT_DB or remote cached/loaded), render immediately.
+  // Otherwise show skeletons, kick off the lazy load, then render real data when it arrives.
+  const grid = document.getElementById('prodGrid');
+  const needsLazyFetch =
+    CONFIG.supabase.enabled && !_remoteProductDB && _readProductCache() === null;
+
+  if (needsLazyFetch && grid) {
+    grid.innerHTML = _renderSkeletonCards(6);
+    loadRemoteProducts().finally(() => filterProducts());
+  } else {
+    // Cache hit, already loaded, or Supabase disabled — local PRODUCT_DB is fine
+    if (!_remoteProductDB) loadRemoteProducts(); // cheap: returns cache or no-op
+    filterProducts();
+  }
+
   if (_productsFirstOpenHandled) return;
   _productsFirstOpenHandled = true;
   if (window.scrollY > 120) {
