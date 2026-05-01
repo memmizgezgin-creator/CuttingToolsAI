@@ -1520,10 +1520,13 @@ body{
 .modal-fine{font-size:11px;color:var(--ink3);text-align:center;margin-top:8px}
 
 /* PRODUCT DETAIL */
+#productDetailOverlay{justify-content:flex-end;align-items:stretch;padding:0}
+#productDetailOverlay .modal-card{transform:translateX(100%)}
+#productDetailOverlay.open .modal-card{transform:translateX(0)}
 .detail-modal-card{
-  max-width:760px;width:100%;max-height:88vh;
+  max-width:760px;width:min(760px,100vw);height:100vh;max-height:100vh;
   padding:0;display:flex;flex-direction:column;overflow:hidden;
-  border-radius:10px;
+  border-radius:0;
   border:1.5px solid #CDC5B9;
   box-shadow:var(--shadow-lg);
 }
@@ -1962,6 +1965,7 @@ body{
   border-radius:6px;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;cursor:pointer;
 }
 .dark-toggle:hover{border-color:var(--purple);color:#fff}
+.session-summary{margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.45;color:#8A8898}
 .main{
   grid-column:2;max-width:none;margin:0;padding:0;background:var(--bg);display:flex;flex-direction:column;
   min-width:0;min-height:0;height:100%;overflow-y:auto;overflow-x:hidden;
@@ -1993,6 +1997,16 @@ body{
   box-shadow:var(--shadow-md);
 }
 .back-to-top.show{display:block}
+.cookie-banner{
+  position:fixed;left:calc(240px + 18px);right:18px;bottom:18px;z-index:230;
+  display:none;align-items:center;gap:14px;justify-content:space-between;
+  background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px 14px;
+  box-shadow:var(--shadow-lg);color:var(--ink2);font-size:12px;line-height:1.45;
+}
+.cookie-banner.show{display:flex}
+.cookie-actions{display:flex;gap:8px;flex-shrink:0}
+.cookie-btn{border:1px solid var(--border);background:var(--bg);color:var(--ink);border-radius:5px;padding:7px 10px;font-size:11px;font-weight:800;cursor:pointer;font-family:'IBM Plex Sans',sans-serif}
+.cookie-btn.primary{background:var(--purple);border-color:var(--purple);color:#fff}
 .hero{
   text-align:left;max-width:none;margin:0 0 16px;padding:0;border:none;border-radius:0;background:transparent;box-shadow:none;overflow:visible;
 }
@@ -2269,6 +2283,7 @@ body{
           Subscription Terms
         </button>
         <button class="dark-toggle" id="darkModeToggle" type="button" onclick="toggleDarkMode()">Dark mode</button>
+        <div class="session-summary" id="sessionSummary">0 searches today, 0 products viewed</div>
       </div>
     </div>
   </aside>
@@ -2486,6 +2501,8 @@ body{
         </div>
         <div class="advisor-header-actions">
           <button class="advisor-action-btn primary" type="button" onclick="exportAdvisorResultsCSV()">Export results as CSV</button>
+          <button class="advisor-action-btn" type="button" onclick="exportAdvisorResultsPDF()">Export as PDF</button>
+          <button class="advisor-action-btn" type="button" onclick="shareAdvisorResults()">Share results</button>
           <button class="advisor-action-btn" type="button" onclick="resetAdvisor()">Start over</button>
         </div>
       </div>
@@ -2611,6 +2628,7 @@ body{
       <div class="iso-card">
         <div class="iso-card-title">Decoded Properties</div>
         <div class="iso-props" id="isoPropsEl"></div>
+        <button class="calc-save-btn" id="isoFindBtn" type="button" onclick="findDecodedInsert()" style="margin-top:12px">Find this insert</button>
       </div>
     </div>
   </div>
@@ -2671,12 +2689,12 @@ body{
       <p style="font-size:14px">ISO P/M/K/N/S/H — 26 sub-groups with hardness ranges</p>
     </div>
     <div class="mat-iso-grid" id="matIsoGrid">
-      <div class="mat-iso-card ag" title="P — Steel · 125–350 HB · typical Vc 180–400 m/min" style="background:var(--p-bg)" onclick="pickMatDB('P',this)"><h4 style="color:var(--p-c)">P</h4><p style="color:var(--p-c)">Steel</p><div class="sub-c" style="color:var(--p-c)">7 sub-groups · 125–350 HB</div></div>
-      <div class="mat-iso-card" title="M — Stainless steel · 150–300 HB · typical Vc 80–220 m/min" style="background:var(--m-bg)" onclick="pickMatDB('M',this)"><h4 style="color:var(--m-c)">M</h4><p style="color:var(--m-c)">Stainless Steel</p><div class="sub-c" style="color:var(--m-c)">4 sub-groups · 150–300 HB</div></div>
-      <div class="mat-iso-card" title="K — Cast iron · 150–280 HB · typical Vc 150–400 m/min" style="background:var(--k-bg)" onclick="pickMatDB('K',this)"><h4 style="color:var(--k-c)">K</h4><p style="color:var(--k-c)">Cast Iron</p><div class="sub-c" style="color:var(--k-c)">5 sub-groups · 150–280 HB</div></div>
-      <div class="mat-iso-card" title="N — Non-ferrous · 60–160 HB · typical Vc 300–1500 m/min" style="background:var(--n-bg)" onclick="pickMatDB('N',this)"><h4 style="color:var(--n-c)">N</h4><p style="color:var(--n-c)">Non-Ferrous</p><div class="sub-c" style="color:var(--n-c)">4 sub-groups · 60–160 HB</div></div>
-      <div class="mat-iso-card" title="S — Superalloys / titanium · 200–380 HB · typical Vc 20–70 m/min" style="background:var(--s-bg)" onclick="pickMatDB('S',this)"><h4 style="color:var(--s-c)">S</h4><p style="color:var(--s-c)">Superalloys / Ti</p><div class="sub-c" style="color:var(--s-c)">3 sub-groups · 200–380 HB</div></div>
-      <div class="mat-iso-card" title="H — Hardened steel · 45–68 HRC · typical Vc 60–220 m/min" style="background:var(--h-bg)" onclick="pickMatDB('H',this)"><h4 style="color:var(--h-c)">H</h4><p style="color:var(--h-c)">Hardened Steel</p><div class="sub-c" style="color:var(--h-c)">3 sub-groups · 45–68 HRC</div></div>
+      <div class="mat-iso-card ag" title="P — Steel · 125–350 HB · typical Vc 180–400 m/min" style="background:var(--p-bg)" onclick="pickMatDB('P',this)"><h4 style="color:var(--p-c)">P</h4><p style="color:var(--p-c)">Steel</p><div class="sub-c" style="color:var(--p-c)">7 sub-groups · 125–350 HB · Difficulty ★☆☆☆☆</div></div>
+      <div class="mat-iso-card" title="M — Stainless steel · 150–300 HB · typical Vc 80–220 m/min" style="background:var(--m-bg)" onclick="pickMatDB('M',this)"><h4 style="color:var(--m-c)">M</h4><p style="color:var(--m-c)">Stainless Steel</p><div class="sub-c" style="color:var(--m-c)">4 sub-groups · 150–300 HB · Difficulty ★★★☆☆</div></div>
+      <div class="mat-iso-card" title="K — Cast iron · 150–280 HB · typical Vc 150–400 m/min" style="background:var(--k-bg)" onclick="pickMatDB('K',this)"><h4 style="color:var(--k-c)">K</h4><p style="color:var(--k-c)">Cast Iron</p><div class="sub-c" style="color:var(--k-c)">5 sub-groups · 150–280 HB · Difficulty ★★☆☆☆</div></div>
+      <div class="mat-iso-card" title="N — Non-ferrous · 60–160 HB · typical Vc 300–1500 m/min" style="background:var(--n-bg)" onclick="pickMatDB('N',this)"><h4 style="color:var(--n-c)">N</h4><p style="color:var(--n-c)">Non-Ferrous</p><div class="sub-c" style="color:var(--n-c)">4 sub-groups · 60–160 HB · Difficulty ★☆☆☆☆</div></div>
+      <div class="mat-iso-card" title="S — Superalloys / titanium · 200–380 HB · typical Vc 20–70 m/min" style="background:var(--s-bg)" onclick="pickMatDB('S',this)"><h4 style="color:var(--s-c)">S</h4><p style="color:var(--s-c)">Superalloys / Ti</p><div class="sub-c" style="color:var(--s-c)">3 sub-groups · 200–380 HB · Difficulty ★★★★★</div></div>
+      <div class="mat-iso-card" title="H — Hardened steel · 45–68 HRC · typical Vc 60–220 m/min" style="background:var(--h-bg)" onclick="pickMatDB('H',this)"><h4 style="color:var(--h-c)">H</h4><p style="color:var(--h-c)">Hardened Steel</p><div class="sub-c" style="color:var(--h-c)">3 sub-groups · 45–68 HRC · Difficulty ★★★★☆</div></div>
     </div>
     <div class="mat-sg-panel">
       <div class="mat-sg-title" id="matSgTitle">ISO P — Steels</div>
@@ -3108,6 +3126,13 @@ body{
   <button class="compare-bar-clear" onclick="clearComparison()">✕ Clear</button>
 </div>
 <button class="back-to-top" id="backToTopBtn" type="button" onclick="scrollMainToTop()">Back to top ↑</button>
+<div class="cookie-banner" id="cookieConsentBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <div>ToolAdvisor uses essential local storage for preferences and lightweight usage state. Analytics or marketing cookies are only used if accepted.</div>
+  <div class="cookie-actions">
+    <button class="cookie-btn" type="button" onclick="setCookieConsent('declined')">Decline</button>
+    <button class="cookie-btn primary" type="button" onclick="setCookieConsent('accepted')">Accept</button>
+  </div>
+</div>
 
 <!-- COMPARE MODAL -->
 <div class="cmp-modal-overlay" id="compareModal" onclick="if(event.target===this)closeCompareModal()">
@@ -8657,6 +8682,7 @@ function openProductDetail(productId, sourceSurface = 'products', event) {
     return;
   }
   taTrack('product_detail_view', { id: productId, brand: product.brand, surface: sourceSurface });
+  incrementSessionCounter('ta_products_viewed');
   recordRecentlyViewedProduct(productId);
   const opContext = sourceSurface === 'advisor'
     ? (selOp || coreArr(product.operations)[0] || null)
@@ -9781,6 +9807,57 @@ function exportAdvisorResultsCSV() {
   URL.revokeObjectURL(url);
 }
 
+function exportAdvisorResultsPDF() {
+  const entries = getAdvisorVisibleEntries();
+  if (!entries.length) {
+    toast('No Advisor results to export.');
+    return;
+  }
+  const context = ADVISOR_RESULTS_UI.context || {};
+  const rows = entries.map((entry, index) => {
+    const p = entry.tool || {};
+    return `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${escapeHtmlAttr(p.brand || '')}</td>
+        <td>${escapeHtmlAttr(getProductPrimaryCode(p))}</td>
+        <td>${escapeHtmlAttr(p.coating || '')}</td>
+        <td>${entry.trust?.score || 0}%</td>
+      </tr>`;
+  }).join('');
+  const printable = window.open('', '_blank', 'noopener,noreferrer');
+  if (!printable) {
+    toast('Popup blocked. Allow popups to export PDF.');
+    return;
+  }
+  printable.document.write(`
+    <html><head><title>ToolAdvisor Advisor Results</title>
+    <style>body{font-family:Arial,sans-serif;padding:24px;color:#111}h1{font-size:22px}table{width:100%;border-collapse:collapse;margin-top:16px}td,th{border:1px solid #ccc;padding:8px;text-align:left;font-size:12px}th{background:#f3f3f3}</style>
+    </head><body>
+    <h1>ToolAdvisor Advisor Results</h1>
+    <p>${escapeHtmlAttr(context.operation || 'Operation')} · ISO ${escapeHtmlAttr(context.material || '—')} · ${escapeHtmlAttr(context.condition || 'Condition')}</p>
+    <table><thead><tr><th>Rank</th><th>Brand</th><th>Grade</th><th>Coating</th><th>Confidence</th></tr></thead><tbody>${rows}</tbody></table>
+    <script>window.onload=function(){window.print();}<\/script>
+    </body></html>`);
+  printable.document.close();
+}
+
+function shareAdvisorResults() {
+  const context = ADVISOR_RESULTS_UI.context || {};
+  const params = new URLSearchParams();
+  if (context.material) params.set('material', context.material);
+  if (context.operation) params.set('operation', context.operation);
+  if (context.condition) params.set('condition', context.condition);
+  params.set('tab', 'advisor');
+  const url = `${location.origin}${location.pathname}?${params.toString()}`;
+  navigator.clipboard?.writeText(url).then(
+    () => toast('Shareable Advisor URL copied.'),
+    () => {
+      window.prompt('Copy Advisor URL', url);
+    }
+  );
+}
+
 function renderAdvisorResultsView(scrollInto = false) {
   syncAdvisorResultControlState();
   const entries = getAdvisorVisibleEntries();
@@ -9933,6 +10010,7 @@ function renderAdvisorResultsView(scrollInto = false) {
 function showResults() {
   if (!selMat || !selOp || !selCond) return;
   taTrack('advisor_search', { material: selMat, operation: selOp, condition: selCond });
+  incrementSessionCounter('ta_searches_today');
 
   const key = selOp + '-' + selMat;
   const context = { operation: selOp, material: selMat };
@@ -10048,7 +10126,10 @@ function renderCrossRefHistory() {
 function loadCR(code, options = {}) {
   code = String(code || '').toUpperCase().replace(/\s/g, '');
   document.getElementById('crInput').value = code;
-  if (code && !options.skipHistory) pushCrossRefHistory(code);
+  if (code && !options.skipHistory) {
+    pushCrossRefHistory(code);
+    incrementSessionCounter('ta_searches_today');
+  }
   if (code) taTrack('cross_ref_lookup', { code });
   const d = (_remoteCRDB && _remoteCRDB[code]) || resolveCrossRefRecord(code);
   if (!d) {
@@ -10088,6 +10169,7 @@ function loadCR(code, options = {}) {
     const siteUrl = (BUY_LINKS[r.brand]?.[0]?.u || 'https://google.com/search?q=') + encodeURIComponent(r.code);
     const sa = (s) => escapeHtmlAttr(s == null ? '' : s);
     const isBestValue = /korloy|taegutec|pramet/i.test(String(r.brand || ''));
+    const compareProduct = findProductByCrossRef(r.brand, r.code);
     return `
     <div class="cr-row" onclick="openCrossRefRowDetail('${sa(r.brand)}','${sa(r.code)}','${sa(r.coating)}','${sa(r.app)}','${sa(r.apc)}','${sa(code)}')">
       <span class="cr-brand">${r.brand}</span>
@@ -10097,6 +10179,7 @@ function loadCR(code, options = {}) {
       ${isBestValue ? '<span class="cr-value-tag">Best value</span>' : ''}
       <div class="cr-actions" onclick="event.stopPropagation()">
         <button class="cr-copy" onclick="event.stopPropagation();cpCode(this,'${sa(r.code)}')">Copy</button>
+        ${compareProduct ? `<button class="cr-copy" onclick="event.stopPropagation();addCrossRefResultToCompare('${compareProduct.id}')">Add to comparison</button>` : ''}
         <a class="cr-buy" href="${siteUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Buy ↗</a>
       </div>
     </div>`;
@@ -10161,6 +10244,14 @@ function openCrossRefRowDetail(brand, code, coating, app, apc, parentCode) {
   openProductDetail(synId, 'crossref');
 }
 
+function addCrossRefResultToCompare(productId) {
+  if (!productId) {
+    toast('No PRODUCT_DB match available for comparison.');
+    return;
+  }
+  addAdvisorResultToCompare(productId, { stopPropagation() {} });
+}
+
 function cpCode(btn, code) {
   navigator.clipboard?.writeText(code).catch(() => {});
   btn.textContent = '✓'; btn.classList.add('ok');
@@ -10170,8 +10261,11 @@ function cpCode(btn, code) {
 /* ============================================================
    ISO DECODER
 ============================================================ */
+let currentDecodedISOCode = 'CNMG120408';
+
 function decodeISO(code) {
   const d = ISO_DB[code]; if (!d) return;
+  currentDecodedISOCode = code;
   document.getElementById('isoDisplay').textContent = d.big;
   document.getElementById('isoChars').innerHTML = d.chars.map(ch =>
     `<div class="iso-char"><span class="iso-char-letter">${ch.c}</span><span class="iso-char-label">${ch.l}</span></div>`
@@ -10179,6 +10273,12 @@ function decodeISO(code) {
   document.getElementById('isoPropsEl').innerHTML = d.props.map(([k, v]) =>
     `<div class="iso-prop-row"><span class="iso-prop-key">${k}</span><span class="iso-prop-val">${v}</span></div>`
   ).join('');
+}
+
+function findDecodedInsert() {
+  const code = currentDecodedISOCode || document.getElementById('isoDisplay')?.textContent?.replace(/\s/g, '') || '';
+  setTab('crossref', findTabButton('crossref'));
+  setTimeout(() => loadCR(code), 20);
 }
 
 /* ============================================================
@@ -10543,6 +10643,37 @@ function scrollMainToTop() {
   if (main) main.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+const _COOKIE_CONSENT_KEY = 'ta_cookie_consent_v1';
+
+function renderCookieConsent() {
+  const banner = document.getElementById('cookieConsentBanner');
+  if (!banner) return;
+  let value = '';
+  try { value = localStorage.getItem(_COOKIE_CONSENT_KEY) || ''; } catch (_) {}
+  banner.classList.toggle('show', !value);
+}
+
+function setCookieConsent(value) {
+  try { localStorage.setItem(_COOKIE_CONSENT_KEY, value === 'accepted' ? 'accepted' : 'declined'); } catch (_) {}
+  renderCookieConsent();
+}
+
+function getSessionCounter(key) {
+  try { return Number(sessionStorage.getItem(key) || 0) || 0; } catch (_) { return 0; }
+}
+
+function incrementSessionCounter(key) {
+  const next = getSessionCounter(key) + 1;
+  try { sessionStorage.setItem(key, String(next)); } catch (_) {}
+  renderSessionSummary();
+}
+
+function renderSessionSummary() {
+  const el = document.getElementById('sessionSummary');
+  if (!el) return;
+  el.textContent = `${getSessionCounter('ta_searches_today')} searches today, ${getSessionCounter('ta_products_viewed')} products viewed`;
+}
+
 (function init() {
   resetInteractionLayers();
   applyDarkModePreference();
@@ -10553,6 +10684,8 @@ function scrollMainToTop() {
   renderCalcHistory();
   renderCrossRefHistory();
   renderRecentlyViewedProducts();
+  renderCookieConsent();
+  renderSessionSummary();
   pickMatDB('P', document.querySelector('.mat-iso-card'));
   renderSup('all');
   document.getElementById('crInput').addEventListener('keydown', e => { if (e.key === 'Enter') loadCR(e.target.value); });
@@ -10619,6 +10752,13 @@ function productQuickApplications(product) {
     .map(part => part.trim())
     .filter(part => part.length > 8);
   return [...top, ...ops, ...materials, ...note].slice(0, 3);
+}
+
+function isRecentlyCreatedProduct(product) {
+  if (!product?.createdAt) return false;
+  const created = new Date(product.createdAt).getTime();
+  if (!Number.isFinite(created)) return false;
+  return Date.now() - created <= 30 * 24 * 60 * 60 * 1000;
 }
 
 function filterProducts() {
@@ -10701,6 +10841,7 @@ function filterProducts() {
     const primaryIso = coreArr(p.materials).find(m => isoStripeColorMap[m]) || 'H';
     const isoStripeColor = isoStripeColorMap[primaryIso] || '#1F2937';
     const quickApps = productQuickApplications(p);
+    const newBadge = isRecentlyCreatedProduct(p) ? '<span class="rtag rtag-top">New</span>' : '';
     return `
     <div class="prod-card ${isChecked ? 'checked' : ''} ${tier === 'secondary' ? 'secondary' : ''}" id="pcard-${p.id}" style="--prod-iso-stripe:${isoStripeColor};border-left-color:${isoStripeColor}">
       <div class="prod-quick-view">
@@ -10720,6 +10861,7 @@ function filterProducts() {
           ${techStrip}
           ${tier === 'secondary' ? '<div class="prod-card-secondary-note">Secondary category record — core cutting tools are prioritised in default view.</div>' : ''}
           <div class="prod-card-isos">
+            ${newBadge}
             ${p.materials.map(m => '<span class="rtag ' + (isoColorMap[m] || 'rtag-def') + '">' + m + '</span>').join('')}
             ${p.geometry ? '<span class="rtag rtag-def">' + p.geometry + '</span>' : ''}
           </div>
@@ -10741,7 +10883,8 @@ function filterProducts() {
       <div class="prod-card-footer">
         <div class="prod-card-ops">${p.operations.map(o => '<span class="prod-op-tag">' + o + '</span>').join('')}</div>
         <button class="prod-cmp-btn ${isChecked ? 'on' : ''}" type="button" onclick="toggleProdSelect('${p.id}')">
-          <span class="cmp-chk-box">${isChecked ? '<svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-3.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</span>Compare
+          <input type="checkbox" ${isChecked ? 'checked' : ''} tabindex="-1" aria-label="Compare ${escapeHtmlAttr(primaryCode)}" onclick="event.preventDefault()" style="accent-color:var(--purple);pointer-events:none">
+          Compare
         </button>
         <button class="prod-detail-btn" type="button" onclick="openProductDetail('${p.id}','products',event)">View details</button>
         <a class="prod-buy-btn" href="${buyUrl}" target="_blank" rel="noopener">Buy <svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M5 2h3v3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -10773,7 +10916,7 @@ function updateCompareBar() {
       `<span class="compare-bar-pill">${p.brand} ${getProductPrimaryCode(p)}</span>`
     ).join('');
   }
-  const shouldShow = n >= 1;
+  const shouldShow = n >= 2;
   bar.classList.toggle('show', shouldShow);
   bar.style.pointerEvents = shouldShow ? 'auto' : 'none';
 }
