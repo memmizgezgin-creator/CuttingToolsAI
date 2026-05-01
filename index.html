@@ -2024,6 +2024,28 @@ body{
 .calc-card.calc-out{background:#18171A;color:#fff;border-color:#18171A;display:block}
 .calc-card.calc-out .calc-card-title{color:#fff}
 .calc-card.calc-out .calc-rec,.calc-card.calc-out .calc-fmls{background:#242329;border-color:#2a2930}
+.calc-save-btn{
+  display:inline-flex;align-items:center;gap:6px;margin-top:12px;
+  background:transparent;color:#E4E2EC;border:1px solid #3a3940;
+  padding:8px 14px;border-radius:5px;font-size:12px;font-weight:600;
+  cursor:pointer;font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  transition:background .15s,border-color .15s;
+}
+.calc-save-btn:hover{background:#242329;border-color:#4a4950}
+.calc-save-btn.saved{background:#1e4025;border-color:#2d5a37;color:#7dd497}
+.calc-save-btn svg{flex-shrink:0}
+/* Recent calculations — sidebar */
+.sb-calc-list{display:flex;flex-direction:column;gap:2px;padding:0 8px}
+.sb-calc-item{
+  display:flex;flex-direction:column;gap:2px;padding:7px 12px;
+  background:transparent;border:none;border-radius:5px;cursor:pointer;
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;text-align:left;width:100%;
+  color:#C7C3D0;transition:background .15s;
+}
+.sb-calc-item:hover{background:#242329;color:#fff}
+.sb-calc-op{font-size:9px;font-weight:800;color:#8A8898;text-transform:uppercase;letter-spacing:.6px}
+.sb-calc-meta{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:#C7C3D0;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-calc-empty{padding:6px 20px;font-size:11px;color:#6b6974;font-style:italic}
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .prod-card{
   background:var(--white);border:1px solid var(--line);border-left:4px solid var(--prod-iso-stripe,#1F2937);
@@ -2127,6 +2149,9 @@ body{
         AI Chat
       </button>
     </nav>
+
+    <div class="sb-section" id="sbCalcHistorySection" style="display:none">Recent calculations</div>
+    <div class="sb-calc-list" id="sbCalcHistoryList"></div>
 
     <div class="sb-footer">
       <div class="quota-box">
@@ -2495,6 +2520,10 @@ body{
         <div class="metric-block"><div class="metric-label">Material Removal Rate</div><div class="metric-value" id="rMRR">—<span class="metric-unit">cm³/min</span></div></div>
         <div class="calc-rec"><div class="calc-rec-label">⚡ Recommendation</div><div class="calc-rec-text" id="rRec">—</div></div>
         <div class="calc-fmls"><p id="rFmls">—</p></div>
+        <button class="calc-save-btn" id="calcSaveBtn" onclick="saveCalc()" type="button">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 1.5h6L11.5 4v8.5h-9V1.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5 1.5v3.5h4" stroke="currentColor" stroke-width="1.4"/></svg>
+          Save calculation
+        </button>
       </div>
     </div>
   </div>
@@ -9317,7 +9346,8 @@ async function loadAltStrip(productId, operation, material) {
   const strip = document.getElementById('alt-' + productId);
   if (!strip) return;
 
-  const alts = await findAlternatives(productId, operation, material);
+  // Cap at 2: same ISO material group, different brand, different product (handled by findAlternatives)
+  const alts = await findAlternatives(productId, operation, material, 2);
   if (!alts.length) { strip.remove(); return; }
 
   strip.innerHTML = `
@@ -9838,6 +9868,108 @@ function calcNow() {
   document.getElementById('rMRR').innerHTML = `${mrr}<span class="metric-unit">cm³/min</span>`;
   document.getElementById('rRec').textContent = rec;
   document.getElementById('rFmls').innerHTML = fmls.split('\n').join('<br>');
+  // Reset save-button state when inputs change → results regenerated
+  const saveBtn = document.getElementById('calcSaveBtn');
+  if (saveBtn && saveBtn.classList.contains('saved')) {
+    saveBtn.classList.remove('saved');
+    saveBtn.firstElementChild?.nextSibling /* preserve icon, just text */;
+  }
+}
+
+/* ============================================================
+   CALCULATION HISTORY (last 5, localStorage)
+============================================================ */
+const _CALC_HISTORY_KEY = 'ta_calc_history_v1';
+const _CALC_HISTORY_MAX = 5;
+
+function _readCalcHistory() {
+  try {
+    const raw = localStorage.getItem(_CALC_HISTORY_KEY);
+    const arr = raw ? JSON.parse(raw) : [];
+    return Array.isArray(arr) ? arr : [];
+  } catch(_) { return []; }
+}
+function _writeCalcHistory(arr) {
+  try { localStorage.setItem(_CALC_HISTORY_KEY, JSON.stringify(arr)); } catch(_) {}
+}
+
+function saveCalc() {
+  // Read current inputs + outputs from DOM
+  const op = document.getElementById('cOp').value;
+  const vc = parseFloat(document.getElementById('cVc').value) || 0;
+  const d  = parseFloat(document.getElementById('cD').value)  || 0;
+  const f  = parseFloat(document.getElementById('cF').value)  || 0;
+  const ap = parseFloat(document.getElementById('cAp').value) || 0;
+  const ae = parseFloat(document.getElementById('cAe').value) || 0;
+  const z  = parseInt(document.getElementById('cZ').value)    || 1;
+  const nText   = document.getElementById('rN').textContent.replace(/[^\d]/g, '');
+  const vfText  = document.getElementById('rVf').textContent.replace(/[^\d]/g, '');
+  const mrrText = document.getElementById('rMRR').textContent.replace(/[^\d.]/g, '');
+  if (!nText || nText === '—') { taTrack('calc_save_skip', { reason: 'no_result' }); return; }
+
+  const entry = {
+    id:  'cal-' + Date.now(),
+    ts:  new Date().toISOString(),
+    op, vc, d, f, ap, ae, z,
+    n:   parseInt(nText, 10) || 0,
+    vf:  parseInt(vfText, 10) || 0,
+    mrr: parseFloat(mrrText) || 0,
+  };
+
+  const list = _readCalcHistory();
+  list.unshift(entry);
+  if (list.length > _CALC_HISTORY_MAX) list.length = _CALC_HISTORY_MAX;
+  _writeCalcHistory(list);
+  renderCalcHistory();
+  taTrack('calc_save', { op: entry.op, vc: entry.vc, d: entry.d, n: entry.n });
+
+  // Visual feedback on button
+  const btn = document.getElementById('calcSaveBtn');
+  if (btn) {
+    btn.classList.add('saved');
+    btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Saved';
+    setTimeout(() => {
+      btn.classList.remove('saved');
+      btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 1.5h6L11.5 4v8.5h-9V1.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5 1.5v3.5h4" stroke="currentColor" stroke-width="1.4"/></svg> Save calculation';
+    }, 1800);
+  }
+}
+
+function renderCalcHistory() {
+  const section = document.getElementById('sbCalcHistorySection');
+  const list    = document.getElementById('sbCalcHistoryList');
+  if (!section || !list) return;
+  const history = _readCalcHistory();
+  if (!history.length) {
+    section.style.display = 'none';
+    list.innerHTML = '';
+    return;
+  }
+  section.style.display = '';
+  const opLabel = { turning: 'Turning', milling: 'Milling', drilling: 'Drilling' };
+  list.innerHTML = history.map(e => {
+    const safe = (s) => String(s == null ? '' : s).replace(/'/g, '&#39;');
+    const meta = `Vc ${e.vc} · D${e.d} · ${e.n.toLocaleString()} RPM`;
+    return `<button class="sb-calc-item" type="button" onclick="loadCalcEntry('${safe(e.id)}')">
+      <span class="sb-calc-op">${opLabel[e.op] || e.op}</span>
+      <span class="sb-calc-meta">${meta}</span>
+    </button>`;
+  }).join('');
+}
+
+function loadCalcEntry(id) {
+  const entry = _readCalcHistory().find(e => e.id === id);
+  if (!entry) return;
+  setTab('calc', findTabButton('calc'));
+  document.getElementById('cOp').value  = entry.op;
+  document.getElementById('cVc').value  = entry.vc;
+  document.getElementById('cD').value   = entry.d;
+  document.getElementById('cF').value   = entry.f;
+  document.getElementById('cAp').value  = entry.ap;
+  document.getElementById('cAe').value  = entry.ae;
+  document.getElementById('cZ').value   = entry.z;
+  calcNow();
+  taTrack('calc_history_load', { id });
 }
 
 /* ============================================================
@@ -10005,6 +10137,7 @@ function handleGlobalKeyboardShortcuts(e) {
   loadCR('CNMG120408');
   decodeISO('CNMG120408');
   calcNow();
+  renderCalcHistory();
   pickMatDB('P', document.querySelector('.mat-iso-card'));
   renderSup('all');
   document.getElementById('crInput').addEventListener('keydown', e => { if (e.key === 'Enter') loadCR(e.target.value); });
