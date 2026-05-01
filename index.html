@@ -414,13 +414,20 @@ body{
   background:var(--white);border:1.5px solid var(--border);
   border-radius:var(--r-lg);padding:12px 14px;margin-bottom:12px;
 }
+.aqs-input-wrap{position:relative}
 .aqs-input{
   width:100%;border:1.5px solid var(--border);border-radius:var(--r-sm);
-  padding:10px 12px;font-size:13px;font-family:'IBM Plex Mono',monospace;
+  padding:10px 128px 10px 12px;font-size:13px;font-family:'IBM Plex Mono',monospace;
   color:var(--ink);background:var(--bg);outline:none;transition:border-color .15s,background .15s;
 }
 .aqs-input:focus{border-color:var(--purple);background:var(--white)}
 .aqs-input::placeholder{color:var(--ink3);font-family:'IBM Plex Sans',sans-serif;font-size:12px}
+.aqs-shortcut-hint{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  font-family:'DM Mono',monospace;font-size:10px;font-weight:600;
+  color:var(--ink3);background:var(--white);border:1px solid var(--border);
+  border-radius:3px;padding:3px 7px;pointer-events:none;
+}
 .aqs-hint{
   margin-top:6px;font-size:11px;line-height:1.4;color:var(--ink3);
 }
@@ -1879,6 +1886,7 @@ body{
 }
 .crumb strong{color:var(--ink);font-weight:600}
 .crumb .sep{color:var(--line2)}
+.crumb .step{color:var(--ink2);font-weight:600}
 .crumb .pill{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-bd);padding:2px 8px;border-radius:3px;font-weight:500}
 .pageheader{background:var(--white);border-bottom:1px solid var(--line);padding:22px 28px 18px}
 .pagehead-top{display:flex;align-items:flex-end;gap:14px}
@@ -2046,6 +2054,8 @@ body{
   .pagehead-top{display:block}
   .pagehead-meta{margin-left:0;margin-top:10px}
   .mat-grid{grid-template-columns:repeat(3,1fr)}
+  .aqs-input{padding-right:12px}
+  .aqs-shortcut-hint{display:none}
   .result-card-top{grid-template-columns:28px 48px minmax(0,1fr)}
   .compare-bar{left:50%;max-width:calc(100vw - 24px)}
   .site-footer{margin-left:0}
@@ -2132,8 +2142,9 @@ body{
   </aside>
 
 <main class="main">
-  <div class="crumb">
-    <span>Selection Tools</span><span class="sep">›</span><strong>AI Advisor</strong>
+  <div class="crumb" id="topBreadcrumb">
+    <span id="crumbGroup">Selection Tools</span><span class="sep">›</span><strong id="crumbSurface">AI Advisor</strong>
+    <span class="sep" id="crumbStepSep">›</span><span class="step" id="crumbStep">Step 1 — Workpiece Material</span>
     <span class="pill">ENGINEERING CATALOG · RC5</span>
   </div>
 
@@ -2151,13 +2162,16 @@ body{
   <div id="panel-advisor" class="panel active">
     <div class="advisor-quick-search">
       <div class="sec-label" style="margin-bottom:7px">Quick Product Search</div>
-      <input
-        id="advisorQuickSearchInput"
-        class="aqs-input"
-        type="text"
-        placeholder="Search grade, brand, material, operation or ISO code — e.g. stainless steel turning, CNMG120408"
-        oninput="handleAdvisorQuickSearch(this.value)"
-      >
+      <div class="aqs-input-wrap">
+        <input
+          id="advisorQuickSearchInput"
+          class="aqs-input"
+          type="text"
+          placeholder="Search grade, brand, material, operation or ISO code — e.g. stainless steel turning, CNMG120408"
+          oninput="handleAdvisorQuickSearch(this.value)"
+        >
+        <span class="aqs-shortcut-hint">Press / to search</span>
+      </div>
       <div class="aqs-hint">Live search starts at 2 characters · max 8 results</div>
       <div class="aqs-results" id="advisorQuickSearchResults"></div>
     </div>
@@ -8828,8 +8842,28 @@ const CHAT_KB = [
    STATE
 ============================================================ */
 let selMat = null, selOp = null, selCond = null;
+let advisorCurrentStep = 1;
 let _productsFirstOpenHandled = false;
 const advisorResultCache = new Map();
+
+const ADVISOR_STEP_LABELS = {
+  1: 'Step 1 — Workpiece Material',
+  2: 'Step 2 — Operation',
+  3: 'Step 3 — Machining Conditions'
+};
+const TAB_BREADCRUMB = {
+  advisor: ['Selection Tools', 'AI Advisor'],
+  crossref: ['Selection Tools', 'Cross-Ref'],
+  iso: ['Selection Tools', 'ISO Decoder'],
+  calc: ['Selection Tools', 'Calculator'],
+  materials: ['Reference', 'Materials'],
+  suppliers: ['Reference', 'Suppliers'],
+  products: ['Reference', 'Products'],
+  resources: ['Reference', 'Resources'],
+  visualid: ['AI', 'Visual ID'],
+  aichat: ['AI', 'AI Chat'],
+  pricing: ['Account', 'Subscription Terms']
+};
 
 function _renderSkeletonCards(n) {
   let out = '';
@@ -8879,11 +8913,33 @@ function ensureProductsFirstLoadVisibility() {
 /* ============================================================
    TAB NAVIGATION
 ============================================================ */
+function getActiveTabId() {
+  const activePanel = document.querySelector('.panel.active');
+  return activePanel ? String(activePanel.id || '').replace(/^panel-/, '') : 'advisor';
+}
+
+function updateTopBreadcrumb(tabId = getActiveTabId()) {
+  const [group, surface] = TAB_BREADCRUMB[tabId] || ['ToolAdvisor', tabId || ''];
+  const groupEl = document.getElementById('crumbGroup');
+  const surfaceEl = document.getElementById('crumbSurface');
+  const stepEl = document.getElementById('crumbStep');
+  const stepSep = document.getElementById('crumbStepSep');
+  if (groupEl) groupEl.textContent = group;
+  if (surfaceEl) surfaceEl.textContent = surface;
+  const showStep = tabId === 'advisor';
+  if (stepEl) {
+    stepEl.textContent = ADVISOR_STEP_LABELS[advisorCurrentStep] || ADVISOR_STEP_LABELS[1];
+    stepEl.style.display = showStep ? '' : 'none';
+  }
+  if (stepSep) stepSep.style.display = showStep ? '' : 'none';
+}
+
 function setTab(id, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
   document.getElementById('panel-' + id).classList.add('active');
   if (btn) btn.classList.add('active');
+  updateTopBreadcrumb(id);
   // Hide compare bar when leaving products tab
   if (id !== 'products') {
     const bar = document.getElementById('compareBar');
@@ -8941,14 +8997,98 @@ function toggleFaq(el) {
 /* ============================================================
    ADVISOR — STEP SYSTEM
 ============================================================ */
+function setAdvisorCurrentStep(n) {
+  advisorCurrentStep = Math.max(1, Math.min(3, Number(n) || 1));
+  updateTopBreadcrumb('advisor');
+}
+
+function jumpToAdvisorStep(n) {
+  setTab('advisor', findTabButton('advisor'));
+  [1, 2, 3].forEach(step => {
+    const body = document.getElementById('stepBody' + step);
+    if (body) body.style.display = step === Number(n) ? 'block' : 'none';
+  });
+  setAdvisorCurrentStep(n);
+  const section = document.getElementById('stepSec' + n);
+  if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function clearAdvisorQuickSearch() {
+  const input = document.getElementById('advisorQuickSearchInput');
+  if (!input) return false;
+  if (!input.value && !document.getElementById('advisorQuickSearchResults')?.innerHTML) return false;
+  input.value = '';
+  handleAdvisorQuickSearch('');
+  return true;
+}
+
+function resetStepVisual(n, state = 'pending') {
+  const circ = document.getElementById('stepCircle' + n);
+  const valEl = document.getElementById('stepVal' + n);
+  if (circ) {
+    circ.className = state === 'active' ? 'step-circle active-c' : 'step-circle pending';
+    circ.textContent = n;
+  }
+  if (valEl) {
+    valEl.textContent = '';
+    valEl.style.display = 'none';
+  }
+}
+
+function clearAdvisorResultsOnly() {
+  const section = document.getElementById('resultsSection');
+  const list = document.getElementById('resultsList');
+  const alertEl = document.getElementById('advisorResultsAlert');
+  const emptyEl = document.getElementById('advisorResultsEmpty');
+  const feedbackWidget = document.getElementById('feedbackWidget');
+  const feedbackThanks = document.getElementById('feedbackThanks');
+  if (section) section.style.display = 'none';
+  if (list) list.innerHTML = '';
+  if (alertEl) { alertEl.style.display = 'none'; alertEl.textContent = ''; }
+  if (emptyEl) { emptyEl.style.display = 'none'; emptyEl.textContent = ''; }
+  if (feedbackWidget) feedbackWidget.style.display = 'none';
+  if (feedbackThanks) feedbackThanks.style.display = 'none';
+  ADVISOR_RESULTS_UI.entries = [];
+  ADVISOR_RESULTS_UI.context = { material: null, operation: null, condition: null };
+}
+
+function resetAdvisorCurrentStep() {
+  if (advisorCurrentStep === 3 || selCond) {
+    selCond = null;
+    document.querySelectorAll('.cond-card').forEach(c => c.classList.remove('sel'));
+    resetStepVisual(3, 'active');
+    document.getElementById('stepBody3').style.display = 'block';
+    clearAdvisorResultsOnly();
+    checkFindButton();
+    setAdvisorCurrentStep(3);
+    return;
+  }
+  if (advisorCurrentStep === 2 || selOp) {
+    selOp = null;
+    selCond = null;
+    document.querySelectorAll('.op-card,.cond-card').forEach(c => c.classList.remove('sel'));
+    resetStepVisual(2, 'active');
+    resetStepVisual(3, 'pending');
+    document.getElementById('stepBody2').style.display = 'block';
+    document.getElementById('stepBody3').style.display = 'none';
+    clearAdvisorResultsOnly();
+    checkFindButton();
+    setAdvisorCurrentStep(2);
+    return;
+  }
+  resetAdvisor();
+}
+
 function toggleStep(n) {
   const body = document.getElementById('stepBody' + n);
   if (!body) return;
   const isHidden = body.style.display === 'none';
   body.style.display = isHidden ? 'block' : 'none';
+  if (isHidden) setAdvisorCurrentStep(n);
 }
 
 function selectMat(mat, el) {
+  setAdvisorCurrentStep(1);
   selMat = mat;
   document.querySelectorAll('.mat-card').forEach(c => {
     c.classList.remove('sel');
@@ -8967,6 +9107,7 @@ function selectMat(mat, el) {
 }
 
 function selectOp(op, el) {
+  setAdvisorCurrentStep(2);
   selOp = op;
   document.querySelectorAll('.op-card').forEach(c => c.classList.remove('sel'));
   el.classList.add('sel');
@@ -8977,6 +9118,7 @@ function selectOp(op, el) {
 }
 
 function selectCond(cond, el) {
+  setAdvisorCurrentStep(3);
   selCond = cond;
   document.querySelectorAll('.cond-card').forEach(c => c.classList.remove('sel'));
   el.classList.add('sel');
@@ -8991,6 +9133,7 @@ function setStepDone(n, val) {
   const valEl = document.getElementById('stepVal' + n);
   valEl.textContent = val;
   valEl.style.display = 'inline-block';
+  setAdvisorCurrentStep(n);
 }
 
 function setStepActive(n) {
@@ -8999,6 +9142,7 @@ function setStepActive(n) {
     circ.className = 'step-circle active-c';
     circ.textContent = n;
   }
+  setAdvisorCurrentStep(n);
 }
 
 function checkFindButton() {
@@ -9536,6 +9680,7 @@ function showResults() {
 
 function resetAdvisor() {
   selMat = null; selOp = null; selCond = null;
+  setAdvisorCurrentStep(1);
   // Reset circles
   [1,2,3].forEach(n => {
     const circ = document.getElementById('stepCircle' + n);
@@ -9808,6 +9953,53 @@ function resetInteractionLayers() {
   syncBodyOverflowLock();
 }
 
+function isEditableShortcutTarget(target) {
+  if (!target) return false;
+  const tag = String(target.tagName || '').toLowerCase();
+  return target.isContentEditable || ['input', 'textarea', 'select'].includes(tag);
+}
+
+function focusAdvisorQuickSearch() {
+  setTab('advisor', findTabButton('advisor'));
+  setTimeout(() => {
+    const input = document.getElementById('advisorQuickSearchInput');
+    if (!input) return;
+    input.focus();
+    if (typeof input.select === 'function') input.select();
+  }, 20);
+}
+
+function handleGlobalKeyboardShortcuts(e) {
+  const targetIsEditable = isEditableShortcutTarget(e.target);
+  if (e.key === '/' && !targetIsEditable) {
+    e.preventDefault();
+    focusAdvisorQuickSearch();
+    return;
+  }
+  if (['1', '2', '3'].includes(e.key) && !targetIsEditable && !e.metaKey && !e.ctrlKey && !e.altKey) {
+    e.preventDefault();
+    jumpToAdvisorStep(Number(e.key));
+    return;
+  }
+  if (e.key === 'Escape') {
+    const detailOpen = document.getElementById('productDetailOverlay')?.classList.contains('open');
+    const compareOpen = document.getElementById('compareModal')?.classList.contains('open');
+    if (detailOpen || compareOpen) {
+      closeProductDetail();
+      closeCompareModal();
+      return;
+    }
+    if (getActiveTabId() === 'advisor') {
+      if (clearAdvisorQuickSearch()) {
+        e.preventDefault();
+        return;
+      }
+      e.preventDefault();
+      resetAdvisorCurrentStep();
+    }
+  }
+}
+
 (function init() {
   resetInteractionLayers();
   loadCR('CNMG120408');
@@ -9820,11 +10012,7 @@ function resetInteractionLayers() {
   document.getElementById('productDetailOverlay').addEventListener('click', function(e) {
     if (e.target === this) closeProductDetail();
   });
-  document.addEventListener('keydown', function(e) {
-    if (e.key !== 'Escape') return;
-    closeProductDetail();
-    closeCompareModal();
-  });
+  document.addEventListener('keydown', handleGlobalKeyboardShortcuts);
   window.addEventListener('pageshow', resetInteractionLayers);
 })();
 
