@@ -1618,15 +1618,52 @@ body{
 
 /* TOAST */
 .toast-el{
-  position:fixed;bottom:22px;left:50%;
-  transform:translateX(-50%) translateY(70px);
-  background:var(--ink);color:#fff;
-  border-radius:var(--r-sm);padding:10px 20px;
-  font-size:13px;font-weight:600;
-  opacity:0;transition:all .3s;z-index:99999;
-  pointer-events:none;white-space:nowrap;
+  position:fixed;top:18px;right:18px;z-index:99999;
+  display:flex;flex-direction:column;gap:8px;pointer-events:none;
 }
-.toast-el.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast-item{
+  min-width:220px;max-width:340px;background:var(--ink);color:#fff;
+  border-radius:var(--r-sm);padding:10px 12px;
+  font-size:12px;font-weight:700;line-height:1.35;
+  box-shadow:var(--shadow-lg);opacity:0;transform:translateX(18px);
+  transition:opacity .2s ease,transform .2s ease;border-left:3px solid var(--purple);
+}
+.toast-item.show{opacity:1;transform:translateX(0)}
+.toast-item.success{border-left-color:var(--green)}
+.toast-item.error{border-left-color:var(--orange)}
+.toast-item.info{border-left-color:var(--purple)}
+.ta-spinner{
+  display:inline-block;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;
+  vertical-align:-2px;animation:taSpin .8s linear infinite;
+}
+.ta-spinner.sm{width:16px;height:16px}.ta-spinner.md{width:24px;height:24px}.ta-spinner.lg{width:48px;height:48px;border-width:3px}
+@keyframes taSpin{to{transform:rotate(360deg)}}
+.form-error{display:none;margin-top:4px;color:var(--orange);font-size:11px;font-weight:800}
+.form-error.show{display:block}
+.empty-illustration{
+  display:grid;place-items:center;gap:8px;text-align:center;color:var(--ink3);
+  padding:18px 14px;border:1.5px dashed var(--border2);border-radius:var(--r);background:var(--bg);
+}
+.empty-illustration svg{width:38px;height:38px;color:var(--ink3)}
+.empty-illustration strong{color:var(--ink);font-size:13px}
+.aqs-history{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.aqs-history-chip{border:1px solid var(--border);background:var(--bg);border-radius:999px;padding:4px 8px;font-size:10px;font-family:'IBM Plex Mono',monospace;color:var(--ink2);cursor:pointer}
+.aqs-history-chip:hover{border-color:var(--purple);color:var(--purple)}
+.iso-legend,.calc-ref-card,.resource-mini-section,.coating-grid,.common-alloys{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;margin:12px 0;
+}
+.iso-legend{display:flex;gap:7px;flex-wrap:wrap;font-size:11px;color:var(--ink2)}
+.iso-legend span{border:1px solid var(--border);background:var(--bg);border-radius:999px;padding:4px 8px}
+.coating-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.coating-chip{border:1px solid var(--border);border-radius:6px;padding:8px;background:var(--bg);font-size:12px;color:var(--ink2)}
+.coating-swatch{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;border:1px solid rgba(0,0,0,.18)}
+.common-alloys{font-size:12px;color:var(--ink2);line-height:1.55}
+.tab-last-updated{margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);border-top:1px solid var(--border);padding-top:10px}
+.feedback-float{position:fixed;right:18px;bottom:76px;z-index:160}
+.feedback-btn{border:1px solid var(--border);background:var(--white);color:var(--ink);border-radius:999px;padding:9px 12px;font-size:12px;font-weight:800;box-shadow:var(--shadow-md);cursor:pointer}
+.feedback-panel{display:none;position:absolute;right:0;bottom:44px;width:280px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px;box-shadow:var(--shadow-lg)}
+.feedback-panel.open{display:block}
+.feedback-panel textarea{min-height:80px;resize:vertical}
 
 /* HELPERS */
 .sec-label{font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--ink3);margin-bottom:9px}
@@ -2362,9 +2399,11 @@ body{
           type="text"
           placeholder="Search grade, brand, material, operation or ISO code — e.g. stainless steel turning, CNMG120408"
           oninput="handleAdvisorQuickSearch(this.value)"
+          onfocus="renderAdvisorQuickSearchHistory()"
         >
         <span class="aqs-shortcut-hint">Press / to search</span>
       </div>
+      <div class="aqs-history" id="advisorQuickSearchHistory"></div>
       <div class="aqs-hint">Live search starts at 2 characters · max 8 results</div>
       <div class="aqs-results" id="advisorQuickSearchResults"></div>
     </div>
@@ -2633,6 +2672,9 @@ body{
       <h1 style="font-size:28px">Cross-Reference</h1>
       <p style="font-size:14px">Find equivalent cutting tool codes across major brands — with direct buy links</p>
     </div>
+    <div class="iso-legend" aria-label="ISO material group legend">
+      <span><strong>P</strong>=Steel</span><span><strong>M</strong>=Stainless</span><span><strong>K</strong>=Cast Iron</span><span><strong>N</strong>=Non-Ferrous</span><span><strong>S</strong>=Superalloy</span><span><strong>H</strong>=Hardened</span>
+    </div>
     <div class="cr-wrap">
       <div class="cr-search-row">
         <input class="cr-input" type="text" id="crInput" placeholder="Enter insert code e.g. CNMG120408" value="CNMG120408">
@@ -2709,9 +2751,10 @@ body{
         <div class="calc-card-title">Input Parameters</div>
         <div class="form-row"><label class="form-label">Operation</label><select class="form-select" id="cOp" onchange="calcNow()"><option value="turning">Turning</option><option value="milling">Milling</option><option value="drilling">Drilling</option></select></div>
         <div class="form-row"><label class="form-label">Material preset</label><select class="form-select" id="cMaterialPreset" onchange="applyMaterialPreset(this.value)"><option value="">Manual values</option><option value="steel-p20">Steel P20</option><option value="stainless-316l">Stainless 316L</option><option value="inconel-718">Inconel 718</option><option value="aluminium-6082">Aluminium 6082</option><option value="hardened-55hrc">Hardened steel 55 HRC</option></select></div>
-        <div class="form-row"><label class="form-label">Cutting Speed Vc (m/min)</label><input class="form-input" type="number" id="cVc" value="280" oninput="calcNow()"></div>
+        <div class="form-row"><label class="form-label">Unit system</label><select class="form-select" id="cUnitSystem" onchange="calcNow()"><option value="metric">Metric (mm, m/min)</option><option value="imperial">Imperial input (inch, ft/min)</option></select></div>
+        <div class="form-row"><label class="form-label">Cutting Speed Vc (m/min or ft/min)</label><input class="form-input" type="number" id="cVc" value="280" oninput="calcNow()"><div class="form-error" id="cVcError">Vc must be zero or positive.</div></div>
         <div class="form-row"><label class="form-label">Tool Diameter D (mm)</label><input class="form-input" type="number" id="cD" value="80" oninput="calcNow()"></div>
-        <div class="form-row"><label class="form-label">Feed per Rev / Tooth fz (mm)</label><input class="form-input" type="number" id="cF" value="0.25" step="0.01" oninput="calcNow()"></div>
+        <div class="form-row"><label class="form-label">Feed per Rev / Tooth fz (mm or inch)</label><input class="form-input" type="number" id="cF" value="0.25" step="0.01" oninput="calcNow()"><div class="form-error" id="cFError">Feed must be greater than zero.</div></div>
         <div class="form-row"><label class="form-label">Depth of Cut ap (mm)</label><input class="form-input" type="number" id="cAp" value="2" step="0.1" oninput="calcNow()"></div>
         <div class="form-row"><label class="form-label">Width of Cut ae (mm)</label><input class="form-input" type="number" id="cAe" value="40" oninput="calcNow()"></div>
         <div class="form-row"><label class="form-label">Number of Teeth z</label><input class="form-input" type="number" id="cZ" value="4" min="1" oninput="calcNow()"></div>
@@ -2757,6 +2800,10 @@ body{
           Print this page
         </button>
       </div>
+      <div class="calc-ref-card">
+        <div class="calc-card-title">Vc/fn quick reference</div>
+        <div class="calc-rec-text">P: 180–400 m/min · M: 80–220 · K: 150–400 · N: 300–1500 · S: 20–70 · H: 60–220. Use lower end for unstable setups.</div>
+      </div>
     </div>
   </div>
 
@@ -2774,6 +2821,7 @@ body{
       <div class="mat-iso-card" title="S — Superalloys / titanium · 200–380 HB · typical Vc 20–70 m/min" style="background:var(--s-bg)" onclick="pickMatDB('S',this)"><h4 style="color:var(--s-c)">S</h4><p style="color:var(--s-c)">Superalloys / Ti</p><div class="sub-c" style="color:var(--s-c)">3 sub-groups · 200–380 HB · Difficulty ★★★★★</div></div>
       <div class="mat-iso-card" title="H — Hardened steel · 45–68 HRC · typical Vc 60–220 m/min" style="background:var(--h-bg)" onclick="pickMatDB('H',this)"><h4 style="color:var(--h-c)">H</h4><p style="color:var(--h-c)">Hardened Steel</p><div class="sub-c" style="color:var(--h-c)">3 sub-groups · 45–68 HRC · Difficulty ★★★★☆</div></div>
     </div>
+    <div class="common-alloys" id="commonAlloysBox"><strong>Common alloys:</strong> 1045, 4140, 4340</div>
     <div class="mat-sg-panel">
       <div class="mat-sg-title" id="matSgTitle">ISO P — Steels</div>
       <div class="mat-sg-grid" id="matSgGrid"></div>
@@ -2831,9 +2879,16 @@ body{
         <span class="chat-head-sub">AI-powered</span>
       </div>
       <div class="chat-messages" id="chatMessages">
+        <div class="chat-bubble ai">AI Chat is in beta. Ask questions about cutting tools, ISO codes, materials, or grade selection.</div>
         <div class="chat-bubble ai">Use AI Chat for cutting tool Q&A: insert selection, cutting data setup, troubleshooting and material-driven trade-offs.</div>
         <div class="chat-bubble user">Best insert for Inconel 718?</div>
         <div class="chat-bubble ai"><strong>Inconel 718 (ISO S):</strong><br><br>• <strong>Sandvik GC2220</strong> — PVD TiAlN, best for turning S05–S20<br>• <strong>ISCAR IC806</strong> — SUMO TEC®, great for interrupted cuts<br><br>Vc = 25–45 m/min · High-pressure coolant mandatory · Consistent DOC to avoid work hardening.</div>
+      </div>
+      <div class="resource-mini-section" style="margin:0;border-left:0;border-right:0;border-radius:0">
+        <div class="sec-label">Sample questions</div>
+        <button class="aqs-history-chip" type="button" onclick="document.getElementById('chatInputField').value=this.textContent">What's the difference between PVD and CVD coating?</button>
+        <button class="aqs-history-chip" type="button" onclick="document.getElementById('chatInputField').value=this.textContent">Best grade for Inconel 718?</button>
+        <button class="aqs-history-chip" type="button" onclick="document.getElementById('chatInputField').value=this.textContent">How to read CNMG120408?</button>
       </div>
       <div class="chat-footer">
         <input class="chat-input-field" id="chatInputField" placeholder="Ask about tools, materials, cutting data…" onkeydown="if(event.key==='Enter')sendChatMsg()">
@@ -2868,6 +2923,23 @@ body{
       <div class="res-card"><div class="res-card-body"><div class="res-card-title">TiAlN / TiCN / Al2O3</div><div class="res-card-desc">Common coating layers for heat resistance, toughness, wear resistance and crater protection.</div></div></div>
       <div class="res-card"><div class="res-card-body"><div class="res-card-title">Vc / fn / ap</div><div class="res-card-desc">Cutting speed, feed per revolution/tooth, and depth of cut.</div></div></div>
       <div class="res-card"><div class="res-card-body"><div class="res-card-title">MRR / kc1</div><div class="res-card-desc">Material removal rate and specific cutting force used for power estimation.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Nose radius</div><div class="res-card-desc">Corner radius controlling edge strength, finish potential and profile accuracy.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Rake / clearance angle</div><div class="res-card-desc">Rake changes cutting force; clearance prevents rubbing behind the edge.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Edge prep / hone / T-land</div><div class="res-card-desc">Micro-edge preparation that trades sharpness for edge strength and reliability.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Wiper geometry</div><div class="res-card-desc">Modified corner geometry that improves finish at higher feed rates when setup is stable.</div></div></div>
+    </div>
+    <div class="res-cat-title"><span>Coating types</span></div>
+    <div class="coating-grid">
+      <div class="coating-chip"><span class="coating-swatch" style="background:#D9B441"></span><strong>TiN</strong> — yellow general-purpose coating.</div>
+      <div class="coating-chip"><span class="coating-swatch" style="background:#667B8C"></span><strong>TiCN</strong> — gray-blue wear resistance.</div>
+      <div class="coating-chip"><span class="coating-swatch" style="background:#6D28D9"></span><strong>TiAlN</strong> — purple-violet heat resistance.</div>
+      <div class="coating-chip"><span class="coating-swatch" style="background:#32343A"></span><strong>AlTiN</strong> — anthracite high-temp coating.</div>
+      <div class="coating-chip"><span class="coating-swatch" style="background:#111"></span><strong>Al2O3</strong> — black alumina wear layer.</div>
+      <div class="coating-chip"><span class="coating-swatch" style="background:#050505"></span><strong>DLC</strong> — matte black low-friction layer.</div>
+    </div>
+    <div class="faq-section">
+      <div class="faq-title">Cutting tool FAQ</div>
+      <div id="resourceFaqList"></div>
     </div>
     <div class="res-cat-title"><span>What's new</span></div>
     <div class="res-grid">
@@ -3200,6 +3272,7 @@ body{
           <option value="vcHigh">Vc range (High first)</option>
         </select>
       </div>
+      <button class="advisor-action-btn" type="button" onclick="clearProductFilters()">Clear all filters</button>
     </div>
     <div class="prod-grid" id="prodGrid"></div>
     <!-- compareSection removed — comparison now opens in #compareModal modal -->
@@ -3287,6 +3360,15 @@ body{
 </div>
 
 <div class="toast-el" id="toastEl"></div>
+<div class="feedback-float">
+  <button class="feedback-btn" type="button" onclick="toggleFeedbackPanel()">Send feedback</button>
+  <div class="feedback-panel" id="feedbackPanel">
+    <div class="sec-label">Send feedback</div>
+    <input class="form-input" id="feedbackEmail" type="email" placeholder="Your email">
+    <textarea class="form-input" id="feedbackText" placeholder="What should we improve?"></textarea>
+    <button class="advisor-action-btn primary" type="button" onclick="sendFeedbackMail()">Send via email</button>
+  </div>
+</div>
 
 <script>
 /* ============================================================
@@ -3295,10 +3377,25 @@ body{
    While enabled:false everything works offline (demo mode).
 ============================================================ */
 const CONFIG = {
+  version: 'RC5',
+  lastUpdated: '2026-05-01',
+  lastCommit: 'auto',
   supabase: { url: 'https://qhpkfidfcqmmyijbxqyt.supabase.co', key: 'sb_publishable_ZEUNxpXaR7ywGCoZsc6jhQ_x6n1nN4-', enabled: true },
   stripe:   { publishableKey: 'STRIPE_KEY', enabled: false },
   claude:   { apiKey: 'CLAUDE_KEY', model: 'claude-sonnet-4-20250514', enabled: false }
 };
+
+window.addEventListener('error', event => {
+  console.error('[ToolAdvisor uncaught]', new Date().toISOString(), event.message, event.error || event.filename);
+});
+window.addEventListener('unhandledrejection', event => {
+  console.error('[ToolAdvisor unhandled rejection]', new Date().toISOString(), event.reason);
+});
+
+function renderSpinner(size = 'md') {
+  const safeSize = ['sm', 'md', 'lg'].includes(size) ? size : 'md';
+  return `<span class="ta-spinner ${safeSize}" aria-hidden="true"></span>`;
+}
 
 // Lazy Supabase client — created only when enabled
 let _supaClient = null;
@@ -9408,6 +9505,28 @@ function toggleFaq(el) {
   if (!isOpen) { el.classList.add('open'); ans.classList.add('open'); }
 }
 
+function renderResourceFaq() {
+  const el = document.getElementById('resourceFaqList');
+  if (!el) return;
+  const rows = [
+    ['How do I choose between CVD and PVD?', 'Use CVD for stable steel/cast iron wear resistance; use PVD for sharper edges, stainless, titanium and lower cutting force.'],
+    ['What does ISO P/M/K/N/S/H mean?', 'They are workpiece material groups: steel, stainless, cast iron, non-ferrous, superalloy/titanium and hardened steel.'],
+    ['How do I cross-reference CNMG120408?', 'Search the full code in Cross-Ref, then compare grade, coating, material group and application window.'],
+    ['What is a chipbreaker?', 'A chipbreaker is the edge/top-form that controls chip curl, cutting force and stability.'],
+    ['What is nose radius?', 'Corner radius affects surface finish, edge strength and minimum stable depth of cut.'],
+    ['When should I use a wiper insert?', 'Use wipers for better finish at higher feeds on stable machines and rigid setups.'],
+    ['Why is confidence low?', 'Low confidence means the current record has weaker mapping, sparse comparable data or limited context coverage.'],
+    ['What grade for stainless steel turning?', 'Start with ISO M-focused PVD or stainless-specific grades, then validate chip control and coolant.'],
+    ['What grade for Inconel 718?', 'Use ISO S-capable sharp PVD grades, low cutting speed and high-pressure coolant.'],
+    ['Can I trust automatic equivalents?', 'Treat exact/functional/value alternatives as decision support, not guaranteed replacement without setup validation.']
+  ];
+  el.innerHTML = rows.map(([q, a]) => `
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">${escapeHtmlAttr(q)}<svg viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="faq-a">${escapeHtmlAttr(a)}</div>
+    </div>`).join('');
+}
+
 /* ============================================================
    ADVISOR — STEP SYSTEM
 ============================================================ */
@@ -9672,6 +9791,33 @@ function quickSearchScore(product, tokens) {
   return score;
 }
 
+const _AQS_HISTORY_KEY = 'ta_advisor_quick_search_history_v1';
+function readAdvisorQuickSearchHistory() {
+  try { return JSON.parse(localStorage.getItem(_AQS_HISTORY_KEY) || '[]').filter(Boolean).slice(0, 10); } catch (_) { return []; }
+}
+function pushAdvisorQuickSearchHistory(query) {
+  const clean = String(query || '').trim();
+  if (clean.length < 2) return;
+  const next = [clean, ...readAdvisorQuickSearchHistory().filter(item => item.toLowerCase() !== clean.toLowerCase())].slice(0, 10);
+  try { localStorage.setItem(_AQS_HISTORY_KEY, JSON.stringify(next)); } catch (_) {}
+}
+function renderAdvisorQuickSearchHistory() {
+  const box = document.getElementById('advisorQuickSearchHistory');
+  const input = document.getElementById('advisorQuickSearchInput');
+  if (!box || !input) return;
+  const items = readAdvisorQuickSearchHistory();
+  if (String(input.value || '').trim().length >= 2 || !items.length) {
+    box.innerHTML = '';
+    return;
+  }
+  box.innerHTML = items.map(item => `<button class="aqs-history-chip" type="button" onclick="applyAdvisorQuickSearchHistory(decodeURIComponent('${encodeURIComponent(item)}'))">${escapeHtmlAttr(item)}</button>`).join('');
+}
+function applyAdvisorQuickSearchHistory(value) {
+  const input = document.getElementById('advisorQuickSearchInput');
+  if (input) input.value = value;
+  handleAdvisorQuickSearch(value);
+}
+
 function renderAdvisorQuickSearchResults(query) {
   const target = document.getElementById('advisorQuickSearchResults');
   if (!target) return;
@@ -9713,6 +9859,8 @@ function renderAdvisorQuickSearchResults(query) {
 }
 
 function handleAdvisorQuickSearch(value) {
+  if (String(value || '').trim().length >= 2) pushAdvisorQuickSearchHistory(value);
+  renderAdvisorQuickSearchHistory();
   renderAdvisorQuickSearchResults(value);
 }
 
@@ -10133,13 +10281,9 @@ function renderAdvisorResultsView(scrollInto = false) {
     listEl.innerHTML = '';
     emptyEl.style.display = 'block';
     if (total === 0) {
-      emptyEl.innerHTML = `
-        <strong>No recommendation found for this exact context yet.</strong><br>
-        Keep the operation and material, then try a nearby condition to widen candidate coverage.`;
+      emptyEl.innerHTML = renderEmptyState('No recommendation found for this exact context yet', 'Keep the operation and material, then try a nearby condition to widen candidate coverage.');
     } else {
-      emptyEl.innerHTML = `
-        <strong>No recommendations match the current result filters.</strong><br>
-        Try lowering confidence filter or turning off high-fit focus to widen the decision set.`;
+      emptyEl.innerHTML = renderEmptyState('No recommendations match the current result filters', 'Try lowering confidence filter or turning off high-fit focus to widen the decision set.');
     }
     return;
   }
@@ -10370,6 +10514,35 @@ function getBrandPriceTier(brand) {
   return 'Standard';
 }
 
+function renderEmptyState(title, message) {
+  return `<div class="empty-illustration">
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M10 14h28M10 24h18M10 34h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="36" cy="26" r="6" stroke="currentColor" stroke-width="2"/><path d="M40.5 30.5L45 35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <strong>${escapeHtmlAttr(title)}</strong>
+    <span>${escapeHtmlAttr(message)}</span>
+  </div>`;
+}
+function levenshteinDistance(a, b) {
+  a = String(a || ''); b = String(b || '');
+  const dp = Array.from({ length: a.length + 1 }, () => Array(b.length + 1).fill(0));
+  for (let i = 0; i <= a.length; i++) dp[i][0] = i;
+  for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+  }
+  return dp[a.length][b.length];
+}
+function suggestInsertCode(code) {
+  const clean = String(code || '').toUpperCase().replace(/\s/g, '');
+  if (!clean) return '';
+  const candidates = [...new Set([...Object.keys(CROSSREF_DB || {}), ...Object.keys(ISO_DB || {})])];
+  return candidates
+    .map(item => ({ item, dist: levenshteinDistance(clean, item) }))
+    .filter(x => x.dist > 0 && x.dist <= Math.max(2, Math.floor(clean.length * 0.25)))
+    .sort((a, b) => a.dist - b.dist || a.item.localeCompare(b.item))[0]?.item || '';
+}
+
 function loadCR(code, options = {}) {
   code = String(code || '').toUpperCase().replace(/\s/g, '');
   document.getElementById('crInput').value = code;
@@ -10399,10 +10572,10 @@ function loadCR(code, options = {}) {
         </div>`;
     } else {
       // Genuinely unknown code
+      const suggestion = suggestInsertCode(code);
       noMatchMsg = `
-        <div style="padding:20px 16px;text-align:center;color:var(--ink3)">
-          No match for <strong style="color:var(--ink)">${code}</strong> — try: CNMG120408, THR-FULL-60-M, GRV-NEUTRAL-2MM, DRL-SOLID-PM-3XD
-        </div>`;
+        ${renderEmptyState('No cross-reference match yet', `No match for ${code}. Try CNMG120408, THR-FULL-60-M, GRV-NEUTRAL-2MM or DRL-SOLID-PM-3XD.`)}
+        ${suggestion ? `<div style="padding:10px 16px;text-align:center;font-size:12px;color:var(--ink2)">Did you mean <button class="cr-hist-chip" type="button" onclick="loadCR('${suggestion}')">${suggestion}</button>?</div>` : ''}`;
     }
     document.getElementById('crRows').innerHTML = noMatchMsg;
     return;
@@ -10551,11 +10724,26 @@ function findDecodedInsert() {
 ============================================================ */
 function calcNow() {
   const op = document.getElementById('cOp').value;
-  const vc = parseFloat(document.getElementById('cVc').value) || 0;
-  const d  = parseFloat(document.getElementById('cD').value)  || 1;
-  const f  = parseFloat(document.getElementById('cF').value)  || 0;
-  const ap = parseFloat(document.getElementById('cAp').value) || 0;
-  const ae = parseFloat(document.getElementById('cAe').value) || 0;
+  const unit = document.getElementById('cUnitSystem')?.value || 'metric';
+  const rawVc = parseFloat(document.getElementById('cVc').value);
+  const rawF  = parseFloat(document.getElementById('cF').value);
+  const vcError = document.getElementById('cVcError');
+  const fError = document.getElementById('cFError');
+  const invalidVc = Number.isFinite(rawVc) && rawVc < 0;
+  const invalidF = !Number.isFinite(rawF) || rawF <= 0;
+  vcError?.classList.toggle('show', invalidVc);
+  fError?.classList.toggle('show', invalidF);
+  if (invalidVc || invalidF) {
+    ['rN','rVf','rMRR'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = '—'; });
+    document.getElementById('rRec').textContent = 'Correct the red input validation messages before calculating.';
+    document.getElementById('rFmls').textContent = 'Vc must be non-negative and feed must be greater than zero.';
+    return;
+  }
+  const vc = (Number.isFinite(rawVc) ? rawVc : 0) * (unit === 'imperial' ? 0.3048 : 1);
+  const d  = (parseFloat(document.getElementById('cD').value)  || 1) * (unit === 'imperial' ? 25.4 : 1);
+  const f  = (Number.isFinite(rawF) ? rawF : 0) * (unit === 'imperial' ? 25.4 : 1);
+  const ap = (parseFloat(document.getElementById('cAp').value) || 0) * (unit === 'imperial' ? 25.4 : 1);
+  const ae = (parseFloat(document.getElementById('cAe').value) || 0) * (unit === 'imperial' ? 25.4 : 1);
   const z  = parseInt(document.getElementById('cZ').value)    || 1;
   const n  = Math.round((vc * 1000) / (Math.PI * d));
   let vf, mrr, fmls, rec;
@@ -10750,6 +10938,16 @@ function pickMatDB(key, el) {
     `<div class="mat-sg-item"><div class="mat-sg-name">${n}</div><div class="mat-sg-hw">${h}</div></div>`
   ).join('');
   document.getElementById('matTipText').textContent = d.tip;
+  const alloys = {
+    P: '1045, 4140, 4340',
+    M: '304, 316, 410',
+    K: 'GG25, GGG40',
+    N: '6061, 7075, 2024',
+    S: 'Inconel 718, Ti-6Al-4V',
+    H: 'D2, H13, hardened bearing steel'
+  };
+  const alloyBox = document.getElementById('commonAlloysBox');
+  if (alloyBox) alloyBox.innerHTML = `<strong>Common alloys:</strong> ${alloys[key] || '—'}`;
 }
 
 /* ============================================================
@@ -10838,10 +11036,18 @@ function closeUpgradeModal() { /* no-op: paywall removed */ }
 /* ============================================================
    TOAST
 ============================================================ */
-function toast(msg) {
+function toast(msg, type = 'info') {
   const el = document.getElementById('toastEl');
-  el.textContent = msg; el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 3200);
+  if (!el) return;
+  const item = document.createElement('div');
+  item.className = `toast-item ${['success','error','info'].includes(type) ? type : 'info'}`;
+  item.textContent = msg;
+  el.appendChild(item);
+  requestAnimationFrame(() => item.classList.add('show'));
+  setTimeout(() => {
+    item.classList.remove('show');
+    setTimeout(() => item.remove(), 240);
+  }, 3000);
 }
 
 /* ============================================================
@@ -10951,6 +11157,30 @@ function setCookieConsent(value) {
   renderCookieConsent();
 }
 
+function toggleFeedbackPanel() {
+  document.getElementById('feedbackPanel')?.classList.toggle('open');
+}
+
+function sendFeedbackMail() {
+  const email = document.getElementById('feedbackEmail')?.value || '';
+  const text = document.getElementById('feedbackText')?.value || '';
+  const subject = encodeURIComponent('ToolAdvisor feedback');
+  const body = encodeURIComponent(`From: ${email}\n\n${text}`);
+  window.location.href = `mailto:support@tooladvisor.eu?subject=${subject}&body=${body}`;
+  document.getElementById('feedbackPanel')?.classList.remove('open');
+  toast('Opening email client for feedback.', 'success');
+}
+
+function renderTabLastUpdated() {
+  document.querySelectorAll('.panel').forEach(panel => {
+    if (panel.querySelector('.tab-last-updated')) return;
+    const stamp = document.createElement('div');
+    stamp.className = 'tab-last-updated';
+    stamp.textContent = `Last updated: ${CONFIG.lastUpdated}`;
+    panel.appendChild(stamp);
+  });
+}
+
 function getSessionCounter(key) {
   try { return Number(sessionStorage.getItem(key) || 0) || 0; } catch (_) { return 0; }
 }
@@ -10980,8 +11210,11 @@ function renderSessionSummary() {
   renderCrossRefHistory();
   renderRecentlyViewedProducts();
   renderSavedSearches();
+  renderResourceFaq();
   renderCookieConsent();
   renderSessionSummary();
+  renderTabLastUpdated();
+  renderAdvisorQuickSearchHistory();
   pickMatDB('P', document.querySelector('.mat-iso-card'));
   renderSup('all');
   document.getElementById('crInput').addEventListener('keydown', e => { if (e.key === 'Enter') loadCR(e.target.value); });
@@ -11021,11 +11254,63 @@ function setProdFilter(type, val, btn) {
   const group = btn.parentElement;
   group.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  updateProductFilterUrl();
   filterProducts();
 }
 
 function setProdSelectFilter(type, val) {
   prodFilters[type] = val;
+  updateProductFilterUrl();
+  filterProducts();
+}
+
+function updateProductFilterUrl() {
+  const params = new URLSearchParams(window.location.search);
+  ['iso','op','brand','sort','tier'].forEach(key => {
+    const value = prodFilters[key];
+    if (value && value !== 'all' && value !== 'score' && !(key === 'tier' && value === 'core')) params.set(key, value);
+    else params.delete(key);
+  });
+  const next = `${location.pathname}${params.toString() ? '?' + params.toString() : ''}${location.hash || ''}`;
+  history.replaceState(null, '', next);
+}
+
+function applyProductFiltersFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  ['iso','op','brand','sort','tier'].forEach(key => {
+    if (params.has(key)) prodFilters[key] = params.get(key) || prodFilters[key];
+  });
+  const brand = document.getElementById('prodBrandFilter');
+  const op = document.getElementById('prodOperationFilter');
+  const sort = document.getElementById('prodSortFilter');
+  if (brand) brand.value = prodFilters.brand;
+  if (op) op.value = prodFilters.op;
+  if (sort) sort.value = prodFilters.sort;
+  document.querySelectorAll('.prod-filter-group').forEach(group => {
+    const label = group.querySelector('.prod-filter-label')?.textContent || '';
+    const key = label.includes('ISO') ? 'iso' : label.includes('Scope') ? 'tier' : '';
+    if (!key) return;
+    group.querySelectorAll('.pf-btn').forEach(btn => {
+      const onclick = btn.getAttribute('onclick') || '';
+      btn.classList.toggle('active', onclick.includes(`'${prodFilters[key]}'`));
+    });
+  });
+}
+
+function clearProductFilters() {
+  Object.assign(prodFilters, { iso: 'all', op: 'all', brand: 'all', sort: 'score', tier: 'core' });
+  document.getElementById('prodSearch').value = '';
+  document.getElementById('prodBrandFilter').value = 'all';
+  document.getElementById('prodOperationFilter').value = 'all';
+  document.getElementById('prodSortFilter').value = 'score';
+  document.querySelectorAll('.prod-filter-group').forEach(group => {
+    const first = group.querySelector('.pf-btn');
+    if (first) {
+      group.querySelectorAll('.pf-btn').forEach(btn => btn.classList.remove('active'));
+      first.classList.add('active');
+    }
+  });
+  updateProductFilterUrl();
   filterProducts();
 }
 
@@ -11260,6 +11545,12 @@ function filterProducts() {
         : `Showing ${sorted.length} product${sorted.length !== 1 ? 's' : ''} · ${coreCount} core + ${secondaryCount} secondary`;
   }
 
+  if (!sorted.length) {
+    grid.innerHTML = renderEmptyState('No products match these filters', 'Clear filters or search by brand, grade, ISO group or operation to widen the catalogue view.');
+    updateCompareBar();
+    return;
+  }
+
   grid.innerHTML = sorted.map(entry => {
     const p = entry.product;
     const trust = entry.trust;
@@ -11440,6 +11731,7 @@ function showComparison() {
 }
 
 // Init products on load
+applyProductFiltersFromUrl();
 filterProducts();
 
 /* ============================================================
