@@ -2441,6 +2441,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="sb-calc-list" id="sbCalcHistoryList"></div>
     <div class="sb-section" id="sbSavedSearchesSection" style="display:none">Saved searches</div>
     <div class="sb-calc-list" id="sbSavedSearchesList"></div>
+    <div class="sb-section" id="sbFavoritesSection" style="display:none">My favorites</div>
+    <div class="sb-calc-list" id="sbFavoritesList"></div>
 
     <div class="sb-footer">
       <div class="quota-box">
@@ -2462,7 +2464,11 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
           <button type="button" onclick="toggleHighContrast()">Contrast</button>
           <select id="fontSizeSelector" onchange="setFontScale(this.value)"><option value="medium">Text M</option><option value="small">Text S</option><option value="large">Text L</option></select>
           <button type="button" onclick="refreshAppCache()">Refresh</button>
+          <button type="button" onclick="exportFavoritesJson()">Export favs</button>
+          <button type="button" onclick="document.getElementById('favoritesImportFile').click()">Import favs</button>
+          <button type="button" onclick="resetAllLocalData()">Reset data</button>
         </div>
+        <input id="favoritesImportFile" type="file" accept="application/json" onchange="importFavoritesJson(event)" style="display:none">
         <div class="session-summary" id="sessionSummary">0 searches today, 0 products viewed</div>
         <div class="session-summary" id="buildVersionLabel">RC5 · commit auto</div>
       </div>
@@ -3062,6 +3068,17 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="form-row"><label class="form-label">Newsletter signup</label><input class="form-input" id="newsletterEmail" type="email" placeholder="engineering@company.com"></div>
       <button class="advisor-action-btn primary" type="button" onclick="subscribeNewsletter()">Subscribe</button>
     </div>
+    <div class="res-cat-title"><span>Platform reference</span></div>
+    <div class="res-grid">
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Data sources</div><div class="res-card-desc">ToolAdvisor references cutting tool brand catalogues, ISO material group logic and public machining handbook conventions. Always validate with manufacturer data before production.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Methodology</div><div class="res-card-desc">Recommendations combine operation, material group, coating, geometry, family, cross-reference and confidence signals.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Brand neutrality</div><div class="res-card-desc"><span class="beginner-badge">Independent</span> Ranking is brand-neutral and technical-fit driven; no brand receives a hidden priority boost.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">How to contribute</div><div class="res-card-desc">Suggest products or report errors from product cards, or email support@tooladvisor.eu with source references.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Roadmap</div><div class="res-card-desc">Planned: Visual ID, full AI Chat release, API access and mobile workflow support.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Press kit</div><div class="res-card-desc">Logo and brand guideline package placeholder for future partner and press use.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Partners</div><div class="res-card-desc">Potential partners: distributors, training institutions, machine builders and technical education teams.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Join us</div><div class="res-card-desc">Not hiring right now, but technical collaborators can reach out at hello@tooladvisor.eu.</div></div></div>
+    </div>
 
     <!-- Etsy banner -->
     <div class="res-etsy-banner">
@@ -3411,7 +3428,13 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <div class="site-footer" role="complementary" style="max-width:none;margin:0;padding:10px 16px;border-top:1px solid var(--border);color:var(--ink3);font-size:12px">
   <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center">
     <span>Support: <a href="mailto:support@tooladvisor.eu" style="color:var(--purple);font-weight:700">support@tooladvisor.eu</a> · Response within 1 business day · Billing: <a href="mailto:billing@tooladvisor.eu" style="color:var(--purple);font-weight:700">billing@tooladvisor.eu</a></span>
-    <span>ToolAdvisor Pro is billed monthly and renews automatically until canceled.</span>
+    <span>
+      <button class="trust-method-link" type="button" onclick="openUtilityModal('privacy')">Privacy policy</button>
+      · <button class="trust-method-link" type="button" onclick="openUtilityModal('terms')">Terms of use</button>
+      · <button class="trust-method-link" type="button" onclick="openUtilityModal('cookies')">Cookie policy</button>
+      · <button class="trust-method-link" type="button" onclick="openUtilityModal('contact')">Contact</button>
+      · ToolAdvisor Pro is billed monthly and renews automatically until canceled.
+    </span>
   </div>
 </div>
 </main>
@@ -3655,7 +3678,7 @@ const _taSessionId = Math.random().toString(36).slice(2);
 function taTrack(eventType, data = {}) {
   const sb = getSupabase();
   if (!sb) {
-    console.log('TATracker: Supabase disabled');
+    if (window.__TA_DEBUG_EVENTS__ === true) console.info('TATracker: Supabase disabled');
     return;
   }
   sb.from('tracker_events').insert({
@@ -3666,7 +3689,7 @@ function taTrack(eventType, data = {}) {
     if (error) {
       console.warn('TATracker: insert failed —', error.message);
     } else {
-      console.log('TATracker: event sent', '(' + eventType + ')');
+      if (window.__TA_DEBUG_EVENTS__ === true) console.info('TATracker: event sent', '(' + eventType + ')');
     }
   });
 }
@@ -10407,6 +10430,7 @@ function saveCurrentAdvisorSearch() {
   const next = [record, ...readSavedSearches().filter(item => item.name !== name)].slice(0, 8);
   writeSavedSearches(next);
   renderSavedSearches();
+  renderFavoritesSidebar();
   toast('Saved search added.');
 }
 
@@ -11494,10 +11518,23 @@ function openUtilityModal(kind) {
       <label><input type="checkbox" class="notif-pref" value="Product updates"> Product updates</label><br>
       <label><input type="checkbox" class="notif-pref" value="New brands added"> New brands added</label><br>
       <label><input type="checkbox" class="notif-pref" value="Pricing changes"> Pricing changes</label><br>
-      <button class="advisor-action-btn primary" onclick="saveNotificationPrefs()">Save preferences</button>`
+      <button class="advisor-action-btn primary" onclick="saveNotificationPrefs()">Save preferences</button>`,
+    privacy: `<h3>Privacy policy</h3><p>ToolAdvisor stores local preferences, favorites, recent searches and consent status in your browser. Contact support@tooladvisor.eu for privacy questions.</p>`,
+    terms: `<h3>Terms of use</h3><p>ToolAdvisor provides decision support for cutting tool selection. Always verify final tool, grade and cutting data with manufacturer catalogues and your own process trials.</p>`,
+    cookies: `<h3>Cookie policy</h3><p>Essential local storage is used for preferences, history and session state. Analytics may be used only when enabled and accepted.</p>`,
+    contact: `<h3>Contact</h3><div class="form-row"><label class="form-label">Name</label><input class="form-input" id="contactName"></div><div class="form-row"><label class="form-label">Email</label><input class="form-input" id="contactEmail"></div><div class="form-row"><label class="form-label">Subject</label><select class="form-select" id="contactSubject"><option>Support</option><option>Billing</option><option>Product data</option><option>Partnership</option></select></div><div class="form-row"><label class="form-label">Message</label><textarea class="form-input" id="contactMessage"></textarea></div><button class="advisor-action-btn primary" onclick="sendContactMail()">Send</button>`
   };
   body.innerHTML = `${views[kind] || views.help}<div style="margin-top:12px"><button class="advisor-action-btn" onclick="closeUtilityModal()">Close</button></div>`;
   modal.classList.add('open');
+}
+
+function sendContactMail() {
+  const name = document.getElementById('contactName')?.value || '';
+  const email = document.getElementById('contactEmail')?.value || '';
+  const subject = document.getElementById('contactSubject')?.value || 'Support';
+  const message = document.getElementById('contactMessage')?.value || '';
+  window.location.href = `mailto:support@tooladvisor.eu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+  closeUtilityModal();
 }
 function closeUtilityModal() {
   document.getElementById('utilityModal')?.classList.remove('open');
@@ -11532,6 +11569,68 @@ function subscribeNewsletter() {
   }
   try { localStorage.setItem('ta_newsletter_email_v1', email); } catch (_) {}
   toast('Newsletter signup saved locally.', 'success');
+}
+
+const _FAVORITES_KEY = 'ta_favorites_v1';
+function readFavoriteIds() {
+  try { return JSON.parse(localStorage.getItem(_FAVORITES_KEY) || '[]').filter(Boolean); } catch (_) { return []; }
+}
+function writeFavoriteIds(ids) {
+  try { localStorage.setItem(_FAVORITES_KEY, JSON.stringify([...new Set(ids)].slice(0, 50))); } catch (_) {}
+}
+function toggleFavoriteProduct(productId, event) {
+  event?.stopPropagation?.();
+  const ids = readFavoriteIds();
+  const key = String(productId || '');
+  const next = ids.includes(key) ? ids.filter(id => id !== key) : [key, ...ids];
+  writeFavoriteIds(next);
+  renderFavoritesSidebar();
+  toast(ids.includes(key) ? 'Removed from favorites.' : 'Bookmarked to My favorites.', 'success');
+}
+function renderFavoritesSidebar() {
+  const section = document.getElementById('sbFavoritesSection');
+  const list = document.getElementById('sbFavoritesList');
+  if (!section || !list) return;
+  const products = readFavoriteIds().map(id => findProduct(id)).filter(Boolean).slice(0, 8);
+  section.style.display = products.length ? '' : 'none';
+  list.innerHTML = products.map(product => `<button class="sb-calc-item" type="button" onclick="openProductDetail('${product.id}','products',event)"><span class="sb-calc-op">${escapeHtmlAttr(product.brand)}</span><span class="sb-calc-meta">${escapeHtmlAttr(getProductPrimaryCode(product))}</span></button>`).join('');
+}
+function exportFavoritesJson() {
+  const payload = { exportedAt: new Date().toISOString(), favorites: readFavoriteIds() };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'tooladvisor-favorites.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+}
+function importFavoritesJson(event) {
+  const file = event.target.files?.[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(String(reader.result || '{}'));
+      writeFavoriteIds(Array.isArray(parsed) ? parsed : parsed.favorites || []);
+      renderFavoritesSidebar();
+      toast('Favorites imported.', 'success');
+    } catch (_) { toast('Could not import favorites JSON.', 'error'); }
+  };
+  reader.readAsText(file);
+}
+function resetAllLocalData() {
+  if (!confirm('Reset all ToolAdvisor local data on this browser?')) return;
+  localStorage.clear();
+  sessionStorage.clear();
+  if ('caches' in window) caches.keys().then(keys => keys.forEach(key => caches.delete(key)));
+  location.reload();
+}
+
+const _COMPARE_HISTORY_KEY = 'ta_compare_history_v1';
+function pushCompareHistory(items) {
+  try {
+    const list = JSON.parse(localStorage.getItem(_COMPARE_HISTORY_KEY) || '[]');
+    list.unshift({ ts: new Date().toISOString(), ids: items.map(p => p.id), labels: items.map(p => `${p.brand} ${getProductPrimaryCode(p)}`) });
+    localStorage.setItem(_COMPARE_HISTORY_KEY, JSON.stringify(list.slice(0, 5)));
+  } catch (_) {}
 }
 
 function refreshAppCache() {
@@ -11591,6 +11690,16 @@ function renderDebugPanel() {
   panel.textContent = JSON.stringify(data, null, 2);
   panel.classList.add('show');
 }
+
+window.SEO_AUDIT_RC5 = {
+  domain: 'tooladvisor.eu',
+  title: 'Carbide Insert Cross-Reference & Grade Selector | ToolAdvisor',
+  canonical: 'https://tooladvisor.eu/',
+  structuredData: ['Organization', 'WebSite', 'SoftwareApplication', 'FAQPage', 'BreadcrumbList'],
+  sitemap: '/sitemap.xml',
+  robots: '/robots.txt',
+  status: 'consistent'
+};
 
 function getSessionCounter(key) {
   try { return Number(sessionStorage.getItem(key) || 0) || 0; } catch (_) { return 0; }
@@ -12044,6 +12153,7 @@ function filterProducts() {
           Compare
         </button>
         <button class="prod-detail-btn" type="button" onclick="openProductDetail('${p.id}','products',event)">View details</button>
+        <button class="prod-error-link" type="button" onclick="toggleFavoriteProduct('${p.id}',event)">Bookmark</button>
         <button class="prod-error-link" type="button" onclick="openProductErrorReport('${p.id}',event)">Report an error</button>
         <a class="prod-buy-btn" href="${buyUrl}" target="_blank" rel="noopener">Buy <svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M5 2h3v3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
@@ -12095,6 +12205,7 @@ function closeCompareModal() {
 function showComparison() {
   if (prodSelected.size < 2) return;
   const items = getDB().filter(p => prodSelected.has(p.id));
+  pushCompareHistory(items);
   const compareContext = {
     operation: prodFilters.op !== 'all' ? prodFilters.op : null,
     material: prodFilters.iso !== 'all' ? prodFilters.iso : null,
@@ -12190,13 +12301,13 @@ const TATracker = (function () {
     if (store.length > MAX) store.splice(0, store.length - MAX);
     try { localStorage.setItem(LS_KEY, JSON.stringify(store)); } catch (_) {}
     if (window.__TA_DEBUG_EVENTS__ === true) {
-      console.log('[TATracker]', entry.timestamp.slice(11, 23), eventType, eventData);
+      console.info('[TATracker]', entry.timestamp.slice(11, 23), eventType, eventData);
     }
     // Supabase sync — table: tracker_events (matches supabase-schema.sql)
     // URL + key come from CONFIG.supabase via getSupabase()
     const sb = getSupabase();
     if (!sb) {
-      console.log('TATracker: Supabase disabled');
+      if (window.__TA_DEBUG_EVENTS__ === true) console.info('TATracker: Supabase disabled');
       return;
     }
     sb.from('tracker_events').insert({
@@ -12207,7 +12318,7 @@ const TATracker = (function () {
       if (error) {
         console.warn('TATracker: insert failed —', error.message);
       } else {
-        console.log('TATracker: event sent', '(' + eventType + ')');
+        if (window.__TA_DEBUG_EVENTS__ === true) console.info('TATracker: event sent', '(' + eventType + ')');
       }
     });
   }
