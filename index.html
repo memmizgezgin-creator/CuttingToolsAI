@@ -18,7 +18,7 @@
 <meta name="keywords" content="carbide insert, cutting insert, insert cross reference, CNMG120408, turning insert, milling insert, ISO P steel turning, Sandvik equivalent, ISCAR equivalent, Kennametal grade, Walter grade, cutting tool selection, CNC machining, metalworking, insert grade comparison, toolholder, carbide grade">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="googlebot" content="index,follow,max-image-preview:large">
-<meta name="theme-color" content="#1A1A2E">
+<meta name="theme-color" content="#6B3FE7">
 <meta name="format-detection" content="telephone=no">
 <link rel="canonical" href="https://tooladvisor.eu/">
 <link rel="alternate" hreflang="en" href="https://tooladvisor.eu"/>
@@ -43,6 +43,12 @@
 <meta name="twitter:description" content="Find equivalent carbide inserts across major cutting tool brands. Cross-reference CNMG, WNMG and DCMT insert codes.">
 <meta name="twitter:image" content="https://tooladvisor.eu/og.png">
 <meta name="twitter:url" content="https://tooladvisor.eu/">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/og.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.svg">
 
 <!-- JSON-LD Structured Data (SEO baseline: Organization + WebSite only) -->
 <script type="application/ld+json">
@@ -79,6 +85,11 @@
   "operatingSystem": "Web",
   "url": "https://tooladvisor.eu/",
   "description": "Free carbide insert cross-reference tool for CNC machinists. Compare and find equivalent grades across all major cutting tool brands. Supports turning, milling, drilling, threading and grooving inserts.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
   "keywords": [
     "carbide insert",
     "cutting insert",
@@ -97,6 +108,28 @@
     "insert grade comparison",
     "toolholder",
     "carbide grade"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How do I cross-reference carbide inserts?","acceptedAnswer":{"@type":"Answer","text":"Search the full insert code, then compare equivalent brands by material group, operation, coating and application window."}},
+    {"@type":"Question","name":"What grade should I use for stainless steel turning?","acceptedAnswer":{"@type":"Answer","text":"Start with ISO M-focused PVD or stainless-specific grades, then validate chip control, coolant and machine stability."}},
+    {"@type":"Question","name":"What is the difference between CVD and PVD coating?","acceptedAnswer":{"@type":"Answer","text":"CVD is generally stronger for wear resistance in stable steel/cast iron cuts; PVD is sharper and often better for stainless, titanium and lower cutting force."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"ToolAdvisor","item":"https://tooladvisor.eu/"},
+    {"@type":"ListItem","position":2,"name":"AI Advisor","item":"https://tooladvisor.eu/#advisor"},
+    {"@type":"ListItem","position":3,"name":"Products","item":"https://tooladvisor.eu/#products"}
   ]
 }
 </script>
@@ -1683,6 +1716,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .feedback-panel{display:none;position:absolute;right:0;bottom:44px;width:280px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px;box-shadow:var(--shadow-lg)}
 .feedback-panel.open{display:block}
 .feedback-panel textarea{min-height:80px;resize:vertical}
+.offline-banner{display:none;position:fixed;left:260px;right:20px;top:14px;z-index:9996;background:#3B2716;color:#FFE8C7;border:1px solid #B45309;border-radius:7px;padding:10px 12px;font-size:12px;font-weight:800}
+.offline-banner.show{display:block}
+.debug-panel{display:none;position:fixed;right:18px;top:76px;z-index:9995;width:320px;max-height:60vh;overflow:auto;background:#111;color:#d9f99d;border:1px solid #3f6212;border-radius:8px;padding:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;box-shadow:var(--shadow-lg)}
+.debug-panel.show{display:block}
 .mini-footer-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
 .mini-footer-actions button,.mini-footer-actions select{
   border:1px solid #3a3940;background:#242329;color:#d8d4df;border-radius:6px;
@@ -2424,8 +2461,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
           <select id="currencySelector" onchange="localStorage.setItem('ta_currency_v1',this.value);toast('Currency preference saved for future pricing.','success')"><option>EUR</option><option>USD</option><option>GBP</option></select>
           <button type="button" onclick="toggleHighContrast()">Contrast</button>
           <select id="fontSizeSelector" onchange="setFontScale(this.value)"><option value="medium">Text M</option><option value="small">Text S</option><option value="large">Text L</option></select>
+          <button type="button" onclick="refreshAppCache()">Refresh</button>
         </div>
         <div class="session-summary" id="sessionSummary">0 searches today, 0 products viewed</div>
+        <div class="session-summary" id="buildVersionLabel">RC5 · commit auto</div>
       </div>
     </div>
   </aside>
@@ -3378,6 +3417,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 </main>
 </div><!-- /app -->
 <!-- Internal ops note: admin@tooladvisor.eu is internal-only escalation mailbox; keep off public UI. -->
+<!-- Environment: production -->
 
 <!-- COMPARE BAR (fixed bottom) -->
 <div class="compare-bar" id="compareBar">
@@ -3440,6 +3480,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 </div>
 
 <div class="toast-el" id="toastEl"></div>
+<div class="offline-banner" id="offlineBanner">Offline mode detected. Static reference data remains available, but live supplier/API actions may fail.</div>
+<pre class="debug-panel" id="debugPanel"></pre>
 <div class="feedback-float">
   <button class="feedback-btn" type="button" onclick="toggleFeedbackPanel()">Send feedback</button>
   <div class="feedback-panel" id="feedbackPanel">
@@ -11492,6 +11534,64 @@ function subscribeNewsletter() {
   toast('Newsletter signup saved locally.', 'success');
 }
 
+function refreshAppCache() {
+  try {
+    localStorage.removeItem('ta_product_cache_v1');
+    sessionStorage.clear();
+    if ('caches' in window) caches.keys().then(keys => keys.forEach(key => caches.delete(key)));
+  } catch (_) {}
+  location.reload();
+}
+
+function updateBuildVersionLabel() {
+  const el = document.getElementById('buildVersionLabel');
+  if (el) el.textContent = `${CONFIG.version} · commit ${CONFIG.lastCommit}`;
+}
+
+function handleRouteState() {
+  const params = new URLSearchParams(location.search);
+  const requested = params.get('tab') || (location.hash || '').replace(/^#/, '');
+  if (!requested) return;
+  const clean = requested.toLowerCase();
+  const panel = document.getElementById('panel-' + clean);
+  if (panel) {
+    setTab(clean, findTabButton(clean));
+    return;
+  }
+  const main = document.getElementById('mainContent');
+  if (main) {
+    main.insertAdjacentHTML('afterbegin', `<div class="advisor-results-empty">${renderEmptyState('Page not found', 'Use the sidebar or return to AI Advisor.')}<button class="advisor-action-btn" type="button" onclick="setTab('advisor',findTabButton('advisor'))">Go to home</button></div>`);
+  }
+}
+
+function updateOfflineBanner() {
+  document.getElementById('offlineBanner')?.classList.toggle('show', navigator.onLine === false);
+}
+
+function registerOfflineWorker() {
+  if (!('serviceWorker' in navigator)) return;
+  navigator.serviceWorker.register('/sw.js').catch(() => {
+    console.info('[ToolAdvisor]', 'Service worker not installed yet; static site continues online.');
+  });
+}
+
+function renderDebugPanel() {
+  const params = new URLSearchParams(location.search);
+  const panel = document.getElementById('debugPanel');
+  if (!panel || params.get('debug') !== '1') return;
+  const data = {
+    version: CONFIG.version,
+    lastCommit: CONFIG.lastCommit,
+    products: getDB().length,
+    activeTab: getActiveTabId(),
+    localStorageKeys: Object.keys(localStorage || {}).length,
+    sessionStorageKeys: Object.keys(sessionStorage || {}).length,
+    performance: performance?.timing ? { domInteractive: performance.timing.domInteractive - performance.timing.navigationStart } : {}
+  };
+  panel.textContent = JSON.stringify(data, null, 2);
+  panel.classList.add('show');
+}
+
 function getSessionCounter(key) {
   try { return Number(sessionStorage.getItem(key) || 0) || 0; } catch (_) { return 0; }
 }
@@ -11532,6 +11632,13 @@ function renderSessionSummary() {
   associateFormLabels();
   const savedCurrency = localStorage.getItem('ta_currency_v1');
   if (savedCurrency && document.getElementById('currencySelector')) document.getElementById('currencySelector').value = savedCurrency;
+  updateBuildVersionLabel();
+  updateOfflineBanner();
+  window.addEventListener('online', updateOfflineBanner);
+  window.addEventListener('offline', updateOfflineBanner);
+  registerOfflineWorker();
+  handleRouteState();
+  renderDebugPanel();
   pickMatDB('P', document.querySelector('.mat-iso-card'));
   renderSup('all');
   document.getElementById('crInput').addEventListener('keydown', e => { if (e.key === 'Enter') loadCR(e.target.value); });
