@@ -622,6 +622,21 @@ body{
   font-size:11px;
   white-space:nowrap;
 }
+.advisor-header-actions{
+  display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:10px;
+}
+.advisor-action-btn{
+  border:1.5px solid #CBC2B2;background:linear-gradient(180deg,#FFFFFF 0%, #F2EDE3 100%);
+  color:#47423A;border-radius:6px;padding:6px 11px;
+  font-size:11px;font-weight:800;cursor:pointer;
+  font-family:'IBM Plex Sans',sans-serif;transition:all .15s;
+}
+.advisor-action-btn:hover{border-color:#AFA79A;background:#F9F6EF;color:#1F1C18}
+.advisor-action-btn.primary{
+  background:linear-gradient(120deg,#1A1A2E 0%,#31324F 100%);
+  border-color:#20233C;color:#fff;
+}
+.advisor-action-btn.primary:hover{background:#1A1A2E}
 .advisor-results-alert{
   border:1.5px solid #E6C978;background:linear-gradient(180deg,#FFF8DD 0%, #FDF1C5 100%);
   color:#765419;border-radius:7px;padding:8px 10px;font-size:11px;font-weight:600;line-height:1.45;
@@ -844,6 +859,23 @@ body{
 .risk-flag.critical{
   border-color:#F3B088;background:#FFE7D6;color:#6F2A16;
 }
+.result-why-details{
+  margin-top:8px;border:1px solid #DCD4C7;border-radius:6px;
+  background:#FFFEFA;overflow:hidden;
+}
+.result-why-details summary{
+  cursor:pointer;list-style:none;padding:7px 9px;
+  font-size:10px;font-weight:800;letter-spacing:.35px;text-transform:uppercase;
+  color:#35312B;display:flex;align-items:center;justify-content:space-between;
+}
+.result-why-details summary::-webkit-details-marker{display:none}
+.result-why-details summary::after{content:'+';font-family:'IBM Plex Mono',monospace;color:#837B6E}
+.result-why-details[open] summary::after{content:'−'}
+.result-why-list{
+  margin:0;padding:0 10px 9px 24px;color:#5F5A52;
+  font-size:11px;line-height:1.45;
+}
+.result-why-list li{margin:3px 0}
 
 .result-params{
   display:flex;gap:0;
@@ -2305,6 +2337,10 @@ body{
           <span class="ach-tag"><strong>Material</strong><em id="ctxMaterial">—</em></span>
           <span class="ach-tag"><strong>Operation</strong><em id="ctxOperation">—</em></span>
           <span class="ach-tag"><strong>Condition</strong><em id="ctxCondition">—</em></span>
+        </div>
+        <div class="advisor-header-actions">
+          <button class="advisor-action-btn primary" type="button" onclick="exportAdvisorResultsCSV()">Export results as CSV</button>
+          <button class="advisor-action-btn" type="button" onclick="resetAdvisor()">Start over</button>
         </div>
       </div>
       <div class="advisor-results-controls" id="advisorResultsControls">
@@ -9229,6 +9265,89 @@ function addAdvisorResultToCompare(productId, event) {
   toast('Added to compare. Open Products tab to review compare queue.');
 }
 
+function getCoatingRecommendationNote(coating) {
+  const c = String(coating || '').toLowerCase();
+  if (c.includes('cvd')) return 'CVD coating supports wear resistance and stable cutting windows.';
+  if (c.includes('pvd')) return 'PVD coating supports sharper edges and lower cutting forces.';
+  if (c.includes('tialn') || c.includes('altin')) return 'TiAlN/AlTiN chemistry helps with heat resistance in dry or semi-dry cuts.';
+  if (c.includes('al2o3')) return 'Al2O3 layer improves hot hardness for higher temperature cutting.';
+  if (c.includes('dlc') || c.includes('pcd')) return 'Low-friction coating family is useful for non-ferrous machining and BUE control.';
+  return 'Coating choice is considered against operation and material fit.';
+}
+
+function buildAdvisorWhyBullets(entry, context) {
+  const product = entry.tool || {};
+  const material = context.material || coreArr(product.materials)[0] || '';
+  const operation = context.operation || coreArr(product.operations)[0] || '';
+  const bullets = [];
+  if (material) {
+    const materialName = MAT_NAMES[material] || TOP_LABELS[material] || material;
+    const directMaterial = coreArr(product.materials).includes(material);
+    bullets.push(directMaterial
+      ? `ISO ${material} (${materialName}) is inside this grade's recommended material window.`
+      : `ISO ${material} is inferred from adjacent material/application signals, so validate setup before production use.`);
+  }
+  if (operation) {
+    const directOperation = coreArr(product.operations).includes(operation);
+    bullets.push(directOperation
+      ? `${operation} is listed as a direct operation fit for this product.`
+      : `${operation} fit comes from comparable application signals rather than a direct operation tag.`);
+  }
+  bullets.push(getCoatingRecommendationNote(product.coating));
+  return bullets.slice(0, 3);
+}
+
+function parseAdvisorRange(value) {
+  const nums = String(value || '').match(/\d+(?:[.,]\d+)?/g) || [];
+  if (!nums.length) return { min: '', max: '' };
+  const normalized = nums.map(n => n.replace(',', '.'));
+  return { min: normalized[0] || '', max: normalized[1] || normalized[0] || '' };
+}
+
+function csvCell(value) {
+  return `"${String(value ?? '').replace(/"/g, '""')}"`;
+}
+
+function exportAdvisorResultsCSV() {
+  const entries = getAdvisorVisibleEntries();
+  if (!entries.length) {
+    toast('No Advisor results to export.');
+    return;
+  }
+  const context = ADVISOR_RESULTS_UI.context || {};
+  const key = context.operation && context.material ? `${context.operation}-${context.material}` : '';
+  const rows = entries.map((entry, index) => {
+    const product = entry.tool || {};
+    const cd = (product.cuttingData && product.cuttingData[key]) || {};
+    const vc = parseAdvisorRange(cd.vc || product.vcRange);
+    const fn = parseAdvisorRange(cd.fn || product.fnRange);
+    return [
+      index + 1,
+      product.brand || '',
+      product.grade || getProductPrimaryCode(product),
+      product.coating || '',
+      vc.min,
+      vc.max,
+      fn.min,
+      fn.max,
+      coreArr(product.isoCodes).join(' | ')
+    ];
+  });
+  const csv = [
+    ['Rank', 'Brand', 'Grade', 'Coating', 'Vc_min', 'Vc_max', 'fn_min', 'fn_max', 'ISO_codes'],
+    ...rows
+  ].map(row => row.map(csvCell).join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `tooladvisor-advisor-results-${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
 function renderAdvisorResultsView(scrollInto = false) {
   syncAdvisorResultControlState();
   const entries = getAdvisorVisibleEntries();
@@ -9312,6 +9431,7 @@ function renderAdvisorResultsView(scrollInto = false) {
     if (trust.lowConfidence) riskFlags.push({ cls: 'critical', text: 'Low confidence in current context.' });
     if (isAdvisorWeakMapping(entry)) riskFlags.push({ cls: '', text: 'Weak cross-reference mapping signal.' });
     if (trust.limitedComparable) riskFlags.push({ cls: '', text: 'Limited comparable data in dataset.' });
+    const whyBullets = buildAdvisorWhyBullets(entry, context);
     return `
     <div class="result-card ${isTop ? 'top-pick' : ''}">
       <div class="result-card-top">
@@ -9338,6 +9458,12 @@ function renderAdvisorResultsView(scrollInto = false) {
           </div>
           ${techStrip}
           ${riskFlags.length ? `<div class="result-risk-row">${riskFlags.map(flag => `<div class="risk-flag ${flag.cls}">${flag.text}</div>`).join('')}</div>` : ''}
+          <details class="result-why-details">
+            <summary>Why this recommendation?</summary>
+            <ul class="result-why-list">
+              ${whyBullets.map(point => `<li>${escapeHtmlAttr(point)}</li>`).join('')}
+            </ul>
+          </details>
         </div>
       </div>
       <div class="result-params">
@@ -9416,6 +9542,10 @@ function resetAdvisor() {
   document.getElementById('resultsSection').style.display = 'none';
   const proInlineCard = document.getElementById('proInlineCard');
   if (proInlineCard) proInlineCard.style.display = 'none';
+  const feedbackWidget = document.getElementById('feedbackWidget');
+  const feedbackThanks = document.getElementById('feedbackThanks');
+  if (feedbackWidget) feedbackWidget.style.display = 'none';
+  if (feedbackThanks) feedbackThanks.style.display = 'none';
   document.getElementById('resultsList').innerHTML = '';
   const alertEl = document.getElementById('advisorResultsAlert');
   const emptyEl = document.getElementById('advisorResultsEmpty');
