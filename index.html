@@ -1024,6 +1024,11 @@ body{
   transition:all .15s;
 }
 .cr-q:hover{background:var(--purple);color:#fff;border-color:var(--purple)}
+.cr-history{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--white)}
+.cr-history:empty{display:none}
+.cr-history-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.cr-hist-chip{border:1px solid var(--border);background:var(--bg);color:var(--ink2);border-radius:999px;padding:4px 8px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;cursor:pointer}
+.cr-hist-chip:hover{border-color:var(--purple);color:var(--purple);background:#f4f0ff}
 .cr-coverage-hint{
   padding:8px 16px;
   border-bottom:1px solid var(--border);
@@ -1885,7 +1890,7 @@ body{
 .sb-brand{padding:18px 20px 16px;border-bottom:1px solid #2a2930;display:flex;align-items:center;gap:10px}
 .sb-brand .mark{width:30px;height:30px;background:var(--purple);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .sb-brand .wm{font-weight:800;font-size:15px;color:#fff}
-.sb-brand .wm small{font-size:9px;font-weight:700;letter-spacing:.5px;color:#8A8898;text-transform:uppercase;margin-left:3px}
+.sb-brand .wm small{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.5px;color:#c8c5d1;background:#2a2930;border:1px solid #3a3940;border-radius:3px;padding:1px 5px;text-transform:uppercase;margin-left:6px;vertical-align:middle}
 .sb-section{padding:18px 12px 6px 20px;font-size:10px;font-weight:800;letter-spacing:1.4px;color:#6b6974;text-transform:uppercase}
 .sb-nav{display:flex;flex-direction:column;padding:0 8px}
 .sb-item.tab{
@@ -2496,6 +2501,7 @@ body{
         <input class="cr-input" type="text" id="crInput" placeholder="Enter insert code e.g. CNMG120408" value="CNMG120408">
         <button class="cr-search-btn" onclick="loadCR(document.getElementById('crInput').value)">Search →</button>
       </div>
+      <div class="cr-history" id="crHistory"></div>
       <div class="cr-quick">
         <button class="cr-q" onclick="loadCR('CNMG120408')">CNMG120408</button>
         <button class="cr-q" onclick="loadCR('WNMG080408')">WNMG080408</button>
@@ -2531,6 +2537,14 @@ body{
           <button class="iso-eg" onclick="decodeISO('APMT1604')">APMT1604</button>
           <button class="iso-eg" onclick="decodeISO('RCMT1204')">RCMT1204</button>
           <button class="iso-eg" onclick="decodeISO('CCMT09T304')">CCMT09T304</button>
+          <button class="iso-eg" onclick="decodeISO('VCMT160404')">VCMT160404</button>
+          <button class="iso-eg" onclick="decodeISO('DCGT11T304')">DCGT11T304</button>
+          <button class="iso-eg" onclick="decodeISO('TCGT16T304')">TCGT16T304</button>
+          <button class="iso-eg" onclick="decodeISO('SCMT09T308')">SCMT09T308</button>
+          <button class="iso-eg" onclick="decodeISO('WCMT06T308')">WCMT06T308</button>
+          <button class="iso-eg" onclick="decodeISO('TCMT110204')">TCMT110204</button>
+          <button class="iso-eg" onclick="decodeISO('DCMT070204')">DCMT070204</button>
+          <button class="iso-eg" onclick="decodeISO('VCGT110304')">VCGT110304</button>
         </div>
       </div>
       <div class="iso-card">
@@ -2558,6 +2572,17 @@ body{
         <div class="form-row"><label class="form-label">Number of Teeth z</label><input class="form-input" type="number" id="cZ" value="4" min="1" oninput="calcNow()"></div>
         <button class="calc-run-btn" onclick="calcNow()">Calculate</button>
       </div>
+      <div class="calc-card">
+        <div class="calc-card-title">Drilling calculator</div>
+        <div class="form-row"><label class="form-label">Drill diameter (mm)</label><input class="form-input" type="number" id="drillD" value="10" step="0.1" oninput="calcDrillingMode()"></div>
+        <div class="form-row"><label class="form-label">Material</label><select class="form-select" id="drillMat" onchange="calcDrillingMode()"><option value="P">Steel P</option><option value="M">Stainless M</option><option value="K">Cast iron K</option><option value="N">Aluminium N</option><option value="S">Superalloy S</option><option value="H">Hardened H</option></select></div>
+        <div class="form-row"><label class="form-label">Spindle speed (RPM)</label><input class="form-input" type="number" id="drillRpm" value="2500" step="50" oninput="calcDrillingMode()"></div>
+        <button class="calc-run-btn" onclick="calcDrillingMode()">Calculate drilling</button>
+        <div class="calc-rec" style="margin-top:12px">
+          <div class="calc-rec-label">Drilling output</div>
+          <div class="calc-rec-text">Feed rate: <strong id="drillFeedOut">—</strong> · Cutting speed: <strong id="drillVcOut">—</strong></div>
+        </div>
+      </div>
       <div class="calc-card calc-out">
         <div class="calc-card-title">Results</div>
         <div class="metric-block"><div class="metric-label">Spindle Speed n</div><div class="metric-value" id="rN">—<span class="metric-unit">RPM</span></div></div>
@@ -2568,6 +2593,10 @@ body{
         <button class="calc-save-btn" id="calcSaveBtn" onclick="saveCalc()" type="button">
           <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 1.5h6L11.5 4v8.5h-9V1.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5 1.5v3.5h4" stroke="currentColor" stroke-width="1.4"/></svg>
           Save calculation
+        </button>
+        <button class="calc-save-btn" onclick="window.print()" type="button">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M4 5V1.8h6V5M4 10.5H2.5V5.5h9v5H10M4 8h6v4.2H4V8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          Print this page
         </button>
       </div>
     </div>
@@ -2580,12 +2609,12 @@ body{
       <p style="font-size:14px">ISO P/M/K/N/S/H — 26 sub-groups with hardness ranges</p>
     </div>
     <div class="mat-iso-grid" id="matIsoGrid">
-      <div class="mat-iso-card ag" style="background:var(--p-bg)" onclick="pickMatDB('P',this)"><h4 style="color:var(--p-c)">P</h4><p style="color:var(--p-c)">Steel</p><div class="sub-c" style="color:var(--p-c)">7 sub-groups</div></div>
-      <div class="mat-iso-card" style="background:var(--m-bg)" onclick="pickMatDB('M',this)"><h4 style="color:var(--m-c)">M</h4><p style="color:var(--m-c)">Stainless Steel</p><div class="sub-c" style="color:var(--m-c)">4 sub-groups</div></div>
-      <div class="mat-iso-card" style="background:var(--k-bg)" onclick="pickMatDB('K',this)"><h4 style="color:var(--k-c)">K</h4><p style="color:var(--k-c)">Cast Iron</p><div class="sub-c" style="color:var(--k-c)">5 sub-groups</div></div>
-      <div class="mat-iso-card" style="background:var(--n-bg)" onclick="pickMatDB('N',this)"><h4 style="color:var(--n-c)">N</h4><p style="color:var(--n-c)">Non-Ferrous</p><div class="sub-c" style="color:var(--n-c)">4 sub-groups</div></div>
-      <div class="mat-iso-card" style="background:var(--s-bg)" onclick="pickMatDB('S',this)"><h4 style="color:var(--s-c)">S</h4><p style="color:var(--s-c)">Superalloys / Ti</p><div class="sub-c" style="color:var(--s-c)">3 sub-groups</div></div>
-      <div class="mat-iso-card" style="background:var(--h-bg)" onclick="pickMatDB('H',this)"><h4 style="color:var(--h-c)">H</h4><p style="color:var(--h-c)">Hardened Steel</p><div class="sub-c" style="color:var(--h-c)">3 sub-groups</div></div>
+      <div class="mat-iso-card ag" style="background:var(--p-bg)" onclick="pickMatDB('P',this)"><h4 style="color:var(--p-c)">P</h4><p style="color:var(--p-c)">Steel</p><div class="sub-c" style="color:var(--p-c)">7 sub-groups · 125–350 HB</div></div>
+      <div class="mat-iso-card" style="background:var(--m-bg)" onclick="pickMatDB('M',this)"><h4 style="color:var(--m-c)">M</h4><p style="color:var(--m-c)">Stainless Steel</p><div class="sub-c" style="color:var(--m-c)">4 sub-groups · 150–300 HB</div></div>
+      <div class="mat-iso-card" style="background:var(--k-bg)" onclick="pickMatDB('K',this)"><h4 style="color:var(--k-c)">K</h4><p style="color:var(--k-c)">Cast Iron</p><div class="sub-c" style="color:var(--k-c)">5 sub-groups · 150–280 HB</div></div>
+      <div class="mat-iso-card" style="background:var(--n-bg)" onclick="pickMatDB('N',this)"><h4 style="color:var(--n-c)">N</h4><p style="color:var(--n-c)">Non-Ferrous</p><div class="sub-c" style="color:var(--n-c)">4 sub-groups · 60–160 HB</div></div>
+      <div class="mat-iso-card" style="background:var(--s-bg)" onclick="pickMatDB('S',this)"><h4 style="color:var(--s-c)">S</h4><p style="color:var(--s-c)">Superalloys / Ti</p><div class="sub-c" style="color:var(--s-c)">3 sub-groups · 200–380 HB</div></div>
+      <div class="mat-iso-card" style="background:var(--h-bg)" onclick="pickMatDB('H',this)"><h4 style="color:var(--h-c)">H</h4><p style="color:var(--h-c)">Hardened Steel</p><div class="sub-c" style="color:var(--h-c)">3 sub-groups · 45–68 HRC</div></div>
     </div>
     <div class="mat-sg-panel">
       <div class="mat-sg-title" id="matSgTitle">ISO P — Steels</div>
@@ -2611,7 +2640,7 @@ body{
       <button class="sup-filter" onclick="filtSup('drilling',this)">Drilling</button>
     </div>
     <div class="sup-grid" id="supGrid"></div>
-    <div class="sup-feat-note">Partner listing enquiries (secondary): <a onclick="toast('Partner listings are optional. Contact support@tooladvisor.com for details.')">contact us</a></div>
+    <div class="sup-feat-note">Partner listing enquiries (secondary): <a onclick="toast('Partner listings are optional. Contact support@tooladvisor.eu for details.')">contact us</a></div>
   </div>
 
   <!-- TAB: VISUAL ID -->
@@ -2899,14 +2928,14 @@ body{
           <span class="rcc-tag">Written summary included</span>
           <span class="rcc-tag">Online — worldwide</span>
         </div>
-        <a class="rcc-btn" href="mailto:support@tooladvisor.com?subject=Consultation Request" target="_blank">Request consultation</a>
+        <a class="rcc-btn" href="mailto:support@tooladvisor.eu?subject=Consultation Request" target="_blank">Request consultation</a>
         <div class="rcc-price">€149 / session · €249 for process audit (full setup review)</div>
       </div>
     </div>
 
     <div style="text-align:center;margin-top:28px;padding:20px;background:var(--bg);border-radius:var(--r);border:1px solid var(--border)">
       <div style="font-size:13px;color:var(--ink3);margin-bottom:6px">Core product workflows stay in Advisor, Cross-Ref and Products. Resources are optional deepening tools.</div>
-      <div style="font-size:12px;color:var(--ink3)">Questions? <a href="mailto:support@tooladvisor.com" style="color:var(--purple);font-weight:700">support@tooladvisor.com</a></div>
+      <div style="font-size:12px;color:var(--ink3)">Questions? <a href="mailto:support@tooladvisor.eu" style="color:var(--purple);font-weight:700">support@tooladvisor.eu</a></div>
     </div>
   </div>
 
@@ -2974,6 +3003,16 @@ body{
         <button class="pf-btn active" onclick="setProdFilter('tier','core',this)">Core cutting tools</button>
         <button class="pf-btn" onclick="setProdFilter('tier','all',this)">All records</button>
       </div>
+      <div class="prod-filter-group">
+        <span class="prod-filter-label">Sort by</span>
+        <select class="prod-filter-select" id="prodSortFilter" onchange="setProdSelectFilter('sort', this.value)">
+          <option value="score">Best match</option>
+          <option value="brand">Brand A-Z</option>
+          <option value="grade">Grade A-Z</option>
+          <option value="toolLife">Tool Life (High first)</option>
+          <option value="vcHigh">Vc range (High first)</option>
+        </select>
+      </div>
     </div>
     <div class="prod-grid" id="prodGrid"></div>
     <!-- compareSection removed — comparison now opens in #compareModal modal -->
@@ -2992,13 +3031,13 @@ body{
 
 <div class="site-footer" style="max-width:none;margin:0;padding:10px 16px;border-top:1px solid var(--border);color:var(--ink3);font-size:12px">
   <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center">
-    <span>Support: <a href="mailto:support@tooladvisor.com" style="color:var(--purple);font-weight:700">support@tooladvisor.com</a> · Billing: <a href="mailto:billing@tooladvisor.com" style="color:var(--purple);font-weight:700">billing@tooladvisor.com</a></span>
+    <span>Support: <a href="mailto:support@tooladvisor.eu" style="color:var(--purple);font-weight:700">support@tooladvisor.eu</a> · Response within 1 business day · Billing: <a href="mailto:billing@tooladvisor.eu" style="color:var(--purple);font-weight:700">billing@tooladvisor.eu</a></span>
     <span>ToolAdvisor Pro is billed monthly and renews automatically until canceled.</span>
   </div>
 </div>
 </main>
 </div><!-- /app -->
-<!-- Internal ops note: admin@tooladvisor.com is internal-only escalation mailbox; keep off public UI. -->
+<!-- Internal ops note: admin@tooladvisor.eu is internal-only escalation mailbox; keep off public UI. -->
 
 <!-- COMPARE BAR (fixed bottom) -->
 <div class="compare-bar" id="compareBar">
@@ -8914,6 +8953,14 @@ const ISO_DB = {
   'APMT1604':{big:'APMT 1604',chars:[{c:'A',l:'Parallelogram'},{c:'P',l:'11° Clearance'},{c:'M',l:'±0.08 Tol.'},{c:'T',l:'Clamp'},{c:'16',l:'16mm IC'},{c:'04',l:'4.76mm thick'}],props:[['Shape','Parallelogram — A'],['Clearance angle','11° positive — P'],['Tolerance','±0.08mm — M'],['Fixing type','Clamp — T'],['IC Diameter','16 mm'],['Thickness','4.76 mm'],['Corner radius Rε','0.8 mm'],['Typical use','Face milling inserts']]},
   'RCMT1204':{big:'RCMT 12 04',chars:[{c:'R',l:'Round'},{c:'C',l:'7° Clearance'},{c:'M',l:'±0.08 Tol.'},{c:'T',l:'Clamp+CB'},{c:'12',l:'12mm ⌀'},{c:'04',l:'4.76mm thick'}],props:[['Shape','Round — R'],['Clearance angle','7° positive — C'],['Tolerance','±0.08mm — M'],['Fixing type','Clamp — T'],['Diameter','12 mm'],['Thickness','4.76 mm'],['Corner radius Rε','Full R6mm'],['Typical use','Profiling roughing P/S']]},
   'CCMT09T304':{big:'CCMT 09T3 04',chars:[{c:'C',l:'80° Diamond'},{c:'C',l:'7° Clearance'},{c:'M',l:'±0.08 Tol.'},{c:'T',l:'Clamp+CB'},{c:'09T3',l:'IC size'},{c:'04',l:'0.4mm Rε'}],props:[['Shape','80° Diamond — C'],['Clearance angle','7° positive — C'],['Tolerance','±0.08mm — M'],['Fixing type','Top clamp — T'],['IC Diameter','9.525 mm'],['Thickness','3.18 mm'],['Corner radius Rε','0.4 mm'],['Typical use','Precision finishing P/M']]},
+  'VCMT160404':{big:'VCMT 16 04 04',chars:[{c:'V',l:'35° Diamond'},{c:'C',l:'7° Clearance'},{c:'M',l:'±0.08 Tol.'},{c:'T',l:'Clamp+CB'},{c:'16',l:'16mm IC'},{c:'04',l:'4.76mm thick'},{c:'04',l:'0.4mm Rε'}],props:[['Shape','35° Diamond — V'],['Clearance angle','7° positive — C'],['Tolerance','±0.08mm — M'],['Fixing type','Top clamp — T'],['IC Diameter','16 mm'],['Thickness','4.76 mm'],['Corner radius Rε','0.4 mm'],['Typical use','Profiling and finishing P/M/N']]},
+  'DCGT11T304':{big:'DCGT 11T3 04',chars:[{c:'D',l:'55° Diamond'},{c:'C',l:'7° Clearance'},{c:'G',l:'Ground precision'},{c:'T',l:'Clamp+CB'},{c:'11T3',l:'IC size'},{c:'04',l:'0.4mm Rε'}],props:[['Shape','55° Diamond — D'],['Clearance angle','7° positive — C'],['Tolerance','Ground precision — G'],['Fixing type','Top clamp — T'],['IC Diameter','9.525 mm'],['Thickness','3.18 mm'],['Corner radius Rε','0.4 mm'],['Typical use','Aluminium / non-ferrous finishing']]},
+  'TCGT16T304':{big:'TCGT 16T3 04',chars:[{c:'T',l:'60° Triangle'},{c:'C',l:'7° Clearance'},{c:'G',l:'Ground precision'},{c:'T',l:'Clamp+CB'},{c:'16T3',l:'IC size'},{c:'04',l:'0.4mm Rε'}],props:[['Shape','60° Triangle — T'],['Clearance angle','7° positive — C'],['Tolerance','Ground precision — G'],['Fixing type','Top clamp — T'],['IC Diameter','16 mm class'],['Thickness','3.18 mm'],['Corner radius Rε','0.4 mm'],['Typical use','Light turning and aluminium finishing']]},
+  'SCMT09T308':{big:'SCMT 09T3 08',chars:[{c:'S',l:'90° Square'},{c:'C',l:'7° Clearance'},{c:'M',l:'±0.08 Tol.'},{c:'T',l:'Clamp+CB'},{c:'09T3',l:'IC size'},{c:'08',l:'0.8mm Rε'}],props:[['Shape','90° Square — S'],['Clearance angle','7° positive — C'],['Tolerance','±0.08mm — M'],['Fixing type','Top clamp — T'],['IC Diameter','9.525 mm'],['Thickness','3.18 mm'],['Corner radius Rε','0.8 mm'],['Typical use','Positive square turning P/M']]},
+  'WCMT06T308':{big:'WCMT 06T3 08',chars:[{c:'W',l:'80° Trigon'},{c:'C',l:'7° Clearance'},{c:'M',l:'±0.08 Tol.'},{c:'T',l:'Clamp+CB'},{c:'06T3',l:'IC size'},{c:'08',l:'0.8mm Rε'}],props:[['Shape','80° Trigon — W'],['Clearance angle','7° positive — C'],['Tolerance','±0.08mm — M'],['Fixing type','Top clamp — T'],['IC Diameter','6 mm class'],['Thickness','3.18 mm'],['Corner radius Rε','0.8 mm'],['Typical use','Indexable drilling / boring inserts']]},
+  'TCMT110204':{big:'TCMT 11 02 04',chars:[{c:'T',l:'60° Triangle'},{c:'C',l:'7° Clearance'},{c:'M',l:'±0.08 Tol.'},{c:'T',l:'Clamp+CB'},{c:'11',l:'11mm IC'},{c:'02',l:'2.38mm thick'},{c:'04',l:'0.4mm Rε'}],props:[['Shape','60° Triangle — T'],['Clearance angle','7° positive — C'],['Tolerance','±0.08mm — M'],['Fixing type','Top clamp — T'],['IC Diameter','11 mm'],['Thickness','2.38 mm'],['Corner radius Rε','0.4 mm'],['Typical use','Small positive turning inserts']]},
+  'DCMT070204':{big:'DCMT 07 02 04',chars:[{c:'D',l:'55° Diamond'},{c:'C',l:'7° Clearance'},{c:'M',l:'±0.08 Tol.'},{c:'T',l:'Clamp+CB'},{c:'07',l:'7mm IC'},{c:'02',l:'2.38mm thick'},{c:'04',l:'0.4mm Rε'}],props:[['Shape','55° Diamond — D'],['Clearance angle','7° positive — C'],['Tolerance','±0.08mm — M'],['Fixing type','Top clamp — T'],['IC Diameter','7 mm'],['Thickness','2.38 mm'],['Corner radius Rε','0.4 mm'],['Typical use','Small-bore finishing P/M']]},
+  'VCGT110304':{big:'VCGT 11 03 04',chars:[{c:'V',l:'35° Diamond'},{c:'C',l:'7° Clearance'},{c:'G',l:'Ground precision'},{c:'T',l:'Clamp+CB'},{c:'11',l:'11mm IC'},{c:'03',l:'3.18mm thick'},{c:'04',l:'0.4mm Rε'}],props:[['Shape','35° Diamond — V'],['Clearance angle','7° positive — C'],['Tolerance','Ground precision — G'],['Fixing type','Top clamp — T'],['IC Diameter','11 mm'],['Thickness','3.18 mm'],['Corner radius Rε','0.4 mm'],['Typical use','Fine profiling and aluminium finishing']]},
 };
 
 const MAT_DB = {
@@ -8938,6 +8985,11 @@ const SUPPLIERS_DB = [
   {name:'Kyocera',country:'Japan',flag:'🇯🇵',region:'jp',cats:['Turning','Milling','Drilling'],url:'https://www.kyocera.com/industrial/cutting',spec:'PR series CVD, MFH milling platform',feat:false},
   {name:'Mapal',country:'Germany',flag:'🇩🇪',region:'eu',cats:['Drilling','Reaming'],url:'https://www.mapal.com',spec:'Precision holemaking, modular reaming',feat:false},
   {name:'Ingersoll',country:'USA',flag:'🇺🇸',region:'us',cats:['Milling','Turning'],url:'https://www.ingersoll-imc.com',spec:'GoldQuad™, high feed milling',feat:false},
+  {name:'Hoffmann Group',country:'Netherlands availability',flag:'🇳🇱',region:'eu',cats:['Turning','Milling','Drilling','Supplies'],url:'https://www.hoffmann-group.com',spec:'Industrial tooling distributor with Netherlands delivery availability',feat:false},
+  {name:'MSC Direct',country:'Netherlands availability',flag:'🇳🇱',region:'eu',cats:['Turning','Milling','Drilling','Supplies'],url:'https://www.mscdirect.com',spec:'Broad MRO and machining supply catalogue; verify EU delivery route',feat:false},
+  {name:'Würth',country:'Netherlands availability',flag:'🇳🇱',region:'eu',cats:['Supplies','Drilling','Threading'],url:'https://www.wuerth.com',spec:'Industrial supply group with Netherlands availability and branch network',feat:false},
+  {name:'Fabory',country:'Netherlands availability',flag:'🇳🇱',region:'eu',cats:['Supplies','Drilling','Threading'],url:'https://www.fabory.com',spec:'Netherlands-accessible industrial fastener and tooling supplier',feat:false},
+  {name:'Eriks',country:'Netherlands availability',flag:'🇳🇱',region:'eu',cats:['Supplies','Milling','Drilling'],url:'https://www.eriks.com',spec:'Industrial service and supply network with Netherlands availability',feat:false},
 ];
 
 const CHAT_KB = [
@@ -9845,9 +9897,42 @@ function resetAdvisor() {
 /* ============================================================
    CROSS-REF
 ============================================================ */
-function loadCR(code) {
-  code = code.toUpperCase().replace(/\s/g, '');
+const _CR_HISTORY_KEY = 'ta_crossref_history_v1';
+const _CR_HISTORY_MAX = 5;
+
+function readCrossRefHistory() {
+  try {
+    const raw = localStorage.getItem(_CR_HISTORY_KEY);
+    const arr = raw ? JSON.parse(raw) : [];
+    return Array.isArray(arr) ? arr.filter(Boolean) : [];
+  } catch (_) { return []; }
+}
+
+function writeCrossRefHistory(items) {
+  try { localStorage.setItem(_CR_HISTORY_KEY, JSON.stringify(items.slice(0, _CR_HISTORY_MAX))); } catch (_) {}
+}
+
+function pushCrossRefHistory(code) {
+  const clean = String(code || '').toUpperCase().replace(/\s/g, '');
+  if (!clean) return;
+  const next = [clean, ...readCrossRefHistory().filter(item => item !== clean)].slice(0, _CR_HISTORY_MAX);
+  writeCrossRefHistory(next);
+  renderCrossRefHistory();
+}
+
+function renderCrossRefHistory() {
+  const el = document.getElementById('crHistory');
+  if (!el) return;
+  const items = readCrossRefHistory();
+  el.innerHTML = items.length
+    ? `<span class="cr-history-label">Recent</span>${items.map(code => `<button class="cr-hist-chip" type="button" onclick="loadCR('${code}')">${code}</button>`).join('')}`
+    : '';
+}
+
+function loadCR(code, options = {}) {
+  code = String(code || '').toUpperCase().replace(/\s/g, '');
   document.getElementById('crInput').value = code;
+  if (code && !options.skipHistory) pushCrossRefHistory(code);
   if (code) taTrack('cross_ref_lookup', { code });
   const d = (_remoteCRDB && _remoteCRDB[code]) || resolveCrossRefRecord(code);
   if (!d) {
@@ -10018,6 +10103,20 @@ function calcNow() {
     saveBtn.classList.remove('saved');
     saveBtn.firstElementChild?.nextSibling /* preserve icon, just text */;
   }
+}
+
+function calcDrillingMode() {
+  const d = parseFloat(document.getElementById('drillD')?.value) || 1;
+  const n = parseFloat(document.getElementById('drillRpm')?.value) || 0;
+  const mat = document.getElementById('drillMat')?.value || 'P';
+  const feedByIso = { P: 0.12, M: 0.08, K: 0.14, N: 0.18, S: 0.05, H: 0.04 };
+  const fn = feedByIso[mat] || 0.10;
+  const vf = Math.round(n * fn);
+  const vc = +((Math.PI * d * n) / 1000).toFixed(1);
+  const feedEl = document.getElementById('drillFeedOut');
+  const vcEl = document.getElementById('drillVcOut');
+  if (feedEl) feedEl.textContent = `${vf.toLocaleString()} mm/min`;
+  if (vcEl) vcEl.textContent = `${vc} m/min`;
 }
 
 /* ============================================================
@@ -10278,10 +10377,12 @@ function handleGlobalKeyboardShortcuts(e) {
 
 (function init() {
   resetInteractionLayers();
-  loadCR('CNMG120408');
+  loadCR('CNMG120408', { skipHistory: true });
   decodeISO('CNMG120408');
   calcNow();
+  calcDrillingMode();
   renderCalcHistory();
+  renderCrossRefHistory();
   pickMatDB('P', document.querySelector('.mat-iso-card'));
   renderSup('all');
   document.getElementById('crInput').addEventListener('keydown', e => { if (e.key === 'Enter') loadCR(e.target.value); });
@@ -10296,7 +10397,7 @@ function handleGlobalKeyboardShortcuts(e) {
 /* ============================================================
    PRODUCTS TAB
 ============================================================ */
-const prodFilters = { iso: 'all', op: 'all', brand: 'all' };
+const prodFilters = { iso: 'all', op: 'all', brand: 'all', sort: 'score' };
 const prodSelected = new Set();
 const SECONDARY_PRODUCT_TYPES = new Set(['holder','tool_holder','machine_holder','collet_chuck','hydraulic_chuck','shrink_fit_holder','weldon_holder','drill_chuck','interface_component','grinding_wheel','diamond_wheel','cbn_wheel']);
 
@@ -10326,6 +10427,15 @@ function setProdSelectFilter(type, val) {
   filterProducts();
 }
 
+function toolLifeSortWeight(value) {
+  const text = String(value || '').toLowerCase();
+  if (/very high|industry-leading|best-in-class|excellent|long|high/.test(text)) return 4;
+  if (/medium-high|medium high/.test(text)) return 3;
+  if (/medium|balanced|versatile/.test(text)) return 2;
+  if (/low|limited/.test(text)) return 1;
+  return 0;
+}
+
 function filterProducts() {
   const q = (document.getElementById('prodSearch')?.value || '').toLowerCase();
   const context = {
@@ -10350,13 +10460,26 @@ function filterProducts() {
     const topForBoost = contextKey && coreArr(p.topFor).includes(contextKey) ? 8 : 0;
     return { product: p, trust, signals, score: signals.overallScore + topForBoost };
   });
-  const sorted = [...scored].sort((a, b) => {
+  let sorted = [...scored].sort((a, b) => {
     const tierA = getProductFocusTier(a.product) === 'core' ? 0 : 1;
     const tierB = getProductFocusTier(b.product) === 'core' ? 0 : 1;
     if (tierA !== tierB) return tierA - tierB;
     if (b.score !== a.score) return b.score - a.score;
     return (a.product.brand || '').localeCompare(b.product.brand || '') || (a.product.productName || '').localeCompare(b.product.productName || '');
   });
+  if (prodFilters.sort === 'brand') {
+    sorted.sort((a, b) => (a.product.brand || '').localeCompare(b.product.brand || '') || getProductPrimaryCode(a.product).localeCompare(getProductPrimaryCode(b.product)));
+  } else if (prodFilters.sort === 'grade') {
+    sorted.sort((a, b) => getProductPrimaryCode(a.product).localeCompare(getProductPrimaryCode(b.product)) || (a.product.brand || '').localeCompare(b.product.brand || ''));
+  } else if (prodFilters.sort === 'toolLife') {
+    sorted.sort((a, b) => toolLifeSortWeight(b.product.toolLife) - toolLifeSortWeight(a.product.toolLife) || b.score - a.score);
+  } else if (prodFilters.sort === 'vcHigh') {
+    sorted.sort((a, b) => {
+      const acd = getContextCuttingData(a.product, context) || {};
+      const bcd = getContextCuttingData(b.product, context) || {};
+      return (parseRangeCeiling(bcd.vc || b.product.vcRange) || 0) - (parseRangeCeiling(acd.vc || a.product.vcRange) || 0) || b.score - a.score;
+    });
+  }
 
   const isoColorMap = { P: 'rtag-p', M: 'rtag-m', K: 'rtag-k', N: 'rtag-n', S: 'rtag-s', H: 'rtag-h' };
   const isoStripeColorMap = { P: '#1E4FB8', M: '#047857', K: '#B91C1C', N: '#B45309', S: '#6D28D9', H: '#1F2937' };
