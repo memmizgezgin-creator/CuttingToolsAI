@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <!-- Google Analytics 4 (gtag.js) — replace G-DDV7CCYC0D with live Measurement ID -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DDV7CCYC0D"></script>
@@ -174,11 +174,30 @@ body.ta-dark{
   --green-bg:#14281D;
   --orange-bg:#321D1D;
 }
+body.ta-high-contrast{
+  --ink:#050505;--ink2:#151515;--ink3:#3a3a3a;--line:#888;--line2:#555;--purple:#4B16D1;--bg:#fff;--white:#fff;--panel:#fff;
+}
+body.ta-font-small{font-size:13px}
+body.ta-font-large{font-size:16px}
+@media (prefers-color-scheme: dark){
+  body:not(.ta-theme-manual){--white:#18171A;--bg:#111114;--bg2:#242329;--panel:#1e1d22;--ink:#F3F1EA;--ink2:#C9C4B8;--ink3:#8F8A82;--line:#34323A;--border:var(--line)}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
 body{
   font-family:'Plus Jakarta Sans',system-ui,sans-serif;
   background:var(--bg);
   color:var(--ink);
 }
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{
+  outline:3px solid var(--gold);outline-offset:2px;
+}
+.skip-link{
+  position:fixed;left:12px;top:12px;z-index:100000;background:var(--purple);color:#fff;padding:8px 12px;border-radius:6px;
+  transform:translateY(-140%);transition:transform .15s;font-weight:800;text-decoration:none;
+}
+.skip-link:focus{transform:translateY(0)}
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
 
@@ -2316,8 +2335,9 @@ body{
 </head>
 <body>
 
+<a class="skip-link" href="#mainContent">Skip to content</a>
 <div class="app">
-  <aside class="sidebar">
+  <aside class="sidebar" role="navigation" aria-label="ToolAdvisor navigation">
     <div class="sb-brand">
       <div class="mark">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -2402,13 +2422,15 @@ body{
           <button type="button" onclick="openUtilityModal('notifications')">Notify</button>
           <select id="languageSelector" onchange="handleLanguageSelect(this.value)"><option value="EN">EN</option><option value="TR">TR</option><option value="DE">DE</option><option value="NL">NL</option><option value="FR">FR</option></select>
           <select id="currencySelector" onchange="localStorage.setItem('ta_currency_v1',this.value);toast('Currency preference saved for future pricing.','success')"><option>EUR</option><option>USD</option><option>GBP</option></select>
+          <button type="button" onclick="toggleHighContrast()">Contrast</button>
+          <select id="fontSizeSelector" onchange="setFontScale(this.value)"><option value="medium">Text M</option><option value="small">Text S</option><option value="large">Text L</option></select>
         </div>
         <div class="session-summary" id="sessionSummary">0 searches today, 0 products viewed</div>
       </div>
     </div>
   </aside>
 
-<main class="main">
+<main class="main" id="mainContent" role="main" tabindex="-1">
   <div class="crumb" id="topBreadcrumb">
     <span id="crumbGroup">Selection Tools</span><span class="sep">›</span><strong id="crumbSurface">AI Advisor</strong>
     <span class="sep" id="crumbStepSep">›</span><span class="step" id="crumbStep">Step 1 — Workpiece Material</span>
@@ -3347,7 +3369,7 @@ body{
   Carbide insert cross-reference tool for CNC machinists. Compare ISO P, M, K, N, S, H material group inserts. Find equivalents for CNMG, WNMG, DCMT, APMT, SNMG insert codes across all major brands.
 </div>
 
-<div class="site-footer" style="max-width:none;margin:0;padding:10px 16px;border-top:1px solid var(--border);color:var(--ink3);font-size:12px">
+<div class="site-footer" role="complementary" style="max-width:none;margin:0;padding:10px 16px;border-top:1px solid var(--border);color:var(--ink3);font-size:12px">
   <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center">
     <span>Support: <a href="mailto:support@tooladvisor.eu" style="color:var(--purple);font-weight:700">support@tooladvisor.eu</a> · Response within 1 business day · Billing: <a href="mailto:billing@tooladvisor.eu" style="color:var(--purple);font-weight:700">billing@tooladvisor.eu</a></span>
     <span>ToolAdvisor Pro is billed monthly and renews automatically until canceled.</span>
@@ -3484,6 +3506,12 @@ let _remoteCRDB = null;
 
 /** Always use getDB() in live query functions — falls back to local if remote not ready */
 function getDB() { return _remoteProductDB || PRODUCT_DB; }
+function findProduct(id) {
+  const key = String(id || '');
+  if (!key) return null;
+  const cached = (typeof advisorResultCache !== 'undefined' && advisorResultCache?.get) ? advisorResultCache.get(key) : null;
+  return getDB().find(p => String(p.id) === key) || cached || null;
+}
 
 /** Map Supabase products row → internal product shape */
 function _mapRemoteProduct(r) {
@@ -7625,8 +7653,13 @@ function buildCoreCrossRefReport() {
     focusOperations: focusOps,
   };
 }
+const _crossRefLookupMemo = new Map();
 function resolveCrossRefRecord(code) {
-  return CROSSREF_DB[code] || CROSSREF_SIGNAL_DB[code] || null;
+  const key = String(code || '').toUpperCase().replace(/\s/g, '');
+  if (_crossRefLookupMemo.has(key)) return _crossRefLookupMemo.get(key);
+  const value = CROSSREF_DB[key] || CROSSREF_SIGNAL_DB[key] || null;
+  _crossRefLookupMemo.set(key, value);
+  return value;
 }
 
 hydrateCoreCrossRefMappings();
@@ -8912,7 +8945,7 @@ function syncBodyOverflowLock() {
   document.body.style.overflow = (detailOpen || cmpOpen) ? 'hidden' : '';
 }
 function getProductById(id) {
-  return getDB().find(p => p.id === id) || advisorResultCache.get(id) || null;
+  return findProduct(id);
 }
 function getRelationLabel(id) {
   const item = getProductById(id);
@@ -9962,6 +9995,7 @@ function handleAdvisorQuickSearch(value) {
 /* ============================================================
    ALTERNATIVES
 ============================================================ */
+const _alternativesMemo = new Map();
 /**
  * findAlternatives(productId, operation, material, max)
  * Returns up to `max` products that:
@@ -9971,7 +10005,9 @@ function handleAdvisorQuickSearch(value) {
  * Tries Supabase first; falls back to local getDB().
  */
 async function findAlternatives(productId, operation, material, max = 4) {
-  const source = getDB().find(p => p.id === productId);
+  const cacheKey = [productId, operation, material, max, getDB().length].join('|');
+  if (_alternativesMemo.has(cacheKey)) return _alternativesMemo.get(cacheKey);
+  const source = findProduct(productId);
   if (!source) return [];
 
   // ── Supabase path ────────────────────────────────────────────
@@ -9986,12 +10022,16 @@ async function findAlternatives(productId, operation, material, max = 4) {
         .neq('brand', source.brand)
         .neq('id', productId)
         .limit(max);
-      if (!error && data?.length > 0) return data.map(_mapRemoteProduct);
+      if (!error && data?.length > 0) {
+        const mapped = data.map(_mapRemoteProduct);
+        _alternativesMemo.set(cacheKey, mapped);
+        return mapped;
+      }
     } catch(_) { /* fall through */ }
   }
 
   // ── Local fallback ───────────────────────────────────────────
-  return getDB()
+  const local = getDB()
     .filter(p =>
       p.id !== productId &&
       p.brand !== source.brand &&
@@ -9999,6 +10039,8 @@ async function findAlternatives(productId, operation, material, max = 4) {
       coreArr(p.materials).includes(material)
     )
     .slice(0, max);
+  _alternativesMemo.set(cacheKey, local);
+  return local;
 }
 
 /**
@@ -11253,6 +11295,7 @@ function applyDarkModePreference() {
   let enabled = false;
   try { enabled = localStorage.getItem(_DARK_MODE_KEY) === '1'; } catch (_) {}
   document.body.classList.toggle('ta-dark', enabled);
+  if (localStorage.getItem(_DARK_MODE_KEY) !== null) document.body.classList.add('ta-theme-manual');
   const btn = document.getElementById('darkModeToggle');
   if (btn) btn.textContent = enabled ? 'Light mode' : 'Dark mode';
 }
@@ -11260,9 +11303,59 @@ function applyDarkModePreference() {
 function toggleDarkMode() {
   const next = !document.body.classList.contains('ta-dark');
   document.body.classList.toggle('ta-dark', next);
+  document.body.classList.add('ta-theme-manual');
   try { localStorage.setItem(_DARK_MODE_KEY, next ? '1' : '0'); } catch (_) {}
   const btn = document.getElementById('darkModeToggle');
   if (btn) btn.textContent = next ? 'Light mode' : 'Dark mode';
+}
+
+function toggleHighContrast() {
+  const next = !document.body.classList.contains('ta-high-contrast');
+  document.body.classList.toggle('ta-high-contrast', next);
+  try { localStorage.setItem('ta_high_contrast_v1', next ? '1' : '0'); } catch (_) {}
+}
+
+function setFontScale(size) {
+  document.body.classList.remove('ta-font-small', 'ta-font-large');
+  if (size === 'small') document.body.classList.add('ta-font-small');
+  if (size === 'large') document.body.classList.add('ta-font-large');
+  try { localStorage.setItem('ta_font_size_v1', size); } catch (_) {}
+}
+
+function applyAccessibilityPrefs() {
+  try {
+    if (localStorage.getItem('ta_high_contrast_v1') === '1') document.body.classList.add('ta-high-contrast');
+    const size = localStorage.getItem('ta_font_size_v1') || 'medium';
+    setFontScale(size);
+    const select = document.getElementById('fontSizeSelector');
+    if (select) select.value = size;
+  } catch (_) {}
+}
+
+function enhanceClickableAccessibility() {
+  document.querySelectorAll('div[onclick],span[onclick]').forEach(el => {
+    if (!el.hasAttribute('role')) el.setAttribute('role', 'button');
+    if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+    if (!el.dataset.keyClickBound) {
+      el.dataset.keyClickBound = '1';
+      el.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          el.click();
+        }
+      });
+    }
+  });
+}
+
+function associateFormLabels() {
+  document.querySelectorAll('.form-row').forEach((row, index) => {
+    const label = row.querySelector('label');
+    const control = row.querySelector('input,select,textarea');
+    if (!label || !control) return;
+    if (!control.id) control.id = `ta-form-control-${index}`;
+    label.setAttribute('for', control.id);
+  });
 }
 
 function updateBackToTopVisibility() {
@@ -11418,6 +11511,7 @@ function renderSessionSummary() {
 (function init() {
   resetInteractionLayers();
   applyDarkModePreference();
+  applyAccessibilityPrefs();
   loadCR('CNMG120408', { skipHistory: true });
   decodeISO('CNMG120408');
   calcNow();
@@ -11434,6 +11528,8 @@ function renderSessionSummary() {
   renderTabLastUpdated();
   renderAdvisorQuickSearchHistory();
   showTourIfNeeded();
+  enhanceClickableAccessibility();
+  associateFormLabels();
   const savedCurrency = localStorage.getItem('ta_currency_v1');
   if (savedCurrency && document.getElementById('currencySelector')) document.getElementById('currencySelector').value = savedCurrency;
   pickMatDB('P', document.querySelector('.mat-iso-card'));
@@ -11800,7 +11896,7 @@ function filterProducts() {
         <div><strong>${p.grade || primaryCode}</strong> · ${p.coating || 'Coating not specified'}</div>
         ${quickApps.length ? `<ul>${quickApps.map(app => `<li>${escapeHtmlAttr(app)}</li>`).join('')}</ul>` : '<ul><li>Application data not yet assigned.</li></ul>'}
       </div>
-      <div class="prod-card-check ${isChecked ? 'on' : ''}" onclick="toggleProdSelect('${p.id}')">
+      <div class="prod-card-check ${isChecked ? 'on' : ''}" aria-label="Toggle compare for ${escapeHtmlAttr(primaryCode)}" onclick="toggleProdSelect('${p.id}')">
         ${isChecked ? '<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}
       </div>
       <div class="prod-card-head">
@@ -11848,6 +11944,7 @@ function filterProducts() {
   }).join('');
 
   updateCompareBar();
+  enhanceClickableAccessibility();
 }
 
 function toggleProdSelect(id) {
