@@ -1039,10 +1039,11 @@ body{
 .cr-row{
   display:flex;align-items:center;gap:10px;
   padding:11px 16px;border-bottom:1px solid var(--border);
-  transition:background .1s;flex-wrap:wrap;
+  transition:background .1s;flex-wrap:wrap;cursor:pointer;
 }
 .cr-row:last-child{border-bottom:none}
 .cr-row:hover{background:var(--bg)}
+.cr-row:hover .cr-code{text-decoration:underline}
 .cr-brand{
   font-size:11px;font-weight:800;padding:3px 9px;border-radius:4px;
   background:var(--bg2);border:1px solid var(--border);
@@ -8542,13 +8543,42 @@ function openProductDetail(productId, sourceSurface = 'products', event) {
 
   document.getElementById('productDetailTitle').textContent = title;
   document.getElementById('productDetailSubtitle').textContent = subtitleParts.join(' · ') || 'Core cutting tools insight';
+  // Build technical specs from PRODUCT_DB fields — show all that exist
+  const isoCodesArr     = coreArr(product.isoCodes);
+  const operationsArr   = coreArr(product.operations);
+  const materialsArr    = coreArr(product.materials);
+  const dash = (v) => (v && String(v).trim()) ? String(v) : '—';
+  const listOrDash = (arr) => arr.length ? arr.join(', ') : '—';
+  // If we have a specific operation+material context, surface its cuttingData entry too
+  const cdKey = opContext && matContext ? `${opContext}-${matContext}` : null;
+  const cd = cdKey && product.cuttingData ? product.cuttingData[cdKey] : null;
   document.getElementById('productDetailBody').innerHTML = `
     <div class="detail-grid">
-      <div class="detail-chip"><div class="detail-k">Brand</div><div class="detail-v">${product.brand || '—'}</div></div>
-      <div class="detail-chip"><div class="detail-k">Product</div><div class="detail-v">${product.productName || '—'}</div></div>
+      <div class="detail-chip"><div class="detail-k">Brand</div><div class="detail-v">${dash(product.brand)}</div></div>
+      <div class="detail-chip"><div class="detail-k">Product</div><div class="detail-v">${dash(product.productName)}</div></div>
       ${product.series ? `<div class="detail-chip"><div class="detail-k">Series</div><div class="detail-v">${product.series}</div></div>` : ''}
+      <div class="detail-chip"><div class="detail-k">Grade</div><div class="detail-v">${dash(product.grade)}</div></div>
+      <div class="detail-chip"><div class="detail-k">Coating</div><div class="detail-v">${dash(product.coating)}</div></div>
+      <div class="detail-chip"><div class="detail-k">Geometry</div><div class="detail-v">${dash(product.geometry)}</div></div>
+      <div class="detail-chip"><div class="detail-k">ISO codes</div><div class="detail-v">${listOrDash(isoCodesArr)}</div></div>
+      <div class="detail-chip"><div class="detail-k">Operations</div><div class="detail-v">${listOrDash(operationsArr)}</div></div>
+      <div class="detail-chip"><div class="detail-k">ISO materials</div><div class="detail-v">${listOrDash(materialsArr)}</div></div>
+      <div class="detail-chip"><div class="detail-k">Cutting speed Vc</div><div class="detail-v">${dash(product.vcRange)}${product.vcRange ? ' m/min' : ''}</div></div>
+      <div class="detail-chip"><div class="detail-k">Feed fn / fz</div><div class="detail-v">${dash(product.fnRange)}${product.fnRange ? ' mm' : ''}</div></div>
+      <div class="detail-chip"><div class="detail-k">Depth ap</div><div class="detail-v">${dash(product.apRange)}${product.apRange ? ' mm' : ''}</div></div>
+      ${product.toolLife ? `<div class="detail-chip"><div class="detail-k">Tool life</div><div class="detail-v">${product.toolLife}</div></div>` : ''}
       <div class="detail-chip"><div class="detail-k">Confidence</div><div class="detail-v">${trust.score}% · ${trust.band}</div></div>
     </div>
+    ${product.applicationNotes ? `
+    <div class="detail-chip">
+      <div class="detail-k">Application notes</div>
+      <div class="detail-v">${product.applicationNotes}</div>
+    </div>` : ''}
+    ${cd ? `
+    <div class="detail-chip">
+      <div class="detail-k">Cutting data — ${cdKey}</div>
+      <div class="detail-v">Vc ${cd.vc || '—'} m/min · fn ${cd.fn || '—'} mm · ap ${cd.ap || '—'} mm${cd.note ? ` · ${cd.note}` : ''}</div>
+    </div>` : ''}
     <div class="detail-chip">
       <div class="detail-k">Why this</div>
       <div class="detail-v">${truncLine(trust.why, 160)}</div>
@@ -9855,18 +9885,77 @@ function loadCR(code) {
     </div>`;
   document.getElementById('crRows').innerHTML = d.rows.map(r => {
     const siteUrl = (BUY_LINKS[r.brand]?.[0]?.u || 'https://google.com/search?q=') + encodeURIComponent(r.code);
+    const sa = (s) => escapeHtmlAttr(s == null ? '' : s);
     return `
-    <div class="cr-row">
+    <div class="cr-row" onclick="openCrossRefRowDetail('${sa(r.brand)}','${sa(r.code)}','${sa(r.coating)}','${sa(r.app)}','${sa(r.apc)}','${sa(code)}')">
       <span class="cr-brand">${r.brand}</span>
       <span class="cr-code">${r.code}</span>
       <span class="cr-coating">${r.coating}</span>
       <span class="cr-app ${r.apc || ''}">${r.app}</span>
-      <div class="cr-actions">
-        <button class="cr-copy" onclick="cpCode(this,'${r.code}')">Copy</button>
-        <a class="cr-buy" href="${siteUrl}" target="_blank" rel="noopener">Buy ↗</a>
+      <div class="cr-actions" onclick="event.stopPropagation()">
+        <button class="cr-copy" onclick="event.stopPropagation();cpCode(this,'${sa(r.code)}')">Copy</button>
+        <a class="cr-buy" href="${siteUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Buy ↗</a>
       </div>
     </div>`;
   }).join('');
+}
+
+/**
+ * Best-effort match: cross-ref row → PRODUCT_DB entry.
+ * Match if brand overlaps (first-word fuzzy) AND product grade appears in cross-ref code.
+ */
+function findProductByCrossRef(brand, code) {
+  const upBrand = String(brand || '').toLowerCase().trim();
+  const upCode  = String(code  || '').toUpperCase().replace(/\s+/g, '');
+  if (!upBrand || !upCode) return null;
+  const upBrandFirst = upBrand.split(/\s+/)[0];
+  for (const p of getDB()) {
+    const pBrand = String(p.brand || '').toLowerCase().trim();
+    if (!pBrand) continue;
+    const pBrandFirst = pBrand.split(/\s+/)[0];
+    const brandMatch = pBrand.includes(upBrand) || upBrand.includes(pBrandFirst) || pBrand.includes(upBrandFirst);
+    if (!brandMatch) continue;
+    const pGrade = String(p.grade || '').toUpperCase().replace(/\s+/g, '');
+    if (pGrade && pGrade.length >= 3 && upCode.includes(pGrade)) return p;
+  }
+  return null;
+}
+
+/**
+ * Cross-ref row click → open product detail modal.
+ * If we have a PRODUCT_DB match, open the full record. Otherwise build a synthetic
+ * record from the cross-ref data so the user still sees a structured detail panel.
+ */
+function openCrossRefRowDetail(brand, code, coating, app, apc, parentCode) {
+  const match = findProductByCrossRef(brand, code);
+  if (match) {
+    taTrack('crossref_row_open', { brand, code, matched: match.id });
+    openProductDetail(match.id, 'crossref');
+    return;
+  }
+  // Fallback synthetic product — shows what we know, fields without data render as '—'
+  const apcToMat = { 'rtag-p': 'P', 'rtag-m': 'M', 'rtag-k': 'K', 'rtag-n': 'N', 'rtag-s': 'S', 'rtag-h': 'H' };
+  const isoMat = apcToMat[apc] || '';
+  const synId = 'crossref-' + String(code || '').replace(/\s+/g, '_').replace(/[^A-Za-z0-9_-]/g, '');
+  const synProduct = {
+    id: synId,
+    brand: brand || 'Unknown brand',
+    productName: code || '',
+    grade: code || '',
+    coating: coating || '',
+    geometry: '',
+    isoCodes: parentCode ? [parentCode] : [],
+    operations: [],
+    materials: isoMat ? [isoMat] : [],
+    vcRange: '', fnRange: '', apRange: '',
+    toolLife: '',
+    applicationNotes: `Cross-reference equivalent from ${brand || 'supplier'} catalogue. Application class: ${app || '—'}. Full technical specs not yet in catalogue — see supplier page for details.`,
+    exactEquivalents: [], functionalAlternatives: [], valueAlternatives: [],
+    cuttingData: {}, buyLinks: [], imageUrl: '',
+  };
+  advisorResultCache.set(synId, synProduct);
+  taTrack('crossref_row_open', { brand, code, matched: null });
+  openProductDetail(synId, 'crossref');
 }
 
 function cpCode(btn, code) {
