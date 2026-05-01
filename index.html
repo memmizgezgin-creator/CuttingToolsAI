@@ -3064,15 +3064,26 @@ async function initRemoteCrossRefs() {
 }
 
 // ── Event tracker ─────────────────────────────────────────────────────────────
+// Inserts into Supabase `tracker_events` table.
+// Supabase URL + key come from CONFIG.supabase via getSupabase().
 const _taSessionId = Math.random().toString(36).slice(2);
 function taTrack(eventType, data = {}) {
   const sb = getSupabase();
-  if (!sb) return;
+  if (!sb) {
+    console.log('TATracker: Supabase disabled');
+    return;
+  }
   sb.from('tracker_events').insert({
     event_type: eventType,
     event_data: data,
     session_id: _taSessionId,
-  }).then(() => {}).catch(() => {});
+  }).then(({ error }) => {
+    if (error) {
+      console.warn('TATracker: insert failed —', error.message);
+    } else {
+      console.log('TATracker: event sent', '(' + eventType + ')');
+    }
+  });
 }
 
 // Bootstrap: cross-refs at startup (small, broadly used).
@@ -10100,15 +10111,24 @@ const TATracker = (function () {
     if (window.__TA_DEBUG_EVENTS__ === true) {
       console.log('[TATracker]', entry.timestamp.slice(11, 23), eventType, eventData);
     }
-    // Supabase sync (fire-and-forget)
+    // Supabase sync — table: tracker_events (matches supabase-schema.sql)
+    // URL + key come from CONFIG.supabase via getSupabase()
     const sb = getSupabase();
-    if (sb) {
-      sb.from('events').insert({
-        timestamp: entry.timestamp,
-        event_type: eventType,
-        event_data: entry.eventData
-      }).then(({ error }) => { if (error) console.warn('[TATracker] Supabase:', error.message); });
+    if (!sb) {
+      console.log('TATracker: Supabase disabled');
+      return;
     }
+    sb.from('tracker_events').insert({
+      event_type: eventType,
+      event_data: entry.eventData,
+      session_id: (typeof _taSessionId !== 'undefined') ? _taSessionId : null
+    }).then(({ error }) => {
+      if (error) {
+        console.warn('TATracker: insert failed —', error.message);
+      } else {
+        console.log('TATracker: event sent', '(' + eventType + ')');
+      }
+    });
   }
 
   function exportCSV() {
