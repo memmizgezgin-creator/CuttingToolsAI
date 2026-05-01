@@ -640,6 +640,7 @@ body{
 .results-title{font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-.18px}
 .results-meta{font-size:12px;color:#7A7469;font-weight:600}
 .results-list{display:flex;flex-direction:column;gap:12px}
+.advisor-brand-group{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);padding:6px 2px 0}
 .advisor-context-head{
   border:1.5px solid #D8D1C4;
   border-radius:8px;
@@ -1670,6 +1671,11 @@ body{
   background:var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Ccircle cx='7' cy='7' r='4.5' stroke='%238A8898' stroke-width='1.4'/%3E%3Cpath d='M10.5 10.5L14 14' stroke='%238A8898' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E") 12px center no-repeat;
   color:var(--ink);outline:none;transition:border-color .2s;
 }
+.prod-search-wrap{position:relative}
+.prod-suggestions{position:absolute;left:0;right:0;top:100%;z-index:35;background:var(--white);border:1px solid var(--border);border-radius:0 0 6px 6px;box-shadow:var(--shadow-md);display:none;max-height:220px;overflow:auto}
+.prod-suggestions.show{display:block}
+.prod-suggestion{display:block;width:100%;text-align:left;border:0;background:transparent;padding:8px 12px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink);cursor:pointer}
+.prod-suggestion:hover{background:var(--bg)}
 .prod-search:focus{border-color:var(--purple);background-color:var(--white)}
 .prod-search::placeholder{color:var(--ink3);font-family:'IBM Plex Sans',sans-serif;font-size:13px}
 .prod-filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 16px}
@@ -1803,6 +1809,7 @@ body{
 .prod-app-notes{margin-top:6px;border:1px solid var(--border);border-radius:5px;background:var(--bg);padding:5px 7px}
 .prod-app-notes summary{cursor:pointer;font-size:10px;font-weight:800;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em}
 .prod-app-notes div{font-size:11px;line-height:1.45;color:var(--ink2);margin-top:5px}
+.prod-error-link{border:none;background:transparent;color:var(--ink3);font-size:10px;font-weight:800;text-decoration:underline;cursor:pointer}
 .prod-trust-line.warn{
   margin-top:4px;color:#92400E;background:#FEF9C3;border:1px solid #FDE68A;
   border-radius:5px;padding:3px 6px;display:inline-block;
@@ -2036,6 +2043,14 @@ body{
 .cookie-actions{display:flex;gap:8px;flex-shrink:0}
 .cookie-btn{border:1px solid var(--border);background:var(--bg);color:var(--ink);border-radius:5px;padding:7px 10px;font-size:11px;font-weight:800;cursor:pointer;font-family:'IBM Plex Sans',sans-serif}
 .cookie-btn.primary{background:var(--purple);border-color:var(--purple);color:#fff}
+.report-modal{position:fixed;inset:0;background:rgba(24,23,26,.45);z-index:9998;display:none;align-items:center;justify-content:center;padding:20px}
+.report-modal.open{display:flex}
+.report-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:18px;max-width:360px;width:100%;box-shadow:var(--shadow-lg)}
+.report-card h3{font-size:16px;margin-bottom:10px;color:var(--ink)}
+.report-card select{width:100%;margin:8px 0 12px}
+.bulk-box{margin-top:10px;border:1px solid var(--border);border-radius:var(--r-sm);padding:10px;background:var(--bg)}
+.bulk-box textarea{width:100%;min-height:86px;border:1px solid var(--border);border-radius:4px;padding:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;background:var(--white);color:var(--ink)}
+.bulk-results{display:grid;gap:6px;margin-top:8px;font-size:11px;color:var(--ink2)}
 .hero{
   text-align:left;max-width:none;margin:0 0 16px;padding:0;border:none;border-radius:0;background:transparent;box-shadow:none;overflow:visible;
 }
@@ -2291,7 +2306,7 @@ body{
     <nav class="sb-nav">
       <button class="tab sb-item primary-tab" onclick="setTab('visualid',this)">
         <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor"/><path d="M2 8s2-5 6-5 6 5 6 5-2 5-6 5-6-5-6-5z" stroke="currentColor"/></svg>
-        Visual ID <span class="tab-badge badge-soon">Soon</span>
+        Visual ID <span class="tab-badge badge-soon">Planned</span>
       </button>
       <button class="tab sb-item" onclick="setTab('aichat',this)">
         <svg viewBox="0 0 16 16" fill="none"><path d="M2 12l1-2.5A5 5 0 1112 8a5 5 0 01-7.5 3.5L2 12z" stroke="currentColor" stroke-linejoin="round"/></svg>
@@ -2394,6 +2409,13 @@ body{
     <div class="advisor-progress" id="advisorProgress">
       <div class="advisor-progress-label" id="advisorProgressLabel">Step 1 of 3</div>
       <div class="advisor-progress-track"><div class="advisor-progress-fill" id="advisorProgressFill"></div></div>
+    </div>
+    <div class="op-subtypes show" id="industryUseCase" style="margin-bottom:12px">
+      <button class="op-subtype-chip active" type="button" onclick="selectIndustryUseCase('General Engineering',this)">General Engineering</button>
+      <button class="op-subtype-chip" type="button" onclick="selectIndustryUseCase('Automotive',this)">Automotive</button>
+      <button class="op-subtype-chip" type="button" onclick="selectIndustryUseCase('Aerospace',this)">Aerospace</button>
+      <button class="op-subtype-chip" type="button" onclick="selectIndustryUseCase('Medical',this)">Medical</button>
+      <button class="op-subtype-chip" type="button" onclick="selectIndustryUseCase('Energy',this)">Energy</button>
     </div>
 
     <!-- Step 1: Material -->
@@ -2627,6 +2649,12 @@ body{
         <button class="cr-q" onclick="loadCR('VBMT160408')">VBMT160408</button>
       </div>
       <div class="cr-coverage-hint"><strong>Coverage hint:</strong> strongest on core turning, milling, drilling, threading and grooving families. Use full codes (e.g. CNMG120408) for best mapping quality.</div>
+      <div class="bulk-box">
+        <div class="sec-label" style="margin-bottom:6px">Bulk lookup</div>
+        <textarea id="bulkCrInput" placeholder="Paste multiple insert codes, one per line"></textarea>
+        <button class="cr-search-btn" type="button" style="margin-top:8px" onclick="runBulkCrossRef()">Run bulk lookup</button>
+        <div class="bulk-results" id="bulkCrResults"></div>
+      </div>
       <div id="crInfo"></div>
       <div id="crRows"></div>
     </div>
@@ -2784,7 +2812,7 @@ body{
       <div style="width:56px;height:56px;border-radius:12px;background:var(--bg2);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
         <svg width="26" height="26" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2.5" stroke="var(--ink2)" stroke-width="1.4"/><path d="M1.5 7S3.5 2.5 7 2.5 12.5 7 12.5 7 10.5 11.5 7 11.5 1.5 7 1.5 7z" stroke="var(--ink2)" stroke-width="1.4"/></svg>
       </div>
-      <div style="font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Coming Soon</div>
+      <div style="font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Planned</div>
       <h2 style="font-size:22px;font-weight:800;color:var(--ink);margin-bottom:10px;letter-spacing:-.3px">Visual ID — AI Insert Recognition</h2>
       <p style="font-size:14px;color:var(--ink2);line-height:1.65;margin:0">Upload a photo of any cutting insert. AI identifies the brand, grade and geometry — then cross-references to 7 brands automatically.</p>
     </div>
@@ -2820,7 +2848,7 @@ body{
       <div style="width:56px;height:56px;border-radius:12px;background:var(--bg2);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
         <svg width="26" height="26" viewBox="0 0 14 14" fill="none"><path d="M7 1.5L8.5 5H12L9.2 7L10.2 10.5L7 8.5L3.8 10.5L4.8 7L2 5H5.5L7 1.5Z" stroke="var(--ink2)" stroke-width="1.3" stroke-linejoin="round"/></svg>
       </div>
-      <div style="font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Coming Soon</div>
+      <div style="font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px">Planned</div>
       <h2 style="font-size:22px;font-weight:800;color:var(--ink);margin-bottom:10px;letter-spacing:-.3px">Pricing</h2>
       <p style="font-size:14px;color:var(--ink2);line-height:1.65;margin:0">All features are currently free to use. Pricing plans will be published here when available.</p>
     </div>
@@ -2831,6 +2859,21 @@ body{
       <h1>Optional technical resources</h1>
       <p>Use Advisor, Cross-Ref and Products as the primary workflow. Resources are a secondary reference layer for deeper offline study.</p>
       <div class="res-hero-sub">Secondary layer only: guides, references and optional consultation</div>
+    </div>
+    <div class="res-cat-title"><span>Technical glossary</span></div>
+    <div class="res-grid">
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">ISO material group</div><div class="res-card-desc">P steel, M stainless, K cast iron, N non-ferrous, S superalloy/titanium, H hardened steel.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Chipbreaker</div><div class="res-card-desc">Insert edge geometry that controls chip shape, cutting force and stability.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">CVD / PVD coatings</div><div class="res-card-desc">CVD favors wear resistance and stable steel cuts; PVD favors sharp edges and lower cutting force.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">TiAlN / TiCN / Al2O3</div><div class="res-card-desc">Common coating layers for heat resistance, toughness, wear resistance and crater protection.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">Vc / fn / ap</div><div class="res-card-desc">Cutting speed, feed per revolution/tooth, and depth of cut.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-title">MRR / kc1</div><div class="res-card-desc">Material removal rate and specific cutting force used for power estimation.</div></div></div>
+    </div>
+    <div class="res-cat-title"><span>What's new</span></div>
+    <div class="res-grid">
+      <div class="res-card"><div class="res-card-body"><div class="res-card-cat">2026-05-01</div><div class="res-card-title">RC5 interaction pack</div><div class="res-card-desc">Advisor export/share, product compare, supplier filters, calculators and search improvements.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-cat">2026-04-30</div><div class="res-card-title">Technical SEO readiness</div><div class="res-card-desc">Canonical, sitemap, robots, schema and metadata prepared for controlled indexing.</div></div></div>
+      <div class="res-card"><div class="res-card-body"><div class="res-card-cat">2026-04-29</div><div class="res-card-title">Engineering catalog UI</div><div class="res-card-desc">Industrial sidebar layout, dense cards, product visuals and decision-oriented result cards.</div></div></div>
     </div>
 
     <!-- Etsy banner -->
@@ -2921,7 +2964,7 @@ body{
           <div class="res-card-desc">APMT, SOMT, OFMT, SEKR and face milling inserts. All major brands.</div>
           <div class="res-card-footer">
             <span class="res-price">€16.90</span>
-            <span class="res-badge badge-soon">Coming Soon</span>
+            <span class="res-badge badge-soon">Planned</span>
           </div>
         </div>
       </div>
@@ -2950,7 +2993,7 @@ body{
           <div class="res-card-desc">OSG, Gühring, Sandvik CoroDrill. Per material cutting speeds and feeds.</div>
           <div class="res-card-footer">
             <span class="res-price">€14.90</span>
-            <span class="res-badge badge-soon">Coming Soon</span>
+            <span class="res-badge badge-soon">Planned</span>
           </div>
         </div>
       </div>
@@ -2962,7 +3005,7 @@ body{
           <div class="res-card-desc">ISO metric, UN, NPT threading. Tap selection, speeds, thread mill vs tap.</div>
           <div class="res-card-footer">
             <span class="res-price">€14.90</span>
-            <span class="res-badge badge-soon">Coming Soon</span>
+            <span class="res-badge badge-soon">Planned</span>
           </div>
         </div>
       </div>
@@ -3099,7 +3142,11 @@ body{
       <div class="quick-compare-result" id="quickCompareResult"></div>
     </div>
     <div class="prod-count" id="prodCount">Showing 0 products</div>
-    <input class="prod-search" type="text" id="prodSearch" placeholder="Search code, series, brand, grade or coating — e.g. CNMG120408, CoroCut, RT100U, IC908, TiAlN" oninput="filterProducts()">
+    <button class="advisor-action-btn" type="button" onclick="exportVisibleProductsCatalog()" style="margin-bottom:10px">Export catalog</button>
+    <div class="prod-search-wrap">
+      <input class="prod-search" type="text" id="prodSearch" placeholder="Search code, series, brand, grade or coating — e.g. CNMG120408, CoroCut, RT100U, IC908, TiAlN" oninput="handleProductSearchInput()" autocomplete="off">
+      <div class="prod-suggestions" id="prodSuggestions"></div>
+    </div>
     <div class="prod-filters">
       <div class="prod-filter-group">
         <span class="prod-filter-label">ISO</span>
@@ -3191,6 +3238,20 @@ body{
   <div class="cookie-actions">
     <button class="cookie-btn" type="button" onclick="setCookieConsent('declined')">Decline</button>
     <button class="cookie-btn primary" type="button" onclick="setCookieConsent('accepted')">Accept</button>
+  </div>
+</div>
+<div class="report-modal" id="reportErrorModal" onclick="if(event.target===this)closeReportError()">
+  <div class="report-card">
+    <h3>Report product data issue</h3>
+    <div id="reportProductLabel" style="font-size:12px;color:var(--ink3);margin-bottom:8px"></div>
+    <select class="form-select" id="reportIssueType">
+      <option>Wrong cutting data</option>
+      <option>Wrong brand</option>
+      <option>Missing grade</option>
+      <option>Other</option>
+    </select>
+    <button class="advisor-action-btn primary" type="button" onclick="submitProductErrorReport()">Submit</button>
+    <button class="advisor-action-btn" type="button" onclick="closeReportError()">Cancel</button>
   </div>
 </div>
 
@@ -9192,7 +9253,9 @@ const CHAT_KB = [
 /* ============================================================
    STATE
 ============================================================ */
-let selMat = null, selOp = null, selCond = null, selOpSubtype = null;
+let selMat = null, selOp = null, selCond = null, selOpSubtype = null, selIndustry = 'General Engineering';
+let lastVisibleProducts = [];
+let reportProductId = null;
 let advisorCurrentStep = 1;
 let _productsFirstOpenHandled = false;
 const advisorResultCache = new Map();
@@ -9496,6 +9559,12 @@ function selectOperationSubtype(subtype, el) {
   document.querySelectorAll('.op-subtype-chip').forEach(btn => btn.classList.remove('active'));
   el?.classList.add('active');
   setStepDone(2, `${selOp} · ${subtype}`);
+}
+
+function selectIndustryUseCase(useCase, el) {
+  selIndustry = useCase || 'General Engineering';
+  document.querySelectorAll('#industryUseCase .op-subtype-chip').forEach(btn => btn.classList.remove('active'));
+  el?.classList.add('active');
 }
 
 function selectCond(cond, el) {
@@ -9938,6 +10007,7 @@ function shareAdvisorResults() {
   if (context.material) params.set('material', context.material);
   if (context.operation) params.set('operation', context.operation);
   if (context.condition) params.set('condition', context.condition);
+  if (selIndustry) params.set('industry', selIndustry);
   params.set('tab', 'advisor');
   const url = `${location.origin}${location.pathname}?${params.toString()}`;
   navigator.clipboard?.writeText(url).then(
@@ -9946,6 +10016,15 @@ function shareAdvisorResults() {
       window.prompt('Copy Advisor URL', url);
     }
   );
+}
+
+function industryUseCaseBoost(product) {
+  const mats = coreArr(product.materials);
+  if (selIndustry === 'Aerospace') return mats.some(m => ['S', 'H'].includes(m)) ? 5 : 0;
+  if (selIndustry === 'Automotive') return mats.some(m => ['P', 'K'].includes(m)) ? 4 : 0;
+  if (selIndustry === 'Medical') return mats.some(m => ['M', 'S'].includes(m)) ? 4 : 0;
+  if (selIndustry === 'Energy') return mats.some(m => ['S', 'M', 'P'].includes(m)) ? 4 : 0;
+  return 0;
 }
 
 const _SAVED_SEARCHES_KEY = 'ta_saved_advisor_searches_v1';
@@ -10068,6 +10147,7 @@ function renderAdvisorResultsView(scrollInto = false) {
   emptyEl.innerHTML = '';
 
   const usedRoleKeys = new Set();
+  let previousResultBrand = '';
   listEl.innerHTML = entries.map((entry, i) => {
     const t = entry.tool;
     const trust = entry.trust;
@@ -10094,7 +10174,10 @@ function renderAdvisorResultsView(scrollInto = false) {
     if (isAdvisorWeakMapping(entry)) riskFlags.push({ cls: '', text: 'Weak cross-reference mapping signal.' });
     if (trust.limitedComparable) riskFlags.push({ cls: '', text: 'Limited comparable data in dataset.' });
     const whyBullets = buildAdvisorWhyBullets(entry, context);
+    const brandHeader = t.brand !== previousResultBrand ? `<div class="advisor-brand-group">${escapeHtmlAttr(t.brand || 'Unknown brand')}</div>` : '';
+    previousResultBrand = t.brand;
     return `
+    ${brandHeader}
     <div class="result-card ${isTop ? 'top-pick' : ''}">
       <div class="result-card-top">
         <div class="result-rank rank-${rank}">${rank}</div>
@@ -10172,7 +10255,7 @@ function showResults() {
       const trust = computeRecommendationTrust(tool, context);
       const signals = computeDecisionSignals(tool, context, trust);
       const topForBonus = coreArr(tool.topFor).includes(key) ? 6 : 0;
-      return { tool, trust, signals, score: signals.overallScore + topForBonus };
+      return { tool, trust, signals, score: signals.overallScore + topForBonus + industryUseCaseBoost(tool) };
     })
     .sort((a, b) => b.score - a.score || b.trust.score - a.trust.score);
 
@@ -10415,6 +10498,23 @@ function addCrossRefResultToCompare(productId) {
     return;
   }
   addAdvisorResultToCompare(productId, { stopPropagation() {} });
+}
+
+function runBulkCrossRef() {
+  const input = document.getElementById('bulkCrInput');
+  const out = document.getElementById('bulkCrResults');
+  if (!input || !out) return;
+  const codes = String(input.value || '').split(/\n+/).map(v => v.trim().toUpperCase().replace(/\s/g, '')).filter(Boolean).slice(0, 25);
+  if (!codes.length) {
+    out.innerHTML = '<div>Paste at least one insert code.</div>';
+    return;
+  }
+  out.innerHTML = codes.map(code => {
+    const d = (_remoteCRDB && _remoteCRDB[code]) || resolveCrossRefRecord(code);
+    return d
+      ? `<div><strong>${escapeHtmlAttr(code)}</strong>: ${d.rows.length} equivalent candidates · ${escapeHtmlAttr(d.rows.slice(0, 3).map(r => r.brand).join(', '))}</div>`
+      : `<div><strong>${escapeHtmlAttr(code)}</strong>: no mapped equivalent yet</div>`;
+  }).join('');
 }
 
 function cpCode(btn, code) {
@@ -10673,6 +10773,7 @@ function renderSup(filter) {
       <div class="sup-cats">${s.cats.map(c => `<span class="sup-cat">${c}</span>`).join('')}</div>
       <a href="${s.url}" target="_blank" rel="noopener" class="sup-link">${s.url.replace('https://','').replace('www.','')} ↗</a>
       <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.name + ' headquarters ' + s.country)}" target="_blank" rel="noopener" class="sup-link">View on map ↗</a>
+      <div class="sup-spec">Contact: website form · Phone: see local office format · NL delivery: typically 1–5 business days where distributor stock exists</div>
       <div class="sup-spec">${s.spec}</div>
     </div>`).join('');
 }
@@ -11025,6 +11126,78 @@ function renderQuickCompare() {
     <div class="quick-compare-row"><span>Tool life signal</span><span><em class="${aLife >= bLife ? 'better' : 'weaker'}">${a.toolLife || '—'}</em> / <em class="${bLife >= aLife ? 'better' : 'weaker'}">${b.toolLife || '—'}</em></span></div>`;
 }
 
+function handleProductSearchInput() {
+  renderProductSuggestions();
+  filterProducts();
+}
+
+function renderProductSuggestions() {
+  const input = document.getElementById('prodSearch');
+  const box = document.getElementById('prodSuggestions');
+  if (!input || !box) return;
+  const q = String(input.value || '').toLowerCase().trim();
+  if (q.length < 2) {
+    box.classList.remove('show');
+    box.innerHTML = '';
+    return;
+  }
+  const suggestions = [];
+  getDB().forEach(p => {
+    [p.grade, p.brand, p.productName].filter(Boolean).forEach(value => {
+      const text = String(value);
+      if (text.toLowerCase().includes(q) && !suggestions.includes(text)) suggestions.push(text);
+    });
+  });
+  const top = suggestions.slice(0, 8);
+  box.classList.toggle('show', top.length > 0);
+  box.innerHTML = top.map(text => `<button class="prod-suggestion" type="button" onclick="applyProductSuggestion(decodeURIComponent('${encodeURIComponent(text)}'))">${escapeHtmlAttr(text)}</button>`).join('');
+}
+
+function applyProductSuggestion(value) {
+  const input = document.getElementById('prodSearch');
+  if (input) input.value = value;
+  document.getElementById('prodSuggestions')?.classList.remove('show');
+  filterProducts();
+}
+
+function exportVisibleProductsCatalog() {
+  const rows = lastVisibleProducts.length ? lastVisibleProducts : getDB();
+  const headers = ['id','brand','productName','grade','coating','geometry','operations','materials','isoCodes','vcRange','fnRange','apRange','toolLife','applicationNotes'];
+  const csv = [headers, ...rows.map(p => headers.map(key => {
+    const value = Array.isArray(p[key]) ? p[key].join('|') : (p[key] ?? '');
+    return csvCell(value);
+  }))].map(row => row.join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `tooladvisor-visible-products-${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function openProductErrorReport(productId, event) {
+  event?.stopPropagation?.();
+  reportProductId = productId;
+  const product = getProductById(productId);
+  const label = document.getElementById('reportProductLabel');
+  if (label && product) label.textContent = `${product.brand} · ${getProductPrimaryCode(product)}`;
+  document.getElementById('reportErrorModal')?.classList.add('open');
+}
+
+function closeReportError() {
+  document.getElementById('reportErrorModal')?.classList.remove('open');
+}
+
+function submitProductErrorReport() {
+  const issue = document.getElementById('reportIssueType')?.value || 'Other';
+  taTrack('product_error_report', { productId: reportProductId, issue });
+  closeReportError();
+  toast('Report saved locally. Thank you.');
+}
+
 function filterProducts() {
   const q = (document.getElementById('prodSearch')?.value || '').toLowerCase();
   const context = {
@@ -11069,6 +11242,7 @@ function filterProducts() {
       return (parseRangeCeiling(bcd.vc || b.product.vcRange) || 0) - (parseRangeCeiling(acd.vc || a.product.vcRange) || 0) || b.score - a.score;
     });
   }
+  lastVisibleProducts = sorted.map(entry => entry.product);
 
   const isoColorMap = { P: 'rtag-p', M: 'rtag-m', K: 'rtag-k', N: 'rtag-n', S: 'rtag-s', H: 'rtag-h' };
   const isoStripeColorMap = { P: '#1E4FB8', M: '#047857', K: '#B91C1C', N: '#B45309', S: '#6D28D9', H: '#1F2937' };
@@ -11153,6 +11327,7 @@ function filterProducts() {
           Compare
         </button>
         <button class="prod-detail-btn" type="button" onclick="openProductDetail('${p.id}','products',event)">View details</button>
+        <button class="prod-error-link" type="button" onclick="openProductErrorReport('${p.id}',event)">Report an error</button>
         <a class="prod-buy-btn" href="${buyUrl}" target="_blank" rel="noopener">Buy <svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M5 2h3v3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>`;
