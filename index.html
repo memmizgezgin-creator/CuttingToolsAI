@@ -1664,6 +1664,35 @@ body{
 .feedback-panel{display:none;position:absolute;right:0;bottom:44px;width:280px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px;box-shadow:var(--shadow-lg)}
 .feedback-panel.open{display:block}
 .feedback-panel textarea{min-height:80px;resize:vertical}
+.mini-footer-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.mini-footer-actions button,.mini-footer-actions select{
+  border:1px solid #3a3940;background:#242329;color:#d8d4df;border-radius:6px;
+  padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:800;cursor:pointer;
+}
+.simple-modal,.tour-layer{position:fixed;inset:0;background:rgba(24,23,26,.48);z-index:9997;display:none;align-items:center;justify-content:center;padding:20px}
+.simple-modal.open,.tour-layer.open{display:flex}
+.simple-card,.tour-card{background:var(--white);color:var(--ink);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-lg);padding:18px;max-width:460px;width:100%}
+.simple-card h3,.tour-card h3{font-size:18px;margin-bottom:8px}.simple-card p,.tour-card p{font-size:13px;color:var(--ink2);line-height:1.6;margin-bottom:10px}
+.tour-actions{display:flex;justify-content:space-between;gap:8px;margin-top:14px}
+.last-viewed-strip{margin-top:18px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:12px}
+.last-viewed-track{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
+.last-viewed-card{min-width:170px;border:1px solid var(--border);background:var(--bg);border-radius:6px;padding:8px;text-align:left;cursor:pointer}
+.beginner-badge,.brand-flag{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:800;border:1px solid var(--green-bd);background:var(--green-bg);color:var(--green);border-radius:999px;padding:2px 6px;display:inline-flex;align-items:center;gap:4px}
+.brand-flag{border-color:var(--border);background:var(--bg);color:var(--ink3)}
+.vc-chart{margin:10px 0 12px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:12px}
+.vc-chart-row{display:grid;grid-template-columns:120px 1fr 56px;gap:8px;align-items:center;margin:5px 0;font-size:11px;color:var(--ink2)}
+.vc-chart-bar{height:8px;border-radius:999px;background:var(--bg2);overflow:hidden}.vc-chart-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:999px}
+.app-filter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:12px 0}
+.app-filter-grid button{border:1px solid var(--border);background:var(--white);border-radius:7px;padding:10px;text-align:left;cursor:pointer;font-weight:800;color:var(--ink)}
+.newsletter-box{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin:14px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:end}
+.newsletter-box .form-row{flex:1;min-width:220px;margin-bottom:0}
+@media print{
+  .sidebar,.crumb,.pageheader,.site-footer,.compare-bar,.back-to-top,.cookie-banner,.feedback-float,.toast-el{display:none!important}
+  html,body{height:auto!important;overflow:visible!important;background:#fff!important}
+  .main{margin:0!important;height:auto!important;overflow:visible!important;background:#fff!important}
+  .panel{display:none!important;padding:0!important}.panel.active{display:block!important}
+  .panel.active::before{content:'ToolAdvisor';display:block;font-size:20px;font-weight:800;margin-bottom:14px;color:#111}
+}
 
 /* HELPERS */
 .sec-label{font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--ink3);margin-bottom:9px}
@@ -2366,6 +2395,14 @@ body{
           Subscription Terms
         </button>
         <button class="dark-toggle" id="darkModeToggle" type="button" onclick="toggleDarkMode()">Dark mode</button>
+        <button class="dark-toggle" type="button" onclick="saveCurrentPageAsPDF()">Save as PDF</button>
+        <div class="mini-footer-actions">
+          <button type="button" onclick="openUtilityModal('help')">Help</button>
+          <button type="button" onclick="openUtilityModal('about')">About</button>
+          <button type="button" onclick="openUtilityModal('notifications')">Notify</button>
+          <select id="languageSelector" onchange="handleLanguageSelect(this.value)"><option value="EN">EN</option><option value="TR">TR</option><option value="DE">DE</option><option value="NL">NL</option><option value="FR">FR</option></select>
+          <select id="currencySelector" onchange="localStorage.setItem('ta_currency_v1',this.value);toast('Currency preference saved for future pricing.','success')"><option>EUR</option><option>USD</option><option>GBP</option></select>
+        </div>
         <div class="session-summary" id="sessionSummary">0 searches today, 0 products viewed</div>
       </div>
     </div>
@@ -2622,6 +2659,7 @@ body{
         </div>
       </div>
       <div class="advisor-results-alert" id="advisorResultsAlert" style="display:none"></div>
+      <div class="vc-chart" id="advisorVcChart" style="display:none"></div>
       <div class="advisor-results-empty" id="advisorResultsEmpty" style="display:none"></div>
       <div class="results-list" id="resultsList"></div>
       <!-- FEEDBACK WIDGET -->
@@ -2827,6 +2865,17 @@ body{
       <div class="mat-sg-grid" id="matSgGrid"></div>
       <div class="mat-tip-box"><span style="font-size:16px;flex-shrink:0;margin-top:1px">💡</span><span class="mat-tip-text" id="matTipText"></span></div>
     </div>
+    <div class="resource-mini-section">
+      <div class="sec-label">Browse by application</div>
+      <div class="app-filter-grid">
+        <button type="button" onclick="browseApplication('Aerospace','S')">Aerospace<br><small>ISO S / H focus</small></button>
+        <button type="button" onclick="browseApplication('Automotive','P')">Automotive<br><small>ISO P / K focus</small></button>
+        <button type="button" onclick="browseApplication('Medical','M')">Medical<br><small>ISO M / S focus</small></button>
+        <button type="button" onclick="browseApplication('Mold & Die','H')">Mold & Die<br><small>ISO H focus</small></button>
+        <button type="button" onclick="browseApplication('Energy','S')">Energy<br><small>ISO S / M focus</small></button>
+        <button type="button" onclick="browseApplication('General','P')">General<br><small>ISO P starting point</small></button>
+      </div>
+    </div>
   </div>
 
   <!-- TAB: MATERIALS (was suppliers in nav) -->
@@ -2850,6 +2899,7 @@ body{
       <button class="sup-filter" onclick="filtSup('country:fr',this)">France</button>
       <button class="sup-filter" onclick="filtSup('country:uk',this)">UK</button>
     </div>
+    <div class="resource-mini-section" id="supplierOfMonth"><strong>Supplier of the month:</strong> ISCAR · broad turning, milling, drilling and grooving coverage in current ToolAdvisor data.</div>
     <div class="sup-grid" id="supGrid"></div>
     <div class="sup-feat-note">Partner listing enquiries (secondary): <a onclick="toast('Partner listings are optional. Contact support@tooladvisor.eu for details.')">contact us</a></div>
   </div>
@@ -2946,6 +2996,10 @@ body{
       <div class="res-card"><div class="res-card-body"><div class="res-card-cat">2026-05-01</div><div class="res-card-title">RC5 interaction pack</div><div class="res-card-desc">Advisor export/share, product compare, supplier filters, calculators and search improvements.</div></div></div>
       <div class="res-card"><div class="res-card-body"><div class="res-card-cat">2026-04-30</div><div class="res-card-title">Technical SEO readiness</div><div class="res-card-desc">Canonical, sitemap, robots, schema and metadata prepared for controlled indexing.</div></div></div>
       <div class="res-card"><div class="res-card-body"><div class="res-card-cat">2026-04-29</div><div class="res-card-title">Engineering catalog UI</div><div class="res-card-desc">Industrial sidebar layout, dense cards, product visuals and decision-oriented result cards.</div></div></div>
+    </div>
+    <div class="newsletter-box">
+      <div class="form-row"><label class="form-label">Newsletter signup</label><input class="form-input" id="newsletterEmail" type="email" placeholder="engineering@company.com"></div>
+      <button class="advisor-action-btn primary" type="button" onclick="subscribeNewsletter()">Subscribe</button>
     </div>
 
     <!-- Etsy banner -->
@@ -3275,6 +3329,10 @@ body{
       <button class="advisor-action-btn" type="button" onclick="clearProductFilters()">Clear all filters</button>
     </div>
     <div class="prod-grid" id="prodGrid"></div>
+    <div class="last-viewed-strip" id="productsLastViewedStrip">
+      <div class="sec-label">Last viewed products</div>
+      <div class="last-viewed-track" id="productsLastViewedList"></div>
+    </div>
     <!-- compareSection removed — comparison now opens in #compareModal modal -->
   </div>
 
@@ -3368,6 +3426,19 @@ body{
     <textarea class="form-input" id="feedbackText" placeholder="What should we improve?"></textarea>
     <button class="advisor-action-btn primary" type="button" onclick="sendFeedbackMail()">Send via email</button>
   </div>
+</div>
+<div class="tour-layer" id="tourLayer">
+  <div class="tour-card">
+    <h3 id="tourTitle">Welcome to ToolAdvisor</h3>
+    <p id="tourBody">Start with the sidebar, then use Advisor, Cross-Ref and Products to make cutting tool decisions.</p>
+    <div class="tour-actions">
+      <button class="advisor-action-btn" type="button" onclick="skipTour()">Skip tour</button>
+      <button class="advisor-action-btn primary" type="button" onclick="nextTourStep()">Next</button>
+    </div>
+  </div>
+</div>
+<div class="simple-modal" id="utilityModal" onclick="if(event.target===this)closeUtilityModal()">
+  <div class="simple-card" id="utilityModalBody"></div>
 </div>
 
 <script>
@@ -8754,6 +8825,24 @@ function renderProductTechnicalStrip(product, maxCount = 6) {
     </span>
   `).join('')}</div>`;
 }
+const BRAND_FLAGS = {
+  sandvik:'SE', iscar:'IL', kennametal:'US', walter:'DE', tungaloy:'JP', mitsubishi:'JP', kyocera:'JP',
+  seco:'SE', sumitomo:'JP', ceratizit:'LU', korloy:'KR', taegutec:'KR', pramet:'CZ', horn:'DE',
+  vargus:'IL', osg:'JP', 'gühring':'DE', guehring:'DE'
+};
+function getBrandFlag(brand) {
+  const b = String(brand || '').toLowerCase();
+  const key = Object.keys(BRAND_FLAGS).find(k => b.includes(k));
+  return key ? BRAND_FLAGS[key] : '';
+}
+function formatBrandName(brand) {
+  const flag = getBrandFlag(brand);
+  return `${escapeHtmlAttr(brand || 'Unknown brand')}${flag ? ` <span class="brand-flag">${flag}</span>` : ''}`;
+}
+function isBeginnerRecommended(product) {
+  const grade = String(product?.grade || product?.productName || '').toUpperCase();
+  return /GC4325|IC8250/.test(grade);
+}
 function getProductSilhouetteSvg(styleKey, tier = 'silhouette_fallback') {
   const key = String(styleKey || '').toLowerCase();
   const drawings = {
@@ -8853,18 +8942,18 @@ function readRecentlyViewedProducts() {
   try {
     const raw = localStorage.getItem(_RECENT_VIEWED_KEY);
     const arr = raw ? JSON.parse(raw) : [];
-    return Array.isArray(arr) ? arr.filter(Boolean).slice(0, 3) : [];
+    return Array.isArray(arr) ? arr.filter(Boolean).slice(0, 5) : [];
   } catch (_) { return []; }
 }
 
 function writeRecentlyViewedProducts(ids) {
-  try { localStorage.setItem(_RECENT_VIEWED_KEY, JSON.stringify(ids.slice(0, 3))); } catch (_) {}
+  try { localStorage.setItem(_RECENT_VIEWED_KEY, JSON.stringify(ids.slice(0, 5))); } catch (_) {}
 }
 
 function recordRecentlyViewedProduct(productId) {
   const id = String(productId || '');
   if (!id) return;
-  const next = [id, ...readRecentlyViewedProducts().filter(existing => existing !== id)].slice(0, 3);
+  const next = [id, ...readRecentlyViewedProducts().filter(existing => existing !== id)].slice(0, 5);
   writeRecentlyViewedProducts(next);
   renderRecentlyViewedProducts();
 }
@@ -8880,6 +8969,12 @@ function renderRecentlyViewedProducts() {
       <div class="arv-brand">${escapeHtmlAttr(product.brand || 'Unknown')}</div>
       <div class="arv-grade">${escapeHtmlAttr(getProductPrimaryCode(product))}</div>
     </button>`).join('');
+  const productList = document.getElementById('productsLastViewedList');
+  if (productList) {
+    productList.innerHTML = products.length
+      ? products.map(product => `<button class="last-viewed-card" type="button" onclick="openProductDetail('${product.id}','products',event)"><span class="arv-brand">${escapeHtmlAttr(product.brand || 'Unknown')}</span><br><span class="arv-grade">${escapeHtmlAttr(getProductPrimaryCode(product))}</span></button>`).join('')
+      : '<div style="font-size:12px;color:var(--ink3)">Open product details to build a last-viewed strip.</div>';
+  }
 }
 
 function closeProductDetail() {
@@ -10070,6 +10165,33 @@ function parseAdvisorRange(value) {
   return { min: normalized[0] || '', max: normalized[1] || normalized[0] || '' };
 }
 
+function renderAdvisorVcChart(entries) {
+  const chart = document.getElementById('advisorVcChart');
+  if (!chart) return;
+  const context = ADVISOR_RESULTS_UI.context || {};
+  const key = context.operation && context.material ? `${context.operation}-${context.material}` : '';
+  const rows = entries.slice(0, 6).map(entry => {
+    const p = entry.tool || {};
+    const cd = (p.cuttingData && p.cuttingData[key]) || {};
+    const range = parseAdvisorRange(cd.vc || p.vcRange);
+    const max = Number(range.max || range.min || 0) || 0;
+    return { label: `${p.brand || ''} ${getProductPrimaryCode(p)}`.trim(), max };
+  }).filter(row => row.max > 0);
+  if (!rows.length) {
+    chart.style.display = 'none';
+    chart.innerHTML = '';
+    return;
+  }
+  const ceiling = Math.max(...rows.map(row => row.max), 1);
+  chart.style.display = 'block';
+  chart.innerHTML = `<div class="sec-label">Vc range comparison</div>${rows.map(row => `
+    <div class="vc-chart-row">
+      <span>${escapeHtmlAttr(row.label)}</span>
+      <div class="vc-chart-bar"><div class="vc-chart-fill" style="width:${Math.min(100, Math.round((row.max / ceiling) * 100))}%"></div></div>
+      <strong>${row.max}</strong>
+    </div>`).join('')}`;
+}
+
 function csvCell(value) {
   return `"${String(value ?? '').replace(/"/g, '""')}"`;
 }
@@ -10265,6 +10387,7 @@ function renderAdvisorResultsView(scrollInto = false) {
   const lowCount = entries.filter(entry => entry.trust.lowConfidence).length;
   const weakCount = entries.filter(entry => isAdvisorWeakMapping(entry)).length;
   const limitedCount = entries.filter(entry => entry.trust.limitedComparable).length;
+  renderAdvisorVcChart(entries);
   const alertChunks = [];
   if (lowCount) alertChunks.push(`${lowCount} low-confidence recommendation${lowCount > 1 ? 's' : ''}`);
   if (weakCount) alertChunks.push(`${weakCount} weak-mapping signal${weakCount > 1 ? 's' : ''}`);
@@ -10313,6 +10436,7 @@ function renderAdvisorResultsView(scrollInto = false) {
     const techStrip = renderProductTechnicalStrip(t, 6);
     const matchScore = clamp01Score(entry.score);
     const fitConfidence = computeAdvisorFitConfidence(t, context);
+    const beginnerBadge = isBeginnerRecommended(t) ? '<span class="beginner-badge">Recommended for beginners</span>' : '';
     const riskFlags = [];
     if (trust.lowConfidence) riskFlags.push({ cls: 'critical', text: 'Low confidence in current context.' });
     if (isAdvisorWeakMapping(entry)) riskFlags.push({ cls: '', text: 'Weak cross-reference mapping signal.' });
@@ -10329,11 +10453,11 @@ function renderAdvisorResultsView(scrollInto = false) {
         <div class="result-info">
           <div class="result-identity">
             <div>
-              <div class="result-brand">${t.brand}</div>
+              <div class="result-brand">${formatBrandName(t.brand)}</div>
               <div class="result-grade">${primaryCode}</div>
               ${secondaryLine ? `<div class="result-series-line">${secondaryLine}</div>` : ''}
             </div>
-            <div class="result-tags">${tags}</div>
+            <div class="result-tags">${tags}${beginnerBadge}</div>
           </div>
           <div class="result-score-row">
             <span class="result-match-chip">Match <em>${matchScore}</em></span>
@@ -10584,6 +10708,7 @@ function loadCR(code, options = {}) {
     <div class="cr-result-info">
       <div class="cr-result-code">${code}</div>
       <div class="cr-result-desc">${d.desc}</div>
+      <button class="advisor-action-btn" type="button" onclick="compareCrossRefGrades('${code}')" style="margin-top:8px">Compare these grades</button>
     </div>`;
   document.getElementById('crRows').innerHTML = d.rows.map(r => {
     const siteUrl = (BUY_LINKS[r.brand]?.[0]?.u || 'https://google.com/search?q=') + encodeURIComponent(r.code);
@@ -10592,11 +10717,11 @@ function loadCR(code, options = {}) {
     const compareProduct = findProductByCrossRef(r.brand, r.code);
     return `
     <div class="cr-row" onclick="openCrossRefRowDetail('${sa(r.brand)}','${sa(r.code)}','${sa(r.coating)}','${sa(r.app)}','${sa(r.apc)}','${sa(code)}')">
-      <span class="cr-brand">${r.brand}</span>
+      <span class="cr-brand">${formatBrandName(r.brand)}</span>
       <span class="cr-code">${r.code}</span>
       <span class="cr-coating">${r.coating}</span>
       <span class="cr-app ${r.apc || ''}">${r.app}</span>
-      <span class="cr-price-tier">${getBrandPriceTier(r.brand)}</span>
+      <span class="cr-price-tier" title="Compare costs: ${getBrandPriceTier(r.brand)} is a relative pricing tier, not live pricing.">${getBrandPriceTier(r.brand)}</span>
       ${isBestValue ? '<span class="cr-value-tag">Best value</span>' : ''}
       <div class="cr-actions" onclick="event.stopPropagation()">
         <button class="cr-copy" onclick="event.stopPropagation();cpCode(this,'${sa(r.code)}')">Copy</button>
@@ -10673,6 +10798,16 @@ function addCrossRefResultToCompare(productId) {
   addAdvisorResultToCompare(productId, { stopPropagation() {} });
 }
 
+function compareCrossRefGrades(code) {
+  const d = (_remoteCRDB && _remoteCRDB[code]) || resolveCrossRefRecord(code);
+  const terms = d ? d.rows.map(row => row.code).join(' ') : code;
+  const input = document.getElementById('prodSearch');
+  if (input) input.value = terms.split(/\s+/).slice(0, 4).join(' ');
+  setTab('products', findTabButton('products'));
+  filterProducts();
+  toast('Products filtered with cross-reference grade signals.', 'success');
+}
+
 function runBulkCrossRef() {
   const input = document.getElementById('bulkCrInput');
   const out = document.getElementById('bulkCrResults');
@@ -10706,7 +10841,7 @@ function decodeISO(code) {
   currentDecodedISOCode = code;
   document.getElementById('isoDisplay').textContent = d.big;
   document.getElementById('isoChars').innerHTML = d.chars.map(ch =>
-    `<div class="iso-char"><span class="iso-char-letter">${ch.c}</span><span class="iso-char-label">${ch.l}</span></div>`
+    `<div class="iso-char" title="${escapeHtmlAttr(ch.c + ' — ' + ch.l)}"><span class="iso-char-letter">${ch.c}</span><span class="iso-char-label">${ch.l}</span></div>`
   ).join('');
   document.getElementById('isoPropsEl').innerHTML = d.props.map(([k, v]) =>
     `<div class="iso-prop-row"><span class="iso-prop-key">${k}</span><span class="iso-prop-val">${v}</span></div>`
@@ -11181,6 +11316,89 @@ function renderTabLastUpdated() {
   });
 }
 
+function saveCurrentPageAsPDF() {
+  window.print();
+}
+
+let tourStep = 0;
+const TOUR_STEPS = [
+  ['Sidebar navigation', 'Use the sidebar to move between Advisor, Cross-Ref, Products and technical reference tools.'],
+  ['AI Advisor', 'Start with material, operation and conditions to get fit-ranked cutting tool recommendations.'],
+  ['Cross-Ref', 'Enter a full insert code such as CNMG120408 to compare equivalent codes across brands.'],
+  ['Products', 'Filter the catalogue, inspect cards, compare products and open detailed product sheets.']
+];
+function showTourIfNeeded() {
+  try { if (localStorage.getItem('ta_tour_seen_v1')) return; } catch (_) {}
+  tourStep = 0;
+  updateTour();
+  document.getElementById('tourLayer')?.classList.add('open');
+}
+function updateTour() {
+  const [title, body] = TOUR_STEPS[tourStep] || TOUR_STEPS[0];
+  document.getElementById('tourTitle').textContent = `${tourStep + 1}. ${title}`;
+  document.getElementById('tourBody').textContent = body;
+}
+function nextTourStep() {
+  tourStep += 1;
+  if (tourStep >= TOUR_STEPS.length) return skipTour();
+  updateTour();
+}
+function skipTour() {
+  try { localStorage.setItem('ta_tour_seen_v1', '1'); } catch (_) {}
+  document.getElementById('tourLayer')?.classList.remove('open');
+}
+
+function openUtilityModal(kind) {
+  const modal = document.getElementById('utilityModal');
+  const body = document.getElementById('utilityModalBody');
+  if (!modal || !body) return;
+  const views = {
+    help: `<h3>Help</h3><p>Quick links: FAQ, Glossary, Contact support.</p><button class="advisor-action-btn" onclick="setTab('resources',findTabButton('resources'));closeUtilityModal()">Open Resources</button> <a class="advisor-action-btn" href="mailto:support@tooladvisor.eu">Contact</a>`,
+    about: `<h3>About ToolAdvisor</h3><p>ToolAdvisor is a brand-neutral engineering decision platform for cutting tool selection, cross-reference and explainable alternatives.</p><p>Methodology combines operation, material, coating, geometry, family and relation signals.</p>`,
+    notifications: `<h3>Notification preferences</h3><p>Select what you want to hear about.</p>
+      <label><input type="checkbox" class="notif-pref" value="Product updates"> Product updates</label><br>
+      <label><input type="checkbox" class="notif-pref" value="New brands added"> New brands added</label><br>
+      <label><input type="checkbox" class="notif-pref" value="Pricing changes"> Pricing changes</label><br>
+      <button class="advisor-action-btn primary" onclick="saveNotificationPrefs()">Save preferences</button>`
+  };
+  body.innerHTML = `${views[kind] || views.help}<div style="margin-top:12px"><button class="advisor-action-btn" onclick="closeUtilityModal()">Close</button></div>`;
+  modal.classList.add('open');
+}
+function closeUtilityModal() {
+  document.getElementById('utilityModal')?.classList.remove('open');
+}
+function saveNotificationPrefs() {
+  const prefs = [...document.querySelectorAll('.notif-pref:checked')].map(el => el.value);
+  try { localStorage.setItem('ta_notification_prefs_v1', JSON.stringify(prefs)); } catch (_) {}
+  toast('Notification preferences saved.', 'success');
+  closeUtilityModal();
+}
+function handleLanguageSelect(value) {
+  if (value !== 'EN') {
+    toast(`${value} language support is coming soon.`, 'info');
+    document.getElementById('languageSelector').value = 'EN';
+  }
+}
+
+function browseApplication(label, iso) {
+  prodFilters.iso = iso || 'all';
+  prodFilters.tier = 'core';
+  updateProductFilterUrl();
+  setTab('products', findTabButton('products'));
+  filterProducts();
+  toast(`${label} view: filtering Products by ISO ${iso}.`, 'success');
+}
+
+function subscribeNewsletter() {
+  const email = document.getElementById('newsletterEmail')?.value || '';
+  if (!email.includes('@')) {
+    toast('Enter a valid email address.', 'error');
+    return;
+  }
+  try { localStorage.setItem('ta_newsletter_email_v1', email); } catch (_) {}
+  toast('Newsletter signup saved locally.', 'success');
+}
+
 function getSessionCounter(key) {
   try { return Number(sessionStorage.getItem(key) || 0) || 0; } catch (_) { return 0; }
 }
@@ -11215,6 +11433,9 @@ function renderSessionSummary() {
   renderSessionSummary();
   renderTabLastUpdated();
   renderAdvisorQuickSearchHistory();
+  showTourIfNeeded();
+  const savedCurrency = localStorage.getItem('ta_currency_v1');
+  if (savedCurrency && document.getElementById('currencySelector')) document.getElementById('currencySelector').value = savedCurrency;
   pickMatDB('P', document.querySelector('.mat-iso-card'));
   renderSup('all');
   document.getElementById('crInput').addEventListener('keydown', e => { if (e.key === 'Enter') loadCR(e.target.value); });
@@ -11572,6 +11793,7 @@ function filterProducts() {
     const isoStripeColor = isoStripeColorMap[primaryIso] || '#1F2937';
     const quickApps = productQuickApplications(p);
     const newBadge = isRecentlyCreatedProduct(p) ? '<span class="rtag rtag-top">New</span>' : '';
+    const beginnerBadge = isBeginnerRecommended(p) ? '<span class="beginner-badge">Recommended for beginners</span>' : '';
     return `
     <div class="prod-card ${isChecked ? 'checked' : ''} ${tier === 'secondary' ? 'secondary' : ''}" id="pcard-${p.id}" draggable="true" ondragstart="handleProductDragStart(event,'${p.id}')" style="--prod-iso-stripe:${isoStripeColor};border-left-color:${isoStripeColor}">
       <div class="prod-quick-view">
@@ -11584,7 +11806,7 @@ function filterProducts() {
       <div class="prod-card-head">
         ${visual}
         <div style="flex:1">
-          <div class="prod-card-brand">${p.brand}</div>
+          <div class="prod-card-brand">${formatBrandName(p.brand)}</div>
           <div class="prod-card-grade">${primaryCode}</div>
           ${secondaryLine ? `<div class="prod-card-series">${secondaryLine}</div>` : ''}
           <div class="prod-card-coating">${p.coating}</div>
@@ -11592,6 +11814,7 @@ function filterProducts() {
           ${tier === 'secondary' ? '<div class="prod-card-secondary-note">Secondary category record — core cutting tools are prioritised in default view.</div>' : ''}
           <div class="prod-card-isos">
             ${newBadge}
+            ${beginnerBadge}
             ${p.materials.map(m => '<span class="rtag ' + (isoColorMap[m] || 'rtag-def') + '">' + m + '</span>').join('')}
             ${p.geometry ? '<span class="rtag rtag-def">' + p.geometry + '</span>' : ''}
           </div>
