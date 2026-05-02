@@ -136,7 +136,7 @@
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <style>
 /* ============================================================
@@ -146,47 +146,72 @@
 html,body{height:100vh;overflow:hidden;margin:0}
 html{-webkit-font-smoothing:antialiased;font-size:14px}
 :root{
-  --white:#FFF;
-  --bg:#F1F0ED;
-  --bg2:#E8E5DE;
-  --bg3:#DEDAD0;
-  --panel:#FAFAF8;
-  --ink:#18171A;
-  --ink2:#4A4850;
-  --ink3:#8A8898;
-  --line:#D8D5CC;
-  --line2:#C7C3B7;
+  --surface:#121412;
+  --surface-dim:#121412;
+  --surface-bright:#383938;
+  --surface-container-lowest:#0d0f0d;
+  --surface-container-low:#1b1c1a;
+  --surface-container:#1f201e;
+  --surface-container-high:#292a29;
+  --surface-container-highest:#343533;
+  --on-surface:#e3e2df;
+  --on-surface-variant:#cac3d8;
+  --outline:#948ea1;
+  --outline-variant:#494455;
+  --surface-tint:#ccbdff;
+  --primary:#ccbdff;
+  --on-primary:#360096;
+  --primary-container:#6b3fe7;
+  --on-primary-container:#e5dbff;
+  --secondary:#e3c285;
+  --on-secondary:#402d00;
+  --secondary-container:#5c4614;
+  --on-secondary-container:#d4b478;
+  --error:#ffb4ab;
+  --error-container:#93000a;
+  --white:var(--surface-container);
+  --bg:var(--surface);
+  --bg2:var(--surface-container-low);
+  --bg3:var(--surface-container-high);
+  --panel:var(--surface-container);
+  --ink:var(--on-surface);
+  --ink2:#c9c5c9;
+  --ink3:#948ea1;
+  --line:rgba(227,226,223,.12);
+  --line2:rgba(227,226,223,.22);
   --border:var(--line);
   --border2:var(--line2);
   --navy:#18171A;
-  --navy2:#242329;
-  --navy-bg:#F3EFFF;
-  --navy-bd:#D4C5FF;
+  --navy2:#292a29;
+  --navy-bg:rgba(204,189,255,.10);
+  --navy-bd:rgba(204,189,255,.32);
   --purple:#6B3FE7;
-  --purple2:#5026CC;
+  --purple2:#ccbdff;
   --purple-deep:#5026CC;
-  --purple-bg:#F3EFFF;
-  --purple-bd:#D4C5FF;
-  --gold:#C8A96E;
-  --gold-bg:#FBF6EC;
-  --gold-bd:#E0C98A;
-  --green:#0F7A3A;
-  --green-bg:#E8F5EC;
-  --green-bd:#9BD0AA;
-  --orange:#B94040;
-  --orange-bg:#FBF0F0;
-  --orange-bd:#DFA0A0;
-  --p:#1E4FB8;--p-bg:#E6EEFA;--p-bd:#BFCFFE;
-  --m:#047857;--m-bg:#E0F2EA;--m-bd:#A5D4BB;
-  --k:#B91C1C;--k-bg:#FBE8E8;--k-bd:#FECACA;
-  --n:#B45309;--n-bg:#FBEFD9;--n-bd:#FDE68A;
-  --s:#6D28D9;--s-bg:#EFEAFC;--s-bd:#DDD6FE;
-  --h:#1F2937;--h-bg:#E5E7EB;--h-bd:#D1D5DB;
+  --purple-bg:rgba(107,63,231,.14);
+  --purple-bd:rgba(204,189,255,.34);
+  --gold:#E3C285;
+  --gold-bg:rgba(227,194,133,.13);
+  --gold-bd:rgba(227,194,133,.36);
+  --green:#42D38B;
+  --green-bg:rgba(66,211,139,.10);
+  --green-bd:rgba(66,211,139,.28);
+  --orange:#FFB4AB;
+  --orange-bg:rgba(255,180,171,.12);
+  --orange-bd:rgba(255,180,171,.30);
+  --p:#0072BC;--p-bg:rgba(0,114,188,.13);--p-bd:rgba(0,114,188,.42);
+  --m:#FFD100;--m-bg:rgba(255,209,0,.12);--m-bd:rgba(255,209,0,.36);
+  --k:#ED1C24;--k-bg:rgba(237,28,36,.13);--k-bd:rgba(237,28,36,.38);
+  --n:#00A651;--n-bg:rgba(0,166,81,.12);--n-bd:rgba(0,166,81,.34);
+  --s:#F7941E;--s-bg:rgba(247,148,30,.13);--s-bd:rgba(247,148,30,.36);
+  --h:#929497;--h-bg:rgba(146,148,151,.13);--h-bd:rgba(146,148,151,.34);
   --p-c:var(--p);--m-c:var(--m);--k-c:var(--k);--n-c:var(--n);--s-c:var(--s);--h-c:var(--h);
-  --r:6px;--r-sm:4px;--r-lg:6px;
-  --shadow-sm:0 2px 6px rgba(20,18,14,.06);
-  --shadow-md:0 10px 24px rgba(17,15,12,.10);
-  --shadow-lg:0 18px 42px rgba(17,15,12,.14);
+  --r:4px;--r-sm:2px;--r-lg:8px;--r-xl:12px;
+  --space-unit:8px;--space-gutter:24px;--space-margin:32px;--container-max:1280px;
+  --shadow-sm:0 0 0 1px rgba(227,226,223,.08);
+  --shadow-md:0 12px 28px rgba(0,0,0,.28);
+  --shadow-lg:0 28px 80px rgba(0,0,0,.46);
+  --glow-primary:0 0 22px rgba(107,63,231,.24);
 }
 body.ta-dark{
   --white:#18171A;
@@ -219,7 +244,7 @@ body.ta-font-large{font-size:16px}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
 body{
-  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  font-family:'Inter',system-ui,sans-serif;
   background:var(--bg);
   color:var(--ink);
 }
@@ -2352,6 +2377,562 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .rx-grade{font-family:'DM Mono',monospace;font-size:14px;font-weight:600;color:var(--ink);display:block;margin-top:1px}
 .rx-coat{max-width:360px}
 .num{font-family:'DM Mono',monospace;font-weight:500;text-align:right;color:var(--ink2)}
+
+/* ============================================================
+   DESIGN SYSTEM V3 — STITCH INDUSTRIAL CATALOG RC6
+   Visual layer only: dark operator console, dense catalog cards,
+   material database, and engineering parameter matrix treatment.
+============================================================ */
+.app{background:var(--surface);grid-template-columns:240px minmax(0,1fr)}
+.sidebar{
+  background:linear-gradient(180deg,#18171A 0%,#121412 100%);
+  border-right:1px solid rgba(227,226,223,.08);
+  box-shadow:18px 0 40px rgba(0,0,0,.22);
+}
+.sb-brand{
+  border-bottom:1px solid rgba(227,226,223,.08);
+  padding:18px 18px 14px;
+}
+.sb-brand .mark{
+  background:var(--primary-container);
+  border:1px solid rgba(204,189,255,.38);
+  box-shadow:0 0 22px rgba(107,63,231,.24);
+}
+.sb-brand .wm{
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:-.03em;
+}
+.sb-brand .wm small{
+  background:rgba(227,226,223,.08);
+  color:var(--on-surface-variant);
+  border-color:rgba(227,226,223,.12);
+  border-radius:2px;
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-size:9px;
+}
+.operator-block{
+  margin:14px 14px 10px;
+  padding:12px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  background:rgba(227,226,223,.045);
+  border:1px solid rgba(227,226,223,.08);
+  border-radius:4px;
+}
+.operator-avatar{
+  width:36px;height:36px;border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,#292a29,#121412);
+  color:#fff;
+  border:1px solid rgba(227,226,223,.14);
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-weight:700;
+  font-size:12px;
+}
+.operator-name{
+  font-size:11px;
+  font-weight:900;
+  color:#fff;
+  letter-spacing:.04em;
+}
+.operator-mode{
+  margin-top:3px;
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-size:9px;
+  color:var(--primary);
+  letter-spacing:.12em;
+}
+.sb-system-rail{
+  display:grid;
+  gap:2px;
+  padding:0 8px 8px;
+  border-bottom:1px solid rgba(227,226,223,.06);
+}
+.sb-system-rail button{
+  border:0;
+  background:transparent;
+  color:#cac3d8;
+  text-align:left;
+  padding:10px 12px;
+  border-radius:3px;
+  cursor:pointer;
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.sb-system-rail button:hover{
+  background:rgba(227,226,223,.06);
+  color:#fff;
+}
+.sb-system-rail span{
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.sb-system-rail em{
+  font-style:normal;
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-size:9px;
+  color:#6f6a78;
+}
+.sb-section{
+  color:#77717f;
+  letter-spacing:.18em;
+  padding-top:16px;
+}
+.sb-item.tab{
+  color:#cac3d8;
+  border-radius:3px;
+  padding:10px 12px;
+  font-size:12px;
+  font-weight:700;
+}
+.sb-item.tab:hover{background:rgba(227,226,223,.06);color:#fff}
+.sb-item.tab.active{
+  background:rgba(107,63,231,.16);
+  color:var(--primary);
+  box-shadow:inset 3px 0 0 var(--primary-container),0 0 18px rgba(107,63,231,.16);
+}
+.quota-box{
+  background:rgba(227,226,223,.045);
+  border-color:rgba(227,226,223,.10);
+  border-radius:4px;
+}
+.pro-cta,.dark-toggle,.mini-footer-actions button,.mini-footer-actions select{
+  border-radius:3px;
+}
+.main{
+  background:
+    radial-gradient(circle at 78% -12%,rgba(107,63,231,.18),transparent 34%),
+    radial-gradient(circle at 12% 0%,rgba(227,194,133,.10),transparent 28%),
+    var(--surface);
+}
+.crumb,.pageheader,.site-footer,.seo-niche-copy,.seo-faq-crawlable{
+  background:rgba(31,32,30,.82)!important;
+  border-color:rgba(227,226,223,.10)!important;
+  color:var(--ink3)!important;
+}
+.page-title{
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  color:#fff;
+  letter-spacing:-.04em;
+}
+.panel{padding:24px 32px 48px}
+.stitch-hero{
+  min-height:390px;
+  margin-bottom:24px;
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);
+  gap:24px;
+  align-items:stretch;
+  border:1px solid rgba(227,226,223,.10);
+  border-radius:8px;
+  background:
+    linear-gradient(135deg,rgba(31,32,30,.94) 0%,rgba(27,28,26,.86) 54%,rgba(18,20,18,.98) 100%);
+  overflow:hidden;
+  position:relative;
+  box-shadow:var(--shadow-md);
+}
+.stitch-hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(227,226,223,.035) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(227,226,223,.035) 1px,transparent 1px);
+  background-size:38px 38px;
+  mask-image:linear-gradient(90deg,rgba(0,0,0,.85),transparent 78%);
+  pointer-events:none;
+}
+.stitch-hero-copy{
+  position:relative;
+  z-index:1;
+  padding:48px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  gap:18px;
+}
+.stitch-eyebrow{
+  display:inline-flex;
+  width:max-content;
+  border:1px solid rgba(227,226,223,.18);
+  background:rgba(227,226,223,.07);
+  color:#fff;
+  padding:6px 10px;
+  border-radius:2px;
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+}
+.stitch-hero h1{
+  margin:0;
+  max-width:760px;
+  color:#fff;
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  font-size:clamp(36px,5vw,62px);
+  line-height:1.04;
+  letter-spacing:-.055em;
+}
+.stitch-hero p{
+  max-width:610px;
+  color:#c9c5c9;
+  font-size:17px;
+  line-height:1.7;
+}
+.stitch-hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.stitch-hero-actions button,.material-db-head button{
+  border:1px solid var(--primary-container);
+  background:var(--primary);
+  color:var(--on-primary);
+  border-radius:3px;
+  padding:12px 18px;
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.stitch-hero-actions button.secondary,.material-db-head button{
+  background:rgba(227,226,223,.05);
+  color:#fff;
+  border-color:rgba(227,226,223,.16);
+}
+.stitch-hero-panel{
+  position:relative;
+  z-index:1;
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:18px;
+  border-left:1px solid rgba(227,226,223,.08);
+  background:rgba(13,15,13,.42);
+}
+.engine-gauge{
+  border:1px solid rgba(227,226,223,.12);
+  background:rgba(18,20,18,.72);
+  border-radius:6px;
+  padding:24px;
+}
+.engine-gauge span{
+  display:block;
+  color:#77717f;
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.engine-gauge strong{
+  display:block;
+  margin-top:8px;
+  color:var(--secondary);
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-size:54px;
+  line-height:1;
+}
+.engine-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+.engine-grid span{
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(227,226,223,.12);
+  background:rgba(227,226,223,.04);
+  border-radius:3px;
+  color:#fff;
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-size:18px;
+  font-weight:800;
+}
+.material-database-section{
+  margin-bottom:20px;
+  border:1px solid rgba(227,226,223,.10);
+  background:rgba(31,32,30,.72);
+  border-radius:8px;
+  padding:22px;
+}
+.material-db-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:16px;
+  margin-bottom:16px;
+}
+.material-db-head h2{
+  margin:4px 0 0;
+  color:#fff;
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  font-size:26px;
+  letter-spacing:-.04em;
+}
+.material-db-cards{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:10px;
+}
+.iso-db-card{
+  border:1px solid rgba(227,226,223,.10);
+  background:rgba(227,226,223,.035);
+  border-radius:3px;
+  min-height:118px;
+  padding:16px;
+  text-align:left;
+  cursor:pointer;
+  color:var(--ink);
+  transition:border-color .15s,background .15s,transform .15s;
+  position:relative;
+  overflow:hidden;
+}
+.iso-db-card::before{
+  content:'';
+  position:absolute;left:0;top:0;right:0;height:3px;
+  background:var(--iso-accent,var(--primary-container));
+}
+.iso-db-card:hover{
+  border-color:var(--iso-accent,var(--primary));
+  background:rgba(227,226,223,.065);
+  transform:translateY(-1px);
+}
+.iso-db-card strong{
+  display:block;
+  color:var(--iso-accent,var(--primary));
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-size:30px;
+  line-height:1;
+}
+.iso-db-card span{
+  display:block;
+  margin-top:8px;
+  color:#fff;
+  font-size:13px;
+  font-weight:800;
+}
+.iso-db-card em{
+  display:block;
+  margin-top:6px;
+  color:#948ea1;
+  font-style:normal;
+  font-size:11px;
+  line-height:1.35;
+}
+.iso-p-card{--iso-accent:var(--p)}.iso-m-card{--iso-accent:var(--m)}.iso-k-card{--iso-accent:var(--k)}
+.iso-n-card{--iso-accent:var(--n)}.iso-s-card{--iso-accent:var(--s)}.iso-h-card{--iso-accent:var(--h)}
+.quickstart,.trust-layer,.advisor-quick-search,.advisor-progress,.step-section,.calc-card,.cr-wrap,.iso-card,.mat-sg-panel,.sup-card,.res-card,.resource-mini-section,.brand-spotlight,.quick-compare-zone{
+  background:var(--surface-container);
+  border-color:rgba(227,226,223,.10);
+  color:var(--ink);
+  box-shadow:none;
+}
+.quickstart-card,.aqs-card,.op-card,.cond-card,.mat-card,.pf-btn,.prod-filter-select,.prod-search,.form-input,.form-select{
+  background:var(--surface-container-low)!important;
+  border-color:rgba(227,226,223,.12)!important;
+  color:var(--ink)!important;
+}
+.quickstart-card:hover,.aqs-card:hover,.op-card:hover,.cond-card:hover{
+  border-color:rgba(204,189,255,.42)!important;
+  background:var(--surface-container-high)!important;
+}
+.step-header,.step-body{
+  background:var(--surface-container);
+  border-color:rgba(227,226,223,.10);
+}
+.step-section:has(.step-circle.active-c){
+  border-color:rgba(204,189,255,.42);
+  box-shadow:inset 3px 0 0 var(--primary-container),var(--glow-primary);
+}
+.mat-grid.mat-table{
+  border:1px solid rgba(227,226,223,.10);
+  background:var(--surface-container-lowest);
+  gap:1px;
+  padding:1px;
+  border-radius:3px;
+}
+.mat-grid.mat-table .mat-card{
+  border-radius:0;
+  background:var(--surface-container-low)!important;
+}
+.mat-grid.mat-table .mat-card.sel{
+  background:rgba(107,63,231,.18)!important;
+  box-shadow:inset 0 -2px 0 var(--primary-container);
+}
+.prod-grid{gap:14px}
+.prod-card{
+  background:var(--surface-container);
+  border-color:rgba(227,226,223,.10);
+  border-radius:3px;
+  overflow:hidden;
+  box-shadow:none;
+}
+.prod-card:hover{
+  border-color:rgba(204,189,255,.42);
+  box-shadow:var(--glow-primary);
+}
+.engineering-card-head{
+  background:var(--surface-container-lowest);
+  border-bottom:1px solid rgba(227,226,223,.08);
+}
+.prod-card-data{flex:1;min-width:0}
+.prod-card-brand{
+  font-size:9px;
+  letter-spacing:.20em;
+  color:#948ea1;
+  font-variant:all-small-caps;
+}
+.prod-card-grade{
+  color:#fff;
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-size:22px;
+  line-height:1.12;
+  margin:3px 0 6px;
+}
+.prod-card-series{color:#cac3d8;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.prod-card-coating,.prod-card-chipbreaker{
+  display:grid;
+  grid-template-columns:92px minmax(0,1fr);
+  gap:8px;
+  align-items:baseline;
+  color:#e3e2df;
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-size:11px;
+  margin-top:5px;
+}
+.prod-card-coating span,.prod-card-chipbreaker span{
+  color:#77717f;
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.tech-strip{margin-top:10px}
+.tech-chip{
+  border-color:rgba(227,226,223,.10);
+  background:rgba(227,226,223,.04);
+  border-radius:2px;
+}
+.tech-chip-k{background:rgba(227,226,223,.06);color:#948ea1}
+.tech-chip-v{color:#e3e2df}
+.rtag,.prod-op-tag{
+  border-radius:2px;
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-size:9px;
+}
+.prod-trust{
+  border-top:1px solid rgba(227,226,223,.08);
+  margin-top:10px;
+  padding-top:8px;
+}
+.prod-card-params{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  background:var(--surface-container);
+  border-top:1px solid rgba(227,226,223,.08);
+  border-bottom:1px solid rgba(227,226,223,.08);
+}
+.prod-card-param{
+  border-color:rgba(227,226,223,.08);
+  padding:11px 12px;
+}
+.pcp-label,.rp-label{
+  color:#77717f;
+  letter-spacing:.12em;
+}
+.pcp-val,.rp-val{
+  color:#fff;
+  font-size:12px;
+}
+.prod-card-footer{
+  background:var(--surface-container-low);
+  border-color:rgba(227,226,223,.08);
+  gap:6px;
+}
+.prod-buy-btn,.prod-detail-btn,.prod-cmp-btn,.advisor-action-btn,.arc-btn,.cr-copy,.cr-buy{
+  border-radius:2px;
+  box-shadow:none;
+}
+.result-card{
+  background:var(--surface-container);
+  border-color:rgba(227,226,223,.10);
+  border-radius:3px;
+}
+.result-card:hover{
+  background:var(--surface-container-high);
+  border-color:rgba(204,189,255,.42);
+}
+.result-card-top{
+  background:var(--surface-container-lowest);
+  border-bottom-color:rgba(227,226,223,.08);
+}
+.result-brand,.result-series-line{color:#948ea1}
+.result-grade{color:#fff;font-family:'DM Mono',ui-monospace,monospace;font-size:22px}
+.result-trust,.result-why-details,.alt-strip,.result-links,.advisor-confidence-bar{
+  background:var(--surface-container);
+  border-color:rgba(227,226,223,.10);
+}
+.result-params{
+  background:var(--surface-container-low);
+  border-color:rgba(227,226,223,.08);
+}
+.compare-table{
+  background:var(--surface-container);
+  border-color:rgba(227,226,223,.10);
+  border-radius:3px;
+}
+.compare-table table{
+  border-collapse:separate;
+  border-spacing:0;
+}
+.compare-table th{
+  background:var(--surface-container-lowest);
+  color:#948ea1;
+  border-bottom:1px solid rgba(227,226,223,.10);
+  font-family:'DM Mono',ui-monospace,monospace;
+}
+.compare-table td{
+  background:var(--surface-container);
+  color:#e3e2df;
+  border-bottom:1px solid rgba(227,226,223,.08);
+  border-right:1px solid rgba(227,226,223,.06);
+}
+.compare-table tr:nth-child(even) td{background:var(--surface-container-low)}
+.compare-table tr:hover td{background:var(--surface-container-high)}
+.compare-table .cmp-label{
+  color:#948ea1;
+  font-family:'DM Mono',ui-monospace,monospace;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.cmp-modal,.detail-modal-card,.modal-card,.simple-card,.tour-card{
+  background:var(--surface-container);
+  color:var(--ink);
+  border-color:rgba(227,226,223,.12);
+}
+.cmp-modal-head,.detail-head{
+  background:var(--surface-container-lowest);
+  border-color:rgba(227,226,223,.10);
+}
+.detail-body{
+  background:linear-gradient(180deg,var(--surface-container-low) 0%,var(--surface) 100%);
+}
+.detail-chip,.detail-rel,.detail-buy-wrap{
+  background:var(--surface-container);
+  border-color:rgba(227,226,223,.10);
+}
+.calc-card.calc-out,.metric-block{
+  background:var(--surface-container-lowest);
+  border:1px solid rgba(227,226,223,.10);
+}
 @media(max-width:860px){
   .app{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
   .sidebar{position:relative;width:100%;height:auto;max-height:42vh;grid-row:1}
@@ -2385,7 +2966,22 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="wm">ToolAdvisor<small>beta</small></div>
     </div>
 
-    <div class="sb-section">Selection Tools</div>
+    <div class="operator-block">
+      <div class="operator-avatar">TA</div>
+      <div>
+        <div class="operator-name">STATION_ALPHA</div>
+        <div class="operator-mode">LOGGED: OPERATOR_01</div>
+      </div>
+    </div>
+
+    <div class="sb-system-rail" aria-label="Industrial data areas">
+      <button type="button" onclick="setTab('advisor',findTabButton('advisor'))"><span>Process Data</span><em>selection engine</em></button>
+      <button type="button" onclick="setTab('products',findTabButton('products'))"><span>Tool Library</span><em>catalog records</em></button>
+      <button type="button" onclick="setTab('materials',findTabButton('materials'))"><span>Application Data</span><em>material groups</em></button>
+      <button type="button" onclick="setTab('iso',findTabButton('iso'))"><span>ISO 13399 Specs</span><em>standard fields</em></button>
+    </div>
+
+    <div class="sb-section">Process Data</div>
     <nav class="sb-nav">
       <button class="tab sb-item primary-tab active" onclick="setTab('advisor',this)">
         <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-linecap="round"/></svg>
@@ -2405,7 +3001,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       </button>
     </nav>
 
-    <div class="sb-section">Reference</div>
+    <div class="sb-section">Tool Library</div>
     <nav class="sb-nav">
       <button class="tab sb-item" onclick="setTab('materials',this)">
         <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1" stroke="currentColor"/><path d="M2 6h12" stroke="currentColor"/></svg>
@@ -2425,7 +3021,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       </button>
     </nav>
 
-    <div class="sb-section">AI</div>
+    <div class="sb-section">Application Data</div>
     <nav class="sb-nav">
       <button class="tab sb-item primary-tab" onclick="setTab('visualid',this)">
         <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor"/><path d="M2 8s2-5 6-5 6 5 6 5-2 5-6 5-6-5-6-5z" stroke="currentColor"/></svg>
@@ -2494,6 +3090,42 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
        TAB: ADVISOR
   ============================================================ -->
   <div id="panel-advisor" class="panel active">
+    <section class="stitch-hero" aria-label="ToolAdvisor unified selection engine">
+      <div class="stitch-hero-copy">
+        <div class="stitch-eyebrow">DATASET: ISO_TC_29 · SYSTEM_VER: RC6</div>
+        <h1>Unified Cutting Tool Selection Engine</h1>
+        <p>Brand-neutral process recommendations, cross-reference signals and ISO 13399-style technical records for professional cutting tool decisions.</p>
+        <div class="stitch-hero-actions">
+          <button type="button" onclick="startEntryFlow('material_operation')">Configure Application</button>
+          <button type="button" class="secondary" onclick="setTab('products',findTabButton('products'))">Open Tool Library</button>
+        </div>
+      </div>
+      <div class="stitch-hero-panel" aria-hidden="true">
+        <div class="engine-gauge"><span>ISO DATABASE</span><strong>13399</strong></div>
+        <div class="engine-grid">
+          <span>P</span><span>M</span><span>K</span><span>N</span><span>S</span><span>H</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="material-database-section" aria-label="Material Application Database">
+      <div class="material-db-head">
+        <div>
+          <div class="sec-label">Material Application Database</div>
+          <h2>ISO group driven cutting parameters</h2>
+        </div>
+        <button type="button" onclick="setTab('materials',findTabButton('materials'))">Open material data</button>
+      </div>
+      <div class="material-db-cards">
+        <button type="button" class="iso-db-card iso-p-card" onclick="jumpToAdvisorStep(1)"><strong>P</strong><span>Steel</span><em>stable wear window</em></button>
+        <button type="button" class="iso-db-card iso-m-card" onclick="jumpToAdvisorStep(1)"><strong>M</strong><span>Stainless</span><em>edge security focus</em></button>
+        <button type="button" class="iso-db-card iso-k-card" onclick="jumpToAdvisorStep(1)"><strong>K</strong><span>Cast iron</span><em>abrasion control</em></button>
+        <button type="button" class="iso-db-card iso-n-card" onclick="jumpToAdvisorStep(1)"><strong>N</strong><span>Non-ferrous</span><em>low BUE tendency</em></button>
+        <button type="button" class="iso-db-card iso-s-card" onclick="jumpToAdvisorStep(1)"><strong>S</strong><span>Superalloy</span><em>thermal discipline</em></button>
+        <button type="button" class="iso-db-card iso-h-card" onclick="jumpToAdvisorStep(1)"><strong>H</strong><span>Hardened</span><em>precision finish</em></button>
+      </div>
+    </section>
+
     <div class="advisor-quick-search">
       <div class="sec-label" style="margin-bottom:7px">Quick Product Search</div>
       <div class="aqs-input-wrap">
@@ -12094,6 +12726,8 @@ function filterProducts() {
     const bk = p.brand;
     const firstKey = Object.keys(p.cuttingData)[0];
     const cd = p.cuttingData[firstKey] || {};
+    const chipbreaker = p.geometry || p.insertCode || p.productName || '—';
+    const lifeExpectancy = p.toolLife || 'Not rated';
     const warningText = trust.warning || (signals.nicheProfile ? 'Specialist profile: verify setup window.' : '');
     const decisionSummary = signals.decisionSummary || buildProductDecisionSummary(signals, trust);
     const buyUrl = (BUY_LINKS[bk]?.[0]?.u || 'https://www.google.com/search?q=' + encodeURIComponent(bk + ' ' + p.productName + ' insert buy'));
@@ -12115,13 +12749,14 @@ function filterProducts() {
       <div class="prod-card-check ${isChecked ? 'on' : ''}" aria-label="Toggle compare for ${escapeHtmlAttr(primaryCode)}" onclick="toggleProdSelect('${p.id}')">
         ${isChecked ? '<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}
       </div>
-      <div class="prod-card-head">
+      <div class="prod-card-head engineering-card-head">
         ${visual}
-        <div style="flex:1">
+        <div class="prod-card-data">
           <div class="prod-card-brand">${formatBrandName(p.brand)}</div>
           <div class="prod-card-grade">${primaryCode}</div>
           ${secondaryLine ? `<div class="prod-card-series">${secondaryLine}</div>` : ''}
-          <div class="prod-card-coating">${p.coating}</div>
+          <div class="prod-card-coating"><span>Coating</span>${p.coating || '—'}</div>
+          <div class="prod-card-chipbreaker"><span>Chipbreaker / Geometry</span>${escapeHtmlAttr(chipbreaker)}</div>
           ${techStrip}
           ${tier === 'secondary' ? '<div class="prod-card-secondary-note">Secondary category record — core cutting tools are prioritised in default view.</div>' : ''}
           <div class="prod-card-isos">
@@ -12145,6 +12780,7 @@ function filterProducts() {
         <div class="prod-card-param"><div class="pcp-label">Vc</div><div class="pcp-val">${cd.vc || p.vcRange || '—'}</div></div>
         <div class="prod-card-param"><div class="pcp-label">fn/fz</div><div class="pcp-val">${cd.fn || p.fnRange || '—'}</div></div>
         <div class="prod-card-param"><div class="pcp-label">ap</div><div class="pcp-val">${cd.ap || p.apRange || '—'}</div></div>
+        <div class="prod-card-param"><div class="pcp-label">Life</div><div class="pcp-val">${escapeHtmlAttr(lifeExpectancy)}</div></div>
       </div>
       <div class="prod-card-footer">
         <div class="prod-card-ops">${p.operations.map(o => '<span class="prod-op-tag">' + o + '</span>').join('')}</div>
