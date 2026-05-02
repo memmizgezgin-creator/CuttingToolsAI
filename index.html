@@ -1735,7 +1735,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .coating-chip{border:1px solid var(--border);border-radius:6px;padding:8px;background:var(--bg);font-size:12px;color:var(--ink2)}
 .coating-swatch{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;border:1px solid rgba(0,0,0,.18)}
 .common-alloys{font-size:12px;color:var(--ink2);line-height:1.55}
-.tab-last-updated{margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);border-top:1px solid var(--border);padding-top:10px}
+.tab-last-updated{display:none!important}
 .feedback-float{position:fixed;right:18px;bottom:76px;z-index:160}
 .feedback-btn{border:1px solid var(--border);background:var(--white);color:var(--ink);border-radius:999px;padding:9px 12px;font-size:12px;font-weight:800;box-shadow:var(--shadow-md);cursor:pointer}
 .feedback-panel{display:none;position:absolute;right:0;bottom:44px;width:280px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px;box-shadow:var(--shadow-lg)}
@@ -1772,7 +1772,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   html,body{height:auto!important;overflow:visible!important;background:#fff!important}
   .main{margin:0!important;height:auto!important;overflow:visible!important;background:#fff!important}
   .panel{display:none!important;padding:0!important}.panel.active{display:block!important}
-  .panel.active::before{content:'ToolAdvisor';display:block;font-size:20px;font-weight:800;margin-bottom:14px;color:#111}
+  .panel.active::before{content:'ToolAdvisor report';display:block;font-size:20px;font-weight:800;margin-bottom:14px;color:#111}
 }
 
 /* HELPERS */
@@ -2379,7 +2379,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .num{font-family:'DM Mono',monospace;font-weight:500;text-align:right;color:var(--ink2)}
 
 /* ============================================================
-   DESIGN SYSTEM V3 — STITCH INDUSTRIAL CATALOG RC6
+   DESIGN SYSTEM V4 — STITCH INDUSTRIAL CATALOG RC6
    Visual layer only: dark operator console, dense catalog cards,
    material database, and engineering parameter matrix treatment.
 ============================================================ */
@@ -2502,6 +2502,14 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   border-color:rgba(227,226,223,.10);
   border-radius:4px;
 }
+.sidebar-tools-title{
+  font-family:'DM Mono',ui-monospace,monospace;
+  font-size:9px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#948ea1;
+  margin-bottom:8px;
+}
 .pro-cta,.dark-toggle,.mini-footer-actions button,.mini-footer-actions select{
   border-radius:3px;
 }
@@ -2516,10 +2524,25 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   border-color:rgba(227,226,223,.10)!important;
   color:var(--ink3)!important;
 }
+.pageheader{padding:18px 32px 16px}
+.pagehead-top{align-items:center}
+.page-kicker{
+  font-family:'DM Mono',ui-monospace,monospace;
+  color:var(--primary);
+  letter-spacing:.16em;
+}
 .page-title{
   font-family:'Plus Jakarta Sans',system-ui,sans-serif;
   color:#fff;
   letter-spacing:-.04em;
+  font-size:22px;
+}
+.page-sub{
+  margin-top:5px;
+  color:#948ea1;
+  font-size:12px;
+  max-width:720px;
+  line-height:1.55;
 }
 .panel{padding:24px 32px 48px}
 .stitch-hero{
@@ -2857,6 +2880,14 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   border-color:rgba(227,226,223,.08);
   gap:6px;
 }
+.prod-thumb{
+  background:var(--surface-container-lowest);
+  border-color:rgba(227,226,223,.12);
+}
+.prod-card-check{
+  background:var(--surface-container-high);
+  border-color:rgba(227,226,223,.16);
+}
 .prod-buy-btn,.prod-detail-btn,.prod-cmp-btn,.advisor-action-btn,.arc-btn,.cr-copy,.cr-buy{
   border-radius:2px;
   box-shadow:none;
@@ -3042,13 +3073,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 
     <div class="sb-footer">
       <div class="quota-box">
-        <div class="quota-title">Learning Mode</div>
-        <div class="quota-num">Free<em> access</em></div>
-        <div class="quota-bar"><div class="quota-fill" style="width:100%"></div></div>
-        <button class="pro-cta" onclick="setTab('pricing',findTabButton('pricing'))">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 3.5H11L8.5 6.5l1 3.5L6 8l-3.5 2 1-3.5L1 4.5h3.5L6 1z" fill="currentColor"/></svg>
-          Subscription Terms
-        </button>
+        <div class="sidebar-tools-title">Operator tools</div>
         <button class="dark-toggle" id="darkModeToggle" type="button" onclick="toggleDarkMode()">Dark mode</button>
         <button class="dark-toggle" type="button" onclick="saveCurrentPageAsPDF()">Save as PDF</button>
         <div class="mini-footer-actions">
@@ -3075,13 +3100,15 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   <div class="crumb" id="topBreadcrumb">
     <span id="crumbGroup">Selection Tools</span><span class="sep">›</span><strong id="crumbSurface">AI Advisor</strong>
     <span class="sep" id="crumbStepSep">›</span><span class="step" id="crumbStep">Step 1 — Workpiece Material</span>
-    <span class="pill">ENGINEERING CATALOG · RC5</span>
+    <!-- ENGINEERING CATALOG · RC5 -->
   </div>
 
   <div class="pageheader">
     <div class="pagehead-top">
       <div>
-        <div class="page-title">ToolAdvisor</div>
+        <div class="page-kicker">Engineering Catalog</div>
+        <div class="page-title">ISO 13399 Standards</div>
+        <div class="page-sub">Process data, tool library, application data and ISO parameter references for cutting tool selection.</div>
       </div>
     </div>
   </div>
@@ -4059,7 +4086,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 
 <div class="site-footer" role="complementary" style="max-width:none;margin:0;padding:10px 16px;border-top:1px solid var(--border);color:var(--ink3);font-size:12px">
   <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center">
-    <span>Support: <a href="mailto:support@tooladvisor.eu" style="color:var(--purple);font-weight:700">support@tooladvisor.eu</a> · Response within 1 business day · Billing: <a href="mailto:billing@tooladvisor.eu" style="color:var(--purple);font-weight:700">billing@tooladvisor.eu</a></span>
+    <span>Support: <a href="mailto:support@tooladvisor.eu" style="color:var(--purple);font-weight:700">support@tooladvisor.eu</a> · Response within 1 business day · Billing: <a href="mailto:billing@tooladvisor.eu" style="color:var(--purple);font-weight:700">billing@tooladvisor.eu</a> · Last updated: 2026-05-01</span>
     <span>
       <button class="trust-method-link" type="button" onclick="openUtilityModal('privacy')">Privacy policy</button>
       · <button class="trust-method-link" type="button" onclick="openUtilityModal('terms')">Terms of use</button>
