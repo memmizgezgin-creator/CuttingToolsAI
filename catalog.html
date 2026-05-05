@@ -1923,6 +1923,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   width:34px;height:34px;
   stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
 }
+.iso-badge-thumb{flex-direction:column;gap:2px;border:none}
+.iso-badge-letter{font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.5px}
+.iso-badge-grade{font-size:8px;font-weight:700;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.4px;text-align:center;max-width:48px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .prod-card-check{
   position:absolute;top:10px;right:10px;
   width:20px;height:20px;border-radius:5px;
@@ -11448,39 +11451,20 @@ function getProductTechnicalRenderSvg(styleKey) {
   };
   return render[key] || render.insert_generic;
 }
-const PRODUCT_IMAGE_FALLBACKS = {
-  Turning:   'https://images.unsplash.com/photo-1565087149307-5aba8c8f0e41?w=400&q=80',
-  Milling:   'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&q=80',
-  Drilling:  'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80',
-  Grooving:  'https://images.unsplash.com/photo-1565087149307-5aba8c8f0e41?w=400&q=80',
-  Threading: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80',
-  default:   'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&q=80'
-};
-function getProductImageFallback(product) {
-  const ops = coreArr(product.operations);
-  for (const op of ['Turning','Milling','Drilling','Grooving','Threading']) {
-    if (ops.includes(op)) return PRODUCT_IMAGE_FALLBACKS[op];
-  }
-  return PRODUCT_IMAGE_FALLBACKS.default;
-}
+const ISO_BADGE_COLORS = {P:'#1E4FB8',M:'#D97706',K:'#B91C1C',N:'#059669',S:'#EA580C',H:'#4B5563'};
 function renderProductVisual(product, surface = 'products') {
   const cls = surface === 'advisor' ? 'result-thumb' : 'prod-thumb';
   const presentation = resolveProductImagePresentation(product);
-  const tierClass = String(presentation.imageTier || 'silhouette_fallback').replace(/_/g, '-');
   const alt = truncLine(`${product.brand || 'Tool'} ${product.productName || product.grade || ''}`.trim(), 90);
   const title = escapeHtmlAttr(`${presentation.imageLabel} · ${presentation.imageTier} · ${presentation.imageStyleKey}`);
-  const imageUrl = normalizeCoreLabel(product.imageUrl || '') || getProductImageFallback(product);
+  const imageUrl = normalizeCoreLabel(product.imageUrl || '');
   if (imageUrl) {
-    return `<div class="${cls} real-image" data-image-tier="photo_fallback" data-image-style-key="${presentation.imageStyleKey}" title="${title}"><img src="${imageUrl}" alt="${escapeHtmlAttr(alt)}" loading="lazy" referrerpolicy="no-referrer"></div>`;
+    return `<div class="${cls} real-image" data-image-tier="${presentation.imageTier}" data-image-style-key="${presentation.imageStyleKey}" title="${title}"><img src="${imageUrl}" alt="${escapeHtmlAttr(alt)}" loading="lazy" referrerpolicy="no-referrer"></div>`;
   }
-  const artTier = presentation.imageTier === 'technical_render'
-    ? 'technical-render'
-    : (presentation.imageTier === 'type_placeholder' ? 'type-placeholder' : 'silhouette-fallback');
-  const classNames = [...new Set([cls, 'placeholder', tierClass, artTier])].filter(Boolean).join(' ');
-  const artSvg = presentation.imageTier === 'technical_render'
-    ? getProductTechnicalRenderSvg(presentation.imageStyleKey)
-    : getProductSilhouetteSvg(presentation.imageStyleKey, presentation.imageTier);
-  return `<div class="${classNames}" data-image-tier="${presentation.imageTier}" data-image-style-key="${presentation.imageStyleKey}" title="${title}">${artSvg}</div>`;
+  const isoGroup = (coreArr(product.materials)[0] || 'P').toUpperCase();
+  const bg = ISO_BADGE_COLORS[isoGroup] || '#4B5563';
+  const grade = escapeHtmlAttr((product.grade || product.productName || '').slice(0, 14));
+  return `<div class="${cls} iso-badge-thumb" style="background:${bg}" title="${title}" aria-label="${escapeHtmlAttr(alt)}"><span class="iso-badge-letter">${isoGroup}</span><span class="iso-badge-grade">${grade}</span></div>`;
 }
 function syncBodyOverflowLock() {
   const detailOpen = !!document.getElementById('productDetailOverlay')?.classList.contains('open');
