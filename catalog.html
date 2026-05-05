@@ -11448,15 +11448,30 @@ function getProductTechnicalRenderSvg(styleKey) {
   };
   return render[key] || render.insert_generic;
 }
+const PRODUCT_IMAGE_FALLBACKS = {
+  Turning:   'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=400&q=80',
+  Milling:   'https://images.unsplash.com/photo-1601158935942-52255782d322?w=400&q=80',
+  Drilling:  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',
+  Grooving:  'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80',
+  Threading: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80',
+  default:   'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80'
+};
+function getProductImageFallback(product) {
+  const ops = coreArr(product.operations);
+  for (const op of ['Turning','Milling','Drilling','Grooving','Threading']) {
+    if (ops.includes(op)) return PRODUCT_IMAGE_FALLBACKS[op];
+  }
+  return PRODUCT_IMAGE_FALLBACKS.default;
+}
 function renderProductVisual(product, surface = 'products') {
   const cls = surface === 'advisor' ? 'result-thumb' : 'prod-thumb';
   const presentation = resolveProductImagePresentation(product);
   const tierClass = String(presentation.imageTier || 'silhouette_fallback').replace(/_/g, '-');
   const alt = truncLine(`${product.brand || 'Tool'} ${product.productName || product.grade || ''}`.trim(), 90);
   const title = escapeHtmlAttr(`${presentation.imageLabel} · ${presentation.imageTier} · ${presentation.imageStyleKey}`);
-  const imageUrl = normalizeCoreLabel(product.imageUrl || '');
-  if (presentation.imageTier === 'real_image' && imageUrl) {
-    return `<div class="${cls} real-image" data-image-tier="${presentation.imageTier}" data-image-style-key="${presentation.imageStyleKey}" title="${title}"><img src="${imageUrl}" alt="${escapeHtmlAttr(alt)}" loading="lazy" referrerpolicy="no-referrer"></div>`;
+  const imageUrl = normalizeCoreLabel(product.imageUrl || '') || getProductImageFallback(product);
+  if (imageUrl) {
+    return `<div class="${cls} real-image" data-image-tier="photo_fallback" data-image-style-key="${presentation.imageStyleKey}" title="${title}"><img src="${imageUrl}" alt="${escapeHtmlAttr(alt)}" loading="lazy" referrerpolicy="no-referrer"></div>`;
   }
   const artTier = presentation.imageTier === 'technical_render'
     ? 'technical-render'
