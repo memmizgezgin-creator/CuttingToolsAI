@@ -4623,6 +4623,7 @@ body{
       </label>
       <button class="stitch-icon-btn" type="button" onclick="toggleDarkMode()" aria-label="Toggle dark mode">◐</button>
       <button class="stitch-icon-btn" type="button" onclick="openUtilityModal('notifications')" aria-label="Notification preferences">•</button>
+      <button class="stitch-icon-btn" type="button" onclick="openUtilityModal('settings')" aria-label="API settings">⚙</button>
       <button class="stitch-enterprise-btn" type="button" onclick="openProAccessModal()">Request Access</button>
     </div>
   </div>
@@ -5185,8 +5186,8 @@ body{
         <span class="chat-head-sub">Local assistant</span>
       </div>
       <div class="chat-messages" id="chatMessages">
-        <div class="chat-bubble ai">AI Chat is in beta. The live AI backend is not connected in this public preview.</div>
-        <div class="chat-bubble ai">This local guide can answer general questions about cutting tools, ISO codes, materials and grade selection. Use Advisor and Cross-Ref for the working recommendation engine.</div>
+        <div class="chat-bubble ai">AI Chat is in beta. Add your Anthropic API key via the <strong>⚙ settings</strong> button in the top bar to enable live Claude responses.</div>
+        <div class="chat-bubble ai">Without a key, this local guide can answer general questions about cutting tools, ISO codes, materials and grade selection. Use Advisor and Cross-Ref for the working recommendation engine.</div>
         <div class="chat-bubble user">Best insert for Inconel 718?</div>
         <div class="chat-bubble ai"><strong>Inconel 718 (ISO S):</strong><br><br>• <strong>Sandvik GC2220</strong> — PVD TiAlN, best for turning S05–S20<br>• <strong>ISCAR IC806</strong> — SUMO TEC®, great for interrupted cuts<br><br>Vc = 25–45 m/min · High-pressure coolant mandatory · Consistent DOC to avoid work hardening.</div>
       </div>
@@ -5764,6 +5765,8 @@ const CONFIG = {
   stripe:   { publishableKey: 'STRIPE_KEY', enabled: false },
   claude:   { apiKey: 'CLAUDE_KEY', model: 'claude-sonnet-4-20250514', enabled: false }
 };
+
+window.ANTHROPIC_KEY = localStorage.getItem('ta_anthropic_key') || '';
 
 window.addEventListener('error', event => {
   console.error('[ToolAdvisor uncaught]', new Date().toISOString(), event.message, event.error || event.filename);
@@ -13742,13 +13745,19 @@ function sendChatMsg() {
   msgs.innerHTML += `<div class="chat-bubble ai" id="${id}" style="opacity:.4">…</div>`;
   msgs.scrollTop = msgs.scrollHeight;
 
-  if (CONFIG.claude.enabled) {
-    // Live Claude API call
-    fetch('/api/claude', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
+  if (window.ANTHROPIC_KEY) {
+    fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': window.ANTHROPIC_KEY,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
       body: JSON.stringify({
-        model: CONFIG.claude.model, max_tokens: 600,
-        system: 'You are a cutting tool expert. Answer concisely in HTML (use <br> and <strong>). Focus on: insert grade, cutting data, brand recommendations.',
+        model: 'claude-sonnet-4-6',
+        max_tokens: 600,
+        system: 'You are a cutting tool expert assistant for ToolAdvisor. Answer concisely using HTML formatting (use <br> for line breaks and <strong> for emphasis). Focus on: insert grades, cutting data, brand recommendations, ISO material groups, coatings and geometries.',
         messages: [{ role: 'user', content: msg }]
       })
     }).then(r => r.json()).then(data => {
@@ -13757,7 +13766,7 @@ function sendChatMsg() {
       msgs.scrollTop = msgs.scrollHeight;
     }).catch(() => {
       const el = document.getElementById(id);
-      if (el) { el.innerHTML = 'API error — try again'; el.style.opacity = '1'; }
+      if (el) { el.innerHTML = 'API error — check your key in ⚙ Settings.'; el.style.opacity = '1'; }
     });
     return;
   }
@@ -14030,10 +14039,31 @@ function openUtilityModal(kind) {
     cookies: `<h3>Cookie policy</h3><p>Essential local storage is used for preferences, history and session state. Analytics may be used only when enabled and accepted.</p>`,
     contact: `<h3>Contact</h3><div class="form-row"><label class="form-label">Name</label><input class="form-input" id="contactName"></div><div class="form-row"><label class="form-label">Email</label><input class="form-input" id="contactEmail"></div><div class="form-row"><label class="form-label">Subject</label><select class="form-select" id="contactSubject"><option>Support</option><option>Billing</option><option>Product data</option><option>Partnership</option></select></div><div class="form-row"><label class="form-label">Message</label><textarea class="form-input" id="contactMessage"></textarea></div><button class="advisor-action-btn primary" onclick="sendContactMail()">Send</button>`,
     proAccess: `<h3>Request Pro Access</h3><p>ToolAdvisor Pro is currently available by request. For billing, team access or early access, contact billing@tooladvisor.eu.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><a class="advisor-action-btn primary" href="mailto:billing@tooladvisor.eu?subject=ToolAdvisor%20Pro%20Access">Email billing@tooladvisor.eu</a></div>`,
-    advanced: `<h3>Advanced tools</h3><p>Local browser utilities for support and power users. These actions affect only this browser session unless an export file is downloaded.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="advisor-action-btn" type="button" onclick="saveCurrentPageAsPDF()">Save as PDF</button><button class="advisor-action-btn" type="button" onclick="refreshAppCache()">Refresh local cache</button><button class="advisor-action-btn" type="button" onclick="exportFavoritesJson()">Export favorites</button><button class="advisor-action-btn" type="button" onclick="document.getElementById('favoritesImportFile').click()">Import favorites</button><button class="advisor-action-btn" type="button" onclick="resetAllLocalData()">Reset local data</button></div>`
+    advanced: `<h3>Advanced tools</h3><p>Local browser utilities for support and power users. These actions affect only this browser session unless an export file is downloaded.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="advisor-action-btn" type="button" onclick="saveCurrentPageAsPDF()">Save as PDF</button><button class="advisor-action-btn" type="button" onclick="refreshAppCache()">Refresh local cache</button><button class="advisor-action-btn" type="button" onclick="exportFavoritesJson()">Export favorites</button><button class="advisor-action-btn" type="button" onclick="document.getElementById('favoritesImportFile').click()">Import favorites</button><button class="advisor-action-btn" type="button" onclick="resetAllLocalData()">Reset local data</button></div>`,
+    settings: `<h3>API Settings</h3><p style="font-size:13px;color:var(--ink2);margin-bottom:16px">Connect your Anthropic API key to enable live Claude responses in AI Chat. The key is stored only in your browser — never sent to ToolAdvisor servers.</p><div class="form-row"><label class="form-label">Anthropic API Key</label><input class="form-input" type="password" id="apiKeyInput" placeholder="sk-ant-..." autocomplete="off"></div><div style="display:flex;gap:8px;margin-top:12px"><button class="advisor-action-btn primary" onclick="saveApiKey()">Save key</button><button class="advisor-action-btn" onclick="clearApiKey()">Clear</button></div><p style="font-size:11px;color:var(--ink3);margin-top:14px">Key is stored in localStorage under <code>ta_anthropic_key</code>. Clear it any time to return to local demo mode.</p>`
   };
   body.innerHTML = `${views[kind] || views.help}<div style="margin-top:12px"><button class="advisor-action-btn" onclick="closeUtilityModal()">Close</button></div>`;
+  if (kind === 'settings') {
+    const inp = document.getElementById('apiKeyInput');
+    if (inp && window.ANTHROPIC_KEY) inp.value = window.ANTHROPIC_KEY;
+  }
   modal.classList.add('open');
+}
+
+function saveApiKey() {
+  const val = (document.getElementById('apiKeyInput')?.value || '').trim();
+  localStorage.setItem('ta_anthropic_key', val);
+  window.ANTHROPIC_KEY = val;
+  toast(val ? 'API key saved — AI Chat is now live.' : 'API key cleared.', 'success');
+  closeUtilityModal();
+}
+
+function clearApiKey() {
+  localStorage.removeItem('ta_anthropic_key');
+  window.ANTHROPIC_KEY = '';
+  const inp = document.getElementById('apiKeyInput');
+  if (inp) inp.value = '';
+  toast('API key cleared — demo mode active.', 'info');
 }
 
 function openProAccessModal() {
