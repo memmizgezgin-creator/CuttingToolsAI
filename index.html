@@ -5805,12 +5805,24 @@ function dedupeProducts(products) {
 function getReferenceProducts() {
   return PRODUCT_DB.filter(product => product && product.sourceType === 'technical_reference_sample');
 }
+function isPublicProduct(product, options = {}) {
+  if (!product) return false;
+  const id = String(product.id || '');
+  const sourceType = String(product.sourceType || '').toLowerCase();
+  const ingestionStatus = String(product.ingestionStatus || '').toLowerCase();
+  const status = String(product.status || '').toLowerCase();
+  if (DRAFT_LOCAL_PRODUCT_IDS.has(id)) return false;
+  if (product.publicListing === false || product.isPublic === false) return false;
+  if (sourceType === 'technical_reference_sample') return !!options.includeReferences;
+  if (sourceType.includes('draft') || sourceType.includes('reference') || sourceType.includes('sample') || sourceType.includes('non_public')) return false;
+  if (['draft', 'draft_non_public', 'reference_only', 'non_public', 'manual_review', 'blocked', 'hold'].includes(ingestionStatus)) return false;
+  if (['draft', 'archived', 'blocked', 'hold', 'non_public'].includes(status)) return false;
+  return true;
+}
 function getDB(options = {}) {
   const includeReferences = !!options.includeReferences;
   const base = _remoteProductDB || PRODUCT_DB;
-  const publicProducts = includeReferences
-    ? base
-    : base.filter(product => product && product.sourceType !== 'technical_reference_sample');
+  const publicProducts = base.filter(product => isPublicProduct(product, { includeReferences }));
   return dedupeProducts(publicProducts);
 }
 function findProduct(id) {
@@ -5835,6 +5847,10 @@ function _mapRemoteProduct(r) {
     functionalAlternatives: r.functional_alternatives || [],
     valueAlternatives: r.value_alternatives || [],
     cuttingData: r.cutting_data || {}, buyLinks: [], imageUrl: r.image_url || '',
+    sourceType: r.source_type || r.sourceType || '',
+    ingestionStatus: r.ingestion_status || r.ingestionStatus || '',
+    status: r.status || '',
+    publicListing: typeof r.public_listing === 'boolean' ? r.public_listing : r.publicListing,
   };
 }
 
@@ -5865,6 +5881,12 @@ function _writeProductCache(data) {
  * Idempotent: concurrent calls share one in-flight promise.
  */
 let _productsLoadPromise = null;
+function withProductFetchTimeout(promise, ms = 3500) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error('Product fetch timed out')), ms))
+  ]);
+}
 function loadRemoteProducts() {
   if (_remoteProductDB) return Promise.resolve(_remoteProductDB);
   if (_productsLoadPromise) return _productsLoadPromise;
@@ -5885,7 +5907,7 @@ function loadRemoteProducts() {
 
   _productsLoadPromise = (async () => {
     try {
-      const { data: prods, error } = await sb.from('products').select('*').order('id');
+      const { data: prods, error } = await withProductFetchTimeout(sb.from('products').select('*').order('id'));
       if (error || !prods || prods.length === 0) return null;
       _remoteProductDB = dedupeProducts(prods.map(_mapRemoteProduct));
       _writeProductCache(_remoteProductDB);
@@ -6552,6 +6574,36 @@ const PRODUCT_DB=[
   isoSuitability:{P:'limited',M:'optimal',K:'unknown',N:'unknown',S:'limited',H:'unknown'},
   cuttingData:{'Drilling-M':{vc:'35–90',fn:'0.05–0.22',ap:'5xD',note:'Reference sample for stainless drilling metadata; verify live catalogue cutting data before production.'},'Drilling-P':{vc:'55–110',fn:'0.06–0.24',ap:'5xD',note:'Limited steel suitability shown for badge-system validation only.'}}},
 ];
+
+const DRAFT_LOCAL_PRODUCT_IDS = new Set([
+  'THR-EMUGE-M-TAP-001',
+  'THR-EMUGE-M-TAP-002',
+  'THR-EMUGE-INOX-TAP-001',
+  'THR-EMUGE-INOX-TAP-002',
+  'THR-EMUGE-HPC-TAP-001',
+  'THR-EMUGE-HPC-TAP-002',
+  'THR-EMUGE-TM-MILL-001',
+  'THR-EMUGE-TM-MILL-002',
+  'THR-EMUGE-FORM-TAP-001',
+  'THR-EMUGE-FORM-TAP-002',
+  'THR-DORMER-EP001-TAP-001',
+  'THR-DORMER-EP001-TAP-002',
+  'THR-DORMER-EP002-TAP-001',
+  'THR-DORMER-EP002-TAP-002',
+  'THR-DORMER-EP010-MILL-001',
+  'THR-DORMER-EP010-MILL-002',
+  'THR-DORMER-EP020-TAP-001',
+  'THR-DORMER-EP020-TAP-002',
+  'THR-DORMER-EP030-FORM-001',
+  'THR-DORMER-EP030-FORM-002',
+]);
+
+PRODUCT_DB.forEach(product => {
+  if (!product || !DRAFT_LOCAL_PRODUCT_IDS.has(String(product.id || ''))) return;
+  product.publicListing = false;
+  product.sourceType = product.sourceType || 'draft_ingest';
+  product.ingestionStatus = product.ingestionStatus || 'draft_non_public';
+});
 
 const CORE_CUTTING_OPERATIONS = new Set(['Turning','Milling','Drilling','Threading','Grooving']);
 const CORE_CUTTING_TYPES = new Set(['insert','solid_tool']);
@@ -12002,19 +12054,12 @@ function _renderSkeletonCards(n) {
 
 function ensureProductsFirstLoadVisibility() {
   // If we already have data (local PRODUCT_DB or remote cached/loaded), render immediately.
-  // Otherwise show skeletons, kick off the lazy load, then render real data when it arrives.
-  const grid = document.getElementById('prodGrid');
+  // Remote Supabase refresh runs in the background; local public PRODUCT_DB is the stable fallback.
   const needsLazyFetch =
     CONFIG.supabase.enabled && !_remoteProductDB && _readProductCache() === null;
 
-  if (needsLazyFetch && grid) {
-    grid.innerHTML = _renderSkeletonCards(6);
-    loadRemoteProducts().finally(() => filterProducts());
-  } else {
-    // Cache hit, already loaded, or Supabase disabled — local PRODUCT_DB is fine
-    if (!_remoteProductDB) loadRemoteProducts(); // cheap: returns cache or no-op
-    filterProducts();
-  }
+  if (needsLazyFetch || !_remoteProductDB) loadRemoteProducts().finally(() => filterProducts());
+  filterProducts();
 
   if (_productsFirstOpenHandled) return;
   _productsFirstOpenHandled = true;
@@ -14506,11 +14551,7 @@ function filterProducts() {
   const grid = document.getElementById('prodGrid');
   if (!grid) return;
   if (CONFIG.supabase.enabled && !_remoteProductDB && !_productsRemoteLoadAttempted && _readProductCache() === null) {
-    grid.innerHTML = _renderSkeletonCards(6);
-    const prodCountEl = document.getElementById('prodCount');
-    if (prodCountEl) prodCountEl.textContent = 'Loading product database...';
     loadRemoteProducts().finally(() => filterProducts());
-    return;
   }
   const productSearchValue = document.getElementById('prodSearch')?.value || '';
   syncTopbarProductSearch(productSearchValue);
