@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
 
 <!-- Google Analytics 4 (gtag.js) — replace G-DDV7CCYC0D with live Measurement ID -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DDV7CCYC0D"></script>
@@ -15297,33 +15298,14 @@ function handleGlobalKeyboardShortcuts(e) {
 const _DARK_MODE_KEY = 'ta_dark_mode_v1';
 
 function applyDarkModePreference() {
-  let lightMode = false;
-  let stored = null;
-  try { stored = localStorage.getItem(_DARK_MODE_KEY); } catch (_) {}
-  lightMode = stored === 'light';
-  document.body.classList.toggle('light-mode', lightMode);
-  document.body.classList.toggle('ta-dark', !lightMode && stored === '1');
-  if (stored !== null) document.body.classList.add('ta-theme-manual');
-  const btn = document.getElementById('darkModeToggle');
-  if (btn) btn.textContent = lightMode ? 'Dark mode' : 'Light mode';
-  document.querySelectorAll('.theme-toggle').forEach(button => {
-    button.setAttribute('aria-label', lightMode ? 'Toggle dark mode' : 'Toggle light mode');
-    button.setAttribute('data-tooltip', lightMode ? 'Toggle Dark Mode' : 'Toggle Light Mode');
-  });
+  document.body.classList.remove('light-mode');
+  document.body.classList.remove('ta-dark');
+  try { localStorage.removeItem(_DARK_MODE_KEY); } catch (_) {}
+  document.querySelectorAll('.theme-toggle, #darkModeToggle').forEach(el => { el.style.display = 'none'; });
 }
 
 function toggleDarkMode() {
-  const next = !document.body.classList.contains('light-mode');
-  document.body.classList.toggle('light-mode', next);
-  document.body.classList.remove('ta-dark');
-  document.body.classList.add('ta-theme-manual');
-  try { localStorage.setItem(_DARK_MODE_KEY, next ? 'light' : 'dark'); } catch (_) {}
-  const btn = document.getElementById('darkModeToggle');
-  if (btn) btn.textContent = next ? 'Dark mode' : 'Light mode';
-  document.querySelectorAll('.theme-toggle').forEach(button => {
-    button.setAttribute('aria-label', next ? 'Toggle dark mode' : 'Toggle light mode');
-    button.setAttribute('data-tooltip', next ? 'Toggle Dark Mode' : 'Toggle Light Mode');
-  });
+  // Dark mode locked — no-op
 }
 
 function toggleHighContrast() {
