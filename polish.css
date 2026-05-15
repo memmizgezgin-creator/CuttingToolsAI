@@ -44,6 +44,20 @@ main > section:nth-of-type(5)                              { animation-delay: 16
   transition: transform .3s ease, box-shadow .3s ease;
 }
 
+/* ---- Sidebar filter active states ---- */
+.ta-nav-item.ta-nav-active {
+  background: rgba(99,102,241,.1) !important;
+  color: #123356 !important;
+  font-weight: 700 !important;
+  border-left: 3px solid #6366F1 !important;
+}
+.ta-nav-material.ta-nav-active[data-iso="P"] { border-left-color: #3B82F6 !important; background: rgba(59,130,246,.1) !important; }
+.ta-nav-material.ta-nav-active[data-iso="M"] { border-left-color: #F59E0B !important; background: rgba(245,158,11,.1) !important; }
+.ta-nav-material.ta-nav-active[data-iso="K"] { border-left-color: #EF4444 !important; background: rgba(239,68,68,.1) !important; }
+.ta-nav-material.ta-nav-active[data-iso="N"] { border-left-color: #10B981 !important; background: rgba(16,185,129,.1) !important; }
+.ta-nav-material.ta-nav-active[data-iso="S"] { border-left-color: #F97316 !important; background: rgba(249,115,22,.1) !important; }
+.ta-nav-material.ta-nav-active[data-iso="H"] { border-left-color: #64748B !important; background: rgba(100,116,139,.1) !important; }
+
 /* ---- Reduce motion ---- */
 @media (prefers-reduced-motion: reduce) {
   main > section, main > div, main > article,
