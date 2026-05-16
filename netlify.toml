@@ -9,3 +9,47 @@
   from = "/api/claude"
   to = "/.netlify/functions/claude"
   status = 200
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.tooladvisor.eu/*"
+  to = "https://tooladvisor.eu/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://tooladvisor.eu/*"
+  to = "https://tooladvisor.eu/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.tooladvisor.eu/*"
+  to = "https://tooladvisor.eu/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/netlify/functions/*"
+  [headers.values]
+    Cache-Control = "no-store"
