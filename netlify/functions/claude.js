@@ -1,8 +1,4 @@
-// ToolAdvisor — Netlify Function: Claude API Proxy
-// Keeps API key server-side, solves CORS, works free on Netlify
-
 exports.handler = async (event) => {
-  // CORS preflight
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
@@ -23,13 +19,13 @@ exports.handler = async (event) => {
   if (!apiKey) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'API key not configured. Add ANTHROPIC_API_KEY in Netlify environment variables.' }),
+      headers: { 'Access-Control-Allow-Origin': '*' },
+      body: JSON.stringify({ error: 'ANTHROPIC_API_KEY not set in Netlify environment variables.' }),
     };
   }
 
   try {
     const body = JSON.parse(event.body);
-
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -39,9 +35,7 @@ exports.handler = async (event) => {
       },
       body: JSON.stringify(body),
     });
-
     const data = await response.json();
-
     return {
       statusCode: response.status,
       headers: {
