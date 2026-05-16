@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /profile.html
-Disallow: /saved.html
 Sitemap: https://tooladvisor.eu/sitemap.xml
