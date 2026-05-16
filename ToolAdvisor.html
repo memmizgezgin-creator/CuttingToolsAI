@@ -279,52 +279,82 @@
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-    
-      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
+
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm flex flex-col">
         <div class="flex items-center justify-between mb-4">
           <span class="font-technical-data text-xs text-on-surface-variant">01</span>
           <span class="material-symbols-outlined text-iso-p-blue">category</span>
         </div>
         <h3 class="font-product-grade text-primary text-xl mb-2">Material</h3>
-        <p class="text-sm text-on-surface-variant leading-relaxed">ISO group + grade or hardness. e.g. 316L, 42CrMo4, GG25.</p>
+        <p class="text-xs text-on-surface-variant mb-3">ISO group + grade or hardness</p>
+        <input id="ta-material" type="text" placeholder="e.g. 316L, 42CrMo4, GG25, Ti6Al4V" class="mt-auto w-full px-3 py-2 text-sm border border-border-warm rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" />
       </div>
-    
-      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
+
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm flex flex-col">
         <div class="flex items-center justify-between mb-4">
           <span class="font-technical-data text-xs text-on-surface-variant">02</span>
           <span class="material-symbols-outlined text-iso-m-amber">precision_manufacturing</span>
         </div>
         <h3 class="font-product-grade text-primary text-xl mb-2">Operation</h3>
-        <p class="text-sm text-on-surface-variant leading-relaxed">Turning, milling, drilling, threading. Roughing vs finishing.</p>
+        <p class="text-xs text-on-surface-variant mb-3">Type + strategy</p>
+        <div class="mt-auto space-y-2">
+          <select id="ta-operation" class="w-full px-3 py-2 text-sm border border-border-warm rounded-lg focus:ring-2 focus:ring-primary/20 outline-none bg-white">
+            <option value="">Select operation...</option>
+            <option>Turning – Roughing</option>
+            <option>Turning – Finishing</option>
+            <option>Turning – Semi-finishing</option>
+            <option>Milling – Roughing</option>
+            <option>Milling – Finishing</option>
+            <option>Drilling</option>
+            <option>Threading</option>
+            <option>Grooving / Parting</option>
+            <option>Boring</option>
+          </select>
+        </div>
       </div>
-    
-      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
+
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm flex flex-col">
         <div class="flex items-center justify-between mb-4">
           <span class="font-technical-data text-xs text-on-surface-variant">03</span>
           <span class="material-symbols-outlined text-iso-k-red">tune</span>
         </div>
         <h3 class="font-product-grade text-primary text-xl mb-2">Constraints</h3>
-        <p class="text-sm text-on-surface-variant leading-relaxed">Vc / feed / depth limits, rigidity, interruption, coolant.</p>
+        <p class="text-xs text-on-surface-variant mb-3">Vc / feed / depth, rigidity, coolant</p>
+        <input id="ta-constraints" type="text" placeholder="e.g. no flood coolant, interrupted, unstable" class="mt-auto w-full px-3 py-2 text-sm border border-border-warm rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" />
       </div>
-    
-      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
+
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm flex flex-col">
         <div class="flex items-center justify-between mb-4">
           <span class="font-technical-data text-xs text-on-surface-variant">04</span>
           <span class="material-symbols-outlined text-iso-n-green">verified</span>
         </div>
         <h3 class="font-product-grade text-primary text-xl mb-2">Goal</h3>
-        <p class="text-sm text-on-surface-variant leading-relaxed">Productivity, cost-per-edge, tool life, or safest bet.</p>
+        <p class="text-xs text-on-surface-variant mb-3">Optimization priority</p>
+        <select id="ta-goal" class="mt-auto w-full px-3 py-2 text-sm border border-border-warm rounded-lg focus:ring-2 focus:ring-primary/20 outline-none bg-white">
+          <option value="">Select goal...</option>
+          <option>Productivity – highest MRR</option>
+          <option>Cost per edge – lowest tooling cost</option>
+          <option>Tool life – longest edge life</option>
+          <option>Safest bet – reliable, proven choice</option>
+          <option>Surface finish – best Ra result</option>
+        </select>
       </div>
-    
+
   </div>
 
   <div class="mt-10 flex flex-wrap gap-3">
-    <button class="bg-primary text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 hover:-translate-y-0.5 transition-all"><span class="material-symbols-outlined">arrow_forward</span> Run the Advisor</button>
-    <button class="bg-white text-primary border border-border-warm font-medium px-6 py-3 rounded-xl hover:bg-surface-container-low transition-all">See sample output</button>
+    <button id="ta-run-btn" onclick="runAdvisor()" class="bg-primary text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0">
+      <span class="material-symbols-outlined" id="ta-btn-icon">auto_awesome</span>
+      <span id="ta-btn-label">Run the Advisor</span>
+    </button>
+    <button onclick="loadSampleOutput()" class="bg-white text-primary border border-border-warm font-medium px-6 py-3 rounded-xl hover:bg-surface-container-low transition-all">See sample output</button>
   </div>
 
   <!-- Advisor result preview -->
-  <div class="mt-12 bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden">
+  <div id="ta-result-panel" class="mt-12 bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hidden"></div>
+
+  <!-- Sample output (hidden by default, shown via button) -->
+  <div id="ta-sample-panel" class="mt-12 bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hidden">
     <div class="px-6 py-4 border-b border-border-warm flex items-center justify-between bg-surface-container-low">
       <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant">Sample advisor output — 316L stainless · finishing turn · stable setup · cost-balanced</p>
       <span class="px-2.5 py-1 rounded-full bg-iso-n-green/15 text-iso-n-green font-bold text-[10px] tracking-widest">EXAMPLE</span>
@@ -473,5 +503,161 @@
 <button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-transform z-50 group">
 <span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform">add</span>
 </button>
+<script>
+// ToolAdvisor — AI Advisor Wire-up
+const SYSTEM_PROMPT = `You are ToolAdvisor, a brand-neutral cutting tool selection expert with deep knowledge of ISO turning/milling/drilling inserts and grades from Sandvik, ISCAR, Kennametal, Walter, Mitsubishi, Tungaloy, Seco, Kyocera, Gühring, OSG.
+
+Given material, operation, constraints, and goal, respond ONLY with valid JSON in exactly this format (no markdown, no backticks, no preamble):
+{
+  "iso_group": "P",
+  "summary": "One sentence explaining the recommendation logic.",
+  "recommended": {
+    "insert_code": "CNMG120408-MF",
+    "brand": "Sandvik Coromant",
+    "grade": "GC4325",
+    "confidence": 91,
+    "reasons": ["reason 1", "reason 2", "reason 3"],
+    "warnings": ["warning if any, else empty array"],
+    "vc_range": "220–300 m/min",
+    "feed_range": "0.20–0.35 mm/rev",
+    "ap_range": "1.5–4.0 mm"
+  },
+  "alternatives": [
+    {"insert_code": "CNMG120408-QM", "brand": "ISCAR", "grade": "IC8250", "confidence": 87},
+    {"insert_code": "CNMG120408", "brand": "Kennametal", "grade": "KC5010", "confidence": 83},
+    {"insert_code": "CNMG120408-TF", "brand": "Mitsubishi", "grade": "MC6025", "confidence": 79}
+  ]
+}`;
+
+const ISO_COLORS = {P:'#3B82F6',M:'#F59E0B',K:'#EF4444',N:'#10B981',S:'#F97316',H:'#64748B'};
+
+async function runAdvisor() {
+  const material = document.getElementById('ta-material').value.trim();
+  const operation = document.getElementById('ta-operation').value;
+  const constraints = document.getElementById('ta-constraints').value.trim();
+  const goal = document.getElementById('ta-goal').value;
+
+  if (!material || !operation || !goal) {
+    alert('Fill in Material, Operation, and Goal to continue.');
+    return;
+  }
+
+  const btn = document.getElementById('ta-run-btn');
+  const icon = document.getElementById('ta-btn-icon');
+  const label = document.getElementById('ta-btn-label');
+  btn.disabled = true;
+  icon.classList.add('animate-spin');
+  label.textContent = 'Analysing…';
+
+  const panel = document.getElementById('ta-result-panel');
+  panel.classList.remove('hidden');
+  panel.innerHTML = `<div class="p-8 flex items-center gap-4 text-on-surface-variant">
+    <span class="material-symbols-outlined animate-spin text-primary">sync</span>
+    <span class="font-technical-data text-sm">Running advisor — ISO classification · grade match · alternatives…</span>
+  </div>`;
+  document.getElementById('ta-sample-panel').classList.add('hidden');
+  panel.scrollIntoView({behavior:'smooth', block:'start'});
+
+  const userMessage = `Material: ${material}
+Operation: ${operation}
+Constraints: ${constraints || 'none specified'}
+Goal: ${goal}`;
+
+  try {
+    const res = await fetch('/api/claude', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1024,
+        system: SYSTEM_PROMPT,
+        messages: [{role:'user', content: userMessage}]
+      })
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || `HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+    const text = data.content?.[0]?.text || '';
+    const clean = text.replace(/```json|```/g,'').trim();
+    const result = JSON.parse(clean);
+    renderResult(result, material, operation, goal);
+  } catch (e) {
+    panel.innerHTML = `<div class="p-8">
+      <div class="flex items-center gap-3 text-error mb-2">
+        <span class="material-symbols-outlined">error</span>
+        <span class="font-bold">Advisor error</span>
+      </div>
+      <p class="text-sm text-on-surface-variant">${e.message}</p>
+      <p class="text-xs text-on-surface-variant mt-3">Check that ANTHROPIC_API_KEY is set in Netlify environment variables.</p>
+    </div>`;
+  } finally {
+    btn.disabled = false;
+    icon.classList.remove('animate-spin');
+    icon.textContent = 'auto_awesome';
+    label.textContent = 'Run the Advisor';
+  }
+}
+
+function renderResult(r, material, operation, goal) {
+  const isoColor = ISO_COLORS[r.iso_group] || '#123356';
+  const confColor = r.recommended.confidence >= 90 ? '#10B981' : r.recommended.confidence >= 80 ? '#F59E0B' : '#EF4444';
+  const reasonsHtml = r.recommended.reasons.map(x =>
+    `<li class="flex gap-2"><span class="material-symbols-outlined text-base mt-0.5" style="color:#10B981">check_circle</span> ${x}</li>`).join('');
+  const warningsHtml = r.recommended.warnings.filter(Boolean).map(x =>
+    `<li class="flex gap-2"><span class="material-symbols-outlined text-base mt-0.5" style="color:#F59E0B">warning</span> ${x}</li>`).join('');
+  const altsHtml = r.alternatives.map(a => `
+    <div class="flex items-center justify-between p-3 rounded-lg border border-border-warm">
+      <div><p class="font-bold text-primary text-sm">${a.insert_code}</p><p class="text-xs text-on-surface-variant">${a.brand} · ${a.grade}</p></div>
+      <span class="font-technical-data text-sm text-primary font-bold">${a.confidence}%</span>
+    </div>`).join('');
+
+  const cuttingData = r.recommended.vc_range ? `
+    <div class="mt-6 pt-5 border-t border-border-warm grid grid-cols-3 gap-4">
+      <div><p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Vc range</p><p class="font-bold text-primary text-sm">${r.recommended.vc_range}</p></div>
+      <div><p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Feed (fn/fz)</p><p class="font-bold text-primary text-sm">${r.recommended.feed_range}</p></div>
+      <div><p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Depth (ap)</p><p class="font-bold text-primary text-sm">${r.recommended.ap_range}</p></div>
+    </div>` : '';
+
+  document.getElementById('ta-result-panel').innerHTML = `
+    <div class="px-6 py-4 border-b border-border-warm flex items-center justify-between bg-surface-container-low">
+      <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant">${material} · ${operation} · ${goal}</p>
+      <span class="px-2.5 py-1 rounded-full font-bold text-[10px] tracking-widest text-white" style="background:${isoColor}">ISO ${r.iso_group}</span>
+    </div>
+    <div class="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-1">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Recommended</p>
+        <p class="font-product-grade text-primary text-xl mb-1">${r.recommended.insert_code}</p>
+        <p class="font-technical-data text-sm text-on-surface-variant mb-4">${r.recommended.brand} · ${r.recommended.grade}</p>
+        <div class="flex items-end gap-3 mb-4">
+          <p class="font-display-hero text-4xl text-primary">${r.recommended.confidence}%</p>
+          <p class="text-xs uppercase tracking-widest text-on-surface-variant font-technical-data pb-2">confidence</p>
+        </div>
+        <div class="w-full h-2 rounded-full bg-surface-container-low overflow-hidden">
+          <div class="h-full" style="width:${r.recommended.confidence}%;background:${confColor}"></div>
+        </div>
+        <p class="text-xs text-on-surface-variant mt-4 leading-relaxed">${r.summary}</p>
+        ${cuttingData}
+      </div>
+      <div class="lg:col-span-1">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Why this fits</p>
+        <ul class="space-y-2.5 text-sm text-on-surface">${reasonsHtml}${warningsHtml}</ul>
+      </div>
+      <div class="lg:col-span-1">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Ranked alternatives</p>
+        <div class="space-y-2">${altsHtml}</div>
+        <a href="cross-reference.html" class="mt-4 inline-flex items-center gap-1 text-primary font-bold text-sm hover:gap-2 transition-all">Cross-reference all <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+      </div>
+    </div>`;
+}
+
+function loadSampleOutput() {
+  document.getElementById('ta-sample-panel').classList.toggle('hidden');
+  document.getElementById('ta-result-panel').classList.add('hidden');
+}
+</script>
 <script src="page-switcher.js"></script>
 </body></html>
