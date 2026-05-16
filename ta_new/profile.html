@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;700;800&amp;family=DM+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#001c38",
+                        "on-tertiary-container": "#b8b8b6",
+                        "sidebar-bg": "#F5F2EE",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "iso-m-amber": "#F59E0B",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#594312",
+                        "secondary": "#735b28",
+                        "surface-container-low": "#f4f3f6",
+                        "skeleton-shimmer": "#F0EDE8",
+                        "glass-backdrop": "rgba(26, 26, 46, 0.5)",
+                        "inverse-surface": "#2f3033",
+                        "surface": "#faf9fc",
+                        "iso-n-green": "#10B981",
+                        "surface-container": "#eeedf1",
+                        "primary": "#123356",
+                        "on-background": "#1a1c1e",
+                        "secondary-container": "#fedb9c",
+                        "iso-p-blue": "#3B82F6",
+                        "primary-fixed": "#d3e4ff",
+                        "surface-tint": "#436085",
+                        "secondary-fixed-dim": "#e3c285",
+                        "border-warm": "#E8E4DE",
+                        "surface-variant": "#e3e2e5",
+                        "outline-variant": "#c3c6cf",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "inverse-on-surface": "#f1f0f4",
+                        "tertiary-container": "#484948",
+                        "tertiary-fixed": "#e3e2e0",
+                        "surface-container-highest": "#e3e2e5",
+                        "on-surface": "#1a1c1e",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "surface-container-lowest": "#ffffff",
+                        "iso-h-slate": "#64748B",
+                        "iso-k-red": "#EF4444",
+                        "ink-text": "#1A1A2E",
+                        "on-surface-variant": "#43474e",
+                        "surface-dim": "#dad9dd",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#313332",
+                        "primary-container": "#2c4a6e",
+                        "surface-container-high": "#e9e8eb",
+                        "outline": "#73777f",
+                        "surface-card": "#FFFFFF",
+                        "on-secondary-container": "#785f2b",
+                        "surface-bright": "#faf9fc",
+                        "on-tertiary": "#ffffff",
+                        "iso-s-orange": "#F97316",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#261900",
+                        "inverse-primary": "#abc9f3",
+                        "secondary-fixed": "#ffdea3",
+                        "primary-fixed-dim": "#abc9f3",
+                        "on-primary-container": "#9cbae4",
+                        "background": "#faf9fc",
+                        "on-primary-fixed-variant": "#2a486c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "card-padding": "20px",
+                        "sidebar-width": "260px",
+                        "container-margin": "32px",
+                        "stack-gap-lg": "24px",
+                        "stack-gap-sm": "8px",
+                        "stack-gap-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["DM Sans"],
+                        "nav-item": ["Nunito"],
+                        "section-heading": ["Nunito"],
+                        "technical-data": ["DM Mono"],
+                        "body-md": ["DM Sans"],
+                        "body-lg": ["DM Sans"],
+                        "product-grade": ["Nunito"],
+                        "display-hero": ["Nunito"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.06em", "fontWeight": "600"}],
+                        "nav-item": ["15px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "section-heading": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "technical-data": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "body-md": ["17px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                        "body-lg": ["19px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                        "product-grade": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-hero": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .ambient-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+        .elevated-shadow:hover { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); transform: translateY(-4px); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #E8E4DE; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<aside class="h-screen w-sidebar-width fixed left-0 top-0 bg-sidebar-bg dark:bg-tertiary-container border-r border-border-warm flex flex-col py-container-margin z-50">
+<div class="px-gutter mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+</div>
+<div>
+<h1 class="font-section-heading text-nav-item text-primary leading-tight">Precision Intelligence</h1>
+<p class="text-[11px] font-label-caps uppercase tracking-wider text-on-surface-variant">Swiss Grade Analytics</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all rounded-xl translate-x-0" href="#">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+<span class="font-nav-item text-nav-item">ISO P Steel</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">layers</span>
+<span class="font-nav-item text-nav-item">ISO M Stainless</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">architecture</span>
+<span class="font-nav-item text-nav-item">ISO K Cast Iron</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">category</span>
+<span class="font-nav-item text-nav-item">ISO N Non-Ferrous</span>
+</a>
+<div class="pt-6 pb-2 px-4">
+<p class="text-[10px] font-label-caps uppercase text-outline tracking-widest">Account &amp; Support</p>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold border-l-4 border-iso-m-amber bg-surface-container-lowest shadow-sm rounded-r-xl transition-all translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-nav-item text-nav-item">Account Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-nav-item text-nav-item">Documentation</span>
+</a>
+</nav>
+<div class="px-gutter mt-auto pt-6">
+<button class="w-full bg-primary py-4 px-4 rounded-xl text-white font-label-caps flex items-center justify-center gap-2 hover:bg-primary-container transition-colors shadow-lg active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[18px]">workspace_premium</span>
+                Upgrade to Pro
+            </button>
+</div>
+</aside>
+<main class="ml-sidebar-width min-h-screen pb-20">
+<header class="h-16 flex justify-between items-center w-full px-gutter bg-surface dark:bg-surface-dim shadow-sm sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<h2 class="font-section-heading text-section-heading text-primary">Settings</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</div>
+<div class="flex items-center gap-3 border-l border-border-warm pl-6">
+<div class="text-right">
+<p class="text-nav-item font-bold text-primary">Hans Mueller</p>
+<p class="text-[12px] text-on-surface-variant font-medium">Senior Machinist</p>
+</div>
+<img alt="Machinist profile" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" data-alt="A professional close-up portrait of a senior machinist in his 50s with a focused expression, wearing a clean navy blue engineering uniform. The background is a softly blurred high-end CNC manufacturing facility with warm, industrial lighting. The aesthetic is clean, modern, and professional, perfectly fitting a Swiss-grade engineering software interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbh8aT9SviKSF1JmehQZXCZvMt0joDiVjQifFRlBxpuUT8rsUNtWVsYbCXcVpa3tThq2ae_n4h-4XNZWML94Ns27-m3hTa9O8la0QUR9ItD3OZcB883Pbn0WoYyyfRd3_pFnVyLLrMSFYA7bQ_iJagBHG9Mgnol2TKTf2a_qEbwlfY-fPQ7ikPftCmwBxEteizgO2iCqMHQKwpXwLNDoDUb2m38yZ_gsSry0MWC-gD9RTk_hvgt0x_Wt0s6quh4v-tWEcoLyZ7sVk"/>
+</div>
+</div>
+</header>
+<div class="p-container-margin max-w-6xl mx-auto grid grid-cols-12 gap-gutter">
+<section class="col-span-12 lg:col-span-8 space-y-stack-gap-lg">
+<div class="bg-surface-card rounded-xl p-card-padding ambient-shadow border border-border-warm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="font-section-heading text-[20px] text-primary">Personal Information</h3>
+<p class="text-on-surface-variant text-[14px]">Update your professional credentials and contact details.</p>
+</div>
+<button class="text-primary font-bold text-[14px] px-4 py-2 hover:bg-surface-container rounded-lg transition-colors">Edit Profile</button>
+</div>
+<div class="grid grid-cols-2 gap-stack-gap-md">
+<div class="space-y-2">
+<label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Full Name</label>
+<input class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="text" value="Hans Mueller"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Professional Title</label>
+<input class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="text" value="Senior Machinist &amp; Tooling Lead"/>
+</div>
+<div class="space-y-2 col-span-2">
+<label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Work Email Address</label>
+<input class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="email" value="h.mueller@precision-swiss.ch"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Facility Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">location_on</span>
+<input class="w-full h-[52px] bg-background border border-border-warm rounded-xl pl-11 pr-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="text" value="Zürich Plant B"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Timezone</label>
+<select class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none appearance-none">
+<option>Central European Time (GMT+1)</option>
+<option>Eastern Standard Time (GMT-5)</option>
+</select>
+</div>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-card-padding ambient-shadow border border-border-warm">
+<h3 class="font-section-heading text-[20px] text-primary mb-6">Briefing Preferences</h3>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors group cursor-pointer border border-transparent hover:border-border-warm">
+<div class="mt-1">
+<input checked="" class="w-5 h-5 rounded border-border-warm text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
+</div>
+<div>
+<h4 class="font-bold text-primary text-[16px]">Daily Material Intelligence</h4>
+<p class="text-on-surface-variant text-[14px]">Receive a morning digest of wear patterns and tool life optimizations based on your active machines.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors group cursor-pointer border border-transparent hover:border-border-warm">
+<div class="mt-1">
+<input checked="" class="w-5 h-5 rounded border-border-warm text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
+</div>
+<div>
+<h4 class="font-bold text-primary text-[16px]">ISO Standard Updates</h4>
+<p class="text-on-surface-variant text-[14px]">Immediate notification when new cutting geometry recommendations are released for your primary ISO materials.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors group cursor-pointer border border-transparent hover:border-border-warm">
+<div class="mt-1">
+<input class="w-5 h-5 rounded border-border-warm text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
+</div>
+<div>
+<h4 class="font-bold text-primary text-[16px]">Swiss Grade Market Insights</h4>
+<p class="text-on-surface-variant text-[14px]">Monthly executive summary on tooling procurement trends and cost-per-part efficiency benchmarks.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-error-container/20 rounded-xl p-card-padding border border-error/20">
+<h3 class="font-section-heading text-[20px] text-error mb-2">Danger Zone</h3>
+<p class="text-on-surface-variant text-[14px] mb-6">Permanently delete your account and all associated tooling intelligence data. This action cannot be undone.</p>
+<button class="bg-white border border-error text-error font-bold px-6 py-3 rounded-xl hover:bg-error hover:text-white transition-all duration-200">Delete Account and Data</button>
+</div>
+</section>
+<section class="col-span-12 lg:col-span-4 space-y-stack-gap-lg">
+<div class="bg-surface-card rounded-xl p-card-padding ambient-shadow border border-border-warm">
+<h3 class="font-section-heading text-[18px] text-primary mb-6">Activity History</h3>
+<div class="relative pl-6 space-y-8 before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-border-warm">
+<div class="relative">
+<div class="absolute -left-[20px] top-1 w-3 h-3 rounded-full bg-iso-p-blue ring-4 ring-white"></div>
+<div>
+<p class="text-[13px] font-technical-data text-outline mb-1">TODAY, 09:42 AM</p>
+<h5 class="font-bold text-primary text-[14px]">Optimized ISO P Path</h5>
+<p class="text-on-surface-variant text-[13px]">Updated feed rates for DNMG 1506 inserts on Lathe-04.</p>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-[20px] top-1 w-3 h-3 rounded-full bg-iso-m-amber ring-4 ring-white"></div>
+<div>
+<p class="text-[13px] font-technical-data text-outline mb-1">YESTERDAY, 02:15 PM</p>
+<h5 class="font-bold text-primary text-[14px]">New Inventory Audit</h5>
+<p class="text-on-surface-variant text-[13px]">Validated 24 units of Swiss-grade end mills in central storage.</p>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-[20px] top-1 w-3 h-3 rounded-full bg-iso-h-slate ring-4 ring-white"></div>
+<div>
+<p class="text-[13px] font-technical-data text-outline mb-1">OCT 24, 11:00 AM</p>
+<h5 class="font-bold text-primary text-[14px]">Account Security Update</h5>
+<p class="text-on-surface-variant text-[13px]">Modified multi-factor authentication preferences.</p>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-[20px] top-1 w-3 h-3 rounded-full bg-iso-n-green ring-4 ring-white"></div>
+<div>
+<p class="text-[13px] font-technical-data text-outline mb-1">OCT 22, 04:30 PM</p>
+<h5 class="font-bold text-primary text-[14px]">Pro License Activated</h5>
+<p class="text-on-surface-variant text-[13px]">Subscribed to full Swiss Intelligence platform analytics.</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-3 text-primary font-bold text-[14px] border border-border-warm rounded-xl hover:bg-surface-container-low transition-colors">View Full Audit Log</button>
+</div>
+<div class="bg-primary-container text-white rounded-xl p-card-padding shadow-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 transform group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]">precision_manufacturing</span>
+</div>
+<div class="relative z-10">
+<h3 class="font-section-heading text-[18px] mb-2">Technical Support</h3>
+<p class="text-[14px] text-blue-100/80 mb-6">Connect directly with our Swiss engineering team for tooling calculations.</p>
+<button class="bg-white text-primary px-6 py-3 rounded-xl font-bold text-[14px] flex items-center gap-2 hover:bg-blue-50 transition-colors">
+<span class="material-symbols-outlined text-[20px]">contact_support</span>
+                            Open Support Ticket
+                        </button>
+</div>
+</div>
+</section>
+</div>
+<footer class="w-full rounded-t-xl bg-surface-container dark:bg-surface-dim border-t border-border-warm mt-20">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<p class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">ToolAdvisor Intelligence Platform</p>
+<p class="text-body-md text-on-surface-variant/60">© 2024 Precision Swiss Grade.</p>
+</div>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">Contact Engineering</a>
+</div>
+</div>
+</footer>
+</main>
+
+<script>
+(function(){
+  var pages=[
+    {href:'index.html',     label:'Dashboard',  icon:'dashboard'},
+    {href:'tools.html',     label:'Directory',  icon:'precision_manufacturing'},
+    {href:'saved.html',     label:'Saved',      icon:'bookmark'},
+    {href:'community.html', label:'Community',  icon:'forum'},
+    {href:'guides.html',    label:'Guides',     icon:'menu_book'},
+    {href:'reviews.html',   label:'Reviews',    icon:'fact_check'},
+    {href:'profile.html',   label:'Profile',    icon:'person'},
+  ];
+  var here = location.pathname.split('/').pop() || 'index.html';
+  if(here==='') here='index.html';
+  var bar = document.createElement('div');
+  bar.style.cssText='position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:9999;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border:1px solid #E8E4DE;border-radius:999px;padding:5px;display:flex;gap:3px;box-shadow:0 8px 32px rgba(0,0,0,.12);font-family:"DM Sans",system-ui,sans-serif;';
+  pages.forEach(function(p){
+    var a=document.createElement('a');
+    a.href=p.href;
+    var active=p.href===here;
+    a.style.cssText='padding:6px 10px;border-radius:999px;font-size:11px;font-weight:600;text-decoration:none;transition:all .15s;display:flex;align-items:center;gap:4px;'+(active?'background:#123356;color:#fff;':'color:#1A1A2E;');
+    var icon=document.createElement('span');
+    icon.className='material-symbols-outlined';
+    icon.style.cssText='font-size:14px;';
+    icon.textContent=p.icon;
+    var txt=document.createElement('span');
+    txt.textContent=p.label;
+    a.appendChild(icon);
+    a.appendChild(txt);
+    if(!active){
+      a.addEventListener('mouseenter',function(){a.style.background='#F5F2EE';});
+      a.addEventListener('mouseleave',function(){a.style.background='transparent';});
+    }
+    bar.appendChild(a);
+  });
+  document.body.appendChild(bar);
+})();
+</script>
+</body></html>
