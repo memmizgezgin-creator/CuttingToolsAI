@@ -1,0 +1,32 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/claude"
+  to = "/.netlify/functions/claude"
+  status = 200
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.tooladvisor.eu/*"
+  to = "https://tooladvisor.eu/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://tooladvisor.eu/*"
+  to = "https://tooladvisor.eu/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.tooladvisor.eu/*"
+  to = "https://tooladvisor.eu/:splat"
+  status = 301
+  force = true
