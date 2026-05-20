@@ -6,450 +6,377 @@
   <script defer data-domain="tooladvisor.eu" src="https://plausible.io/js/script.js"></script>
 <script src="tw-config.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;700;800&amp;family=DM+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="polish.css"/>
 </head>
-<body class="bg-background text-on-surface font-body-md antialiased min-h-screen">
+<body class="font-body-md text-on-surface selection:bg-primary/20">
+<!-- Sidebar Navigation -->
+<!-- Main Content Area -->
 <main class="ml-sidebar-width min-h-screen">
-<section class="p-container-margin">
-<div class="flex justify-between items-end mb-6">
-<div>
-<nav class="flex items-center gap-2 text-xs text-outline mb-2">
-<span>Catalog</span>
-<span class="material-symbols-outlined text-[14px]">chevron_right</span>
-<span class="text-primary font-semibold">Browse all tools</span>
-</nav>
-<h2 class="font-section-heading text-display-hero text-ink-text tracking-tight">Cutting Tool Catalog</h2>
-<p class="text-on-surface-variant mt-1 max-w-2xl">Brand-neutral tool index with technical data and source flags. Filter by tool family; refine by ISO material from the left.</p>
-</div>
-<div class="flex items-center gap-3">
-<button class="flex items-center gap-2 bg-surface-container-low px-4 py-2.5 rounded-lg border border-border-warm text-sm font-medium hover:bg-surface-container-high transition-colors">
-<span class="material-symbols-outlined text-[18px]">filter_list</span>
-                        Advanced Filters
-                    </button>
-<div class="flex bg-surface-container-low border border-border-warm rounded-lg p-1">
-<button class="bg-white shadow-sm px-3 py-1.5 rounded-md">
-<span class="material-symbols-outlined text-[18px] text-primary">grid_view</span>
-</button>
-<button class="px-3 py-1.5 rounded-md hover:bg-surface-container-high transition-colors">
-<span class="material-symbols-outlined text-[18px] text-outline">view_list</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Tool family filter chips -->
-<div class="flex flex-wrap items-center gap-2 mb-6">
-<span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mr-1">Tool family ·</span>
-<button class="px-4 py-2 rounded-full bg-primary text-white font-bold text-xs">All</button>
-<button class="px-4 py-2 rounded-full bg-white border border-border-warm text-primary font-bold text-xs hover:bg-surface-container-low transition-colors">Turning</button>
-<button class="px-4 py-2 rounded-full bg-white border border-border-warm text-primary font-bold text-xs hover:bg-surface-container-low transition-colors">Milling</button>
-<button class="px-4 py-2 rounded-full bg-white border border-border-warm text-primary font-bold text-xs hover:bg-surface-container-low transition-colors">Drilling</button>
-<button class="px-4 py-2 rounded-full bg-white border border-border-warm text-primary font-bold text-xs hover:bg-surface-container-low transition-colors">Threading</button>
-<button class="px-4 py-2 rounded-full bg-white border border-border-warm text-primary font-bold text-xs hover:bg-surface-container-low transition-colors">Reaming</button>
-<span class="ml-3 text-[11px] text-on-surface-variant">ISO material is a refinement, not the primary axis — use the left sidebar.</span>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Top Navigation -->
+<!-- Hero -->
+<section class="relative overflow-hidden px-gutter py-20 lg:py-24 bg-gradient-to-br from-surface via-surface-container-low to-border-warm">
+  <!-- Faint blueprint grid background -->
+  <svg class="absolute inset-0 w-full h-full opacity-[0.18] pointer-events-none" aria-hidden="true">
+    <defs>
+      <pattern id="ta-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <circle cx="1" cy="1" r="1" fill="#8A8A9A"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#ta-grid)"/>
+  </svg>
 
-<div class="bg-surface-card rounded-[18px] card-shadow border-l-4 border-iso-p-blue p-card-padding flex flex-col h-full hover:-translate-y-1 transition-all duration-300 group">
-  <div class="flex justify-between items-start mb-4">
+  <div class="relative grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center max-w-7xl">
+
+    <!-- Left: copy -->
     <div>
-      <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Sandvik</p>
-      <h3 class="font-product-grade text-ink-text leading-tight">CNMG 120408-PM</h3>
-    </div>
-    <div class="flex flex-col items-end gap-1.5 shrink-0">
-      <div class="ta-insert3d" data-shape="C" data-tone="iso-p" data-size="sm" aria-label="C shape insert"></div>
-      <span class="bg-iso-p-blue/10 text-iso-p-blue font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border border-iso-p-blue/20 whitespace-nowrap">ISO P</span>
-    </div>
-  </div>
-  <p class="text-xs text-on-surface-variant mb-4"><span class="font-bold text-on-surface">Turning Insert</span> · Grade <span class="font-technical-data">GC4325</span></p>
-
-  <div class="space-y-2 mb-4">
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Vc</span>
-      <span class="font-technical-data text-ink-text">200–360 m/min</span>
-    </div>
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Feed</span>
-      <span class="font-technical-data text-ink-text">0.15–0.50 mm/rev</span>
-    </div>
-    <div class="pt-2 border-t border-border-warm">
-      <p class="text-[10px] uppercase tracking-wider text-outline font-bold mb-1">Best for</p>
-      <p class="text-sm text-ink-text font-medium leading-snug">Continuous P-group turning</p>
-    </div>
-  </div>
-
-  <div class="flex items-center justify-between mt-auto mb-3 pt-3 border-t border-border-warm">
-    <div>
-      <p class="text-[10px] uppercase tracking-widest text-outline font-bold">Data confidence</p>
-      <div class="flex items-center gap-2 mt-1">
-        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden"><div class="h-full bg-iso-n-green" style="width:96%"></div></div>
-        <span class="font-technical-data text-xs text-ink-text font-bold">96%</span>
+      <span class="inline-block px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-xs uppercase tracking-widest mb-6">Brand-neutral · Engineering decision layer</span>
+      <h1 class="font-display-hero text-[44px] md:text-[56px] xl:text-[68px] 2xl:text-[76px] leading-[1.02] tracking-[-0.025em] text-primary mb-6">
+        Neutral cutting tool<br/>
+        selection. <span class="text-iso-m-amber">Faster.</span>
+      </h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">
+        Compare inserts, grades and alternatives across brands with clear technical reasoning, risk notes and ISO-based recommendations. No catalog noise — just decisions you can defend.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#advisor" class="bg-primary text-white font-bold px-7 py-4 rounded-xl shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+          <span class="material-symbols-outlined">auto_awesome</span> Start Advisor
+        </a>
+        <a href="cross-reference.html" class="bg-white text-primary border border-border-warm font-bold px-7 py-4 rounded-xl hover:bg-surface-container-low hover:-translate-y-0.5 transition-all flex items-center gap-2">
+          <span class="material-symbols-outlined">compare_arrows</span> Cross-Reference an Insert
+        </a>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-on-surface-variant">
+        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> ISO P / M / K / N / S / H coverage</span>
+        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> Geometry &amp; coating match logic</span>
+        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> Risk &amp; data-confidence flags</span>
       </div>
     </div>
-    <span class="text-[10px] uppercase tracking-widest text-iso-n-green font-bold text-right leading-tight">Manufacturer data</span>
-  </div>
 
-  <div class="flex gap-2">
-    <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-xs hover:-translate-y-0.5 transition-all">View Details</button>
-    <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-xs hover:bg-surface-container-low transition-all flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm">fact_check</span> Compare</button>
-  </div>
-</div>
+    <!-- Right: annotated insert blueprint -->
+    <div class="relative hidden lg:block">
+      <svg viewBox="0 0 700 620" class="w-full h-auto" aria-label="Annotated insert with technical callouts">
+        <defs>
+          <!-- Top face gradient: brushed steel -->
+          <linearGradient id="ta-insert-top" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E2E6EB"/>
+            <stop offset="45%" stop-color="#C0C7D0"/>
+            <stop offset="100%" stop-color="#8C95A1"/>
+          </linearGradient>
+          <!-- Side face: darker -->
+          <linearGradient id="ta-insert-side" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#5A6677"/>
+            <stop offset="100%" stop-color="#3D4754"/>
+          </linearGradient>
+          <!-- Hole inner shadow -->
+          <radialGradient id="ta-hole" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#fff"/>
+            <stop offset="70%" stop-color="#E2E6EB"/>
+            <stop offset="100%" stop-color="#8C95A1"/>
+          </radialGradient>
+          <!-- Coating sheen -->
+          <linearGradient id="ta-sheen" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0.55"/>
+            <stop offset="40%" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
 
-<div class="bg-surface-card rounded-[18px] card-shadow border-l-4 border-iso-m-amber p-card-padding flex flex-col h-full hover:-translate-y-1 transition-all duration-300 group">
-  <div class="flex justify-between items-start mb-4">
-    <div>
-      <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Iscar</p>
-      <h3 class="font-product-grade text-ink-text leading-tight">VCMT 160404</h3>
-    </div>
-    <div class="flex flex-col items-end gap-1.5 shrink-0">
-      <div class="ta-insert3d" data-shape="V" data-tone="iso-m" data-size="sm" aria-label="V shape insert"></div>
-      <span class="bg-iso-m-amber/10 text-iso-m-amber font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border border-iso-m-amber/20 whitespace-nowrap">ISO M</span>
-    </div>
-  </div>
-  <p class="text-xs text-on-surface-variant mb-4"><span class="font-bold text-on-surface">Turning Insert</span> · Grade <span class="font-technical-data">IC907</span></p>
+        <!-- 3D side face (back-right depth) -->
+        <path d="M 350,460 L 526,310 L 538,328 L 362,478 Z" fill="url(#ta-insert-side)"/>
+        <path d="M 526,310 L 526,180 L 538,198 L 538,328 Z" fill="url(#ta-insert-side)" opacity="0.7"/>
 
-  <div class="space-y-2 mb-4">
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Vc</span>
-      <span class="font-technical-data text-ink-text">140–280 m/min</span>
-    </div>
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Feed</span>
-      <span class="font-technical-data text-ink-text">0.08–0.30 mm/rev</span>
-    </div>
-    <div class="pt-2 border-t border-border-warm">
-      <p class="text-[10px] uppercase tracking-wider text-outline font-bold mb-1">Best for</p>
-      <p class="text-sm text-ink-text font-medium leading-snug">Stainless finishing</p>
-    </div>
-  </div>
+        <!-- Insert top face: 80° rhomb (acute angles top/bottom) -->
+        <path d="M 350,160 L 526,310 L 350,460 L 174,310 Z" fill="url(#ta-insert-top)" stroke="#2c4a6e" stroke-width="1.5"/>
+        <!-- Top-face highlight sheen -->
+        <path d="M 350,160 L 526,310 L 350,460 L 174,310 Z" fill="url(#ta-sheen)"/>
 
-  <div class="flex items-center justify-between mt-auto mb-3 pt-3 border-t border-border-warm">
-    <div>
-      <p class="text-[10px] uppercase tracking-widest text-outline font-bold">Data confidence</p>
-      <div class="flex items-center gap-2 mt-1">
-        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden"><div class="h-full bg-iso-n-green" style="width:91%"></div></div>
-        <span class="font-technical-data text-xs text-ink-text font-bold">91%</span>
-      </div>
-    </div>
-    <span class="text-[10px] uppercase tracking-widest text-iso-n-green font-bold text-right leading-tight">Manufacturer data</span>
-  </div>
+        <!-- Chipbreaker groove (concentric inset following rhomb) -->
+        <path d="M 350,200 L 490,310 L 350,420 L 210,310 Z" fill="none" stroke="#2c4a6e" stroke-width="0.8" opacity="0.55" stroke-dasharray="2 2"/>
+        <path d="M 350,232 L 460,310 L 350,388 L 240,310 Z" fill="none" stroke="#2c4a6e" stroke-width="0.6" opacity="0.4"/>
 
-  <div class="flex gap-2">
-    <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-xs hover:-translate-y-0.5 transition-all">View Details</button>
-    <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-xs hover:bg-surface-container-low transition-all flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm">fact_check</span> Compare</button>
-  </div>
-</div>
+        <!-- Center mounting hole -->
+        <circle cx="350" cy="310" r="26" fill="url(#ta-hole)" stroke="#2c4a6e" stroke-width="1.2"/>
+        <circle cx="350" cy="310" r="14" fill="#3D4754" opacity="0.85"/>
 
-<div class="bg-surface-card rounded-[18px] card-shadow border-l-4 border-iso-k-red p-card-padding flex flex-col h-full hover:-translate-y-1 transition-all duration-300 group">
-  <div class="flex justify-between items-start mb-4">
-    <div>
-      <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Kennametal</p>
-      <h3 class="font-product-grade text-ink-text leading-tight">WCMX 06T308-53</h3>
-    </div>
-    <div class="flex flex-col items-end gap-1.5 shrink-0">
-      <div class="ta-insert3d" data-shape="W" data-tone="iso-k" data-size="sm" aria-label="W shape insert"></div>
-      <span class="bg-iso-k-red/10 text-iso-k-red font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border border-iso-k-red/20 whitespace-nowrap">ISO K</span>
-    </div>
-  </div>
-  <p class="text-xs text-on-surface-variant mb-4"><span class="font-bold text-on-surface">Drilling Tool</span> · Grade <span class="font-technical-data">KC7325</span></p>
+        <!-- Edge tick marks (cutting edges) -->
+        <g stroke="#F59E0B" stroke-width="1.2" opacity="0.85">
+          <line x1="174" y1="310" x2="184" y2="310"/>
+          <line x1="350" y1="160" x2="350" y2="170"/>
+          <line x1="526" y1="310" x2="516" y2="310"/>
+          <line x1="350" y1="460" x2="350" y2="450"/>
+        </g>
 
-  <div class="space-y-2 mb-4">
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Vc</span>
-      <span class="font-technical-data text-ink-text">180–260 m/min</span>
-    </div>
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Feed</span>
-      <span class="font-technical-data text-ink-text">0.10–0.20 mm/rev</span>
-    </div>
-    <div class="pt-2 border-t border-border-warm">
-      <p class="text-[10px] uppercase tracking-wider text-outline font-bold mb-1">Best for</p>
-      <p class="text-sm text-ink-text font-medium leading-snug">Cast iron heavy drilling</p>
-    </div>
-  </div>
+        <!-- ===================== CALLOUTS ===================== -->
+        <g font-family="DM Mono, monospace" font-size="10" fill="#43474e" letter-spacing="0.12em">
 
-  <div class="flex items-center justify-between mt-auto mb-3 pt-3 border-t border-border-warm">
-    <div>
-      <p class="text-[10px] uppercase tracking-widest text-outline font-bold">Data confidence</p>
-      <div class="flex items-center gap-2 mt-1">
-        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden"><div class="h-full bg-iso-n-green" style="width:88%"></div></div>
-        <span class="font-technical-data text-xs text-ink-text font-bold">88%</span>
-      </div>
-    </div>
-    <span class="text-[10px] uppercase tracking-widest text-iso-n-green font-bold text-right leading-tight">Manufacturer + reviewed</span>
-  </div>
+          <!-- TOP-LEFT: Geometry -->
+          <line x1="220" y1="240" x2="100" y2="120" stroke="#123356" stroke-width="1.2"/>
+          <circle cx="220" cy="240" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="40" y="100" font-weight="600" fill="#8A8A9A">GEOMETRY</text>
+          <text x="40" y="124" font-family="Nunito, sans-serif" font-size="20" font-weight="800" fill="#123356" letter-spacing="-0.01em">80° rhomb</text>
+          <text x="40" y="146" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="#43474e" letter-spacing="0">CNMG · negative</text>
 
-  <div class="flex gap-2">
-    <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-xs hover:-translate-y-0.5 transition-all">View Details</button>
-    <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-xs hover:bg-surface-container-low transition-all flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm">fact_check</span> Compare</button>
-  </div>
-</div>
+          <!-- TOP-RIGHT: Match confidence (big number) -->
+          <line x1="480" y1="240" x2="600" y2="130" stroke="#123356" stroke-width="1.2"/>
+          <circle cx="480" cy="240" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="552" y="100" font-weight="600" fill="#8A8A9A">MATCH CONFIDENCE</text>
+          <text x="552" y="142" font-family="Nunito, sans-serif" font-size="40" font-weight="800" fill="#10B981" letter-spacing="-0.02em">92<tspan font-size="22">%</tspan></text>
+          <!-- Mini confidence bar -->
+          <rect x="552" y="156" width="110" height="5" rx="2.5" fill="#E8E4DE"/>
+          <rect x="552" y="156" width="101" height="5" rx="2.5" fill="#10B981"/>
 
-<div class="bg-surface-card rounded-[18px] card-shadow border-l-4 border-iso-n-green p-card-padding flex flex-col h-full hover:-translate-y-1 transition-all duration-300 group">
-  <div class="flex justify-between items-start mb-4">
-    <div>
-      <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Mitsubishi</p>
-      <h3 class="font-product-grade text-ink-text leading-tight">SCGT 120408-AL</h3>
-    </div>
-    <div class="flex flex-col items-end gap-1.5 shrink-0">
-      <div class="ta-insert3d" data-shape="S" data-tone="iso-n" data-size="sm" aria-label="S shape insert"></div>
-      <span class="bg-iso-n-green/10 text-iso-n-green font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border border-iso-n-green/20 whitespace-nowrap">ISO N</span>
-    </div>
-  </div>
-  <p class="text-xs text-on-surface-variant mb-4"><span class="font-bold text-on-surface">Milling Tool</span> · Grade <span class="font-technical-data">AP25N</span></p>
+          <!-- BOTTOM-LEFT: Alternatives -->
+          <line x1="220" y1="380" x2="90" y2="500" stroke="#123356" stroke-width="1.2"/>
+          <circle cx="220" cy="380" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="40" y="498" font-weight="600" fill="#8A8A9A">ALTERNATIVES</text>
+          <text x="40" y="525" font-family="Nunito, sans-serif" font-size="22" font-weight="800" fill="#123356" letter-spacing="-0.01em">3 ranked</text>
+          <!-- 3 dots representing ranked alternatives -->
+          <g transform="translate(40, 540)">
+            <rect x="0" y="0" width="34" height="5" rx="2.5" fill="#3B82F6"/>
+            <rect x="40" y="0" width="34" height="5" rx="2.5" fill="#F59E0B"/>
+            <rect x="80" y="0" width="34" height="5" rx="2.5" fill="#64748B"/>
+          </g>
 
-  <div class="space-y-2 mb-4">
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Vc</span>
-      <span class="font-technical-data text-ink-text">600–1200 m/min</span>
+          <!-- BOTTOM-RIGHT: ISO coverage -->
+          <line x1="480" y1="380" x2="600" y2="500" stroke="#123356" stroke-width="1.2"/>
+          <circle cx="480" cy="380" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="552" y="498" font-weight="600" fill="#8A8A9A">ISO COVERAGE</text>
+          <g transform="translate(552, 510)" font-family="DM Mono, monospace" font-size="10" font-weight="700" letter-spacing="0.1em">
+            <rect x="0"  y="0" width="30" height="22" rx="11" fill="rgba(59,130,246,.14)" stroke="rgba(59,130,246,.3)"/>
+            <text x="9"  y="15" fill="#3B82F6">P</text>
+            <rect x="36" y="0" width="30" height="22" rx="11" fill="rgba(245,158,11,.14)" stroke="rgba(245,158,11,.3)"/>
+            <text x="44" y="15" fill="#F59E0B">M</text>
+            <rect x="72" y="0" width="30" height="22" rx="11" fill="#F5F2EE" stroke="#E8E4DE"/>
+            <text x="80" y="15" fill="#8A8A9A">K</text>
+          </g>
+
+          <!-- BOTTOM CENTER: Risk pill -->
+          <g transform="translate(280, 555)">
+            <rect width="142" height="32" rx="16" fill="#fff" stroke="rgba(245,158,11,0.45)" stroke-width="1.2"/>
+            <circle cx="20" cy="16" r="9" fill="rgba(245,158,11,0.18)"/>
+            <text x="20" y="20" font-family="Material Symbols Outlined" font-size="14" fill="#F59E0B" text-anchor="middle">⚠</text>
+            <text x="40" y="13" font-size="9" font-weight="600" fill="#8A8A9A">RISK</text>
+            <text x="40" y="25" font-family="DM Sans, sans-serif" font-size="12" font-weight="700" fill="#123356" letter-spacing="0">Verify chipbreaker</text>
+          </g>
+        </g>
+      </svg>
+
+      <!-- subtle reference label overlay -->
+      <div class="absolute top-0 right-0 font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant/70">REF · CNMG 120408-PM</div>
     </div>
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Feed</span>
-      <span class="font-technical-data text-ink-text">0.10–0.25 mm/rev</span>
-    </div>
-    <div class="pt-2 border-t border-border-warm">
-      <p class="text-[10px] uppercase tracking-wider text-outline font-bold mb-1">Best for</p>
-      <p class="text-sm text-ink-text font-medium leading-snug">Aluminium high-speed mill</p>
+
+    <!-- Mobile: simple summary chips -->
+    <div class="lg:hidden flex flex-wrap gap-2 -mt-2">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-border-warm text-xs font-medium text-on-surface-variant"><span class="material-symbols-outlined text-base text-iso-n-green">verified</span> 92% match confidence</span>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-border-warm text-xs font-medium text-on-surface-variant"><span class="material-symbols-outlined text-base text-iso-p-blue">category</span> ISO P / M</span>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-iso-m-amber/40 text-xs font-medium text-on-surface-variant"><span class="material-symbols-outlined text-base text-iso-m-amber">warning</span> Verify chipbreaker</span>
     </div>
   </div>
-
-  <div class="flex items-center justify-between mt-auto mb-3 pt-3 border-t border-border-warm">
-    <div>
-      <p class="text-[10px] uppercase tracking-widest text-outline font-bold">Data confidence</p>
-      <div class="flex items-center gap-2 mt-1">
-        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden"><div class="h-full bg-iso-n-green" style="width:93%"></div></div>
-        <span class="font-technical-data text-xs text-ink-text font-bold">93%</span>
-      </div>
-    </div>
-    <span class="text-[10px] uppercase tracking-widest text-iso-n-green font-bold text-right leading-tight">Manufacturer data</span>
-  </div>
-
-  <div class="flex gap-2">
-    <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-xs hover:-translate-y-0.5 transition-all">View Details</button>
-    <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-xs hover:bg-surface-container-low transition-all flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm">fact_check</span> Compare</button>
-  </div>
-</div>
-
-<div class="bg-surface-card rounded-[18px] card-shadow border-l-4 border-iso-s-orange p-card-padding flex flex-col h-full hover:-translate-y-1 transition-all duration-300 group">
-  <div class="flex justify-between items-start mb-4">
-    <div>
-      <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Walter</p>
-      <h3 class="font-product-grade text-ink-text leading-tight">WNMG 080408</h3>
-    </div>
-    <div class="flex flex-col items-end gap-1.5 shrink-0">
-      <div class="ta-insert3d" data-shape="W" data-tone="iso-s" data-size="sm" aria-label="W shape insert"></div>
-      <span class="bg-iso-s-orange/10 text-iso-s-orange font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border border-iso-s-orange/20 whitespace-nowrap">ISO S</span>
-    </div>
-  </div>
-  <p class="text-xs text-on-surface-variant mb-4"><span class="font-bold text-on-surface">Turning Insert</span> · Grade <span class="font-technical-data">WSM30S</span></p>
-
-  <div class="space-y-2 mb-4">
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Vc</span>
-      <span class="font-technical-data text-ink-text">30–60 m/min</span>
-    </div>
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Feed</span>
-      <span class="font-technical-data text-ink-text">0.10–0.30 mm/rev</span>
-    </div>
-    <div class="pt-2 border-t border-border-warm">
-      <p class="text-[10px] uppercase tracking-wider text-outline font-bold mb-1">Best for</p>
-      <p class="text-sm text-ink-text font-medium leading-snug">Inconel / superalloys</p>
-    </div>
-  </div>
-
-  <div class="flex items-center justify-between mt-auto mb-3 pt-3 border-t border-border-warm">
-    <div>
-      <p class="text-[10px] uppercase tracking-widest text-outline font-bold">Data confidence</p>
-      <div class="flex items-center gap-2 mt-1">
-        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden"><div class="h-full bg-iso-n-green" style="width:82%"></div></div>
-        <span class="font-technical-data text-xs text-ink-text font-bold">82%</span>
-      </div>
-    </div>
-    <span class="text-[10px] uppercase tracking-widest text-iso-n-green font-bold text-right leading-tight">Manufacturer + reviewed</span>
-  </div>
-
-  <div class="flex gap-2">
-    <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-xs hover:-translate-y-0.5 transition-all">View Details</button>
-    <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-xs hover:bg-surface-container-low transition-all flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm">fact_check</span> Compare</button>
-  </div>
-</div>
-
-<div class="bg-surface-card rounded-[18px] card-shadow border-l-4 border-iso-h-slate p-card-padding flex flex-col h-full hover:-translate-y-1 transition-all duration-300 group">
-  <div class="flex justify-between items-start mb-4">
-    <div>
-      <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Tungaloy</p>
-      <h3 class="font-product-grade text-ink-text leading-tight">DCMT 11T304</h3>
-    </div>
-    <div class="flex flex-col items-end gap-1.5 shrink-0">
-      <div class="ta-insert3d" data-shape="D" data-tone="iso-h" data-size="sm" aria-label="D shape insert"></div>
-      <span class="bg-iso-h-slate/10 text-iso-h-slate font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border border-iso-h-slate/20 whitespace-nowrap">ISO H</span>
-    </div>
-  </div>
-  <p class="text-xs text-on-surface-variant mb-4"><span class="font-bold text-on-surface">Turning Insert</span> · Grade <span class="font-technical-data">T9215</span></p>
-
-  <div class="space-y-2 mb-4">
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Vc</span>
-      <span class="font-technical-data text-ink-text">80–140 m/min</span>
-    </div>
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Feed</span>
-      <span class="font-technical-data text-ink-text">0.05–0.15 mm/rev</span>
-    </div>
-    <div class="pt-2 border-t border-border-warm">
-      <p class="text-[10px] uppercase tracking-wider text-outline font-bold mb-1">Best for</p>
-      <p class="text-sm text-ink-text font-medium leading-snug">Hardened steel finishing</p>
-    </div>
-  </div>
-
-  <div class="flex items-center justify-between mt-auto mb-3 pt-3 border-t border-border-warm">
-    <div>
-      <p class="text-[10px] uppercase tracking-widest text-outline font-bold">Data confidence</p>
-      <div class="flex items-center gap-2 mt-1">
-        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden"><div class="h-full bg-iso-m-amber" style="width:79%"></div></div>
-        <span class="font-technical-data text-xs text-ink-text font-bold">79%</span>
-      </div>
-    </div>
-    <span class="text-[10px] uppercase tracking-widest text-iso-m-amber font-bold text-right leading-tight">Generated estimate</span>
-  </div>
-
-  <div class="flex gap-2">
-    <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-xs hover:-translate-y-0.5 transition-all">View Details</button>
-    <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-xs hover:bg-surface-container-low transition-all flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm">fact_check</span> Compare</button>
-  </div>
-</div>
-
-<div class="bg-surface-card rounded-[18px] card-shadow border-l-4 border-iso-p-blue p-card-padding flex flex-col h-full hover:-translate-y-1 transition-all duration-300 group">
-  <div class="flex justify-between items-start mb-4">
-    <div>
-      <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Mitsubishi</p>
-      <h3 class="font-product-grade text-ink-text leading-tight">DNMG 150608</h3>
-    </div>
-    <div class="flex flex-col items-end gap-1.5 shrink-0">
-      <div class="ta-insert3d" data-shape="D" data-tone="iso-p" data-size="sm" aria-label="D shape insert"></div>
-      <span class="bg-iso-p-blue/10 text-iso-p-blue font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border border-iso-p-blue/20 whitespace-nowrap">ISO P</span>
-    </div>
-  </div>
-  <p class="text-xs text-on-surface-variant mb-4"><span class="font-bold text-on-surface">Turning Insert</span> · Grade <span class="font-technical-data">MC6025</span></p>
-
-  <div class="space-y-2 mb-4">
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Vc</span>
-      <span class="font-technical-data text-ink-text">180–340 m/min</span>
-    </div>
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Feed</span>
-      <span class="font-technical-data text-ink-text">0.18–0.50 mm/rev</span>
-    </div>
-    <div class="pt-2 border-t border-border-warm">
-      <p class="text-[10px] uppercase tracking-wider text-outline font-bold mb-1">Best for</p>
-      <p class="text-sm text-ink-text font-medium leading-snug">Medium P-group roughing</p>
-    </div>
-  </div>
-
-  <div class="flex items-center justify-between mt-auto mb-3 pt-3 border-t border-border-warm">
-    <div>
-      <p class="text-[10px] uppercase tracking-widest text-outline font-bold">Data confidence</p>
-      <div class="flex items-center gap-2 mt-1">
-        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden"><div class="h-full bg-iso-n-green" style="width:90%"></div></div>
-        <span class="font-technical-data text-xs text-ink-text font-bold">90%</span>
-      </div>
-    </div>
-    <span class="text-[10px] uppercase tracking-widest text-iso-n-green font-bold text-right leading-tight">Manufacturer data</span>
-  </div>
-
-  <div class="flex gap-2">
-    <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-xs hover:-translate-y-0.5 transition-all">View Details</button>
-    <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-xs hover:bg-surface-container-low transition-all flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm">fact_check</span> Compare</button>
-  </div>
-</div>
-
-<div class="bg-surface-card rounded-[18px] card-shadow border-l-4 border-iso-m-amber p-card-padding flex flex-col h-full hover:-translate-y-1 transition-all duration-300 group">
-  <div class="flex justify-between items-start mb-4">
-    <div>
-      <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Sandvik</p>
-      <h3 class="font-product-grade text-ink-text leading-tight">TPMR 220408</h3>
-    </div>
-    <div class="flex flex-col items-end gap-1.5 shrink-0">
-      <div class="ta-insert3d" data-shape="T" data-tone="iso-m" data-size="sm" aria-label="T shape insert"></div>
-      <span class="bg-iso-m-amber/10 text-iso-m-amber font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border border-iso-m-amber/20 whitespace-nowrap">ISO M</span>
-    </div>
-  </div>
-  <p class="text-xs text-on-surface-variant mb-4"><span class="font-bold text-on-surface">Reamer</span> · Grade <span class="font-technical-data">GC1025</span></p>
-
-  <div class="space-y-2 mb-4">
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Vc</span>
-      <span class="font-technical-data text-ink-text">120–220 m/min</span>
-    </div>
-    <div class="flex justify-between items-center text-xs">
-      <span class="text-outline uppercase tracking-wider font-bold">Feed</span>
-      <span class="font-technical-data text-ink-text">0.10–0.25 mm/rev</span>
-    </div>
-    <div class="pt-2 border-t border-border-warm">
-      <p class="text-[10px] uppercase tracking-wider text-outline font-bold mb-1">Best for</p>
-      <p class="text-sm text-ink-text font-medium leading-snug">Stainless threading prep</p>
-    </div>
-  </div>
-
-  <div class="flex items-center justify-between mt-auto mb-3 pt-3 border-t border-border-warm">
-    <div>
-      <p class="text-[10px] uppercase tracking-widest text-outline font-bold">Data confidence</p>
-      <div class="flex items-center gap-2 mt-1">
-        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden"><div class="h-full bg-iso-n-green" style="width:85%"></div></div>
-        <span class="font-technical-data text-xs text-ink-text font-bold">85%</span>
-      </div>
-    </div>
-    <span class="text-[10px] uppercase tracking-widest text-iso-n-green font-bold text-right leading-tight">Manufacturer + reviewed</span>
-  </div>
-
-  <div class="flex gap-2">
-    <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-xs hover:-translate-y-0.5 transition-all">View Details</button>
-    <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-xs hover:bg-surface-container-low transition-all flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm">fact_check</span> Compare</button>
-  </div>
-</div>
-
-</div>
-<!-- Bento Summary Section -->
-<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-<div class="md:col-span-2 bg-surface-container-high rounded-[24px] p-8 flex items-center justify-between overflow-hidden relative">
-<div class="relative z-10 max-w-md">
-<h4 class="font-section-heading text-primary mb-4">Precision Grade Comparison</h4>
-<p class="text-on-surface-variant mb-6">Compare technical specifications across different ISO material groups to find the optimal cutting speed and tool life balance for your machining operations.</p>
-<button class="bg-primary text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-primary-container transition-colors">
-                            Launch Comparison Matrix
-                            <span class="material-symbols-outlined">trending_up</span>
-</button>
-</div>
-<div class="hidden lg:block relative -right-10 opacity-40">
-<span class="material-symbols-outlined text-[200px] text-primary/20">analytics</span>
-</div>
-</div>
-<div class="bg-iso-m-amber rounded-[24px] p-8 text-white flex flex-col justify-between">
-<div>
-<span class="material-symbols-outlined text-4xl mb-4">bolt</span>
-<h4 class="text-xl font-bold mb-2">Live Tech Support</h4>
-<p class="text-white/80 text-sm">Need help choosing the right grade? Our engineers are online.</p>
-</div>
-<button class="w-full bg-white text-iso-m-amber py-3 rounded-xl font-bold text-sm mt-8">Chat with Engineering</button>
-</div>
-</div>
 </section>
-<footer class="bg-surface-container mt-12 border-t border-border-warm px-gutter py-stack-gap-lg">
-<div class="flex flex-col md:flex-row justify-between items-center gap-4">
-<div class="flex items-center gap-6">
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">ToolAdvisor Platform</span>
-<div class="flex gap-4">
-<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Terms of Service</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Privacy Policy</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Contact Engineering</a>
+
+<!-- Advisor Wizard intro -->
+<section id="advisor" class="px-gutter py-16">
+  <div class="max-w-5xl 2xl:max-w-6xl">
+    <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-3">Decision Advisor</p>
+    <h2 class="font-section-heading text-section-heading text-primary mb-3">Tell us the job. Get a defensible tool choice.</h2>
+    <p class="text-on-surface-variant max-w-2xl mb-10">Four inputs. One recommendation with reasoning, alternatives, risk and confidence rating.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-technical-data text-xs text-on-surface-variant">01</span>
+          <span class="material-symbols-outlined text-iso-p-blue">category</span>
+        </div>
+        <h3 class="font-product-grade text-primary text-xl mb-2">Material</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">ISO group + grade or hardness. e.g. 316L, 42CrMo4, GG25.</p>
+      </div>
+    
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-technical-data text-xs text-on-surface-variant">02</span>
+          <span class="material-symbols-outlined text-iso-m-amber">precision_manufacturing</span>
+        </div>
+        <h3 class="font-product-grade text-primary text-xl mb-2">Operation</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">Turning, milling, drilling, threading. Roughing vs finishing.</p>
+      </div>
+    
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-technical-data text-xs text-on-surface-variant">03</span>
+          <span class="material-symbols-outlined text-iso-k-red">tune</span>
+        </div>
+        <h3 class="font-product-grade text-primary text-xl mb-2">Constraints</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">Vc / feed / depth limits, rigidity, interruption, coolant.</p>
+      </div>
+    
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-technical-data text-xs text-on-surface-variant">04</span>
+          <span class="material-symbols-outlined text-iso-n-green">verified</span>
+        </div>
+        <h3 class="font-product-grade text-primary text-xl mb-2">Goal</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">Productivity, cost-per-edge, tool life, or safest bet.</p>
+      </div>
+    
+  </div>
+
+  <div class="mt-10 flex flex-wrap gap-3">
+    <button class="bg-primary text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 hover:-translate-y-0.5 transition-all"><span class="material-symbols-outlined">arrow_forward</span> Run the Advisor</button>
+    <button class="bg-white text-primary border border-border-warm font-medium px-6 py-3 rounded-xl hover:bg-surface-container-low transition-all">See sample output</button>
+  </div>
+
+  <!-- Advisor result preview -->
+  <div class="mt-12 bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden">
+    <div class="px-6 py-4 border-b border-border-warm flex items-center justify-between bg-surface-container-low">
+      <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant">Sample advisor output — 316L stainless · finishing turn · stable setup · cost-balanced</p>
+      <span class="px-2.5 py-1 rounded-full bg-iso-n-green/15 text-iso-n-green font-bold text-[10px] tracking-widest">EXAMPLE</span>
+    </div>
+    <div class="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Recommended -->
+      <div class="lg:col-span-1">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Recommended</p>
+        <p class="font-product-grade text-primary text-xl mb-1">VCMT 160404-PM</p>
+        <p class="font-technical-data text-sm text-on-surface-variant mb-4">Iscar · IC907</p>
+        <div class="flex items-end gap-3 mb-4">
+          <p class="font-display-hero text-4xl text-primary">91%</p>
+          <p class="text-xs uppercase tracking-widest text-on-surface-variant font-technical-data pb-2">confidence</p>
+        </div>
+        <div class="w-full h-2 rounded-full bg-surface-container-low overflow-hidden">
+          <div class="h-full bg-iso-n-green" style="width:91%"></div>
+        </div>
+        <p class="text-[11px] uppercase tracking-widest text-iso-n-green font-bold mt-3">Manufacturer data + reviewed</p>
+      </div>
+
+      <!-- Why -->
+      <div class="lg:col-span-1">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Why this fits</p>
+        <ul class="space-y-2.5 text-sm text-on-surface">
+          <li class="flex gap-2"><span class="material-symbols-outlined text-base text-iso-n-green mt-0.5">check_circle</span> ISO M coverage incl. austenitic 316L</li>
+          <li class="flex gap-2"><span class="material-symbols-outlined text-base text-iso-n-green mt-0.5">check_circle</span> PM chipbreaker tuned to finishing feed range</li>
+          <li class="flex gap-2"><span class="material-symbols-outlined text-base text-iso-n-green mt-0.5">check_circle</span> Cost-per-edge within target tier</li>
+          <li class="flex gap-2"><span class="material-symbols-outlined text-base text-iso-m-amber mt-0.5">warning</span> Verify chipbreaker on duplex variants</li>
+        </ul>
+      </div>
+
+      <!-- Alternatives -->
+      <div class="lg:col-span-1">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Ranked alternatives</p>
+        <div class="space-y-2">
+          <div class="flex items-center justify-between p-3 rounded-lg border border-border-warm">
+            <div>
+              <p class="font-bold text-primary text-sm">VBMT 160404</p>
+              <p class="text-xs text-on-surface-variant">Sandvik · GC2025</p>
+            </div>
+            <span class="font-technical-data text-sm text-primary font-bold">88%</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg border border-border-warm">
+            <div>
+              <p class="font-bold text-primary text-sm">VCMT 160404-MF</p>
+              <p class="text-xs text-on-surface-variant">Kennametal · KCM25</p>
+            </div>
+            <span class="font-technical-data text-sm text-primary font-bold">85%</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg border border-border-warm">
+            <div>
+              <p class="font-bold text-primary text-sm">VCMT 160404</p>
+              <p class="text-xs text-on-surface-variant">Mitsubishi · MV1020</p>
+            </div>
+            <span class="font-technical-data text-sm text-primary font-bold">81%</span>
+          </div>
+        </div>
+        <a href="cross-reference.html" class="mt-4 inline-flex items-center gap-1 text-primary font-bold text-sm hover:gap-2 transition-all">Cross-reference all <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Three pillars -->
+<section class="px-gutter py-12">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-stack-gap-lg">
+    
+      <a href="cross-reference.html" class="block bg-white rounded-2xl p-7 card-shadow border border-border-warm hover:-translate-y-1 transition-all group">
+        <span class="material-symbols-outlined text-3xl text-primary mb-4 block">compare_arrows</span>
+        <h3 class="font-product-grade text-primary mb-2">Cross-Reference</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Find equivalents across Sandvik, Kennametal, Iscar, Mitsubishi, Tungaloy, Walter and more. Geometry, coating and grade match with confidence %.</p>
+        <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Open Cross-Reference <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+      </a>
+    
+      <a href="compare.html" class="block bg-white rounded-2xl p-7 card-shadow border border-border-warm hover:-translate-y-1 transition-all group">
+        <span class="material-symbols-outlined text-3xl text-primary mb-4 block">fact_check</span>
+        <h3 class="font-product-grade text-primary mb-2">Compare</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Side-by-side technical matrix: Vc, feed, depth, interrupted-cut, tool life, cost tier, risk and best use case.</p>
+        <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Open Compare <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+      </a>
+    
+      <a href="knowledge.html" class="block bg-white rounded-2xl p-7 card-shadow border border-border-warm hover:-translate-y-1 transition-all group">
+        <span class="material-symbols-outlined text-3xl text-primary mb-4 block">menu_book</span>
+        <h3 class="font-product-grade text-primary mb-2">Knowledge</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Engineering guides: insert code reading, ISO groups, chipbreaker logic, stainless strategy, positive vs negative.</p>
+        <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Browse Knowledge <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+      </a>
+    
+  </div>
+</section>
+
+<!-- Trust block -->
+<section class="px-gutter py-20">
+  <div class="bg-primary rounded-3xl p-12 text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-iso-m-amber blur-3xl"></div>
+    </div>
+    <div class="relative max-w-3xl">
+      <p class="font-technical-data text-xs uppercase tracking-widest text-iso-m-amber mb-3">How we stay neutral</p>
+      <h3 class="font-section-heading text-section-heading mb-4">No manufacturer pays for placement.</h3>
+      <p class="text-blue-100/90 leading-relaxed mb-8 max-w-2xl">
+        Recommendations are derived from published manufacturer data, ISO classifications and machining first principles. Every result carries a <strong class="text-white">data confidence rating</strong> and a clear source flag — manufacturer data, generated estimate, or reviewed by an engineer.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+          <div>
+            <p class="font-display-hero text-3xl font-bold text-white">8</p>
+            <p class="text-xs uppercase tracking-widest text-blue-100/70 mt-1">Tool families</p>
+          </div>
+        
+          <div>
+            <p class="font-display-hero text-3xl font-bold text-white">6</p>
+            <p class="text-xs uppercase tracking-widest text-blue-100/70 mt-1">ISO material groups</p>
+          </div>
+        
+          <div>
+            <p class="font-display-hero text-3xl font-bold text-white">12+</p>
+            <p class="text-xs uppercase tracking-widest text-blue-100/70 mt-1">Brand coverage</p>
+          </div>
+        
+          <div>
+            <p class="font-display-hero text-3xl font-bold text-white">100%</p>
+            <p class="text-xs uppercase tracking-widest text-blue-100/70 mt-1">Source-flagged</p>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="w-full rounded-t-xl bg-surface-container dark:bg-surface-dim border-t border-border-warm flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
+<div class="mb-4 md:mb-0">
+<p class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor</p>
+<p class="text-on-surface-variant text-sm mt-1">© 2024 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
 </div>
-</div>
-<p class="text-on-surface-variant text-sm font-medium opacity-80">© 2024 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
+<div class="flex gap-8 items-center">
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Contact Engineering</a>
 </div>
 </footer>
 </main>
+<!-- Contextual FAB - Only for main navigation screens -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-transform z-50 group">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform">add</span>
+</button>
 <script src="page-switcher.js"></script>
 </body></html>
