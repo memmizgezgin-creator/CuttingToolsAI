@@ -3,206 +3,18 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script defer data-domain="tooladvisor.eu" src="https://plausible.io/js/script.js"></script>
+<script src="tw-config.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-primary-fixed": "#001c38",
-                    "on-tertiary-container": "#b8b8b6",
-                    "sidebar-bg": "#F5F2EE",
-                    "tertiary-fixed-dim": "#c7c6c5",
-                    "iso-m-amber": "#F59E0B",
-                    "on-error-container": "#93000a",
-                    "on-secondary-fixed-variant": "#594312",
-                    "secondary": "#735b28",
-                    "surface-container-low": "#f4f3f6",
-                    "skeleton-shimmer": "#F0EDE8",
-                    "glass-backdrop": "rgba(26, 26, 46, 0.5)",
-                    "inverse-surface": "#2f3033",
-                    "surface": "#faf9fc",
-                    "iso-n-green": "#10B981",
-                    "surface-container": "#eeedf1",
-                    "primary": "#123356",
-                    "on-background": "#1a1c1e",
-                    "secondary-container": "#fedb9c",
-                    "iso-p-blue": "#3B82F6",
-                    "primary-fixed": "#d3e4ff",
-                    "surface-tint": "#436085",
-                    "secondary-fixed-dim": "#e3c285",
-                    "border-warm": "#E8E4DE",
-                    "surface-variant": "#e3e2e5",
-                    "outline-variant": "#c3c6cf",
-                    "on-error": "#ffffff",
-                    "on-tertiary-fixed-variant": "#464746",
-                    "inverse-on-surface": "#f1f0f4",
-                    "tertiary-container": "#484948",
-                    "tertiary-fixed": "#e3e2e0",
-                    "surface-container-highest": "#e3e2e5",
-                    "on-surface": "#1a1c1e",
-                    "error-container": "#ffdad6",
-                    "on-tertiary-fixed": "#1a1c1b",
-                    "surface-container-lowest": "#ffffff",
-                    "iso-h-slate": "#64748B",
-                    "iso-k-red": "#EF4444",
-                    "ink-text": "#1A1A2E",
-                    "on-surface-variant": "#43474e",
-                    "surface-dim": "#dad9dd",
-                    "on-secondary": "#ffffff",
-                    "tertiary": "#313332",
-                    "primary-container": "#2c4a6e",
-                    "surface-container-high": "#e9e8eb",
-                    "outline": "#73777f",
-                    "surface-card": "#FFFFFF",
-                    "on-secondary-container": "#785f2b",
-                    "surface-bright": "#faf9fc",
-                    "on-tertiary": "#ffffff",
-                    "iso-s-orange": "#F97316",
-                    "on-primary": "#ffffff",
-                    "error": "#ba1a1a",
-                    "on-secondary-fixed": "#261900",
-                    "inverse-primary": "#abc9f3",
-                    "secondary-fixed": "#ffdea3",
-                    "primary-fixed-dim": "#abc9f3",
-                    "on-primary-container": "#9cbae4",
-                    "background": "#faf9fc",
-                    "on-primary-fixed-variant": "#2a486c"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "gutter": "24px",
-                    "card-padding": "20px",
-                    "sidebar-width": "260px",
-                    "container-margin": "32px",
-                    "stack-gap-lg": "24px",
-                    "stack-gap-sm": "8px",
-                    "stack-gap-md": "16px"
-            },
-            "fontFamily": {
-                    "label-caps": ["DM Sans"],
-                    "nav-item": ["Nunito"],
-                    "section-heading": ["Nunito"],
-                    "technical-data": ["DM Mono"],
-                    "body-md": ["DM Sans"],
-                    "body-lg": ["DM Sans"],
-                    "product-grade": ["Nunito"],
-                    "display-hero": ["Nunito"]
-            },
-            "fontSize": {
-                    "label-caps": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.06em", "fontWeight": "600"}],
-                    "nav-item": ["15px", {"lineHeight": "1.0", "fontWeight": "500"}],
-                    "section-heading": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
-                    "technical-data": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
-                    "body-md": ["17px", {"lineHeight": "1.7", "fontWeight": "400"}],
-                    "body-lg": ["19px", {"lineHeight": "1.7", "fontWeight": "400"}],
-                    "product-grade": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                    "display-hero": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
-            }
-          },
-        },
-      }
-    </script>
-<style>
-        body { background-color: #FAF9F7; }
-        .perspective-1000 { perspective: 1000px; }
-        .rotate-y-15 { transform: rotateY(15deg); }
-        .card-hover:hover .tool-3d-asset { transform: rotateY(15deg) translateY(-8px) scale(1.05); }
-        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
-        .card-shadow-hover:hover { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
-        .iso-badge-3d { 
-            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0,0,0,0.1);
-            transform: translateZ(10px);
-        }
-    </style>
 <link rel="stylesheet" href="polish.css"/>
 </head>
 <body class="font-body-md text-on-surface selection:bg-primary/20">
 <!-- Sidebar Navigation -->
-<aside class="h-screen w-sidebar-width fixed left-0 top-0 bg-sidebar-bg dark:bg-tertiary-container border-r border-border-warm flex flex-col py-container-margin z-50">
-<div class="px-gutter mb-10">
-<h2 class="font-section-heading text-section-heading text-primary">Precision Intelligence</h2>
-<p class="text-on-surface-variant font-medium text-sm">Tool Decision Platform</p>
-</div>
-<nav class="flex-1 space-y-1">
-<a class="flex items-center px-gutter py-3 text-primary font-bold border-l-4 border-iso-m-amber bg-surface-container-lowest translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined mr-3 text-xl">precision_manufacturing</span>
-<span class="font-nav-item text-nav-item">ISO P Steel</span>
-</a>
-<a class="flex items-center px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3 text-xl">layers</span>
-<span class="font-nav-item text-nav-item">ISO M Stainless</span>
-</a>
-<a class="flex items-center px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3 text-xl">architecture</span>
-<span class="font-nav-item text-nav-item">ISO K Cast Iron</span>
-</a>
-<a class="flex items-center px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3 text-xl">category</span>
-<span class="font-nav-item text-nav-item">ISO N Non-Ferrous</span>
-</a>
-<a class="flex items-center px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3 text-xl">settings_suggest</span>
-<span class="font-nav-item text-nav-item">ISO S Superalloys</span>
-</a>
-<a class="flex items-center px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3 text-xl">diamond</span>
-<span class="font-nav-item text-nav-item">ISO H Hardened</span>
-</a>
-</nav>
-<div class="mt-auto px-gutter space-y-4">
-<div class="p-4 bg-primary-container rounded-xl text-white">
-<p class="text-xs font-bold uppercase tracking-wider mb-2 opacity-80">Pro Intelligence</p>
-<p class="text-sm mb-4 leading-snug">Advanced comparison, saved projects and exportable decision reports.</p>
-<button class="w-full bg-iso-m-amber text-primary font-bold py-2 rounded-lg text-sm hover:scale-105 active:scale-95 transition-transform">Upgrade to Pro</button>
-</div>
-<div class="space-y-1">
-<a class="flex items-center text-on-surface-variant font-medium hover:text-primary py-2 text-sm transition-colors" href="#">
-<span class="material-symbols-outlined mr-2 text-lg">help</span> Help Center
-                </a>
-<a class="flex items-center text-on-surface-variant font-medium hover:text-primary py-2 text-sm transition-colors" href="#">
-<span class="material-symbols-outlined mr-2 text-lg">description</span> Documentation
-                </a>
-</div>
-</div>
-</aside>
 <!-- Main Content Area -->
 <main class="ml-sidebar-width min-h-screen">
 <!-- Top Navigation -->
-<header class="sticky top-0 w-full px-gutter h-16 bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center z-40">
-<div class="flex items-center flex-1 max-w-xl">
-<div class="relative w-full group">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-border-warm rounded-full focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm outline-none" placeholder="Search precision tools, materials, or geometries..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-6">
-<div class="flex gap-4">
-<button class="text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors relative">
-<span class="material-symbols-outlined">notifications</span>
-<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
-</button>
-<button class="text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors">
-<span class="material-symbols-outlined">settings</span>
-</button>
-</div>
-<div class="flex items-center gap-3 pl-6 border-l border-border-warm">
-<div class="text-right">
-<p class="text-xs font-bold text-primary">Hans Mueller</p>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Pro User</p>
-</div>
-<img alt="Machinist profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk15615jsGYyYUFHAvyXqAgboqYGCfWEJxWqNuF9wg4LZZZkwE7cjW4Ctf-HptSQqCNYP_2qegBHXKqyjmX0CW8tqUgUCub2_T2Pp2R_FxcFmg3EALxiGLwAswKG7iZfu93LcEt9H9d6tw1_J4MLKz8E83Nqq4jOFfAogIbqAXR92uMRS--QTac81kERq_NRBP7W9YiVLdG7MiwynVrKxy5EcnKzreVMEDK2rkHniBT7DQOo_d5TLXjtRrO2kikNKDSYwIOhH_D24"/>
-</div>
-</div>
-</header>
 <!-- Compare header -->
 <section class="px-gutter pt-12 pb-8 bg-gradient-to-br from-surface to-border-warm">
   <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-3">Compare</p>
@@ -218,37 +30,40 @@
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     
       <div class="bg-white rounded-2xl border border-border-warm card-shadow p-5 border-l-4 border-iso-p-blue">
-        <div class="flex items-start justify-between mb-3">
-          <div>
+        <div class="flex items-start gap-4 mb-3">
+          <div class="ta-insert3d shrink-0" data-shape="C" data-tone="iso-p" data-size="sm" aria-label="CNMG insert"></div>
+          <div class="flex-1 min-w-0">
             <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Sandvik Coromant</p>
             <h3 class="font-product-grade text-primary text-xl">GC4325</h3>
             <p class="font-technical-data text-sm text-on-surface-variant">CNMG 120408-PM</p>
           </div>
-          <span class="px-2.5 py-1 rounded-full bg-iso-p-blue/15 text-iso-p-blue font-bold text-[10px] tracking-widest">BASELINE</span>
+          <span class="px-2.5 py-1 rounded-full bg-iso-p-blue/15 text-iso-p-blue font-bold text-[10px] tracking-widest shrink-0">BASELINE</span>
         </div>
         <button class="text-sm text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all"><span class="material-symbols-outlined text-base">close</span> Remove</button>
       </div>
     
       <div class="bg-white rounded-2xl border border-border-warm card-shadow p-5 border-l-4 border-iso-m-amber">
-        <div class="flex items-start justify-between mb-3">
-          <div>
+        <div class="flex items-start gap-4 mb-3">
+          <div class="ta-insert3d shrink-0" data-shape="C" data-tone="iso-m" data-size="sm" aria-label="CNMG insert"></div>
+          <div class="flex-1 min-w-0">
             <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Kennametal</p>
             <h3 class="font-product-grade text-primary text-xl">KCP25C</h3>
             <p class="font-technical-data text-sm text-on-surface-variant">CNMG 432 MP</p>
           </div>
-          <span class="px-2.5 py-1 rounded-full bg-iso-m-amber/15 text-iso-m-amber font-bold text-[10px] tracking-widest">NEAR EQV.</span>
+          <span class="px-2.5 py-1 rounded-full bg-iso-m-amber/15 text-iso-m-amber font-bold text-[10px] tracking-widest shrink-0">NEAR EQV.</span>
         </div>
         <button class="text-sm text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all"><span class="material-symbols-outlined text-base">close</span> Remove</button>
       </div>
     
       <div class="bg-white rounded-2xl border border-border-warm card-shadow p-5 border-l-4 border-iso-n-green">
-        <div class="flex items-start justify-between mb-3">
-          <div>
+        <div class="flex items-start gap-4 mb-3">
+          <div class="ta-insert3d shrink-0" data-shape="C" data-tone="iso-n" data-size="sm" aria-label="CNMG insert"></div>
+          <div class="flex-1 min-w-0">
             <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Walter</p>
             <h3 class="font-product-grade text-primary text-xl">WPP20S</h3>
             <p class="font-technical-data text-sm text-on-surface-variant">CNMG 120408-NM4</p>
           </div>
-          <span class="px-2.5 py-1 rounded-full bg-iso-n-green/15 text-iso-n-green font-bold text-[10px] tracking-widest">PREMIUM</span>
+          <span class="px-2.5 py-1 rounded-full bg-iso-n-green/15 text-iso-n-green font-bold text-[10px] tracking-widest shrink-0">PREMIUM</span>
         </div>
         <button class="text-sm text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all"><span class="material-symbols-outlined text-base">close</span> Remove</button>
       </div>
@@ -259,77 +74,315 @@
 <!-- Matrix -->
 <section class="px-gutter pb-10">
   <div class="bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden">
-    
-      <div class="grid grid-cols-4 gap-0 ">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Geometry</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">80° rhomb · negative · CNMG</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">80° rhomb · negative · CNMG</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">80° rhomb · negative · CNMG</div>
+
+    <!-- Geometry -->
+    <div class="grid grid-cols-4 gap-0">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Geometry</div>
+      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">80° rhomb · negative · CNMG</div>
+      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">80° rhomb · negative · CNMG</div>
+      <div class="p-4 text-sm text-on-surface flex items-center font-medium">80° rhomb · negative · CNMG</div>
+    </div>
+
+    <!-- Grade -->
+    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Grade</div>
+      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">GC4325 <span class="ml-2 text-on-surface-variant text-xs">CVD Ti(C,N)+Al₂O₃</span></div>
+      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">KCP25C <span class="ml-2 text-on-surface-variant text-xs">multilayer CVD</span></div>
+      <div class="p-4 text-sm text-on-surface flex items-center font-medium">WPP20S <span class="ml-2 text-on-surface-variant text-xs">Tiger·tec Silver CVD</span></div>
+    </div>
+
+    <!-- Coating -->
+    <div class="grid grid-cols-4 gap-0">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Coating</div>
+      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">CVD</div>
+      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">CVD</div>
+      <div class="p-4 text-sm text-on-surface flex items-center font-medium">CVD multilayer</div>
+    </div>
+
+    <!-- ISO group -->
+    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">ISO material group</div>
+      <div class="p-4 border-r border-border-warm flex items-center gap-1.5">
+        <span class="ta-iso-badge ta-iso-P">ISO P</span><span class="ta-iso-badge ta-iso-M">ISO M</span>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Grade</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">GC4325 (CVD Ti(C,N)+Al₂O₃)</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">KCP25C (multilayer CVD)</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">WPP20S (Tiger·tec Silver CVD)</div>
+      <div class="p-4 border-r border-border-warm flex items-center gap-1.5">
+        <span class="ta-iso-badge ta-iso-P">ISO P</span><span class="ta-iso-badge ta-iso-M">ISO M</span>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 ">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Coating</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">CVD</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">CVD</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">CVD multilayer</div>
+      <div class="p-4 flex items-center gap-1.5">
+        <span class="ta-iso-badge ta-iso-P">ISO P</span>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">ISO material group</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">P (primary) · M (secondary)</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">P (primary) · M (secondary)</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">P (primary)</div>
+    </div>
+
+    <!-- Operation -->
+    <div class="grid grid-cols-4 gap-0">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Operation</div>
+      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Medium turning</div>
+      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Medium turning</div>
+      <div class="p-4 text-sm text-on-surface flex items-center font-medium">Medium-heavy turning</div>
+    </div>
+
+    <!-- Vc range (m/min) — scale 150–450 -->
+    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center">
+        <span>Vc envelope</span>
+        <span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">scale 150–450 m/min</span>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 ">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Operation</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Medium turning</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Medium turning</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">Medium-heavy turning</div>
+      <div class="p-4 border-r border-border-warm flex items-center">
+        <div class="cmp-range">
+          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:16.7%;width:53.3%;"></div></div>
+          <div class="cmp-range-values"><span>200</span><span>360 <span class="cmp-unit">m/min</span></span></div>
+        </div>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Vc range (m/min)</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">200–360</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">190–340</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">220–400</div>
+      <div class="p-4 border-r border-border-warm flex items-center">
+        <div class="cmp-range">
+          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:13.3%;width:50%;"></div></div>
+          <div class="cmp-range-values"><span>190</span><span>340 <span class="cmp-unit">m/min</span></span></div>
+        </div>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 ">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Feed range (mm/rev)</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">0.15–0.50</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">0.15–0.45</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">0.18–0.55</div>
+      <div class="p-4 flex items-center">
+        <div class="cmp-range">
+          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:23.3%;width:60%;"></div></div>
+          <div class="cmp-range-values"><span>220</span><span>400 <span class="cmp-unit">m/min</span></span></div>
+        </div>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Depth of cut (mm)</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">0.5–4.0</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">0.5–4.0</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">0.5–5.0</div>
+    </div>
+
+    <!-- Feed range (mm/rev) — scale 0.10–0.60 -->
+    <div class="grid grid-cols-4 gap-0">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center">
+        <span>Feed envelope</span>
+        <span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">scale 0.10–0.60 mm/rev</span>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 ">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Interrupted cut</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Good</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Acceptable</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">Good</div>
+      <div class="p-4 border-r border-border-warm flex items-center">
+        <div class="cmp-range">
+          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:10%;width:70%;"></div></div>
+          <div class="cmp-range-values"><span>0.15</span><span>0.50 <span class="cmp-unit">mm/rev</span></span></div>
+        </div>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Tool life expectation</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">High</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Medium-High</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">High (unmanned)</div>
+      <div class="p-4 border-r border-border-warm flex items-center">
+        <div class="cmp-range">
+          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:10%;width:60%;"></div></div>
+          <div class="cmp-range-values"><span>0.15</span><span>0.45 <span class="cmp-unit">mm/rev</span></span></div>
+        </div>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 ">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Cost tier</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">€€€</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">€€</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">€€€€</div>
+      <div class="p-4 flex items-center">
+        <div class="cmp-range">
+          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:16%;width:74%;"></div></div>
+          <div class="cmp-range-values"><span>0.18</span><span>0.55 <span class="cmp-unit">mm/rev</span></span></div>
+        </div>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Risk level</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Low</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Low-Medium</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">Low</div>
+    </div>
+
+    <!-- Depth of cut (mm) — scale 0–6 -->
+    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center">
+        <span>Depth envelope</span>
+        <span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">scale 0–6 mm</span>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 ">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Best use case</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Production turning of P-group</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Cost-balanced general turning</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">Long unmanned P-group runs</div>
+      <div class="p-4 border-r border-border-warm flex items-center">
+        <div class="cmp-range">
+          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:8.3%;width:58.3%;"></div></div>
+          <div class="cmp-range-values"><span>0.5</span><span>4.0 <span class="cmp-unit">mm</span></span></div>
+        </div>
       </div>
-    
-      <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
-        <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Avoid when</div>
-        <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Heavy interrupted cuts</div><div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Continuous high-Vc runs</div><div class="p-4  text-sm text-on-surface flex items-center font-medium">Cost-sensitive short runs</div>
+      <div class="p-4 border-r border-border-warm flex items-center">
+        <div class="cmp-range">
+          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:8.3%;width:58.3%;"></div></div>
+          <div class="cmp-range-values"><span>0.5</span><span>4.0 <span class="cmp-unit">mm</span></span></div>
+        </div>
       </div>
-    
+      <div class="p-4 flex items-center">
+        <div class="cmp-range">
+          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:8.3%;width:75%;"></div></div>
+          <div class="cmp-range-values"><span>0.5</span><span>5.0 <span class="cmp-unit">mm</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interrupted cut -->
+    <div class="grid grid-cols-4 gap-0">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Interrupted cut</div>
+      <div class="p-4 border-r border-border-warm flex items-center"><span class="cmp-flag" data-q="good">Good</span></div>
+      <div class="p-4 border-r border-border-warm flex items-center"><span class="cmp-flag" data-q="ok">Acceptable</span></div>
+      <div class="p-4 flex items-center"><span class="cmp-flag" data-q="good">Good</span></div>
+    </div>
+
+    <!-- Tool life -->
+    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center">
+        <span>Tool life</span>
+        <span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">5-point relative</span>
+      </div>
+      <div class="p-4 border-r border-border-warm flex items-center gap-3">
+        <div class="cmp-pips"><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span></div>
+        <span class="text-xs font-medium text-on-surface-variant">High</span>
+      </div>
+      <div class="p-4 border-r border-border-warm flex items-center gap-3">
+        <div class="cmp-pips"><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip"></span></div>
+        <span class="text-xs font-medium text-on-surface-variant">Medium-High</span>
+      </div>
+      <div class="p-4 flex items-center gap-3">
+        <div class="cmp-pips"><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span></div>
+        <span class="text-xs font-medium text-on-surface-variant">High <span class="text-[10px] uppercase tracking-widest text-iso-n-green ml-0.5">unmanned</span></span>
+      </div>
+    </div>
+
+    <!-- Cost tier -->
+    <div class="grid grid-cols-4 gap-0">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Cost tier</div>
+      <div class="p-4 border-r border-border-warm flex items-center gap-3">
+        <span class="cmp-cost"><span class="on">€</span><span class="on">€</span><span class="on">€</span><span class="off">€</span><span class="off">€</span></span>
+        <span class="text-xs text-on-surface-variant">3/5</span>
+      </div>
+      <div class="p-4 border-r border-border-warm flex items-center gap-3">
+        <span class="cmp-cost"><span class="on">€</span><span class="on">€</span><span class="off">€</span><span class="off">€</span><span class="off">€</span></span>
+        <span class="text-xs text-on-surface-variant">2/5</span>
+      </div>
+      <div class="p-4 flex items-center gap-3">
+        <span class="cmp-cost"><span class="on">€</span><span class="on">€</span><span class="on">€</span><span class="on">€</span><span class="off">€</span></span>
+        <span class="text-xs text-on-surface-variant">4/5</span>
+      </div>
+    </div>
+
+    <!-- Risk level -->
+    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Risk level</div>
+      <div class="p-4 border-r border-border-warm flex items-center"><span class="cmp-risk" data-level="low">Low</span></div>
+      <div class="p-4 border-r border-border-warm flex items-center"><span class="cmp-risk" data-level="medium">Low-Medium</span></div>
+      <div class="p-4 flex items-center"><span class="cmp-risk" data-level="low">Low</span></div>
+    </div>
+
+    <!-- Best use case -->
+    <div class="grid grid-cols-4 gap-0">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Best use case</div>
+      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Production turning of P-group</div>
+      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Cost-balanced general turning</div>
+      <div class="p-4 text-sm text-on-surface flex items-center font-medium">Long unmanned P-group runs</div>
+    </div>
+
+    <!-- Avoid when -->
+    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Avoid when</div>
+      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Heavy interrupted cuts</div>
+      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Continuous high-Vc runs</div>
+      <div class="p-4 text-sm text-on-surface flex items-center font-medium">Cost-sensitive short runs</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Operating envelope plot -->
+<section class="px-gutter pb-10">
+  <div class="bg-white rounded-2xl border border-border-warm card-shadow p-8">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
+      <div>
+        <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Operating envelope</p>
+        <h2 class="font-section-heading text-xl text-primary">Where each tool lives in Vc × feed space.</h2>
+        <p class="text-sm text-on-surface-variant mt-2 max-w-2xl">Each rectangle shows the manufacturer's published Vc / feed envelope. Overlap means equivalent performance; non-overlap shows where one tool extends further.</p>
+      </div>
+      <!-- Legend -->
+      <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
+        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#123356;"></span> GC4325</span>
+        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#F59E0B;"></span> KCP25C</span>
+        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#10B981;"></span> WPP20S</span>
+      </div>
+    </div>
+
+    <!-- Plot -->
+    <div class="overflow-x-auto">
+      <svg viewBox="0 0 620 360" class="w-full h-auto min-w-[560px]" role="img" aria-label="Operating envelope plot — Vc versus feed">
+        <!-- ===== Grid ===== -->
+        <g stroke="#F0EDE8" stroke-width="1">
+          <!-- vertical grid (feed) -->
+          <line x1="148" y1="30" x2="148" y2="290"/>
+          <line x1="227" y1="30" x2="227" y2="290"/>
+          <line x1="305" y1="30" x2="305" y2="290"/>
+          <line x1="383" y1="30" x2="383" y2="290"/>
+          <line x1="462" y1="30" x2="462" y2="290"/>
+          <!-- horizontal grid (Vc) -->
+          <line x1="70" y1="232" x2="540" y2="232"/>
+          <line x1="70" y1="174" x2="540" y2="174"/>
+          <line x1="70" y1="117" x2="540" y2="117"/>
+          <line x1="70" y1="59"  x2="540" y2="59"/>
+        </g>
+
+        <!-- ===== Axes ===== -->
+        <g stroke="#43474e" stroke-width="1.5" fill="none">
+          <line x1="70" y1="290" x2="546" y2="290"/>  <!-- X axis -->
+          <line x1="70" y1="290" x2="70" y2="24"/>    <!-- Y axis -->
+          <!-- arrowheads -->
+          <polygon points="546,290 540,287 540,293" fill="#43474e"/>
+          <polygon points="70,24 67,30 73,30" fill="#43474e"/>
+        </g>
+
+        <!-- ===== Axis labels ===== -->
+        <g font-family="DM Mono, monospace" font-size="10" fill="#8A8A9A" font-weight="600">
+          <!-- X ticks -->
+          <text x="148" y="306" text-anchor="middle">0.1</text>
+          <text x="227" y="306" text-anchor="middle">0.2</text>
+          <text x="305" y="306" text-anchor="middle">0.3</text>
+          <text x="383" y="306" text-anchor="middle">0.4</text>
+          <text x="462" y="306" text-anchor="middle">0.5</text>
+          <text x="540" y="306" text-anchor="middle">0.6</text>
+          <!-- Y ticks -->
+          <text x="60" y="236" text-anchor="end">100</text>
+          <text x="60" y="178" text-anchor="end">200</text>
+          <text x="60" y="121" text-anchor="end">300</text>
+          <text x="60" y="63"  text-anchor="end">400</text>
+        </g>
+        <g font-family="DM Sans, sans-serif" font-size="11" fill="#43474e" font-weight="600">
+          <text x="305" y="334" text-anchor="middle" letter-spacing="0.04em">Feed <tspan fill="#8A8A9A" font-weight="500">(mm/rev)</tspan></text>
+          <text x="-160" y="20" transform="rotate(-90)" text-anchor="middle" letter-spacing="0.04em">Cutting speed <tspan fill="#8A8A9A" font-weight="500">(m/min)</tspan></text>
+        </g>
+
+        <!-- ===== WPP20S envelope (220-400 Vc, 0.18-0.55 feed) ===== -->
+        <rect x="211" y="59" width="290" height="104" fill="#10B981" fill-opacity="0.15" stroke="#10B981" stroke-width="2" rx="2"/>
+        <g font-family="Nunito, sans-serif">
+          <circle cx="356" cy="111" r="3.5" fill="#10B981"/>
+          <rect x="376" y="98" width="86" height="26" rx="6" fill="#fff" stroke="#10B981" stroke-width="1.5"/>
+          <text x="384" y="115" font-size="12" font-weight="700" fill="#10B981">WPP20S</text>
+        </g>
+
+        <!-- ===== GC4325 envelope (200-360 Vc, 0.15-0.50 feed) ===== -->
+        <rect x="188" y="82" width="274" height="92" fill="#123356" fill-opacity="0.15" stroke="#123356" stroke-width="2" rx="2"/>
+        <g font-family="Nunito, sans-serif">
+          <circle cx="325" cy="128" r="3.5" fill="#123356"/>
+          <rect x="245" y="142" width="86" height="26" rx="6" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="253" y="159" font-size="12" font-weight="700" fill="#123356">GC4325</text>
+        </g>
+
+        <!-- ===== KCP25C envelope (190-340 Vc, 0.15-0.45 feed) ===== -->
+        <rect x="188" y="94" width="235" height="87" fill="#F59E0B" fill-opacity="0.18" stroke="#F59E0B" stroke-width="2" stroke-dasharray="0" rx="2"/>
+        <g font-family="Nunito, sans-serif">
+          <circle cx="305" cy="137" r="3.5" fill="#F59E0B"/>
+          <rect x="118" y="182" width="86" height="26" rx="6" fill="#fff" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="128" y="199" font-size="12" font-weight="700" fill="#F59E0B">KCP25C</text>
+          <line x1="305" y1="140" x2="161" y2="184" stroke="#F59E0B" stroke-width="1" stroke-dasharray="2 2"/>
+        </g>
+
+        <!-- ===== Annotation: "WPP20S extends furthest" ===== -->
+        <g font-family="DM Mono, monospace" font-size="9" fill="#10B981" font-weight="600">
+          <line x1="500" y1="59" x2="540" y2="40" stroke="#10B981" stroke-width="1" stroke-dasharray="2 2"/>
+          <text x="544" y="38" letter-spacing="0.06em">+12% Vc headroom</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Key insights -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div class="p-3 rounded-lg bg-surface-container-low border-l-2" style="border-color:#10B981;">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest font-bold mb-1" style="color:#10B981;">Widest envelope</p>
+        <p class="text-sm text-on-surface"><span class="font-bold">WPP20S</span> — highest Vc and feed reach</p>
+      </div>
+      <div class="p-3 rounded-lg bg-surface-container-low border-l-2" style="border-color:#123356;">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest font-bold mb-1" style="color:#123356;">Balanced center</p>
+        <p class="text-sm text-on-surface"><span class="font-bold">GC4325</span> — overlaps both alternatives</p>
+      </div>
+      <div class="p-3 rounded-lg bg-surface-container-low border-l-2" style="border-color:#F59E0B;">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest font-bold mb-1" style="color:#F59E0B;">Tightest fit</p>
+        <p class="text-sm text-on-surface"><span class="font-bold">KCP25C</span> — narrowest envelope, lowest cost</p>
+      </div>
+    </div>
   </div>
 </section>
 

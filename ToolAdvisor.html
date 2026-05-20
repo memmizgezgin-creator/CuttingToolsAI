@@ -3,358 +3,233 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script defer data-domain="tooladvisor.eu" src="https://plausible.io/js/script.js"></script>
+<script src="tw-config.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-primary-fixed": "#001c38",
-                    "on-tertiary-container": "#b8b8b6",
-                    "sidebar-bg": "#F5F2EE",
-                    "tertiary-fixed-dim": "#c7c6c5",
-                    "iso-m-amber": "#F59E0B",
-                    "on-error-container": "#93000a",
-                    "on-secondary-fixed-variant": "#594312",
-                    "secondary": "#735b28",
-                    "surface-container-low": "#f4f3f6",
-                    "skeleton-shimmer": "#F0EDE8",
-                    "glass-backdrop": "rgba(26, 26, 46, 0.5)",
-                    "inverse-surface": "#2f3033",
-                    "surface": "#faf9fc",
-                    "iso-n-green": "#10B981",
-                    "surface-container": "#eeedf1",
-                    "primary": "#123356",
-                    "on-background": "#1a1c1e",
-                    "secondary-container": "#fedb9c",
-                    "iso-p-blue": "#3B82F6",
-                    "primary-fixed": "#d3e4ff",
-                    "surface-tint": "#436085",
-                    "secondary-fixed-dim": "#e3c285",
-                    "border-warm": "#E8E4DE",
-                    "surface-variant": "#e3e2e5",
-                    "outline-variant": "#c3c6cf",
-                    "on-error": "#ffffff",
-                    "on-tertiary-fixed-variant": "#464746",
-                    "inverse-on-surface": "#f1f0f4",
-                    "tertiary-container": "#484948",
-                    "tertiary-fixed": "#e3e2e0",
-                    "surface-container-highest": "#e3e2e5",
-                    "on-surface": "#1a1c1e",
-                    "error-container": "#ffdad6",
-                    "on-tertiary-fixed": "#1a1c1b",
-                    "surface-container-lowest": "#ffffff",
-                    "iso-h-slate": "#64748B",
-                    "iso-k-red": "#EF4444",
-                    "ink-text": "#1A1A2E",
-                    "on-surface-variant": "#43474e",
-                    "surface-dim": "#dad9dd",
-                    "on-secondary": "#ffffff",
-                    "tertiary": "#313332",
-                    "primary-container": "#2c4a6e",
-                    "surface-container-high": "#e9e8eb",
-                    "outline": "#73777f",
-                    "surface-card": "#FFFFFF",
-                    "on-secondary-container": "#785f2b",
-                    "surface-bright": "#faf9fc",
-                    "on-tertiary": "#ffffff",
-                    "iso-s-orange": "#F97316",
-                    "on-primary": "#ffffff",
-                    "error": "#ba1a1a",
-                    "on-secondary-fixed": "#261900",
-                    "inverse-primary": "#abc9f3",
-                    "secondary-fixed": "#ffdea3",
-                    "primary-fixed-dim": "#abc9f3",
-                    "on-primary-container": "#9cbae4",
-                    "background": "#faf9fc",
-                    "on-primary-fixed-variant": "#2a486c"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "gutter": "24px",
-                    "card-padding": "20px",
-                    "sidebar-width": "260px",
-                    "container-margin": "32px",
-                    "stack-gap-lg": "24px",
-                    "stack-gap-sm": "8px",
-                    "stack-gap-md": "16px"
-            },
-            "fontFamily": {
-                    "label-caps": ["DM Sans"],
-                    "nav-item": ["Nunito"],
-                    "section-heading": ["Nunito"],
-                    "technical-data": ["DM Mono"],
-                    "body-md": ["DM Sans"],
-                    "body-lg": ["DM Sans"],
-                    "product-grade": ["Nunito"],
-                    "display-hero": ["Nunito"]
-            },
-            "fontSize": {
-                    "label-caps": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.06em", "fontWeight": "600"}],
-                    "nav-item": ["15px", {"lineHeight": "1.0", "fontWeight": "500"}],
-                    "section-heading": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
-                    "technical-data": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
-                    "body-md": ["17px", {"lineHeight": "1.7", "fontWeight": "400"}],
-                    "body-lg": ["19px", {"lineHeight": "1.7", "fontWeight": "400"}],
-                    "product-grade": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                    "display-hero": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
-            }
-          },
-        },
-      }
-    </script>
-<style>
-        body { background-color: #FAF9F7; }
-        .perspective-1000 { perspective: 1000px; }
-        .rotate-y-15 { transform: rotateY(15deg); }
-        .card-hover:hover .tool-3d-asset { transform: rotateY(15deg) translateY(-8px) scale(1.05); }
-        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
-        .card-shadow-hover:hover { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
-        .iso-badge-3d { 
-            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0,0,0,0.1);
-            transform: translateZ(10px);
-        }
-    </style>
 <link rel="stylesheet" href="polish.css"/>
 </head>
 <body class="font-body-md text-on-surface selection:bg-primary/20">
 <!-- Sidebar Navigation -->
-<aside class="h-screen w-sidebar-width fixed left-0 top-0 bg-sidebar-bg dark:bg-tertiary-container border-r border-border-warm flex flex-col py-container-margin z-50">
-<div class="px-gutter mb-10">
-<h2 class="font-section-heading text-section-heading text-primary">Precision Intelligence</h2>
-<p class="text-on-surface-variant font-medium text-sm">Tool Decision Platform</p>
-</div>
-<nav class="flex-1 space-y-1">
-<a class="flex items-center px-gutter py-3 text-primary font-bold border-l-4 border-iso-m-amber bg-surface-container-lowest translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined mr-3 text-xl">precision_manufacturing</span>
-<span class="font-nav-item text-nav-item">ISO P Steel</span>
-</a>
-<a class="flex items-center px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3 text-xl">layers</span>
-<span class="font-nav-item text-nav-item">ISO M Stainless</span>
-</a>
-<a class="flex items-center px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3 text-xl">architecture</span>
-<span class="font-nav-item text-nav-item">ISO K Cast Iron</span>
-</a>
-<a class="flex items-center px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3 text-xl">category</span>
-<span class="font-nav-item text-nav-item">ISO N Non-Ferrous</span>
-</a>
-<a class="flex items-center px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3 text-xl">settings_suggest</span>
-<span class="font-nav-item text-nav-item">ISO S Superalloys</span>
-</a>
-<a class="flex items-center px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3 text-xl">diamond</span>
-<span class="font-nav-item text-nav-item">ISO H Hardened</span>
-</a>
-</nav>
-<div class="mt-auto px-gutter space-y-4">
-<div class="p-4 bg-primary-container rounded-xl text-white">
-<p class="text-xs font-bold uppercase tracking-wider mb-2 opacity-80">Pro Intelligence</p>
-<p class="text-sm mb-4 leading-snug">Advanced comparison, saved projects and exportable decision reports.</p>
-<button class="w-full bg-iso-m-amber text-primary font-bold py-2 rounded-lg text-sm hover:scale-105 active:scale-95 transition-transform">Upgrade to Pro</button>
-</div>
-<div class="space-y-1">
-<a class="flex items-center text-on-surface-variant font-medium hover:text-primary py-2 text-sm transition-colors" href="#">
-<span class="material-symbols-outlined mr-2 text-lg">help</span> Help Center
-                </a>
-<a class="flex items-center text-on-surface-variant font-medium hover:text-primary py-2 text-sm transition-colors" href="#">
-<span class="material-symbols-outlined mr-2 text-lg">description</span> Documentation
-                </a>
-</div>
-</div>
-</aside>
 <!-- Main Content Area -->
 <main class="ml-sidebar-width min-h-screen">
 <!-- Top Navigation -->
-<header class="sticky top-0 w-full px-gutter h-16 bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center z-40">
-<div class="flex items-center flex-1 max-w-xl">
-<div class="relative w-full group">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-border-warm rounded-full focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm outline-none" placeholder="Search precision tools, materials, or geometries..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-6">
-<div class="flex gap-4">
-<button class="text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors relative">
-<span class="material-symbols-outlined">notifications</span>
-<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
-</button>
-<button class="text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors">
-<span class="material-symbols-outlined">settings</span>
-</button>
-</div>
-<div class="flex items-center gap-3 pl-6 border-l border-border-warm">
-<div class="text-right">
-<p class="text-xs font-bold text-primary">Hans Mueller</p>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Pro User</p>
-</div>
-<img alt="Machinist profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk15615jsGYyYUFHAvyXqAgboqYGCfWEJxWqNuF9wg4LZZZkwE7cjW4Ctf-HptSQqCNYP_2qegBHXKqyjmX0CW8tqUgUCub2_T2Pp2R_FxcFmg3EALxiGLwAswKG7iZfu93LcEt9H9d6tw1_J4MLKz8E83Nqq4jOFfAogIbqAXR92uMRS--QTac81kERq_NRBP7W9YiVLdG7MiwynVrKxy5EcnKzreVMEDK2rkHniBT7DQOo_d5TLXjtRrO2kikNKDSYwIOhH_D24"/>
-</div>
-</div>
-</header>
 <!-- Hero -->
-<section class="relative overflow-hidden px-gutter py-20 bg-gradient-to-br from-surface to-border-warm">
-  <div class="relative z-10 max-w-4xl">
-    <span class="inline-block px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-xs uppercase tracking-widest mb-6">Brand-Neutral · Engineering Decision Layer</span>
-    <h1 class="font-display-hero text-display-hero text-primary mb-6 leading-tight">Neutral Cutting Tool<br/>Selection. Faster.</h1>
-    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-10 leading-relaxed">
-      Compare inserts, grades and alternatives across brands with clear technical reasoning, risk notes and ISO-based recommendations. No catalog noise — just decisions you can defend.
-    </p>
-    <div class="flex flex-wrap gap-4">
-      <a href="#advisor" class="bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all flex items-center gap-2">
-        <span class="material-symbols-outlined">auto_awesome</span> Start Advisor
-      </a>
-      <a href="cross-reference.html" class="bg-white text-primary border border-border-warm font-bold px-8 py-4 rounded-xl hover:bg-surface-container-low transition-all flex items-center gap-2">
-        <span class="material-symbols-outlined">compare_arrows</span> Cross-Reference an Insert
-      </a>
-    </div>
-    <div class="mt-10 flex flex-wrap gap-6 text-sm text-on-surface-variant">
-      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> ISO P / M / K / N / S / H coverage</span>
-      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> Geometry &amp; coating match logic</span>
-      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> Risk &amp; data-confidence flags</span>
-    </div>
-  </div>
-  <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-30 pointer-events-none">
-    <div class="perspective-1000 w-full h-full flex items-center justify-center">
-      <img class="w-[600px] -rotate-12 scale-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuEu-jzeY80mICEQAEpDMHGkIp3fLu3dLEuuyV2rWnzoe1v8spWjyIJJxwrC2odcvxkibnYSITKkLD0vQRp0_VX5XZTO3814ASPmkRUa24xp3zzhzT9Ngpaj4MIKLVP9U9PLFqb1ZOU58MupTSB42RYnqGJfeg2jDctXeGcOvxse3bVzwGa-TuYMoaSAzG7pHyADt_tovoWcUulCpL_jzwWQ_tCocOF5FKUTyaPsYbMYWr4LOuKGgWKF-s9cXjEgQYYpwmkNRXy8s"/>
-    </div>
-  </div>
+<section class="relative overflow-hidden px-gutter py-20 lg:py-24 bg-gradient-to-br from-surface via-surface-container-low to-border-warm">
+  <!-- Faint blueprint grid background -->
+  <svg class="absolute inset-0 w-full h-full opacity-[0.18] pointer-events-none" aria-hidden="true">
+    <defs>
+      <pattern id="ta-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <circle cx="1" cy="1" r="1" fill="#8A8A9A"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#ta-grid)"/>
+  </svg>
 
-  <!-- Decision-preview chips floating around hero visual -->
-  <div class="hidden lg:block absolute right-12 top-20 z-10 pointer-events-none">
-    <div class="ta-chip bg-white rounded-xl border border-border-warm shadow-lg px-4 py-2.5 flex items-center gap-3" style="animation-delay:.1s">
-      <span class="material-symbols-outlined text-iso-n-green">verified</span>
-      <div>
-        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Match confidence</p>
-        <p class="font-product-grade text-primary text-lg leading-none">92%</p>
+  <div class="relative grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center max-w-7xl">
+
+    <!-- Left: copy -->
+    <div>
+      <span class="inline-block px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-xs uppercase tracking-widest mb-6">Brand-neutral · Engineering decision layer</span>
+      <h1 class="font-display-hero text-[44px] md:text-[56px] xl:text-[68px] 2xl:text-[76px] leading-[1.02] tracking-[-0.025em] text-primary mb-6">
+        Neutral cutting tool<br/>
+        selection. <span class="text-iso-m-amber">Faster.</span>
+      </h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">
+        Compare inserts, grades and alternatives across brands with clear technical reasoning, risk notes and ISO-based recommendations. No catalog noise — just decisions you can defend.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#advisor" class="bg-primary text-white font-bold px-7 py-4 rounded-xl shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+          <span class="material-symbols-outlined">auto_awesome</span> Start Advisor
+        </a>
+        <a href="cross-reference.html" class="bg-white text-primary border border-border-warm font-bold px-7 py-4 rounded-xl hover:bg-surface-container-low hover:-translate-y-0.5 transition-all flex items-center gap-2">
+          <span class="material-symbols-outlined">compare_arrows</span> Cross-Reference an Insert
+        </a>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-on-surface-variant">
+        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> ISO P / M / K / N / S / H coverage</span>
+        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> Geometry &amp; coating match logic</span>
+        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> Risk &amp; data-confidence flags</span>
       </div>
     </div>
-  </div>
-  <div class="hidden lg:block absolute right-32 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
-    <div class="ta-chip bg-white rounded-xl border border-border-warm shadow-lg px-4 py-2.5 flex items-center gap-3" style="animation-delay:.25s">
-      <span class="material-symbols-outlined text-iso-p-blue">category</span>
-      <div>
-        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">ISO suitability</p>
-        <p class="font-bold text-primary text-sm leading-none">ISO P / M</p>
-      </div>
+
+    <!-- Right: annotated insert blueprint -->
+    <div class="relative hidden lg:block">
+      <svg viewBox="0 0 700 620" class="w-full h-auto" aria-label="Annotated insert with technical callouts">
+        <defs>
+          <!-- Top face gradient: brushed steel -->
+          <linearGradient id="ta-insert-top" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E2E6EB"/>
+            <stop offset="45%" stop-color="#C0C7D0"/>
+            <stop offset="100%" stop-color="#8C95A1"/>
+          </linearGradient>
+          <!-- Side face: darker -->
+          <linearGradient id="ta-insert-side" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#5A6677"/>
+            <stop offset="100%" stop-color="#3D4754"/>
+          </linearGradient>
+          <!-- Hole inner shadow -->
+          <radialGradient id="ta-hole" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#fff"/>
+            <stop offset="70%" stop-color="#E2E6EB"/>
+            <stop offset="100%" stop-color="#8C95A1"/>
+          </radialGradient>
+          <!-- Coating sheen -->
+          <linearGradient id="ta-sheen" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0.55"/>
+            <stop offset="40%" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- 3D side face (back-right depth) -->
+        <path d="M 350,460 L 526,310 L 538,328 L 362,478 Z" fill="url(#ta-insert-side)"/>
+        <path d="M 526,310 L 526,180 L 538,198 L 538,328 Z" fill="url(#ta-insert-side)" opacity="0.7"/>
+
+        <!-- Insert top face: 80° rhomb (acute angles top/bottom) -->
+        <path d="M 350,160 L 526,310 L 350,460 L 174,310 Z" fill="url(#ta-insert-top)" stroke="#2c4a6e" stroke-width="1.5"/>
+        <!-- Top-face highlight sheen -->
+        <path d="M 350,160 L 526,310 L 350,460 L 174,310 Z" fill="url(#ta-sheen)"/>
+
+        <!-- Chipbreaker groove (concentric inset following rhomb) -->
+        <path d="M 350,200 L 490,310 L 350,420 L 210,310 Z" fill="none" stroke="#2c4a6e" stroke-width="0.8" opacity="0.55" stroke-dasharray="2 2"/>
+        <path d="M 350,232 L 460,310 L 350,388 L 240,310 Z" fill="none" stroke="#2c4a6e" stroke-width="0.6" opacity="0.4"/>
+
+        <!-- Center mounting hole -->
+        <circle cx="350" cy="310" r="26" fill="url(#ta-hole)" stroke="#2c4a6e" stroke-width="1.2"/>
+        <circle cx="350" cy="310" r="14" fill="#3D4754" opacity="0.85"/>
+
+        <!-- Edge tick marks (cutting edges) -->
+        <g stroke="#F59E0B" stroke-width="1.2" opacity="0.85">
+          <line x1="174" y1="310" x2="184" y2="310"/>
+          <line x1="350" y1="160" x2="350" y2="170"/>
+          <line x1="526" y1="310" x2="516" y2="310"/>
+          <line x1="350" y1="460" x2="350" y2="450"/>
+        </g>
+
+        <!-- ===================== CALLOUTS ===================== -->
+        <g font-family="DM Mono, monospace" font-size="10" fill="#43474e" letter-spacing="0.12em">
+
+          <!-- TOP-LEFT: Geometry -->
+          <line x1="220" y1="240" x2="100" y2="120" stroke="#123356" stroke-width="1.2"/>
+          <circle cx="220" cy="240" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="40" y="100" font-weight="600" fill="#8A8A9A">GEOMETRY</text>
+          <text x="40" y="124" font-family="Nunito, sans-serif" font-size="20" font-weight="800" fill="#123356" letter-spacing="-0.01em">80° rhomb</text>
+          <text x="40" y="146" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="#43474e" letter-spacing="0">CNMG · negative</text>
+
+          <!-- TOP-RIGHT: Match confidence (big number) -->
+          <line x1="480" y1="240" x2="600" y2="130" stroke="#123356" stroke-width="1.2"/>
+          <circle cx="480" cy="240" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="552" y="100" font-weight="600" fill="#8A8A9A">MATCH CONFIDENCE</text>
+          <text x="552" y="142" font-family="Nunito, sans-serif" font-size="40" font-weight="800" fill="#10B981" letter-spacing="-0.02em">92<tspan font-size="22">%</tspan></text>
+          <!-- Mini confidence bar -->
+          <rect x="552" y="156" width="110" height="5" rx="2.5" fill="#E8E4DE"/>
+          <rect x="552" y="156" width="101" height="5" rx="2.5" fill="#10B981"/>
+
+          <!-- BOTTOM-LEFT: Alternatives -->
+          <line x1="220" y1="380" x2="90" y2="500" stroke="#123356" stroke-width="1.2"/>
+          <circle cx="220" cy="380" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="40" y="498" font-weight="600" fill="#8A8A9A">ALTERNATIVES</text>
+          <text x="40" y="525" font-family="Nunito, sans-serif" font-size="22" font-weight="800" fill="#123356" letter-spacing="-0.01em">3 ranked</text>
+          <!-- 3 dots representing ranked alternatives -->
+          <g transform="translate(40, 540)">
+            <rect x="0" y="0" width="34" height="5" rx="2.5" fill="#3B82F6"/>
+            <rect x="40" y="0" width="34" height="5" rx="2.5" fill="#F59E0B"/>
+            <rect x="80" y="0" width="34" height="5" rx="2.5" fill="#64748B"/>
+          </g>
+
+          <!-- BOTTOM-RIGHT: ISO coverage -->
+          <line x1="480" y1="380" x2="600" y2="500" stroke="#123356" stroke-width="1.2"/>
+          <circle cx="480" cy="380" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="552" y="498" font-weight="600" fill="#8A8A9A">ISO COVERAGE</text>
+          <g transform="translate(552, 510)" font-family="DM Mono, monospace" font-size="10" font-weight="700" letter-spacing="0.1em">
+            <rect x="0"  y="0" width="30" height="22" rx="11" fill="rgba(59,130,246,.14)" stroke="rgba(59,130,246,.3)"/>
+            <text x="9"  y="15" fill="#3B82F6">P</text>
+            <rect x="36" y="0" width="30" height="22" rx="11" fill="rgba(245,158,11,.14)" stroke="rgba(245,158,11,.3)"/>
+            <text x="44" y="15" fill="#F59E0B">M</text>
+            <rect x="72" y="0" width="30" height="22" rx="11" fill="#F5F2EE" stroke="#E8E4DE"/>
+            <text x="80" y="15" fill="#8A8A9A">K</text>
+          </g>
+
+          <!-- BOTTOM CENTER: Risk pill -->
+          <g transform="translate(280, 555)">
+            <rect width="142" height="32" rx="16" fill="#fff" stroke="rgba(245,158,11,0.45)" stroke-width="1.2"/>
+            <circle cx="20" cy="16" r="9" fill="rgba(245,158,11,0.18)"/>
+            <text x="20" y="20" font-family="Material Symbols Outlined" font-size="14" fill="#F59E0B" text-anchor="middle">⚠</text>
+            <text x="40" y="13" font-size="9" font-weight="600" fill="#8A8A9A">RISK</text>
+            <text x="40" y="25" font-family="DM Sans, sans-serif" font-size="12" font-weight="700" fill="#123356" letter-spacing="0">Verify chipbreaker</text>
+          </g>
+        </g>
+      </svg>
+
+      <!-- subtle reference label overlay -->
+      <div class="absolute top-0 right-0 font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant/70">REF · CNMG 120408-PM</div>
     </div>
-  </div>
-  <div class="hidden lg:block absolute right-16 bottom-24 z-10 pointer-events-none">
-    <div class="ta-chip bg-white rounded-xl border border-border-warm shadow-lg px-4 py-2.5 flex items-center gap-3" style="animation-delay:.4s">
-      <span class="material-symbols-outlined text-primary">compare_arrows</span>
-      <div>
-        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Alternatives</p>
-        <p class="font-bold text-primary text-sm leading-none">3 ranked</p>
-      </div>
-    </div>
-  </div>
-  <div class="hidden lg:block absolute right-44 bottom-10 z-10 pointer-events-none">
-    <div class="ta-chip bg-white rounded-xl border border-iso-m-amber/40 shadow-lg px-4 py-2.5 flex items-center gap-3" style="animation-delay:.55s">
-      <span class="material-symbols-outlined text-iso-m-amber">warning</span>
-      <div>
-        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Risk</p>
-        <p class="font-bold text-primary text-sm leading-none">Verify chipbreaker</p>
-      </div>
+
+    <!-- Mobile: simple summary chips -->
+    <div class="lg:hidden flex flex-wrap gap-2 -mt-2">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-border-warm text-xs font-medium text-on-surface-variant"><span class="material-symbols-outlined text-base text-iso-n-green">verified</span> 92% match confidence</span>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-border-warm text-xs font-medium text-on-surface-variant"><span class="material-symbols-outlined text-base text-iso-p-blue">category</span> ISO P / M</span>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-iso-m-amber/40 text-xs font-medium text-on-surface-variant"><span class="material-symbols-outlined text-base text-iso-m-amber">warning</span> Verify chipbreaker</span>
     </div>
   </div>
 </section>
 
 <!-- Advisor Wizard intro -->
 <section id="advisor" class="px-gutter py-16">
-  <div class="max-w-5xl">
+  <div class="max-w-5xl 2xl:max-w-6xl">
     <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-3">Decision Advisor</p>
     <h2 class="font-section-heading text-section-heading text-primary mb-3">Tell us the job. Get a defensible tool choice.</h2>
     <p class="text-on-surface-variant max-w-2xl mb-10">Four inputs. One recommendation with reasoning, alternatives, risk and confidence rating.</p>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm flex flex-col">
+    
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
         <div class="flex items-center justify-between mb-4">
           <span class="font-technical-data text-xs text-on-surface-variant">01</span>
           <span class="material-symbols-outlined text-iso-p-blue">category</span>
         </div>
         <h3 class="font-product-grade text-primary text-xl mb-2">Material</h3>
-        <p class="text-xs text-on-surface-variant mb-3">ISO group + grade or hardness</p>
-        <input id="ta-material" type="text" placeholder="e.g. 316L, 42CrMo4, GG25, Ti6Al4V" class="mt-auto w-full px-3 py-2 text-sm border border-border-warm rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" />
+        <p class="text-sm text-on-surface-variant leading-relaxed">ISO group + grade or hardness. e.g. 316L, 42CrMo4, GG25.</p>
       </div>
-
-      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm flex flex-col">
+    
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
         <div class="flex items-center justify-between mb-4">
           <span class="font-technical-data text-xs text-on-surface-variant">02</span>
           <span class="material-symbols-outlined text-iso-m-amber">precision_manufacturing</span>
         </div>
         <h3 class="font-product-grade text-primary text-xl mb-2">Operation</h3>
-        <p class="text-xs text-on-surface-variant mb-3">Type + strategy</p>
-        <div class="mt-auto space-y-2">
-          <select id="ta-operation" class="w-full px-3 py-2 text-sm border border-border-warm rounded-lg focus:ring-2 focus:ring-primary/20 outline-none bg-white">
-            <option value="">Select operation...</option>
-            <option>Turning – Roughing</option>
-            <option>Turning – Finishing</option>
-            <option>Turning – Semi-finishing</option>
-            <option>Milling – Roughing</option>
-            <option>Milling – Finishing</option>
-            <option>Drilling</option>
-            <option>Threading</option>
-            <option>Grooving / Parting</option>
-            <option>Boring</option>
-          </select>
-        </div>
+        <p class="text-sm text-on-surface-variant leading-relaxed">Turning, milling, drilling, threading. Roughing vs finishing.</p>
       </div>
-
-      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm flex flex-col">
+    
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
         <div class="flex items-center justify-between mb-4">
           <span class="font-technical-data text-xs text-on-surface-variant">03</span>
           <span class="material-symbols-outlined text-iso-k-red">tune</span>
         </div>
         <h3 class="font-product-grade text-primary text-xl mb-2">Constraints</h3>
-        <p class="text-xs text-on-surface-variant mb-3">Vc / feed / depth, rigidity, coolant</p>
-        <input id="ta-constraints" type="text" placeholder="e.g. no flood coolant, interrupted, unstable" class="mt-auto w-full px-3 py-2 text-sm border border-border-warm rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" />
+        <p class="text-sm text-on-surface-variant leading-relaxed">Vc / feed / depth limits, rigidity, interruption, coolant.</p>
       </div>
-
-      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm flex flex-col">
+    
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
         <div class="flex items-center justify-between mb-4">
           <span class="font-technical-data text-xs text-on-surface-variant">04</span>
           <span class="material-symbols-outlined text-iso-n-green">verified</span>
         </div>
         <h3 class="font-product-grade text-primary text-xl mb-2">Goal</h3>
-        <p class="text-xs text-on-surface-variant mb-3">Optimization priority</p>
-        <select id="ta-goal" class="mt-auto w-full px-3 py-2 text-sm border border-border-warm rounded-lg focus:ring-2 focus:ring-primary/20 outline-none bg-white">
-          <option value="">Select goal...</option>
-          <option>Productivity – highest MRR</option>
-          <option>Cost per edge – lowest tooling cost</option>
-          <option>Tool life – longest edge life</option>
-          <option>Safest bet – reliable, proven choice</option>
-          <option>Surface finish – best Ra result</option>
-        </select>
+        <p class="text-sm text-on-surface-variant leading-relaxed">Productivity, cost-per-edge, tool life, or safest bet.</p>
       </div>
-
+    
   </div>
 
   <div class="mt-10 flex flex-wrap gap-3">
-    <button id="ta-run-btn" onclick="runAdvisor()" class="bg-primary text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0">
-      <span class="material-symbols-outlined" id="ta-btn-icon">auto_awesome</span>
-      <span id="ta-btn-label">Run the Advisor</span>
-    </button>
-    <button onclick="loadSampleOutput()" class="bg-white text-primary border border-border-warm font-medium px-6 py-3 rounded-xl hover:bg-surface-container-low transition-all">See sample output</button>
+    <button class="bg-primary text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 hover:-translate-y-0.5 transition-all"><span class="material-symbols-outlined">arrow_forward</span> Run the Advisor</button>
+    <button class="bg-white text-primary border border-border-warm font-medium px-6 py-3 rounded-xl hover:bg-surface-container-low transition-all">See sample output</button>
   </div>
 
   <!-- Advisor result preview -->
-  <div id="ta-result-panel" class="mt-12 bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hidden"></div>
-
-  <!-- Sample output (hidden by default, shown via button) -->
-  <div id="ta-sample-panel" class="mt-12 bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hidden">
+  <div class="mt-12 bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden">
     <div class="px-6 py-4 border-b border-border-warm flex items-center justify-between bg-surface-container-low">
       <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant">Sample advisor output — 316L stainless · finishing turn · stable setup · cost-balanced</p>
       <span class="px-2.5 py-1 rounded-full bg-iso-n-green/15 text-iso-n-green font-bold text-[10px] tracking-widest">EXAMPLE</span>
@@ -503,161 +378,5 @@
 <button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-transform z-50 group">
 <span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform">add</span>
 </button>
-<script>
-// ToolAdvisor — AI Advisor Wire-up
-const SYSTEM_PROMPT = `You are ToolAdvisor, a brand-neutral cutting tool selection expert with deep knowledge of ISO turning/milling/drilling inserts and grades from Sandvik, ISCAR, Kennametal, Walter, Mitsubishi, Tungaloy, Seco, Kyocera, Gühring, OSG.
-
-Given material, operation, constraints, and goal, respond ONLY with valid JSON in exactly this format (no markdown, no backticks, no preamble):
-{
-  "iso_group": "P",
-  "summary": "One sentence explaining the recommendation logic.",
-  "recommended": {
-    "insert_code": "CNMG120408-MF",
-    "brand": "Sandvik Coromant",
-    "grade": "GC4325",
-    "confidence": 91,
-    "reasons": ["reason 1", "reason 2", "reason 3"],
-    "warnings": ["warning if any, else empty array"],
-    "vc_range": "220–300 m/min",
-    "feed_range": "0.20–0.35 mm/rev",
-    "ap_range": "1.5–4.0 mm"
-  },
-  "alternatives": [
-    {"insert_code": "CNMG120408-QM", "brand": "ISCAR", "grade": "IC8250", "confidence": 87},
-    {"insert_code": "CNMG120408", "brand": "Kennametal", "grade": "KC5010", "confidence": 83},
-    {"insert_code": "CNMG120408-TF", "brand": "Mitsubishi", "grade": "MC6025", "confidence": 79}
-  ]
-}`;
-
-const ISO_COLORS = {P:'#3B82F6',M:'#F59E0B',K:'#EF4444',N:'#10B981',S:'#F97316',H:'#64748B'};
-
-async function runAdvisor() {
-  const material = document.getElementById('ta-material').value.trim();
-  const operation = document.getElementById('ta-operation').value;
-  const constraints = document.getElementById('ta-constraints').value.trim();
-  const goal = document.getElementById('ta-goal').value;
-
-  if (!material || !operation || !goal) {
-    alert('Fill in Material, Operation, and Goal to continue.');
-    return;
-  }
-
-  const btn = document.getElementById('ta-run-btn');
-  const icon = document.getElementById('ta-btn-icon');
-  const label = document.getElementById('ta-btn-label');
-  btn.disabled = true;
-  icon.classList.add('animate-spin');
-  label.textContent = 'Analysing…';
-
-  const panel = document.getElementById('ta-result-panel');
-  panel.classList.remove('hidden');
-  panel.innerHTML = `<div class="p-8 flex items-center gap-4 text-on-surface-variant">
-    <span class="material-symbols-outlined animate-spin text-primary">sync</span>
-    <span class="font-technical-data text-sm">Running advisor — ISO classification · grade match · alternatives…</span>
-  </div>`;
-  document.getElementById('ta-sample-panel').classList.add('hidden');
-  panel.scrollIntoView({behavior:'smooth', block:'start'});
-
-  const userMessage = `Material: ${material}
-Operation: ${operation}
-Constraints: ${constraints || 'none specified'}
-Goal: ${goal}`;
-
-  try {
-    const res = await fetch('/api/claude', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1024,
-        system: SYSTEM_PROMPT,
-        messages: [{role:'user', content: userMessage}]
-      })
-    });
-
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.error || `HTTP ${res.status}`);
-    }
-
-    const data = await res.json();
-    const text = data.content?.[0]?.text || '';
-    const clean = text.replace(/```json|```/g,'').trim();
-    const result = JSON.parse(clean);
-    renderResult(result, material, operation, goal);
-  } catch (e) {
-    panel.innerHTML = `<div class="p-8">
-      <div class="flex items-center gap-3 text-error mb-2">
-        <span class="material-symbols-outlined">error</span>
-        <span class="font-bold">Advisor error</span>
-      </div>
-      <p class="text-sm text-on-surface-variant">${e.message}</p>
-      <p class="text-xs text-on-surface-variant mt-3">Check that ANTHROPIC_API_KEY is set in Netlify environment variables.</p>
-    </div>`;
-  } finally {
-    btn.disabled = false;
-    icon.classList.remove('animate-spin');
-    icon.textContent = 'auto_awesome';
-    label.textContent = 'Run the Advisor';
-  }
-}
-
-function renderResult(r, material, operation, goal) {
-  const isoColor = ISO_COLORS[r.iso_group] || '#123356';
-  const confColor = r.recommended.confidence >= 90 ? '#10B981' : r.recommended.confidence >= 80 ? '#F59E0B' : '#EF4444';
-  const reasonsHtml = r.recommended.reasons.map(x =>
-    `<li class="flex gap-2"><span class="material-symbols-outlined text-base mt-0.5" style="color:#10B981">check_circle</span> ${x}</li>`).join('');
-  const warningsHtml = r.recommended.warnings.filter(Boolean).map(x =>
-    `<li class="flex gap-2"><span class="material-symbols-outlined text-base mt-0.5" style="color:#F59E0B">warning</span> ${x}</li>`).join('');
-  const altsHtml = r.alternatives.map(a => `
-    <div class="flex items-center justify-between p-3 rounded-lg border border-border-warm">
-      <div><p class="font-bold text-primary text-sm">${a.insert_code}</p><p class="text-xs text-on-surface-variant">${a.brand} · ${a.grade}</p></div>
-      <span class="font-technical-data text-sm text-primary font-bold">${a.confidence}%</span>
-    </div>`).join('');
-
-  const cuttingData = r.recommended.vc_range ? `
-    <div class="mt-6 pt-5 border-t border-border-warm grid grid-cols-3 gap-4">
-      <div><p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Vc range</p><p class="font-bold text-primary text-sm">${r.recommended.vc_range}</p></div>
-      <div><p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Feed (fn/fz)</p><p class="font-bold text-primary text-sm">${r.recommended.feed_range}</p></div>
-      <div><p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Depth (ap)</p><p class="font-bold text-primary text-sm">${r.recommended.ap_range}</p></div>
-    </div>` : '';
-
-  document.getElementById('ta-result-panel').innerHTML = `
-    <div class="px-6 py-4 border-b border-border-warm flex items-center justify-between bg-surface-container-low">
-      <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant">${material} · ${operation} · ${goal}</p>
-      <span class="px-2.5 py-1 rounded-full font-bold text-[10px] tracking-widest text-white" style="background:${isoColor}">ISO ${r.iso_group}</span>
-    </div>
-    <div class="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div class="lg:col-span-1">
-        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Recommended</p>
-        <p class="font-product-grade text-primary text-xl mb-1">${r.recommended.insert_code}</p>
-        <p class="font-technical-data text-sm text-on-surface-variant mb-4">${r.recommended.brand} · ${r.recommended.grade}</p>
-        <div class="flex items-end gap-3 mb-4">
-          <p class="font-display-hero text-4xl text-primary">${r.recommended.confidence}%</p>
-          <p class="text-xs uppercase tracking-widest text-on-surface-variant font-technical-data pb-2">confidence</p>
-        </div>
-        <div class="w-full h-2 rounded-full bg-surface-container-low overflow-hidden">
-          <div class="h-full" style="width:${r.recommended.confidence}%;background:${confColor}"></div>
-        </div>
-        <p class="text-xs text-on-surface-variant mt-4 leading-relaxed">${r.summary}</p>
-        ${cuttingData}
-      </div>
-      <div class="lg:col-span-1">
-        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Why this fits</p>
-        <ul class="space-y-2.5 text-sm text-on-surface">${reasonsHtml}${warningsHtml}</ul>
-      </div>
-      <div class="lg:col-span-1">
-        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Ranked alternatives</p>
-        <div class="space-y-2">${altsHtml}</div>
-        <a href="cross-reference.html" class="mt-4 inline-flex items-center gap-1 text-primary font-bold text-sm hover:gap-2 transition-all">Cross-reference all <span class="material-symbols-outlined text-base">arrow_forward</span></a>
-      </div>
-    </div>`;
-}
-
-function loadSampleOutput() {
-  document.getElementById('ta-sample-panel').classList.toggle('hidden');
-  document.getElementById('ta-result-panel').classList.add('hidden');
-}
-</script>
 <script src="page-switcher.js"></script>
 </body></html>

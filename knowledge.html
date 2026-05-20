@@ -3,191 +3,19 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script defer data-domain="tooladvisor.eu" src="https://plausible.io/js/script.js"></script>
+<script src="tw-config.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=Nunito:ital,wght@0,200..1000;1,200..1000&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-primary-fixed": "#001c38",
-                    "on-tertiary-container": "#b8b8b6",
-                    "sidebar-bg": "#F5F2EE",
-                    "tertiary-fixed-dim": "#c7c6c5",
-                    "iso-m-amber": "#F59E0B",
-                    "on-error-container": "#93000a",
-                    "on-secondary-fixed-variant": "#594312",
-                    "secondary": "#735b28",
-                    "surface-container-low": "#f4f3f6",
-                    "skeleton-shimmer": "#F0EDE8",
-                    "glass-backdrop": "rgba(26, 26, 46, 0.5)",
-                    "inverse-surface": "#2f3033",
-                    "surface": "#faf9fc",
-                    "iso-n-green": "#10B981",
-                    "surface-container": "#eeedf1",
-                    "primary": "#123356",
-                    "on-background": "#1a1c1e",
-                    "secondary-container": "#fedb9c",
-                    "iso-p-blue": "#3B82F6",
-                    "primary-fixed": "#d3e4ff",
-                    "surface-tint": "#436085",
-                    "secondary-fixed-dim": "#e3c285",
-                    "border-warm": "#E8E4DE",
-                    "surface-variant": "#e3e2e5",
-                    "outline-variant": "#c3c6cf",
-                    "on-error": "#ffffff",
-                    "on-tertiary-fixed-variant": "#464746",
-                    "inverse-on-surface": "#f1f0f4",
-                    "tertiary-container": "#484948",
-                    "tertiary-fixed": "#e3e2e0",
-                    "surface-container-highest": "#e3e2e5",
-                    "on-surface": "#1a1c1e",
-                    "error-container": "#ffdad6",
-                    "on-tertiary-fixed": "#1a1c1b",
-                    "surface-container-lowest": "#ffffff",
-                    "iso-h-slate": "#64748B",
-                    "iso-k-red": "#EF4444",
-                    "ink-text": "#1A1A2E",
-                    "on-surface-variant": "#43474e",
-                    "surface-dim": "#dad9dd",
-                    "on-secondary": "#ffffff",
-                    "tertiary": "#313332",
-                    "primary-container": "#2c4a6e",
-                    "surface-container-high": "#e9e8eb",
-                    "outline": "#73777f",
-                    "surface-card": "#FFFFFF",
-                    "on-secondary-container": "#785f2b",
-                    "surface-bright": "#faf9fc",
-                    "on-tertiary": "#ffffff",
-                    "iso-s-orange": "#F97316",
-                    "on-primary": "#ffffff",
-                    "error": "#ba1a1a",
-                    "on-secondary-fixed": "#261900",
-                    "inverse-primary": "#abc9f3",
-                    "secondary-fixed": "#ffdea3",
-                    "primary-fixed-dim": "#abc9f3",
-                    "on-primary-container": "#9cbae4",
-                    "background": "#faf9fc",
-                    "on-primary-fixed-variant": "#2a486c"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "gutter": "24px",
-                    "card-padding": "20px",
-                    "sidebar-width": "260px",
-                    "container-margin": "32px",
-                    "stack-gap-lg": "24px",
-                    "stack-gap-sm": "8px",
-                    "stack-gap-md": "16px"
-            },
-            "fontFamily": {
-                    "label-caps": ["DM Sans"],
-                    "nav-item": ["Nunito"],
-                    "section-heading": ["Nunito"],
-                    "technical-data": ["DM Mono"],
-                    "body-md": ["DM Sans"],
-                    "body-lg": ["DM Sans"],
-                    "product-grade": ["Nunito"],
-                    "display-hero": ["Nunito"]
-            },
-            "fontSize": {
-                    "label-caps": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.06em", "fontWeight": "600"}],
-                    "nav-item": ["15px", {"lineHeight": "1.0", "fontWeight": "500"}],
-                    "section-heading": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
-                    "technical-data": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
-                    "body-md": ["17px", {"lineHeight": "1.7", "fontWeight": "400"}],
-                    "body-lg": ["19px", {"lineHeight": "1.7", "fontWeight": "400"}],
-                    "product-grade": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                    "display-hero": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
-            }
-          },
-        },
-      }
-    </script>
-<style>
-        .perspective-1000 { perspective: 1000px; }
-        .rotate-y-15 { transform: rotateY(15deg) rotateX(5deg); }
-        .ambient-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
-        .elevated-shadow:hover { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); transform: translateY(-4px); }
-        .glass-panel { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(232, 228, 222, 0.5); }
-    </style>
 <link rel="stylesheet" href="polish.css"/>
 </head>
 <body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
 <!-- Sidebar Navigation -->
-<aside class="h-screen w-sidebar-width fixed left-0 top-0 flex flex-col py-container-margin bg-sidebar-bg border-r border-border-warm z-50">
-<div class="px-6 mb-10">
-<h1 class="font-section-heading text-section-heading text-primary">ToolAdvisor</h1>
-<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">PRECISION INTELLIGENCE</p>
-</div>
-<nav class="flex-1 space-y-1">
-<a class="flex items-center px-6 py-3 text-on-surface-variant font-nav-item text-nav-item hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3">precision_manufacturing</span> ISO P Steel
-            </a>
-<a class="flex items-center px-6 py-3 text-primary font-bold border-l-4 border-iso-m-amber bg-surface-container-lowest font-nav-item text-nav-item" href="#">
-<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">layers</span> ISO M Stainless
-            </a>
-<a class="flex items-center px-6 py-3 text-on-surface-variant font-nav-item text-nav-item hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3">architecture</span> ISO K Cast Iron
-            </a>
-<a class="flex items-center px-6 py-3 text-on-surface-variant font-nav-item text-nav-item hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3">category</span> ISO N Non-Ferrous
-            </a>
-<a class="flex items-center px-6 py-3 text-on-surface-variant font-nav-item text-nav-item hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3">settings_suggest</span> ISO S Superalloys
-            </a>
-<a class="flex items-center px-6 py-3 text-on-surface-variant font-nav-item text-nav-item hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3">diamond</span> ISO H Hardened
-            </a>
-</nav>
-<div class="px-6 mt-auto">
-<div class="p-4 bg-primary-container rounded-xl text-on-primary-container mb-6">
-<p class="font-label-caps text-[11px] mb-2">ENGINEERING SUITE</p>
-<p class="font-bold text-sm mb-3">Upgrade to Pro</p>
-<button class="w-full py-2 bg-surface-container-lowest text-primary rounded-lg font-bold text-xs hover:bg-white transition-colors">Upgrade to Pro</button>
-</div>
-<div class="space-y-2">
-<a class="flex items-center text-on-surface-variant text-sm hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-lg mr-2">help</span> Help Center
-                </a>
-<a class="flex items-center text-on-surface-variant text-sm hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-lg mr-2">description</span> Documentation
-                </a>
-</div>
-</div>
-</aside>
 <!-- Main Canvas -->
 <main class="ml-sidebar-width min-h-screen">
 <!-- Top Navigation -->
-<header class="flex justify-between items-center w-full px-gutter h-16 bg-surface shadow-sm sticky top-0 z-40">
-<div class="flex items-center">
-<div class="relative group">
-<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-on-surface-variant">
-<span class="material-symbols-outlined text-lg">search</span>
-</span>
-<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 w-64 focus:ring-2 focus:ring-primary/20 font-body-md text-sm" placeholder="Search guides..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
-<span class="material-symbols-outlined">notifications</span>
-</button>
-<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
-<span class="material-symbols-outlined">settings</span>
-</button>
-<div class="h-8 w-8 rounded-full overflow-hidden border border-border-warm">
-<img alt="Machinist profile" data-alt="A professional CNC machinist wearing industrial safety gear and a focused expression, photographed in a high-tech workshop setting with soft, cinematic industrial lighting that highlights the precision and clean aesthetic of modern Swiss engineering facilities." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcXgytiZlRwNxlkxksriAMr4oJyE8f79AOXhsf6N8sob14g54KPz4tuTA7n8mMW5vef0Zo-kkqmEMugcmDnpM8o5iTK17o1Sl4xVjo8dVD8qA5DY4xgon3gI89mfHUlZ01e3ZVvZCahhfHLqD9qFCCnLUMiEHdNjM0yZfejORbDvSxu--w2DTA0FXf7ola_X59sG8tjqqBpbvOELiqB7GCytTDKfTG8t_VE_VFGI13RHJ78g70EmmPrv57L-3TKNsSrPbq59CA0z4"/>
-</div>
-</div>
-</header>
 <!-- Knowledge index -->
 <div class="max-w-6xl mx-auto px-gutter py-container-margin">
   <nav class="flex items-center gap-2 mb-8 font-label-caps text-label-caps text-on-surface-variant">
@@ -225,113 +53,443 @@
     </div>
   </div>
 
-  <!-- Topic grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    
-      <a href="#" class="bg-white rounded-2xl p-7 border border-border-warm card-shadow hover:-translate-y-1 transition-all group">
-        <div class="flex items-center justify-between mb-4">
-          <span class="font-technical-data text-xs text-on-surface-variant">01</span>
-          <span class="text-[10px] uppercase tracking-widest text-primary font-bold px-2.5 py-1 rounded-full bg-primary/5 border border-primary/10">Fundamentals</span>
+  <!-- Featured guide -->
+  <a href="#" class="block bg-gradient-to-br from-primary via-primary-container to-primary text-white rounded-3xl overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all relative mb-8">
+    <!-- decorative glow -->
+    <div class="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-iso-m-amber/20 blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-10 -bottom-10 w-72 h-72 rounded-full bg-iso-p-blue/15 blur-3xl pointer-events-none"></div>
+    <div class="relative grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 p-8 lg:p-12 xl:p-14 items-center">
+      <!-- Copy -->
+      <div>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-iso-m-amber text-primary font-bold text-[10px] uppercase tracking-widest mb-6">
+          <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;">auto_awesome</span> Start here
+        </span>
+        <h2 class="font-display-hero text-3xl lg:text-4xl xl:text-[44px] mb-4 leading-[1.05] tracking-[-0.02em]">How to choose turning inserts.</h2>
+        <p class="text-blue-100/90 text-lg leading-relaxed mb-6 max-w-md">A decision tree from material to insert geometry, grade and chipbreaker. The fastest path from job spec to a defensible tool choice.</p>
+        <div class="flex flex-wrap items-center gap-3 mb-8">
+          <span class="font-technical-data text-xs uppercase tracking-widest text-blue-100/70">8 min read</span>
+          <span class="w-1 h-1 rounded-full bg-blue-100/40"></span>
+          <span class="font-technical-data text-xs uppercase tracking-widest text-blue-100/70">Fundamentals</span>
         </div>
-        <h3 class="font-product-grade text-primary text-xl mb-2 leading-tight group-hover:translate-x-1 transition-transform">How to choose turning inserts</h3>
-        <p class="text-sm text-on-surface-variant leading-relaxed mb-4">A decision tree from material to insert geometry, grade and chipbreaker.</p>
-        <div class="flex items-center justify-between pt-4 border-t border-border-warm">
-          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">8 min read</span>
-          <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Read <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+        <div class="inline-flex items-center gap-2 bg-iso-m-amber text-primary px-6 py-3 rounded-xl font-bold text-sm group-hover:gap-3 transition-all">
+          Start guide <span class="material-symbols-outlined">arrow_forward</span>
         </div>
-      </a>
-    
-      <a href="#" class="bg-white rounded-2xl p-7 border border-border-warm card-shadow hover:-translate-y-1 transition-all group">
-        <div class="flex items-center justify-between mb-4">
+      </div>
+      <!-- Decision tree SVG -->
+      <div class="hidden lg:block">
+        <svg viewBox="0 0 420 320" class="w-full h-auto" aria-hidden="true">
+          <defs>
+            <linearGradient id="kn-node-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fff" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#fff" stop-opacity="0.08"/>
+            </linearGradient>
+          </defs>
+          <!-- connector lines -->
+          <g stroke="rgba(255,255,255,0.35)" stroke-width="1.5" fill="none">
+            <path d="M 90,55 L 90,120 L 200,120"/>
+            <path d="M 90,120 L 200,170"/>
+            <path d="M 200,120 L 320,90"/>
+            <path d="M 200,120 L 320,150"/>
+            <path d="M 200,170 L 320,200"/>
+            <path d="M 200,170 L 320,250"/>
+          </g>
+          <!-- nodes -->
+          <g font-family="DM Sans, sans-serif">
+            <!-- Material -->
+            <rect x="20" y="20" width="140" height="62" rx="14" fill="url(#kn-node-bg)" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+            <text x="34" y="44" font-size="10" fill="rgba(255,255,255,0.65)" font-family="DM Mono, monospace" letter-spacing="0.12em">01 · INPUT</text>
+            <text x="34" y="68" font-size="16" fill="#fff" font-weight="700">Material</text>
+            <!-- Operation -->
+            <rect x="130" y="95" width="140" height="62" rx="14" fill="url(#kn-node-bg)" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+            <text x="144" y="119" font-size="10" fill="rgba(255,255,255,0.65)" font-family="DM Mono, monospace" letter-spacing="0.12em">02 · INPUT</text>
+            <text x="144" y="143" font-size="16" fill="#fff" font-weight="700">Operation</text>
+            <!-- Geometry -->
+            <rect x="130" y="148" width="140" height="62" rx="14" fill="url(#kn-node-bg)" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+            <text x="144" y="172" font-size="10" fill="rgba(255,255,255,0.65)" font-family="DM Mono, monospace" letter-spacing="0.12em">03 · DERIVE</text>
+            <text x="144" y="196" font-size="16" fill="#fff" font-weight="700">Geometry</text>
+            <!-- Outputs -->
+            <rect x="260" y="68" width="140" height="44" rx="11" fill="#F59E0B" opacity="0.95"/>
+            <text x="276" y="95" font-size="13" fill="#123356" font-weight="700">Insert · CNMG</text>
+            <rect x="260" y="128" width="140" height="44" rx="11" fill="rgba(245,158,11,0.5)" stroke="rgba(245,158,11,0.7)"/>
+            <text x="276" y="155" font-size="13" fill="#fff" font-weight="700">Grade · GC4325</text>
+            <rect x="260" y="180" width="140" height="44" rx="11" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.35)"/>
+            <text x="276" y="207" font-size="13" fill="#fff" font-weight="600">Chipbreaker · PM</text>
+            <rect x="260" y="232" width="140" height="44" rx="11" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)"/>
+            <text x="276" y="259" font-size="13" fill="rgba(255,255,255,0.85)" font-weight="600">Vc · feed · depth</text>
+          </g>
+          <!-- accent dots on connectors -->
+          <g fill="#F59E0B">
+            <circle cx="200" cy="120" r="3"/>
+            <circle cx="200" cy="170" r="3"/>
+            <circle cx="90" cy="120" r="3"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <!-- Interactive insert code decoder -->
+  <div class="bg-white rounded-3xl border border-border-warm card-shadow p-8 lg:p-10 mb-10" id="insert-decoder">
+    <div class="flex flex-wrap items-end justify-between gap-3 mb-2">
+      <div>
+        <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Interactive · click any segment</p>
+        <h2 class="font-section-heading text-2xl text-primary">Decode an insert code.</h2>
+      </div>
+      <p class="text-xs text-on-surface-variant font-medium">ISO 1832 turning-insert designation</p>
+    </div>
+
+    <!-- Code blocks -->
+    <div class="ic-blocks my-8" role="tablist" aria-label="Insert code segments">
+      <button data-pos="0" class="ic-block active" role="tab" aria-selected="true">C</button>
+      <button data-pos="1" class="ic-block" role="tab" aria-selected="false">N</button>
+      <button data-pos="2" class="ic-block" role="tab" aria-selected="false">M</button>
+      <button data-pos="3" class="ic-block" role="tab" aria-selected="false">G</button>
+      <span class="ic-sep">·</span>
+      <button data-pos="4" class="ic-block" role="tab" aria-selected="false">12</button>
+      <button data-pos="5" class="ic-block" role="tab" aria-selected="false">04</button>
+      <button data-pos="6" class="ic-block" role="tab" aria-selected="false">08</button>
+      <span class="ic-sep">–</span>
+      <button data-pos="7" class="ic-block" role="tab" aria-selected="false">PM</button>
+    </div>
+
+    <!-- Explanation panel -->
+    <div class="bg-surface-container-low rounded-2xl p-6 border border-border-warm grid lg:grid-cols-[1fr_auto] gap-6 items-start" id="ic-panel">
+      <div>
+        <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-2"><span id="ic-position">Position 1</span> · <span id="ic-name">Shape</span></p>
+        <h3 class="font-product-grade text-2xl text-primary mb-3" id="ic-value">C — 80° rhombic</h3>
+        <p class="text-sm text-on-surface leading-relaxed mb-4" id="ic-detail">The first letter encodes the insert outline. 80° rhomb (C) is the most common for general turning — strong, with 2 usable cutting edges per side.</p>
+        <p class="text-xs text-on-surface-variant"><span id="ic-options" class="font-technical-data uppercase tracking-widest">Other options: C · D · S · T · V · W · R</span></p>
+      </div>
+      <!-- Visual aid (changes per position) -->
+      <div class="flex items-center justify-center w-full lg:w-[140px] h-[140px] bg-white rounded-2xl border border-border-warm shrink-0" id="ic-visual" aria-hidden="true">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Position scale -->
+    <div class="mt-4 flex flex-wrap gap-1.5" aria-hidden="true">
+      <span class="ic-position-label">SHAPE</span>
+      <span class="ic-position-label">CLEAR.</span>
+      <span class="ic-position-label">TOL.</span>
+      <span class="ic-position-label">HOLE</span>
+      <span class="ic-sep ic-position-label"></span>
+      <span class="ic-position-label">SIZE</span>
+      <span class="ic-position-label">THICK.</span>
+      <span class="ic-position-label">NOSE</span>
+      <span class="ic-sep ic-position-label"></span>
+      <span class="ic-position-label">BREAKER</span>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    const DATA = [
+      { name: 'Shape',           value: 'C — 80° rhombic',                 detail: 'The first letter encodes the insert outline. 80° rhomb (C) is the most common for general turning — strong, with 2 usable cutting edges per side.', options: 'C · D · S · T · V · W · R',
+        svg: '<svg viewBox="0 0 100 100"><path d="M 50,8 L 86,50 L 50,92 L 14,50 Z" fill="rgba(18,51,86,0.12)" stroke="#123356" stroke-width="2"/><circle cx="50" cy="50" r="6" fill="#fff" stroke="#123356"/></svg>' },
+      { name: 'Clearance angle', value: 'N — 0° (negative)',                detail: 'Second letter is the side clearance angle. N = 0° (negative) — used in heavy-duty turning with rigid setup. Positive clearances (P=11°, B=5°) are gentler on the workpiece.', options: 'A · B · C · D · E · F · G · N · P',
+        svg: '<svg viewBox="0 0 100 100"><rect x="25" y="20" width="50" height="60" fill="rgba(18,51,86,0.12)" stroke="#123356" stroke-width="2"/><line x1="25" y1="20" x2="25" y2="80" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="3 2"/><text x="50" y="95" font-size="10" font-family="DM Mono, monospace" fill="#43474e" text-anchor="middle">0°</text></svg>' },
+      { name: 'Tolerance',       value: 'M — ±0.08 mm class',               detail: 'Third letter is the manufacturing tolerance class. M is the standard medium tolerance — sufficient for most production work. Use G (tighter) for finishing or U (looser) for roughing.', options: 'A · B · C · D · E · F · G · H · K · L · M · U',
+        svg: '<svg viewBox="0 0 100 100"><rect x="15" y="40" width="70" height="20" fill="rgba(18,51,86,0.08)" stroke="#123356" stroke-width="1" stroke-dasharray="3 2"/><rect x="20" y="44" width="60" height="12" fill="#123356"/><text x="50" y="80" font-size="11" font-weight="700" font-family="DM Mono, monospace" fill="#123356" text-anchor="middle">±0.08</text></svg>' },
+      { name: 'Hole &amp; chipbreaker', value: 'G — through hole, chipbreaker both faces', detail: 'Fourth letter encodes mounting hole and chipbreaker presence. G means cylindrical through hole + chipbreaker on both faces — the most common production configuration.', options: 'A · F · G · H · M · N · Q · R · T · U · W',
+        svg: '<svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" rx="6" fill="rgba(18,51,86,0.10)" stroke="#123356" stroke-width="2"/><circle cx="50" cy="50" r="11" fill="#fff" stroke="#123356" stroke-width="2"/><rect x="25" y="46" width="50" height="3" fill="#F59E0B" opacity="0.6"/></svg>' },
+      { name: 'Size — IC',       value: '12 mm inscribed circle',           detail: 'Fifth pair is the inscribed circle (IC) diameter — proxy for insert size. 12 mm is a balanced size for general turning. Larger IC = more strength but bigger nose radius and more cost.', options: '09 · 12 · 16 · 19 · 25 · …',
+        svg: '<svg viewBox="0 0 100 100"><path d="M 50,8 L 86,50 L 50,92 L 14,50 Z" fill="rgba(59,130,246,0.10)" stroke="#3B82F6" stroke-width="2"/><circle cx="50" cy="50" r="36" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="3 3"/><line x1="50" y1="50" x2="86" y2="50" stroke="#3B82F6" stroke-width="1.5"/><text x="68" y="48" font-size="9" font-family="DM Mono, monospace" fill="#3B82F6" font-weight="700" text-anchor="middle">12</text></svg>' },
+      { name: 'Thickness',       value: '4.76 mm (\'04\' code)',            detail: 'Sixth pair encodes insert thickness in tenths of a mm with first-digit special rules. \'04\' → 4.76 mm. Affects max depth of cut and rigidity. Thicker = sturdier but heavier on tooling.', options: '02 · 03 · 04 · 06 · 09 · …',
+        svg: '<svg viewBox="0 0 100 100"><rect x="20" y="30" width="60" height="40" fill="rgba(18,51,86,0.10)" stroke="#123356" stroke-width="2"/><line x1="80" y1="30" x2="90" y2="30" stroke="#123356" stroke-width="1"/><line x1="80" y1="70" x2="90" y2="70" stroke="#123356" stroke-width="1"/><line x1="86" y1="32" x2="86" y2="68" stroke="#F59E0B" stroke-width="2"/><text x="50" y="86" font-size="11" font-family="DM Mono, monospace" fill="#123356" font-weight="700" text-anchor="middle">4.76</text></svg>' },
+      { name: 'Nose radius',     value: '0.8 mm (\'08\' code)',             detail: 'Seventh pair is the corner nose radius in 0.1 mm units. \'08\' → 0.8 mm. Larger radius = better surface finish but higher cutting force and vibration risk on thin-wall parts.', options: '02 · 04 · 08 · 12 · 16 · …',
+        svg: '<svg viewBox="0 0 100 100"><path d="M 50,8 L 86,50 L 50,92 L 14,50 Z" fill="rgba(18,51,86,0.08)" stroke="#123356" stroke-width="1.5"/><circle cx="50" cy="8" r="10" fill="none" stroke="#F59E0B" stroke-width="2.5"/><text x="76" y="20" font-size="11" font-family="DM Mono, monospace" fill="#F59E0B" font-weight="700">0.8</text></svg>' },
+      { name: 'Chipbreaker code',value: 'PM — finishing, P/M groups',       detail: 'After the dash is the manufacturer chipbreaker family. PM is a precision/medium chipbreaker for finishing P-group steels and M-group stainless. Brand-specific.', options: 'PF · PM · PR · MM · MR · NF · …',
+        svg: '<svg viewBox="0 0 100 100"><path d="M 50,15 L 80,50 L 50,85 L 20,50 Z" fill="rgba(245,158,11,0.10)" stroke="#F59E0B" stroke-width="2"/><path d="M 50,30 Q 60,40 70,42 Q 60,50 50,48 Q 40,50 30,42 Q 40,40 50,30 Z" fill="none" stroke="#F59E0B" stroke-width="1.5"/><circle cx="50" cy="50" r="5" fill="#fff" stroke="#F59E0B" stroke-width="1.5"/></svg>' }
+    ];
+
+    const blocks = document.querySelectorAll('#insert-decoder .ic-block');
+    const elPos = document.getElementById('ic-position');
+    const elName = document.getElementById('ic-name');
+    const elValue = document.getElementById('ic-value');
+    const elDetail = document.getElementById('ic-detail');
+    const elOptions = document.getElementById('ic-options');
+    const elVisual = document.getElementById('ic-visual');
+
+    function update(i) {
+      blocks.forEach(b => {
+        const on = +b.dataset.pos === i;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', on);
+      });
+      const d = DATA[i];
+      elPos.textContent = 'Position ' + (i + 1);
+      elName.innerHTML = d.name;
+      elValue.textContent = d.value;
+      elDetail.textContent = d.detail;
+      elOptions.textContent = 'Other options: ' + d.options;
+      elVisual.innerHTML = d.svg;
+    }
+
+    blocks.forEach(b => {
+      b.addEventListener('click', () => update(+b.dataset.pos));
+      b.addEventListener('keydown', (e) => {
+        const i = +b.dataset.pos;
+        if (e.key === 'ArrowRight' && i < DATA.length - 1) {
+          update(i + 1);
+          blocks[i + 1].focus();
+        } else if (e.key === 'ArrowLeft' && i > 0) {
+          update(i - 1);
+          blocks[i - 1].focus();
+        }
+      });
+    });
+    update(0);
+  })();
+  </script>
+
+  <!-- Remaining topics in 3-col grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+    <!-- 02. ISO material groups -->
+    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+      <div class="h-28 bg-gradient-to-br from-surface-container-low to-border-warm/40 flex items-center justify-center px-6">
+        <svg viewBox="0 0 240 60" class="w-full h-auto max-w-[220px]" aria-hidden="true">
+          <g font-family="DM Mono, monospace" font-size="14" font-weight="700">
+            <rect x="0"   y="10" width="36" height="40" rx="8" fill="rgba(59,130,246,0.18)"  stroke="#3B82F6"/>
+            <text x="11"  y="36" fill="#3B82F6">P</text>
+            <rect x="42"  y="10" width="36" height="40" rx="8" fill="rgba(245,158,11,0.18)"  stroke="#F59E0B"/>
+            <text x="54"  y="36" fill="#F59E0B">M</text>
+            <rect x="84"  y="10" width="36" height="40" rx="8" fill="rgba(239,68,68,0.18)"   stroke="#EF4444"/>
+            <text x="96"  y="36" fill="#EF4444">K</text>
+            <rect x="126" y="10" width="36" height="40" rx="8" fill="rgba(16,185,129,0.18)"  stroke="#10B981"/>
+            <text x="138" y="36" fill="#10B981">N</text>
+            <rect x="168" y="10" width="36" height="40" rx="8" fill="rgba(249,115,22,0.18)"  stroke="#F97316"/>
+            <text x="180" y="36" fill="#F97316">S</text>
+            <rect x="210" y="10" width="36" height="40" rx="8" fill="rgba(100,116,139,0.18)" stroke="#64748B"/>
+            <text x="222" y="36" fill="#64748B">H</text>
+          </g>
+        </svg>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-3">
           <span class="font-technical-data text-xs text-on-surface-variant">02</span>
           <span class="text-[10px] uppercase tracking-widest text-primary font-bold px-2.5 py-1 rounded-full bg-primary/5 border border-primary/10">Fundamentals</span>
         </div>
-        <h3 class="font-product-grade text-primary text-xl mb-2 leading-tight group-hover:translate-x-1 transition-transform">ISO material groups explained</h3>
+        <h3 class="font-product-grade text-primary text-lg mb-2 leading-tight group-hover:translate-x-1 transition-transform">ISO material groups explained</h3>
         <p class="text-sm text-on-surface-variant leading-relaxed mb-4">P, M, K, N, S, H — what each covers and how to identify your workpiece.</p>
-        <div class="flex items-center justify-between pt-4 border-t border-border-warm">
-          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">6 min read</span>
+        <div class="flex items-center justify-between pt-3 border-t border-border-warm">
+          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">6 min</span>
           <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Read <span class="material-symbols-outlined text-base">arrow_forward</span></span>
         </div>
-      </a>
-    
-      <a href="#" class="bg-white rounded-2xl p-7 border border-border-warm card-shadow hover:-translate-y-1 transition-all group">
-        <div class="flex items-center justify-between mb-4">
+      </div>
+    </a>
+
+    <!-- 03. Insert code reading -->
+    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+      <div class="h-28 bg-gradient-to-br from-primary-fixed/40 to-surface-container-low flex items-center justify-center px-6">
+        <svg viewBox="0 0 240 60" class="w-full h-auto max-w-[220px]" aria-hidden="true">
+          <g font-family="DM Mono, monospace" font-size="16" font-weight="700" fill="#123356">
+            <rect x="0"   y="12" width="34" height="38" rx="6" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+            <text x="9"   y="38">C</text>
+            <rect x="38"  y="12" width="20" height="38" rx="6" fill="#fff" stroke="#73777f" opacity="0.8" stroke-width="1"/>
+            <text x="42"  y="38" fill="#43474e">N</text>
+            <rect x="62"  y="12" width="20" height="38" rx="6" fill="#fff" stroke="#73777f" opacity="0.8" stroke-width="1"/>
+            <text x="66"  y="38" fill="#43474e">M</text>
+            <rect x="86"  y="12" width="20" height="38" rx="6" fill="#fff" stroke="#73777f" opacity="0.8" stroke-width="1"/>
+            <text x="91"  y="38" fill="#43474e">G</text>
+            <rect x="116" y="12" width="44" height="38" rx="6" fill="#fff" stroke="#3B82F6" stroke-width="1.5"/>
+            <text x="124" y="38" fill="#3B82F6">12</text>
+            <rect x="164" y="12" width="34" height="38" rx="6" fill="#fff" stroke="#73777f" opacity="0.8" stroke-width="1"/>
+            <text x="171" y="38" fill="#43474e">04</text>
+            <rect x="202" y="12" width="34" height="38" rx="6" fill="#fff" stroke="#F59E0B" stroke-width="1.5"/>
+            <text x="209" y="38" fill="#F59E0B">08</text>
+            <!-- callout arrows -->
+            <line x1="17" y1="6" x2="17" y2="10" stroke="#123356" stroke-width="1"/>
+            <text x="9" y="5" font-size="6" fill="#8A8A9A" font-weight="600">SHAPE</text>
+            <line x1="138" y1="6" x2="138" y2="10" stroke="#3B82F6" stroke-width="1"/>
+            <text x="125" y="5" font-size="6" fill="#3B82F6" font-weight="600">SIZE</text>
+            <line x1="219" y1="6" x2="219" y2="10" stroke="#F59E0B" stroke-width="1"/>
+            <text x="204" y="5" font-size="6" fill="#F59E0B" font-weight="600">NOSE</text>
+          </g>
+        </svg>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-3">
           <span class="font-technical-data text-xs text-on-surface-variant">03</span>
           <span class="text-[10px] uppercase tracking-widest text-primary font-bold px-2.5 py-1 rounded-full bg-primary/5 border border-primary/10">Code reading</span>
         </div>
-        <h3 class="font-product-grade text-primary text-xl mb-2 leading-tight group-hover:translate-x-1 transition-transform">How to read an insert code</h3>
+        <h3 class="font-product-grade text-primary text-lg mb-2 leading-tight group-hover:translate-x-1 transition-transform">How to read an insert code</h3>
         <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Decode CNMG / VCMT / DCMT. Shape, clearance, tolerance, hole, size, nose.</p>
-        <div class="flex items-center justify-between pt-4 border-t border-border-warm">
-          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">7 min read</span>
+        <div class="flex items-center justify-between pt-3 border-t border-border-warm">
+          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">7 min</span>
           <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Read <span class="material-symbols-outlined text-base">arrow_forward</span></span>
         </div>
-      </a>
-    
-      <a href="#" class="bg-white rounded-2xl p-7 border border-border-warm card-shadow hover:-translate-y-1 transition-all group">
-        <div class="flex items-center justify-between mb-4">
+      </div>
+    </a>
+
+    <!-- 04. CNMG vs WNMG vs DNMG -->
+    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+      <div class="h-28 bg-gradient-to-br from-surface-container-low to-border-warm/40 flex items-center justify-center px-6">
+        <svg viewBox="0 0 240 70" class="w-full h-auto max-w-[220px]" aria-hidden="true">
+          <!-- C: 80° rhomb -->
+          <g transform="translate(20, 5)">
+            <path d="M 30,2 L 52,30 L 30,58 L 8,30 Z" fill="rgba(59,130,246,0.18)" stroke="#3B82F6" stroke-width="1.8" stroke-linejoin="round"/>
+            <text x="30" y="68" font-family="DM Mono, monospace" font-size="10" font-weight="700" fill="#3B82F6" text-anchor="middle">C</text>
+          </g>
+          <!-- W: trigon -->
+          <g transform="translate(90, 5)">
+            <path d="M 30,4 L 39,20 L 52,48 L 30,42 L 8,48 L 21,20 Z" fill="rgba(245,158,11,0.18)" stroke="#F59E0B" stroke-width="1.8" stroke-linejoin="round"/>
+            <text x="30" y="68" font-family="DM Mono, monospace" font-size="10" font-weight="700" fill="#F59E0B" text-anchor="middle">W</text>
+          </g>
+          <!-- D: 55° rhomb -->
+          <g transform="translate(160, 5)">
+            <path d="M 30,2 L 43.5,30 L 30,58 L 16.5,30 Z" fill="rgba(100,116,139,0.18)" stroke="#64748B" stroke-width="1.8" stroke-linejoin="round"/>
+            <text x="30" y="68" font-family="DM Mono, monospace" font-size="10" font-weight="700" fill="#64748B" text-anchor="middle">D</text>
+          </g>
+        </svg>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-3">
           <span class="font-technical-data text-xs text-on-surface-variant">04</span>
           <span class="text-[10px] uppercase tracking-widest text-primary font-bold px-2.5 py-1 rounded-full bg-primary/5 border border-primary/10">Shape compare</span>
         </div>
-        <h3 class="font-product-grade text-primary text-xl mb-2 leading-tight group-hover:translate-x-1 transition-transform">CNMG vs WNMG vs DNMG — when to pick which</h3>
+        <h3 class="font-product-grade text-primary text-lg mb-2 leading-tight group-hover:translate-x-1 transition-transform">CNMG vs WNMG vs DNMG — when to pick which</h3>
         <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Strength, edge count and accessibility tradeoffs in real geometries.</p>
-        <div class="flex items-center justify-between pt-4 border-t border-border-warm">
-          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">9 min read</span>
+        <div class="flex items-center justify-between pt-3 border-t border-border-warm">
+          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">9 min</span>
           <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Read <span class="material-symbols-outlined text-base">arrow_forward</span></span>
         </div>
-      </a>
-    
-      <a href="#" class="bg-white rounded-2xl p-7 border border-border-warm card-shadow hover:-translate-y-1 transition-all group">
-        <div class="flex items-center justify-between mb-4">
+      </div>
+    </a>
+
+    <!-- 05. Stainless steel -->
+    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+      <div class="h-28 bg-gradient-to-br from-iso-m-amber/15 to-iso-m-amber/5 flex items-center justify-center px-6">
+        <svg viewBox="0 0 220 60" class="w-full h-auto max-w-[200px]" aria-hidden="true">
+          <!-- chip curl paths -->
+          <g fill="none" stroke-linecap="round">
+            <path d="M 20,42 Q 50,8 90,28 T 200,20" stroke="#F59E0B" stroke-width="3"/>
+            <path d="M 20,46 Q 55,16 92,34 T 200,28" stroke="#F59E0B" stroke-width="2" opacity="0.6"/>
+            <path d="M 20,50 Q 60,24 94,40 T 200,36" stroke="#F59E0B" stroke-width="1.5" opacity="0.4"/>
+          </g>
+          <!-- insert edge at left -->
+          <path d="M 8,52 L 22,40 L 22,50 Z" fill="#123356"/>
+        </svg>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-3">
           <span class="font-technical-data text-xs text-on-surface-variant">05</span>
           <span class="text-[10px] uppercase tracking-widest text-primary font-bold px-2.5 py-1 rounded-full bg-primary/5 border border-primary/10">Material</span>
         </div>
-        <h3 class="font-product-grade text-primary text-xl mb-2 leading-tight group-hover:translate-x-1 transition-transform">Choosing tools for stainless steel</h3>
+        <h3 class="font-product-grade text-primary text-lg mb-2 leading-tight group-hover:translate-x-1 transition-transform">Choosing tools for stainless steel</h3>
         <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Austenitic vs duplex strategy. Coatings, chipbreakers, vibration control.</p>
-        <div class="flex items-center justify-between pt-4 border-t border-border-warm">
-          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">10 min read</span>
+        <div class="flex items-center justify-between pt-3 border-t border-border-warm">
+          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">10 min</span>
           <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Read <span class="material-symbols-outlined text-base">arrow_forward</span></span>
         </div>
-      </a>
-    
-      <a href="#" class="bg-white rounded-2xl p-7 border border-border-warm card-shadow hover:-translate-y-1 transition-all group">
-        <div class="flex items-center justify-between mb-4">
+      </div>
+    </a>
+
+    <!-- 06. Positive vs negative -->
+    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+      <div class="h-28 bg-gradient-to-br from-surface-container-low to-border-warm/40 flex items-center justify-center px-6">
+        <svg viewBox="0 0 240 60" class="w-full h-auto max-w-[220px]" aria-hidden="true">
+          <!-- Positive insert: wedge angled outward -->
+          <g transform="translate(20, 10)">
+            <path d="M 5,5 L 65,5 L 75,40 L 0,40 Z" fill="rgba(16,185,129,0.18)" stroke="#10B981" stroke-width="1.8" stroke-linejoin="round"/>
+            <line x1="15" y1="5" x2="0" y2="40" stroke="#10B981" stroke-width="1" stroke-dasharray="2 2"/>
+            <text x="38" y="55" font-family="DM Mono, monospace" font-size="9" font-weight="700" fill="#10B981" text-anchor="middle">POSITIVE</text>
+          </g>
+          <!-- Negative insert: straight wall -->
+          <g transform="translate(140, 10)">
+            <rect x="0" y="5" width="70" height="35" fill="rgba(18,51,86,0.12)" stroke="#123356" stroke-width="1.8" stroke-linejoin="round"/>
+            <line x1="0" y1="5" x2="0" y2="40" stroke="#123356" stroke-width="1" stroke-dasharray="2 2"/>
+            <text x="35" y="55" font-family="DM Mono, monospace" font-size="9" font-weight="700" fill="#123356" text-anchor="middle">NEGATIVE</text>
+          </g>
+        </svg>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-3">
           <span class="font-technical-data text-xs text-on-surface-variant">06</span>
           <span class="text-[10px] uppercase tracking-widest text-primary font-bold px-2.5 py-1 rounded-full bg-primary/5 border border-primary/10">Geometry</span>
         </div>
-        <h3 class="font-product-grade text-primary text-xl mb-2 leading-tight group-hover:translate-x-1 transition-transform">Positive vs negative inserts</h3>
+        <h3 class="font-product-grade text-primary text-lg mb-2 leading-tight group-hover:translate-x-1 transition-transform">Positive vs negative inserts</h3>
         <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Cutting forces, edge strength, finish quality. Where each one belongs.</p>
-        <div class="flex items-center justify-between pt-4 border-t border-border-warm">
-          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">5 min read</span>
+        <div class="flex items-center justify-between pt-3 border-t border-border-warm">
+          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">5 min</span>
           <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Read <span class="material-symbols-outlined text-base">arrow_forward</span></span>
         </div>
-      </a>
-    
-      <a href="#" class="bg-white rounded-2xl p-7 border border-border-warm card-shadow hover:-translate-y-1 transition-all group">
-        <div class="flex items-center justify-between mb-4">
+      </div>
+    </a>
+
+    <!-- 07. Chipbreaker selection -->
+    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+      <div class="h-28 bg-gradient-to-br from-surface-container-low to-border-warm/40 flex items-center justify-center px-6">
+        <svg viewBox="0 0 240 60" class="w-full h-auto max-w-[220px]" aria-hidden="true">
+          <!-- Three chip flow patterns -->
+          <g fill="none" stroke-width="2" stroke-linecap="round">
+            <!-- Light: long curl -->
+            <g transform="translate(0, 0)">
+              <path d="M 10,40 Q 40,5 70,30" stroke="#3B82F6"/>
+              <polygon points="65,26 73,30 65,34" fill="#3B82F6"/>
+              <text x="38" y="56" font-family="DM Mono, monospace" font-size="8" font-weight="700" fill="#3B82F6" text-anchor="middle">LIGHT</text>
+            </g>
+            <!-- Medium: tighter curl -->
+            <g transform="translate(85, 0)">
+              <path d="M 10,40 Q 25,15 45,25 Q 60,32 70,15" stroke="#F59E0B"/>
+              <polygon points="68,12 74,15 70,21" fill="#F59E0B"/>
+              <text x="38" y="56" font-family="DM Mono, monospace" font-size="8" font-weight="700" fill="#F59E0B" text-anchor="middle">MEDIUM</text>
+            </g>
+            <!-- Heavy: short broken curl -->
+            <g transform="translate(170, 0)">
+              <path d="M 10,40 Q 18,28 25,35 Q 32,42 40,30 Q 48,18 60,28" stroke="#EF4444"/>
+              <polygon points="56,24 64,28 56,32" fill="#EF4444"/>
+              <text x="38" y="56" font-family="DM Mono, monospace" font-size="8" font-weight="700" fill="#EF4444" text-anchor="middle">HEAVY</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-3">
           <span class="font-technical-data text-xs text-on-surface-variant">07</span>
           <span class="text-[10px] uppercase tracking-widest text-primary font-bold px-2.5 py-1 rounded-full bg-primary/5 border border-primary/10">Geometry</span>
         </div>
-        <h3 class="font-product-grade text-primary text-xl mb-2 leading-tight group-hover:translate-x-1 transition-transform">Chipbreaker selection basics</h3>
+        <h3 class="font-product-grade text-primary text-lg mb-2 leading-tight group-hover:translate-x-1 transition-transform">Chipbreaker selection basics</h3>
         <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Light, medium, heavy. How feed range maps to chipbreaker family.</p>
-        <div class="flex items-center justify-between pt-4 border-t border-border-warm">
-          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">6 min read</span>
+        <div class="flex items-center justify-between pt-3 border-t border-border-warm">
+          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">6 min</span>
           <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Read <span class="material-symbols-outlined text-base">arrow_forward</span></span>
         </div>
-      </a>
-    
-      <a href="#" class="bg-white rounded-2xl p-7 border border-border-warm card-shadow hover:-translate-y-1 transition-all group">
-        <div class="flex items-center justify-between mb-4">
+      </div>
+    </a>
+
+    <!-- 08. Vc / feed / depth -->
+    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+      <div class="h-28 bg-gradient-to-br from-primary-fixed/30 to-surface-container-low flex items-center justify-center px-6">
+        <svg viewBox="0 0 240 70" class="w-full h-auto max-w-[220px]" aria-hidden="true">
+          <!-- 3 stacked envelope bars -->
+          <g font-family="DM Mono, monospace" font-size="9" font-weight="600">
+            <text x="0" y="14" fill="#8A8A9A" letter-spacing="0.06em">Vc</text>
+            <rect x="22" y="6" width="200" height="6" rx="3" fill="#E8E4DE"/>
+            <rect x="50" y="6" width="130" height="6" rx="3" fill="#123356"/>
+            <text x="0" y="36" fill="#8A8A9A" letter-spacing="0.06em">f</text>
+            <rect x="22" y="28" width="200" height="6" rx="3" fill="#E8E4DE"/>
+            <rect x="35" y="28" width="140" height="6" rx="3" fill="#3B82F6"/>
+            <text x="0" y="58" fill="#8A8A9A" letter-spacing="0.06em">d</text>
+            <rect x="22" y="50" width="200" height="6" rx="3" fill="#E8E4DE"/>
+            <rect x="40" y="50" width="160" height="6" rx="3" fill="#F59E0B"/>
+          </g>
+        </svg>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-3">
           <span class="font-technical-data text-xs text-on-surface-variant">08</span>
           <span class="text-[10px] uppercase tracking-widest text-primary font-bold px-2.5 py-1 rounded-full bg-primary/5 border border-primary/10">Parameters</span>
         </div>
-        <h3 class="font-product-grade text-primary text-xl mb-2 leading-tight group-hover:translate-x-1 transition-transform">Vc, feed and depth of cut basics</h3>
+        <h3 class="font-product-grade text-primary text-lg mb-2 leading-tight group-hover:translate-x-1 transition-transform">Vc, feed and depth of cut basics</h3>
         <p class="text-sm text-on-surface-variant leading-relaxed mb-4">The three knobs that drive every job. Safe ranges and tradeoffs.</p>
-        <div class="flex items-center justify-between pt-4 border-t border-border-warm">
-          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">7 min read</span>
+        <div class="flex items-center justify-between pt-3 border-t border-border-warm">
+          <span class="text-xs font-technical-data text-on-surface-variant uppercase tracking-widest">7 min</span>
           <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Read <span class="material-symbols-outlined text-base">arrow_forward</span></span>
         </div>
-      </a>
-    
+      </div>
+    </a>
+
   </div>
 
   <!-- Coverage map -->
