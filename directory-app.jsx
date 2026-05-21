@@ -1066,11 +1066,11 @@ function App() {
               className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold"
             >Clear all filters</button>
           </div>
-        ) : (
-          <div className={view==='grid'
-            ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
-            : 'flex flex-col gap-3'
-          }>
+         ) : (
+           <div className={view==='grid'
+             ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 auto-rows-max'
+             : 'flex flex-col gap-3'
+           }>
             {visibleTools.map(t => (
               <ToolCard
                 key={t.id}
