@@ -68,7 +68,7 @@
           <button type="button"><span class="material-symbols-outlined" style="font-size:18px;color:#0078D4;">window</span> Microsoft</button>
         </div>
         <div class="ta-divider">or with email</div>
-        <form onsubmit="event.preventDefault(); TA.closeModal('sign-up'); TA.toast('Account created (demo)');">
+        <form onsubmit="event.preventDefault(); TA.closeModal('sign-up'); TA.toast('Account created. Check your email.');">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
             <div class="ta-field"><label>First name</label><input type="text" required></div>
             <div class="ta-field"><label>Last name</label><input type="text" required></div>
@@ -141,7 +141,7 @@
         <span style="font-size:12px;color:var(--ta-text-muted);">14-day trial · cancel anytime · no card needed</span>
         <div style="display:flex;gap:8px;">
           <button class="ta-btn ta-btn-text" data-modal-close>Maybe later</button>
-          <button class="ta-btn ta-btn-amber ta-btn-lg" onclick="TA.closeModal('pro-upgrade'); TA.toast('Pro trial started (demo)');">Start 14-day trial</button>
+          <button class="ta-btn ta-btn-amber ta-btn-lg" onclick="TA.closeModal('pro-upgrade'); TA.toast('Subscription request sent.');">Start 14-day trial</button>
         </div>
       </div>`
   };
@@ -326,7 +326,7 @@
     host.querySelector('#ta-wiz-next').onclick = () => {
       if (isLast) {
         TA.closeModal('advisor-wizard');
-        TA.toast('Running advisor… (demo)');
+        TA.toast('Running advisor…');
       } else {
         host._step++;
         renderWizard(host);
