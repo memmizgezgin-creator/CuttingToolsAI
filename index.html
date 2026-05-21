@@ -1,146 +1,540 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
-<head>
+
+<html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Catalog · ToolAdvisor</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Nunito:wght@500;700;800&family=DM+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script>
-window.tailwind = window.tailwind || {};
-tailwind.config = {
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        primary:'#123356', primary-container:'#2c4a6e', 'primary-fixed':'#d3e4ff', 'primary-fixed-dim':'#abc9f3', 'on-primary':'#ffffff', 'on-primary-container':'#9cbae4', 'on-primary-fixed':'#001c38', 'on-primary-fixed-variant':'#2a486c', 'inverse-primary':'#abc9f3', 'surface-tint':'#436085', secondary:'#735b28', 'secondary-container':'#fedb9c', 'secondary-fixed':'#ffdea3', 'secondary-fixed-dim':'#e3c285', 'on-secondary':'#ffffff', 'on-secondary-container':'#785f2b', 'on-secondary-fixed':'#261900', 'on-secondary-fixed-variant':'#594312', tertiary:'#313332', 'tertiary-container':'#484948', 'tertiary-fixed':'#e3e2e0', 'tertiary-fixed-dim':'#c7c6c5', 'on-tertiary':'#ffffff', 'on-tertiary-container':'#b8b8b6', 'on-tertiary-fixed':'#1a1c1b', 'on-tertiary-fixed-variant':'#464746', error:'#ba1a1a', 'error-container':'#ffdad6', 'on-error':'#ffffff', 'on-error-container':'#93000a', background:'#faf9fc', surface:'#faf9fc', 'surface-bright':'#faf9fc', 'surface-dim':'#dad9dd', 'surface-card':'#FFFFFF', 'surface-variant':'#e3e2e5', 'surface-container-lowest':'#ffffff', 'surface-container-low':'#f4f3f6', 'surface-container':'#eeedf1', 'surface-container-high':'#e9e8eb', 'surface-container-highest':'#e3e2e5', 'inverse-surface':'#2f3033', 'inverse-on-surface':'#f1f0f4', 'on-background':'#1a1c1e', 'on-surface':'#1a1c1e', 'on-surface-variant':'#43474e', outline:'#73777f', 'outline-variant':'#c3c6cf', 'sidebar-bg':'#F5F2EE', 'border-warm':'#E8E4DE', 'skeleton-shimmer':'#F0EDE8', 'ink-text':'#1A1A2E', 'glass-backdrop':'rgba(26, 26, 46, 0.5)', 'iso-p-blue':'#3B82F6', 'iso-m-amber':'#F59E0B', 'iso-k-red':'#EF4444', 'iso-n-green':'#10B981', 'iso-s-orange':'#F97316', 'iso-h-slate':'#64748B'
-      },
-      borderRadius: { DEFAULT:'0.25rem', lg:'0.5rem', xl:'0.75rem', full:'9999px' },
-      spacing: { gutter:'24px', 'card-padding':'20px', 'container-margin':'32px', 'sidebar-width':'260px', 'stack-gap-sm':'8px', 'stack-gap-md':'16px', 'stack-gap-lg':'24px' },
-      fontFamily: { 'display-hero':['Nunito'], 'section-heading':['Nunito'], 'product-grade':['Nunito'], 'nav-item':['Nunito'], 'body-lg':['DM Sans'], 'body-md':['DM Sans'], 'label-caps':['DM Sans'], 'technical-data':['DM Mono'] },
-      fontSize: { 'label-caps':['13px',{lineHeight:'1.0',letterSpacing:'0.06em',fontWeight:'600'}], 'nav-item':['15px',{lineHeight:'1.0',fontWeight:'500'}], 'section-heading':['28px',{lineHeight:'1.3',fontWeight:'700'}], 'technical-data':['14px',{lineHeight:'1.4',fontWeight:'500'}], 'body-md':['17px',{lineHeight:'1.7',fontWeight:'400'}], 'body-lg':['19px',{lineHeight:'1.7',fontWeight:'400'}], 'product-grade':['24px',{lineHeight:'1.2',fontWeight:'700'}], 'display-hero':['36px',{lineHeight:'1.2',letterSpacing:'-0.02em',fontWeight:'800'}] }
-    }
-  }
-};
-</script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<style>
-/* ============================================================
-   CRITICAL CSS — Anti-FOUC pre-defs for PRO banner + layout
-   Prevents split-colour gradient flash before Tailwind CDN
-   processes React-rendered class names via MutationObserver.
-   These values are identical to what Tailwind would generate;
-   they are overridden (invisibly) once Tailwind injects CSS.
-   TODO (long-term): pre-build Tailwind to a static CSS file
-   and drop the CDN entirely.
-   ============================================================ */
-*,::before,::after{
-  --tw-gradient-from-position: ;
-  --tw-gradient-via-position: ;
-  --tw-gradient-to-position: ;
-  --tw-gradient-stops: ;
-  --tw-gradient-from: #0000 ;
-  --tw-gradient-to: #0000 ;
-}
-/* PRO banner gradient: bg-gradient-to-r from-ink-text via-primary-container to-primary */
-.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}
-.from-ink-text{
-  --tw-gradient-from:#1A1A2E var(--tw-gradient-from-position);
-  --tw-gradient-to:rgb(26 26 46/0) var(--tw-gradient-to-position);
-  --tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to);
-}
-.via-primary-container{
-  --tw-gradient-to:rgb(44 74 110/0) var(--tw-gradient-to-position);
-  --tw-gradient-stops:var(--tw-gradient-from),#2c4a6e var(--tw-gradient-via-position),var(--tw-gradient-to);
-}
-.to-primary{--tw-gradient-to:#123356 var(--tw-gradient-to-position)}
-/* AIDock floating button + drawer header: bg-gradient-to-br from-primary to-primary-container / from-ink-text to-primary-container */
-.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}
-.from-primary{
-  --tw-gradient-from:#123356 var(--tw-gradient-from-position);
-  --tw-gradient-to:rgb(18 51 86/0) var(--tw-gradient-to-position);
-  --tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to);
-}
-.to-primary-container{--tw-gradient-to:#2c4a6e var(--tw-gradient-to-position)}
-/* Banner layout basics */
-.text-white{color:#fff}
-.overflow-hidden{overflow:hidden}
-.rounded-2xl{border-radius:1rem}
-.mb-4{margin-bottom:1rem}
-.relative{position:relative}
-/* Page shell — ensures stable layout before Tailwind processes body classes */
-.bg-background{background-color:#faf9fc}
-.min-h-screen{min-height:100vh}
-.ml-sidebar-width{margin-left:260px}
-
-/* ============================================================
-   GLOBAL POLISH (inlined from polish.css)
-   ============================================================ */
-body { background-color: #FAF9F7; }
-.card-shadow,.ambient-shadow { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05),0 2px 4px -1px rgba(0,0,0,0.03); }
-.material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; vertical-align: middle; }
-.material-symbols-outlined[data-icon-fill] { font-variation-settings: 'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24; }
-.material-symbols-outlined[data-icon-weight="300"] { font-variation-settings: 'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; }
-.material-symbols-outlined[data-icon-weight="500"] { font-variation-settings: 'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24; }
-.material-symbols-outlined[data-icon-fill][data-icon-weight="500"] { font-variation-settings: 'FILL' 1,'wght' 500,'GRAD' 0,'opsz' 24; }
-.custom-scrollbar::-webkit-scrollbar { width: 6px; }
-.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background: #E8E4DE; border-radius: 10px; }
-body > header:not([data-ta-chrome]), body > aside:not([data-ta-chrome]), main > header { display: none !important; }
-@keyframes ta-fade-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-main > section, main > div, main > article { animation: ta-fade-up 200ms cubic-bezier(.4,0,.2,1) both; }
-main > section:nth-of-type(1), main > div:nth-of-type(1) { animation-delay: 0ms; }
-main > section:nth-of-type(2), main > div:nth-of-type(2) { animation-delay: 40ms; }
-main > section:nth-of-type(3), main > div:nth-of-type(3) { animation-delay: 80ms; }
-@keyframes ta-card-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-.grid > * { animation: ta-card-in 200ms cubic-bezier(.4,0,.2,1) both; }
-.grid > *:nth-child(1) { animation-delay: 0ms; }
-.grid > *:nth-child(2) { animation-delay: 40ms; }
-.grid > *:nth-child(3) { animation-delay: 80ms; }
-.grid > *:nth-child(4) { animation-delay: 120ms; }
-.grid > *:nth-child(5) { animation-delay: 140ms; }
-.grid > *:nth-child(6) { animation-delay: 160ms; }
-.grid > *:nth-child(7) { animation-delay: 180ms; }
-.grid > *:nth-child(8) { animation-delay: 200ms; }
-.grid > *:nth-child(n+9) { animation-delay: 200ms !important; }
-@media (prefers-reduced-motion: reduce) { main > section, main > div, main > article, .grid > *, .ta-chip { animation: none !important; } .ta-insert3d > svg { animation: none; transition: none; } }
-@keyframes ta-slide-up { from { opacity: 0; transform: translate(-50%, 20px); } to { opacity: 1; transform: translate(-50%, 0); } }
-.animate-slide-up { animation: ta-slide-up 220ms cubic-bezier(.4,0,.2,1) both; }
-select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2343474e' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px !important; }
-@keyframes ta-slide-up-r { from { opacity: 0; transform: translateY(20px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
-.animate-slide-up-r { animation: ta-slide-up-r 240ms cubic-bezier(.4,0,.2,1) both; transform-origin: bottom right; }
-@keyframes ta-ai-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(245,158,11,.6); } 50% { box-shadow: 0 0 0 14px rgba(245,158,11,0); } }
-.ai-pulse { animation: ta-ai-pulse 1.8s ease-out infinite; }
-@keyframes ta-ai-dot { 0%,80%,100% { opacity: .25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
-.ai-dot { animation: ta-ai-dot 1.2s ease-in-out infinite; display:inline-block; }
-body > button.fixed.bottom-8.right-8, body > button[class*="fixed"][class*="bottom-8"][class*="right-8"] { display: none !important; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="tw-config.js"></script>
+<link rel="stylesheet" href="polish.css"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="supabase/config.js"></script>
 <script src="supabase/client.js"></script>
 </head>
-<body class="bg-background text-on-surface font-body-md antialiased min-h-screen">
+<body class="font-body-md text-on-surface selection:bg-primary/20">
+<!-- Sidebar Navigation -->
+<!-- Main Content Area -->
 <main class="ml-sidebar-width min-h-screen">
-  <div id="catalog-root"></div>
-</main>
-<footer class="bg-surface-container mt-12 border-t border-border-warm px-gutter py-stack-gap-lg ml-sidebar-width">
-  <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-    <div class="flex items-center gap-6">
-      <span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">ToolAdvisor Platform</span>
-      <div class="flex gap-4">
-        <a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Terms of Service</a>
-        <a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Privacy Policy</a>
-        <a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Contact Engineering</a>
+<!-- Top Navigation -->
+<!-- Hero -->
+<section class="relative overflow-hidden px-gutter py-20 lg:py-24 bg-gradient-to-br from-surface via-surface-container-low to-border-warm">
+  <!-- Faint blueprint grid background -->
+  <svg class="absolute inset-0 w-full h-full opacity-[0.18] pointer-events-none" aria-hidden="true">
+    <defs>
+      <pattern id="ta-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <circle cx="1" cy="1" r="1" fill="#8A8A9A"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#ta-grid)"/>
+  </svg>
+
+  <div class="relative grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center max-w-7xl">
+
+    <!-- Left: copy -->
+    <div>
+      <span class="inline-block px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-xs uppercase tracking-widest mb-6">Brand-neutral · Engineering decision layer</span>
+      <h1 class="font-display-hero text-[44px] md:text-[56px] xl:text-[68px] 2xl:text-[76px] leading-[1.02] tracking-[-0.025em] text-primary mb-6">
+        Neutral cutting tool<br/>
+        selection. <span class="text-iso-m-amber">Faster.</span>
+      </h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">
+        Compare inserts, grades and alternatives across brands with clear technical reasoning, risk notes and ISO-based recommendations. No catalog noise — just decisions you can defend.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#advisor" class="bg-primary text-white font-bold px-7 py-4 rounded-xl shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+          <span class="material-symbols-outlined">auto_awesome</span> Start Advisor
+        </a>
+        <a href="cross-reference.html" class="bg-white text-primary border border-border-warm font-bold px-7 py-4 rounded-xl hover:bg-surface-container-low hover:-translate-y-0.5 transition-all flex items-center gap-2">
+          <span class="material-symbols-outlined">compare_arrows</span> Cross-Reference an Insert
+        </a>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-on-surface-variant">
+        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> ISO P / M / K / N / S / H coverage</span>
+        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> Geometry &amp; coating match logic</span>
+        <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> Risk &amp; data-confidence flags</span>
       </div>
     </div>
-    <p class="text-on-surface-variant text-sm font-medium opacity-80">© 2024 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
+
+    <!-- Right: annotated insert blueprint -->
+    <div class="relative hidden lg:block">
+      <svg viewBox="0 0 700 620" class="w-full h-auto" aria-label="Annotated insert with technical callouts">
+        <defs>
+          <!-- Top face gradient: brushed steel -->
+          <linearGradient id="ta-insert-top" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E2E6EB"/>
+            <stop offset="45%" stop-color="#C0C7D0"/>
+            <stop offset="100%" stop-color="#8C95A1"/>
+          </linearGradient>
+          <!-- Side face: darker -->
+          <linearGradient id="ta-insert-side" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#5A6677"/>
+            <stop offset="100%" stop-color="#3D4754"/>
+          </linearGradient>
+          <!-- Hole inner shadow -->
+          <radialGradient id="ta-hole" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#fff"/>
+            <stop offset="70%" stop-color="#E2E6EB"/>
+            <stop offset="100%" stop-color="#8C95A1"/>
+          </radialGradient>
+          <!-- Coating sheen -->
+          <linearGradient id="ta-sheen" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fff" stop-opacity="0.55"/>
+            <stop offset="40%" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- 3D side face (back-right depth) -->
+        <path d="M 350,460 L 526,310 L 538,328 L 362,478 Z" fill="url(#ta-insert-side)"/>
+        <path d="M 526,310 L 526,180 L 538,198 L 538,328 Z" fill="url(#ta-insert-side)" opacity="0.7"/>
+
+        <!-- Insert top face: 80° rhomb (acute angles top/bottom) -->
+        <path d="M 350,160 L 526,310 L 350,460 L 174,310 Z" fill="url(#ta-insert-top)" stroke="#2c4a6e" stroke-width="1.5"/>
+        <!-- Top-face highlight sheen -->
+        <path d="M 350,160 L 526,310 L 350,460 L 174,310 Z" fill="url(#ta-sheen)"/>
+
+        <!-- Chipbreaker groove (concentric inset following rhomb) -->
+        <path d="M 350,200 L 490,310 L 350,420 L 210,310 Z" fill="none" stroke="#2c4a6e" stroke-width="0.8" opacity="0.55" stroke-dasharray="2 2"/>
+        <path d="M 350,232 L 460,310 L 350,388 L 240,310 Z" fill="none" stroke="#2c4a6e" stroke-width="0.6" opacity="0.4"/>
+
+        <!-- Center mounting hole -->
+        <circle cx="350" cy="310" r="26" fill="url(#ta-hole)" stroke="#2c4a6e" stroke-width="1.2"/>
+        <circle cx="350" cy="310" r="14" fill="#3D4754" opacity="0.85"/>
+
+        <!-- Edge tick marks (cutting edges) -->
+        <g stroke="#F59E0B" stroke-width="1.2" opacity="0.85">
+          <line x1="174" y1="310" x2="184" y2="310"/>
+          <line x1="350" y1="160" x2="350" y2="170"/>
+          <line x1="526" y1="310" x2="516" y2="310"/>
+          <line x1="350" y1="460" x2="350" y2="450"/>
+        </g>
+
+        <!-- ===================== CALLOUTS ===================== -->
+        <g font-family="DM Mono, monospace" font-size="10" fill="#43474e" letter-spacing="0.12em">
+
+          <!-- TOP-LEFT: Geometry -->
+          <line x1="220" y1="240" x2="100" y2="120" stroke="#123356" stroke-width="1.2"/>
+          <circle cx="220" cy="240" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="40" y="100" font-weight="600" fill="#8A8A9A">GEOMETRY</text>
+          <text x="40" y="124" font-family="Nunito, sans-serif" font-size="20" font-weight="800" fill="#123356" letter-spacing="-0.01em">80° rhomb</text>
+          <text x="40" y="146" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="#43474e" letter-spacing="0">CNMG · negative</text>
+
+          <!-- TOP-RIGHT: Match confidence (big number) -->
+          <line x1="480" y1="240" x2="600" y2="130" stroke="#123356" stroke-width="1.2"/>
+          <circle cx="480" cy="240" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="552" y="100" font-weight="600" fill="#8A8A9A">MATCH CONFIDENCE</text>
+          <text x="552" y="142" font-family="Nunito, sans-serif" font-size="40" font-weight="800" fill="#10B981" letter-spacing="-0.02em">92<tspan font-size="22">%</tspan></text>
+          <!-- Mini confidence bar -->
+          <rect x="552" y="156" width="110" height="5" rx="2.5" fill="#E8E4DE"/>
+          <rect x="552" y="156" width="101" height="5" rx="2.5" fill="#10B981"/>
+
+          <!-- BOTTOM-LEFT: Alternatives -->
+          <line x1="220" y1="380" x2="90" y2="500" stroke="#123356" stroke-width="1.2"/>
+          <circle cx="220" cy="380" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="40" y="498" font-weight="600" fill="#8A8A9A">ALTERNATIVES</text>
+          <text x="40" y="525" font-family="Nunito, sans-serif" font-size="22" font-weight="800" fill="#123356" letter-spacing="-0.01em">3 ranked</text>
+          <!-- 3 dots representing ranked alternatives -->
+          <g transform="translate(40, 540)">
+            <rect x="0" y="0" width="34" height="5" rx="2.5" fill="#3B82F6"/>
+            <rect x="40" y="0" width="34" height="5" rx="2.5" fill="#F59E0B"/>
+            <rect x="80" y="0" width="34" height="5" rx="2.5" fill="#64748B"/>
+          </g>
+
+          <!-- BOTTOM-RIGHT: ISO coverage -->
+          <line x1="480" y1="380" x2="600" y2="500" stroke="#123356" stroke-width="1.2"/>
+          <circle cx="480" cy="380" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
+          <text x="552" y="498" font-weight="600" fill="#8A8A9A">ISO COVERAGE</text>
+          <g transform="translate(552, 510)" font-family="DM Mono, monospace" font-size="10" font-weight="700" letter-spacing="0.1em">
+            <rect x="0"  y="0" width="30" height="22" rx="11" fill="rgba(59,130,246,.14)" stroke="rgba(59,130,246,.3)"/>
+            <text x="9"  y="15" fill="#3B82F6">P</text>
+            <rect x="36" y="0" width="30" height="22" rx="11" fill="rgba(245,158,11,.14)" stroke="rgba(245,158,11,.3)"/>
+            <text x="44" y="15" fill="#F59E0B">M</text>
+            <rect x="72" y="0" width="30" height="22" rx="11" fill="#F5F2EE" stroke="#E8E4DE"/>
+            <text x="80" y="15" fill="#8A8A9A">K</text>
+          </g>
+
+          <!-- BOTTOM CENTER: Risk pill -->
+          <g transform="translate(280, 555)">
+            <rect width="142" height="32" rx="16" fill="#fff" stroke="rgba(245,158,11,0.45)" stroke-width="1.2"/>
+            <circle cx="20" cy="16" r="9" fill="rgba(245,158,11,0.18)"/>
+            <text x="20" y="20" font-family="Material Symbols Outlined" font-size="14" fill="#F59E0B" text-anchor="middle">⚠</text>
+            <text x="40" y="13" font-size="9" font-weight="600" fill="#8A8A9A">RISK</text>
+            <text x="40" y="25" font-family="DM Sans, sans-serif" font-size="12" font-weight="700" fill="#123356" letter-spacing="0">Verify chipbreaker</text>
+          </g>
+        </g>
+      </svg>
+
+      <!-- subtle reference label overlay -->
+      <div class="absolute top-0 right-0 font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant/70">REF · CNMG 120408-PM</div>
+    </div>
+
+    <!-- Mobile: simple summary chips -->
+    <div class="lg:hidden flex flex-wrap gap-2 -mt-2">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-border-warm text-xs font-medium text-on-surface-variant"><span class="material-symbols-outlined text-base text-iso-n-green">verified</span> 92% match confidence</span>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-border-warm text-xs font-medium text-on-surface-variant"><span class="material-symbols-outlined text-base text-iso-p-blue">category</span> ISO P / M</span>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-iso-m-amber/40 text-xs font-medium text-on-surface-variant"><span class="material-symbols-outlined text-base text-iso-m-amber">warning</span> Verify chipbreaker</span>
+    </div>
   </div>
+</section>
+
+<!-- Advisor Wizard intro -->
+<section id="advisor" class="px-gutter py-16">
+  <div class="max-w-5xl 2xl:max-w-6xl">
+    <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-3">Decision Advisor</p>
+    <h2 class="font-section-heading text-section-heading text-primary mb-3">Tell us the job. Get a defensible tool choice.</h2>
+    <p class="text-on-surface-variant max-w-2xl mb-10">Four inputs. One recommendation with reasoning, alternatives, risk and confidence rating.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-technical-data text-xs text-on-surface-variant">01</span>
+          <span class="material-symbols-outlined text-iso-p-blue">category</span>
+        </div>
+        <h3 class="font-product-grade text-primary text-xl mb-2">Material</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">ISO group + grade or hardness. e.g. 316L, 42CrMo4, GG25.</p>
+      </div>
+    
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-technical-data text-xs text-on-surface-variant">02</span>
+          <span class="material-symbols-outlined text-iso-m-amber">precision_manufacturing</span>
+        </div>
+        <h3 class="font-product-grade text-primary text-xl mb-2">Operation</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">Turning, milling, drilling, threading. Roughing vs finishing.</p>
+      </div>
+    
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-technical-data text-xs text-on-surface-variant">03</span>
+          <span class="material-symbols-outlined text-iso-k-red">tune</span>
+        </div>
+        <h3 class="font-product-grade text-primary text-xl mb-2">Constraints</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">Vc / feed / depth limits, rigidity, interruption, coolant.</p>
+      </div>
+    
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-border-warm">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-technical-data text-xs text-on-surface-variant">04</span>
+          <span class="material-symbols-outlined text-iso-n-green">verified</span>
+        </div>
+        <h3 class="font-product-grade text-primary text-xl mb-2">Goal</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">Productivity, cost-per-edge, tool life, or safest bet.</p>
+      </div>
+    
+  </div>
+
+  <div class="mt-10 flex flex-wrap gap-3">
+    <a href="#advisor-live" class="bg-primary text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 hover:-translate-y-0.5 transition-all"><span class="material-symbols-outlined">arrow_forward</span> Run the Advisor</a>
+    <button class="bg-white text-primary border border-border-warm font-medium px-6 py-3 rounded-xl hover:bg-surface-container-low transition-all">See sample output</button>
+  </div>
+
+  <!-- Advisor result preview -->
+  <div class="mt-12 bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden">
+    <div class="px-6 py-4 border-b border-border-warm flex items-center justify-between bg-surface-container-low">
+      <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant">Sample advisor output — 316L stainless · finishing turn · stable setup · cost-balanced</p>
+      <span class="px-2.5 py-1 rounded-full bg-iso-n-green/15 text-iso-n-green font-bold text-[10px] tracking-widest">EXAMPLE</span>
+    </div>
+    <div class="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Recommended -->
+      <div class="lg:col-span-1">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Recommended</p>
+        <p class="font-product-grade text-primary text-xl mb-1">VCMT 160404-PM</p>
+        <p class="font-technical-data text-sm text-on-surface-variant mb-4">Iscar · IC907</p>
+        <div class="flex items-end gap-3 mb-4">
+          <p class="font-display-hero text-4xl text-primary">91%</p>
+          <p class="text-xs uppercase tracking-widest text-on-surface-variant font-technical-data pb-2">confidence</p>
+        </div>
+        <div class="w-full h-2 rounded-full bg-surface-container-low overflow-hidden">
+          <div class="h-full bg-iso-n-green" style="width:91%"></div>
+        </div>
+        <p class="text-[11px] uppercase tracking-widest text-iso-n-green font-bold mt-3">Manufacturer data + reviewed</p>
+      </div>
+
+      <!-- Why -->
+      <div class="lg:col-span-1">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Why this fits</p>
+        <ul class="space-y-2.5 text-sm text-on-surface">
+          <li class="flex gap-2"><span class="material-symbols-outlined text-base text-iso-n-green mt-0.5">check_circle</span> ISO M coverage incl. austenitic 316L</li>
+          <li class="flex gap-2"><span class="material-symbols-outlined text-base text-iso-n-green mt-0.5">check_circle</span> PM chipbreaker tuned to finishing feed range</li>
+          <li class="flex gap-2"><span class="material-symbols-outlined text-base text-iso-n-green mt-0.5">check_circle</span> Cost-per-edge within target tier</li>
+          <li class="flex gap-2"><span class="material-symbols-outlined text-base text-iso-m-amber mt-0.5">warning</span> Verify chipbreaker on duplex variants</li>
+        </ul>
+      </div>
+
+      <!-- Alternatives -->
+      <div class="lg:col-span-1">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Ranked alternatives</p>
+        <div class="space-y-2">
+          <div class="flex items-center justify-between p-3 rounded-lg border border-border-warm">
+            <div>
+              <p class="font-bold text-primary text-sm">VBMT 160404</p>
+              <p class="text-xs text-on-surface-variant">Sandvik · GC2025</p>
+            </div>
+            <span class="font-technical-data text-sm text-primary font-bold">88%</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg border border-border-warm">
+            <div>
+              <p class="font-bold text-primary text-sm">VCMT 160404-MF</p>
+              <p class="text-xs text-on-surface-variant">Kennametal · KCM25</p>
+            </div>
+            <span class="font-technical-data text-sm text-primary font-bold">85%</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg border border-border-warm">
+            <div>
+              <p class="font-bold text-primary text-sm">VCMT 160404</p>
+              <p class="text-xs text-on-surface-variant">Mitsubishi · MV1020</p>
+            </div>
+            <span class="font-technical-data text-sm text-primary font-bold">81%</span>
+          </div>
+        </div>
+        <a href="cross-reference.html" class="mt-4 inline-flex items-center gap-1 text-primary font-bold text-sm hover:gap-2 transition-all">Cross-reference all <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Live AI Advisor (Cloudflare Worker -> Anthropic Claude) -->
+<section id="advisor-live" class="px-gutter py-16 bg-surface-container-low border-t border-border-warm">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-8">
+      <span class="inline-block px-3 py-1 rounded-full bg-primary text-white font-bold text-[10px] uppercase tracking-widest mb-3">Live · AI Advisor</span>
+      <h3 class="font-section-heading text-section-heading text-primary">Ask in plain English. Get a brand-neutral shortlist.</h3>
+      <p class="text-on-surface-variant max-w-2xl mt-2">Pick the ISO material group, describe what you are doing, and the advisor returns a recommendation, the reasoning, key checks and a next step.</p>
+    </div>
+
+    <form id="ai-advisor-form" class="bg-white rounded-2xl p-6 md:p-8 border border-border-warm card-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        <div>
+          <label class="block font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">ISO Material Group</label>
+          <div class="grid grid-cols-6 gap-2" id="advisor-material-group">
+            <button type="button" data-mg="P" data-color="#1e40af" class="mg-btn px-3 py-3 rounded-lg border-2 border-iso-p-blue text-iso-p-blue font-bold hover:bg-iso-p-blue hover:text-white transition-colors">P</button>
+            <button type="button" data-mg="M" data-color="#b45309" class="mg-btn px-3 py-3 rounded-lg border-2 border-iso-m-amber text-iso-m-amber font-bold hover:bg-iso-m-amber hover:text-white transition-colors">M</button>
+            <button type="button" data-mg="K" data-color="#b91c1c" class="mg-btn px-3 py-3 rounded-lg border-2 border-iso-k-red text-iso-k-red font-bold hover:bg-iso-k-red hover:text-white transition-colors">K</button>
+            <button type="button" data-mg="N" data-color="#15803d" class="mg-btn px-3 py-3 rounded-lg border-2 border-iso-n-green text-iso-n-green font-bold hover:bg-iso-n-green hover:text-white transition-colors">N</button>
+            <button type="button" data-mg="S" data-color="#374151" class="mg-btn px-3 py-3 rounded-lg border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-colors">S</button>
+            <button type="button" data-mg="H" data-color="#374151" class="mg-btn px-3 py-3 rounded-lg border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-colors">H</button>
+          </div>
+          <input type="hidden" name="materialGroup" id="advisor-mg-input"/>
+        </div>
+        <div>
+          <label class="block font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Operation</label>
+          <select name="operation" id="advisor-operation" class="w-full px-4 py-3 rounded-lg border border-border-warm bg-white text-primary font-medium focus:outline-none focus:border-primary">
+            <option value="turning">Turning</option>
+            <option value="milling">Milling</option>
+            <option value="drilling">Drilling</option>
+            <option value="threading">Threading</option>
+            <option value="grooving">Grooving / Parting</option>
+            <option value="boring">Boring</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        <div>
+          <label class="block font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Insert Code <span class="normal-case text-on-surface-variant/70">(optional)</span></label>
+          <input type="text" name="insertCode" id="advisor-insert" placeholder="e.g. CNMG120408" maxlength="40" class="w-full px-4 py-3 rounded-lg border border-border-warm bg-white text-primary font-mono uppercase focus:outline-none focus:border-primary"/>
+        </div>
+        <div>
+          <label class="block font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Machine / Setup <span class="normal-case text-on-surface-variant/70">(optional)</span></label>
+          <input type="text" name="machine" id="advisor-machine" placeholder="e.g. DMG Mori NLX 2500, 25 kW" maxlength="120" class="w-full px-4 py-3 rounded-lg border border-border-warm bg-white text-primary focus:outline-none focus:border-primary"/>
+        </div>
+      </div>
+      <div class="mb-5">
+        <label class="block font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Your Question</label>
+        <textarea name="question" id="advisor-question" rows="3" maxlength="800" placeholder="e.g. What grade and feed should I use for finishing 42CrMo4 at 280 HB?" class="w-full px-4 py-3 rounded-lg border border-border-warm bg-white text-primary focus:outline-none focus:border-primary resize-none"></textarea>
+      </div>
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <p class="text-xs text-on-surface-variant max-w-md">Brand-neutral guidance. Always verify final cutting data against current manufacturer catalogues, machine limits and shop trials.</p>
+        <button type="submit" id="advisor-submit" class="bg-primary text-white font-bold px-8 py-3 rounded-xl shadow-lg hover:-translate-y-0.5 transition-all flex items-center gap-2">
+          <span class="material-symbols-outlined text-lg" aria-hidden="true">auto_awesome</span>
+          <span id="advisor-submit-label">Ask AI Advisor</span>
+        </button>
+      </div>
+    </form>
+
+    <div id="advisor-result" class="mt-6 hidden">
+      <div class="bg-white rounded-2xl p-6 md:p-8 border border-border-warm card-shadow">
+        <div class="flex items-center gap-2 text-primary font-bold mb-4">
+          <span class="material-symbols-outlined" aria-hidden="true">psychology</span>
+          <span class="font-technical-data text-xs uppercase tracking-widest">Advisor Response</span>
+        </div>
+        <div id="advisor-answer" class="text-primary leading-relaxed"></div>
+        <div id="advisor-meta" class="mt-4 pt-4 border-t border-border-warm text-xs text-on-surface-variant flex flex-wrap gap-4"></div>
+      </div>
+    </div>
+    <div id="advisor-error" class="mt-6 hidden bg-iso-k-red/10 border border-iso-k-red/30 text-iso-k-red rounded-xl p-4 text-sm"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var API = 'https://tooladvisor-ai-proxy.memmizgezgin.workers.dev/api/advisor';
+  var form = document.getElementById('ai-advisor-form');
+  if(!form) return;
+  var mgInput = document.getElementById('advisor-mg-input');
+  var mgButtons = document.querySelectorAll('#advisor-material-group .mg-btn');
+  var submitBtn = document.getElementById('advisor-submit');
+  var submitLabel = document.getElementById('advisor-submit-label');
+  var resultBox = document.getElementById('advisor-result');
+  var answerEl = document.getElementById('advisor-answer');
+  var metaEl = document.getElementById('advisor-meta');
+  var errorBox = document.getElementById('advisor-error');
+
+  mgButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      mgButtons.forEach(function(b){ b.style.background=''; b.style.color=''; });
+      btn.style.background = btn.dataset.color;
+      btn.style.color = '#fff';
+      mgInput.value = btn.dataset.mg;
+    });
+  });
+
+  function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function renderAnswer(text){
+    var html = escapeHtml(text)
+      .replace(/^## (.+)$/gm,'<h4 class="font-bold text-primary mt-4 mb-2 text-base">$1</h4>')
+      .replace(/^- (.+)$/gm,'<li>$1</li>')
+      .replace(/(<li>[\s\S]*?<\/li>)+/g, function(m){ return '<ul class="list-disc pl-5 space-y-1 my-2 text-sm">'+m+'</ul>'; })
+      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+      .replace(/\n\n/g,'</p><p class="mt-3">')
+      .replace(/\n/g,'<br/>');
+    return '<div class="text-sm"><p>'+html+'</p></div>';
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    errorBox.classList.add('hidden');
+    resultBox.classList.add('hidden');
+
+    var payload = {
+      operation: document.getElementById('advisor-operation').value,
+      materialGroup: mgInput.value,
+      insertCode: document.getElementById('advisor-insert').value.trim(),
+      machine: document.getElementById('advisor-machine').value.trim(),
+      question: document.getElementById('advisor-question').value.trim()
+    };
+    if(!payload.question && !payload.insertCode && !payload.materialGroup){
+      errorBox.textContent = 'Please pick a material group, an insert code, or type a question.';
+      errorBox.classList.remove('hidden');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitLabel.textContent = 'Thinking...';
+
+    try {
+      var res = await fetch(API, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      var data = await res.json();
+      if(!res.ok){ throw new Error(data.error || ('HTTP '+res.status)); }
+      answerEl.innerHTML = renderAnswer(data.answer || '(empty response)');
+      var usage = data.usage || {};
+      metaEl.innerHTML =
+        '<span><strong>Model:</strong> '+escapeHtml(data.model||'')+'</span>'+
+        '<span><strong>Input:</strong> '+(usage.input_tokens||0)+' tokens</span>'+
+        '<span><strong>Output:</strong> '+(usage.output_tokens||0)+' tokens</span>';
+      resultBox.classList.remove('hidden');
+      resultBox.scrollIntoView({behavior:'smooth', block:'start'});
+    } catch(err){
+      errorBox.textContent = 'Advisor unavailable: '+(err.message||'unknown error')+'. Please try again in a moment.';
+      errorBox.classList.remove('hidden');
+    } finally {
+      submitBtn.disabled = false;
+      submitLabel.textContent = 'Ask AI Advisor';
+    }
+  });
+})();
+</script>
+<!-- /Live AI Advisor -->
+
+<!-- Three pillars -->
+<section class="px-gutter py-12">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-stack-gap-lg">
+    
+      <a href="cross-reference.html" class="block bg-white rounded-2xl p-7 card-shadow border border-border-warm hover:-translate-y-1 transition-all group">
+        <span class="material-symbols-outlined text-3xl text-primary mb-4 block">compare_arrows</span>
+        <h3 class="font-product-grade text-primary mb-2">Cross-Reference</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Find equivalents across Sandvik, Kennametal, Iscar, Mitsubishi, Tungaloy, Walter and more. Geometry, coating and grade match with confidence %.</p>
+        <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Open Cross-Reference <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+      </a>
+    
+      <a href="compare.html" class="block bg-white rounded-2xl p-7 card-shadow border border-border-warm hover:-translate-y-1 transition-all group">
+        <span class="material-symbols-outlined text-3xl text-primary mb-4 block">fact_check</span>
+        <h3 class="font-product-grade text-primary mb-2">Compare</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Side-by-side technical matrix: Vc, feed, depth, interrupted-cut, tool life, cost tier, risk and best use case.</p>
+        <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Open Compare <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+      </a>
+    
+      <a href="knowledge.html" class="block bg-white rounded-2xl p-7 card-shadow border border-border-warm hover:-translate-y-1 transition-all group">
+        <span class="material-symbols-outlined text-3xl text-primary mb-4 block">menu_book</span>
+        <h3 class="font-product-grade text-primary mb-2">Knowledge</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Engineering guides: insert code reading, ISO groups, chipbreaker logic, stainless strategy, positive vs negative.</p>
+        <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Browse Knowledge <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+      </a>
+    
+  </div>
+</section>
+
+<!-- Trust block -->
+<section class="px-gutter py-20">
+  <div class="bg-primary rounded-3xl p-12 text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-iso-m-amber blur-3xl"></div>
+    </div>
+    <div class="relative max-w-3xl">
+      <p class="font-technical-data text-xs uppercase tracking-widest text-iso-m-amber mb-3">How we stay neutral</p>
+      <h3 class="font-section-heading text-section-heading mb-4">No manufacturer pays for placement.</h3>
+      <p class="text-blue-100/90 leading-relaxed mb-8 max-w-2xl">
+        Recommendations are derived from published manufacturer data, ISO classifications and machining first principles. Every result carries a <strong class="text-white">data confidence rating</strong> and a clear source flag — manufacturer data, generated estimate, or reviewed by an engineer.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+          <div>
+            <p class="font-display-hero text-3xl font-bold text-white">8</p>
+            <p class="text-xs uppercase tracking-widest text-blue-100/70 mt-1">Tool families</p>
+          </div>
+        
+          <div>
+            <p class="font-display-hero text-3xl font-bold text-white">6</p>
+            <p class="text-xs uppercase tracking-widest text-blue-100/70 mt-1">ISO material groups</p>
+          </div>
+        
+          <div>
+            <p class="font-display-hero text-3xl font-bold text-white">12+</p>
+            <p class="text-xs uppercase tracking-widest text-blue-100/70 mt-1">Brand coverage</p>
+          </div>
+        
+          <div>
+            <p class="font-display-hero text-3xl font-bold text-white">100%</p>
+            <p class="text-xs uppercase tracking-widest text-blue-100/70 mt-1">Source-flagged</p>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="w-full rounded-t-xl bg-surface-container dark:bg-surface-dim border-t border-border-warm flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
+<div class="mb-4 md:mb-0">
+<p class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor</p>
+<p class="text-on-surface-variant text-sm mt-1">© 2024 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
+</div>
+<div class="flex gap-8 items-center">
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Contact Engineering</a>
+</div>
 </footer>
-<script src="ta-3d-insert.js"></script>
-<script src="ta-tool-icons.js"></script>
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</main>
+<!-- Contextual FAB - Only for main navigation screens -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-transform z-50 group">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform">add</span>
+</button>
 <script src="page-switcher.js"></script>
-<script type="text/babel" src="directory-app.jsx" data-presets="react"></script>
-</body>
-</html>
+</body></html>
