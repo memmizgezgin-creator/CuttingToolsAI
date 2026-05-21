@@ -63,12 +63,14 @@ on public.products
 for select
 using (true);
 
+drop policy if exists "products_authenticated_insert" on public.products;
 create policy "products_authenticated_insert"
 on public.products
 for insert
 to authenticated
 with check (true);
 
+drop policy if exists "products_authenticated_update" on public.products;
 create policy "products_authenticated_update"
 on public.products
 for update
@@ -76,6 +78,7 @@ to authenticated
 using (true)
 with check (true);
 
+drop policy if exists "products_authenticated_delete" on public.products;
 create policy "products_authenticated_delete"
 on public.products
 for delete
@@ -86,6 +89,7 @@ comment on policy "products_authenticated_insert" on public.products is 'TODO: t
 comment on policy "products_authenticated_update" on public.products is 'TODO: tighten curator access once dedicated curator roles are live.';
 comment on policy "products_authenticated_delete" on public.products is 'TODO: tighten curator access once dedicated curator roles are live.';
 
+drop policy if exists "organizations_select_member" on public.organizations;
 create policy "organizations_select_member"
 on public.organizations
 for select
@@ -99,12 +103,14 @@ using (
   )
 );
 
+drop policy if exists "organizations_insert_authenticated" on public.organizations;
 create policy "organizations_insert_authenticated"
 on public.organizations
 for insert
 to authenticated
 with check (true);
 
+drop policy if exists "organizations_update_owner_admin" on public.organizations;
 create policy "organizations_update_owner_admin"
 on public.organizations
 for update
@@ -128,6 +134,22 @@ with check (
   )
 );
 
+drop policy if exists "organizations_owner_delete" on public.organizations;
+create policy "organizations_owner_delete"
+on public.organizations
+for delete
+to authenticated
+using (
+  exists (
+    select 1
+    from public.memberships m
+    where m.org_id = organizations.id
+      and m.user_id = auth.uid()
+      and m.role = 'owner'
+  )
+);
+
+drop policy if exists "memberships_select_same_org" on public.memberships;
 create policy "memberships_select_same_org"
 on public.memberships
 for select
@@ -142,6 +164,7 @@ using (
   )
 );
 
+drop policy if exists "memberships_insert_owner_admin" on public.memberships;
 create policy "memberships_insert_owner_admin"
 on public.memberships
 for insert
@@ -157,12 +180,54 @@ with check (
   )
 );
 
+drop policy if exists "memberships_update_owner" on public.memberships;
+create policy "memberships_update_owner"
+on public.memberships
+for update
+to authenticated
+using (
+  exists (
+    select 1
+    from public.memberships actor
+    where actor.org_id = memberships.org_id
+      and actor.user_id = auth.uid()
+      and actor.role = 'owner'
+  )
+)
+with check (
+  exists (
+    select 1
+    from public.memberships actor
+    where actor.org_id = memberships.org_id
+      and actor.user_id = auth.uid()
+      and actor.role = 'owner'
+  )
+);
+
+drop policy if exists "memberships_delete_owner_or_self" on public.memberships;
+create policy "memberships_delete_owner_or_self"
+on public.memberships
+for delete
+to authenticated
+using (
+  user_id = auth.uid()
+  or exists (
+    select 1
+    from public.memberships actor
+    where actor.org_id = memberships.org_id
+      and actor.user_id = auth.uid()
+      and actor.role = 'owner'
+  )
+);
+
+drop policy if exists "ai_quota_select_own" on public.ai_quota;
 create policy "ai_quota_select_own"
 on public.ai_quota
 for select
 to authenticated
 using (auth.uid() = user_id);
 
+drop policy if exists "ai_quota_update_own" on public.ai_quota;
 create policy "ai_quota_update_own"
 on public.ai_quota
 for update
@@ -170,16 +235,28 @@ to authenticated
 using (auth.uid() = user_id)
 with check (auth.uid() = user_id);
 
+drop policy if exists "ai_quota_insert_own" on public.ai_quota;
 create policy "ai_quota_insert_own"
 on public.ai_quota
 for insert
 to authenticated
 with check (auth.uid() = user_id);
 
+drop policy if exists "ai_quota_delete_own" on public.ai_quota;
+create policy "ai_quota_delete_own"
+on public.ai_quota
+for delete
+to authenticated
+using (auth.uid() = user_id);
+
 drop policy if exists "saved_tools_select_own" on public.saved_tools;
 drop policy if exists "saved_tools_insert_own" on public.saved_tools;
 drop policy if exists "saved_tools_delete_own" on public.saved_tools;
+drop policy if exists "saved_tools_select_personal_or_org" on public.saved_tools;
+drop policy if exists "saved_tools_insert_own" on public.saved_tools;
+drop policy if exists "saved_tools_delete_own_or_org_admin" on public.saved_tools;
 
+drop policy if exists "saved_tools_select_personal_or_org" on public.saved_tools;
 create policy "saved_tools_select_personal_or_org"
 on public.saved_tools
 for select
@@ -197,6 +274,7 @@ using (
   )
 );
 
+drop policy if exists "saved_tools_insert_own" on public.saved_tools;
 create policy "saved_tools_insert_own"
 on public.saved_tools
 for insert
@@ -214,6 +292,7 @@ with check (
   )
 );
 
+drop policy if exists "saved_tools_delete_own_or_org_admin" on public.saved_tools;
 create policy "saved_tools_delete_own_or_org_admin"
 on public.saved_tools
 for delete

@@ -98,17 +98,21 @@ Purpose:
 - `SELECT`: authenticated members of the organization only
 - `INSERT`: any authenticated user
 - `UPDATE`: only `owner` or `admin` members of that organization
+- `DELETE`: only `owner` members of that organization
 
 ### `public.memberships`
 
 - `SELECT`: authenticated users can read their own memberships and memberships inside organizations they belong to
 - `INSERT`: self insert is allowed for signup bootstrap, otherwise only `owner` or `admin` of the target org can add members
+- `UPDATE`: only `owner` members can change membership rows or roles
+- `DELETE`: users can remove their own row to leave an org, or `owner` can remove any member
 
 ### `public.ai_quota`
 
 - `SELECT`: own row only
 - `INSERT`: own row only
 - `UPDATE`: own row only
+- `DELETE`: own row only
 
 ### `public.saved_tools`
 
