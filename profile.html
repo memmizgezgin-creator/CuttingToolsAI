@@ -1,161 +1,91 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;700;800&amp;family=DM+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="tw-config.js"></script>
-    <link rel="stylesheet" href="polish.css"/>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile · ToolAdvisor</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Nunito:wght@500;700;800&family=DM+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="polish.css"/>
 </head>
-<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
-<main class="ml-sidebar-width min-h-screen pb-20">
-<div class="p-container-margin max-w-6xl mx-auto grid grid-cols-12 gap-gutter">
-<section class="col-span-12 lg:col-span-8 space-y-stack-gap-lg">
-<div class="bg-surface-card rounded-xl p-card-padding ambient-shadow border border-border-warm">
-<div class="flex items-center justify-between mb-8">
-<div>
-<h3 class="font-section-heading text-[20px] text-primary">Personal Information</h3>
-<p class="text-on-surface-variant text-[14px]">Update your professional credentials and contact details.</p>
-</div>
-<button class="text-primary font-bold text-[14px] px-4 py-2 hover:bg-surface-container rounded-lg transition-colors">Edit Profile</button>
-</div>
-<div class="grid grid-cols-2 gap-stack-gap-md">
-<div class="space-y-2">
-<label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Full Name</label>
-<input class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="text" value="Hans Mueller"/>
-</div>
-<div class="space-y-2">
-<label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Professional Title</label>
-<input class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="text" value="Senior Machinist &amp; Tooling Lead"/>
-</div>
-<div class="space-y-2 col-span-2">
-<label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Work Email Address</label>
-<input class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="email" value="h.mueller@precision-swiss.ch"/>
-</div>
-<div class="space-y-2">
-<label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Facility Location</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">location_on</span>
-<input class="w-full h-[52px] bg-background border border-border-warm rounded-xl pl-11 pr-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="text" value="Zürich Plant B"/>
-</div>
-</div>
-<div class="space-y-2">
-<label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Timezone</label>
-<select class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none appearance-none">
-<option>Central European Time (GMT+1)</option>
-<option>Eastern Standard Time (GMT-5)</option>
-</select>
-</div>
-</div>
-</div>
-<div class="bg-surface-card rounded-xl p-card-padding ambient-shadow border border-border-warm">
-<h3 class="font-section-heading text-[20px] text-primary mb-6">Briefing Preferences</h3>
-<div class="space-y-4">
-<div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors group cursor-pointer border border-transparent hover:border-border-warm">
-<div class="mt-1">
-<input checked="" class="w-5 h-5 rounded border-border-warm text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
-</div>
-<div>
-<h4 class="font-bold text-primary text-[16px]">Daily Material Intelligence</h4>
-<p class="text-on-surface-variant text-[14px]">Receive a morning digest of wear patterns and tool life optimizations based on your active machines.</p>
-</div>
-</div>
-<div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors group cursor-pointer border border-transparent hover:border-border-warm">
-<div class="mt-1">
-<input checked="" class="w-5 h-5 rounded border-border-warm text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
-</div>
-<div>
-<h4 class="font-bold text-primary text-[16px]">ISO Standard Updates</h4>
-<p class="text-on-surface-variant text-[14px]">Immediate notification when new cutting geometry recommendations are released for your primary ISO materials.</p>
-</div>
-</div>
-<div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors group cursor-pointer border border-transparent hover:border-border-warm">
-<div class="mt-1">
-<input class="w-5 h-5 rounded border-border-warm text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
-</div>
-<div>
-<h4 class="font-bold text-primary text-[16px]">Cross-Reference Market Notes</h4>
-<p class="text-on-surface-variant text-[14px]">Monthly executive summary on tooling procurement trends and cost-per-part efficiency benchmarks.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="bg-error-container/20 rounded-xl p-card-padding border border-error/20">
-<h3 class="font-section-heading text-[20px] text-error mb-2">Danger Zone</h3>
-<p class="text-on-surface-variant text-[14px] mb-6">Permanently delete your account and all associated tooling intelligence data. This action cannot be undone.</p>
-<button class="bg-white border border-error text-error font-bold px-6 py-3 rounded-xl hover:bg-error hover:text-white transition-all duration-200">Delete Account and Data</button>
-</div>
-</section>
-<section class="col-span-12 lg:col-span-4 space-y-stack-gap-lg">
-<div class="bg-surface-card rounded-xl p-card-padding ambient-shadow border border-border-warm">
-<h3 class="font-section-heading text-[18px] text-primary mb-6">Activity History</h3>
-<div class="relative pl-6 space-y-8 before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-border-warm">
-<div class="relative">
-<div class="absolute -left-[20px] top-1 w-3 h-3 rounded-full bg-iso-p-blue ring-4 ring-white"></div>
-<div>
-<p class="text-[13px] font-technical-data text-outline mb-1">TODAY, 09:42 AM</p>
-<h5 class="font-bold text-primary text-[14px]">Optimized ISO P Path</h5>
-<p class="text-on-surface-variant text-[13px]">Updated feed rates for DNMG 1506 inserts on Lathe-04.</p>
-</div>
-</div>
-<div class="relative">
-<div class="absolute -left-[20px] top-1 w-3 h-3 rounded-full bg-iso-m-amber ring-4 ring-white"></div>
-<div>
-<p class="text-[13px] font-technical-data text-outline mb-1">YESTERDAY, 02:15 PM</p>
-<h5 class="font-bold text-primary text-[14px]">New Inventory Audit</h5>
-<p class="text-on-surface-variant text-[13px]">Validated 24 units of high-precision end mills in central storage.</p>
-</div>
-</div>
-<div class="relative">
-<div class="absolute -left-[20px] top-1 w-3 h-3 rounded-full bg-iso-h-slate ring-4 ring-white"></div>
-<div>
-<p class="text-[13px] font-technical-data text-outline mb-1">OCT 24, 11:00 AM</p>
-<h5 class="font-bold text-primary text-[14px]">Account Security Update</h5>
-<p class="text-on-surface-variant text-[13px]">Modified multi-factor authentication preferences.</p>
-</div>
-</div>
-<div class="relative">
-<div class="absolute -left-[20px] top-1 w-3 h-3 rounded-full bg-iso-n-green ring-4 ring-white"></div>
-<div>
-<p class="text-[13px] font-technical-data text-outline mb-1">OCT 22, 04:30 PM</p>
-<h5 class="font-bold text-primary text-[14px]">Pro License Activated</h5>
-<p class="text-on-surface-variant text-[13px]">Subscribed to full decision platform analytics.</p>
-</div>
-</div>
-</div>
-<button class="w-full mt-8 py-3 text-primary font-bold text-[14px] border border-border-warm rounded-xl hover:bg-surface-container-low transition-colors">View Full Audit Log</button>
-</div>
-<div class="bg-primary-container text-white rounded-xl p-card-padding shadow-xl relative overflow-hidden group">
-<div class="absolute top-0 right-0 p-4 opacity-10 transform group-hover:scale-110 transition-transform duration-500">
-<span class="material-symbols-outlined text-[120px]">precision_manufacturing</span>
-</div>
-<div class="relative z-10">
-<h3 class="font-section-heading text-[18px] mb-2">Technical Support</h3>
-<p class="text-[14px] text-blue-100/80 mb-6">Connect directly with our engineering team for tooling calculations.</p>
-<button class="bg-white text-primary px-6 py-3 rounded-xl font-bold text-[14px] flex items-center gap-2 hover:bg-blue-50 transition-colors">
-<span class="material-symbols-outlined text-[20px]">contact_support</span>
-                            Open Support Ticket
-                        </button>
-</div>
-</div>
-</section>
-</div>
-<footer class="w-full rounded-t-xl bg-surface-container dark:bg-surface-dim border-t border-border-warm mt-20">
-<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
-<div class="flex flex-col md:flex-row items-center gap-6">
-<p class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">ToolAdvisor Intelligence Platform</p>
-<p class="text-body-md text-on-surface-variant/60">© 2024 Brand-Neutral Decision Platform.</p>
-</div>
-<div class="flex gap-8 mt-4 md:mt-0">
-<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">Terms of Service</a>
-<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">Privacy Policy</a>
-<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">Contact Engineering</a>
-</div>
-</div>
-</footer>
-</main>
-<script src="page-switcher.js"></script>
-</body></html>
+<body class="bg-surface text-on-surface font-body-md">
+  <main class="ml-sidebar-width min-h-screen p-container-margin">
+    <section class="max-w-4xl mx-auto space-y-4">
+      <div class="bg-surface-card rounded-2xl border border-border-warm p-6">
+        <p class="font-label-caps text-xs uppercase tracking-widest text-on-surface-variant">Account</p>
+        <h1 class="font-section-heading text-primary text-3xl mt-2">Profile</h1>
+        <p id="ta-profile-email" class="mt-2 text-on-surface-variant"></p>
+        <button id="ta-profile-signout" class="mt-4 px-4 py-2 rounded-lg border border-border-warm text-primary font-bold hover:bg-surface-container-low transition-colors">Sign out</button>
+      </div>
+
+      <div class="bg-surface-card rounded-2xl border border-border-warm p-6">
+        <div class="flex items-center justify-between">
+          <h2 class="font-section-heading text-xl text-primary">Saved tools</h2>
+          <span id="ta-saved-count" class="font-technical-data text-xs text-on-surface-variant">0 items</span>
+        </div>
+        <ul id="ta-saved-list" class="mt-4 space-y-2"></ul>
+        <p id="ta-saved-empty" class="text-on-surface-variant text-sm mt-2">No saved tools yet. Use Save button on product cards.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="page-switcher.js"></script>
+  <script>
+    (async function () {
+      function renderSavedRows(rows) {
+        const list = document.getElementById('ta-saved-list');
+        const empty = document.getElementById('ta-saved-empty');
+        const count = document.getElementById('ta-saved-count');
+        if (!list || !empty || !count) return;
+        list.innerHTML = '';
+        count.textContent = rows.length + ' items';
+        if (!rows.length) {
+          empty.style.display = 'block';
+          return;
+        }
+        empty.style.display = 'none';
+        rows.forEach((row) => {
+          const li = document.createElement('li');
+          li.className = 'flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container-low border border-border-warm';
+          li.innerHTML = '<span class="font-technical-data text-sm text-ink-text">' + row.sku + '</span>';
+          list.appendChild(li);
+        });
+      }
+
+      function waitForApi() {
+        return new Promise((resolve) => {
+          const run = () => window.taSupabase ? resolve(window.taSupabase) : setTimeout(run, 80);
+          run();
+        });
+      }
+
+      const api = await waitForApi();
+      await api.refreshSession();
+      const user = api.getUser();
+      if (!user) {
+        window.location.href = '/?signin=1';
+        return;
+      }
+      const emailEl = document.getElementById('ta-profile-email');
+      if (emailEl) emailEl.textContent = user.email || '';
+
+      const rows = await api.fetchSavedTools();
+      renderSavedRows(rows);
+
+      const btn = document.getElementById('ta-profile-signout');
+      if (btn) {
+        btn.addEventListener('click', async () => {
+          await api.signOut();
+          window.location.href = '/';
+        });
+      }
+
+      window.addEventListener('ta:saved-tools-updated', async () => {
+        const fresh = await api.fetchSavedTools();
+        renderSavedRows(fresh);
+      });
+    })();
+  </script>
+</body>
+</html>

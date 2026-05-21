@@ -29,35 +29,24 @@
         <div>
           <p class="ta-eyebrow">Welcome back</p>
           <h2>Sign in to ToolAdvisor</h2>
-          <p class="ta-sub">Access saved projects, decisions and Pro features.</p>
+          <p class="ta-sub">Email magic link only. No password required.</p>
         </div>
         <button class="ta-modal-close" data-modal-close aria-label="Close"><span class="material-symbols-outlined">close</span></button>
       </div>
       <div class="ta-modal-body">
-        <div class="ta-sso">
-          <button type="button"><span class="material-symbols-outlined" style="font-size:18px;color:#4285F4;">login</span> Google</button>
-          <button type="button"><span class="material-symbols-outlined" style="font-size:18px;color:#0078D4;">window</span> Microsoft</button>
-        </div>
-        <div class="ta-divider">or with email</div>
-        <form onsubmit="event.preventDefault(); TA.closeModal('sign-in'); TA.toast('Signed in (demo)');">
+        <form id="ta-magic-link-form">
           <div class="ta-field">
             <label>Email</label>
-            <input type="email" placeholder="you@workshop.com" required>
+            <input id="ta-magic-link-email" type="email" placeholder="you@workshop.com" required>
           </div>
-          <div class="ta-field">
-            <label>Password</label>
-            <input type="password" placeholder="••••••••" required>
+          <div id="ta-magic-link-status" style="display:none;margin:8px 0 12px;padding:10px;border-radius:10px;background:#F0F8FF;color:#123356;font-size:13px;font-weight:600;">
+            Check your email for the magic link.
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin:6px 0 16px;">
-            <label class="ta-checkbox"><input type="checkbox"> Remember me</label>
-            <a href="#" style="font-size:13px;font-weight:600;color:var(--ta-primary);text-decoration:none;">Forgot password?</a>
-          </div>
-          <button type="submit" class="ta-btn ta-btn-primary ta-btn-block ta-btn-lg">Sign in</button>
+          <button type="submit" class="ta-btn ta-btn-primary ta-btn-block ta-btn-lg">Send magic link</button>
         </form>
       </div>
       <div class="ta-modal-footer" style="justify-content:center;">
-        <span style="font-size:13px;color:var(--ta-text-soft);">Don't have an account?</span>
-        <a href="#" data-modal-open="sign-up" data-modal-close style="font-size:13px;font-weight:700;color:var(--ta-primary);text-decoration:none;">Sign up</a>
+        <span style="font-size:13px;color:var(--ta-text-soft);">We'll create your account on first sign-in.</span>
       </div>`
   };
 
@@ -819,4 +808,27 @@
   } else {
     run();
   }
+
+  document.addEventListener('submit', async (e) => {
+    const form = e.target;
+    if (!(form instanceof HTMLFormElement) || form.id !== 'ta-magic-link-form') return;
+    e.preventDefault();
+    const emailInput = document.getElementById('ta-magic-link-email');
+    const statusEl = document.getElementById('ta-magic-link-status');
+    if (!emailInput || !window.taSupabase) return;
+    const email = emailInput.value.trim();
+    if (!email) return;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+    try {
+      const { error } = await window.taSupabase.sendMagicLink(email);
+      if (error) throw error;
+      if (statusEl) statusEl.style.display = 'block';
+      toast('Magic link sent');
+    } catch (err) {
+      toast(err.message || 'Sign-in failed');
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
 })();

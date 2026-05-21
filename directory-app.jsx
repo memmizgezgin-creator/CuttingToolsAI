@@ -523,6 +523,16 @@ function App() {
 
   useEffect(() => LS.set('ta:compare', [...compare]), [compare]);
   useEffect(() => LS.set('ta:favs',    [...favs]),    [favs]);
+
+  useEffect(() => {
+    const onSaved = (e) => {
+      const skus = e.detail?.skus || [];
+      const ids = window.TA_TOOLS.filter((t) => skus.includes(t.code)).map((t) => t.id);
+      setFavs(new Set(ids));
+    };
+    window.addEventListener('ta:saved-tools-updated', onSaved);
+    return () => window.removeEventListener('ta:saved-tools-updated', onSaved);
+  }, []);
   useEffect(() => LS.set('ta:recent',  recent),       [recent]);
 
   // listen to sidebar filter events (bidirectional sync)
@@ -608,9 +618,32 @@ function App() {
       return next;
     });
   }, []);
-  const toggleFav = useCallback((id) => {
-    setFavs(prev => { const n = new Set(prev); n.has(id) ? n.delete(id) : n.add(id); return n; });
-  }, []);
+  const toggleFav = useCallback(async (id) => {
+    const tool = TOOLS.find((t) => t.id === id);
+    if (!tool) return;
+    const api = window.taSupabase;
+    const user = api?.getUser ? api.getUser() : null;
+    if (!api || !user) {
+      if (window.TA?.openModal) window.TA.openModal('sign-in');
+      return;
+    }
+    const isAlready = favs.has(id);
+    if (isAlready) {
+      await api.unsaveTool(tool.code);
+      setFavs((prev) => {
+        const n = new Set(prev);
+        n.delete(id);
+        return n;
+      });
+      return;
+    }
+    await api.saveTool(tool.code);
+    setFavs((prev) => {
+      const n = new Set(prev);
+      n.add(id);
+      return n;
+    });
+  }, [TOOLS, favs]);
   const openDetail = useCallback((tool) => {
     setOpenTool(tool);
     setRecent(prev => {

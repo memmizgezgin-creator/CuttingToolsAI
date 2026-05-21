@@ -12,6 +12,9 @@
     document.head.appendChild(el);
   }
   injectAsset('link', {rel:'stylesheet', href:'modals.css'});
+  injectAsset('script', {src:'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js', defer:''});
+  injectAsset('script', {src:'supabase/config.js', defer:''});
+  injectAsset('script', {src:'supabase/client.js', defer:''});
   injectAsset('script', {src:'modals.js', defer:''});
   injectAsset('script', {src:'ta-3d-insert.js', defer:''});
   injectAsset('script', {src:'ta-tool-icons.js', defer:''});
@@ -121,20 +124,7 @@
             <span class="material-symbols-outlined" style="font-size:18px;color:#F59E0B;">workspace_premium</span>
             <span>Pro</span>
           </a>
-          <a href="profile.html" data-modal-open="sign-in" style="
-              padding:8px 14px;border-radius:8px;font-size:14px;font-weight:600;
-              color:#123356;text-decoration:none;white-space:nowrap;cursor:pointer;
-              background:${profileActive?'#F0EDE8':'transparent'};">Sign in</a>
-          <a href="profile.html" data-modal-open="sign-up" style="
-              display:inline-flex;align-items:center;gap:6px;
-              padding:8px 14px;border-radius:8px;font-size:14px;font-weight:700;
-              background:#123356;color:#fff;text-decoration:none;white-space:nowrap;
-              transition:transform .15s, box-shadow .15s;"
-              onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 12px rgba(18,51,86,.18)';"
-              onmouseout="this.style.transform='';this.style.boxShadow='';">
-            <span>Sign up</span>
-            <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
-          </a>
+          <div id="ta-auth-slot" style="display:flex;align-items:center;gap:8px;"></div>
         </div>
       </div>`;
     return header;
@@ -609,6 +599,49 @@
     const rescan = () => { if (window.TA && TA.attachSearchDropdowns) TA.attachSearchDropdowns(); };
     rescan();
     setTimeout(rescan, 50); // belt-and-braces in case modals.js loads late
+    setTimeout(bindAuthUi, 120);
+    if (new URLSearchParams(window.location.search).get('signin') === '1') {
+      setTimeout(() => {
+        if (window.TA?.openModal) window.TA.openModal('sign-in');
+      }, 220);
+    }
+  }
+
+  function bindAuthUi() {
+    const slot = document.getElementById('ta-auth-slot');
+    if (!slot) return;
+    const profileIsActive = ((location.pathname.split('/').pop() || 'index.html').toLowerCase()) === 'profile.html';
+
+    function render(user) {
+      if (!user) {
+        slot.innerHTML = `
+          <a href="profile.html" data-modal-open="sign-in" style="
+              padding:8px 14px;border-radius:8px;font-size:14px;font-weight:600;
+              color:#123356;text-decoration:none;white-space:nowrap;cursor:pointer;
+              background:${profileIsActive?'#F0EDE8':'transparent'};">Sign in</a>`;
+        return;
+      }
+      const email = user.email || 'Account';
+      slot.innerHTML = `
+        <a href="profile.html" style="
+            padding:8px 10px;border-radius:8px;font-size:13px;font-weight:600;
+            color:#123356;text-decoration:none;white-space:nowrap;max-width:210px;overflow:hidden;text-overflow:ellipsis;">
+          ${email}
+        </a>
+        <button id="ta-sign-out-btn" style="
+            padding:8px 12px;border-radius:8px;border:1px solid #D6D0C8;background:#fff;
+            color:#123356;font-size:13px;font-weight:700;cursor:pointer;">Sign out</button>`;
+      const outBtn = document.getElementById('ta-sign-out-btn');
+      if (outBtn) {
+        outBtn.addEventListener('click', async () => {
+          if (window.taSupabase) await window.taSupabase.signOut();
+        });
+      }
+    }
+
+    const initialUser = window.taSupabase?.getUser ? window.taSupabase.getUser() : null;
+    render(initialUser);
+    window.addEventListener('ta:auth-state', (e) => render(e.detail?.user || null));
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', run);
