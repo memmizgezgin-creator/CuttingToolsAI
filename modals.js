@@ -665,7 +665,7 @@
           <div class="ta-search-section">
             <h4>Tools (${tools.length})</h4>
             ${tools.slice(0,5).map(t => `
-              <a class="ta-search-item" href="tools-directory.html"><span class="material-symbols-outlined">precision_manufacturing</span>
+              <a class="ta-search-item" href="catalog.html"><span class="material-symbols-outlined">precision_manufacturing</span>
                 <div style="flex:1;"><div class="ta-si-title">${t.code}</div><div class="ta-si-meta">${t.brand} · ISO ${t.iso}</div></div>
                 <span class="ta-iso-badge ta-iso-${t.iso}">ISO ${t.iso}</span>
               </a>`).join('') || '<p style="font-size:13px;color:var(--ta-text-muted);padding:8px;margin:0;">No tools match.</p>'}
@@ -674,7 +674,7 @@
             <h4>Knowledge (${guides.length})</h4>
             ${guides.map(g => `<a class="ta-search-item" href="knowledge.html"><span class="material-symbols-outlined">menu_book</span><div><div class="ta-si-title">${g}</div></div></a>`).join('') || '<p style="font-size:13px;color:var(--ta-text-muted);padding:8px;margin:0;">No guides match.</p>'}
           </div>
-          ${Q ? `<div class="ta-search-section"><a class="ta-search-item" href="tools-directory.html"><span class="material-symbols-outlined">arrow_forward</span><div class="ta-si-title">See all results for "${q}"</div></a></div>` : ''}`;
+          ${Q ? `<div class="ta-search-section"><a class="ta-search-item" href="catalog.html"><span class="material-symbols-outlined">arrow_forward</span><div class="ta-si-title">See all results for "${q}"</div></a></div>` : ''}`;
       };
 
       const position = () => {
