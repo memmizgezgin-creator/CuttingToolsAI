@@ -1,8 +1,0 @@
-# NOTE: This file is dead code on GitHub Pages (GH Pages ignores _redirects).
-# Routing is handled by physical HTML files and directory/index.html patterns.
-# Kept here as documentation only. Active if/when migrated back to Netlify.
-
-# / => ToolAdvisor.html (index.html IS ToolAdvisor.html on GH Pages)
-# /catalog => /catalog/index.html => meta-refresh to catalog.html
-# /advisor.html => alias via physical file
-# /ToolAdvisor.html => canonical advisor
