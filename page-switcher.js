@@ -17,6 +17,8 @@
   injectAsset('script', {src:'ta-tool-icons.js', defer:''});
 
   const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  // index.html serves the same catalog app as tools-directory.html
+  const hereResolved = here === 'index.html' ? 'tools-directory.html' : here;
 
   // ============================================================
   // TOP NAV
@@ -40,7 +42,7 @@
       font-family:"DM Sans",system-ui,sans-serif;`;
 
     const linksHTML = navLinks.map(l => {
-      const active = l.href.toLowerCase() === here;
+      const active = l.href.toLowerCase() === hereResolved;
       return `
         <a href="${l.href}" class="ta-nav-link" data-active="${active}" style="
             display:inline-flex;align-items:center;gap:8px;
@@ -56,8 +58,8 @@
         </a>`;
     }).join('');
 
-    const proActive = here === 'pro.html';
-    const profileActive = here === 'profile.html';
+    const proActive = hereResolved === 'pro.html';
+    const profileActive = hereResolved === 'profile.html';
 
     header.innerHTML = `
       <div style="display:flex;align-items:center;gap:16px;padding:0 24px;height:64px;">
@@ -193,7 +195,7 @@
     {iso:'H', shape:'D', tone:'iso-h', label:'Hardened',     color:'#64748B'},
   ];
 
-  const isCatalogPage = here === 'tools-directory.html';
+  const isCatalogPage = hereResolved === 'tools-directory.html';
 
   function getCounts() {
     if (!window.TA_TOOLS) return { families:{}, isos:{}, total:0, ready:false };
@@ -557,6 +559,7 @@
   // ============================================================
   function rewireFabs() {
     const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const hereR = here === 'index.html' ? 'tools-directory.html' : here;
     // Per-page action: catalog → filter, knowledge → search focus, else → advisor
     const target = {
       'tools-directory.html': { modal: 'filter',          icon: 'tune',            label: 'Advanced filters' },
@@ -565,7 +568,7 @@
       'compare.html':         { modal: 'advisor-wizard',  icon: 'auto_awesome',    label: 'Start advisor' },
       'profile.html':         { modal: null,              icon: null,              label: null,                     action: 'remove' },
       'pro.html':             { modal: 'advisor-wizard',  icon: 'auto_awesome',    label: 'Start advisor' },
-    }[here] || { modal: 'advisor-wizard', icon: 'auto_awesome', label: 'Start advisor' };
+    }[hereR] || { modal: 'advisor-wizard', icon: 'auto_awesome', label: 'Start advisor' };
 
     document.querySelectorAll('button.fixed.bottom-8.right-8, button[class*="fixed"][class*="bottom-8"][class*="right-8"]').forEach(fab => {
       if (target.action === 'remove') { fab.remove(); return; }

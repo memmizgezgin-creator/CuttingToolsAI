@@ -514,340 +514,14 @@ body > button[class*="fixed"][class*="bottom-8"][class*="right-8"] {
   window.TA_TOOLS = TOOLS;
 })();
 
-/* ---------- TOP NAV + SIDEBAR ---------- */
-(function(){
-  const navLinks = [
-    {href:'#advisor',     label:'Advisor',         shortLabel:'Advisor',    icon:'auto_awesome'},
-    {href:'#catalog',     label:'Catalog',         shortLabel:'Catalog',    icon:'inventory_2',   active:true},
-    {href:'#cross-ref',   label:'Cross-Reference', shortLabel:'Cross-Ref',  icon:'compare_arrows'},
-    {href:'#compare',     label:'Compare',         shortLabel:'Compare',    icon:'fact_check'},
-    {href:'#knowledge',   label:'Knowledge',       shortLabel:'Knowledge',  icon:'menu_book'}
-  ];
-
-  function buildHeader() {
-    const header = document.createElement('header');
-    header.setAttribute('data-ta-chrome', '1');
-    header.style.cssText = 'position:sticky;top:0;left:0;right:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid #E8E4DE;z-index:50;font-family:"DM Sans",system-ui,sans-serif;';
-
-    const linksHTML = navLinks.map(function(l){
-      const active = !!l.active;
-      return '<a href="' + l.href + '" class="ta-nav-link" data-active="' + active + '" style="display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;font-size:14px;font-weight:' + (active?700:500) + ';color:' + (active?'#123356':'#43474e') + ';background:' + (active?'#F0EDE8':'transparent') + ';text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background .15s,color .15s;">' +
-        '<span class="material-symbols-outlined" style="font-size:18px;">' + l.icon + '</span>' +
-        '<span class="ta-nav-label-full">' + l.label + '</span>' +
-        '<span class="ta-nav-label-short" style="display:none;">' + l.shortLabel + '</span>' +
-      '</a>';
-    }).join('');
-
-    header.innerHTML =
-      '<div style="display:flex;align-items:center;gap:16px;padding:0 24px;height:64px;">' +
-        '<a href="#" style="display:flex;align-items:center;gap:10px;margin-right:8px;text-decoration:none;flex-shrink:0;">' +
-          '<span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:#123356;border-radius:8px;">' +
-            '<span class="material-symbols-outlined" style="color:#fff;font-size:20px;">precision_manufacturing</span>' +
-          '</span>' +
-          '<span style="font-family:\'Nunito\',sans-serif;font-weight:800;font-size:18px;color:#123356;letter-spacing:-0.01em;">ToolAdvisor</span>' +
-        '</a>' +
-        '<nav class="ta-nav-primary" style="display:flex;align-items:center;gap:2px;min-width:0;flex-shrink:1;overflow-x:auto;">' + linksHTML + '</nav>' +
-        '<div class="ta-nav-search" style="flex:1;max-width:340px;margin-left:auto;min-width:0;">' +
-          '<div style="position:relative;width:100%;">' +
-            '<span class="material-symbols-outlined" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#73777f;font-size:18px;pointer-events:none;">search</span>' +
-            '<input type="search" placeholder="Search tools, materials, geometries…" aria-label="Search" style="width:100%;height:38px;padding:0 14px 0 38px;background:#F5F2EE;border:1px solid transparent;border-radius:9999px;font-family:inherit;font-size:13px;color:#1A1A2E;outline:none;transition:background .15s, border-color .15s, box-shadow .15s;" onfocus="this.style.background=\'#fff\';this.style.borderColor=\'#123356\';this.style.boxShadow=\'0 0 0 3px rgba(18,51,86,.12)\';" onblur="this.style.background=\'#F5F2EE\';this.style.borderColor=\'transparent\';this.style.boxShadow=\'\';">' +
-          '</div>' +
-        '</div>' +
-        '<div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">' +
-          '<button aria-label="Notifications" style="position:relative;width:38px;height:38px;border-radius:10px;border:none;background:transparent;color:#123356;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background .15s;" onmouseover="this.style.background=\'#F5F2EE\';" onmouseout="this.style.background=\'transparent\';">' +
-            '<span class="material-symbols-outlined" style="font-size:22px;">notifications</span>' +
-            '<span style="position:absolute;top:8px;right:9px;width:7px;height:7px;background:#EF4444;border-radius:50%;border:2px solid #fff;"></span>' +
-          '</button>' +
-          '<button aria-label="Settings" style="width:38px;height:38px;border-radius:10px;border:none;background:transparent;color:#123356;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background .15s;" onmouseover="this.style.background=\'#F5F2EE\';" onmouseout="this.style.background=\'transparent\';">' +
-            '<span class="material-symbols-outlined" style="font-size:22px;">settings</span>' +
-          '</button>' +
-          '<a href="#" class="ta-pro-link" style="display:none;align-items:center;gap:6px;padding:8px 12px;border-radius:8px;font-size:14px;font-weight:600;color:#123356;background:transparent;text-decoration:none;white-space:nowrap;">' +
-            '<span class="material-symbols-outlined" style="font-size:18px;color:#F59E0B;">workspace_premium</span><span>Pro</span>' +
-          '</a>' +
-          '<a href="#" style="padding:8px 14px;border-radius:8px;font-size:14px;font-weight:600;color:#123356;text-decoration:none;white-space:nowrap;cursor:pointer;">Sign in</a>' +
-          '<a href="#" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;font-size:14px;font-weight:700;background:#123356;color:#fff;text-decoration:none;white-space:nowrap;transition:transform .15s, box-shadow .15s;" onmouseover="this.style.transform=\'translateY(-1px)\';this.style.boxShadow=\'0 4px 12px rgba(18,51,86,.18)\';" onmouseout="this.style.transform=\'\';this.style.boxShadow=\'\';">' +
-            '<span>Sign up</span><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>' +
-          '</a>' +
-        '</div>' +
-      '</div>';
-    return header;
-  }
-
-  function installTopNav() {
-    document.querySelectorAll('body > header').forEach(function(h){ h.remove(); });
-    const newHeader = buildHeader();
-    document.body.insertBefore(newHeader, document.body.firstChild);
-
-    newHeader.querySelectorAll('.ta-nav-link').forEach(function(el){
-      const active = el.getAttribute('data-active') === 'true';
-      if (!active) {
-        el.addEventListener('mouseenter', function(){ el.style.background='#F5F2EE'; el.style.color='#123356'; });
-        el.addEventListener('mouseleave', function(){ el.style.background='transparent'; el.style.color='#43474e'; });
-      }
-    });
-
-    const applyResponsive = function() {
-      const w = window.innerWidth;
-      newHeader.querySelectorAll('.ta-nav-label-full').forEach(function(el){ el.style.display = (w >= 1280) ? '' : 'none'; });
-      newHeader.querySelectorAll('.ta-nav-label-short').forEach(function(el){ el.style.display = (w >= 768 && w < 1280) ? '' : 'none'; });
-      const proLink = newHeader.querySelector('.ta-pro-link');
-      if (proLink) proLink.style.display = (w >= 1440) ? 'inline-flex' : 'none';
-      const searchWrap = newHeader.querySelector('.ta-nav-search');
-      if (searchWrap) searchWrap.style.display = (w >= 1024) ? '' : 'none';
-    };
-    applyResponsive();
-    window.addEventListener('resize', applyResponsive);
-  }
-
-  const toolFamilies = [
-    {key:'Turning',    iconKey:'turning',   label:'Turning Inserts'},
-    {key:'Milling',    iconKey:'milling',   label:'Milling Tools'},
-    {key:'Drilling',   iconKey:'drilling',  label:'Drilling Tools'},
-    {key:'Reaming',    iconKey:'reamers',   label:'Reamers'},
-    {key:'Threading',  iconKey:'threading', label:'Threading Tools'},
-    {key:'Grooving',   iconKey:'grooving',  label:'Grooving & Parting'}
-  ];
-  const materials = [
-    {iso:'P', shape:'C', tone:'iso-p', label:'Steel',        color:'#3B82F6'},
-    {iso:'M', shape:'V', tone:'iso-m', label:'Stainless',    color:'#F59E0B'},
-    {iso:'K', shape:'W', tone:'iso-k', label:'Cast iron',    color:'#EF4444'},
-    {iso:'N', shape:'R', tone:'iso-n', label:'Non-ferrous',  color:'#10B981'},
-    {iso:'S', shape:'T', tone:'iso-s', label:'Superalloy',   color:'#F97316'},
-    {iso:'H', shape:'D', tone:'iso-h', label:'Hardened',     color:'#64748B'}
-  ];
-
-  function navOrFilter(kind, value) {
-    window.dispatchEvent(new CustomEvent('ta:' + kind + '-filter', { detail: { [kind]: value } }));
-  }
-
-  function buildSidebar() {
-    const aside = document.createElement('aside');
-    aside.setAttribute('data-ta-chrome', '1');
-    aside.style.cssText = 'position:fixed;left:0;top:64px;width:260px;height:calc(100vh - 64px);background:#F5F2EE;border-right:1px solid #E8E4DE;display:flex;flex-direction:column;z-index:30;font-family:"DM Sans",system-ui,sans-serif;';
-
-    const sectionLabel = function(txt) {
-      return '<div style="margin:14px 18px 6px;"><p style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8A8A9A;font-weight:700;margin:0;">' + txt + '</p></div>';
-    };
-
-    const statusHTML =
-      '<div data-ta-filter-status style="padding:16px 14px 12px;border-bottom:1px solid #E8E4DE;">' +
-        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">' +
-          '<span class="material-symbols-outlined" style="font-size:18px;color:#123356;">filter_alt</span>' +
-          '<p style="font-family:\'Nunito\',sans-serif;font-weight:700;font-size:13px;color:#123356;margin:0;flex:1;">Filters</p>' +
-          '<span data-ta-filter-count style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:.10em;color:#8A8A9A;font-weight:600;">Brand-neutral</span>' +
-        '</div>' +
-        '<div data-ta-active-chips style="display:none;flex-wrap:wrap;gap:4px;margin-top:6px;"></div>' +
-        '<button data-ta-clear style="display:none;margin-top:8px;background:transparent;border:none;color:#123356;font-size:11px;font-weight:700;cursor:pointer;text-decoration:underline;padding:0;">Clear all filters</button>' +
-        '<button data-ta-all data-active="true" style="display:flex;align-items:center;gap:8px;width:100%;padding:8px 10px;margin-top:6px;border-radius:8px;border:none;background:#fff;color:#123356;cursor:pointer;font-family:\'Nunito\',sans-serif;font-weight:700;font-size:13px;box-shadow: inset 3px 0 0 0 #123356;transition:background .15s;">' +
-          '<span class="material-symbols-outlined" style="font-size:18px;">inventory_2</span>' +
-          '<span style="flex:1;text-align:left;">All tools</span>' +
-        '</button>' +
-      '</div>';
-
-    const toolItem = function(it) {
-      return '<button data-ta-family="' + it.key + '" class="ta-sb-item ta-sb-family" style="display:flex;align-items:center;gap:12px;width:calc(100% - 16px);padding:8px 12px;margin:0 8px 1px;border-radius:10px;border:none;background:transparent;color:#43474e;cursor:pointer;font-family:\'Nunito\',sans-serif;font-weight:500;font-size:14px;text-align:left;transition:background .15s,color .15s,box-shadow .2s;">' +
-        '<span class="ta-sb-glyph" style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;color:#43474e;transition:color .15s;">' +
-          '<span class="ta-tool-icon" data-icon="' + it.iconKey + '" data-size="20"></span>' +
-        '</span>' +
-        '<span style="flex:1;">' + it.label + '</span>' +
-      '</button>';
-    };
-
-    const matItem = function(it) {
-      return '<button data-ta-iso="' + it.iso + '" class="ta-sb-item ta-sb-mat" style="position:relative;display:flex;align-items:center;gap:10px;width:calc(100% - 16px);padding:9px 10px;margin:0 8px 4px;border-radius:10px;background:#fff;border:1px solid #ECE7E0;cursor:pointer;color:#43474e;text-align:left;font-family:\'Nunito\',sans-serif;font-weight:600;font-size:13px;transition:transform .15s, box-shadow .2s, border-color .2s;">' +
-        '<span class="ta-insert3d" data-shape="' + it.shape + '" data-tone="' + it.tone + '" data-size="xs" style="flex-shrink:0;width:32px;height:32px;"></span>' +
-        '<span style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.15;">' +
-          '<span style="color:#1A1A2E;">' + it.label + '</span>' +
-          '<span style="font-family:\'DM Mono\',monospace;font-size:9px;letter-spacing:.12em;color:' + it.color + ';font-weight:800;margin-top:2px;">ISO ' + it.iso + '</span>' +
-        '</span>' +
-      '</button>';
-    };
-
-    aside.innerHTML =
-      statusHTML +
-      '<div style="flex:1;overflow-y:auto;padding:6px 0 8px;" class="custom-scrollbar">' +
-        sectionLabel('Tool family') + toolFamilies.map(toolItem).join('') +
-        sectionLabel('ISO material group') + materials.map(matItem).join('') +
-        sectionLabel('Pro features') +
-        '<button class="ta-sb-item ta-sb-pro" data-pro="saved" style="display:flex;align-items:center;gap:12px;width:calc(100% - 16px);padding:8px 12px;margin:0 8px 1px;border-radius:10px;border:none;background:transparent;color:#92400E;cursor:pointer;font-family:\'Nunito\',sans-serif;font-weight:600;font-size:13px;text-align:left;transition:background .15s;">' +
-          '<span class="material-symbols-outlined" style="font-size:18px;color:#B45309;">bookmark_added</span>' +
-          '<span style="flex:1;">Saved searches</span>' +
-          '<span style="background:linear-gradient(135deg,#FBBF24,#D97706);color:#fff;font-size:9px;font-weight:900;letter-spacing:.10em;padding:2px 6px;border-radius:5px;text-transform:uppercase;">Pro</span>' +
-        '</button>' +
-        '<button class="ta-sb-item ta-sb-pro" data-pro="pdf" style="display:flex;align-items:center;gap:12px;width:calc(100% - 16px);padding:8px 12px;margin:0 8px 1px;border-radius:10px;border:none;background:transparent;color:#92400E;cursor:pointer;font-family:\'Nunito\',sans-serif;font-weight:600;font-size:13px;text-align:left;transition:background .15s;">' +
-          '<span class="material-symbols-outlined" style="font-size:18px;color:#B45309;">picture_as_pdf</span>' +
-          '<span style="flex:1;">Bulk PDF export</span>' +
-          '<span style="background:linear-gradient(135deg,#FBBF24,#D97706);color:#fff;font-size:9px;font-weight:900;letter-spacing:.10em;padding:2px 6px;border-radius:5px;text-transform:uppercase;">Pro</span>' +
-        '</button>' +
-      '</div>' +
-      '<div style="padding:10px 14px 14px;border-top:1px solid #E8E4DE;">' +
-        '<a href="#" data-pro="upgrade" style="position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#1a3554 0%,#123356 100%);color:#fff;padding:12px 14px;border-radius:12px;font-family:\'Nunito\',sans-serif;font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;transition:transform .15s, box-shadow .15s;" onmouseover="this.style.transform=\'translateY(-1px)\';this.style.boxShadow=\'0 6px 18px rgba(18,51,86,.28)\';" onmouseout="this.style.transform=\'\';this.style.boxShadow=\'\';">' +
-          '<span class="material-symbols-outlined" style="font-size:20px;color:#FBBF24;">workspace_premium</span>' +
-          '<span style="flex:1;">' +
-            '<span style="display:block;line-height:1.15;">Upgrade to Pro</span>' +
-            '<span style="display:block;font-family:\'DM Mono\',monospace;font-size:9px;font-weight:600;letter-spacing:.10em;color:rgba(255,255,255,.6);margin-top:2px;text-transform:uppercase;">14-day free trial</span>' +
-          '</span>' +
-          '<span class="material-symbols-outlined" style="font-size:16px;color:rgba(255,255,255,.5);">arrow_forward</span>' +
-        '</a>' +
-        '<div style="margin-top:10px;display:flex;gap:14px;">' +
-          '<a href="#" class="ta-sb-foot" style="display:flex;align-items:center;gap:6px;color:#73777f;text-decoration:none;font-size:11px;font-weight:600;"><span class="material-symbols-outlined" style="font-size:14px;">help</span><span>Help</span></a>' +
-          '<a href="#" class="ta-sb-foot" style="display:flex;align-items:center;gap:6px;color:#73777f;text-decoration:none;font-size:11px;font-weight:600;"><span class="material-symbols-outlined" style="font-size:14px;">description</span><span>Docs</span></a>' +
-        '</div>' +
-      '</div>';
-    return aside;
-  }
-
-  function applySidebarState(sb, state) {
-    const family = state && state.family;
-    const iso    = state && state.iso;
-    const all = sb.querySelector('[data-ta-all]');
-    if (all) {
-      const isAll = !family && !iso;
-      all.setAttribute('data-active', isAll ? 'true' : 'false');
-      all.style.background = isAll ? '#fff' : 'transparent';
-      all.style.boxShadow = isAll ? 'inset 3px 0 0 0 #123356' : 'none';
-      all.style.color = isAll ? '#123356' : '#43474e';
-    }
-    sb.querySelectorAll('.ta-sb-family').forEach(function(el){
-      const on = el.dataset.taFamily === family;
-      el.setAttribute('data-active', on ? 'true' : 'false');
-      el.style.background = on ? '#fff' : 'transparent';
-      el.style.color = on ? '#123356' : '#43474e';
-      el.style.boxShadow = on ? 'inset 3px 0 0 0 #123356, 0 2px 6px rgba(18,51,86,.08)' : 'none';
-      el.style.fontWeight = on ? 700 : 500;
-      const g = el.querySelector('.ta-sb-glyph'); if (g) g.style.color = on ? '#123356' : '#43474e';
-    });
-    sb.querySelectorAll('.ta-sb-mat').forEach(function(el){
-      const on = el.dataset.taIso === iso;
-      el.setAttribute('data-active', on ? 'true' : 'false');
-      const matObj = materials.find(function(m){ return m.iso === el.dataset.taIso; });
-      const color = matObj ? matObj.color : '#123356';
-      el.style.borderColor = on ? color : '#ECE7E0';
-      el.style.boxShadow = on ? 'inset 4px 0 0 0 ' + color + ', 0 4px 12px ' + color + '22' : 'none';
-      el.style.transform = on ? 'translateX(2px)' : '';
-    });
-
-    const chipsHost = sb.querySelector('[data-ta-active-chips]');
-    const clearBtn  = sb.querySelector('[data-ta-clear]');
-    if (chipsHost && clearBtn) {
-      const chips = [];
-      if (family) chips.push({ label: family });
-      if (iso)    chips.push({ label: 'ISO ' + iso });
-      if (chips.length) {
-        chipsHost.style.display = 'flex';
-        clearBtn.style.display = 'block';
-        chipsHost.innerHTML = chips.map(function(c){ return '<span style="display:inline-flex;align-items:center;gap:4px;background:#123356;color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;letter-spacing:.02em;">' + c.label + '</span>'; }).join('');
-      } else {
-        chipsHost.style.display = 'none';
-        clearBtn.style.display = 'none';
-        chipsHost.innerHTML = '';
-      }
-    }
-  }
-
-  function installSidebar() {
-    document.querySelectorAll('body > aside').forEach(function(a){ a.remove(); });
-    const sb = buildSidebar();
-    document.body.insertBefore(sb, document.body.firstChild.nextSibling);
-
-    sb.querySelectorAll('.ta-sb-item').forEach(function(el){
-      const isMat = el.classList.contains('ta-sb-mat');
-      el.addEventListener('mouseenter', function(){
-        if (el.getAttribute('data-active') === 'true') return;
-        if (isMat) { el.style.borderColor = '#C7C2BA'; el.style.transform = 'translateX(1px)'; }
-        else {
-          el.style.background = '#FFFFFF'; el.style.color = '#123356';
-          const g = el.querySelector('.ta-sb-glyph'); if (g) g.style.color = '#123356';
-        }
-      });
-      el.addEventListener('mouseleave', function(){
-        if (el.getAttribute('data-active') === 'true') return;
-        if (isMat) { el.style.borderColor = '#ECE7E0'; el.style.transform = ''; }
-        else {
-          el.style.background = 'transparent'; el.style.color = '#43474e';
-          const g = el.querySelector('.ta-sb-glyph'); if (g) g.style.color = '#43474e';
-        }
-      });
-    });
-
-    sb.querySelector('[data-ta-all]').addEventListener('click', function(){
-      window.dispatchEvent(new CustomEvent('ta:clear-filters'));
-    });
-    sb.querySelector('[data-ta-clear]').addEventListener('click', function(){
-      window.dispatchEvent(new CustomEvent('ta:clear-filters'));
-    });
-
-    sb.querySelectorAll('.ta-sb-family').forEach(function(el){
-      el.addEventListener('click', function(e){
-        e.preventDefault();
-        const fam = el.dataset.taFamily;
-        const wasActive = el.getAttribute('data-active') === 'true';
-        navOrFilter('family', wasActive ? null : fam);
-      });
-    });
-
-    sb.querySelectorAll('.ta-sb-mat').forEach(function(el){
-      el.addEventListener('click', function(e){
-        e.preventDefault();
-        const iso = el.dataset.taIso;
-        const wasActive = el.getAttribute('data-active') === 'true';
-        navOrFilter('iso', wasActive ? null : iso);
-      });
-    });
-
-    sb.querySelectorAll('.ta-sb-pro, [data-pro]').forEach(function(el){
-      el.addEventListener('click', function(e){
-        e.preventDefault();
-        if (window.TA_openProModal) window.TA_openProModal();
-      });
-    });
-    sb.querySelectorAll('.ta-sb-foot').forEach(function(el){
-      el.addEventListener('mouseenter', function(){ el.style.color = '#123356'; });
-      el.addEventListener('mouseleave', function(){ el.style.color = '#73777f'; });
-    });
-
-    const tryHydrate = function() {
-      if (window.taInsert3DHydrate) window.taInsert3DHydrate(sb);
-      if (window.taToolIconHydrate) window.taToolIconHydrate(sb);
-    };
-    tryHydrate();
-    setTimeout(tryHydrate, 60);
-    setTimeout(tryHydrate, 250);
-
-    window.addEventListener('ta:filter-state', function(e){ applySidebarState(sb, e.detail || {}); });
-
-    const applyResponsive = function(){ sb.style.display = (window.innerWidth >= 768) ? 'flex' : 'none'; };
-    applyResponsive();
-    window.addEventListener('resize', applyResponsive);
-  }
-
-  function fixMainLayout() {
-    document.querySelectorAll('main').forEach(function(m){
-      const apply = function(){
-        m.style.marginLeft = (window.innerWidth >= 768) ? '260px' : '';
-      };
-      apply();
-      window.addEventListener('resize', apply);
-    });
-    document.querySelectorAll('body > footer, main + footer').forEach(function(f){
-      const apply = function(){
-        f.style.marginLeft = (window.innerWidth >= 768) ? '260px' : '';
-      };
-      apply();
-      window.addEventListener('resize', apply);
-    });
-  }
-
-  function run() { installTopNav(); installSidebar(); fixMainLayout(); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
-  else run();
-})();
-
-/* Pro modal opener — single-file build just alerts. */
-window.TA_openProModal = function(){
-  alert('Pro upgrade — coming soon.\n\n• Unlimited AI advisor questions\n• Bulk PDF spec sheets\n• Cross-brand cost analysis\n• Saved searches & alerts');
-};
+/* page-switcher.js handles the shared chrome (top nav + sidebar) for all pages.
+   index.html is the Catalog page — equivalent to tools-directory.html in the nav. */
 </script>
+
+<!-- ============================================================
+     SHARED CHROME (top nav + sidebar) — single source of truth
+     ============================================================ -->
+<script src="page-switcher.js"></script>
 
 <!-- ============================================================
      REACT + BABEL via UNPKG
@@ -1060,7 +734,7 @@ function ToolCard({tool, view, isCompared, onToggleCompare, isFav, onToggleFav, 
       </div>
 
       {t.equivIds.length > 0 && (
-        <a href="#cross-ref" className="flex items-center justify-between text-xs text-primary hover:underline mb-3 -mt-1">
+        <a href="cross-reference.html" className="flex items-center justify-between text-xs text-primary hover:underline mb-3 -mt-1">
           <span className="flex items-center gap-1"><Icon name="compare_arrows" size={14}/> {t.equivIds.length} equivalents available</span>
           <Icon name="arrow_forward" size={14}/>
         </a>
@@ -1226,10 +900,10 @@ function DetailModal({tool, onClose, onOpenTool, tools}) {
         })()}
 
         <div className="p-6 border-t border-border-warm flex gap-3 justify-end sticky bottom-0 bg-surface-card">
-          <a href="#cross-ref" className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border-warm text-primary text-sm font-bold hover:bg-surface-container-low transition-colors">
+          <a href="cross-reference.html" className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border-warm text-primary text-sm font-bold hover:bg-surface-container-low transition-colors">
             <Icon name="compare_arrows" size={16}/> Find equivalents
           </a>
-          <a href="#compare" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:-translate-y-0.5 transition-all">
+          <a href="compare.html" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:-translate-y-0.5 transition-all">
             <Icon name="fact_check" size={16}/> Add to compare
           </a>
         </div>
@@ -1907,7 +1581,7 @@ function App() {
         )}
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <a href="#compare" className="md:col-span-2 bg-surface-container-high rounded-[24px] p-8 flex items-center justify-between overflow-hidden relative group hover:shadow-xl transition-all">
+          <a href="compare.html" className="md:col-span-2 bg-surface-container-high rounded-[24px] p-8 flex items-center justify-between overflow-hidden relative group hover:shadow-xl transition-all">
             <div className="relative z-10 max-w-md">
               <p className="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{compare.size} selected</p>
               <h4 className="font-section-heading text-primary mb-3">Side-by-side comparison</h4>
@@ -1941,7 +1615,7 @@ function App() {
         tools={compareTools}
         onRemove={toggleCompare}
         onClear={() => setCompare(new Set())}
-        onCompare={() => alert('Compare page is a separate view in this app. In the single-file build the Compare drawer keeps your selection — wire it to your matrix view of choice.')}
+        onCompare={() => { window.location.href = 'compare.html'; }}
       />
       <AIDock
         filters={{ query, family, iso, op }}
