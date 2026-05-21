@@ -1,0 +1,14 @@
+name = "tooladvisor-ai-proxy"
+main = "src/index.js"
+compatibility_date = "2026-05-01"
+account_id = "f686cc8bf928a0a983d883ea6904fdcd"
+
+# Default vars (non-secret). ANTHROPIC_API_KEY is set via `wrangler secret put`.
+[vars]
+ANTHROPIC_MODEL = "claude-sonnet-4-20250514"
+ALLOWED_ORIGINS = "https://tooladvisor.eu,https://www.tooladvisor.eu,http://localhost:8080,http://127.0.0.1:8080"
+RATE_LIMIT_MAX = "20"
+RATE_LIMIT_WINDOW_MS = "60000"
+
+[observability]
+enabled = true
