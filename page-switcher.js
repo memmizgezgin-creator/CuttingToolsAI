@@ -12,9 +12,6 @@
     document.head.appendChild(el);
   }
   injectAsset('link', {rel:'stylesheet', href:'modals.css'});
-  injectAsset('script', {src:'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js', defer:''});
-  injectAsset('script', {src:'supabase/config.js', defer:''});
-  injectAsset('script', {src:'supabase/client.js', defer:''});
   injectAsset('script', {src:'modals.js', defer:''});
   injectAsset('script', {src:'ta-3d-insert.js', defer:''});
   injectAsset('script', {src:'ta-tool-icons.js', defer:''});

@@ -8,6 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Nunito:wght@500;700;800&family=DM+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <script src="tw-config.js"></script>
   <link rel="stylesheet" href="polish.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="supabase/config.js"></script>
+  <script src="supabase/client.js"></script>
 </head>
 <body class="bg-surface text-on-surface font-body-md">
   <main class="ml-sidebar-width min-h-screen p-container-margin">
@@ -53,14 +56,25 @@
         });
       }
 
-      function waitForApi() {
-        return new Promise((resolve) => {
-          const run = () => window.taSupabase ? resolve(window.taSupabase) : setTimeout(run, 80);
-          run();
-        });
+      async function waitForApi(timeoutMs) {
+        const started = Date.now();
+        while (!window.taSupabase && Date.now() - started < timeoutMs) {
+          await new Promise((resolve) => setTimeout(resolve, 25));
+        }
+        return window.taSupabase || null;
       }
 
-      const api = await waitForApi();
+      const api = await waitForApi(500);
+      if (!api) {
+        window.location.href = '/?signin=1';
+        return;
+      }
+      const { data } = await api.client.auth.getSession();
+      const session = data && data.session ? data.session : null;
+      if (!session) {
+        window.location.href = '/?signin=1';
+        return;
+      }
       await api.refreshSession();
       const user = api.getUser();
       if (!user) {
