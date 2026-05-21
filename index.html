@@ -24,6 +24,57 @@ tailwind.config = {
 </script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
+/* ============================================================
+   CRITICAL CSS — Anti-FOUC pre-defs for PRO banner + layout
+   Prevents split-colour gradient flash before Tailwind CDN
+   processes React-rendered class names via MutationObserver.
+   These values are identical to what Tailwind would generate;
+   they are overridden (invisibly) once Tailwind injects CSS.
+   TODO (long-term): pre-build Tailwind to a static CSS file
+   and drop the CDN entirely.
+   ============================================================ */
+*,::before,::after{
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-gradient-stops: ;
+  --tw-gradient-from: #0000 ;
+  --tw-gradient-to: #0000 ;
+}
+/* PRO banner gradient: bg-gradient-to-r from-ink-text via-primary-container to-primary */
+.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}
+.from-ink-text{
+  --tw-gradient-from:#1A1A2E var(--tw-gradient-from-position);
+  --tw-gradient-to:rgb(26 26 46/0) var(--tw-gradient-to-position);
+  --tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to);
+}
+.via-primary-container{
+  --tw-gradient-to:rgb(44 74 110/0) var(--tw-gradient-to-position);
+  --tw-gradient-stops:var(--tw-gradient-from),#2c4a6e var(--tw-gradient-via-position),var(--tw-gradient-to);
+}
+.to-primary{--tw-gradient-to:#123356 var(--tw-gradient-to-position)}
+/* AIDock floating button + drawer header: bg-gradient-to-br from-primary to-primary-container / from-ink-text to-primary-container */
+.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}
+.from-primary{
+  --tw-gradient-from:#123356 var(--tw-gradient-from-position);
+  --tw-gradient-to:rgb(18 51 86/0) var(--tw-gradient-to-position);
+  --tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to);
+}
+.to-primary-container{--tw-gradient-to:#2c4a6e var(--tw-gradient-to-position)}
+/* Banner layout basics */
+.text-white{color:#fff}
+.overflow-hidden{overflow:hidden}
+.rounded-2xl{border-radius:1rem}
+.mb-4{margin-bottom:1rem}
+.relative{position:relative}
+/* Page shell — ensures stable layout before Tailwind processes body classes */
+.bg-background{background-color:#faf9fc}
+.min-h-screen{min-height:100vh}
+.ml-sidebar-width{margin-left:260px}
+
+/* ============================================================
+   GLOBAL POLISH (inlined from polish.css)
+   ============================================================ */
 body { background-color: #FAF9F7; }
 .card-shadow,.ambient-shadow { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05),0 2px 4px -1px rgba(0,0,0,0.03); }
 .material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; vertical-align: middle; }
