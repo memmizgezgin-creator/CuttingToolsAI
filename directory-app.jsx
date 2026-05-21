@@ -243,122 +243,106 @@ function ToolCard({tool, view, isCompared, onToggleCompare, isFav, onToggleFav, 
   }
 
   return (
-    <article className={`bg-surface-card rounded-[18px] card-shadow border-l-4 ${borderClass} p-card-padding flex flex-col h-full hover:-translate-y-1 transition-all duration-300 group relative`}>
-      {/* Top-right action stack: fav + cross-ref hint */}
-      <div className="absolute top-3 right-3 flex flex-col items-end gap-1.5 z-10">
+    <article className={`bg-surface-card rounded-[18px] card-shadow border-l-4 ${borderClass} p-card-padding flex flex-col h-full card-hover transition-all duration-300 group perspective-1000 relative`}>
+      {/* Top: ISO badge + brand/code + save icon */}
+      <div className="flex justify-between items-start mb-4">
+        <div>
+          <span className={`font-technical-data text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border ${bgChip}`}>ISO {t.iso}</span>
+          <p className="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mt-2 mb-0.5">{t.brand}</p>
+          <h3 className="font-product-grade text-ink-text leading-tight">{t.code}</h3>
+        </div>
         <button
           onClick={() => onToggleFav(t.id)}
           aria-pressed={isFav}
           aria-label={isFav ? 'Remove from shortlist' : 'Save to shortlist'}
-          className="w-8 h-8 rounded-full bg-white border border-border-warm flex items-center justify-center hover:border-primary transition-colors"
+          className="w-8 h-8 rounded-full bg-white border border-border-warm flex items-center justify-center hover:border-primary transition-colors shrink-0"
         >
           <Icon name={isFav ? 'bookmark' : 'bookmark_border'} size={18} fill={isFav} className={isFav ? 'text-primary' : 'text-outline'} />
         </button>
       </div>
 
-      <div className="flex justify-between items-start mb-4 pr-10">
-        <div>
-          <p className="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">{t.brand}</p>
-          <h3 className="font-product-grade text-ink-text leading-tight">{t.code}</h3>
-        </div>
-        <div className="flex flex-col items-end gap-1.5 shrink-0">
-          <div className="ta-insert3d" data-shape={t.shape} data-tone={t.tone} data-size="sm" aria-label={`${t.shape} shape insert`}></div>
-          <span className={`font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border whitespace-nowrap ${bgChip}`}>ISO {t.iso}</span>
-        </div>
+      {/* Center: Large 3D insert */}
+      <div className="relative flex-1 min-h-[140px] flex items-center justify-center mb-5 preserve-3d">
+        <div className="ta-insert3d" data-shape={t.shape} data-tone={t.tone} data-size="lg" aria-label={`${t.shape} shape insert`}></div>
       </div>
 
-      <p className="text-xs text-on-surface-variant mb-3">
-        <span className="font-bold text-on-surface">{t.family} · {t.op}</span>
-        <span className="mx-1">·</span>
-        Grade <span className="font-technical-data">{t.grade}</span>
-      </p>
-
-      <div className="space-y-1.5 mb-3">
-        <div className="flex justify-between items-center text-xs">
-          <span className="text-outline uppercase tracking-wider font-bold">Vc</span>
+      {/* Specs */}
+      <div className="space-y-3 mt-auto">
+        <div className="flex justify-between items-center border-b border-border-warm pb-2">
+          <span className="text-xs text-outline uppercase tracking-wider font-bold">Grade</span>
+          <span className="font-technical-data text-ink-text">{t.grade || '—'}</span>
+        </div>
+        <div className="flex justify-between items-center border-b border-border-warm pb-2">
+          <span className="text-xs text-outline uppercase tracking-wider font-bold">Vc Range</span>
           <span className="font-technical-data text-ink-text">{t.vcMin}–{t.vcMax} m/min</span>
         </div>
-        <div className="flex justify-between items-center text-xs">
-          <span className="text-outline uppercase tracking-wider font-bold">Feed</span>
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-outline uppercase tracking-wider font-bold">Feed Rate</span>
           <span className="font-technical-data text-ink-text">{t.fMin}–{t.fMax} mm/rev</span>
         </div>
-        <div className="flex justify-between items-center text-xs">
-          <span className="text-outline uppercase tracking-wider font-bold">aₚ</span>
-          <span className="font-technical-data text-ink-text">{t.apMin}–{t.apMax} mm</span>
+
+        {/* Economics row */}
+        <div className="flex justify-between items-center text-[11px] pt-1">
+          <span className="font-technical-data text-ink-text font-bold" title="Cost tier (brand-neutral)">
+            <span className="text-ink-text">{'\u20ac'.repeat(t.costTier)}</span><span className="text-outline">{'\u20ac'.repeat(4-t.costTier)}</span>
+            <span className="text-on-surface-variant ml-1.5 font-normal">· €{t.costPerEdge}/edge</span>
+          </span>
+          <span className="flex items-center gap-1 text-on-surface-variant" title="Community pick signal (last 7 days)">
+            <Icon name="trending_up" size={12}/> <span className="font-technical-data font-bold text-ink-text">{t.weeklyPicks}</span> picks
+          </span>
         </div>
-      </div>
 
-      {/* Structured best-for */}
-      <div className="pt-2 mb-3 border-t border-border-warm">
-        <p className="text-[10px] uppercase tracking-wider text-outline font-bold mb-1.5">Best for</p>
-        <p className="text-sm text-ink-text font-medium leading-snug mb-2">{t.bestFor}</p>
-        <div className="flex flex-wrap gap-1">
-          <Tag>{t.op}</Tag>
-          <Tag>{t.stability} stability</Tag>
-          <Tag>{t.coolant}</Tag>
-        </div>
-      </div>
-
-      {/* Economics row */}
-      <div className="flex items-center justify-between text-[11px] mb-3 -mt-1">
-        <span className="font-technical-data text-ink-text font-bold" title="Cost tier (brand-neutral)">
-          <span className="text-ink-text">{'\u20ac'.repeat(t.costTier)}</span><span className="text-outline">{'\u20ac'.repeat(4-t.costTier)}</span>
-          <span className="text-on-surface-variant ml-1.5 font-normal">· €{t.costPerEdge}/edge</span>
-        </span>
-        <span className="flex items-center gap-1 text-on-surface-variant" title="Community pick signal (last 7 days)">
-          <Icon name="trending_up" size={12}/> <span className="font-technical-data font-bold text-ink-text">{t.weeklyPicks}</span> picks
-        </span>
-      </div>
-
-      {/* Confidence row */}
-      <div className="flex items-center justify-between mt-auto mb-3 pt-3 border-t border-border-warm">
-        <div>
-          <p className="text-[10px] uppercase tracking-widest text-outline font-bold">Data confidence</p>
-          <div className="mt-1"><Confidence pct={t.confidence} source={`${t.source} · verified ${t.lastVerified}`} /></div>
-        </div>
-        <div className="text-right">
-          <p className="text-[10px] uppercase tracking-widest text-outline font-bold">Supply</p>
-          <p className="font-technical-data text-xs text-ink-text font-bold mt-1">{t.supply} suppliers</p>
-        </div>
-      </div>
-
-      {/* Cross-ref hint */}
-      {t.equivIds.length > 0 && (
-        <a href="cross-reference.html" className="flex items-center justify-between text-xs text-primary hover:underline mb-3 -mt-1">
-          <span className="flex items-center gap-1"><Icon name="compare_arrows" size={14}/> {t.equivIds.length} equivalents available</span>
-          <Icon name="arrow_forward" size={14}/>
-        </a>
-      )}
-
-      <CardActions
-        tool={t}
-        isCompared={isCompared}
-        onToggleCompare={onToggleCompare}
-        isFav={isFav}
-        onToggleFav={onToggleFav}
-        onOpen={onOpen}
-      />
-
-      {/* Better-value swap hint */}
-      {t.betterValueId && (() => {
-        const bv = window.TA_TOOLS.find(o => o.id === t.betterValueId);
-        if (!bv) return null;
-        return (
+        {/* Actions */}
+        <div className="flex gap-2 mt-3">
           <button
-            onClick={() => onOpen(bv)}
-            className="mt-3 w-full text-left p-2.5 rounded-lg bg-iso-n-green/8 border border-iso-n-green/25 hover:bg-iso-n-green/15 transition-colors group/bv"
+            onClick={() => onOpen(tool)}
+            className="flex-1 bg-primary text-white font-bold py-2.5 rounded-xl text-xs active:scale-95 transition-transform"
           >
-            <div className="flex items-center gap-2 mb-1">
-              <Icon name="savings" size={14} className="text-iso-n-green"/>
-              <span className="text-[10px] uppercase tracking-widest text-iso-n-green font-extrabold">Better-value alternative</span>
-            </div>
-            <p className="text-xs text-ink-text leading-snug">
-              <span className="font-technical-data font-bold">{bv.code}</span>
-              <span className="text-on-surface-variant"> · {t.betterValueDelta}</span>
-            </p>
+            View Details
           </button>
-        );
-      })()}
+          <button
+            onClick={() => onToggleCompare(tool.id)}
+            aria-pressed={isCompared}
+            className={`flex-1 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1 transition-all border ${
+              isCompared
+                ? 'bg-primary/10 border-primary text-primary'
+                : 'bg-white border-border-warm text-primary hover:bg-surface-container-low'
+            }`}
+          >
+            <Icon name={isCompared ? 'check_box' : 'fact_check'} size={14} fill={isCompared}/>
+            {isCompared ? 'Selected' : 'Compare'}
+          </button>
+        </div>
+
+        {/* Cross-ref hint */}
+        {t.equivIds.length > 0 && (
+          <a href="cross-reference.html" className="flex items-center justify-between text-xs text-primary hover:underline pt-1">
+            <span className="flex items-center gap-1"><Icon name="compare_arrows" size={14}/> {t.equivIds.length} equivalents available</span>
+            <Icon name="arrow_forward" size={14}/>
+          </a>
+        )}
+
+        {/* Better-value swap hint */}
+        {t.betterValueId && (() => {
+          const bv = window.TA_TOOLS.find(o => o.id === t.betterValueId);
+          if (!bv) return null;
+          return (
+            <button
+              onClick={() => onOpen(bv)}
+              className="mt-2 w-full text-left p-2.5 rounded-lg bg-iso-n-green/8 border border-iso-n-green/25 hover:bg-iso-n-green/15 transition-colors group/bv"
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <Icon name="savings" size={14} className="text-iso-n-green"/>
+                <span className="text-[10px] uppercase tracking-widest text-iso-n-green font-extrabold">Better-value alternative</span>
+              </div>
+              <p className="text-xs text-ink-text leading-snug">
+                <span className="font-technical-data font-bold">{bv.code}</span>
+                <span className="text-on-surface-variant"> · {t.betterValueDelta}</span>
+              </p>
+            </button>
+          );
+        })()}
+      </div>
     </article>
   );
 }

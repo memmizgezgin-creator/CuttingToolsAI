@@ -90,6 +90,13 @@ tailwind.config = {
    ============================================================ */
 body { background-color: #FAF9F7; }
 .card-shadow,.ambient-shadow { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05),0 2px 4px -1px rgba(0,0,0,0.03); }
+.perspective-1000 { perspective: 1000px; }
+.preserve-3d { transform-style: preserve-3d; }
+.tool-tilt { transform: rotateY(-15deg) rotateX(10deg); }
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
 .material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; vertical-align: middle; }
 .material-symbols-outlined[data-icon-fill] { font-variation-settings: 'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24; }
 .material-symbols-outlined[data-icon-weight="300"] { font-variation-settings: 'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; }
