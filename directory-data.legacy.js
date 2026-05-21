@@ -1,6 +1,8 @@
 // ToolAdvisor — Catalog dataset
 // 36 brand-neutral cutting tools with realistic specs.
 // Loaded BEFORE directory-app.jsx; populates window.TA_TOOLS.
+/* Legacy catalog snapshot kept as migration reference only.
+   Phase 1.2 loads catalog data from Supabase products instead of this file. */
 (function () {
   const TOOLS = [
     // -------- TURNING INSERTS (P) --------
