@@ -29,11 +29,18 @@
   status = 301
   force = true
 
-# Clean catalog URL
+# Clean catalog URL — serves the React/Supabase catalog (index.html)
+# catalog.html is a static dark-theme dump; NOT the live catalog
 [[redirects]]
   from = "/catalog"
-  to = "/catalog.html"
+  to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/catalog.html"
+  to = "/index.html"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/index.html"
