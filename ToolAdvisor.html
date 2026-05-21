@@ -431,16 +431,27 @@
 
     submitBtn.disabled = true;
     submitLabel.textContent = 'Thinking...';
+    form.setAttribute('aria-busy','true');
+
+    var controller = new AbortController();
+    var timeoutId = setTimeout(function(){ controller.abort(); }, 30000);
 
     try {
       var res = await fetch(API, {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        signal: controller.signal
       });
-      var data = await res.json();
-      if(!res.ok){ throw new Error(data.error || ('HTTP '+res.status)); }
-      answerEl.innerHTML = renderAnswer(data.answer || '(empty response)');
+      clearTimeout(timeoutId);
+
+      var data;
+      try { data = await res.json(); } catch(_){ data = {}; }
+
+      if(!res.ok){ throw new Error((data && data.error) || ('HTTP '+res.status)); }
+      if(!data || !data.answer){ throw new Error('Empty response from advisor.'); }
+
+      answerEl.innerHTML = renderAnswer(data.answer);
       var usage = data.usage || {};
       metaEl.innerHTML =
         '<span><strong>Model:</strong> '+escapeHtml(data.model||'')+'</span>'+
@@ -449,11 +460,17 @@
       resultBox.classList.remove('hidden');
       resultBox.scrollIntoView({behavior:'smooth', block:'start'});
     } catch(err){
-      errorBox.textContent = 'Advisor unavailable: '+(err.message||'unknown error')+'. Please try again in a moment.';
+      clearTimeout(timeoutId);
+      var msg = err && err.name === 'AbortError'
+        ? 'Request timed out after 30 seconds. Please try again.'
+        : 'Advisor unavailable: '+(err && err.message ? err.message : 'unknown error')+'. Please try again in a moment.';
+      errorBox.textContent = msg;
       errorBox.classList.remove('hidden');
     } finally {
+      clearTimeout(timeoutId);
       submitBtn.disabled = false;
       submitLabel.textContent = 'Ask AI Advisor';
+      form.removeAttribute('aria-busy');
     }
   });
 })();
