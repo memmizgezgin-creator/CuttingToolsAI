@@ -17,15 +17,15 @@
   injectAsset('script', {src:'ta-tool-icons.js', defer:''});
 
   const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  // index.html serves the same catalog app as tools-directory.html
-  const hereResolved = here === 'index.html' ? 'tools-directory.html' : here;
+  // index.html IS the Advisor page (post-swap). Resolve to advisor.html for nav matching.
+  const hereResolved = here === 'index.html' ? 'advisor.html' : here;
 
   // ============================================================
   // TOP NAV
   // ============================================================
   const navLinks = [
     {href:'advisor.html',         label:'Advisor',         shortLabel:'Advisor',    icon:'auto_awesome'},
-    {href:'tools-directory.html', label:'Catalog',         shortLabel:'Catalog',    icon:'inventory_2'},
+    {href:'catalog.html',          label:'Catalog',         shortLabel:'Catalog',    icon:'inventory_2'},
     {href:'cross-reference.html', label:'Cross-Reference', shortLabel:'Cross-Ref',  icon:'compare_arrows'},
     {href:'compare.html',         label:'Compare',         shortLabel:'Compare',    icon:'fact_check'},
     {href:'knowledge.html',       label:'Knowledge',       shortLabel:'Knowledge',  icon:'menu_book'},
@@ -182,7 +182,7 @@
     {iso:'H', shape:'D', tone:'iso-h', label:'Hardened',     color:'#64748B'},
   ];
 
-  const isCatalogPage = hereResolved === 'tools-directory.html';
+  const isCatalogPage = hereResolved === 'catalog.html';
 
   function getCounts() {
     if (!window.TA_TOOLS) return { families:{}, isos:{}, total:0, ready:false };
@@ -202,7 +202,7 @@
       const params = new URLSearchParams();
       if (value) params.set(kind, value);
       const qs = params.toString();
-      window.location.href = `tools-directory.html${qs ? '?' + qs : ''}`;
+      window.location.href = `catalog.html${qs ? '?' + qs : ''}`;
     }
   }
 
@@ -431,7 +431,7 @@
       if (isCatalogPage) {
         window.dispatchEvent(new CustomEvent('ta:clear-filters'));
       } else {
-        window.location.href = 'tools-directory.html';
+        window.location.href = 'catalog.html';
       }
     });
     sb.querySelector('[data-ta-clear]')?.addEventListener('click', () => {
@@ -546,10 +546,10 @@
   // ============================================================
   function rewireFabs() {
     const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-    const hereR = here === 'index.html' ? 'tools-directory.html' : here;
+    const hereR = here === 'index.html' ? 'advisor.html' : here;
     // Per-page action: catalog → filter, knowledge → search focus, else → advisor
     const target = {
-      'tools-directory.html': { modal: 'filter',          icon: 'tune',            label: 'Advanced filters' },
+      'catalog.html':          { modal: 'filter',          icon: 'tune',            label: 'Advanced filters' },
       'knowledge.html':       { modal: null,              icon: 'search',          label: 'Search guides',          action: 'focus-search' },
       'cross-reference.html': { modal: 'advisor-wizard',  icon: 'auto_awesome',    label: 'Start advisor' },
       'compare.html':         { modal: 'advisor-wizard',  icon: 'auto_awesome',    label: 'Start advisor' },
