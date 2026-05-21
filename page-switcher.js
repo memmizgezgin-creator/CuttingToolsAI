@@ -24,7 +24,7 @@
   // TOP NAV
   // ============================================================
   const navLinks = [
-    {href:'ToolAdvisor.html',     label:'Advisor',         shortLabel:'Advisor',    icon:'auto_awesome'},
+    {href:'advisor.html',         label:'Advisor',         shortLabel:'Advisor',    icon:'auto_awesome'},
     {href:'tools-directory.html', label:'Catalog',         shortLabel:'Catalog',    icon:'inventory_2'},
     {href:'cross-reference.html', label:'Cross-Reference', shortLabel:'Cross-Ref',  icon:'compare_arrows'},
     {href:'compare.html',         label:'Compare',         shortLabel:'Compare',    icon:'fact_check'},
@@ -63,7 +63,7 @@
 
     header.innerHTML = `
       <div style="display:flex;align-items:center;gap:16px;padding:0 24px;height:64px;">
-        <a href="ToolAdvisor.html" style="display:flex;align-items:center;gap:10px;margin-right:8px;text-decoration:none;flex-shrink:0;">
+        <a href="advisor.html" style="display:flex;align-items:center;gap:10px;margin-right:8px;text-decoration:none;flex-shrink:0;">
           <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:#123356;border-radius:8px;">
             <span class="material-symbols-outlined" style="color:#fff;font-size:20px;">precision_manufacturing</span>
           </span>
