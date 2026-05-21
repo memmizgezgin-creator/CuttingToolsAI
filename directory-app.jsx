@@ -978,7 +978,6 @@ function App() {
               }`}
             >{f}</button>
           ))}
-          <span className="ml-3 text-[11px] text-on-surface-variant hidden lg:inline">ISO material is a refinement — use the left sidebar.</span>
         </div>
 
         {/* Operation sub-filter (only when a family is selected) */}
@@ -1024,7 +1023,7 @@ function App() {
               </React.Fragment>
             ) : <span className="text-xs text-on-surface-variant">No filters · showing all</span>}
           </div>
-          <p className="text-xs font-technical-data text-ink-text">
+          <p className="text-sm font-technical-data text-ink-text tracking-wide">
             {visible < filtered.length
               ? <React.Fragment><span className="font-bold">{visible}</span> shown <span className="text-on-surface-variant">of</span> <span className="font-bold">{filtered.length}</span> matching</React.Fragment>
               : <React.Fragment><span className="font-bold">{filtered.length}</span> {filtered.length === 1 ? 'result' : 'results'}</React.Fragment>
@@ -1437,7 +1436,7 @@ function ProRibbon() {
         </div>
         <div className="flex-1 min-w-0">
           <p className="font-technical-data text-[10px] uppercase tracking-widest text-amber-300/90 mb-0.5">Pro features in this catalog</p>
-          <p className="font-bold leading-snug">AI tool picker · bulk PDF spec sheets · cross-brand cost analysis · saved searches</p>
+          <p className="font-bold leading-snug text-sm sm:text-base">AI tool picker · bulk PDF spec sheets · cross-brand cost analysis · saved searches</p>
         </div>
         <button onClick={TA_openProModal} className="hidden md:inline-flex items-center gap-2 bg-amber-400 text-amber-950 px-4 py-2 rounded-lg text-xs font-extrabold uppercase tracking-widest hover:bg-amber-300 transition-colors shrink-0">
           Try Pro free
