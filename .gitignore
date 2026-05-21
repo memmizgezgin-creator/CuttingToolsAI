@@ -3,6 +3,7 @@
 
 # Node
 node_modules/
+dist/
 
 # OS
 .DS_Store
@@ -13,3 +14,5 @@ node_modules/
 # Local backups
 *-fixed.html
 *.bak
+.env.local
+.env*
