@@ -1,6 +1,11 @@
 # Local Netlify folder
 .netlify
 
+# Secrets / env
+.env
+.env.local
+.env.*.local
+
 # Node
 node_modules/
 
@@ -13,3 +18,6 @@ node_modules/
 # Local backups
 *-fixed.html
 *.bak
+
+# One-shot dev patch scripts
+patch_*.py
