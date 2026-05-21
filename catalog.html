@@ -6779,7 +6779,7 @@ const CONFIG = {
   version: 'RC5',
   lastUpdated: '2026-05-01',
   lastCommit: 'auto',
-  supabase: { url: 'https://qhpkfidfcqmmyijbxqyt.supabase.co', key: 'sb_publishable_ZEUNxpXaR7ywGCoZsc6jhQ_x6n1nN4-', enabled: true },
+  supabase: { enabled: true },
   stripe:   { publishableKey: 'STRIPE_KEY', enabled: false },
   claude:   { apiKey: 'CLAUDE_KEY', model: 'claude-sonnet-4-20250514', enabled: false }
 };
@@ -6798,12 +6798,12 @@ function renderSpinner(size = 'md') {
   return `<span class="ta-spinner ${safeSize}" aria-hidden="true"></span>`;
 }
 
-// Lazy Supabase client — created only when enabled
+// Canonical Supabase client — initialized by supabase/client.js
 let _supaClient = null;
 function getSupabase() {
   if (!CONFIG.supabase.enabled) return null;
   if (!_supaClient) {
-    _supaClient = window.supabase.createClient(CONFIG.supabase.url, CONFIG.supabase.key);
+    _supaClient = window.taSupabase?.client || null;
   }
   return _supaClient;
 }
