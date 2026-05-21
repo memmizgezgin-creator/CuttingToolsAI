@@ -10,6 +10,31 @@
   to = "/.netlify/functions/claude"
   status = 200
 
+# BUG 1 FIX: Root → Advisor page
+[[redirects]]
+  from = "/"
+  to = "/ToolAdvisor.html"
+  status = 200
+  force = true
+
+# Advisor URL aliases
+[[redirects]]
+  from = "/advisor"
+  to = "/ToolAdvisor.html"
+  status = 200
+
+[[redirects]]
+  from = "/advisor.html"
+  to = "/ToolAdvisor.html"
+  status = 301
+  force = true
+
+# Clean catalog URL
+[[redirects]]
+  from = "/catalog"
+  to = "/catalog.html"
+  status = 200
+
 [[redirects]]
   from = "/index.html"
   to = "/"
