@@ -1,8 +1,142 @@
-// ToolAdvisor — Catalog interactive app
-// Owns: search, sort, family filter, ISO material filter, view toggle,
-//       compare drawer, favorites, recently viewed, CSV export, quick view.
-
 const { useState, useEffect, useMemo, useRef, useCallback } = React;
+
+function splitSkuParts(rawSku) {
+  const parts = String(rawSku || '').split(' / ').map((part) => part.trim()).filter(Boolean);
+  return {
+    sku: parts[0] || rawSku || '',
+    shape: parts[1] || '-',
+    op: parts[2] || null
+  };
+}
+
+function toneFromIso(iso) {
+  return iso ? `iso-${String(iso).toLowerCase()}` : 'primary';
+}
+
+function parseLegacyNote(notes) {
+  const meta = {};
+  String(notes || '')
+    .split('|')
+    .map((part) => part.trim())
+    .forEach((part) => {
+      const match = part.match(/^([^:]+):\s*(.+)$/) || part.match(/^([^=]+)=(.+)$/);
+      if (!match) return;
+      meta[match[1].trim()] = match[2].trim();
+    });
+  return meta;
+}
+
+function mapProductRecord(product) {
+  const material = Array.isArray(product.material_compat) ? product.material_compat : [];
+  const machines = Array.isArray(product.machine_type) ? product.machine_type : [];
+  const application = Array.isArray(product.application) ? product.application : [];
+  const alternatives = Array.isArray(product.alternatives_to) ? product.alternatives_to : [];
+  const parsed = splitSkuParts(product.type_geometry || product.sku);
+  const meta = parseLegacyNote(product.notes);
+  const iso = material[0] || meta.iso || 'P';
+  const source = String(meta.Source || product.source_url || 'Curated import');
+  const confidence = Number(meta.confidence || 85);
+  const op = parsed.op || application[0] || 'Mixed';
+  const shape = parsed.shape && parsed.shape !== '-' ? parsed.shape : (product.family === 'Milling' ? 'R' : product.family === 'Drilling' ? 'D' : '-');
+  const id = meta.id || product.sku;
+  const price = Number(product.price_hint_eur || 18);
+  const edges = product.family === 'Turning'
+    ? (shape === 'C' ? 4 : shape === 'D' ? 2 : shape === 'W' ? 6 : shape === 'T' ? 6 : shape === 'S' ? 4 : shape === 'V' ? 2 : 4)
+    : 4;
+  const supply = machines.length || Number(meta.supply || 0) || 1;
+  const premiumBrands = new Set(['Sandvik', 'Walter', 'Kennametal', 'Mitsubishi', 'Iscar']);
+  let costTier = Math.round(price >= 24 ? 4 : price >= 16 ? 3 : price >= 9 ? 2 : 1);
+  if (premiumBrands.has(product.brand) && costTier < 4) costTier += 1;
+  const lastVerified = product.last_updated ? String(product.last_updated).slice(0, 7) : '2024-01';
+  const vcFallback = {
+    Turning: [120, 320],
+    Milling: [140, 420],
+    Drilling: [80, 220],
+    Threading: [90, 220],
+    Reaming: [25, 90]
+  }[product.family] || [100, 250];
+  const feedFallback = {
+    Turning: [0.08, 0.35],
+    Milling: [0.06, 0.25],
+    Drilling: [0.08, 0.2],
+    Threading: [0.05, 1.5],
+    Reaming: [0.1, 0.4]
+  }[product.family] || [0.05, 0.25];
+  const apFallback = {
+    Turning: [0.2, 4],
+    Milling: [0.5, 5],
+    Drilling: [0.5, 4],
+    Threading: [0.1, 2.5],
+    Reaming: [0.1, 0.3]
+  }[product.family] || [0.1, 3];
+  const tool = {
+    id,
+    brand: product.brand,
+    code: product.sku,
+    grade: product.coating || '',
+    shape,
+    tone: toneFromIso(iso),
+    iso,
+    family: product.family || 'Turning',
+    op,
+    vcMin: vcFallback[0],
+    vcMax: vcFallback[1],
+    fMin: feedFallback[0],
+    fMax: feedFallback[1],
+    apMin: apFallback[0],
+    apMax: apFallback[1],
+    coolant: machines.join('/') || meta.coolant || 'Wet',
+    stability: meta.stability || 'Medium',
+    bestFor: application[1] || application[0] || product.family || 'General purpose',
+    confidence,
+    source,
+    supply,
+    equivalents: alternatives.length,
+    lastVerified,
+    equivIds: [],
+    costTier,
+    lifeRel: Math.max(1, Math.min(5, Math.round(confidence >= 90 ? 4 : confidence >= 80 ? 3 : 2))),
+    unitPrice: price,
+    costPerEdge: +(price / edges).toFixed(2),
+    edges,
+    weeklyPicks: Math.round(8 + confidence * 0.7 + supply * 4 + (premiumBrands.has(product.brand) ? 12 : 0)),
+    valueIndex: 0,
+    betterValueId: null,
+    betterValueDelta: '',
+    peerIds: []
+  };
+  tool.valueIndex = (tool.confidence * 0.6) + (tool.lifeRel * 8) + (tool.supply * 3) - (tool.costTier * 10);
+  return tool;
+}
+
+function enrichCatalogProducts(records) {
+  const tools = records.map(mapProductRecord);
+  const bySku = new Map(tools.map((tool) => [tool.code, tool]));
+  tools.forEach((tool, index) => {
+    const source = records[index];
+    tool.equivIds = (source.alternatives_to || []).map((sku) => bySku.get(sku)?.id).filter(Boolean);
+  });
+  tools.forEach((tool) => {
+    const equivSet = new Set(tool.equivIds);
+    tool.peerIds = tools
+      .filter((candidate) => candidate.id !== tool.id && !equivSet.has(candidate.id) && candidate.family === tool.family && candidate.op === tool.op)
+      .sort((a, b) => b.weeklyPicks - a.weeklyPicks)
+      .slice(0, 4)
+      .map((candidate) => candidate.id);
+    const cohort = tools
+      .filter((candidate) => candidate.id !== tool.id && candidate.iso === tool.iso && candidate.family === tool.family && candidate.op === tool.op && candidate.costTier <= tool.costTier && candidate.valueIndex > tool.valueIndex + 6)
+      .sort((a, b) => b.valueIndex - a.valueIndex);
+    if (cohort.length) {
+      const better = cohort[0];
+      const costDelta = better.costTier < tool.costTier ? `${(1 - better.costTier / tool.costTier) * 100 | 0}% cheaper` : 'same cost tier';
+      const lifeDelta = better.lifeRel > tool.lifeRel ? `+${(better.lifeRel - tool.lifeRel) * 18}% tool life` : null;
+      const confDelta = better.confidence > tool.confidence ? `+${better.confidence - tool.confidence}% confidence` : null;
+      tool.betterValueId = better.id;
+      tool.betterValueDelta = [costDelta, lifeDelta, confDelta].filter(Boolean).slice(0, 2).join(' · ');
+    }
+  });
+  return tools;
+}
 
 // ---------- helpers ----------
 const LS = {
@@ -503,7 +637,40 @@ function SmartSwaps({shortlist, tools, onOpen, onApplySwap}) {
 
 // ---------- main app ----------
 function App() {
-  const TOOLS = window.TA_TOOLS;
+  const [tools, setTools] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const TOOLS = tools;
+
+  useEffect(() => {
+    let alive = true;
+    const api = window.taSupabase;
+    if (!api?.getProducts) {
+      setLoadError('Supabase client not available.');
+      setLoading(false);
+      return;
+    }
+    api.getProducts()
+      .then((records) => {
+        if (!alive) return;
+        const normalized = enrichCatalogProducts(records);
+        window.TA_TOOLS = normalized;
+        setTools(normalized);
+        setLoadError('');
+      })
+      .catch((error) => {
+        if (!alive) return;
+        console.error('Failed to load products from Supabase', error);
+        setLoadError(error?.message || 'Unable to load catalog.');
+      })
+      .finally(() => {
+        if (!alive) return;
+        setLoading(false);
+      });
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   // filters
   const [query, setQuery] = useState('');
@@ -527,12 +694,12 @@ function App() {
   useEffect(() => {
     const onSaved = (e) => {
       const skus = e.detail?.skus || [];
-      const ids = window.TA_TOOLS.filter((t) => skus.includes(t.code)).map((t) => t.id);
+      const ids = tools.filter((t) => skus.includes(t.code)).map((t) => t.id);
       setFavs(new Set(ids));
     };
     window.addEventListener('ta:saved-tools-updated', onSaved);
     return () => window.removeEventListener('ta:saved-tools-updated', onSaved);
-  }, []);
+  }, [tools]);
   useEffect(() => LS.set('ta:recent',  recent),       [recent]);
 
   // listen to sidebar filter events (bidirectional sync)
@@ -578,6 +745,7 @@ function App() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     let out = TOOLS.filter(t => {
+      if (!tools.length) return false;
       if (family !== 'All' && t.family !== family) return false;
       if (iso && t.iso !== iso) return false;
       if (op && t.op !== op) return false;
@@ -599,15 +767,15 @@ function App() {
       default: /* relevance — preserve insertion order */ break;
     }
     return out;
-  }, [TOOLS, query, family, iso, op, confMin, sort]);
+  }, [tools, query, family, iso, op, confMin, sort]);
 
   const visibleTools = filtered.slice(0, visible);
 
   // operations cluster — show only those present in current family
   const ops = useMemo(() => {
-    const set = new Set(TOOLS.filter(t => family === 'All' || t.family === family).map(t => t.op));
+    const set = new Set(tools.filter(t => family === 'All' || t.family === family).map(t => t.op));
     return [...set].sort();
-  }, [TOOLS, family]);
+  }, [tools, family]);
 
   // actions
   const toggleCompare = useCallback((id) => {
@@ -619,7 +787,7 @@ function App() {
     });
   }, []);
   const toggleFav = useCallback(async (id) => {
-    const tool = TOOLS.find((t) => t.id === id);
+    const tool = tools.find((t) => t.id === id);
     if (!tool) return;
     const api = window.taSupabase;
     const user = api?.getUser ? api.getUser() : null;
@@ -643,7 +811,7 @@ function App() {
       n.add(id);
       return n;
     });
-  }, [TOOLS, favs]);
+  }, [tools, favs]);
   const openDetail = useCallback((tool) => {
     setOpenTool(tool);
     setRecent(prev => {
@@ -662,9 +830,9 @@ function App() {
     return () => clearTimeout(t);
   }, [visibleTools, view, openTool]);
 
-  const compareTools = [...compare].map(id => TOOLS.find(t => t.id === id)).filter(Boolean);
-  const favTools     = [...favs].map(id => TOOLS.find(t => t.id === id)).filter(Boolean);
-  const recentTools  = recent.map(id => TOOLS.find(t => t.id === id)).filter(Boolean);
+  const compareTools = [...compare].map(id => tools.find(t => t.id === id)).filter(Boolean);
+  const favTools     = [...favs].map(id => tools.find(t => t.id === id)).filter(Boolean);
+  const recentTools  = recent.map(id => tools.find(t => t.id === id)).filter(Boolean);
 
   // active filter chips
   const activeChips = [];
@@ -703,6 +871,21 @@ function App() {
             <p className="text-on-surface-variant mt-1 max-w-2xl">Brand-neutral tool index with technical data and source flags. Filter by tool family; refine by ISO material from the left.</p>
           </div>
         </div>
+
+        {loading && (
+          <div className="bg-surface-card border border-border-warm rounded-2xl p-12 text-center mb-4">
+            <Icon name="sync" size={36} className="text-primary animate-spin mb-3"/>
+            <h3 className="font-product-grade text-ink-text mb-1">Loading catalog</h3>
+            <p className="text-sm text-on-surface-variant">Fetching products from Supabase.</p>
+          </div>
+        )}
+
+        {loadError && !loading && (
+          <div className="bg-error-container border border-error rounded-2xl p-6 mb-4">
+            <h3 className="font-product-grade text-on-error-container mb-1">Catalog unavailable</h3>
+            <p className="text-sm text-on-error-container/80">{loadError}</p>
+          </div>
+        )}
 
         {/* Pro ribbon — premium teaser */}
         <ProRibbon/>
@@ -890,7 +1073,7 @@ function App() {
         )}
 
         {/* Results */}
-        {visibleTools.length === 0 ? (
+        {!loading && visibleTools.length === 0 ? (
           <div className="bg-surface-card border border-border-warm rounded-2xl p-12 text-center">
             <Icon name="search_off" size={48} className="text-outline mb-3"/>
             <h3 className="font-product-grade text-ink-text mb-1">No tools match your filters</h3>
@@ -966,7 +1149,7 @@ function App() {
         </div>
       </section>
 
-      <DetailModal tool={openTool} onClose={() => setOpenTool(null)} onOpenTool={openDetail} tools={TOOLS}/>
+      <DetailModal tool={openTool} onClose={() => setOpenTool(null)} onOpenTool={openDetail} tools={tools}/>
       <CompareDrawer
         tools={compareTools}
         onRemove={toggleCompare}
