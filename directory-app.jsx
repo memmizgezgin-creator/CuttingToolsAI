@@ -641,6 +641,7 @@ function App() {
         window.TA_TOOLS = normalized;
         setTools(normalized);
         setLoadError('');
+        setTimeout(() => { if (window.taInsert3DHydrate) window.taInsert3DHydrate(); }, 100);
       })
       .catch((error) => {
         if (!alive) return;
