@@ -151,77 +151,8 @@
     </style>
 </head>
 <body class="bg-background text-on-surface font-body-md min-h-screen">
-<!-- TopNavBar -->
-<nav class="bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center w-full px-gutter h-16 fixed top-0 z-50">
-<div class="flex items-center gap-stack-gap-md">
-<span class="font-display-hero text-display-hero font-extrabold text-primary dark:text-primary-fixed">ToolAdvisor</span>
-<div class="hidden md:flex ml-8 gap-stack-gap-lg">
-<a class="text-primary font-bold border-b-2 border-primary py-1 px-2 font-nav-item text-nav-item" href="#">Community</a>
-<a class="text-on-surface-variant font-medium hover:bg-surface-container-low transition-colors duration-200 py-1 px-2 font-nav-item text-nav-item" href="#">Calculators</a>
-<a class="text-on-surface-variant font-medium hover:bg-surface-container-low transition-colors duration-200 py-1 px-2 font-nav-item text-nav-item" href="#">Catalog</a>
-</div>
-</div>
-<div class="flex items-center gap-stack-gap-md">
-<div class="relative group">
-<span class="material-symbols-outlined text-on-surface-variant p-2 rounded-full hover:bg-surface-container-low cursor-pointer transition-colors duration-200">notifications</span>
-<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant p-2 rounded-full hover:bg-surface-container-low cursor-pointer transition-colors duration-200">settings</span>
-<img alt="Machinist profile" class="w-8 h-8 rounded-full border border-border-warm object-cover" data-alt="A professional headshot of a senior CNC machinist wearing high-quality industrial safety glasses and a dark blue workshop uniform. The background shows a softly blurred precision engineering environment with high-end machinery and cool, focused task lighting. The overall mood is expert and professional, fitting a high-end B2B SaaS platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiDMuZawg0rFIvxu_8KguYSklr2kV4gYOsmzIX_v97p6rlEF4Aw2T56E5pNREQnEsD1c9FvqmaPE1a8sZTYj9VCRotqWAKFn0hZFxW-qbQdTE46BxvoC7BppR2_UoyxPBEaT78uJMcC5smKpV3pOWr-caj_zTGf4pblnporzGS32RG_cIUdPGjKNOGh5R_d9kinJO9Gx8XIfry497wYxkDvyH58lRxVQBQCl6OgbmtGyi5--TXKsGAzPCupxQ92aYHgaqFMNr96dA"/>
-</div>
-</nav>
-<div class="flex pt-16">
-<!-- SideNavBar -->
-<aside class="bg-sidebar-bg dark:bg-tertiary-container h-screen w-sidebar-width fixed left-0 top-0 hidden md:flex flex-col py-container-margin border-r border-border-warm mt-16">
-<div class="px-gutter mb-8">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-primary scale-125">precision_manufacturing</span>
-<h3 class="font-section-heading text-section-heading text-primary leading-none">Intelligence</h3>
-</div>
-<p class="text-on-surface-variant text-sm font-medium">Swiss Grade Analytics</p>
-</div>
-<nav class="flex-grow space-y-1">
-<a class="flex items-center gap-3 px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all translate-x-0 hover:translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined text-[20px]">precision_manufacturing</span>
-<span class="font-nav-item text-nav-item">ISO P Steel</span>
-</a>
-<a class="flex items-center gap-3 px-gutter py-3 text-primary font-bold border-l-4 border-iso-m-amber bg-surface-container-lowest translate-x-1" href="#">
-<span class="material-symbols-outlined text-[20px]">layers</span>
-<span class="font-nav-item text-nav-item">ISO M Stainless</span>
-</a>
-<a class="flex items-center gap-3 px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all translate-x-0 hover:translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined text-[20px]">architecture</span>
-<span class="font-nav-item text-nav-item">ISO K Cast Iron</span>
-</a>
-<a class="flex items-center gap-3 px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all translate-x-0 hover:translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined text-[20px]">category</span>
-<span class="font-nav-item text-nav-item">ISO N Non-Ferrous</span>
-</a>
-<a class="flex items-center gap-3 px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all translate-x-0 hover:translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined text-[20px]">settings_suggest</span>
-<span class="font-nav-item text-nav-item">ISO S Superalloys</span>
-</a>
-<a class="flex items-center gap-3 px-gutter py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all translate-x-0 hover:translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined text-[20px]">diamond</span>
-<span class="font-nav-item text-nav-item">ISO H Hardened</span>
-</a>
-</nav>
-<div class="px-gutter mt-auto pt-8 border-t border-border-warm space-y-4">
-<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold shadow-sm active:scale-95 transition-transform">Upgrade to Pro</button>
-<div class="space-y-2">
-<a class="flex items-center gap-3 text-on-surface-variant font-medium hover:text-primary py-1" href="#">
-<span class="material-symbols-outlined text-[20px]">help</span>
-<span class="font-nav-item text-nav-item">Help Center</span>
-</a>
-<a class="flex items-center gap-3 text-on-surface-variant font-medium hover:text-primary py-1" href="#">
-<span class="material-symbols-outlined text-[20px]">description</span>
-<span class="font-nav-item text-nav-item">Documentation</span>
-</a>
-</div>
-</div>
-</aside>
 <!-- Main Content Canvas -->
-<main class="ml-0 md:ml-sidebar-width w-full p-container-margin">
+<main class="ml-sidebar-width min-h-screen pb-20 p-container-margin">
 <!-- Hero Header -->
 <header class="mb-stack-gap-lg">
 <div class="flex justify-between items-end">
@@ -341,8 +272,8 @@
 <h3 class="font-section-heading text-xl text-ink-text mb-2">2024 Indexable Insert Comparison: Sandvik vs. Kennametal vs. Iscar</h3>
 <p class="text-on-surface-variant text-body-md mb-4">A community-driven performance matrix for ISO K cast iron applications. Includes user-submitted wear photos and CAM data.</p>
 <div class="flex -space-x-2">
-<img alt="Contributor 1" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="A close-up portrait of a middle-aged mechanical engineer with a thoughtful expression, set in a brightly lit modern office with engineering diagrams on the wall behind. The lighting is soft and natural, emphasizing a professional yet collaborative and approachable atmosphere. High-end digital photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJKbewBDehwnnEThBM3ZkPBRSLp1Z8seIwoJgmskP4-aCXBW7CFVYrZ7fnS50nDGOAWvsubLS87SkWKI6qgvwO0qqmFUHWhl6K28RRlSYBTHxMigqK_jpdYWtPSEVGhdPj49XRBINMVz4Awq1g1jbdAeKZjS4_sKVZpCnxgZLY6S3Ezp82yLUljKJFPXPSEPScUnKIQxWcAHrWA-uus_KuL7yw_wVKRAd8mB-9gmIbigvJadXk7h7a5cLT5Wo8RbNbVf8sjhwu6pM"/>
-<img alt="Contributor 2" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="A portrait of a young professional machinist with short hair and a clean-cut appearance, wearing a white polo shirt. The background is a clean, minimalist design studio with hints of high-tech manufacturing equipment visible in the soft bokeh. The style is bright and optimistic, reflecting a modern workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9q8L2lFK1gyXlJiVxOChEQqFn0lpU0-Vtj3_zf4V6WvHP8WHMyp1B888FL4HJIPEUoBkEluI1rCbGhKpOukstzvCn8URU17RIGI1kHNel0pHRCzGwvSUFUYu5cqNf4rnNegikz_jyM20YJCiIJ1kzoViT30WDclWBgtgoMyD7BhnQsZT4-Az-lh1tExrkl4HMx-FwIHT4Yrs34uAvswz7EETFROzZrzzR7AAXrTENrO0Rmh3etRVkf5a_xZKVELfHZmRr-Bgvcxc"/>
+<img alt="Contributor 1" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="A close-up portrait of a middle-aged mechanical engineer with a thoughtful expression, set in a brightly lit modern office with engineering diagrams on the wall behind. The lighting is soft and natural, emphasizing a professional yet collaborative and approachable atmosphere. High-end digital photography style." src=""/>
+<img alt="Contributor 2" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="A portrait of a young professional machinist with short hair and a clean-cut appearance, wearing a white polo shirt. The background is a clean, minimalist design studio with hints of high-tech manufacturing equipment visible in the soft bokeh. The style is bright and optimistic, reflecting a modern workspace." src=""/>
 <div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+12</div>
 </div>
 </div>
@@ -416,7 +347,7 @@
 <div class="space-y-6">
 <div class="flex items-center gap-4">
 <div class="relative">
-<img alt="Contributor 3" class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a middle-aged female machinist in a clean grey shop apron, her hair tied back, looking into the distance with a confident smile. The background is a high-tech workshop with soft ambient lighting and reflections of polished metal. Professional, crisp, and high-quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAriF1JaUyLUfPQQycCmSQZakNozAPtSg0pCJxr0so55rLTOgrwKcKNxVixnIxQDuw2QzK6qQqUo3HKTqji1VgkTQM6A8ka2CpX8BkChTgLbrbwK2yVYNBW5VgaRSrSmc48Mzri6xFGgffRn88Up6JMclkk4DZHOa-ig1fwAP9oCDMqPDi2tVRNMbhi0vtVdQVimYK_g0ZHnsZDQ0WDMEJGjLoqyzhbJMKE80fBrlvGCbn0QZBIeAh16uoj0FKHb3HyqYJCLvB_GpU"/>
+<img alt="Contributor 3" class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a middle-aged female machinist in a clean grey shop apron, her hair tied back, looking into the distance with a confident smile. The background is a high-tech workshop with soft ambient lighting and reflections of polished metal. Professional, crisp, and high-quality photography." src=""/>
 <span class="absolute -bottom-1 -right-1 bg-iso-m-amber text-[8px] font-extrabold text-white px-1 rounded-full border-2 border-white">#1</span>
 </div>
 <div>
@@ -427,7 +358,7 @@
 </div>
 <div class="flex items-center gap-4">
 <div class="relative">
-<img alt="Contributor 4" class="w-10 h-10 rounded-full object-cover" data-alt="Close-up headshot of a younger male industrial designer with glasses, wearing a dark polo. The background is a brightly lit, modern industrial workspace with minimalist white furniture and warm wooden accents. The overall look is clean, high-tech, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiE23NEt6a0xYelSvsVVGiELEeKyJAZJwZXBURyoIXP0be6Xq20xQKfiQIVnJ1nKBD7IvJSAK8QducY6pOO6qUXJjLgMFXk6QiXgI26CLUf70lljdb5l3a8CrUcEMlJbJPrd9ADewObA1wCYkzChlojt3brA51YLvF5Vnv8nN6qLrAKSs3CG4uLTcnJwEWcuV2-I_FuMlhDavda754PtgtPnlHMcuSETGUgQtkobZbqZWVl1ORA--qOXXfNmm9WoSSmFr188ujuW8"/>
+<img alt="Contributor 4" class="w-10 h-10 rounded-full object-cover" data-alt="Close-up headshot of a younger male industrial designer with glasses, wearing a dark polo. The background is a brightly lit, modern industrial workspace with minimalist white furniture and warm wooden accents. The overall look is clean, high-tech, and professional." src=""/>
 <span class="absolute -bottom-1 -right-1 bg-surface-container-highest text-[8px] font-extrabold text-on-surface-variant px-1 rounded-full border-2 border-white">#2</span>
 </div>
 <div>
@@ -437,7 +368,7 @@
 </div>
 <div class="flex items-center gap-4">
 <div class="relative">
-<img alt="Contributor 5" class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of an experienced female manufacturing consultant with silver hair, wearing a high-quality navy blazer. Behind her is a blurred view of a high-end factory floor with soft, warm overhead lighting. The vibe is sophisticated, authoritative, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAvVMj18fPF1cjdsvsH9ClCyZEJL9UZiTm6kSL3YN9nxjpdEQz1HOPgf0DAX6uwpOULQwEdxMPs1QwxYutwDzKmB0Tajkregq04iQ3soNvqnfAo18ZIBIbS-lwlveloyw5BJNr26suzUB7L-dLtivxpkBjW9JNm4CNLEKnz5y0bI96Jy7PJuNILSM8_6sUwHJiHRED3wdwqnWf3_OOj8ILKyuNPPG9Ibt1ePl-S65m_uuI1o5fgHM4Yi5-fyzf0vUzA4ZxTYsVPDk"/>
+<img alt="Contributor 5" class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of an experienced female manufacturing consultant with silver hair, wearing a high-quality navy blazer. Behind her is a blurred view of a high-end factory floor with soft, warm overhead lighting. The vibe is sophisticated, authoritative, and professional." src=""/>
 <span class="absolute -bottom-1 -right-1 bg-surface-container-highest text-[8px] font-extrabold text-on-surface-variant px-1 rounded-full border-2 border-white">#3</span>
 </div>
 <div>
@@ -458,62 +389,17 @@
 </div>
 </div>
 </main>
-</div>
 <!-- Footer -->
-<footer class="bg-surface-container dark:bg-surface-dim border-t border-border-warm w-full rounded-t-xl flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg mt-12">
+<footer class="w-full rounded-t-xl bg-surface-container dark:bg-surface-dim border-t border-border-warm flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
 <div class="mb-4 md:mb-0">
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor Intelligence</span>
-<p class="text-on-surface-variant text-sm mt-2 opacity-80">© 2024 ToolAdvisor Intelligence Platform. Precision Swiss Grade.</p>
+<p class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor</p>
+<p class="text-on-surface-variant text-sm mt-1">© 2025 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
 </div>
-<div class="flex gap-stack-gap-lg">
-<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-sm" href="terms.html">Terms of Service</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-sm" href="privacy.html">Privacy Policy</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-sm" href="mailto:hello@tooladvisor.eu">Contact Engineering</a>
+<div class="flex gap-8 items-center">
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="privacy.html">Privacy Policy</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="contact.html">Contact Engineering</a>
 </div>
 </footer>
-<!-- Mobile Navigation (Suppressed for focused top-level destinations rule check, but included for accessibility) -->
-<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around p-3 z-50">
-<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">forum</span>
-<span class="material-symbols-outlined text-on-surface-variant">search</span>
-<span class="material-symbols-outlined text-on-surface-variant">add_circle</span>
-<span class="material-symbols-outlined text-on-surface-variant">person</span>
-</div>
-
-<script>
-(function(){
-  var pages=[
-    {href:'index.html',     label:'Dashboard',  icon:'dashboard'},
-    {href:'tools.html',     label:'Directory',  icon:'precision_manufacturing'},
-    {href:'saved.html',     label:'Saved',      icon:'bookmark'},
-    {href:'community.html', label:'Community',  icon:'forum'},
-    {href:'guides.html',    label:'Guides',     icon:'menu_book'},
-    {href:'reviews.html',   label:'Reviews',    icon:'fact_check'},
-    {href:'profile.html',   label:'Profile',    icon:'person'},
-  ];
-  var here = location.pathname.split('/').pop() || 'index.html';
-  if(here==='') here='index.html';
-  var bar = document.createElement('div');
-  bar.style.cssText='position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:9999;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border:1px solid #E8E4DE;border-radius:999px;padding:5px;display:flex;gap:3px;box-shadow:0 8px 32px rgba(0,0,0,.12);font-family:"DM Sans",system-ui,sans-serif;';
-  pages.forEach(function(p){
-    var a=document.createElement('a');
-    a.href=p.href;
-    var active=p.href===here;
-    a.style.cssText='padding:6px 10px;border-radius:999px;font-size:11px;font-weight:600;text-decoration:none;transition:all .15s;display:flex;align-items:center;gap:4px;'+(active?'background:#123356;color:#fff;':'color:#1A1A2E;');
-    var icon=document.createElement('span');
-    icon.className='material-symbols-outlined';
-    icon.style.cssText='font-size:14px;';
-    icon.textContent=p.icon;
-    var txt=document.createElement('span');
-    txt.textContent=p.label;
-    a.appendChild(icon);
-    a.appendChild(txt);
-    if(!active){
-      a.addEventListener('mouseenter',function(){a.style.background='#F5F2EE';});
-      a.addEventListener('mouseleave',function(){a.style.background='transparent';});
-    }
-    bar.appendChild(a);
-  });
-  document.body.appendChild(bar);
-})();
-</script>
+<script src="page-switcher.js"></script>
 </body></html>

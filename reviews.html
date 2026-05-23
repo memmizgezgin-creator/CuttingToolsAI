@@ -134,72 +134,8 @@
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
-<!-- Top Navigation Bar -->
-<header class="bg-surface dark:bg-surface-dim shadow-sm docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-gutter h-16">
-<div class="flex items-center gap-stack-gap-md">
-<span class="font-display-hero text-display-hero font-extrabold text-primary dark:text-primary-fixed">ToolAdvisor</span>
-<div class="hidden md:flex gap-6 ml-12">
-<a class="text-primary font-bold border-b-2 border-primary font-nav-item text-nav-item" href="#">Comparisons</a>
-<a class="text-on-surface-variant font-medium font-nav-item text-nav-item hover:bg-surface-container-low transition-colors duration-200 p-2 rounded-lg" href="#">Insights</a>
-<a class="text-on-surface-variant font-medium font-nav-item text-nav-item hover:bg-surface-container-low transition-colors duration-200 p-2 rounded-lg" href="#">Engineering Lab</a>
-</div>
-</div>
-<div class="flex items-center gap-gutter">
-<div class="relative hidden sm:block">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="h-10 pl-10 pr-4 rounded-xl border-border-warm bg-surface-container-low focus:ring-primary focus:border-primary w-64 text-sm" placeholder="Search technical specs..." type="text"/>
-</div>
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined text-primary scale-95 active:scale-90 transition-transform">notifications</button>
-<button class="material-symbols-outlined text-primary scale-95 active:scale-90 transition-transform">settings</button>
-<img alt="Machinist profile" class="w-10 h-10 rounded-full border-2 border-primary object-cover" data-alt="A professional close-up portrait of a senior Swiss CNC machinist wearing high-quality workshop attire and safety glasses. The background is a softly blurred high-precision manufacturing environment with warm, industrial lighting. The atmosphere conveys expertise, precision, and reliable engineering authority in a clean, modern facility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9DkxZibX_3Zki1BGFpjb7gi6w1EgOoYtglK5CX5oXa9sql7O-R2J1JWC68VD_KYZEGhBDvUy0b4zC1IB-OhaS176HjDo8ZuCimlf0WhsfwnHGuBaWogY9oXPPgXGDJe7o06CwhRcXmPNK1h45OO9oZDAd1EvwOv3mUHYud8IxlcTfa47lIU4BK1ELLKpye1LhR8nnPmWD945Ks_JcBEFYaIQDMSiuoS1Hl_yf-qqSi91mAiwVPpAxkdYxLaD9Ji7F07YlG1sx698"/>
-</div>
-</div>
-</header>
-<div class="flex">
-<!-- Sidebar Navigation -->
-<aside class="h-screen w-sidebar-width fixed left-0 top-16 bg-sidebar-bg dark:bg-tertiary-container border-r border-border-warm hidden md:flex flex-col py-container-margin z-40">
-<div class="px-6 mb-8">
-<h2 class="font-section-heading text-section-heading text-primary">Precision Intelligence</h2>
-<p class="text-xs text-on-surface-variant font-medium">Swiss Grade Analytics</p>
-</div>
-<nav class="flex-1 space-y-1 px-3">
-<div class="mb-4">
-<p class="px-4 text-[11px] font-bold text-outline uppercase tracking-widest mb-2">Material Groups</p>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium font-nav-item text-nav-item hover:bg-surface-container-high transition-all translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined text-iso-p-blue">precision_manufacturing</span> ISO P Steel
-                    </a>
-<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold border-l-4 border-iso-m-amber bg-surface-container-lowest font-nav-item text-nav-item" href="#">
-<span class="material-symbols-outlined text-iso-m-amber" style="font-variation-settings: 'FILL' 1;">layers</span> ISO M Stainless
-                    </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium font-nav-item text-nav-item hover:bg-surface-container-high transition-all translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined text-iso-k-red">architecture</span> ISO K Cast Iron
-                    </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium font-nav-item text-nav-item hover:bg-surface-container-high transition-all translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined text-iso-n-green">category</span> ISO N Non-Ferrous
-                    </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium font-nav-item text-nav-item hover:bg-surface-container-high transition-all translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined text-iso-s-orange">settings_suggest</span> ISO S Superalloys
-                    </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium font-nav-item text-nav-item hover:bg-surface-container-high transition-all translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined text-iso-h-slate">diamond</span> ISO H Hardened
-                    </a>
-</div>
-</nav>
-<div class="px-4 mt-auto">
-<div class="bg-primary-container p-4 rounded-xl text-on-primary-container mb-6">
-<p class="text-xs font-bold uppercase tracking-wider mb-2">Power User</p>
-<p class="text-sm mb-4">Unlock multi-tool cycle time simulations.</p>
-<button class="w-full bg-iso-m-amber text-primary font-bold py-2 rounded-lg text-sm transition-transform active:scale-95">Upgrade to Pro</button>
-</div>
-<div class="flex flex-col gap-2">
-<a class="flex items-center gap-2 text-on-surface-variant text-sm hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-sm">help</span> Help Center</a>
-<a class="flex items-center gap-2 text-on-surface-variant text-sm hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-sm">description</span> Documentation</a>
-</div>
-</div>
-</aside>
 <!-- Main Content Area -->
-<main class="flex-1 md:ml-sidebar-width p-container-margin min-h-screen">
+<main class="ml-sidebar-width min-h-screen pb-20 p-container-margin">
 <!-- Hero Section -->
 <section class="mb-stack-gap-lg">
 <div class="flex flex-col lg:flex-row justify-between items-end gap-stack-gap-md mb-8">
@@ -216,7 +152,7 @@
 <!-- Featured Review Card -->
 <div class="relative w-full h-[450px] rounded-3xl overflow-hidden group mb-16 ambient-shadow">
 <div class="absolute inset-0">
-<img alt="Featured Milling Tool" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A high-end macro photograph of a professional-grade carbide end mill rotating in a high-speed CNC spindle. Sparkling coolant mist and sharp metallic shavings are caught in mid-air with high-speed photography. The lighting is dramatic and clinical, highlighting the iridescent coating of the tool against a dark, technical background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfMLSklu4ZVNrkpX0RYEqSqcxQT4raLhR08UUMCGQ4CaDic2HUQ0WnyfyJ99mTZYm0MyM6T4e3eD3pZeBVgKdlkrwm8ervYIXuqyhurXO6LSpHEW3WEuXHcQeY8LAZ__GUsPMFD0Ll2N_mqmEbqS_HMQlM4oMs_X3lRjgGdaSzoZvRU2io70deJ3YluNsLhVE_QQIzqEfW_kOmruB9rvjXNLKz5GI_X_CsGTSHIXfCLz0abWcEGKDeTWmelEs5ir1ZEs6Z0JkgzaQ"/>
+<img alt="Featured Milling Tool" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A high-end macro photograph of a professional-grade carbide end mill rotating in a high-speed CNC spindle. Sparkling coolant mist and sharp metallic shavings are caught in mid-air with high-speed photography. The lighting is dramatic and clinical, highlighting the iridescent coating of the tool against a dark, technical background." src=""/>
 <div class="absolute inset-0 bg-gradient-to-r from-ink-text/90 via-ink-text/40 to-transparent"></div>
 </div>
 <div class="relative h-full flex flex-col justify-center px-12 max-w-3xl">
@@ -262,7 +198,7 @@
 <th class="w-80">
 <div class="card-3d bg-white rounded-3xl p-6 ambient-shadow border-t-4 border-iso-p-blue text-left relative overflow-hidden">
 <div class="tool-float mb-6 relative z-10">
-<img alt="Sandvik Coromant Tool" class="w-32 h-32 object-contain mx-auto drop-shadow-2xl" data-alt="A detailed 3D rendering of a premium blue-tinted face milling tool with multiple indexable inserts. The tool is shown from a 45-degree isometric angle, appearing to float above a clean white surface with a soft contact shadow. The lighting is soft and global, highlighting the complex geometry and polished finish of the tool." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBXsIloW95kg1-VuCALxnZI9If9QbfRJ_0kDEfs5qseIKmEyhD0r6jrHsOjzBLEEPJwI6i9FafRb8Y9jR9o8qfPe4bq4xK4kO7M-Ek2G0sQycA_-c8P_hU7XsYGa-NQiTbrnDDxeGCpgMp6jAljMajrhIXkNAwDAhcZAFDi2VZgipSbqW77s5BKq0gLWYGHQ923BmU40X0e3GTEWT2LuyZT9DuWj0xXD8dRnPVq0dJpzOuTik5ot_N33ZhbUkvQVzAxXcvQRccniQ"/>
+<img alt="Sandvik Coromant Tool" class="w-32 h-32 object-contain mx-auto drop-shadow-2xl" data-alt="A detailed 3D rendering of a premium blue-tinted face milling tool with multiple indexable inserts. The tool is shown from a 45-degree isometric angle, appearing to float above a clean white surface with a soft contact shadow. The lighting is soft and global, highlighting the complex geometry and polished finish of the tool." src=""/>
 </div>
 <h4 class="font-product-grade text-product-grade mb-1">CoroMill® 745</h4>
 <p class="font-label-caps text-[12px] text-outline mb-4">SANDVIK COROMANT</p>
@@ -273,7 +209,7 @@
 <div class="card-3d bg-white rounded-3xl p-6 ambient-shadow border-t-4 border-iso-m-amber text-left relative overflow-hidden ring-4 ring-iso-m-amber/30">
 <div class="absolute top-4 right-4 bg-iso-m-amber text-primary px-3 py-1 rounded-full font-bold text-[10px] z-20">RECOMMENDED</div>
 <div class="tool-float mb-6 relative z-10">
-<img alt="Kennametal Tool" class="w-32 h-32 object-contain mx-auto drop-shadow-2xl" data-alt="A high-precision 3D industrial render of a Kennametal gold-series face mill. The tool body is a sleek matte black while the cutting inserts glow with a warm gold PVD coating. It is presented with a dynamic 3D perspective as if floating on a workbench in a bright, modern precision engineering lab." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1Zxm9T0vDjsaCBGg2DJmZSMevz-iHjEiSv4Nl5-hs-sVJptMMqrhXThaG5lxWoY7bO3lNB7v34JbW4LvM-psoJZ0EQle1oBTbFFrKsFFKjEIDONmvb7TEA31CnTOilJp_6Rs8K10HOrOEoiGW1MqbUySFegLxYQjP9fhLwzwn1zgmYoAOx2_jjn89g_hQqzKGZpbvz7keHEsiITowjMuWiwmKfAIi_G0l-Fd8BJFg_6_ALVNkdKM1PbQO2Tnt7Q9cjd5uNGqfBqI"/>
+<img alt="Kennametal Tool" class="w-32 h-32 object-contain mx-auto drop-shadow-2xl" data-alt="A high-precision 3D industrial render of a Kennametal gold-series face mill. The tool body is a sleek matte black while the cutting inserts glow with a warm gold PVD coating. It is presented with a dynamic 3D perspective as if floating on a workbench in a bright, modern precision engineering lab." src=""/>
 </div>
 <h4 class="font-product-grade text-product-grade mb-1">Mill 4-15™</h4>
 <p class="font-label-caps text-[12px] text-outline mb-4">KENNAMETAL INC.</p>
@@ -283,7 +219,7 @@
 <th class="w-80">
 <div class="card-3d bg-white rounded-3xl p-6 ambient-shadow border-t-4 border-iso-h-slate text-left relative overflow-hidden">
 <div class="tool-float mb-6 relative z-10">
-<img alt="Iscar Tool" class="w-32 h-32 object-contain mx-auto drop-shadow-2xl" data-alt="A professional engineering visualization of an ISCAR industrial milling cutter. The design features a heavy-duty steel body with precisely seated tungsten carbide inserts. The scene is illuminated with cold-white studio lighting, creating sharp highlights on the metallic surfaces and a premium, high-tech industrial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ51MkgYTUFMZTGc9vU8OyYrZOaIqwKJk8A0-f4kgJ5-k4vZl_hVnWwBdS-zEA5ctxzCommku29xEZsbxPxh9UpXrMhAPQWaMXl6C-kBU5YtNlz6BD2niz6RuxYucIF0kMRR0kcrC1X5Lvhw01LuiF0SS3RvoiEVGgzf3dPnzOOaAGGCaDmMvUaZ6W2aDS-IOKVZG33B0MmKR0XXBs6TKU94nHJwPLGijjASyz-wTaI8bo755-YU9oc5GGjfulRAZf4yWz-Ejq11w"/>
+<img alt="Iscar Tool" class="w-32 h-32 object-contain mx-auto drop-shadow-2xl" data-alt="A professional engineering visualization of an ISCAR industrial milling cutter. The design features a heavy-duty steel body with precisely seated tungsten carbide inserts. The scene is illuminated with cold-white studio lighting, creating sharp highlights on the metallic surfaces and a premium, high-tech industrial aesthetic." src=""/>
 </div>
 <h4 class="font-product-grade text-product-grade mb-1">Helido Upfeed</h4>
 <p class="font-label-caps text-[12px] text-outline mb-4">ISCAR PRECISION</p>
@@ -365,7 +301,7 @@
 <!-- Review Card 1 -->
 <div class="bg-white rounded-3xl overflow-hidden ambient-shadow flex flex-col group border border-border-warm hover:border-iso-m-amber transition-all">
 <div class="h-48 relative overflow-hidden">
-<img alt="Drill Review" class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="A focused close-up of a high-performance carbide drill bit producing long, continuous metallic spirals during a deep-hole drilling operation. The lighting is crisp and cool, highlighting the polished silver finish of the drill and the glowing amber of the lubricant. The shot conveys extreme mechanical efficiency and industrial precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeuOe8cA_Ox6pz0bwYEB4fX9f7B6JYliSD5XvWkk4e_Sgfb_UEqo4DaCKcn4VaAsNfahZTTxxQup1kTwcxhmswmPUDoEw9GVQ9T5CMOUm1q61nqZwyXtvV1ajarCeTpOlRXFqRTzaXH2D3vP4W95N_Ik7-Tc-HGwa04h8suUObw52k28e0Xeo3Fq1QhISIXiJU34X8yU5RqGFHuX-PnMNmFnvbNKKXx5JyW9o74J5sLeCrrSlwyND4CJq6KWwfSE8TkY-vKi76cyw"/>
+<img alt="Drill Review" class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="A focused close-up of a high-performance carbide drill bit producing long, continuous metallic spirals during a deep-hole drilling operation. The lighting is crisp and cool, highlighting the polished silver finish of the drill and the glowing amber of the lubricant. The shot conveys extreme mechanical efficiency and industrial precision." src=""/>
 <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary">SOLID CARBIDE</div>
 </div>
 <div class="p-6">
@@ -387,7 +323,7 @@
 <!-- Review Card 2 -->
 <div class="bg-white rounded-3xl overflow-hidden ambient-shadow flex flex-col group border border-border-warm hover:border-iso-m-amber transition-all">
 <div class="h-48 relative overflow-hidden">
-<img alt="Ceramic Inserts" class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="Macro detail of high-tech white ceramic cutting inserts mounted on a milling head, engaging with a glowing red piece of heated nickel alloy. Sparks fly in a controlled, artistic arc. The contrast between the pristine white ceramic and the fiery metal creates a powerful visual of advanced materials science in action." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8cZiyPXs-i352QBftZS5O7ur5Nmxm5ImhmoIWRBbhX1VCaUn2qm_e2zCDLXH9A9nei4pyRBRNmKYQDGC_XwwO4sPrvHp8Ocbaw4Brv0IlQhH3snJnlTeu-EexH0LzJWeM2RFCjTpnB_DhJxtxesGIOut7BThR6I3JKr0al9wiSXh4tuqWYdX0ZE4exSBezvQAGnrDdG6MNKfXLrMydVIp7va66B88LFy85bLT_FbSmXdAmpa4IBFsFbOKjhMqBXy3U0gAobf4FNw"/>
+<img alt="Ceramic Inserts" class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="Macro detail of high-tech white ceramic cutting inserts mounted on a milling head, engaging with a glowing red piece of heated nickel alloy. Sparks fly in a controlled, artistic arc. The contrast between the pristine white ceramic and the fiery metal creates a powerful visual of advanced materials science in action." src=""/>
 <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary">CERAMICS</div>
 </div>
 <div class="p-6">
@@ -409,7 +345,7 @@
 <!-- Review Card 3 -->
 <div class="bg-white rounded-3xl overflow-hidden ambient-shadow flex flex-col group border border-border-warm hover:border-iso-m-amber transition-all">
 <div class="h-48 relative overflow-hidden">
-<img alt="Tool Management" class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="A clean, organized technical workspace showing a digital tablet displaying tool wear analytics charts next to a collection of various high-precision cutting tools in a custom holder. The lighting is a bright, balanced daylight, emphasizing the connection between physical engineering tools and modern digital data monitoring systems." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYAbFz-XXB9jAhdiz2A95l3b7uukJuf19HmMl_YKkXPEoP19CzoyD_aZSa317B9KO1iPZ1L5c39J_p3M_Z6XS2Jwxucsu46yyDXi_2-0ltem3omApd7z2dthoR-vqoZKGyUsW24zGYRXk-9f3fajirlqVrbgY5bUBHHd2Y2_-lxxqnISOv9V__oZCM-bDOIioyrD882cOqo5V62LvLnSBbzjLg_TRDtiJk5X2RJNL2cVbyYeubA_Sb2xNsk7kvQOpFudtfeBr1jLc"/>
+<img alt="Tool Management" class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="A clean, organized technical workspace showing a digital tablet displaying tool wear analytics charts next to a collection of various high-precision cutting tools in a custom holder. The lighting is a bright, balanced daylight, emphasizing the connection between physical engineering tools and modern digital data monitoring systems." src=""/>
 <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary">DIGITAL TWINS</div>
 </div>
 <div class="p-6">
@@ -431,55 +367,18 @@
 </div>
 </section>
 </main>
-</div>
 <!-- Footer -->
-<footer class="bg-surface-container dark:bg-surface-dim border-t border-border-warm w-full rounded-t-xl mt-12 px-gutter py-stack-gap-lg flex flex-col md:flex-row justify-between items-center">
-<div class="flex flex-col gap-2 mb-6 md:mb-0">
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor Intelligence</span>
-<p class="font-body-md text-body-md text-on-surface-variant">© 2024 ToolAdvisor Intelligence Platform. Precision Swiss Grade.</p>
+<footer class="w-full rounded-t-xl bg-surface-container dark:bg-surface-dim border-t border-border-warm flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
+<div class="mb-4 md:mb-0">
+<p class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor</p>
+<p class="text-on-surface-variant text-sm mt-1">© 2025 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
 </div>
-<div class="flex gap-8">
-<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100 font-body-md" href="terms.html">Terms of Service</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100 font-body-md" href="privacy.html">Privacy Policy</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100 font-body-md" href="mailto:hello@tooladvisor.eu">Contact Engineering</a>
+<div class="flex gap-8 items-center">
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="privacy.html">Privacy Policy</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="contact.html">Contact Engineering</a>
 </div>
 </footer>
 
-<script>
-(function(){
-  var pages=[
-    {href:'index.html',     label:'Dashboard',  icon:'dashboard'},
-    {href:'tools.html',     label:'Directory',  icon:'precision_manufacturing'},
-    {href:'saved.html',     label:'Saved',      icon:'bookmark'},
-    {href:'community.html', label:'Community',  icon:'forum'},
-    {href:'guides.html',    label:'Guides',     icon:'menu_book'},
-    {href:'reviews.html',   label:'Reviews',    icon:'fact_check'},
-    {href:'profile.html',   label:'Profile',    icon:'person'},
-  ];
-  var here = location.pathname.split('/').pop() || 'index.html';
-  if(here==='') here='index.html';
-  var bar = document.createElement('div');
-  bar.style.cssText='position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:9999;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border:1px solid #E8E4DE;border-radius:999px;padding:5px;display:flex;gap:3px;box-shadow:0 8px 32px rgba(0,0,0,.12);font-family:"DM Sans",system-ui,sans-serif;';
-  pages.forEach(function(p){
-    var a=document.createElement('a');
-    a.href=p.href;
-    var active=p.href===here;
-    a.style.cssText='padding:6px 10px;border-radius:999px;font-size:11px;font-weight:600;text-decoration:none;transition:all .15s;display:flex;align-items:center;gap:4px;'+(active?'background:#123356;color:#fff;':'color:#1A1A2E;');
-    var icon=document.createElement('span');
-    icon.className='material-symbols-outlined';
-    icon.style.cssText='font-size:14px;';
-    icon.textContent=p.icon;
-    var txt=document.createElement('span');
-    txt.textContent=p.label;
-    a.appendChild(icon);
-    a.appendChild(txt);
-    if(!active){
-      a.addEventListener('mouseenter',function(){a.style.background='#F5F2EE';});
-      a.addEventListener('mouseleave',function(){a.style.background='transparent';});
-    }
-    bar.appendChild(a);
-  });
-  document.body.appendChild(bar);
-})();
-</script>
+<script src="page-switcher.js"></script>
 </body></html>

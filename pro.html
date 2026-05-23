@@ -124,83 +124,8 @@
 <link rel="stylesheet" href="polish.css"/>
 </head>
 <body class="antialiased font-body-md text-on-surface">
-<!-- TopNavBar -->
-<header class="bg-surface dark:bg-surface-dim shadow-sm docked full-width top-0 z-50 fixed">
-<div class="flex justify-between items-center w-full px-gutter h-16">
-<div class="flex items-center gap-stack-gap-md">
-<span class="font-display-hero text-display-hero font-extrabold text-primary dark:text-primary-fixed">ToolAdvisor</span>
-<div class="hidden md:flex ml-10 space-x-6">
-<a class="text-primary font-bold border-b-2 border-primary py-2 font-nav-item text-nav-item" href="#">Saved Tools</a>
-<a class="text-on-surface-variant font-medium hover:bg-surface-container-low transition-colors duration-200 py-2 font-nav-item text-nav-item" href="#">Analytics</a>
-<a class="text-on-surface-variant font-medium hover:bg-surface-container-low transition-colors duration-200 py-2 font-nav-item text-nav-item" href="#">Catalog</a>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<div class="relative hidden lg:block">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="h-10 pl-10 pr-4 bg-surface-container-low border-border-warm rounded-full w-64 focus:ring-primary focus:border-primary" placeholder="Search saved tools..." type="text"/>
-</div>
-<button class="material-symbols-outlined text-primary scale-95 active:scale-90 transition-transform">notifications</button>
-<button class="material-symbols-outlined text-primary scale-95 active:scale-90 transition-transform">settings</button>
-<img alt="Machinist profile" class="w-8 h-8 rounded-full border border-border-warm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI3N19bj6VNSdeESCUlMk9zwl2RztPuaYenuULWF26jwSr2BSCtK8cNbqUHj2ymWXbw_-V_QZtH-Z-mIkO42OctUTz0OSzyQGiGn1t5fpJPHe1AllhlM7Uk7VIoAdx8GO4VFcF3TNViyjiRS5t1A4Tyi_XCcaneXjaN19ytFK-mYUMPK7XETfD7rIpKAwGdVLaKcgJbivq5x5p_49iUAFkNSQpTqkN67YeTxjOMcmoDNiFnSKp_Bd04VHVbeD86nSoSsFnG6gZRjI"/>
-</div>
-</div>
-</header>
-<!-- SideNavBar -->
-<aside class="hidden md:flex flex-col h-screen w-sidebar-width fixed left-0 top-0 bg-sidebar-bg dark:bg-tertiary-container border-r border-border-warm py-container-margin pt-20 z-40">
-<div class="px-6 mb-8">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-<span class="material-symbols-outlined text-white">precision_manufacturing</span>
-</div>
-<div>
-<h2 class="font-section-heading text-[18px] text-primary">Precision Intelligence</h2>
-<p class="text-[12px] text-on-surface-variant">Tool Decision Platform</p>
-</div>
-</div>
-</div>
-<nav class="flex-1 px-3 space-y-1">
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all translate-x-1 duration-200 font-nav-item text-nav-item group" href="#">
-<span class="material-symbols-outlined">precision_manufacturing</span>
-                ISO P Steel
-            </a>
-<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold border-l-4 border-iso-m-amber bg-surface-container-lowest transition-all translate-x-1 duration-200 font-nav-item text-nav-item group" href="#">
-<span class="material-symbols-outlined">layers</span>
-                ISO M Stainless
-            </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all translate-x-1 duration-200 font-nav-item text-nav-item group" href="#">
-<span class="material-symbols-outlined">architecture</span>
-                ISO K Cast Iron
-            </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all translate-x-1 duration-200 font-nav-item text-nav-item group" href="#">
-<span class="material-symbols-outlined">category</span>
-                ISO N Non-Ferrous
-            </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all translate-x-1 duration-200 font-nav-item text-nav-item group" href="#">
-<span class="material-symbols-outlined">settings_suggest</span>
-                ISO S Superalloys
-            </a>
-<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all translate-x-1 duration-200 font-nav-item text-nav-item group" href="#">
-<span class="material-symbols-outlined">diamond</span>
-                ISO H Hardened
-            </a>
-</nav>
-<div class="px-6 mt-auto">
-<button class="w-full py-3 bg-primary text-white rounded-xl font-bold text-nav-item mb-8 shadow-md active:scale-95 transition-transform">Upgrade to Pro</button>
-<div class="space-y-4 border-t border-border-warm pt-6">
-<a class="flex items-center gap-3 text-on-surface-variant font-medium font-nav-item text-nav-item" href="#">
-<span class="material-symbols-outlined">help</span>
-                    Help Center
-                </a>
-<a class="flex items-center gap-3 text-on-surface-variant font-medium font-nav-item text-nav-item" href="#">
-<span class="material-symbols-outlined">description</span>
-                    Documentation
-                </a>
-</div>
-</div>
-</aside>
 <!-- Main -->
-<main class="md:ml-sidebar-width pt-20 min-h-screen">
+<main class="ml-sidebar-width min-h-screen pb-20">
 <div class="p-container-margin max-w-7xl mx-auto">
 
   <!-- Hero -->
@@ -355,17 +280,15 @@
 </main>
 
 <!-- Footer -->
-<footer class="md:ml-sidebar-width bg-surface-container dark:bg-surface-dim border-t border-border-warm w-full rounded-t-xl mt-20">
-<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
+<footer class="w-full rounded-t-xl bg-surface-container dark:bg-surface-dim border-t border-border-warm flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
 <div class="mb-4 md:mb-0">
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant dark:text-on-tertiary-container">ToolAdvisor Intelligence Platform</span>
-<p class="text-[12px] text-outline mt-1 font-body-md opacity-80">© 2024 Precision Tool Decision Platform.</p>
+<p class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor</p>
+<p class="text-on-surface-variant text-sm mt-1">© 2025 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
 </div>
-<div class="flex gap-8">
-<a class="text-on-surface-variant font-body-md text-[14px] hover:text-primary transition-colors opacity-80 hover:opacity-100" href="terms.html">Terms of Service</a>
-<a class="text-on-surface-variant font-body-md text-[14px] hover:text-primary transition-colors opacity-80 hover:opacity-100" href="privacy.html">Privacy Policy</a>
-<a class="text-on-surface-variant font-body-md text-[14px] hover:text-primary transition-colors opacity-80 hover:opacity-100" href="contact.html">Contact Engineering</a>
-</div>
+<div class="flex gap-8 items-center">
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="privacy.html">Privacy Policy</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="contact.html">Contact Engineering</a>
 </div>
 </footer>
 <script src="page-switcher.js"></script>

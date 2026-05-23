@@ -141,72 +141,8 @@
     </style>
 </head>
 <body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
-<!-- Sidebar Navigation -->
-<aside class="h-screen w-sidebar-width fixed left-0 top-0 flex flex-col py-container-margin bg-sidebar-bg border-r border-border-warm z-50">
-<div class="px-6 mb-10">
-<h1 class="font-section-heading text-section-heading text-primary">ToolAdvisor</h1>
-<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">PRECISION INTELLIGENCE</p>
-</div>
-<nav class="flex-1 space-y-1">
-<a class="flex items-center px-6 py-3 text-on-surface-variant font-nav-item text-nav-item hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3">precision_manufacturing</span> ISO P Steel
-            </a>
-<a class="flex items-center px-6 py-3 text-primary font-bold border-l-4 border-iso-m-amber bg-surface-container-lowest font-nav-item text-nav-item" href="#">
-<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">layers</span> ISO M Stainless
-            </a>
-<a class="flex items-center px-6 py-3 text-on-surface-variant font-nav-item text-nav-item hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3">architecture</span> ISO K Cast Iron
-            </a>
-<a class="flex items-center px-6 py-3 text-on-surface-variant font-nav-item text-nav-item hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3">category</span> ISO N Non-Ferrous
-            </a>
-<a class="flex items-center px-6 py-3 text-on-surface-variant font-nav-item text-nav-item hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3">settings_suggest</span> ISO S Superalloys
-            </a>
-<a class="flex items-center px-6 py-3 text-on-surface-variant font-nav-item text-nav-item hover:bg-surface-container-high transition-all" href="#">
-<span class="material-symbols-outlined mr-3">diamond</span> ISO H Hardened
-            </a>
-</nav>
-<div class="px-6 mt-auto">
-<div class="p-4 bg-primary-container rounded-xl text-on-primary-container mb-6">
-<p class="font-label-caps text-[11px] mb-2">ENGINEERING SUITE</p>
-<p class="font-bold text-sm mb-3">Upgrade to Pro</p>
-<button class="w-full py-2 bg-surface-container-lowest text-primary rounded-lg font-bold text-xs hover:bg-white transition-colors">ACTIVATE</button>
-</div>
-<div class="space-y-2">
-<a class="flex items-center text-on-surface-variant text-sm hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-lg mr-2">help</span> Help Center
-                </a>
-<a class="flex items-center text-on-surface-variant text-sm hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-lg mr-2">description</span> Documentation
-                </a>
-</div>
-</div>
-</aside>
 <!-- Main Canvas -->
-<main class="ml-sidebar-width min-h-screen">
-<!-- Top Navigation -->
-<header class="flex justify-between items-center w-full px-gutter h-16 bg-surface shadow-sm sticky top-0 z-40">
-<div class="flex items-center">
-<div class="relative group">
-<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-on-surface-variant">
-<span class="material-symbols-outlined text-lg">search</span>
-</span>
-<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 w-64 focus:ring-2 focus:ring-primary/20 font-body-md text-sm" placeholder="Search guides..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
-<span class="material-symbols-outlined">notifications</span>
-</button>
-<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
-<span class="material-symbols-outlined">settings</span>
-</button>
-<div class="h-8 w-8 rounded-full overflow-hidden border border-border-warm">
-<img alt="Machinist profile" data-alt="A professional CNC machinist wearing industrial safety gear and a focused expression, photographed in a high-tech workshop setting with soft, cinematic industrial lighting that highlights the precision and clean aesthetic of modern Swiss engineering facilities." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcXgytiZlRwNxlkxksriAMr4oJyE8f79AOXhsf6N8sob14g54KPz4tuTA7n8mMW5vef0Zo-kkqmEMugcmDnpM8o5iTK17o1Sl4xVjo8dVD8qA5DY4xgon3gI89mfHUlZ01e3ZVvZCahhfHLqD9qFCCnLUMiEHdNjM0yZfejORbDvSxu--w2DTA0FXf7ola_X59sG8tjqqBpbvOELiqB7GCytTDKfTG8t_VE_VFGI13RHJ78g70EmmPrv57L-3TKNsSrPbq59CA0z4"/>
-</div>
-</div>
-</header>
+<main class="ml-sidebar-width min-h-screen pb-20 p-container-margin">
 <!-- Article Content -->
 <div class="max-w-5xl mx-auto px-gutter py-container-margin">
 <!-- Breadcrumbs -->
@@ -270,7 +206,7 @@
 <div class="grid grid-cols-2 gap-12 items-center">
 <div class="perspective-1000">
 <div class="bg-white rounded-3xl p-12 ambient-shadow elevated-shadow transition-all duration-500 rotate-y-15 relative">
-<img alt="3D Tool Diagram" class="w-full h-auto rounded-lg" data-alt="A high-fidelity 3D rendering of a precision CNC milling tool insert, presented in a clean studio setting with soft directional lighting that creates realistic metallic highlights and shadows. The background is a minimalist warm-grey, emphasizing the tool's intricate technical geometry and Swiss-grade engineering polish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu1sgrPLWc_oqKBp2-uvQzE14uwjf0uKLp0Zea-Mteph5TbcswC44KfPfD1Gv2YmtMod4eoBC3kO3vcgek9x7RkwLS7zD7uprHIW4UWO9YO8bBSp9ZOypUnfIvnYdYEaQeUhyu8uSrKdW4acTYrhao5EduFasfTt8COAaMskR7ogr4K7AjfsklqPohoPfeR2uc6d0J8YVIea62iRw_U2o1iwKZSA7ZRmZ9ZCzabrdTVzoVAxYgb8XvFlZ1gmta9miX2TxHc2SDn3g"/>
+<img alt="3D Tool Diagram" class="w-full h-auto rounded-lg" data-alt="A high-fidelity 3D rendering of a precision CNC milling tool insert, presented in a clean studio setting with soft directional lighting that creates realistic metallic highlights and shadows. The background is a minimalist warm-grey, emphasizing the tool's intricate technical geometry and Swiss-grade engineering polish." src=""/>
 <div class="absolute top-4 left-4">
 <span class="px-3 py-1 bg-iso-m-amber/10 text-iso-m-amber rounded-full font-technical-data text-[10px] border border-iso-m-amber/20">COMPONENT VIEW</span>
 </div>
@@ -352,29 +288,15 @@
 </div>
 </div>
 </section>
-<!-- Subscription Section -->
-<footer class="mt-32 pt-16 border-t border-border-warm">
-<div class="bg-primary p-12 rounded-[32px] text-on-primary text-center relative overflow-hidden">
-<div class="relative z-10 max-w-2xl mx-auto">
-<h2 class="font-section-heading text-3xl mb-4">Master Your Machine Efficiency</h2>
-<p class="text-on-primary/80 mb-8 font-body-md">Get weekly calibration sheets and technical grade-selection matrices delivered directly to your engineering terminal.</p>
-<div class="flex gap-4 max-w-md mx-auto">
-<input class="flex-1 bg-white/10 border-white/20 rounded-xl px-6 py-4 focus:ring-2 focus:ring-white/30 text-white placeholder:text-white/40" placeholder="engineer@workshop.com" type="email"/>
-<button class="bg-iso-m-amber text-white px-8 py-4 rounded-xl font-bold hover:bg-amber-500 transition-colors shadow-lg">SUBSCRIBE</button>
+<footer class="w-full rounded-t-xl bg-surface-container dark:bg-surface-dim border-t border-border-warm flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
+<div class="mb-4 md:mb-0">
+<p class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor</p>
+<p class="text-on-surface-variant text-sm mt-1">© 2025 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
 </div>
-<p class="mt-6 text-[11px] font-label-caps text-on-primary/40 uppercase tracking-widest">NO SPAM. ONLY PURE SWISS ENGINEERING DATA.</p>
-</div>
-<!-- Decorative background elements -->
-<div class="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-<div class="absolute bottom-0 right-0 w-96 h-96 bg-iso-p-blue/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
-</div>
-<div class="mt-20 mb-12 flex flex-col md:flex-row justify-between items-center text-on-surface-variant font-body-md text-sm">
-<p>© 2024 ToolAdvisor Intelligence Platform. Precision Swiss Grade.</p>
-<div class="flex gap-8 mt-4 md:mt-0">
-<a class="hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
-<a class="hover:text-primary transition-colors" href="privacy.html">Privacy Policy</a>
-<a class="hover:text-primary transition-colors" href="mailto:hello@tooladvisor.eu">Contact Engineering</a>
-</div>
+<div class="flex gap-8 items-center">
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="privacy.html">Privacy Policy</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="contact.html">Contact Engineering</a>
 </div>
 </footer>
 </div>
@@ -383,42 +305,5 @@
 <button class="fixed bottom-8 right-8 h-14 w-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-transform z-50">
 <span class="material-symbols-outlined text-2xl">question_answer</span>
 </button>
-
-<script>
-(function(){
-  var pages=[
-    {href:'index.html',     label:'Dashboard',  icon:'dashboard'},
-    {href:'tools.html',     label:'Directory',  icon:'precision_manufacturing'},
-    {href:'saved.html',     label:'Saved',      icon:'bookmark'},
-    {href:'community.html', label:'Community',  icon:'forum'},
-    {href:'guides.html',    label:'Guides',     icon:'menu_book'},
-    {href:'reviews.html',   label:'Reviews',    icon:'fact_check'},
-    {href:'profile.html',   label:'Profile',    icon:'person'},
-  ];
-  var here = location.pathname.split('/').pop() || 'index.html';
-  if(here==='') here='index.html';
-  var bar = document.createElement('div');
-  bar.style.cssText='position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:9999;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border:1px solid #E8E4DE;border-radius:999px;padding:5px;display:flex;gap:3px;box-shadow:0 8px 32px rgba(0,0,0,.12);font-family:"DM Sans",system-ui,sans-serif;';
-  pages.forEach(function(p){
-    var a=document.createElement('a');
-    a.href=p.href;
-    var active=p.href===here;
-    a.style.cssText='padding:6px 10px;border-radius:999px;font-size:11px;font-weight:600;text-decoration:none;transition:all .15s;display:flex;align-items:center;gap:4px;'+(active?'background:#123356;color:#fff;':'color:#1A1A2E;');
-    var icon=document.createElement('span');
-    icon.className='material-symbols-outlined';
-    icon.style.cssText='font-size:14px;';
-    icon.textContent=p.icon;
-    var txt=document.createElement('span');
-    txt.textContent=p.label;
-    a.appendChild(icon);
-    a.appendChild(txt);
-    if(!active){
-      a.addEventListener('mouseenter',function(){a.style.background='#F5F2EE';});
-      a.addEventListener('mouseleave',function(){a.style.background='transparent';});
-    }
-    bar.appendChild(a);
-  });
-  document.body.appendChild(bar);
-})();
-</script>
+<script src="page-switcher.js"></script>
 </body></html>
