@@ -3,6 +3,7 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Compare Tools – ToolAdvisor</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -126,6 +127,7 @@
 <link rel="stylesheet" href="polish.css"/>
 </head>
 <body class="font-body-md text-on-surface selection:bg-primary/20">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <!-- Sidebar Navigation -->
 <aside class="h-screen w-sidebar-width fixed left-0 top-0 bg-sidebar-bg dark:bg-tertiary-container border-r border-border-warm flex flex-col py-container-margin z-50">
 <div class="px-gutter mb-10">
@@ -175,13 +177,13 @@
 </div>
 </aside>
 <!-- Main Content Area -->
-<main class="ml-sidebar-width min-h-screen">
+<main id="main-content" class="ml-sidebar-width min-h-screen">
 <!-- Top Navigation -->
 <header class="sticky top-0 w-full px-gutter h-16 bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center z-40">
 <div class="flex items-center flex-1 max-w-xl">
 <div class="relative w-full group">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-border-warm rounded-full focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm outline-none" placeholder="Search precision tools, materials, or geometries..." type="text"/>
+<input aria-label="Search precision tools, materials, or geometries..." class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-border-warm rounded-full focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm outline-none" placeholder="Search precision tools, materials, or geometries..." type="text"/>
 </div>
 </div>
 <div class="flex items-center gap-6">

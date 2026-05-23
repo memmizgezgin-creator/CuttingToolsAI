@@ -6961,7 +6961,7 @@ input::placeholder, textarea::placeholder {
     <div class="stitch-topbar-right">
       <label class="stitch-search-chip stitch-search-control" aria-label="Search industrial components">
         <span>⌕</span>
-        <input id="topbarProductSearch" type="search" placeholder="Search industrial components" autocomplete="off" onfocus="focusCatalogSearch()" oninput="handleTopbarProductSearchInput(this.value)">
+        <input aria-label="Search industrial components" id="topbarProductSearch" type="search" placeholder="Search industrial components" autocomplete="off" onfocus="focusCatalogSearch()" oninput="handleTopbarProductSearchInput(this.value)">
       </label>
       <button class="stitch-icon-btn theme-toggle" type="button" onclick="toggleDarkMode()" aria-label="Toggle light mode" data-tooltip="Toggle Light Mode">◐</button>
       <button class="stitch-icon-btn" type="button" onclick="openUtilityModal('notifications')" aria-label="Notification preferences" data-tooltip="Notifications">•</button>
@@ -7000,7 +7000,7 @@ input::placeholder, textarea::placeholder {
         </div>
         <p class="hero-trust">Used by engineers selecting cutting tools across brands.</p>
         <form class="hero-crossref-quick" onsubmit="submitCrossRefQuickInput('heroCrossRefCode',event)">
-          <input id="heroCrossRefCode" type="text" placeholder="Enter insert code (e.g. CNMG120408)" autocomplete="off">
+          <input aria-label="Enter insert code (e.g. CNMG120408)" id="heroCrossRefCode" type="text" placeholder="Enter insert code (e.g. CNMG120408)" autocomplete="off">
           <button type="submit">Find Equivalents</button>
         </form>
         <div class="hero-speed-line">Get a validated tool recommendation in under 10 seconds.</div>
@@ -7079,7 +7079,7 @@ input::placeholder, textarea::placeholder {
     <div class="advisor-quick-search">
       <div class="sec-label" style="margin-bottom:7px">Quick Product Search</div>
       <div class="aqs-input-wrap">
-        <input
+        <input aria-label="Search grade, brand, material, operation or ISO code — e.g. stainless steel turning, CNMG120408"
           id="advisorQuickSearchInput"
           class="aqs-input"
           type="text"
@@ -7340,7 +7340,7 @@ input::placeholder, textarea::placeholder {
     </div>
     <div class="cr-wrap">
       <div class="cr-search-row">
-        <input class="cr-input" type="text" id="crInput" placeholder="Enter insert code e.g. CNMG120408" value="CNMG120408">
+        <input aria-label="Enter insert code e.g. CNMG120408" class="cr-input" type="text" id="crInput" placeholder="Enter insert code e.g. CNMG120408" value="CNMG120408">
         <button class="cr-search-btn" onclick="loadCR(document.getElementById('crInput').value)">Search →</button>
       </div>
       <div class="cr-history" id="crHistory"></div>
@@ -7415,19 +7415,19 @@ input::placeholder, textarea::placeholder {
         <div class="form-row"><label class="form-label">Operation</label><select class="form-select" id="cOp" onchange="calcNow()"><option value="turning">Turning</option><option value="milling">Milling</option><option value="drilling">Drilling</option></select></div>
         <div class="form-row"><label class="form-label">Material preset</label><select class="form-select" id="cMaterialPreset" onchange="applyMaterialPreset(this.value)"><option value="">Manual values</option><option value="steel-p20">Steel P20</option><option value="stainless-316l">Stainless 316L</option><option value="inconel-718">Inconel 718</option><option value="aluminium-6082">Aluminium 6082</option><option value="hardened-55hrc">Hardened steel 55 HRC</option></select></div>
         <div class="form-row"><label class="form-label">Unit system</label><select class="form-select" id="cUnitSystem" onchange="calcNow()"><option value="metric">Metric (mm, m/min)</option><option value="imperial">Imperial input (inch, ft/min)</option></select></div>
-        <div class="form-row"><label class="form-label">Cutting Speed Vc (m/min or ft/min)</label><input class="form-input" type="number" id="cVc" value="280" oninput="calcNow()"><div class="form-error" id="cVcError">Vc must be zero or positive.</div></div>
-        <div class="form-row"><label class="form-label">Tool Diameter D (mm)</label><input class="form-input" type="number" id="cD" value="80" oninput="calcNow()"></div>
-        <div class="form-row"><label class="form-label">Feed per Rev / Tooth fz (mm or inch)</label><input class="form-input" type="number" id="cF" value="0.25" step="0.01" oninput="calcNow()"><div class="form-error" id="cFError">Feed must be greater than zero.</div></div>
-        <div class="form-row"><label class="form-label">Depth of Cut ap (mm)</label><input class="form-input" type="number" id="cAp" value="2" step="0.1" oninput="calcNow()"></div>
-        <div class="form-row"><label class="form-label">Width of Cut ae (mm)</label><input class="form-input" type="number" id="cAe" value="40" oninput="calcNow()"></div>
-        <div class="form-row"><label class="form-label">Number of Teeth z</label><input class="form-input" type="number" id="cZ" value="4" min="1" oninput="calcNow()"></div>
+        <div class="form-row"><label class="form-label">Cutting Speed Vc (m/min or ft/min)</label><input aria-label="Cvc" class="form-input" type="number" id="cVc" value="280" oninput="calcNow()"><div class="form-error" id="cVcError">Vc must be zero or positive.</div></div>
+        <div class="form-row"><label class="form-label">Tool Diameter D (mm)</label><input aria-label="Cd" class="form-input" type="number" id="cD" value="80" oninput="calcNow()"></div>
+        <div class="form-row"><label class="form-label">Feed per Rev / Tooth fz (mm or inch)</label><input aria-label="Cf" class="form-input" type="number" id="cF" value="0.25" step="0.01" oninput="calcNow()"><div class="form-error" id="cFError">Feed must be greater than zero.</div></div>
+        <div class="form-row"><label class="form-label">Depth of Cut ap (mm)</label><input aria-label="Cap" class="form-input" type="number" id="cAp" value="2" step="0.1" oninput="calcNow()"></div>
+        <div class="form-row"><label class="form-label">Width of Cut ae (mm)</label><input aria-label="Cae" class="form-input" type="number" id="cAe" value="40" oninput="calcNow()"></div>
+        <div class="form-row"><label class="form-label">Number of Teeth z</label><input aria-label="Cz" class="form-input" type="number" id="cZ" value="4" min="1" oninput="calcNow()"></div>
         <button class="calc-run-btn" onclick="calcNow()">Calculate</button>
       </div>
       <div class="calc-card">
         <div class="calc-card-title">Drilling calculator</div>
-        <div class="form-row"><label class="form-label">Drill diameter (mm)</label><input class="form-input" type="number" id="drillD" value="10" step="0.1" oninput="calcDrillingMode()"></div>
+        <div class="form-row"><label class="form-label">Drill diameter (mm)</label><input aria-label="Drilld" class="form-input" type="number" id="drillD" value="10" step="0.1" oninput="calcDrillingMode()"></div>
         <div class="form-row"><label class="form-label">Material</label><select class="form-select" id="drillMat" onchange="calcDrillingMode()"><option value="P">Steel P</option><option value="M">Stainless M</option><option value="K">Cast iron K</option><option value="N">Aluminium N</option><option value="S">Superalloy S</option><option value="H">Hardened H</option></select></div>
-        <div class="form-row"><label class="form-label">Spindle speed (RPM)</label><input class="form-input" type="number" id="drillRpm" value="2500" step="50" oninput="calcDrillingMode()"></div>
+        <div class="form-row"><label class="form-label">Spindle speed (RPM)</label><input aria-label="Drillrpm" class="form-input" type="number" id="drillRpm" value="2500" step="50" oninput="calcDrillingMode()"></div>
         <button class="calc-run-btn" onclick="calcDrillingMode()">Calculate drilling</button>
         <div class="calc-rec" style="margin-top:12px">
           <div class="calc-rec-label">Drilling output</div>
@@ -7436,15 +7436,15 @@ input::placeholder, textarea::placeholder {
       </div>
       <div class="calc-card">
         <div class="calc-card-title">Tool life estimator</div>
-        <div class="form-row"><label class="form-label">Material hardness</label><input class="form-input" type="number" id="lifeHardness" value="220" oninput="calcToolLifeEstimator()"></div>
-        <div class="form-row"><label class="form-label">Cutting speed (m/min)</label><input class="form-input" type="number" id="lifeVc" value="220" oninput="calcToolLifeEstimator()"></div>
-        <div class="form-row"><label class="form-label">Feed rate (mm/rev or mm/tooth)</label><input class="form-input" type="number" id="lifeFeed" value="0.18" step="0.01" oninput="calcToolLifeEstimator()"></div>
+        <div class="form-row"><label class="form-label">Material hardness</label><input aria-label="Lifehardness" class="form-input" type="number" id="lifeHardness" value="220" oninput="calcToolLifeEstimator()"></div>
+        <div class="form-row"><label class="form-label">Cutting speed (m/min)</label><input aria-label="Lifevc" class="form-input" type="number" id="lifeVc" value="220" oninput="calcToolLifeEstimator()"></div>
+        <div class="form-row"><label class="form-label">Feed rate (mm/rev or mm/tooth)</label><input aria-label="Lifefeed" class="form-input" type="number" id="lifeFeed" value="0.18" step="0.01" oninput="calcToolLifeEstimator()"></div>
         <div class="calc-rec"><div class="calc-rec-label">Estimated tool life</div><div class="calc-rec-text"><strong id="lifeOut">—</strong></div></div>
       </div>
       <div class="calc-card">
         <div class="calc-card-title">Power consumption</div>
-        <div class="form-row"><label class="form-label">MRR (cm³/min)</label><input class="form-input" type="number" id="powerMrr" value="120" step="1" oninput="calcPowerConsumption()"></div>
-        <div class="form-row"><label class="form-label">Specific cutting force kc1 (N/mm²)</label><input class="form-input" type="number" id="powerKc" value="1800" step="50" oninput="calcPowerConsumption()"></div>
+        <div class="form-row"><label class="form-label">MRR (cm³/min)</label><input aria-label="Powermrr" class="form-input" type="number" id="powerMrr" value="120" step="1" oninput="calcPowerConsumption()"></div>
+        <div class="form-row"><label class="form-label">Specific cutting force kc1 (N/mm²)</label><input aria-label="Powerkc" class="form-input" type="number" id="powerKc" value="1800" step="50" oninput="calcPowerConsumption()"></div>
         <div class="calc-rec"><div class="calc-rec-label">Required spindle power</div><div class="calc-rec-text"><strong id="powerOut">—</strong></div></div>
       </div>
       <div class="calc-card calc-out">
@@ -7566,7 +7566,7 @@ input::placeholder, textarea::placeholder {
         <button class="aqs-history-chip" type="button" onclick="document.getElementById('chatInputField').value=this.textContent">How to read CNMG120408?</button>
       </div>
       <div class="chat-footer">
-        <input class="chat-input-field" id="chatInputField" placeholder="Ask about tools, materials, cutting data…" onkeydown="if(event.key==='Enter')sendChatMsg()">
+        <input aria-label="Ask about tools, materials, cutting data…" class="chat-input-field" id="chatInputField" placeholder="Ask about tools, materials, cutting data…" onkeydown="if(event.key==='Enter')sendChatMsg()">
         <button class="chat-send-btn" onclick="sendChatMsg()">Send</button>
       </div>
     </div>
@@ -7623,7 +7623,7 @@ input::placeholder, textarea::placeholder {
       <div class="res-card"><div class="res-card-body"><div class="res-card-cat">2026-04-29</div><div class="res-card-title">Engineering catalog UI</div><div class="res-card-desc">Industrial sidebar layout, dense cards, product visuals and decision-oriented result cards.</div></div></div>
     </div>
     <div class="newsletter-box">
-      <div class="form-row"><label class="form-label">Early access list</label><input class="form-input" id="newsletterEmail" type="email" placeholder="engineering@company.com"></div>
+      <div class="form-row"><label class="form-label">Early access list</label><input aria-label="engineering@company.com" class="form-input" id="newsletterEmail" type="email" placeholder="engineering@company.com"></div>
       <button class="advisor-action-btn primary" type="button" onclick="subscribeNewsletter()">Email support</button>
     </div>
     <div class="res-cat-title"><span>Platform reference</span></div>
@@ -7928,7 +7928,7 @@ input::placeholder, textarea::placeholder {
           <button class="advisor-action-btn" type="button" onclick="exportVisibleProductsCatalog()">Export catalog</button>
         </div>
         <div class="prod-search-wrap stitch-search-wide">
-          <input class="prod-search" type="text" id="prodSearch" placeholder="Search code, series, brand, grade or coating — e.g. CNMG120408, CoroCut, RT100U, IC908, TiAlN" oninput="handleProductSearchInput()" autocomplete="off">
+          <input aria-label="Search code, series, brand, grade or coating — e.g. CNMG120408, CoroCut, RT100U, IC908, TiAlN" class="prod-search" type="text" id="prodSearch" placeholder="Search code, series, brand, grade or coating — e.g. CNMG120408, CoroCut, RT100U, IC908, TiAlN" oninput="handleProductSearchInput()" autocomplete="off">
           <div class="prod-suggestions" id="prodSuggestions"></div>
         </div>
         <div class="prod-filter-chip-row" id="prodActiveFilterChips" aria-live="polite"></div>
@@ -8076,7 +8076,7 @@ input::placeholder, textarea::placeholder {
   <button class="feedback-btn" type="button" onclick="toggleFeedbackPanel()">Send feedback</button>
   <div class="feedback-panel" id="feedbackPanel">
     <div class="sec-label">Send feedback</div>
-    <input class="form-input" id="feedbackEmail" type="email" placeholder="Your email">
+    <input aria-label="Your email" class="form-input" id="feedbackEmail" type="email" placeholder="Your email">
     <textarea class="form-input" id="feedbackText" placeholder="What should we improve?"></textarea>
     <button class="advisor-action-btn primary" type="button" onclick="sendFeedbackMail()">Send via email</button>
   </div>
@@ -17265,8 +17265,8 @@ function openUtilityModal(kind) {
     privacy: `<h3>Privacy policy</h3><p>ToolAdvisor stores local preferences, favorites, recent searches and consent status in your browser. Contact support@tooladvisor.eu for privacy questions.</p>`,
     terms: `<h3>Terms of use</h3><p>ToolAdvisor provides decision support for cutting tool selection. Always verify final tool, grade and cutting data with manufacturer catalogues and your own process trials.</p>`,
     cookies: `<h3>Cookie policy</h3><p>Essential local storage is used for preferences, history and session state. Analytics may be used only when enabled and accepted.</p>`,
-    contact: `<h3>Contact</h3><div class="form-row"><label class="form-label">Name</label><input class="form-input" id="contactName"></div><div class="form-row"><label class="form-label">Email</label><input class="form-input" id="contactEmail"></div><div class="form-row"><label class="form-label">Subject</label><select class="form-select" id="contactSubject"><option>Support</option><option>Billing</option><option>Product data</option><option>Partnership</option></select></div><div class="form-row"><label class="form-label">Message</label><textarea class="form-input" id="contactMessage"></textarea></div><button class="advisor-action-btn primary" onclick="sendContactMail()">Send</button>`,
-    proAccess: `<h3>Join the Beta Waitlist</h3><p style="font-size:13px;color:var(--ink2);margin-bottom:16px">Get early access to ToolAdvisor Pro. Free during beta.</p><div class="form-row"><label class="form-label">Email</label><input class="form-input" type="email" id="waitlistEmail" placeholder="your@email.com" autocomplete="email"></div><div style="display:flex;gap:8px;margin-top:12px"><button class="advisor-action-btn primary" type="button" onclick="joinWaitlist()">Join Waitlist</button></div><div id="waitlistMsg" style="display:none;margin-top:12px;font-size:13px;color:var(--green);font-weight:600">Thank you! We'll be in touch.</div>`,
+    contact: `<h3>Contact</h3><div class="form-row"><label class="form-label">Name</label><input aria-label="Contactname" class="form-input" id="contactName"></div><div class="form-row"><label class="form-label">Email</label><input aria-label="Contactemail" class="form-input" id="contactEmail"></div><div class="form-row"><label class="form-label">Subject</label><select class="form-select" id="contactSubject"><option>Support</option><option>Billing</option><option>Product data</option><option>Partnership</option></select></div><div class="form-row"><label class="form-label">Message</label><textarea class="form-input" id="contactMessage"></textarea></div><button class="advisor-action-btn primary" onclick="sendContactMail()">Send</button>`,
+    proAccess: `<h3>Join the Beta Waitlist</h3><p style="font-size:13px;color:var(--ink2);margin-bottom:16px">Get early access to ToolAdvisor Pro. Free during beta.</p><div class="form-row"><label class="form-label">Email</label><input aria-label="your@email.com" class="form-input" type="email" id="waitlistEmail" placeholder="your@email.com" autocomplete="email"></div><div style="display:flex;gap:8px;margin-top:12px"><button class="advisor-action-btn primary" type="button" onclick="joinWaitlist()">Join Waitlist</button></div><div id="waitlistMsg" style="display:none;margin-top:12px;font-size:13px;color:var(--green);font-weight:600">Thank you! We'll be in touch.</div>`,
     advanced: `<h3>Advanced tools</h3><p>Local browser utilities for support and power users. These actions affect only this browser session unless an export file is downloaded.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="advisor-action-btn" type="button" onclick="saveCurrentPageAsPDF()">Save as PDF</button><button class="advisor-action-btn" type="button" onclick="refreshAppCache()">Refresh local cache</button><button class="advisor-action-btn" type="button" onclick="exportFavoritesJson()">Export favorites</button><button class="advisor-action-btn" type="button" onclick="document.getElementById('favoritesImportFile').click()">Import favorites</button><button class="advisor-action-btn" type="button" onclick="resetAllLocalData()">Reset local data</button></div>`
   };
   body.innerHTML = `${views[kind] || views.help}<div style="margin-top:12px"><button class="advisor-action-btn" onclick="closeUtilityModal()">Close</button></div>`;

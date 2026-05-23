@@ -585,11 +585,59 @@ main > section:nth-of-type(5)                              { animation-delay: 16
   border-top: 1px solid #E8E4DE;
 }
 
-/* Mobile breakpoint rules */
+/* Mobile touch-target fix — Audit F#9 */
 @media (max-width: 767.98px) {
-  .ta-hamburger { display: inline-flex; }
+  /* Hamburger button (visible only < 768px) */
+  .ta-hamburger { display: inline-flex; height:44px; width:44px; }
   .ta-nav-primary { display: none !important; }
   .ta-nav-search { display: none !important; }
+
+  /* every button, link, nav-row, chip must be >= 44×44 */
+  .ta-drawer-close,
+  .ta-modal-close,
+  .ta-btn,
+  .ta-sso button,
+  .ta-search-item,
+  .ta-compare-drawer button,
+  .ta-hamburger,
+  .ta-drawer-link,
+  .ta-sb-item,
+  .ta-sb-family,
+  .ta-sb-mat,
+  .ta-nav-link,
+  #ta-hamburger-btn,
+  button[role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  .mg-btn,
+  .ic-block,
+  .cmp-flag,
+  .cmp-risk,
+  .ta-iso-badge,
+  .ta-pill {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  a,
+  .ta-drawer-link,
+  .ta-sb-foot,
+  .ta-search-item,
+  .ta-top-nav button,
+  .ta-top-nav a {
+    min-height: 44px;
+  }
+
+  /* widen form fields so they're usable */
+  .ta-field input,
+  .ta-field select,
+  .ta-field textarea,
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    min-height: 44px;
+  }
 }
 
 /* Prevent body scroll when drawer is open */
@@ -600,4 +648,34 @@ body.drawer-locked { overflow: hidden; }
   .ta-insert3d > svg { animation: none; transition: none; }
   .ta-mobile-drawer,
   .ta-mobile-overlay { transition: none; }
+}
+
+
+/* ---- Skip-to-content link ---- */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 0;
+  background: #123356;
+  color: #fff;
+  padding: 10px 18px;
+  z-index: 9999;
+  transition: top .18s ease;
+  text-decoration: none;
+  border-radius: 0 0 10px 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+
+/* ---- Focus-visible outline policy ---- */
+:focus-visible {
+  outline: 2px solid #123356;
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  :focus-visible { outline-offset: 0; }
 }
