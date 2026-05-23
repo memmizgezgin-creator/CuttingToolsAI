@@ -3,6 +3,7 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile – ToolAdvisor</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;700;800&amp;family=DM+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -124,6 +125,7 @@
 <link rel="stylesheet" href="polish.css"/>
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <aside class="h-screen w-sidebar-width fixed left-0 top-0 bg-sidebar-bg dark:bg-tertiary-container border-r border-border-warm flex flex-col py-container-margin z-50">
 <div class="px-gutter mb-10">
 <div class="flex items-center gap-3">
@@ -156,7 +158,7 @@
             </button>
 </div>
 </aside>
-<main class="ml-sidebar-width min-h-screen pb-20">
+<main id="main-content" class="ml-sidebar-width min-h-screen pb-20">
 <header class="h-16 flex justify-between items-center w-full px-gutter bg-surface dark:bg-surface-dim shadow-sm sticky top-0 z-40">
 <div class="flex items-center gap-4">
 <h2 class="font-section-heading text-section-heading text-primary">Settings</h2>
@@ -188,21 +190,21 @@
 <div class="grid grid-cols-2 gap-stack-gap-md">
 <div class="space-y-2">
 <label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Full Name</label>
-<input class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="text" value="Hans Mueller"/>
+<input aria-label="Search or input" class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="text" value="Hans Mueller"/>
 </div>
 <div class="space-y-2">
 <label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Professional Title</label>
-<input class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="text" value="Senior Machinist &amp; Tooling Lead"/>
+<input aria-label="Search or input" class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="text" value="Senior Machinist &amp; Tooling Lead"/>
 </div>
 <div class="space-y-2 col-span-2">
 <label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Work Email Address</label>
-<input class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="email" value="h.mueller@precision-swiss.ch"/>
+<input aria-label="Search or input" class="w-full h-[52px] bg-background border border-border-warm rounded-xl px-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="email" value="h.mueller@precision-swiss.ch"/>
 </div>
 <div class="space-y-2">
 <label class="font-label-caps text-outline text-[11px] uppercase tracking-widest pl-1">Facility Location</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">location_on</span>
-<input class="w-full h-[52px] bg-background border border-border-warm rounded-xl pl-11 pr-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="text" value="Zürich Plant B"/>
+<input aria-label="Search or input" class="w-full h-[52px] bg-background border border-border-warm rounded-xl pl-11 pr-4 text-on-surface focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all outline-none" type="text" value="Zürich Plant B"/>
 </div>
 </div>
 <div class="space-y-2">

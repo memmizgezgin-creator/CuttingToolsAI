@@ -134,6 +134,7 @@
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <!-- Top Navigation Bar -->
 <header class="bg-surface dark:bg-surface-dim shadow-sm docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-gutter h-16">
 <div class="flex items-center gap-stack-gap-md">
@@ -147,7 +148,7 @@
 <div class="flex items-center gap-gutter">
 <div class="relative hidden sm:block">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="h-10 pl-10 pr-4 rounded-xl border-border-warm bg-surface-container-low focus:ring-primary focus:border-primary w-64 text-sm" placeholder="Search technical specs..." type="text"/>
+<input aria-label="Search technical specs..." class="h-10 pl-10 pr-4 rounded-xl border-border-warm bg-surface-container-low focus:ring-primary focus:border-primary w-64 text-sm" placeholder="Search technical specs..." type="text"/>
 </div>
 <div class="flex items-center gap-4">
 <button class="material-symbols-outlined text-primary scale-95 active:scale-90 transition-transform">notifications</button>
@@ -199,7 +200,7 @@
 </div>
 </aside>
 <!-- Main Content Area -->
-<main class="flex-1 md:ml-sidebar-width p-container-margin min-h-screen">
+<main id="main-content" class="flex-1 md:ml-sidebar-width p-container-margin min-h-screen">
 <!-- Hero Section -->
 <section class="mb-stack-gap-lg">
 <div class="flex flex-col lg:flex-row justify-between items-end gap-stack-gap-md mb-8">

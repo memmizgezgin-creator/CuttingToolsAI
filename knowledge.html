@@ -122,6 +122,7 @@
 <link rel="stylesheet" href="polish.css"/>
 </head>
 <body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <!-- Sidebar Navigation -->
 <aside class="h-screen w-sidebar-width fixed left-0 top-0 flex flex-col py-container-margin bg-sidebar-bg border-r border-border-warm z-50">
 <div class="px-6 mb-10">
@@ -165,7 +166,7 @@
 </div>
 </aside>
 <!-- Main Canvas -->
-<main class="ml-sidebar-width min-h-screen">
+<main id="main-content" class="ml-sidebar-width min-h-screen">
 <!-- Top Navigation -->
 <header class="flex justify-between items-center w-full px-gutter h-16 bg-surface shadow-sm sticky top-0 z-40">
 <div class="flex items-center">
@@ -173,7 +174,7 @@
 <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-on-surface-variant">
 <span class="material-symbols-outlined text-lg">search</span>
 </span>
-<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 w-64 focus:ring-2 focus:ring-primary/20 font-body-md text-sm" placeholder="Search guides..." type="text"/>
+<input aria-label="Search guides..." class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 w-64 focus:ring-2 focus:ring-primary/20 font-body-md text-sm" placeholder="Search guides..." type="text"/>
 </div>
 </div>
 <div class="flex items-center gap-4">
@@ -206,7 +207,7 @@
   <div class="mb-10 flex flex-col md:flex-row gap-3">
     <div class="flex-1 bg-white rounded-2xl border border-border-warm card-shadow flex items-center px-4 h-14">
       <span class="material-symbols-outlined text-on-surface-variant">search</span>
-      <input class="flex-1 ml-3 bg-transparent outline-none font-medium" placeholder="Search guides (e.g. CNMG, stainless, chipbreaker)" type="text"/>
+      <input aria-label="Search guides (e.g. CNMG, stainless, chipbreaker)" class="flex-1 ml-3 bg-transparent outline-none font-medium" placeholder="Search guides (e.g. CNMG, stainless, chipbreaker)" type="text"/>
     </div>
     <div class="flex flex-wrap gap-2">
       
@@ -369,7 +370,7 @@
 <h2 class="font-section-heading text-3xl mb-4">Get practical tool-selection notes.</h2>
 <p class="text-on-primary/80 mb-8 font-body-md">Insert code guides, ISO material decisions and cross-reference updates. Short, technical, no fluff.</p>
 <div class="flex gap-4 max-w-md mx-auto">
-<input class="flex-1 bg-white/10 border-white/20 rounded-xl px-6 py-4 focus:ring-2 focus:ring-white/30 text-white placeholder:text-white/40" placeholder="engineer@workshop.com" type="email"/>
+<input aria-label="engineer@workshop.com" class="flex-1 bg-white/10 border-white/20 rounded-xl px-6 py-4 focus:ring-2 focus:ring-white/30 text-white placeholder:text-white/40" placeholder="engineer@workshop.com" type="email"/>
 <button class="bg-iso-m-amber text-white px-8 py-4 rounded-xl font-bold hover:bg-amber-500 transition-colors shadow-lg">Subscribe</button>
 </div>
 <p class="mt-6 text-[11px] font-label-caps text-on-primary/40 uppercase tracking-widest">No spam. One short email when there is something worth reading.</p>

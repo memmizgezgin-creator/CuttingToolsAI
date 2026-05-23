@@ -141,6 +141,7 @@
     </script>
 </head>
 <body class="antialiased font-body-md text-on-surface">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <!-- TopNavBar -->
 <header class="bg-surface dark:bg-surface-dim shadow-sm docked full-width top-0 z-50 fixed">
 <div class="flex justify-between items-center w-full px-gutter h-16">
@@ -155,7 +156,7 @@
 <div class="flex items-center gap-4">
 <div class="relative hidden lg:block">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="h-10 pl-10 pr-4 bg-surface-container-low border-border-warm rounded-full w-64 focus:ring-primary focus:border-primary" placeholder="Search saved tools..." type="text"/>
+<input aria-label="Search saved tools..." class="h-10 pl-10 pr-4 bg-surface-container-low border-border-warm rounded-full w-64 focus:ring-primary focus:border-primary" placeholder="Search saved tools..." type="text"/>
 </div>
 <button class="material-symbols-outlined text-primary scale-95 active:scale-90 transition-transform">notifications</button>
 <button class="material-symbols-outlined text-primary scale-95 active:scale-90 transition-transform">settings</button>
@@ -217,7 +218,7 @@
 </div>
 </aside>
 <!-- Main Content Canvas -->
-<main class="md:ml-sidebar-width pt-20 min-h-screen">
+<main id="main-content" class="md:ml-sidebar-width pt-20 min-h-screen">
 <div class="p-container-margin max-w-7xl mx-auto">
 <!-- Header & Filter Row -->
 <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-stack-gap-lg mb-10">
@@ -254,7 +255,7 @@
 </div>
 <div class="flex-1 relative flex items-center justify-center">
 <div class="absolute inset-0 bg-radial-gradient from-surface-container-low to-transparent rounded-full blur-3xl opacity-50"></div>
-<img class="w-48 h-48 object-contain tool-3d-shadow group-hover:rotate-y-12 transition-transform duration-500" data-alt="A high-precision 3D engineering rendering of a tungsten carbide turning insert used for stainless steel machining. The tool is showcased in a studio environment with dramatic top-down lighting and soft shadows, emphasizing its sharp geometry and polished metallic surface. The background is a clean, neutral workbench aesthetic in light tones, aligning with the premium Swiss precision style of the UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS_i32xWL0XEzcFtRHa_r_u8UT0Tw05Sk03iiR7A-cXgfDMejvHi9e5F3_GkSpXkotDXlqW6GsdrGzyf1vTIxNng-GOvey68Aq8ePIvpISzQe-ADISHmM5J38ThorD8nBV3GxlzXnE3mIChdA1MZXxaB0yq4B_XTlesSOBNCHZFeBfqXyVoX1p72P7O8TBxBo9K8Hz1xaD1KBxb5v8EFCCnhRJTO6vbJugUJ1OOZXdG9jufwrUy8FBTUmnCmEdyAcUHkQKK7Sxpk0"/>
+<img alt="VCMT 160408-UM turning insert" class="w-48 h-48 object-contain tool-3d-shadow group-hover:rotate-y-12 transition-transform duration-500" data-alt="A high-precision 3D engineering rendering of a tungsten carbide turning insert used for stainless steel machining. The tool is showcased in a studio environment with dramatic top-down lighting and soft shadows, emphasizing its sharp geometry and polished metallic surface. The background is a clean, neutral workbench aesthetic in light tones, aligning with the premium Swiss precision style of the UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS_i32xWL0XEzcFtRHa_r_u8UT0Tw05Sk03iiR7A-cXgfDMejvHi9e5F3_GkSpXkotDXlqW6GsdrGzyf1vTIxNng-GOvey68Aq8ePIvpISzQe-ADISHmM5J38ThorD8nBV3GxlzXnE3mIChdA1MZXxaB0yq4B_XTlesSOBNCHZFeBfqXyVoX1p72P7O8TBxBo9K8Hz1xaD1KBxb5v8EFCCnhRJTO6vbJugUJ1OOZXdG9jufwrUy8FBTUmnCmEdyAcUHkQKK7Sxpk0"/>
 </div>
 <div class="mt-6 pt-6 border-t border-border-warm flex justify-between items-end">
 <div class="font-technical-data text-technical-data text-on-surface-variant">
@@ -283,7 +284,7 @@
 <button class="material-symbols-outlined text-iso-p-blue" style="font-variation-settings: 'FILL' 1;">bookmark</button>
 </div>
 <div class="flex-1 relative flex items-center justify-center">
-<img class="w-48 h-48 object-contain tool-3d-shadow group-hover:rotate-y-12 transition-transform duration-500" data-alt="A macro photography shot of a specialized industrial cutting tool with multiple sharp edges, designed for high-performance steel turning. The lighting is crisp and cool-toned, reflecting off the precision-ground surfaces. The tool appears to float against a soft-focus industrial backdrop, maintaining a clean and professional look consistent with high-end SaaS engineering platforms." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeSHrbz-X3tDd3bsGEn0eX0LplcPx8wzXa7gFCSQn1aG7yznx7F-FjGbMY-TBSH0QNTFVKSAQH6LfpPcST-9JRQP43hVed91-gNFMUZsQz5eMSHeXyxifp79G4aOIq3Dz7DdpjPvLJL37jjNOUioRd3a7hACpOW-kvhxvFPjKrqNaM9MgV1J19_Lxv_dSnYskWfkTbuioyzhYAsbgqw01gJ0rzU5w5aXZuQEbLiWBdgDtzhjg9WwACnb0D4BLVJe-zB_m2VeFyP3k"/>
+<img alt="CNMG 120408-PM turning insert" class="w-48 h-48 object-contain tool-3d-shadow group-hover:rotate-y-12 transition-transform duration-500" data-alt="A macro photography shot of a specialized industrial cutting tool with multiple sharp edges, designed for high-performance steel turning. The lighting is crisp and cool-toned, reflecting off the precision-ground surfaces. The tool appears to float against a soft-focus industrial backdrop, maintaining a clean and professional look consistent with high-end SaaS engineering platforms." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeSHrbz-X3tDd3bsGEn0eX0LplcPx8wzXa7gFCSQn1aG7yznx7F-FjGbMY-TBSH0QNTFVKSAQH6LfpPcST-9JRQP43hVed91-gNFMUZsQz5eMSHeXyxifp79G4aOIq3Dz7DdpjPvLJL37jjNOUioRd3a7hACpOW-kvhxvFPjKrqNaM9MgV1J19_Lxv_dSnYskWfkTbuioyzhYAsbgqw01gJ0rzU5w5aXZuQEbLiWBdgDtzhjg9WwACnb0D4BLVJe-zB_m2VeFyP3k"/>
 </div>
 <div class="mt-6 pt-6 border-t border-border-warm flex justify-between items-end">
 <div class="font-technical-data text-technical-data text-on-surface-variant">
@@ -312,7 +313,7 @@
 <button class="material-symbols-outlined text-iso-k-red" style="font-variation-settings: 'FILL' 1;">bookmark</button>
 </div>
 <div class="flex-1 relative flex items-center justify-center">
-<img class="w-48 h-48 object-contain tool-3d-shadow group-hover:rotate-y-12 transition-transform duration-500" data-alt="Technical closeup of a high-end CNC drill bit insert with a unique red-tinted coating, optimized for cast iron materials. The scene is bright and airy with soft global illumination that highlights the micro-texture of the tool's surface. The composition is clean and minimalist, focusing on the mechanical beauty of Swiss engineering in a modern digital catalog context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL9dvGxISdBQDp-0dKdHy9yUJUqlEn0JlpYKvyv63F7r4pH8iedIXamtwvqJEpwfSnlSl6oFRAKL7AOPnMw72ZYYYhPWxpIzzWgFgMli1-h1zhP2wrTaLcMw11rSC7c58pLoEfPMXJ_jf7rAYmiE1-EWgxGF-PL2XV4JBrAr3SWhbJHGUGehSyNKdvip5bUecshcBLSrFkiOjc-XVU4YiMzKiIl3uxk1zoVXLqQRgbvy9V1tOZOgWA1vdBXe2IDzNErGMsYvYoPiM"/>
+<img alt="WCMX 06T308-53 drill insert" class="w-48 h-48 object-contain tool-3d-shadow group-hover:rotate-y-12 transition-transform duration-500" data-alt="Technical closeup of a high-end CNC drill bit insert with a unique red-tinted coating, optimized for cast iron materials. The scene is bright and airy with soft global illumination that highlights the micro-texture of the tool's surface. The composition is clean and minimalist, focusing on the mechanical beauty of Swiss engineering in a modern digital catalog context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL9dvGxISdBQDp-0dKdHy9yUJUqlEn0JlpYKvyv63F7r4pH8iedIXamtwvqJEpwfSnlSl6oFRAKL7AOPnMw72ZYYYhPWxpIzzWgFgMli1-h1zhP2wrTaLcMw11rSC7c58pLoEfPMXJ_jf7rAYmiE1-EWgxGF-PL2XV4JBrAr3SWhbJHGUGehSyNKdvip5bUecshcBLSrFkiOjc-XVU4YiMzKiIl3uxk1zoVXLqQRgbvy9V1tOZOgWA1vdBXe2IDzNErGMsYvYoPiM"/>
 </div>
 <div class="mt-6 pt-6 border-t border-border-warm flex justify-between items-end">
 <div class="font-technical-data text-technical-data text-on-surface-variant">
@@ -341,7 +342,7 @@
 <button class="material-symbols-outlined text-iso-n-green" style="font-variation-settings: 'FILL' 1;">bookmark</button>
 </div>
 <div class="flex-1 relative flex items-center justify-center">
-<img class="w-48 h-48 object-contain tool-3d-shadow group-hover:rotate-y-12 transition-transform duration-500" data-alt="A polished, mirror-finish aluminum machining tool captured in a high-tech lab setting. The lighting is bright and multi-directional, causing clean highlights to dance across the tool's razor-sharp edges. The overall aesthetic is one of extreme precision and high-value manufacturing, presented in a clean, modern digital interface for professional engineers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaiAQRNVybBQo9U_WgUPqANWtHJTVWgMhzSTqcRkrHWb_siSt_-Uosi4SO_x0k_IdioFPugGhdxM2WShK-I8Waq-SnR2K3sG7iAl2QHD9A5_-jrYIpDVRMj4SgHfCz1nylRH9QNLkU79WCt2_S-cB3kPrAycYh1Uo_yb7uneXwcFotU2epEsnjE6kXg-oPYaeMMpskAKU9q1u625_VViFx0WQW_6pQFv7EKTb3MVUbQR5X00-vdxPG_jWaJAvhu5F63TcG6UZ0z9A"/>
+<img alt="SCGT 120408-AL aluminum insert" class="w-48 h-48 object-contain tool-3d-shadow group-hover:rotate-y-12 transition-transform duration-500" data-alt="A polished, mirror-finish aluminum machining tool captured in a high-tech lab setting. The lighting is bright and multi-directional, causing clean highlights to dance across the tool's razor-sharp edges. The overall aesthetic is one of extreme precision and high-value manufacturing, presented in a clean, modern digital interface for professional engineers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaiAQRNVybBQo9U_WgUPqANWtHJTVWgMhzSTqcRkrHWb_siSt_-Uosi4SO_x0k_IdioFPugGhdxM2WShK-I8Waq-SnR2K3sG7iAl2QHD9A5_-jrYIpDVRMj4SgHfCz1nylRH9QNLkU79WCt2_S-cB3kPrAycYh1Uo_yb7uneXwcFotU2epEsnjE6kXg-oPYaeMMpskAKU9q1u625_VViFx0WQW_6pQFv7EKTb3MVUbQR5X00-vdxPG_jWaJAvhu5F63TcG6UZ0z9A"/>
 </div>
 <div class="mt-6 pt-6 border-t border-border-warm flex justify-between items-end">
 <div class="font-technical-data text-technical-data text-on-surface-variant">

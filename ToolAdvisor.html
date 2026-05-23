@@ -126,6 +126,7 @@
 <link rel="stylesheet" href="polish.css"/>
 </head>
 <body class="font-body-md text-on-surface selection:bg-primary/20">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <!-- Sidebar Navigation -->
 <aside class="h-screen w-sidebar-width fixed left-0 top-0 bg-sidebar-bg dark:bg-tertiary-container border-r border-border-warm flex flex-col py-container-margin z-50">
 <div class="px-gutter mb-10">
@@ -175,13 +176,13 @@
 </div>
 </aside>
 <!-- Main Content Area -->
-<main class="ml-sidebar-width min-h-screen">
+<main id="main-content" class="ml-sidebar-width min-h-screen">
 <!-- Top Navigation -->
 <header class="sticky top-0 w-full px-gutter h-16 bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center z-40">
 <div class="flex items-center flex-1 max-w-xl">
 <div class="relative w-full group">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-border-warm rounded-full focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm outline-none" placeholder="Search precision tools, materials, or geometries..." type="text"/>
+<input aria-label="Search precision tools, materials, or geometries..." class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-border-warm rounded-full focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm outline-none" placeholder="Search precision tools, materials, or geometries..." type="text"/>
 </div>
 </div>
 <div class="flex items-center gap-6">
@@ -227,7 +228,7 @@
   </div>
   <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-30 pointer-events-none">
     <div class="perspective-1000 w-full h-full flex items-center justify-center">
-      <img class="w-[600px] -rotate-12 scale-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuEu-jzeY80mICEQAEpDMHGkIp3fLu3dLEuuyV2rWnzoe1v8spWjyIJJxwrC2odcvxkibnYSITKkLD0vQRp0_VX5XZTO3814ASPmkRUa24xp3zzhzT9Ngpaj4MIKLVP9U9PLFqb1ZOU58MupTSB42RYnqGJfeg2jDctXeGcOvxse3bVzwGa-TuYMoaSAzG7pHyADt_tovoWcUulCpL_jzwWQ_tCocOF5FKUTyaPsYbMYWr4LOuKGgWKF-s9cXjEgQYYpwmkNRXy8s"/>
+      <img alt="" class="w-[600px] -rotate-12 scale-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuEu-jzeY80mICEQAEpDMHGkIp3fLu3dLEuuyV2rWnzoe1v8spWjyIJJxwrC2odcvxkibnYSITKkLD0vQRp0_VX5XZTO3814ASPmkRUa24xp3zzhzT9Ngpaj4MIKLVP9U9PLFqb1ZOU58MupTSB42RYnqGJfeg2jDctXeGcOvxse3bVzwGa-TuYMoaSAzG7pHyADt_tovoWcUulCpL_jzwWQ_tCocOF5FKUTyaPsYbMYWr4LOuKGgWKF-s9cXjEgQYYpwmkNRXy8s"/>
     </div>
   </div>
 

@@ -3,6 +3,7 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tools Directory – ToolAdvisor</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;700;800&amp;family=DM+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -136,6 +137,7 @@
 <link rel="stylesheet" href="polish.css"/>
 </head>
 <body class="bg-background text-on-surface font-body-md antialiased min-h-screen">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <aside class="h-screen w-sidebar-width fixed left-0 top-0 bg-sidebar-bg border-r border-border-warm z-50 flex flex-col py-container-margin">
 <div class="px-6 mb-10">
 <div class="flex items-center gap-3 mb-2">
@@ -200,12 +202,12 @@
 </div>
 </div>
 </aside>
-<main class="ml-sidebar-width min-h-screen">
+<main id="main-content" class="ml-sidebar-width min-h-screen">
 <header class="h-16 flex justify-between items-center px-gutter bg-surface shadow-sm sticky top-0 z-40">
 <div class="flex items-center flex-1 max-w-xl">
 <div class="relative w-full">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="w-full bg-surface-container-low border-none rounded-full py-2.5 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search tools by grade, material, or application..." type="text"/>
+<input aria-label="Search tools by grade, material, or application..." class="w-full bg-surface-container-low border-none rounded-full py-2.5 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search tools by grade, material, or application..." type="text"/>
 </div>
 </div>
 <div class="flex items-center gap-6 ml-gutter">

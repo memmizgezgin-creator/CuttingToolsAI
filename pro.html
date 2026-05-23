@@ -124,6 +124,7 @@
 <link rel="stylesheet" href="polish.css"/>
 </head>
 <body class="antialiased font-body-md text-on-surface">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <!-- TopNavBar -->
 <header class="bg-surface dark:bg-surface-dim shadow-sm docked full-width top-0 z-50 fixed">
 <div class="flex justify-between items-center w-full px-gutter h-16">
@@ -138,7 +139,7 @@
 <div class="flex items-center gap-4">
 <div class="relative hidden lg:block">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="h-10 pl-10 pr-4 bg-surface-container-low border-border-warm rounded-full w-64 focus:ring-primary focus:border-primary" placeholder="Search saved tools..." type="text"/>
+<input aria-label="Search saved tools..." class="h-10 pl-10 pr-4 bg-surface-container-low border-border-warm rounded-full w-64 focus:ring-primary focus:border-primary" placeholder="Search saved tools..." type="text"/>
 </div>
 <button class="material-symbols-outlined text-primary scale-95 active:scale-90 transition-transform">notifications</button>
 <button class="material-symbols-outlined text-primary scale-95 active:scale-90 transition-transform">settings</button>
@@ -200,7 +201,7 @@
 </div>
 </aside>
 <!-- Main -->
-<main class="md:ml-sidebar-width pt-20 min-h-screen">
+<main id="main-content" class="md:ml-sidebar-width pt-20 min-h-screen">
 <div class="p-container-margin max-w-7xl mx-auto">
 
   <!-- Hero -->
