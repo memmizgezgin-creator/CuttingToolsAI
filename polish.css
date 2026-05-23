@@ -592,6 +592,11 @@ main > section:nth-of-type(5)                              { animation-delay: 16
   .ta-nav-search { display: none !important; }
 }
 
+/* Mobile touch targets: ensure minimum 44x44px for buttons, links, chips and nav */
+@media (max-width: 767px) {
+  button, a, .chip, .nav-link { min-width: 44px; min-height: 44px; }
+}
+
 /* Prevent body scroll when drawer is open */
 body.drawer-locked { overflow: hidden; }
 
