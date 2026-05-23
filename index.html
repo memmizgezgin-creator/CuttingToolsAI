@@ -12,14 +12,51 @@
 <meta name="twitter:description" content="Brand-neutral cutting-tool advisor for machinists and small shops. Compare inserts, grades and alternatives across Sandvik, ISCAR, Walter, Kennametal and more — without the catalog rabbit hole."/>
 <meta property="og:image" content="https://tooladvisor.eu/og.png"/>
 <meta name="twitter:image" content="https://tooladvisor.eu/og.png"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+/* Critical path — header, hero, first cards (inlined for speed) */
+body{background-color:#FAF9F7}
+.card-shadow{box-shadow:0 4px 6px -1px rgba(0,0,0,.05),0 2px 4px -1px rgba(0,0,0,.03)}
+.ambient-shadow{box-shadow:0 4px 6px -1px rgba(0,0,0,.05),0 2px 4px -1px rgba(0,0,0,.03)}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle}
+.material-symbols-outlined[data-icon-fill]{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24}
+.material-symbols-outlined[data-icon-weight="300"]{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}
+.material-symbols-outlined[data-icon-weight="500"]{font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24}
+.material-symbols-outlined[data-icon-fill][data-icon-weight="500"]{font-variation-settings:'FILL' 1,'wght' 500,'GRAD' 0,'opsz' 24}
+body>header:not([data-ta-chrome]),body>aside:not([data-ta-chrome]),main>header{display:none!important}
+@keyframes ta-fade-up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+main>section,main>div,main>article{animation:ta-fade-up 200ms cubic-bezier(.4,0,.2,1) both}
+main>section:nth-of-type(1),main>div:nth-of-type(1){animation-delay:0ms}
+main>section:nth-of-type(2),main>div:nth-of-type(2){animation-delay:40ms}
+main>section:nth-of-type(3),main>div:nth-of-type(3){animation-delay:80ms}
+main>section:nth-of-type(4){animation-delay:120ms}
+main>section:nth-of-type(5){animation-delay:160ms}
+@keyframes ta-card-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.grid>*{animation:ta-card-in 200ms cubic-bezier(.4,0,.2,1) both}
+.grid>*:nth-child(1){animation-delay:0ms}
+.grid>*:nth-child(2){animation-delay:40ms}
+.grid>*:nth-child(3){animation-delay:80ms}
+.grid>*:nth-child(4){animation-delay:120ms}
+.grid>*:nth-child(5){animation-delay:140ms}
+.grid>*:nth-child(6){animation-delay:160ms}
+.grid>*:nth-child(7){animation-delay:180ms}
+.grid>*:nth-child(8){animation-delay:200ms}
+.ta-chip{animation:ta-fade-up 320ms cubic-bezier(.4,0,.2,1) both;transition:transform .3s ease,box-shadow .3s ease}
+@media (prefers-reduced-motion:reduce){main>section,main>div,main>article,.grid>*,.ta-chip{animation:none!important}}
+.skip-link{position:absolute;top:-48px;left:0;background:#123356;color:#fff;padding:10px 18px;z-index:9999;transition:top .18s ease;text-decoration:none;border-radius:0 0 10px 0;font-weight:600;font-size:14px}
+.skip-link:focus{top:0}
+:focus-visible{outline:2px solid #123356;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){:focus-visible{outline-offset:0}}
+</style>
 <script src="tw-config.js"></script>
 <link rel="stylesheet" href="polish.css"/>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="supabase/config.js"></script>
-<script src="supabase/client.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" defer></script>
+<script src="supabase/config.js" defer></script>
+<script src="supabase/client.js" defer></script>
 </head>
 <body class="font-body-md text-on-surface selection:bg-primary/20">
 <a class="skip-link" href="#main-content">Skip to main content</a>
