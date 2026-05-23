@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolAdvisor Stitch Engine Test</title>
+  <style>
+    :root{
+      --background:#FAF9F7;
+      --sidebar-bg:#F5F2EE;
+      --surface:#FAF9F7;
+      --surface-low:#F4F3F6;
+      --surface-card:#FFFFFF;
+      --border-warm:#E8E4DE;
+      --ink:#1A1A2E;
+      --text:#1A1C1E;
+      --muted:#73777F;
+      --muted-strong:#43474E;
+      --primary:#123356;
+      --primary-container:#2C4A6E;
+      --gold:#C8A96E;
+      --iso-p:#3B82F6;
+      --iso-m:#F59E0B;
+      --iso-k:#EF4444;
+      --iso-n:#10B981;
+      --iso-s:#F97316;
+      --iso-h:#64748B;
+      --shadow:0 4px 6px -1px rgba(0,0,0,.05),0 2px 4px -1px rgba(0,0,0,.03);
+      --shadow-hover:0 20px 25px -5px rgba(0,0,0,.10),0 10px 10px -5px rgba(0,0,0,.04);
+      --font-heading:"Nunito","Avenir Next",system-ui,sans-serif;
+      --font-body:"DM Sans",system-ui,sans-serif;
+      --font-mono:"DM Mono","SFMono-Regular",Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--background);color:var(--text);font-family:var(--font-body);font-size:15px}
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    .app{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}
+    .sidebar{position:fixed;inset:0 auto 0 0;width:260px;background:var(--sidebar-bg);border-right:1px solid var(--border-warm);z-index:20;display:flex;flex-direction:column;padding:32px 24px}
+    .brand{display:flex;gap:12px;align-items:center;margin-bottom:36px}
+    .brand-mark{width:40px;height:40px;border-radius:10px;background:var(--primary);display:grid;place-items:center;color:white;box-shadow:var(--shadow)}
+    .brand-title{font-family:var(--font-heading);font-size:20px;line-height:1.1;font-weight:800;color:var(--primary)}
+    .brand-sub{margin-top:3px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+    .nav-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800;margin:0 0 12px}
+    .material-nav{display:flex;flex-direction:column;gap:6px}
+    .mat-btn{min-height:48px;display:flex;align-items:center;gap:12px;width:100%;border:0;border-left:4px solid transparent;border-radius:10px;background:transparent;color:var(--muted-strong);padding:10px 12px;text-align:left;transition:.18s ease}
+    .mat-btn:hover{background:#FFFFFF}
+    .mat-btn.active{background:#FFFFFF;color:var(--primary);border-left-color:var(--gold);box-shadow:var(--shadow);transform:translateX(1px)}
+    .mat-dot{width:20px;height:20px;border-radius:7px;background:var(--iso);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 4px rgba(0,0,0,.12)}
+    .mat-copy{display:flex;flex-direction:column;gap:2px}
+    .mat-copy strong{font-family:var(--font-heading);font-size:15px;line-height:1;font-weight:700}
+    .mat-copy span{font-size:12px;color:var(--muted)}
+    .side-card{margin-top:auto;background:var(--primary-container);color:#d3e4ff;border-radius:16px;padding:18px;overflow:hidden}
+    .side-card strong{display:block;color:#fff;font-family:var(--font-heading);font-size:15px;margin-bottom:5px}
+    .side-card p{margin:0 0 14px;font-size:12px;line-height:1.5;color:#d3e4ff}
+    .side-card button{width:100%;border:0;border-radius:10px;background:#fff;color:var(--primary);font-weight:800;padding:10px}
+    .side-links{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+    .side-links button{border:0;background:transparent;color:var(--muted-strong);text-align:left;font-weight:700;font-size:13px;padding:4px 0}
+    .main{grid-column:2;min-height:100vh}
+    .topbar{height:64px;position:sticky;top:0;z-index:15;background:rgba(250,249,247,.94);display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 24px;box-shadow:0 1px 3px rgba(0,0,0,.04);backdrop-filter:blur(14px)}
+    .top-search{position:relative;flex:1;max-width:560px}
+    .top-search span{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted)}
+    .top-search input{width:100%;height:42px;border:1px solid transparent;border-radius:999px;background:var(--surface-low);padding:0 16px 0 44px;color:var(--ink);outline:none;transition:.18s ease}
+    .top-search input:focus{border-color:rgba(18,51,86,.25);box-shadow:0 0 0 4px rgba(18,51,86,.08);background:#fff}
+    .top-actions{display:flex;align-items:center;gap:12px}
+    .icon-btn{width:40px;height:40px;border:0;border-radius:999px;background:transparent;color:var(--primary);display:grid;place-items:center}
+    .icon-btn:hover{background:var(--surface-low)}
+    .access-btn{height:40px;border:0;border-radius:10px;background:var(--primary);color:#fff;font-weight:800;padding:0 16px}
+    .content{padding:32px}
+    .page-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px}
+    .crumb{display:flex;align-items:center;gap:8px;margin-bottom:8px;color:var(--muted);font-size:12px}
+    .crumb strong{color:var(--primary)}
+    h1{font-family:var(--font-heading);font-size:36px;line-height:1.2;color:var(--ink);margin:0;letter-spacing:0}
+    .lede{margin:6px 0 0;color:var(--muted-strong);font-size:16px;line-height:1.6}
+    .head-actions{display:flex;align-items:center;gap:12px}
+    .soft-btn{height:40px;border:1px solid var(--border-warm);border-radius:10px;background:var(--surface-low);color:var(--primary);font-weight:800;padding:0 14px}
+    .layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;align-items:start}
+    .filters{position:sticky;top:88px;display:flex;flex-direction:column;gap:16px}
+    .filter-card,.results-head,.filter-strip,.trust-strip,.compare-strip,.last-strip{background:#fff;border:1px solid var(--border-warm);border-radius:18px;box-shadow:var(--shadow)}
+    .filter-card{padding:20px}
+    .filter-card h2{font-family:var(--font-heading);font-size:18px;color:var(--primary);margin:0 0 16px}
+    .field{display:flex;flex-direction:column;gap:7px;margin-top:12px}
+    .field label{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
+    .field select{height:40px;border:1px solid var(--border-warm);border-radius:10px;background:var(--surface-low);padding:0 10px;color:var(--ink);outline:none}
+    .disabled-note{border:1px solid var(--border-warm);border-radius:10px;background:var(--surface-low);padding:10px;color:var(--muted);font-size:12px;line-height:1.45}
+    .disabled-note strong{display:block;color:var(--primary);margin-bottom:2px}
+    .results{min-width:0}
+    .results-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px;margin-bottom:16px}
+    .label{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}
+    .count{font-family:var(--font-heading);font-size:24px;color:var(--primary);font-weight:800;margin-top:4px}
+    .catalog-search{position:relative;margin-bottom:14px}
+    .catalog-search span{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--muted)}
+    .catalog-search input{width:100%;height:52px;border:1px solid var(--border-warm);border-radius:999px;background:#fff;box-shadow:var(--shadow);padding:0 18px 0 48px;outline:none;color:var(--ink)}
+    .catalog-search input:focus{border-color:rgba(18,51,86,.3);box-shadow:0 0 0 4px rgba(18,51,86,.08),var(--shadow)}
+    .filter-strip{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;margin-bottom:14px}
+    .seg{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .seg button{min-height:34px;border:1px solid var(--border-warm);border-radius:10px;background:var(--surface-low);color:var(--primary);font-weight:800;padding:0 12px}
+    .seg button.active{background:var(--primary);border-color:var(--primary);color:#fff}
+    .sort{display:flex;align-items:center;gap:8px}
+    .sort select{height:34px;border:1px solid var(--border-warm);border-radius:10px;background:var(--surface-low);color:var(--ink)}
+    .chips{display:none;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+    .chips.show{display:flex}
+    .chip{border:1px solid var(--border-warm);border-radius:999px;background:#fff;color:var(--primary);font-size:12px;font-weight:800;padding:6px 10px}
+    .trust-strip,.compare-strip,.last-strip{padding:14px 16px;margin-bottom:14px;color:var(--muted-strong);font-size:14px;line-height:1.5}
+    .trust-strip strong{color:var(--primary)}
+    .compare-strip{border-style:dashed;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .compare-strip button{height:34px;border:0;border-radius:10px;background:var(--primary);color:#fff;font-weight:800;padding:0 12px}
+    .compare-strip button:disabled{opacity:.45;cursor:not-allowed}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+    .product-card{position:relative;min-height:520px;display:flex;flex-direction:column;background:#fff;border:1px solid var(--border-warm);border-left:4px solid var(--iso-color);border-radius:18px;box-shadow:var(--shadow);padding:20px;overflow:hidden;transition:transform .3s cubic-bezier(.4,0,.2,1),box-shadow .3s cubic-bezier(.4,0,.2,1)}
+    .product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+    .iso-badge{position:absolute;right:18px;top:18px;z-index:2;border-radius:999px;background:var(--iso-color);color:#fff;padding:5px 10px;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 2px 4px rgba(0,0,0,.12)}
+    .favorite{position:absolute;left:16px;top:16px;z-index:2;width:30px;height:30px;border:1px solid var(--border-warm);border-radius:999px;background:#fff;color:var(--muted)}
+    .visual{height:178px;margin:18px 0 18px;display:grid;place-items:center;perspective:1000px}
+    .tool-img{width:150px;height:150px;object-fit:contain;background:#fff;filter:drop-shadow(0 18px 18px rgba(26,26,46,.16));transform:rotateY(-15deg) rotateX(10deg);transition:transform .5s cubic-bezier(.4,0,.2,1)}
+    .product-card:hover .tool-img{transform:rotateY(15deg) rotateX(8deg) translateY(-6px) scale(1.04)}
+    .tool-svg{width:132px;height:132px;filter:drop-shadow(0 18px 18px rgba(26,26,46,.16));transform:rotateY(-15deg) rotateX(10deg);transition:transform .5s cubic-bezier(.4,0,.2,1)}
+    .product-card:hover .tool-svg{transform:rotateY(15deg) rotateX(8deg) translateY(-6px) scale(1.04)}
+    .brand-name{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:#8A8A9A;margin-bottom:6px}
+    .grade{font-family:var(--font-heading);font-size:24px;line-height:1.15;font-weight:800;color:var(--ink);margin-bottom:5px}
+    .series{min-height:34px;color:var(--muted-strong);font-size:12px;line-height:1.35;margin-bottom:10px}
+    .pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+    .pill{max-width:100%;border:1px solid var(--border-warm);border-radius:999px;background:var(--surface-low);color:var(--muted-strong);font-size:12px;padding:7px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .specs{margin-top:auto;border-top:1px solid var(--border-warm);padding-top:12px}
+    .spec-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:36px;border-bottom:1px solid var(--border-warm)}
+    .spec-row:last-child{border-bottom:0}
+    .spec-row span:first-child{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:var(--muted)}
+    .spec-row span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--ink);text-align:right}
+    .card-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+    .detail-btn{grid-column:1/-1;min-height:42px;border:0;border-radius:12px;background:var(--primary);color:#fff;font-family:var(--font-heading);font-weight:800}
+    .compare-btn,.buy-btn{min-height:36px;border:1px solid var(--border-warm);border-radius:10px;background:var(--surface-low);color:var(--primary);font-weight:800;text-decoration:none;display:grid;place-items:center}
+    .compare-btn.on{background:rgba(200,169,110,.18);border-color:rgba(200,169,110,.35)}
+    .empty{padding:32px;background:#fff;border:1px solid var(--border-warm);border-radius:18px;box-shadow:var(--shadow);color:var(--muted-strong)}
+    .modal{position:fixed;inset:0;z-index:100;display:none;background:rgba(26,26,46,.45);backdrop-filter:blur(8px);padding:28px}
+    .modal.open{display:grid;place-items:center}
+    .modal-card{width:min(920px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:22px;box-shadow:0 24px 80px rgba(0,0,0,.22);padding:24px;animation:modalIn .22s cubic-bezier(.4,0,.2,1)}
+    @keyframes modalIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+    .modal-head{display:flex;justify-content:space-between;gap:16px;align-items:start;margin-bottom:18px}
+    .modal-title{font-family:var(--font-heading);font-size:28px;font-weight:800;color:var(--ink)}
+    .modal-sub{color:var(--muted);margin-top:4px}
+    .close{width:38px;height:38px;border:1px solid var(--border-warm);border-radius:999px;background:var(--surface-low);color:var(--primary);font-size:20px}
+    .modal-body{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px}
+    .modal-visual{background:var(--surface-low);border:1px solid var(--border-warm);border-radius:18px;display:grid;place-items:center;min-height:260px}
+    .detail-table{display:grid;gap:8px}
+    .detail-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;border-bottom:1px solid var(--border-warm);padding:9px 0}
+    .detail-row strong{font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+    .status{position:fixed;left:280px;bottom:18px;z-index:120;display:none;max-width:520px;background:var(--ink);color:#fff;border-radius:12px;padding:12px 14px;box-shadow:var(--shadow-hover);font-size:13px}
+    .status.show{display:block}
+    @media(max-width:1080px){
+      .app{display:block}.sidebar{position:static;width:auto;height:auto}.main{grid-column:auto}.layout{grid-template-columns:1fr}.filters{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.status{left:18px}.modal-body{grid-template-columns:1fr}
+    }
+    @media(max-width:720px){
+      .content{padding:20px}.page-head,.results-head,.filter-strip,.compare-strip{flex-direction:column;align-items:stretch}.filters{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.topbar{height:auto;align-items:stretch;flex-direction:column;padding:12px}.top-actions{justify-content:space-between}
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="ToolAdvisor test navigation">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 18L12 4l8 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 13.5h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="brand-title">ToolAdvisor</div>
+          <div class="brand-sub">Cutting tool intelligence</div>
+        </div>
+      </div>
+      <div class="nav-label">Material Groups</div>
+      <nav class="material-nav" id="materialNav" aria-label="Material filters"></nav>
+      <div class="side-card">
+        <strong>Prototype surface</strong>
+        <p>Dynamic ToolAdvisor product data inside a Stitch-first catalog layout.</p>
+        <button type="button" id="resetSideBtn">Reset filters</button>
+      </div>
+      <div class="side-links">
+        <button type="button" id="helpBtn">Help Center</button>
+        <button type="button" id="docsBtn">Data notes</button>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div class="top-search">
+          <span aria-hidden="true">⌕</span>
+          <input id="topSearch" type="search" placeholder="Search tools by grade, material, or application..." autocomplete="off">
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn" type="button" id="notifyBtn" aria-label="Notifications">●</button>
+          <button class="icon-btn" type="button" id="settingsBtn" aria-label="Settings">⚙</button>
+          <button class="access-btn" type="button" id="accessBtn">Request Access</button>
+        </div>
+      </header>
+      <section class="content">
+        <div class="page-head">
+          <div>
+            <nav class="crumb" aria-label="Catalog breadcrumb">
+              <span>Directory</span><span>›</span><strong id="crumbMaterial">All Cutting Tools</strong>
+            </nav>
+            <h1 id="pageTitle">Cutting Tool Directory</h1>
+            <p class="lede">Dynamic ToolAdvisor products rendered inside the Stitch Tools Directory visual system.</p>
+          </div>
+          <div class="head-actions">
+            <button class="soft-btn" type="button" id="advancedBtn">Advanced Filters</button>
+            <button class="soft-btn" type="button" id="gridBtn">Grid View</button>
+          </div>
+        </div>
+        <div class="layout">
+          <aside class="filters" aria-label="Catalog filters">
+            <div class="filter-card">
+              <h2>ISO Material Groups</h2>
+              <div class="material-nav" id="materialFilterPanel"></div>
+            </div>
+            <div class="filter-card">
+              <h2>Parameters</h2>
+              <div class="field">
+                <label>Tool Diameter (DC)</label>
+                <div class="disabled-note"><strong>Coming soon</strong> Diameter filtering waits for normalized diameter records.</div>
+              </div>
+              <div class="field">
+                <label for="categoryFilter">Category</label>
+                <select id="categoryFilter"><option value="all">All categories</option></select>
+              </div>
+              <div class="field">
+                <label for="geometryFilter">Geometry</label>
+                <select id="geometryFilter"><option value="all">All geometry families</option></select>
+              </div>
+              <div class="field">
+                <label for="coatingFilter">Coating Type</label>
+                <select id="coatingFilter"><option value="all">All coating families</option></select>
+              </div>
+              <div class="field">
+                <label for="operationFilter">Operation</label>
+                <select id="operationFilter"><option value="all">All operations</option></select>
+              </div>
+              <div class="field">
+                <label for="brandFilter">Brand</label>
+                <select id="brandFilter"><option value="all">All brands</option></select>
+              </div>
+            </div>
+          </aside>
+          <section class="results" aria-label="Tool catalog results">
+            <div class="results-head">
+              <div>
+                <div class="label">Directory</div>
+                <div class="count" id="resultCount">Loading products...</div>
+              </div>
+              <button class="soft-btn" type="button" id="exportBtn">Export visible</button>
+            </div>
+            <div class="catalog-search">
+              <span aria-hidden="true">⌕</span>
+              <input id="catalogSearch" type="search" placeholder="Search code, series, brand, grade or coating..." autocomplete="off">
+            </div>
+            <div class="chips" id="activeChips"></div>
+            <div class="filter-strip">
+              <div class="seg" aria-label="Scope filter">
+                <span class="label">Scope</span>
+                <button type="button" class="active" data-scope="core">Core cutting tools</button>
+                <button type="button" data-scope="all">All records</button>
+              </div>
+              <div class="sort">
+                <label class="label" for="sortFilter">Sort by</label>
+                <select id="sortFilter">
+                  <option value="score">Best match</option>
+                  <option value="brand">Brand A-Z</option>
+                  <option value="grade">Grade A-Z</option>
+                  <option value="vcHigh">Vc range (High first)</option>
+                </select>
+              </div>
+            </div>
+            <div class="trust-strip">
+              <strong>Why trust this catalogue:</strong> cards expose application, material, operation and cutting data signals from ToolAdvisor records. Always validate final production values with manufacturer data.
+            </div>
+            <div class="compare-strip">
+              <span id="compareSummary">Select up to 4 products for quick comparison.</span>
+              <button type="button" id="compareBtn" disabled>Compare selected</button>
+            </div>
+            <div class="grid" id="productGrid"></div>
+            <div class="last-strip" id="lastViewedStrip" hidden>
+              <strong>Last viewed:</strong> <span id="lastViewedList"></span>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="detailModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <div class="modal-head">
+        <div>
+          <div class="modal-title" id="detailTitle">Product detail</div>
+          <div class="modal-sub" id="detailSub">ToolAdvisor dynamic product record</div>
+        </div>
+        <button class="close" type="button" id="closeModal" aria-label="Close detail">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-visual" id="detailVisual"></div>
+        <div class="detail-table" id="detailTable"></div>
+      </div>
+    </div>
+  </div>
+  <div class="status" id="status"></div>
+
+  <script>
+    const ISO_GROUPS = [
+      { id:'all', label:'All Materials', desc:'Complete catalog', color:'#C8A96E' },
+      { id:'P', label:'ISO P Steel', desc:'Unalloyed / Low alloy', color:'#3B82F6' },
+      { id:'M', label:'ISO M Stainless', desc:'Austenitic / Ferritic', color:'#F59E0B' },
+      { id:'K', label:'ISO K Cast Iron', desc:'Gray / Nodular', color:'#EF4444' },
+      { id:'N', label:'ISO N Non-Ferrous', desc:'Aluminium / Copper', color:'#10B981' },
+      { id:'S', label:'ISO S Superalloys', desc:'HRSA / Titanium', color:'#F97316' },
+      { id:'H', label:'ISO H Hardened', desc:'45-68 HRC', color:'#64748B' }
+    ];
+    const state = {
+      products: [],
+      visible: [],
+      material: 'all',
+      query: '',
+      scope: 'core',
+      category: 'all',
+      geometry: 'all',
+      coating: 'all',
+      operation: 'all',
+      brand: 'all',
+      sort: 'score',
+      selected: new Set(),
+      lastViewed: []
+    };
+
+    const $ = (id) => document.getElementById(id);
+    const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    const arr = (value) => Array.isArray(value) ? value.filter(Boolean) : (value ? [value] : []);
+    const norm = (value) => String(value || '').trim().toLowerCase();
+
+    function showStatus(message) {
+      const el = $('status');
+      el.textContent = message;
+      el.classList.add('show');
+      clearTimeout(showStatus._timer);
+      showStatus._timer = setTimeout(() => el.classList.remove('show'), 2600);
+    }
+
+    async function loadToolAdvisorProducts() {
+      const res = await fetch('index.html', { cache: 'no-store' });
+      if (!res.ok) throw new Error('Could not fetch index.html');
+      const html = await res.text();
+      const source = extractArrayLiteral(html, 'const PRODUCT_DB');
+      const products = Function(`"use strict"; return (${source});`)();
+      return products.filter(Boolean).map(normalizeProduct);
+    }
+
+    function extractArrayLiteral(source, marker) {
+      const start = source.indexOf(marker);
+      if (start < 0) throw new Error(`${marker} not found`);
+      const open = source.indexOf('[', start);
+      let depth = 0;
+      let quote = '';
+      let escaped = false;
+      for (let i = open; i < source.length; i++) {
+        const ch = source[i];
+        if (quote) {
+          if (escaped) escaped = false;
+          else if (ch === '\\\\') escaped = true;
+          else if (ch === quote) quote = '';
+          continue;
+        }
+        if (ch === '"' || ch === "'" || ch === '`') {
+          quote = ch;
+          continue;
+        }
+        if (ch === '[') depth++;
+        if (ch === ']') {
+          depth--;
+          if (depth === 0) return source.slice(open, i + 1);
+        }
+      }
+      throw new Error(`${marker} array could not be parsed`);
+    }
+
+    function normalizeProduct(raw) {
+      const isoCodes = arr(raw.isoCodes).map(String);
+      return {
+        ...raw,
+        id: String(raw.id || `${raw.brand || 'tool'}-${raw.grade || raw.productName || Math.random()}`),
+        brand: String(raw.brand || 'Unknown brand'),
+        grade: String(raw.grade || raw.productName || isoCodes[0] || 'Unknown grade'),
+        productName: String(raw.productName || raw.series || raw.grade || ''),
+        coating: String(raw.coating || 'Coating not specified'),
+        geometry: String(raw.geometry || 'General geometry'),
+        operations: arr(raw.operations).map(String),
+        materials: arr(raw.materials).map(String),
+        isoCodes,
+        vcRange: String(raw.vcRange || '—'),
+        fnRange: String(raw.fnRange || '—'),
+        apRange: String(raw.apRange || '—'),
+        image: String(raw.image || ''),
+        imageUrl: String(raw.imageUrl || '')
+      };
+    }
+
+    function getDB() {
+      return state.products.filter((product) => {
+        if (product.publicListing === false || product.isPublic === false) return false;
+        const status = norm(product.status);
+        return !status || ['active','public','published'].includes(status);
+      });
+    }
+
+    function getProductCategory(product) {
+      const type = norm(product.productType || product.category || '');
+      const text = [type, product.productName, product.geometry, arr(product.operations).join(' ')].join(' ').toLowerCase();
+      if (text.includes('drill')) return 'Drilling';
+      if (text.includes('mill')) return 'Milling';
+      if (text.includes('thread')) return 'Threading';
+      if (text.includes('groov') || text.includes('part')) return 'Grooving';
+      if (text.includes('holder')) return 'Holder';
+      return 'Turning';
+    }
+
+    function getPrimaryCode(product) {
+      return arr(product.isoCodes)[0] || product.grade || product.productName || 'Tool';
+    }
+
+    function getIsoColor(material) {
+      return (ISO_GROUPS.find((group) => group.id === material) || ISO_GROUPS[0]).color;
+    }
+
+    function isCoreProduct(product) {
+      const type = norm(product.productType || product.category || getProductCategory(product));
+      return ['insert','turning','milling','drilling','threading','grooving',''].includes(type);
+    }
+
+    function productSearchText(product) {
+      return [
+        product.id, product.brand, product.grade, product.productName, product.coating, product.geometry,
+        product.applicationNotes, product.toolLife, ...arr(product.isoCodes), ...arr(product.materials), ...arr(product.operations)
+      ].join(' ').toLowerCase();
+    }
+
+    function matches(product) {
+      if (state.scope === 'core' && !isCoreProduct(product)) return false;
+      if (state.material !== 'all' && !arr(product.materials).includes(state.material)) return false;
+      if (state.category !== 'all' && getProductCategory(product) !== state.category) return false;
+      if (state.geometry !== 'all' && product.geometry !== state.geometry) return false;
+      if (state.coating !== 'all' && product.coating !== state.coating) return false;
+      if (state.operation !== 'all' && !arr(product.operations).includes(state.operation)) return false;
+      if (state.brand !== 'all' && product.brand !== state.brand) return false;
+      if (state.query && !productSearchText(product).includes(state.query.toLowerCase())) return false;
+      return true;
+    }
+
+    function scoreProduct(product) {
+      let score = 0;
+      if (state.material !== 'all' && arr(product.materials).includes(state.material)) score += 30;
+      if (state.operation !== 'all' && arr(product.operations).includes(state.operation)) score += 25;
+      if (state.query && productSearchText(product).includes(state.query.toLowerCase())) score += 20;
+      if (isCoreProduct(product)) score += 10;
+      return score;
+    }
+
+    function renderProductVisual(product) {
+      const localImage = product.image ? `generated-images/${product.image}` : '';
+      const src = product.imageUrl || localImage;
+      if (src) {
+        return `<img class="tool-img" src="${escapeHtml(src)}" alt="${escapeHtml(product.brand)} ${escapeHtml(getPrimaryCode(product))}" loading="lazy" onerror="this.replaceWith(createFallbackVisual('${escapeHtml(getPrimaryCode(product))}','${escapeHtml(arr(product.materials)[0] || 'M')}'))">`;
+      }
+      return fallbackVisual(arr(product.materials)[0] || 'M');
+    }
+
+    function fallbackVisual(material) {
+      const color = getIsoColor(material);
+      return `
+        <svg class="tool-svg" viewBox="0 0 140 140" role="img" aria-label="Fallback cutting insert visual">
+          <defs>
+            <linearGradient id="g-${material}" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#fff7d6"/>
+              <stop offset="0.55" stop-color="${color}"/>
+              <stop offset="1" stop-color="#5b4822"/>
+            </linearGradient>
+          </defs>
+          <polygon points="70 12 128 70 70 128 12 70" fill="url(#g-${material})"/>
+          <polygon points="70 26 114 70 70 114 26 70" fill="rgba(255,255,255,.24)"/>
+          <circle cx="70" cy="70" r="19" fill="#FAF9F7" stroke="rgba(26,26,46,.18)" stroke-width="5"/>
+          <path d="M70 12 128 70 70 128 12 70Z" fill="none" stroke="rgba(26,26,46,.22)" stroke-width="4"/>
+        </svg>`;
+    }
+
+    window.createFallbackVisual = function createFallbackVisual(_code, material) {
+      const wrap = document.createElement('div');
+      wrap.innerHTML = fallbackVisual(material);
+      return wrap.firstElementChild;
+    };
+
+    function renderMaterialButtons(targetId) {
+      const target = $(targetId);
+      target.innerHTML = ISO_GROUPS.map((group) => `
+        <button class="mat-btn ${state.material === group.id ? 'active' : ''}" type="button" data-material="${group.id}" style="--iso:${group.color}">
+          <span class="mat-dot"></span>
+          <span class="mat-copy"><strong>${escapeHtml(group.label)}</strong><span>${escapeHtml(group.desc)}</span></span>
+        </button>
+      `).join('');
+      target.querySelectorAll('[data-material]').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.material = button.dataset.material;
+          renderAll();
+        });
+      });
+    }
+
+    function populateSelect(id, values, current, firstLabel) {
+      const select = $(id);
+      select.innerHTML = `<option value="all">${firstLabel}</option>` + values.map((value) => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join('');
+      select.value = values.includes(current) ? current : 'all';
+    }
+
+    function populateFilters() {
+      const db = getDB();
+      const unique = (items) => [...new Set(items.filter(Boolean))].sort((a,b) => String(a).localeCompare(String(b)));
+      populateSelect('categoryFilter', unique(db.map(getProductCategory)), state.category, 'All categories');
+      populateSelect('geometryFilter', unique(db.map((p) => p.geometry).filter((v) => v && v !== 'General geometry')).slice(0, 120), state.geometry, 'All geometry families');
+      populateSelect('coatingFilter', unique(db.map((p) => p.coating).filter((v) => v && v !== 'Coating not specified')).slice(0, 120), state.coating, 'All coating families');
+      populateSelect('operationFilter', unique(db.flatMap((p) => arr(p.operations))), state.operation, 'All operations');
+      populateSelect('brandFilter', unique(db.map((p) => p.brand)), state.brand, 'All brands');
+    }
+
+    function renderCards() {
+      let products = getDB().filter(matches).map((product) => ({ product, score: scoreProduct(product) }));
+      if (state.sort === 'brand') products.sort((a,b) => a.product.brand.localeCompare(b.product.brand) || getPrimaryCode(a.product).localeCompare(getPrimaryCode(b.product)));
+      else if (state.sort === 'grade') products.sort((a,b) => getPrimaryCode(a.product).localeCompare(getPrimaryCode(b.product)));
+      else if (state.sort === 'vcHigh') products.sort((a,b) => parseRangeHigh(b.product.vcRange) - parseRangeHigh(a.product.vcRange));
+      else products.sort((a,b) => b.score - a.score || a.product.brand.localeCompare(b.product.brand));
+      state.visible = products.map((entry) => entry.product);
+      $('resultCount').textContent = `Showing ${state.visible.length} product${state.visible.length === 1 ? '' : 's'}`;
+      $('crumbMaterial').textContent = ISO_GROUPS.find((group) => group.id === state.material)?.label || 'All Cutting Tools';
+      $('pageTitle').textContent = state.material === 'all' ? 'Cutting Tool Directory' : `${ISO_GROUPS.find((group) => group.id === state.material).label} Tools`;
+      if (!state.visible.length) {
+        $('productGrid').innerHTML = `<div class="empty">No products match these filters. Try clearing one filter or searching a broader code, brand, operation, or coating.</div>`;
+        renderCompare();
+        return;
+      }
+      $('productGrid').innerHTML = state.visible.map(renderProductCard).join('');
+      $('productGrid').querySelectorAll('[data-detail]').forEach((button) => button.addEventListener('click', () => openProductDetail(button.dataset.detail)));
+      $('productGrid').querySelectorAll('[data-compare]').forEach((button) => button.addEventListener('click', () => toggleCompare(button.dataset.compare)));
+      renderCompare();
+    }
+
+    function renderProductCard(product) {
+      const primaryMaterial = arr(product.materials)[0] || 'M';
+      const isoColor = getIsoColor(primaryMaterial);
+      const code = getPrimaryCode(product);
+      const selected = state.selected.has(product.id);
+      const buyUrl = `https://www.google.com/search?q=${encodeURIComponent(`${product.brand} ${product.productName || product.grade} cutting tool`)}`;
+      return `
+        <article class="product-card" style="--iso-color:${isoColor}">
+          <button class="favorite" type="button" title="Prototype bookmark" onclick="event.stopPropagation();">♡</button>
+          <span class="iso-badge">ISO ${escapeHtml(primaryMaterial)}</span>
+          <div class="visual">${renderProductVisual(product)}</div>
+          <div class="brand-name">${escapeHtml(product.brand)}</div>
+          <div class="grade">${escapeHtml(code)}</div>
+          <div class="series">${escapeHtml(product.productName || product.geometry || product.coating)}</div>
+          <div class="pills">
+            <span class="pill">${escapeHtml(product.coating)}</span>
+            <span class="pill">${escapeHtml(product.geometry)}</span>
+          </div>
+          <div class="specs">
+            <div class="spec-row"><span>Grade</span><span>${escapeHtml(product.grade)}</span></div>
+            <div class="spec-row"><span>Vc Range</span><span>${escapeHtml(product.vcRange)}</span></div>
+            <div class="spec-row"><span>Feed</span><span>${escapeHtml(product.fnRange)}</span></div>
+            <div class="spec-row"><span>Depth</span><span>${escapeHtml(product.apRange)}</span></div>
+          </div>
+          <div class="card-actions">
+            <button class="detail-btn" type="button" data-detail="${escapeHtml(product.id)}">View details</button>
+            <button class="compare-btn ${selected ? 'on' : ''}" type="button" data-compare="${escapeHtml(product.id)}">${selected ? 'Selected' : 'Compare'}</button>
+            <a class="buy-btn" href="${buyUrl}" target="_blank" rel="noopener">Search buy</a>
+          </div>
+        </article>
+      `;
+    }
+
+    function parseRangeHigh(value) {
+      const nums = String(value || '').match(/\\d+(?:\\.\\d+)?/g);
+      return nums ? Math.max(...nums.map(Number)) : 0;
+    }
+
+    function renderChips() {
+      const chips = [];
+      if (state.query) chips.push(`Search: ${state.query}`);
+      if (state.material !== 'all') chips.push(`Material: ${state.material}`);
+      ['category','geometry','coating','operation','brand'].forEach((key) => {
+        if (state[key] !== 'all') chips.push(`${key}: ${state[key]}`);
+      });
+      const el = $('activeChips');
+      el.classList.toggle('show', chips.length > 0);
+      el.innerHTML = chips.map((chip) => `<span class="chip">${escapeHtml(chip)}</span>`).join('');
+    }
+
+    function renderCompare() {
+      const selected = [...state.selected].map((id) => state.products.find((product) => product.id === id)).filter(Boolean);
+      $('compareSummary').textContent = selected.length
+        ? `Selected: ${selected.map((p) => `${p.brand} ${getPrimaryCode(p)}`).join(' · ')}`
+        : 'Select up to 4 products for quick comparison.';
+      $('compareBtn').disabled = selected.length < 2;
+    }
+
+    function toggleCompare(id) {
+      if (state.selected.has(id)) state.selected.delete(id);
+      else if (state.selected.size < 4) state.selected.add(id);
+      else showStatus('Maximum 4 products for this prototype compare queue.');
+      renderCards();
+    }
+
+    function openProductDetail(id) {
+      const product = state.products.find((item) => item.id === id);
+      if (!product) return;
+      state.lastViewed = [id, ...state.lastViewed.filter((item) => item !== id)].slice(0, 5);
+      $('detailTitle').textContent = `${product.brand} ${getPrimaryCode(product)}`;
+      $('detailSub').textContent = product.productName || product.coating || 'ToolAdvisor product record';
+      $('detailVisual').innerHTML = renderProductVisual(product);
+      const rows = [
+        ['Brand', product.brand],
+        ['Grade', product.grade],
+        ['ISO codes', arr(product.isoCodes).join(', ') || '—'],
+        ['Materials', arr(product.materials).map((m) => `ISO ${m}`).join(', ') || '—'],
+        ['Operations', arr(product.operations).join(', ') || '—'],
+        ['Coating', product.coating],
+        ['Geometry', product.geometry],
+        ['Vc', product.vcRange],
+        ['fn/fz', product.fnRange],
+        ['ap', product.apRange],
+        ['Tool life', product.toolLife || '—'],
+        ['Notes', product.applicationNotes || '—']
+      ];
+      $('detailTable').innerHTML = rows.map(([label, value]) => `<div class="detail-row"><strong>${escapeHtml(label)}</strong><span>${escapeHtml(value)}</span></div>`).join('');
+      $('detailModal').classList.add('open');
+      $('detailModal').setAttribute('aria-hidden', 'false');
+      renderLastViewed();
+    }
+
+    function closeProductDetail() {
+      $('detailModal').classList.remove('open');
+      $('detailModal').setAttribute('aria-hidden', 'true');
+    }
+
+    function renderLastViewed() {
+      const products = state.lastViewed.map((id) => state.products.find((product) => product.id === id)).filter(Boolean);
+      $('lastViewedStrip').hidden = products.length === 0;
+      $('lastViewedList').textContent = products.map((product) => `${product.brand} ${getPrimaryCode(product)}`).join(' · ');
+    }
+
+    function exportVisibleProductsCatalog() {
+      const rows = [['brand','grade','productName','coating','geometry','materials','operations','isoCodes']];
+      state.visible.forEach((p) => rows.push([p.brand,p.grade,p.productName,p.coating,p.geometry,arr(p.materials).join('|'),arr(p.operations).join('|'),arr(p.isoCodes).join('|')]));
+      const csv = rows.map((row) => row.map((cell) => `"${String(cell ?? '').replace(/"/g,'""')}"`).join(',')).join('\\n');
+      const blob = new Blob([csv], { type:'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `tooladvisor-stitch-visible-products-${new Date().toISOString().slice(0,10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function renderAll() {
+      renderMaterialButtons('materialNav');
+      renderMaterialButtons('materialFilterPanel');
+      renderChips();
+      renderCards();
+    }
+
+    function clearFilters() {
+      Object.assign(state, { material:'all', query:'', scope:'core', category:'all', geometry:'all', coating:'all', operation:'all', brand:'all', sort:'score' });
+      $('topSearch').value = '';
+      $('catalogSearch').value = '';
+      $('sortFilter').value = 'score';
+      document.querySelectorAll('[data-scope]').forEach((btn) => btn.classList.toggle('active', btn.dataset.scope === 'core'));
+      populateFilters();
+      renderAll();
+    }
+
+    function wireEvents() {
+      ['topSearch','catalogSearch'].forEach((id) => {
+        $(id).addEventListener('input', (event) => {
+          state.query = event.target.value.trim();
+          $('topSearch').value = state.query;
+          $('catalogSearch').value = state.query;
+          renderAll();
+        });
+      });
+      ['category','geometry','coating','operation','brand'].forEach((key) => {
+        $(`${key}Filter`).addEventListener('change', (event) => {
+          state[key] = event.target.value;
+          renderAll();
+        });
+      });
+      $('sortFilter').addEventListener('change', (event) => {
+        state.sort = event.target.value;
+        renderCards();
+      });
+      document.querySelectorAll('[data-scope]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.scope = btn.dataset.scope;
+          document.querySelectorAll('[data-scope]').forEach((item) => item.classList.toggle('active', item === btn));
+          renderAll();
+        });
+      });
+      $('resetSideBtn').addEventListener('click', clearFilters);
+      $('advancedBtn').addEventListener('click', () => showStatus('Advanced filters are represented in the left parameter panel.'));
+      $('gridBtn').addEventListener('click', () => showStatus('Grid view is active in this prototype.'));
+      $('exportBtn').addEventListener('click', exportVisibleProductsCatalog);
+      $('compareBtn').addEventListener('click', () => showStatus('Prototype compare queue is selected; full comparison modal is not ported yet.'));
+      $('helpBtn').addEventListener('click', () => showStatus('Help Center is intentionally not a separate page in this prototype.'));
+      $('docsBtn').addEventListener('click', () => showStatus('Data is loaded dynamically from index.html PRODUCT_DB.'));
+      $('notifyBtn').addEventListener('click', () => showStatus('Notifications are not connected in this prototype.'));
+      $('settingsBtn').addEventListener('click', () => showStatus('Settings are not connected in this prototype.'));
+      $('accessBtn').addEventListener('click', () => showStatus('Access request flow is not connected in this prototype.'));
+      $('closeModal').addEventListener('click', closeProductDetail);
+      $('detailModal').addEventListener('click', (event) => {
+        if (event.target === $('detailModal')) closeProductDetail();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeProductDetail();
+      });
+    }
+
+    async function init() {
+      wireEvents();
+      renderMaterialButtons('materialNav');
+      renderMaterialButtons('materialFilterPanel');
+      try {
+        state.products = await loadToolAdvisorProducts();
+        populateFilters();
+        renderAll();
+        showStatus(`Loaded ${state.products.length} products from index.html PRODUCT_DB.`);
+      } catch (error) {
+        console.error(error);
+        $('resultCount').textContent = 'Product engine failed to load';
+        $('productGrid').innerHTML = `<div class="empty">Could not load PRODUCT_DB from index.html. Run this file through localhost so fetch('index.html') is available.</div>`;
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

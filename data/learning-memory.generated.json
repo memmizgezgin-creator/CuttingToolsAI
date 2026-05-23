@@ -1,0 +1,1240 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "generatedAt": "2026-05-09T22:12:05.491Z",
+    "engine": "learning-memory-engine",
+    "safetyPolicy": {
+      "readOnlyEngineeringData": true,
+      "neverAutoTrainModels": true,
+      "neverAutoModifyEngineeringTruth": true,
+      "neverAutoPromoteWeakEquivalents": true,
+      "outputIsAdvisoryOnly": true
+    },
+    "inputSources": {
+      "benchmarkLogs": 2,
+      "stressTestLogs": 3,
+      "failureAnalysisLogs": 2,
+      "crossrefLogs": 1,
+      "enrichmentLogs": 1,
+      "calibrationLogs": 1,
+      "deltaLogs": 1
+    }
+  },
+  "confidenceEvolution": {
+    "timeline": [
+      {
+        "date": "2026-05-09",
+        "timestamp": "2026-05-09T13:42:20.618Z",
+        "source": "benchmark-2026-05-09-1342.json",
+        "avgConfidence": 100,
+        "medianConfidence": 100,
+        "productCount": 2,
+        "parserReliability": 100,
+        "catalogQuality": 67,
+        "malformedRate": 0,
+        "brandCount": null
+      },
+      {
+        "date": "2026-05-09",
+        "timestamp": "2026-05-09T21:42:42.003Z",
+        "source": "benchmark-2026-05-09-2142.json",
+        "avgConfidence": 100,
+        "medianConfidence": 100,
+        "productCount": 30,
+        "parserReliability": 100,
+        "catalogQuality": 80,
+        "malformedRate": 0,
+        "brandCount": null
+      }
+    ],
+    "trend": {
+      "confidence": {
+        "direction": "stable",
+        "dataPoints": 2,
+        "first": 100,
+        "last": 100,
+        "delta": 0,
+        "avg": 100,
+        "min": 100,
+        "max": 100,
+        "slope": 0,
+        "stdDev": 0,
+        "coeffOfVariation": 0,
+        "stable": true
+      },
+      "parserReliability": {
+        "direction": "stable",
+        "dataPoints": 2,
+        "first": 100,
+        "last": 100,
+        "delta": 0,
+        "avg": 100,
+        "min": 100,
+        "max": 100,
+        "slope": 0,
+        "stdDev": 0,
+        "coeffOfVariation": 0,
+        "stable": true
+      },
+      "catalogQuality": {
+        "direction": "improving",
+        "dataPoints": 2,
+        "first": 67,
+        "last": 80,
+        "delta": 13,
+        "avg": 73.5,
+        "min": 67,
+        "max": 80,
+        "slope": 13,
+        "stdDev": 6.5,
+        "coeffOfVariation": 8.8,
+        "stable": false
+      }
+    },
+    "latestSnapshot": {
+      "date": "2026-05-09",
+      "timestamp": "2026-05-09T21:42:42.003Z",
+      "source": "benchmark-2026-05-09-2142.json",
+      "avgConfidence": 100,
+      "medianConfidence": 100,
+      "productCount": 30,
+      "parserReliability": 100,
+      "catalogQuality": 80,
+      "malformedRate": 0,
+      "brandCount": null
+    }
+  },
+  "benchmarkDeltas": {
+    "events": [
+      {
+        "date": "2026-05-09",
+        "timestamp": "2026-05-09T21:42:42.009Z",
+        "source": "brand-ingestion-delta-2026-05-09.json",
+        "productsAdded": 0,
+        "confidenceShift": 0,
+        "brandsAdded": 0,
+        "catalogScoreShift": 0,
+        "newBrands": []
+      }
+    ],
+    "aggregates": {
+      "totalProductsAdded": 0,
+      "netConfidenceShift": 0,
+      "totalBrandsAdded": 0,
+      "allNewBrands": []
+    }
+  },
+  "stressTestHistory": {
+    "outcomes": [
+      {
+        "date": "2026-05-09",
+        "timestamp": "2026-05-09T21:51:37.067Z",
+        "source": "stress-test-2026-05-09-2151.json",
+        "fixtureCount": 10,
+        "validationErrors": 0,
+        "validationWarnings": 2,
+        "avgConfidence": 83.8,
+        "degradationFromBenchmark": 16.2,
+        "lowConfidenceRate": 20,
+        "unstableCrossRefCount": 8,
+        "pipelineResilienceScore": null,
+        "expectedFailureDetection": 80,
+        "scenarioDegradation": [
+          {
+            "scenario": "broken_iso_format",
+            "degradation": 10,
+            "avgConfidence": 90
+          },
+          {
+            "scenario": "conflicting_coating_names",
+            "degradation": 0,
+            "avgConfidence": 100
+          },
+          {
+            "scenario": "duplicate_series",
+            "degradation": 1,
+            "avgConfidence": 99
+          },
+          {
+            "scenario": "incomplete_catalog",
+            "degradation": 76,
+            "avgConfidence": 24
+          },
+          {
+            "scenario": "inconsistent_chipbreaker_naming",
+            "degradation": 5,
+            "avgConfidence": 95
+          },
+          {
+            "scenario": "malformed_pdf",
+            "degradation": 58,
+            "avgConfidence": 42
+          },
+          {
+            "scenario": "mixed_language_catalog",
+            "degradation": 4,
+            "avgConfidence": 96
+          },
+          {
+            "scenario": "ocr_heavy_scan",
+            "degradation": 7,
+            "avgConfidence": 93
+          }
+        ]
+      },
+      {
+        "date": "2026-05-09",
+        "timestamp": "2026-05-09T21:52:05.425Z",
+        "source": "stress-test-2026-05-09-2152.json",
+        "fixtureCount": 10,
+        "validationErrors": 0,
+        "validationWarnings": 2,
+        "avgConfidence": 83.8,
+        "degradationFromBenchmark": 16.2,
+        "lowConfidenceRate": 20,
+        "unstableCrossRefCount": 8,
+        "pipelineResilienceScore": null,
+        "expectedFailureDetection": 100,
+        "scenarioDegradation": [
+          {
+            "scenario": "broken_iso_format",
+            "degradation": 10,
+            "avgConfidence": 90
+          },
+          {
+            "scenario": "conflicting_coating_names",
+            "degradation": 0,
+            "avgConfidence": 100
+          },
+          {
+            "scenario": "duplicate_series",
+            "degradation": 1,
+            "avgConfidence": 99
+          },
+          {
+            "scenario": "incomplete_catalog",
+            "degradation": 76,
+            "avgConfidence": 24
+          },
+          {
+            "scenario": "inconsistent_chipbreaker_naming",
+            "degradation": 5,
+            "avgConfidence": 95
+          },
+          {
+            "scenario": "malformed_pdf",
+            "degradation": 58,
+            "avgConfidence": 42
+          },
+          {
+            "scenario": "mixed_language_catalog",
+            "degradation": 4,
+            "avgConfidence": 96
+          },
+          {
+            "scenario": "ocr_heavy_scan",
+            "degradation": 7,
+            "avgConfidence": 93
+          }
+        ]
+      },
+      {
+        "date": "2026-05-09",
+        "timestamp": "2026-05-09T21:53:47.932Z",
+        "source": "stress-test-2026-05-09-2153.json",
+        "fixtureCount": 10,
+        "validationErrors": 0,
+        "validationWarnings": 2,
+        "avgConfidence": 83.8,
+        "degradationFromBenchmark": 16.2,
+        "lowConfidenceRate": 20,
+        "unstableCrossRefCount": 8,
+        "pipelineResilienceScore": null,
+        "expectedFailureDetection": 100,
+        "scenarioDegradation": [
+          {
+            "scenario": "broken_iso_format",
+            "degradation": 10,
+            "avgConfidence": 90
+          },
+          {
+            "scenario": "conflicting_coating_names",
+            "degradation": 0,
+            "avgConfidence": 100
+          },
+          {
+            "scenario": "duplicate_series",
+            "degradation": 1,
+            "avgConfidence": 99
+          },
+          {
+            "scenario": "incomplete_catalog",
+            "degradation": 76,
+            "avgConfidence": 24
+          },
+          {
+            "scenario": "inconsistent_chipbreaker_naming",
+            "degradation": 5,
+            "avgConfidence": 95
+          },
+          {
+            "scenario": "malformed_pdf",
+            "degradation": 58,
+            "avgConfidence": 42
+          },
+          {
+            "scenario": "mixed_language_catalog",
+            "degradation": 4,
+            "avgConfidence": 96
+          },
+          {
+            "scenario": "ocr_heavy_scan",
+            "degradation": 7,
+            "avgConfidence": 93
+          }
+        ]
+      }
+    ],
+    "trends": {
+      "resilience": {
+        "direction": "insufficient_data",
+        "dataPoints": 0,
+        "values": []
+      },
+      "degradation": {
+        "direction": "stable",
+        "dataPoints": 3,
+        "first": 16.2,
+        "last": 16.2,
+        "delta": 0,
+        "avg": 16.2,
+        "min": 16.2,
+        "max": 16.2,
+        "slope": 0,
+        "stdDev": 0,
+        "coeffOfVariation": 0,
+        "stable": true
+      }
+    },
+    "worstScenarios": [
+      {
+        "scenario": "incomplete_catalog",
+        "occurrences": 3,
+        "avgDegradation": 76,
+        "maxDegradation": 76,
+        "avgConfidence": 24
+      },
+      {
+        "scenario": "malformed_pdf",
+        "occurrences": 3,
+        "avgDegradation": 58,
+        "maxDegradation": 58,
+        "avgConfidence": 42
+      },
+      {
+        "scenario": "broken_iso_format",
+        "occurrences": 3,
+        "avgDegradation": 10,
+        "maxDegradation": 10,
+        "avgConfidence": 90
+      },
+      {
+        "scenario": "ocr_heavy_scan",
+        "occurrences": 3,
+        "avgDegradation": 7,
+        "maxDegradation": 7,
+        "avgConfidence": 93
+      },
+      {
+        "scenario": "inconsistent_chipbreaker_naming",
+        "occurrences": 3,
+        "avgDegradation": 5,
+        "maxDegradation": 5,
+        "avgConfidence": 95
+      },
+      {
+        "scenario": "mixed_language_catalog",
+        "occurrences": 3,
+        "avgDegradation": 4,
+        "maxDegradation": 4,
+        "avgConfidence": 96
+      },
+      {
+        "scenario": "duplicate_series",
+        "occurrences": 3,
+        "avgDegradation": 1,
+        "maxDegradation": 1,
+        "avgConfidence": 99
+      },
+      {
+        "scenario": "conflicting_coating_names",
+        "occurrences": 3,
+        "avgDegradation": 0,
+        "maxDegradation": 0,
+        "avgConfidence": 100
+      }
+    ]
+  },
+  "failureAnalysisHistory": {
+    "outcomes": [
+      {
+        "date": "2026-05-09",
+        "timestamp": "2026-05-09T21:55:56.009Z",
+        "source": "failure-analysis-2026-05-09-2155.json",
+        "overallWeakPointScore": 31,
+        "weakPointRating": "critical",
+        "recurringSignatureCount": 15,
+        "topSignatures": [
+          {
+            "signature": "xref:low_signal_confidence",
+            "count": 30,
+            "highSeverityCount": 30
+          },
+          {
+            "signature": "xref:iso_shape_plausible:insertCode+family+operations+materials",
+            "count": 6,
+            "highSeverityCount": 6
+          },
+          {
+            "signature": "conflict:coating_alias",
+            "count": 4,
+            "highSeverityCount": 4
+          },
+          {
+            "signature": "confidence:low_source_evidence",
+            "count": 2,
+            "highSeverityCount": 2
+          },
+          {
+            "signature": "normalization:missing_core_fields",
+            "count": 2,
+            "highSeverityCount": 0
+          }
+        ],
+        "groupScores": [
+          {
+            "group": "parser_failures",
+            "score": 52,
+            "rating": "weak"
+          },
+          {
+            "group": "normalization_failures",
+            "score": 50,
+            "rating": "weak"
+          },
+          {
+            "group": "enrichment_instability",
+            "score": 44,
+            "rating": "watch"
+          },
+          {
+            "group": "cross_reference_instability",
+            "score": 100,
+            "rating": "critical"
+          },
+          {
+            "group": "validation_conflicts",
+            "score": 100,
+            "rating": "critical"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-09",
+        "timestamp": "2026-05-09T21:56:19.742Z",
+        "source": "failure-analysis-2026-05-09-2156.json",
+        "overallWeakPointScore": 31,
+        "weakPointRating": "critical",
+        "recurringSignatureCount": 15,
+        "topSignatures": [
+          {
+            "signature": "xref:low_signal_confidence",
+            "count": 30,
+            "highSeverityCount": 30
+          },
+          {
+            "signature": "xref:iso_shape_plausible:insertCode+family+operations+materials",
+            "count": 6,
+            "highSeverityCount": 6
+          },
+          {
+            "signature": "conflict:coating_alias",
+            "count": 4,
+            "highSeverityCount": 4
+          },
+          {
+            "signature": "confidence:low_source_evidence",
+            "count": 2,
+            "highSeverityCount": 2
+          },
+          {
+            "signature": "normalization:missing_core_fields",
+            "count": 2,
+            "highSeverityCount": 0
+          }
+        ],
+        "groupScores": [
+          {
+            "group": "parser_failures",
+            "score": 52,
+            "rating": "weak"
+          },
+          {
+            "group": "normalization_failures",
+            "score": 50,
+            "rating": "weak"
+          },
+          {
+            "group": "enrichment_instability",
+            "score": 44,
+            "rating": "watch"
+          },
+          {
+            "group": "cross_reference_instability",
+            "score": 100,
+            "rating": "critical"
+          },
+          {
+            "group": "validation_conflicts",
+            "score": 100,
+            "rating": "critical"
+          }
+        ]
+      }
+    ],
+    "trends": {
+      "weakPointScore": {
+        "direction": "stable",
+        "dataPoints": 2,
+        "first": 31,
+        "last": 31,
+        "delta": 0,
+        "avg": 31,
+        "min": 31,
+        "max": 31,
+        "slope": 0,
+        "stdDev": 0,
+        "coeffOfVariation": 0,
+        "stable": true
+      }
+    },
+    "recurringSignatures": [
+      {
+        "signature": "xref:low_signal_confidence",
+        "totalOccurrences": 60,
+        "highSeverityTotal": 60,
+        "appearedInRuns": 2,
+        "persistenceRate": 100
+      },
+      {
+        "signature": "xref:iso_shape_plausible:insertCode+family+operations+materials",
+        "totalOccurrences": 12,
+        "highSeverityTotal": 12,
+        "appearedInRuns": 2,
+        "persistenceRate": 100
+      },
+      {
+        "signature": "conflict:coating_alias",
+        "totalOccurrences": 8,
+        "highSeverityTotal": 8,
+        "appearedInRuns": 2,
+        "persistenceRate": 100
+      },
+      {
+        "signature": "confidence:low_source_evidence",
+        "totalOccurrences": 4,
+        "highSeverityTotal": 4,
+        "appearedInRuns": 2,
+        "persistenceRate": 100
+      },
+      {
+        "signature": "normalization:missing_core_fields",
+        "totalOccurrences": 4,
+        "highSeverityTotal": 0,
+        "appearedInRuns": 2,
+        "persistenceRate": 100
+      }
+    ]
+  },
+  "crossReferenceTrust": {
+    "snapshots": [
+      {
+        "date": "2026-05-09",
+        "timestamp": "2026-05-09T21:43:49.176Z",
+        "source": "crossref-run-2026-05-09.json",
+        "productsAnalysed": 30,
+        "candidatesGenerated": 294,
+        "categoryBreakdown": {
+          "exact_equivalent": 142,
+          "economy_alternative": 34,
+          "premium_alternative": 34,
+          "near_equivalent": 84
+        },
+        "scoreDistribution": {
+          "90-100": 142,
+          "70-89": 54,
+          "50-69": 98,
+          "40-49": 0
+        }
+      }
+    ],
+    "trends": {
+      "totalCandidates": {
+        "direction": "insufficient_data",
+        "dataPoints": 1,
+        "values": [
+          294
+        ]
+      },
+      "exactEquivalents": {
+        "direction": "insufficient_data",
+        "dataPoints": 1,
+        "values": [
+          142
+        ]
+      }
+    },
+    "categoryEvolution": {
+      "exact_equivalent": [
+        {
+          "date": "2026-05-09",
+          "count": 142
+        }
+      ],
+      "economy_alternative": [
+        {
+          "date": "2026-05-09",
+          "count": 34
+        }
+      ],
+      "premium_alternative": [
+        {
+          "date": "2026-05-09",
+          "count": 34
+        }
+      ],
+      "near_equivalent": [
+        {
+          "date": "2026-05-09",
+          "count": 84
+        }
+      ]
+    },
+    "currentInstability": {
+      "unstableCount": 8,
+      "instabilityDetails": null
+    }
+  },
+  "validationMemory": {
+    "available": true,
+    "summary": {
+      "total": 30,
+      "unreviewed": 30,
+      "approved": 0,
+      "rejected": 0,
+      "flagged": 0,
+      "other": 0,
+      "reviewRate": 0,
+      "approvalRate": null
+    },
+    "byBrand": {
+      "sandvik-coromant-cnmg120408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "sandvik-coromant-wnmg080408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "iscar-cnmg120408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "iscar-cnmg120412": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "iscar-wnmg080408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "iscar-dnmg150608": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "kennametal-cnmg120408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "kennametal-cnmg120412": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "kennametal-dnmg150608": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "kennametal-wnmg080408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "korloy-cnmg120408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "korloy-cnmg120412": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "korloy-wnmg080408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "korloy-dnmg150608": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "mitsubishi-materials-cnmg120408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "mitsubishi-materials-cnmg120412": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "mitsubishi-materials-wnmg080408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "mitsubishi-materials-dnmg150608": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "seco-tools-cnmg120408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "seco-tools-cnmg120412": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "seco-tools-wnmg080408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "seco-tools-dnmg150608": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "tungaloy-cnmg120408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "tungaloy-cnmg120412": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "tungaloy-wnmg080408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "tungaloy-dnmg150608": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "walter-cnmg120408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "walter-cnmg120412": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "walter-dnmg150608": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      },
+      "walter-wnmg080408": {
+        "total": 1,
+        "approved": 0,
+        "rejected": 0,
+        "unreviewed": 1
+      }
+    },
+    "reviewTimeline": [],
+    "lastUpdated": "2026-05-09T21:42:41.898Z"
+  },
+  "calibrationMemory": {
+    "snapshots": [
+      {
+        "date": "2026-05-09",
+        "timestamp": "2026-05-09T22:02:30.979Z",
+        "source": "confidence-calibration-2026-05-09-2202.json",
+        "activeProfile": "conservativeRealCatalogProfile",
+        "benchmarkDrift": {
+          "confidenceDelta": 0,
+          "parserReliabilityDelta": 0,
+          "catalogQualityDelta": 13,
+          "malformedRateDelta": 0
+        },
+        "signalReliability": [
+          {
+            "signal": "insertSeriesDetected",
+            "currentWeight": 3,
+            "reliabilityScore": 0,
+            "classification": "low_value"
+          },
+          {
+            "signal": "isoProductCode",
+            "currentWeight": 20,
+            "reliabilityScore": 22,
+            "classification": "low_value"
+          },
+          {
+            "signal": "categoryDetected",
+            "currentWeight": 12,
+            "reliabilityScore": 24,
+            "classification": "low_value"
+          },
+          {
+            "signal": "validIso1832Format",
+            "currentWeight": 6,
+            "reliabilityScore": 30,
+            "classification": "low_value"
+          },
+          {
+            "signal": "coatingIdentified",
+            "currentWeight": 18,
+            "reliabilityScore": 44,
+            "classification": "unstable"
+          },
+          {
+            "signal": "gradeExtracted",
+            "currentWeight": 10,
+            "reliabilityScore": 59,
+            "classification": "unstable"
+          },
+          {
+            "signal": "dimensionsFromCode",
+            "currentWeight": 8,
+            "reliabilityScore": 59,
+            "classification": "unstable"
+          },
+          {
+            "signal": "isoGeometryCode",
+            "currentWeight": 8,
+            "reliabilityScore": 59,
+            "classification": "unstable"
+          },
+          {
+            "signal": "isoMaterialGroups",
+            "currentWeight": 12,
+            "reliabilityScore": 63,
+            "classification": "watch"
+          },
+          {
+            "signal": "chipbreakerDecoded",
+            "currentWeight": 3,
+            "reliabilityScore": 65,
+            "classification": "watch"
+          },
+          {
+            "signal": "multiMaterialCuttingData",
+            "currentWeight": 4,
+            "reliabilityScore": 100,
+            "classification": "reliable"
+          },
+          {
+            "signal": "topForMappingValid",
+            "currentWeight": 2,
+            "reliabilityScore": 100,
+            "classification": "reliable"
+          },
+          {
+            "signal": "gradeFamilyResolved",
+            "currentWeight": 4,
+            "reliabilityScore": 100,
+            "classification": "reliable"
+          }
+        ]
+      }
+    ],
+    "trends": {
+      "detectedIssues": {
+        "direction": "insufficient_data",
+        "dataPoints": 1,
+        "values": [
+          null
+        ]
+      }
+    },
+    "latestProfile": "conservativeRealCatalogProfile"
+  },
+  "pipelineLearning": {
+    "enrichmentHistory": [
+      {
+        "date": "2026-05-09",
+        "timestamp": "2026-05-09T21:42:41.853Z",
+        "source": "enrichment-run-2026-05-09.json",
+        "productCount": 30,
+        "failedCount": 0,
+        "avgInferenceConfidence": 100,
+        "applicationDistribution": {
+          "semi-finishing": 23,
+          "medium": 7
+        },
+        "toolLifeDistribution": {
+          "exceptional": 28,
+          "excellent": 2
+        }
+      }
+    ],
+    "orchestratorSnapshot": {
+      "lastRun": "2026-05-09T15:40:42.926Z",
+      "eventCount": 3,
+      "actionQueueSize": 3,
+      "pipelineStatus": {
+        "parse": {
+          "status": "available",
+          "parsedFiles": 1,
+          "logFile": "parse-run-2026-05-09.log"
+        },
+        "ingest": {
+          "status": "available",
+          "productCount": 2,
+          "importedInLastLog": 4,
+          "skippedInLastLog": 4,
+          "errorsInLastLog": 0,
+          "logFile": "ingestion-run-2026-05-09.log"
+        },
+        "enrich": {
+          "status": "available",
+          "enrichedCount": 2,
+          "lastRunAt": "2026-05-09T14:23:02.691Z"
+        },
+        "validate": {
+          "status": "available",
+          "total": 2,
+          "counts": {
+            "unreviewed": 2,
+            "reviewed": 0,
+            "verified": 0,
+            "rejected": 0
+          },
+          "backlog": 2,
+          "reviewedOrVerified": 0,
+          "coveragePct": 0
+        },
+        "benchmark": {
+          "status": "available",
+          "generatedAt": "2026-05-09T13:42:20.618Z",
+          "parserReliabilityScore": 100,
+          "catalogQualityScore": 67
+        }
+      },
+      "currentMetrics": {
+        "productCount": 2,
+        "enrichedCount": 2,
+        "validatedCount": 2,
+        "rejectedCount": 7,
+        "ocrCandidateCount": 3,
+        "missingImageCount": 2,
+        "lowConfidencePct": 0,
+        "parserReliabilityScore": 100,
+        "catalogQualityScore": 67,
+        "validationBacklog": 2,
+        "validationCoveragePct": 0,
+        "benchmarkRuns": 1
+      },
+      "previousMetrics": {
+        "lowConfidencePct": 0,
+        "ocrCandidateCount": 3,
+        "missingImageCount": 2,
+        "parserScore": 100,
+        "catalogScore": 67,
+        "latestBenchmarkGeneratedAt": "2026-05-09T13:42:20.618Z"
+      }
+    }
+  },
+  "detectedPatterns": {
+    "improving": [
+      {
+        "area": "catalog_quality",
+        "signal": "Catalog quality score is improving",
+        "delta": 13,
+        "evidence": "67 → 80"
+      }
+    ],
+    "degrading": [],
+    "recurringInstability": [
+      {
+        "signature": "xref:low_signal_confidence",
+        "persistenceRate": 100,
+        "totalOccurrences": 60,
+        "highSeverityTotal": 60,
+        "classification": "persistent"
+      },
+      {
+        "signature": "xref:iso_shape_plausible:insertCode+family+operations+materials",
+        "persistenceRate": 100,
+        "totalOccurrences": 12,
+        "highSeverityTotal": 12,
+        "classification": "persistent"
+      },
+      {
+        "signature": "conflict:coating_alias",
+        "persistenceRate": 100,
+        "totalOccurrences": 8,
+        "highSeverityTotal": 8,
+        "classification": "persistent"
+      },
+      {
+        "signature": "confidence:low_source_evidence",
+        "persistenceRate": 100,
+        "totalOccurrences": 4,
+        "highSeverityTotal": 4,
+        "classification": "persistent"
+      },
+      {
+        "signature": "normalization:missing_core_fields",
+        "persistenceRate": 100,
+        "totalOccurrences": 4,
+        "highSeverityTotal": 0,
+        "classification": "persistent"
+      },
+      {
+        "signature": "stress:incomplete_catalog",
+        "persistenceRate": null,
+        "avgDegradation": 76,
+        "maxDegradation": 76,
+        "occurrences": 3,
+        "classification": "critical_scenario"
+      },
+      {
+        "signature": "stress:malformed_pdf",
+        "persistenceRate": null,
+        "avgDegradation": 58,
+        "maxDegradation": 58,
+        "occurrences": 3,
+        "classification": "critical_scenario"
+      }
+    ],
+    "calibrationRegressions": []
+  },
+  "reliabilityScore": {
+    "composite": 58.2,
+    "rating": "adequate",
+    "dimensions": {
+      "confidenceStability": {
+        "score": 100,
+        "weight": 25
+      },
+      "stressResilience": {
+        "score": 50,
+        "weight": 20
+      },
+      "failureContainment": {
+        "score": 6,
+        "weight": 20
+      },
+      "crossReferenceTrust": {
+        "score": 60,
+        "weight": 15
+      },
+      "calibrationHealth": {
+        "score": 80,
+        "weight": 10
+      },
+      "validationThroughput": {
+        "score": 50,
+        "weight": 10
+      }
+    },
+    "previousComposite": 58.2,
+    "compositeShift": 0
+  },
+  "reliabilityHistory": [
+    {
+      "date": "2026-05-09",
+      "timestamp": "2026-05-09T22:11:21.298Z",
+      "composite": 58.2,
+      "rating": "adequate"
+    },
+    {
+      "date": "2026-05-09",
+      "timestamp": "2026-05-09T22:12:05.494Z",
+      "composite": 58.2,
+      "rating": "adequate"
+    }
+  ],
+  "learningRecords": [
+    {
+      "type": "warning",
+      "category": "degradation",
+      "area": "parser_reliability",
+      "signal": "Parser reliability score is declining",
+      "severity": "medium",
+      "evidence": "[object Object] → [object Object] over 2 runs",
+      "learnedAt": "2026-05-09T22:11:21.297Z",
+      "actionable": true,
+      "suggestedAction": "Check for new PDF formats that the parser cannot handle. Review ingestion error logs."
+    },
+    {
+      "type": "warning",
+      "category": "degradation",
+      "area": "catalog_quality",
+      "signal": "Catalog quality score is declining",
+      "severity": "medium",
+      "evidence": "[object Object] → [object Object]",
+      "learnedAt": "2026-05-09T22:11:21.297Z",
+      "actionable": true,
+      "suggestedAction": "Add more product categories (Milling, Drilling) and brands to improve catalog breadth."
+    },
+    {
+      "type": "warning",
+      "category": "recurring_instability",
+      "signature": "xref:low_signal_confidence",
+      "classification": "persistent",
+      "persistenceRate": 100,
+      "learnedAt": "2026-05-09T22:11:21.297Z",
+      "actionable": true,
+      "suggestedAction": "Review stress test fixtures targeting this failure mode. Consider adding defensive parsing for this scenario."
+    },
+    {
+      "type": "warning",
+      "category": "recurring_instability",
+      "signature": "xref:iso_shape_plausible:insertCode+family+operations+materials",
+      "classification": "persistent",
+      "persistenceRate": 100,
+      "learnedAt": "2026-05-09T22:11:21.297Z",
+      "actionable": true,
+      "suggestedAction": "Review stress test fixtures targeting this failure mode. Consider adding defensive parsing for this scenario."
+    },
+    {
+      "type": "warning",
+      "category": "recurring_instability",
+      "signature": "conflict:coating_alias",
+      "classification": "persistent",
+      "persistenceRate": 100,
+      "learnedAt": "2026-05-09T22:11:21.297Z",
+      "actionable": true,
+      "suggestedAction": "Review stress test fixtures targeting this failure mode. Consider adding defensive parsing for this scenario."
+    },
+    {
+      "type": "warning",
+      "category": "recurring_instability",
+      "signature": "confidence:low_source_evidence",
+      "classification": "persistent",
+      "persistenceRate": 100,
+      "learnedAt": "2026-05-09T22:11:21.297Z",
+      "actionable": true,
+      "suggestedAction": "Review stress test fixtures targeting this failure mode. Consider adding defensive parsing for this scenario."
+    },
+    {
+      "type": "warning",
+      "category": "recurring_instability",
+      "signature": "normalization:missing_core_fields",
+      "classification": "persistent",
+      "persistenceRate": 100,
+      "learnedAt": "2026-05-09T22:11:21.297Z",
+      "actionable": true,
+      "suggestedAction": "Review stress test fixtures targeting this failure mode. Consider adding defensive parsing for this scenario."
+    },
+    {
+      "type": "warning",
+      "category": "recurring_instability",
+      "signature": "stress:incomplete_catalog",
+      "classification": "critical_scenario",
+      "persistenceRate": null,
+      "learnedAt": "2026-05-09T22:11:21.297Z",
+      "actionable": true,
+      "suggestedAction": "Review stress test fixtures targeting this failure mode. Consider adding defensive parsing for this scenario."
+    },
+    {
+      "type": "warning",
+      "category": "recurring_instability",
+      "signature": "stress:malformed_pdf",
+      "classification": "critical_scenario",
+      "persistenceRate": null,
+      "learnedAt": "2026-05-09T22:11:21.297Z",
+      "actionable": true,
+      "suggestedAction": "Review stress test fixtures targeting this failure mode. Consider adding defensive parsing for this scenario."
+    },
+    {
+      "type": "alert",
+      "category": "low_reliability_dimension",
+      "dimension": "failureContainment",
+      "score": 6,
+      "learnedAt": "2026-05-09T22:11:21.297Z",
+      "actionable": true,
+      "suggestedAction": "Address persistent failure signatures — review root cause analysis for recurring patterns."
+    },
+    {
+      "type": "observation",
+      "category": "improvement",
+      "area": "catalog_quality",
+      "signal": "Catalog quality score is improving",
+      "evidence": "67 → 80",
+      "learnedAt": "2026-05-09T22:12:05.491Z",
+      "actionable": false
+    }
+  ]
+}

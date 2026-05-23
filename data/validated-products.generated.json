@@ -1,0 +1,767 @@
+[
+  {
+    "id": "sandvik-coromant-cnmg120408-mf",
+    "brand": "Sandvik Coromant",
+    "productName": "GC4325",
+    "grade": "GC4325",
+    "coating": "TiAlN (PVD)",
+    "geometry": "Negative — CNMG (rhombic-80)",
+    "isoCodes": [
+      "CNMG120408-MF"
+    ],
+    "operations": [
+      "Turning"
+    ],
+    "materials": [
+      "M",
+      "P"
+    ],
+    "vcRange": "86–346",
+    "fnRange": "0.08–0.45",
+    "apRange": "—–8",
+    "cuttingData": {
+      "Turning-M": {
+        "vc": "86–270",
+        "fn": "0.08–0.35",
+        "ap": "6",
+        "note": "Stainless M20–M35. Positive geometry, sharp edge. Dry machining capable."
+      },
+      "Turning-P": {
+        "vc": "162–346",
+        "fn": "0.15–0.45",
+        "ap": "8",
+        "note": "Carbon/alloy steel P15–P35. Continuous cut. Dry machining capable."
+      }
+    },
+    "toolLife": "High oxidation resistance — extended tool life in semi-dry/dry machining",
+    "applicationNotes": "TiAlN (PVD) GC4325 for turning on ISO material group(s): M (Stainless Steel), P (Steel). Capable of dry machining. Max operating temperature 900°C. Imported from PDF catalogue — verify cutting parameters with manufacturer documentation before production use.",
+    "exactEquivalents": [],
+    "functionalAlternatives": [],
+    "valueAlternatives": [],
+    "buyLinks": [],
+    "imageUrl": "",
+    "image": "tooladvisor_insert_placeholder.png",
+    "topFor": [
+      "Turning-M",
+      "Turning-P"
+    ],
+    "tags": [
+      "M",
+      "P",
+      "negative",
+      "pvd",
+      "stainless-steel",
+      "steel",
+      "tialn",
+      "turning"
+    ],
+    "searchKeywords": [
+      "M",
+      "P",
+      "alloy",
+      "austenitic",
+      "carbon",
+      "cnmg",
+      "cnmg120408-mf",
+      "duplex",
+      "ferritic",
+      "gc4325",
+      "pvd",
+      "san",
+      "sandvik",
+      "sandvik coromant",
+      "stainless",
+      "stainless steel",
+      "steel",
+      "test",
+      "tialn (pvd)",
+      "tool",
+      "turning"
+    ],
+    "slug": "sandvik-coromant-cnmg120408-mf",
+    "crossRefProfile": {
+      "insertCode": "CNMG",
+      "family": "CNMG-series",
+      "operations": [
+        "Turning"
+      ],
+      "materials": [
+        "M",
+        "P"
+      ]
+    },
+    "crossRefMapped": true,
+    "crossRefConfidence": 45,
+    "crossRefSignalHits": [
+      "insertCode",
+      "family",
+      "operations",
+      "materials"
+    ],
+    "sourceType": "pdf_import",
+    "ingestionStatus": "pending_review",
+    "status": "draft",
+    "publicListing": false,
+    "sourcePDF": "test-sandvik-cnmg.pdf",
+    "parsedAt": "2026-05-09T12:39:30.673Z",
+    "importedAt": "2026-05-09T13:05:56.616Z",
+    "rawParsed": {
+      "code": "CNMG120408-MF",
+      "category": "insert",
+      "grade": "GC4325",
+      "coating": "TiAlN (PVD)",
+      "materials": [
+        "M",
+        "P"
+      ],
+      "dimensions": {
+        "edgeLengthCode": "12",
+        "thicknessCode": "04",
+        "noseRadiusCode": "08",
+        "noseRadius_mm": 0.8,
+        "ic": 12.7,
+        "thickness": 0.8,
+        "noseRadius": 0.8
+      },
+      "geometry": {
+        "code": "CNMG",
+        "shape": "rhombic-80"
+      }
+    },
+    "confidence": 100,
+    "confidenceBreakdown": [
+      "+20 ISO product code",
+      "+18 coating identified",
+      "+12 category detected",
+      "+12 ISO material groups",
+      "+10 grade extracted",
+      "+8 dimensions from code",
+      "+8 ISO geometry code",
+      "+6 valid ISO 1832 format",
+      "+4 multi-material cutting data",
+      "+2 topFor mapping valid"
+    ],
+    "insertFamily": {
+      "isoFamily": "CNMG",
+      "shapeChar": "C",
+      "clearanceChar": "N",
+      "shapeName": "rhombic-80",
+      "orientation": "Negative",
+      "includedAngle_deg": 80,
+      "cornersPerInsert": 2,
+      "strengthRating": 3,
+      "profilingCapable": false,
+      "clearanceDeg": 0,
+      "typicalApplication": "General turning and facing",
+      "turningType": "both",
+      "basis": "iso-code"
+    },
+    "applicationProfile": {
+      "primary": "semi-finishing",
+      "secondary": null,
+      "noseRadius_mm": 0.8,
+      "vcBias": "medium-high",
+      "fnBias": "medium",
+      "apBias": "medium",
+      "orientation": "Negative",
+      "chipbreaker": "MF",
+      "chipbNote": "Finishing chipbreaker designation",
+      "orientationNote": "Negative geometry increases cutting force — consider positive insert for true finishing.",
+      "basis": [
+        "nose-radius-0.8mm",
+        "chipbreaker-suffix",
+        "negative-geometry"
+      ],
+      "_chipbSpeculative": true
+    },
+    "inferredOperations": [
+      "External turning",
+      "Facing",
+      "Finish turning"
+    ],
+    "machineTypes": {
+      "compatible": [
+        {
+          "machine": "cnc_lathe",
+          "operation": "Turning"
+        },
+        {
+          "machine": "turning_center",
+          "operation": "Turning"
+        },
+        {
+          "machine": "mill_turn",
+          "operation": "Turning"
+        }
+      ],
+      "minPower_kw": 7.5,
+      "notes": "CNC turning centre preferred for production. Manual lathe feasible for prototyping."
+    },
+    "rigidityProfile": {
+      "level": 3,
+      "label": "moderate",
+      "requiresRigidFixturing": false,
+      "sensitiveToVibration": false,
+      "maxOverhangRatioL_D": 4,
+      "reasons": [
+        "Negative geometry increases cutting forces — requires rigid clamping"
+      ]
+    },
+    "coatingIntelligence": {
+      "family": "pvd",
+      "subfamily": "tialn",
+      "displayName": "TiAlN (PVD)",
+      "maxTemp_C": 800,
+      "hotHardness": "very-high",
+      "dryMachining": true,
+      "oxidationResistance": "excellent",
+      "wearMechanisms": [
+        "abrasion",
+        "oxidation"
+      ],
+      "bestFor": [
+        "P",
+        "M",
+        "K",
+        "S"
+      ],
+      "avoidFor": [
+        "N"
+      ],
+      "friction": "medium",
+      "thickness_um": "2–4",
+      "brittleness": "medium",
+      "interruptedCuts": "moderate",
+      "notes": "Aluminium-rich TiAlN forms protective Al₂O₃ layer at high temp. Excellent in dry/semi-dry machining. Avoid N-group (BUE risk)."
+    },
+    "coolantProfile": {
+      "preferred": "flood",
+      "alternatives": [
+        "mql"
+      ],
+      "avoid": [
+        "dry"
+      ],
+      "highPressureRecommended": false,
+      "throughToolRecommended": false,
+      "minPressure_bar": null,
+      "reason": "Stainless steel work-hardens rapidly — flood coolant prevents BUE and extends tool life"
+    },
+    "toolLifeCategory": {
+      "category": "exceptional",
+      "relativeIndex": 88,
+      "factors": [
+        "TiAlN (PVD) coating base index: 72",
+        "+8 optimal for ISO M-group (Stainless Steel)",
+        "+8 optimal for ISO P-group (Steel)"
+      ],
+      "basis": [
+        "coating-type",
+        "coating-material-match",
+        "coating-material-match"
+      ],
+      "degradationMode": "abrasion",
+      "maintenanceNote": "Monitor flank wear — re-index at VB 0.3mm",
+      "coatingBenefit": "significant"
+    },
+    "materialCompatibility": {
+      "P": {
+        "score": 90,
+        "label": "Excellent",
+        "confidence": "high",
+        "basis": [
+          "product-declared",
+          "cutting-data-present",
+          "coating-best-for"
+        ],
+        "notes": [
+          "Declared compatible in product data",
+          "Cutting data available (162–346 m/min)",
+          "Coating optimal for P-group"
+        ],
+        "vcRange": "162–346 m/min",
+        "fnRange": "0.15–0.45 mm/rev"
+      },
+      "M": {
+        "score": 90,
+        "label": "Excellent",
+        "confidence": "high",
+        "basis": [
+          "product-declared",
+          "cutting-data-present",
+          "coating-best-for"
+        ],
+        "notes": [
+          "Declared compatible in product data",
+          "Cutting data available (86–270 m/min)",
+          "Coating optimal for M-group"
+        ],
+        "vcRange": "86–270 m/min",
+        "fnRange": "0.08–0.35 mm/rev"
+      },
+      "K": {
+        "score": 30,
+        "label": "Limited",
+        "confidence": "low",
+        "basis": [
+          "coating-best-for"
+        ],
+        "notes": [
+          "Coating optimal for K-group"
+        ]
+      },
+      "N": {
+        "score": 0,
+        "label": "Not recommended",
+        "confidence": "medium",
+        "basis": [
+          "coating-avoid-for",
+          "geometry-orientation"
+        ],
+        "notes": [
+          "Coating incompatible with N-group — risk of BUE or rapid wear",
+          "Negative geometry can cause BUE in non-ferrous materials"
+        ]
+      },
+      "S": {
+        "score": 30,
+        "label": "Limited",
+        "confidence": "low",
+        "basis": [
+          "coating-best-for"
+        ],
+        "notes": [
+          "Coating optimal for S-group"
+        ]
+      },
+      "H": {
+        "score": 0,
+        "label": "Not recommended",
+        "confidence": "low",
+        "basis": [],
+        "notes": []
+      }
+    },
+    "engineeringHints": [
+      "Nose radius 0.8mm — balanced semi-finishing geometry. Max recommended fn = 0.40 mm/rev for Ra <1.6μm.",
+      "Negative insert geometry requires 10+ kW spindle power and rigid clamping. Positive-lock toolholder recommended.",
+      "TiAlN (PVD) supports dry machining. If using coolant, ensure consistent flood — intermittent coolant causes thermal fatigue.",
+      "TiAlN (PVD) rated to 800°C — do not reduce cutting speed pre-emptively. Allow tool to reach operating temperature.",
+      "Avoid using on ISO group(s): N (Non-Ferrous) — Aluminium-rich TiAlN forms protective Al₂O₃ layer at high temp.",
+      "Negative geometry increases cutting force — consider positive insert for true finishing."
+    ],
+    "recommendedUseCases": [
+      "Semi-finishing turning of ISO P-group (Steel) — Vc 162–346 m/min, fn 0.15–0.45 mm/rev, flood coolant",
+      "Semi-finishing turning of ISO M-group (Stainless Steel) — Vc 86–270 m/min, fn 0.08–0.35 mm/rev, flood coolant"
+    ],
+    "avoidUseCases": [
+      "ISO N-group machining (Non-Ferrous) — coating causes built-up edge (BUE) and adhesion — use DLC or Uncoated instead.",
+      "Low-rigidity setups, thin-walled workpieces — negative geometry generates high cutting forces and vibration.",
+      "Milling operations — insert geometry and holder are optimised for turning, not milling.",
+      "Drilling — use dedicated drilling inserts or solid carbide drills for hole-making."
+    ],
+    "_enrichment": {
+      "version": "1.0.0",
+      "enrichedAt": "2026-05-09T14:23:02.690Z",
+      "inferenceConfidence": 100,
+      "sourceProductId": "sandvik-coromant-cnmg120408-mf",
+      "hadISOCode": true,
+      "hadCoatingData": true,
+      "hadCuttingData": true
+    },
+    "_validation": {
+      "version": "1.0.0",
+      "state": "unreviewed",
+      "notes": "",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "hasOverrides": false,
+      "overrideFields": [],
+      "mergedAt": "2026-05-09T14:53:21.728Z"
+    }
+  },
+  {
+    "id": "sandvik-coromant-wnmg080408-pm",
+    "brand": "Sandvik Coromant",
+    "productName": "GC4325",
+    "grade": "GC4325",
+    "coating": "TiAlN (PVD)",
+    "geometry": "Negative — WNMG (trigon-80)",
+    "isoCodes": [
+      "WNMG080408-PM"
+    ],
+    "operations": [
+      "Turning"
+    ],
+    "materials": [
+      "M",
+      "P"
+    ],
+    "vcRange": "86–346",
+    "fnRange": "0.08–0.45",
+    "apRange": "—–8",
+    "cuttingData": {
+      "Turning-M": {
+        "vc": "86–270",
+        "fn": "0.08–0.35",
+        "ap": "6",
+        "note": "Stainless M20–M35. Positive geometry, sharp edge. Dry machining capable."
+      },
+      "Turning-P": {
+        "vc": "162–346",
+        "fn": "0.15–0.45",
+        "ap": "8",
+        "note": "Carbon/alloy steel P15–P35. Continuous cut. Dry machining capable."
+      }
+    },
+    "toolLife": "High oxidation resistance — extended tool life in semi-dry/dry machining",
+    "applicationNotes": "TiAlN (PVD) GC4325 for turning on ISO material group(s): M (Stainless Steel), P (Steel). Capable of dry machining. Max operating temperature 900°C. Imported from PDF catalogue — verify cutting parameters with manufacturer documentation before production use.",
+    "exactEquivalents": [],
+    "functionalAlternatives": [],
+    "valueAlternatives": [],
+    "buyLinks": [],
+    "imageUrl": "",
+    "image": "tooladvisor_insert_placeholder.png",
+    "topFor": [
+      "Turning-M",
+      "Turning-P"
+    ],
+    "tags": [
+      "M",
+      "P",
+      "negative",
+      "pvd",
+      "stainless-steel",
+      "steel",
+      "tialn",
+      "turning"
+    ],
+    "searchKeywords": [
+      "M",
+      "P",
+      "alloy",
+      "austenitic",
+      "carbon",
+      "cnmg",
+      "duplex",
+      "ferritic",
+      "gc4325",
+      "pvd",
+      "san",
+      "sandvik",
+      "sandvik coromant",
+      "stainless",
+      "stainless steel",
+      "steel",
+      "test",
+      "tialn (pvd)",
+      "tool",
+      "turning",
+      "wnmg",
+      "wnmg080408-pm"
+    ],
+    "slug": "sandvik-coromant-wnmg080408-pm",
+    "crossRefProfile": {
+      "insertCode": "WNMG",
+      "family": "WNMG-series",
+      "operations": [
+        "Turning"
+      ],
+      "materials": [
+        "M",
+        "P"
+      ]
+    },
+    "crossRefMapped": true,
+    "crossRefConfidence": 45,
+    "crossRefSignalHits": [
+      "insertCode",
+      "family",
+      "operations",
+      "materials"
+    ],
+    "sourceType": "pdf_import",
+    "ingestionStatus": "pending_review",
+    "status": "draft",
+    "publicListing": false,
+    "sourcePDF": "test-sandvik-cnmg.pdf",
+    "parsedAt": "2026-05-09T12:39:30.674Z",
+    "importedAt": "2026-05-09T13:05:56.616Z",
+    "rawParsed": {
+      "code": "WNMG080408-PM",
+      "category": "insert",
+      "grade": "GC4325",
+      "coating": "TiAlN (PVD)",
+      "materials": [
+        "M",
+        "P"
+      ],
+      "dimensions": {
+        "edgeLengthCode": "08",
+        "thicknessCode": "04",
+        "noseRadiusCode": "08",
+        "noseRadius_mm": 0.8,
+        "ic": 12.7,
+        "thickness": 0.8,
+        "noseRadius": 0.8
+      },
+      "geometry": {
+        "code": "WNMG",
+        "shape": "trigon-80"
+      }
+    },
+    "confidence": 100,
+    "confidenceBreakdown": [
+      "+20 ISO product code",
+      "+18 coating identified",
+      "+12 category detected",
+      "+12 ISO material groups",
+      "+10 grade extracted",
+      "+8 dimensions from code",
+      "+8 ISO geometry code",
+      "+6 valid ISO 1832 format",
+      "+4 multi-material cutting data",
+      "+2 topFor mapping valid"
+    ],
+    "insertFamily": {
+      "isoFamily": "WNMG",
+      "shapeChar": "W",
+      "clearanceChar": "N",
+      "shapeName": "trigon-80",
+      "orientation": "Negative",
+      "includedAngle_deg": 80,
+      "cornersPerInsert": 3,
+      "strengthRating": 3,
+      "profilingCapable": true,
+      "clearanceDeg": 0,
+      "typicalApplication": "Copy turning, profiling",
+      "turningType": "both",
+      "basis": "iso-code"
+    },
+    "applicationProfile": {
+      "primary": "semi-finishing",
+      "secondary": null,
+      "noseRadius_mm": 0.8,
+      "vcBias": "medium-high",
+      "fnBias": "medium",
+      "apBias": "medium",
+      "orientation": "Negative",
+      "chipbreaker": "PM",
+      "chipbNote": "Finishing chipbreaker designation",
+      "orientationNote": "Negative geometry increases cutting force — consider positive insert for true finishing.",
+      "basis": [
+        "nose-radius-0.8mm",
+        "chipbreaker-suffix",
+        "negative-geometry"
+      ],
+      "_chipbSpeculative": true
+    },
+    "inferredOperations": [
+      "External turning",
+      "Facing",
+      "Copy turning",
+      "Finish turning"
+    ],
+    "machineTypes": {
+      "compatible": [
+        {
+          "machine": "cnc_lathe",
+          "operation": "Turning"
+        },
+        {
+          "machine": "turning_center",
+          "operation": "Turning"
+        },
+        {
+          "machine": "mill_turn",
+          "operation": "Turning"
+        }
+      ],
+      "minPower_kw": 7.5,
+      "notes": "CNC turning centre preferred for production. Manual lathe feasible for prototyping."
+    },
+    "rigidityProfile": {
+      "level": 3,
+      "label": "moderate",
+      "requiresRigidFixturing": false,
+      "sensitiveToVibration": false,
+      "maxOverhangRatioL_D": 4,
+      "reasons": [
+        "Negative geometry increases cutting forces — requires rigid clamping"
+      ]
+    },
+    "coatingIntelligence": {
+      "family": "pvd",
+      "subfamily": "tialn",
+      "displayName": "TiAlN (PVD)",
+      "maxTemp_C": 800,
+      "hotHardness": "very-high",
+      "dryMachining": true,
+      "oxidationResistance": "excellent",
+      "wearMechanisms": [
+        "abrasion",
+        "oxidation"
+      ],
+      "bestFor": [
+        "P",
+        "M",
+        "K",
+        "S"
+      ],
+      "avoidFor": [
+        "N"
+      ],
+      "friction": "medium",
+      "thickness_um": "2–4",
+      "brittleness": "medium",
+      "interruptedCuts": "moderate",
+      "notes": "Aluminium-rich TiAlN forms protective Al₂O₃ layer at high temp. Excellent in dry/semi-dry machining. Avoid N-group (BUE risk)."
+    },
+    "coolantProfile": {
+      "preferred": "flood",
+      "alternatives": [
+        "mql"
+      ],
+      "avoid": [
+        "dry"
+      ],
+      "highPressureRecommended": false,
+      "throughToolRecommended": false,
+      "minPressure_bar": null,
+      "reason": "Stainless steel work-hardens rapidly — flood coolant prevents BUE and extends tool life"
+    },
+    "toolLifeCategory": {
+      "category": "exceptional",
+      "relativeIndex": 88,
+      "factors": [
+        "TiAlN (PVD) coating base index: 72",
+        "+8 optimal for ISO M-group (Stainless Steel)",
+        "+8 optimal for ISO P-group (Steel)"
+      ],
+      "basis": [
+        "coating-type",
+        "coating-material-match",
+        "coating-material-match"
+      ],
+      "degradationMode": "abrasion",
+      "maintenanceNote": "Monitor flank wear — re-index at VB 0.3mm",
+      "coatingBenefit": "significant"
+    },
+    "materialCompatibility": {
+      "P": {
+        "score": 90,
+        "label": "Excellent",
+        "confidence": "high",
+        "basis": [
+          "product-declared",
+          "cutting-data-present",
+          "coating-best-for"
+        ],
+        "notes": [
+          "Declared compatible in product data",
+          "Cutting data available (162–346 m/min)",
+          "Coating optimal for P-group"
+        ],
+        "vcRange": "162–346 m/min",
+        "fnRange": "0.15–0.45 mm/rev"
+      },
+      "M": {
+        "score": 90,
+        "label": "Excellent",
+        "confidence": "high",
+        "basis": [
+          "product-declared",
+          "cutting-data-present",
+          "coating-best-for"
+        ],
+        "notes": [
+          "Declared compatible in product data",
+          "Cutting data available (86–270 m/min)",
+          "Coating optimal for M-group"
+        ],
+        "vcRange": "86–270 m/min",
+        "fnRange": "0.08–0.35 mm/rev"
+      },
+      "K": {
+        "score": 30,
+        "label": "Limited",
+        "confidence": "low",
+        "basis": [
+          "coating-best-for"
+        ],
+        "notes": [
+          "Coating optimal for K-group"
+        ]
+      },
+      "N": {
+        "score": 0,
+        "label": "Not recommended",
+        "confidence": "medium",
+        "basis": [
+          "coating-avoid-for",
+          "geometry-orientation"
+        ],
+        "notes": [
+          "Coating incompatible with N-group — risk of BUE or rapid wear",
+          "Negative geometry can cause BUE in non-ferrous materials"
+        ]
+      },
+      "S": {
+        "score": 30,
+        "label": "Limited",
+        "confidence": "low",
+        "basis": [
+          "coating-best-for"
+        ],
+        "notes": [
+          "Coating optimal for S-group"
+        ]
+      },
+      "H": {
+        "score": 0,
+        "label": "Not recommended",
+        "confidence": "low",
+        "basis": [],
+        "notes": []
+      }
+    },
+    "engineeringHints": [
+      "Nose radius 0.8mm — balanced semi-finishing geometry. Max recommended fn = 0.40 mm/rev for Ra <1.6μm.",
+      "Negative insert geometry requires 10+ kW spindle power and rigid clamping. Positive-lock toolholder recommended.",
+      "TiAlN (PVD) supports dry machining. If using coolant, ensure consistent flood — intermittent coolant causes thermal fatigue.",
+      "TiAlN (PVD) rated to 800°C — do not reduce cutting speed pre-emptively. Allow tool to reach operating temperature.",
+      "Avoid using on ISO group(s): N (Non-Ferrous) — Aluminium-rich TiAlN forms protective Al₂O₃ layer at high temp.",
+      "Negative geometry increases cutting force — consider positive insert for true finishing."
+    ],
+    "recommendedUseCases": [
+      "Semi-finishing turning of ISO P-group (Steel) — Vc 162–346 m/min, fn 0.15–0.45 mm/rev, flood coolant",
+      "Semi-finishing turning of ISO M-group (Stainless Steel) — Vc 86–270 m/min, fn 0.08–0.35 mm/rev, flood coolant",
+      "Copy turning and profiling operations — W-shape insert provides access into profiles and relief angles."
+    ],
+    "avoidUseCases": [
+      "ISO N-group machining (Non-Ferrous) — coating causes built-up edge (BUE) and adhesion — use DLC or Uncoated instead.",
+      "Low-rigidity setups, thin-walled workpieces — negative geometry generates high cutting forces and vibration.",
+      "Milling operations — insert geometry and holder are optimised for turning, not milling.",
+      "Drilling — use dedicated drilling inserts or solid carbide drills for hole-making."
+    ],
+    "_enrichment": {
+      "version": "1.0.0",
+      "enrichedAt": "2026-05-09T14:23:02.690Z",
+      "inferenceConfidence": 100,
+      "sourceProductId": "sandvik-coromant-wnmg080408-pm",
+      "hadISOCode": true,
+      "hadCoatingData": true,
+      "hadCuttingData": true
+    },
+    "_validation": {
+      "version": "1.0.0",
+      "state": "unreviewed",
+      "notes": "",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "hasOverrides": false,
+      "overrideFields": [],
+      "mergedAt": "2026-05-09T14:53:21.728Z"
+    }
+  }
+]

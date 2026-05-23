@@ -22,9 +22,10 @@
 <script src="supabase/client.js"></script>
 </head>
 <body class="font-body-md text-on-surface selection:bg-primary/20">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <!-- Sidebar Navigation -->
 <!-- Main Content Area -->
-<main class="ml-sidebar-width min-h-screen">
+<main id="main-content" class="ml-sidebar-width min-h-screen">
 <!-- Top Navigation -->
 <!-- Hero -->
 <section class="relative overflow-hidden px-gutter py-20 lg:py-24 bg-gradient-to-br from-surface via-surface-container-low to-border-warm">
@@ -342,11 +343,11 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
         <div>
           <label class="block font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Insert Code <span class="normal-case text-on-surface-variant/70">(optional)</span></label>
-          <input type="text" name="insertCode" id="advisor-insert" placeholder="e.g. CNMG120408" maxlength="40" class="w-full px-4 py-3 rounded-lg border border-border-warm bg-white text-primary font-mono uppercase focus:outline-none focus:border-primary"/>
+          <input aria-label="e.g. CNMG120408" type="text" name="insertCode" id="advisor-insert" placeholder="e.g. CNMG120408" maxlength="40" class="w-full px-4 py-3 rounded-lg border border-border-warm bg-white text-primary font-mono uppercase focus:outline-none focus:border-primary"/>
         </div>
         <div>
           <label class="block font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Machine / Setup <span class="normal-case text-on-surface-variant/70">(optional)</span></label>
-          <input type="text" name="machine" id="advisor-machine" placeholder="e.g. DMG Mori NLX 2500, 25 kW" maxlength="120" class="w-full px-4 py-3 rounded-lg border border-border-warm bg-white text-primary focus:outline-none focus:border-primary"/>
+          <input aria-label="e.g. DMG Mori NLX 2500, 25 kW" type="text" name="machine" id="advisor-machine" placeholder="e.g. DMG Mori NLX 2500, 25 kW" maxlength="120" class="w-full px-4 py-3 rounded-lg border border-border-warm bg-white text-primary focus:outline-none focus:border-primary"/>
         </div>
       </div>
       <div class="mb-5">

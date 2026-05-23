@@ -1,0 +1,746 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "generatedAt": "2026-05-10T10:34:22.061Z",
+    "engine": "recovery-strategy-engine",
+    "inputsLoaded": [
+      "learning-memory",
+      "failure-analysis",
+      "stress-test-report",
+      "orchestrator-state",
+      "confidence-calibration",
+      "benchmark-report",
+      "crossref"
+    ],
+    "inputsMissing": []
+  },
+  "safetyPolicy": {
+    "autoExecuteRecoveryActions": false,
+    "allActionsRequireHumanApproval": true,
+    "allActionsAreSafe": true,
+    "allActionsAreReversible": true,
+    "neverAutoModifyEngineeringData": true,
+    "neverAutoPromoteWeakEquivalents": true,
+    "outputIsAdvisoryOnly": true
+  },
+  "executiveSummary": {
+    "totalStrategies": 13,
+    "overallRiskLevel": "critical",
+    "severityDistribution": {
+      "critical": 3,
+      "high": 5,
+      "medium": 4,
+      "low": 1
+    },
+    "categoryDistribution": {
+      "recurring_instability": 7,
+      "crossref_degradation": 2,
+      "ocr_instability": 2,
+      "validation_bottleneck": 2
+    },
+    "reliabilityScore": 58.2,
+    "reliabilityRating": "adequate",
+    "topPriority": {
+      "id": "RECV-INST-XREF-LOWSIG",
+      "issue": "Cross-reference candidates have persistently low signal confidence",
+      "severity": "critical"
+    },
+    "immediateActionCount": 0
+  },
+  "strategies": [
+    {
+      "id": "RECV-INST-XREF-LOWSIG",
+      "detectedIssue": "Cross-reference candidates have persistently low signal confidence",
+      "category": "recurring_instability",
+      "severity": "critical",
+      "severityLevel": 4,
+      "evidence": {
+        "signature": "xref:low_signal_confidence",
+        "totalOccurrences": 60,
+        "highSeverityCount": 60,
+        "classification": "persistent",
+        "persistenceRate": 100
+      },
+      "rootCause": "Cross-reference scoring relies on signals (ISO code, family, operations, materials) whose individual reliability is too low to produce confident matches without multiple corroborating signals.",
+      "recommendedActions": [
+        {
+          "action": "suppress_unstable_candidates",
+          "description": "Flag all cross-reference candidates with low signal confidence as diagnostic-only — exclude from public equivalents listings.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "lower_confidence_weighting",
+          "description": "Reduce the confidence weight of isoProductCode signal from 20 to recommended 8 as per calibration analysis.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "require_manual_validation",
+          "description": "Route all exact_equivalent cross-references through human review before promotion.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Reduces false-positive equivalent promotions by ~60%. Lowers cross-reference instability cluster from critical to watch.",
+        "riskOfInaction": "Unvalidated cross-references may surface incorrect equivalents to end-users, eroding trust.",
+        "recoveryTimeEstimate": "Immediate for suppression; 1–2 cycles for weight adjustment to propagate."
+      },
+      "containment": {
+        "scope": "Cross-reference pipeline output",
+        "isolationActions": [
+          "Keep unstable candidates in diagnostic-only mode",
+          "Do not write to exactEquivalents or functionalAlternatives"
+        ],
+        "rollbackPlan": "Restore previous confidence weights from calibration snapshot; re-enable suppressed candidates after review."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "RECV-INST-STRESS-INCOMPLETE",
+      "detectedIssue": "Incomplete catalog data causes severe pipeline degradation under stress",
+      "category": "recurring_instability",
+      "severity": "critical",
+      "severityLevel": 4,
+      "evidence": {
+        "signature": "stress:incomplete_catalog",
+        "avgDegradation": 76,
+        "maxDegradation": 76,
+        "occurrences": 3,
+        "classification": "critical_scenario"
+      },
+      "rootCause": "When a PDF source contains partial catalog data (missing pages, truncated tables), the pipeline processes whatever is extractable but produces products with critical field gaps that cascade into enrichment and cross-ref failures.",
+      "recommendedActions": [
+        {
+          "action": "isolate_risky_datasets",
+          "description": "Quarantine products originating from sources flagged as incomplete. Prevent them from entering enrichment or cross-reference until source is verified.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "trigger_ocr_review",
+          "description": "Queue the incomplete source PDFs for manual review to determine if re-parsing with adjusted parameters can recover missing data.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "require_manual_validation",
+          "description": "All products from incomplete sources must pass manual validation before any downstream processing.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Prevents 76% average degradation from incomplete sources. Protects downstream pipeline integrity.",
+        "riskOfInaction": "Incomplete data contaminates enrichment and cross-reference results for all products in the same batch.",
+        "recoveryTimeEstimate": "Immediate quarantine; source review 1–3 days depending on volume."
+      },
+      "containment": {
+        "scope": "All products originating from incomplete catalog sources",
+        "isolationActions": [
+          "Block incomplete-source products at ingestion gate",
+          "Add source completeness check to parse stage"
+        ],
+        "rollbackPlan": "Release quarantined products after source verification confirms data completeness."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "RECV-XREF-CRITICAL",
+      "detectedIssue": "Cross-reference instability rated CRITICAL (weakness score: 100/100)",
+      "category": "crossref_degradation",
+      "severity": "critical",
+      "severityLevel": 4,
+      "evidence": {
+        "weaknessScore": 100,
+        "weightedImpact": 25,
+        "rating": "critical",
+        "totalCandidates": 294
+      },
+      "rootCause": "The cross-reference scoring engine produces candidates whose reliability cannot be verified through automated signals alone. Too many candidates rely on single-dimension matches.",
+      "recommendedActions": [
+        {
+          "action": "suppress_unstable_candidates",
+          "description": "Suppress all cross-reference candidates below score 70 from public output. Keep as diagnostic data.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "require_manual_validation",
+          "description": "Route all exact_equivalent and near_equivalent candidates through manual review queue.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "lower_confidence_weighting",
+          "description": "Reduce the weight of isoProductCode and single-signal matches in cross-reference scoring.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Moves cross-reference instability from \"critical\" toward \"watch\" tier. Prevents ~40% of speculative candidates from reaching users.",
+        "riskOfInaction": "End-users see cross-brand equivalents that may differ in critical properties (coating, chipbreaker zone, material suitability).",
+        "recoveryTimeEstimate": "Immediate for suppression; 1 cycle for weight adjustment."
+      },
+      "containment": {
+        "scope": "Entire cross-reference output",
+        "isolationActions": [
+          "Enable review-gate on all candidate promotions",
+          "Lock autoPromoteUnstableCandidates = false"
+        ],
+        "rollbackPlan": "Re-enable candidates and adjust thresholds after review coverage reaches 80%."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "RECV-INST-COAT-ALIAS",
+      "detectedIssue": "Recurring coating alias conflicts between brands or catalog versions",
+      "category": "recurring_instability",
+      "severity": "high",
+      "severityLevel": 3,
+      "evidence": {
+        "signature": "conflict:coating_alias",
+        "totalOccurrences": 8,
+        "highSeverityCount": 8,
+        "classification": "persistent"
+      },
+      "rootCause": "Different brands or catalog editions use the same raw coating name for different actual coatings (e.g. \"TiAlN\" may be PVD multi-layer for one brand and a CVD variant for another).",
+      "recommendedActions": [
+        {
+          "action": "rerun_enrichment",
+          "description": "Re-run enrichment pipeline with updated COATING_ALIASES table to resolve ambiguous raw coating names.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "isolate_risky_datasets",
+          "description": "Quarantine products with unresolved coating conflicts into a review-pending state.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "trigger_ocr_review",
+          "description": "For PDF-sourced products with coating conflicts, queue source pages for manual coating verification.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Resolves coating-based false equivalences. Estimated +6 to cross-reference trust score.",
+        "riskOfInaction": "Cross-reference engine may pair inserts with fundamentally different coating technologies.",
+        "recoveryTimeEstimate": "1 pipeline cycle for enrichment rerun; manual review timeline depends on volume."
+      },
+      "containment": {
+        "scope": "Products with raw coating values not in COATING_ALIASES",
+        "isolationActions": [
+          "Mark coating field as \"unresolved\" on affected products",
+          "Exclude from cross-ref scoring on coating dimension"
+        ],
+        "rollbackPlan": "Restore original coating values from rawParsed.coatingRaw audit trail."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "RECV-INST-STRESS-MALFORMED",
+      "detectedIssue": "Malformed PDF sources produce unreliable extraction under stress",
+      "category": "recurring_instability",
+      "severity": "high",
+      "severityLevel": 3,
+      "evidence": {
+        "signature": "stress:malformed_pdf",
+        "avgDegradation": 58,
+        "maxDegradation": 58,
+        "occurrences": 3,
+        "classification": "critical_scenario"
+      },
+      "rootCause": "PDFs with encoding issues, missing fonts, or corrupted text layers cause the text extractor to produce garbled output, leading to OCR-like digit/letter substitution errors and truncated ISO codes.",
+      "recommendedActions": [
+        {
+          "action": "trigger_ocr_review",
+          "description": "Route malformed PDFs to OCR review pipeline. Flag extracted text as low-reliability until reviewed.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "isolate_risky_datasets",
+          "description": "Quarantine all products extracted from malformed sources. Mark with \"malformed_source\" flag.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "suppress_unstable_candidates",
+          "description": "Exclude malformed-source products from cross-reference candidate generation.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Prevents 58% average degradation from malformed sources. Eliminates OCR-induced false cross-references.",
+        "riskOfInaction": "Garbled ISO codes create false cross-reference matches; digit substitutions (0↔O, 1↔I) produce plausible but wrong product identifiers.",
+        "recoveryTimeEstimate": "Immediate quarantine; OCR review 2–5 days depending on PDF quality."
+      },
+      "containment": {
+        "scope": "Products extracted from PDFs flagged as malformed",
+        "isolationActions": [
+          "Block at ingestion with malformed_source flag",
+          "Require OCR verification before re-ingestion"
+        ],
+        "rollbackPlan": "Re-parse PDFs with alternative text extractor or manual OCR; release quarantine after verification."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "RECV-XREF-VALIDATION",
+      "detectedIssue": "Validation conflicts rated CRITICAL (weakness score: 100/100)",
+      "category": "crossref_degradation",
+      "severity": "high",
+      "severityLevel": 3,
+      "evidence": {
+        "weaknessScore": 100,
+        "weightedImpact": 15,
+        "rating": "critical"
+      },
+      "rootCause": "Coating alias conflicts and duplicate series create validation ambiguities that the automated pipeline cannot resolve.",
+      "recommendedActions": [
+        {
+          "action": "isolate_risky_datasets",
+          "description": "Isolate products involved in validation conflicts. Group by conflict type for batch review.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "require_manual_validation",
+          "description": "Route all conflicting products to human reviewers with conflict details highlighted.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "rerun_enrichment",
+          "description": "After coating alias table is expanded, re-enrich conflicting products to attempt automated resolution.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Resolves validation ambiguities for affected products. Reduces validation weakness score by estimated 30–50 points.",
+        "riskOfInaction": "Conflicting products remain in production with ambiguous coating/grade data.",
+        "recoveryTimeEstimate": "Enrichment rerun: 1 cycle. Manual review: 1–5 days depending on conflict count."
+      },
+      "containment": {
+        "scope": "Products with active validation conflicts",
+        "isolationActions": [
+          "Mark as \"conflict_pending\" in product database",
+          "Exclude from cross-reference candidate generation"
+        ],
+        "rollbackPlan": "Restore pre-conflict product data from enrichment audit trail."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "RECV-OCR-SUBSTITUTION",
+      "detectedIssue": "OCR digit/letter substitution errors detected in 1 product(s)",
+      "category": "ocr_instability",
+      "severity": "high",
+      "severityLevel": 3,
+      "evidence": {
+        "signatures": [
+          {
+            "signature": "xref:ocr_digit_letter_substitution:insertCode+family+operations+materials",
+            "count": 1,
+            "highSeverityCount": 1
+          }
+        ],
+        "totalAffected": 1,
+        "parserFailureSummary": "Parser failures are dominated by malformed ISO shape, OCR-like digit/letter substitution, and truncated code evidence before normalization has enough signal. Top signature: parser:missing_iso_code (1)."
+      },
+      "rootCause": "OCR or poor PDF text extraction introduces character substitutions (0↔O, 1↔I, 5↔S) in ISO product codes, creating syntactically valid but semantically wrong identifiers.",
+      "recommendedActions": [
+        {
+          "action": "trigger_ocr_review",
+          "description": "Flag products with OCR substitution signatures for manual code verification against original source.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "suppress_unstable_candidates",
+          "description": "Exclude OCR-affected products from cross-reference candidate generation until codes are verified.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "isolate_risky_datasets",
+          "description": "Quarantine products with confirmed OCR substitution patterns. Add \"ocr_unverified\" flag.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Eliminates OCR-induced false cross-references. Prevents wrong-product recommendations.",
+        "riskOfInaction": "A substituted ISO code (e.g. CNMG12O408 instead of CNMG120408) creates a phantom product that cross-references against real products.",
+        "recoveryTimeEstimate": "Quarantine: immediate. Manual verification: 0.5–1 day per affected batch."
+      },
+      "containment": {
+        "scope": "Products with OCR substitution failure signatures",
+        "isolationActions": [
+          "Add \"ocr_unverified\" flag to affected products",
+          "Block from enrichment and cross-reference"
+        ],
+        "rollbackPlan": "Remove flag and re-process after manual code verification."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "RECV-VAL-HIGHREJECT",
+      "detectedIssue": "High rejection rate: 78% of ingested products rejected (7/9)",
+      "category": "validation_bottleneck",
+      "severity": "high",
+      "severityLevel": 3,
+      "evidence": {
+        "rejected": 7,
+        "total": 9,
+        "rejectionRate": 77.8
+      },
+      "rootCause": "Source PDFs may contain non-product data, or parser/normaliser rules are too aggressive in creating product records from ambiguous input.",
+      "recommendedActions": [
+        {
+          "action": "isolate_risky_datasets",
+          "description": "Identify source PDFs that produce the highest rejection rates and quarantine for review.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "trigger_ocr_review",
+          "description": "Review rejected sources to determine if parser improvements or OCR can reduce rejection rates.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Reduce wasted processing on non-viable sources. Focus ingestion on high-yield catalogs.",
+        "riskOfInaction": "Pipeline processing time wasted on sources that consistently produce rejected products.",
+        "recoveryTimeEstimate": "Source analysis: 1 day. Parser adjustment: 1–2 cycles."
+      },
+      "containment": {
+        "scope": "Source PDFs with > 50% rejection rate",
+        "isolationActions": [
+          "Add source-level rejection tracking",
+          "Auto-skip sources with > 3 consecutive full rejections"
+        ],
+        "rollbackPlan": "Re-enable sources after parser improvements reduce rejection rate below 20%."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "RECV-INST-XREF-SHAPE",
+      "detectedIssue": "Cross-references match on ISO shape but lack sufficient corroborating evidence",
+      "category": "recurring_instability",
+      "severity": "medium",
+      "severityLevel": 2,
+      "evidence": {
+        "signature": "xref:iso_shape_plausible:insertCode+family+operations+materials",
+        "totalOccurrences": 12,
+        "highSeverityCount": 12,
+        "classification": "persistent"
+      },
+      "rootCause": "ISO shape code alone is not a strong discriminator — many inserts share the same shape prefix. Without matching coating, chipbreaker, or grade data, these candidates are speculative.",
+      "recommendedActions": [
+        {
+          "action": "suppress_unstable_candidates",
+          "description": "Keep shape-only matches as diagnostic candidates. Do not promote to near_equivalent or higher.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "require_manual_validation",
+          "description": "Present shape-plausible candidates in a review queue with highlighted missing fields.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Prevents speculative matches from reaching end-users. Reduces cross-ref instability score by ~15 points.",
+        "riskOfInaction": "Users see low-quality alternatives that differ in critical dimensions (coating, chipbreaker zone).",
+        "recoveryTimeEstimate": "Immediate suppression; review completion depends on volume."
+      },
+      "containment": {
+        "scope": "Cross-reference candidates with shape-only evidence",
+        "isolationActions": [
+          "Cap shape-only candidates at economy_alternative tier maximum"
+        ],
+        "rollbackPlan": "Remove cap after corroborating evidence is added per candidate."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "RECV-INST-CONF-LOWSRC",
+      "detectedIssue": "Products persist with low source evidence despite passing confidence thresholds",
+      "category": "recurring_instability",
+      "severity": "medium",
+      "severityLevel": 2,
+      "evidence": {
+        "signature": "confidence:low_source_evidence",
+        "totalOccurrences": 4,
+        "highSeverityCount": 4,
+        "classification": "persistent"
+      },
+      "rootCause": "Confidence scoring boosts from secondary signals (keywords, tags) can compensate for missing primary evidence (grade, dimensions), producing high-confidence products built on weak foundations.",
+      "recommendedActions": [
+        {
+          "action": "lower_confidence_weighting",
+          "description": "Reduce boost weights for secondary signals (keywords, tags) relative to primary evidence (grade, dimensions, coating).",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "require_manual_validation",
+          "description": "Route products with < 3 primary signals confirmed to manual review queue.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Better calibrated confidence scores. Products with thin evidence score 10–20 points lower, correctly reflecting uncertainty.",
+        "riskOfInaction": "Overconfident products enter cross-reference and recommendation engines with unreliable data.",
+        "recoveryTimeEstimate": "Immediate after calibration weight update; 1 cycle to propagate."
+      },
+      "containment": {
+        "scope": "Products with fewer than 3 primary evidence signals",
+        "isolationActions": [
+          "Add \"low_source_evidence\" flag to affected products",
+          "Exclude from high-confidence recommendation paths"
+        ],
+        "rollbackPlan": "Revert confidence weights to previous calibration profile."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "RECV-OCR-PENDING",
+      "detectedIssue": "3 PDF source(s) failed text extraction and are pending OCR review",
+      "category": "ocr_instability",
+      "severity": "medium",
+      "severityLevel": 2,
+      "evidence": {
+        "candidateCount": 3,
+        "sources": [
+          {
+            "source": "GUE_general-catalogue_EN.pdf",
+            "reason": "Text extraction failed: Text assembly failed: URI malformed"
+          },
+          {
+            "source": "Spring 2026 Innovations Catalog Metric.pdf",
+            "reason": "Text extraction failed: Text assembly failed: URI malformed"
+          },
+          {
+            "source": "top-hammer-drilling-tools-broshure-english.pdf",
+            "reason": "Text extraction failed: Text assembly failed: URI malformed"
+          }
+        ]
+      },
+      "rootCause": "PDF text extraction fails for documents with embedded images, non-standard fonts, or corrupted text layers. These sources cannot be processed without OCR.",
+      "recommendedActions": [
+        {
+          "action": "trigger_ocr_review",
+          "description": "Queue all OCR candidate PDFs for manual review. Determine if OCR-based extraction is viable or if the source should be rejected.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "isolate_risky_datasets",
+          "description": "Ensure no products from failed-extraction sources remain in the product database.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Resolves 3 blocked source(s). Potential to add products from previously inaccessible catalogs.",
+        "riskOfInaction": "Valuable product data remains locked in unprocessed PDFs. Catalog coverage gaps persist.",
+        "recoveryTimeEstimate": "OCR review: 1–3 days per PDF depending on quality and page count."
+      },
+      "containment": {
+        "scope": "Source PDFs that failed text extraction",
+        "isolationActions": [
+          "Keep in ocrCandidates queue — do not retry automatically",
+          "Log extraction failure reason for diagnostic use"
+        ],
+        "rollbackPlan": "Remove from OCR queue if source is determined to be unusable."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "RECV-VAL-BACKLOG",
+      "detectedIssue": "Validation coverage at 0% with 2 products pending review",
+      "category": "validation_bottleneck",
+      "severity": "medium",
+      "severityLevel": 2,
+      "evidence": {
+        "totalProducts": 2,
+        "pendingReview": 2,
+        "coveragePercent": 0,
+        "reviewed": 0,
+        "rejected": 7
+      },
+      "rootCause": "Product ingestion rate exceeds manual review capacity. New products enter the database without human verification.",
+      "recommendedActions": [
+        {
+          "action": "require_manual_validation",
+          "description": "Prioritise high-confidence products for fast-track review. Queue low-confidence products for detailed review.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "suppress_unstable_candidates",
+          "description": "Suppress cross-reference output for unreviewed products. Only surface candidates between reviewed products.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Focuses review effort on highest-value products. Prevents unreviewed products from generating untrusted recommendations.",
+        "riskOfInaction": "Unreviewed products accumulate, reducing overall data quality confidence. End-users interact with unverified data.",
+        "recoveryTimeEstimate": "At current rate, backlog clearance requires reviewing 2 products. Estimated 2–5 days with prioritised review."
+      },
+      "containment": {
+        "scope": "All unreviewed products in the database",
+        "isolationActions": [
+          "Tag unreviewed products as \"pending_review\"",
+          "Limit to diagnostic-only in cross-reference"
+        ],
+        "rollbackPlan": "Remove review requirement after coverage reaches 80%."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    },
+    {
+      "id": "RECV-INST-NORM-FIELDS",
+      "detectedIssue": "Normalizer consistently fails to populate core fields for certain product patterns",
+      "category": "recurring_instability",
+      "severity": "low",
+      "severityLevel": 1,
+      "evidence": {
+        "signature": "normalization:missing_core_fields",
+        "totalOccurrences": 4,
+        "highSeverityCount": 0,
+        "classification": "persistent"
+      },
+      "rootCause": "Source PDFs or catalog formats for certain brands lack structured data for one or more core fields (e.g. chipbreaker, geometry orientation), and the normalizer has no heuristic to infer them.",
+      "recommendedActions": [
+        {
+          "action": "rerun_enrichment",
+          "description": "Re-enrich affected products after adding brand-specific fallback heuristics to the normalizer.",
+          "safe": true,
+          "reversible": true
+        },
+        {
+          "action": "isolate_risky_datasets",
+          "description": "Tag products with missing core fields so downstream engines can weight them lower.",
+          "safe": true,
+          "reversible": true
+        }
+      ],
+      "estimatedImpact": {
+        "expectedImprovement": "Increases field coverage by estimated 10–15% for affected brands. Improves cross-ref scoring accuracy.",
+        "riskOfInaction": "Cross-reference and enrichment produce less reliable output for these products, but risk is contained by confidence scoring.",
+        "recoveryTimeEstimate": "1–2 development cycles to add heuristics; 1 pipeline cycle to re-enrich."
+      },
+      "containment": {
+        "scope": "Products from brands with known field extraction gaps",
+        "isolationActions": [
+          "Flag products missing ≥2 core fields"
+        ],
+        "rollbackPlan": "Remove flags and re-enrich from raw parsed data."
+      },
+      "autoExecute": false,
+      "requiresHumanApproval": true
+    }
+  ],
+  "actionIndex": [
+    {
+      "action": "isolate_risky_datasets",
+      "usedInStrategies": [
+        "RECV-INST-STRESS-INCOMPLETE",
+        "RECV-INST-COAT-ALIAS",
+        "RECV-INST-STRESS-MALFORMED",
+        "RECV-XREF-VALIDATION",
+        "RECV-OCR-SUBSTITUTION",
+        "RECV-VAL-HIGHREJECT",
+        "RECV-OCR-PENDING",
+        "RECV-INST-NORM-FIELDS"
+      ],
+      "safe": true,
+      "reversible": true
+    },
+    {
+      "action": "require_manual_validation",
+      "usedInStrategies": [
+        "RECV-INST-XREF-LOWSIG",
+        "RECV-INST-STRESS-INCOMPLETE",
+        "RECV-XREF-CRITICAL",
+        "RECV-XREF-VALIDATION",
+        "RECV-INST-XREF-SHAPE",
+        "RECV-INST-CONF-LOWSRC",
+        "RECV-VAL-BACKLOG"
+      ],
+      "safe": true,
+      "reversible": true
+    },
+    {
+      "action": "suppress_unstable_candidates",
+      "usedInStrategies": [
+        "RECV-INST-XREF-LOWSIG",
+        "RECV-XREF-CRITICAL",
+        "RECV-INST-STRESS-MALFORMED",
+        "RECV-OCR-SUBSTITUTION",
+        "RECV-INST-XREF-SHAPE",
+        "RECV-VAL-BACKLOG"
+      ],
+      "safe": true,
+      "reversible": true
+    },
+    {
+      "action": "trigger_ocr_review",
+      "usedInStrategies": [
+        "RECV-INST-STRESS-INCOMPLETE",
+        "RECV-INST-COAT-ALIAS",
+        "RECV-INST-STRESS-MALFORMED",
+        "RECV-OCR-SUBSTITUTION",
+        "RECV-VAL-HIGHREJECT",
+        "RECV-OCR-PENDING"
+      ],
+      "safe": true,
+      "reversible": true
+    },
+    {
+      "action": "lower_confidence_weighting",
+      "usedInStrategies": [
+        "RECV-INST-XREF-LOWSIG",
+        "RECV-XREF-CRITICAL",
+        "RECV-INST-CONF-LOWSRC"
+      ],
+      "safe": true,
+      "reversible": true
+    },
+    {
+      "action": "rerun_enrichment",
+      "usedInStrategies": [
+        "RECV-INST-COAT-ALIAS",
+        "RECV-XREF-VALIDATION",
+        "RECV-INST-NORM-FIELDS"
+      ],
+      "safe": true,
+      "reversible": true
+    }
+  ]
+}
