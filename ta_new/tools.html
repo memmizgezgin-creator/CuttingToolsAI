@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;700;800&amp;family=DM+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#001c38",
+                    "on-tertiary-container": "#b8b8b6",
+                    "sidebar-bg": "#F5F2EE",
+                    "tertiary-fixed-dim": "#c7c6c5",
+                    "iso-m-amber": "#F59E0B",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#594312",
+                    "secondary": "#735b28",
+                    "surface-container-low": "#f4f3f6",
+                    "skeleton-shimmer": "#F0EDE8",
+                    "glass-backdrop": "rgba(26, 26, 46, 0.5)",
+                    "inverse-surface": "#2f3033",
+                    "surface": "#faf9fc",
+                    "iso-n-green": "#10B981",
+                    "surface-container": "#eeedf1",
+                    "primary": "#123356",
+                    "on-background": "#1a1c1e",
+                    "secondary-container": "#fedb9c",
+                    "iso-p-blue": "#3B82F6",
+                    "primary-fixed": "#d3e4ff",
+                    "surface-tint": "#436085",
+                    "secondary-fixed-dim": "#e3c285",
+                    "border-warm": "#E8E4DE",
+                    "surface-variant": "#e3e2e5",
+                    "outline-variant": "#c3c6cf",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#464746",
+                    "inverse-on-surface": "#f1f0f4",
+                    "tertiary-container": "#484948",
+                    "tertiary-fixed": "#e3e2e0",
+                    "surface-container-highest": "#e3e2e5",
+                    "on-surface": "#1a1c1e",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#1a1c1b",
+                    "surface-container-lowest": "#ffffff",
+                    "iso-h-slate": "#64748B",
+                    "iso-k-red": "#EF4444",
+                    "ink-text": "#1A1A2E",
+                    "on-surface-variant": "#43474e",
+                    "surface-dim": "#dad9dd",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#313332",
+                    "primary-container": "#2c4a6e",
+                    "surface-container-high": "#e9e8eb",
+                    "outline": "#73777f",
+                    "surface-card": "#FFFFFF",
+                    "on-secondary-container": "#785f2b",
+                    "surface-bright": "#faf9fc",
+                    "on-tertiary": "#ffffff",
+                    "iso-s-orange": "#F97316",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#261900",
+                    "inverse-primary": "#abc9f3",
+                    "secondary-fixed": "#ffdea3",
+                    "primary-fixed-dim": "#abc9f3",
+                    "on-primary-container": "#9cbae4",
+                    "background": "#faf9fc",
+                    "on-primary-fixed-variant": "#2a486c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "card-padding": "20px",
+                    "sidebar-width": "260px",
+                    "container-margin": "32px",
+                    "stack-gap-lg": "24px",
+                    "stack-gap-sm": "8px",
+                    "stack-gap-md": "16px"
+            },
+            "fontFamily": {
+                    "label-caps": ["DM Sans"],
+                    "nav-item": ["Nunito"],
+                    "section-heading": ["Nunito"],
+                    "technical-data": ["DM Mono"],
+                    "body-md": ["DM Sans"],
+                    "body-lg": ["DM Sans"],
+                    "product-grade": ["Nunito"],
+                    "display-hero": ["Nunito"]
+            },
+            "fontSize": {
+                    "label-caps": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.06em", "fontWeight": "600"}],
+                    "nav-item": ["15px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "section-heading": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "technical-data": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "body-md": ["17px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "body-lg": ["19px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "product-grade": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-hero": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+        .tool-tilt {
+            transform: rotateY(-15deg) rotateX(10deg);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen">
+<aside class="h-screen w-sidebar-width fixed left-0 top-0 bg-sidebar-bg border-r border-border-warm z-50 flex flex-col py-container-margin">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg shadow-md">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+</div>
+<div>
+<h1 class="font-section-heading text-[20px] text-primary leading-tight">ToolAdvisor</h1>
+<p class="text-[12px] font-label-caps text-outline uppercase tracking-wider">Swiss Grade Intelligence</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3 overflow-y-auto">
+<div class="px-3 mb-4">
+<span class="text-[11px] font-label-caps text-outline uppercase tracking-widest">Material Groups</span>
+</div>
+<a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-iso-p-blue">precision_manufacturing</span>
+<span class="font-nav-item text-nav-item">ISO P Steel</span>
+</a>
+<a class="flex items-center gap-4 px-3 py-3 rounded-lg text-primary font-bold border-l-4 border-iso-m-amber bg-surface-container-lowest transition-all" href="#">
+<span class="material-symbols-outlined text-iso-m-amber" style="font-variation-settings: 'FILL' 1;">layers</span>
+<span class="font-nav-item text-nav-item">ISO M Stainless</span>
+</a>
+<a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-iso-k-red">architecture</span>
+<span class="font-nav-item text-nav-item">ISO K Cast Iron</span>
+</a>
+<a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-iso-n-green">category</span>
+<span class="font-nav-item text-nav-item">ISO N Non-Ferrous</span>
+</a>
+<a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-iso-s-orange">settings_suggest</span>
+<span class="font-nav-item text-nav-item">ISO S Superalloys</span>
+</a>
+<a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-iso-h-slate">diamond</span>
+<span class="font-nav-item text-nav-item">ISO H Hardened</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="bg-primary-container p-5 rounded-xl text-on-primary-container mb-6 relative overflow-hidden group">
+<div class="relative z-10">
+<p class="font-bold text-sm mb-1">Upgrade to Pro</p>
+<p class="text-xs opacity-80 mb-3">Get advanced geometry analytics.</p>
+<button class="w-full bg-white text-primary py-2 rounded-lg text-xs font-bold hover:bg-opacity-90 transition-colors">Go Premium</button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl">verified</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="text-xs font-medium">Help Center</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span class="text-xs font-medium">Documentation</span>
+</a>
+</div>
+</div>
+</aside>
+<main class="ml-sidebar-width min-h-screen">
+<header class="h-16 flex justify-between items-center px-gutter bg-surface shadow-sm sticky top-0 z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2.5 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search tools by grade, material, or application..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6 ml-gutter">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full ring-2 ring-surface"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-6 border-l border-border-warm">
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">Alex Fischer</p>
+<p class="text-[11px] text-outline uppercase font-semibold">Chief Machinist</p>
+</div>
+<img alt="Profile" class="w-10 h-10 rounded-full object-cover border-2 border-primary-fixed" data-alt="A professional headshot of a middle-aged male machinist in a clean, high-end engineering workshop. He has a friendly, expert demeanor. The lighting is crisp and cinematic, emphasizing technical expertise and reliability. The background features blurred high-precision CNC machinery and polished metal surfaces in a premium, warm white industrial environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE1Ewez3QQZ8_5BR4vE3EiLgJYwIa-aSCnLPRVdcHupv4el6ivhCi69UH2pb3hMibrjfykkKdYWTrrZStiaTgF7VkozYdXBRgPVwJmqpxy6cxVtdVwPaVz_r0OUxXRgi0M-pRasc1_Ib5BZh6g3_ve9OGZQKXrxPdv952L_r_c6DzTbG327jFB7pG1PXDga9prox-CI_DIB7R1FsziD3lsprXt0uH1BuouNmNXDU4m8MfYrei5apjgmo216JJN6OXppo1ICdRaCZk"/>
+</div>
+</div>
+</header>
+<section class="p-container-margin">
+<div class="flex justify-between items-end mb-8">
+<div>
+<nav class="flex items-center gap-2 text-xs text-outline mb-2">
+<span>Directory</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">ISO M Stainless</span>
+</nav>
+<h2 class="font-section-heading text-display-hero text-ink-text tracking-tight">ISO M Stainless Steel Tools</h2>
+<p class="text-on-surface-variant mt-1">High-performance milling and turning solutions for austenitic and duplex materials.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 bg-surface-container-low px-4 py-2.5 rounded-lg border border-border-warm text-sm font-medium hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Advanced Filters
+                    </button>
+<div class="flex bg-surface-container-low border border-border-warm rounded-lg p-1">
+<button class="bg-white shadow-sm px-3 py-1.5 rounded-md">
+<span class="material-symbols-outlined text-[18px] text-primary">grid_view</span>
+</button>
+<button class="px-3 py-1.5 rounded-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px] text-outline">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Tool Card 1 -->
+<div class="bg-surface-card rounded-[18px] card-shadow border-l-4 border-iso-m-amber p-card-padding flex flex-col h-full card-hover transition-all duration-300 group perspective-1000">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="bg-iso-m-amber/10 text-iso-m-amber font-technical-data text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border border-iso-m-amber/20">ISO M-20</span>
+<h3 class="font-product-grade text-ink-text mt-2">CoroTurn Prime</h3>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors cursor-pointer">favorite</span>
+</div>
+<div class="relative flex-1 min-h-[160px] flex items-center justify-center mb-6 preserve-3d">
+<img class="w-32 h-32 object-contain tool-tilt drop-shadow-2xl group-hover:scale-110 transition-transform duration-500" data-alt="A high-precision CNC metal cutting tool insert, specifically a triangular golden carbide insert. It is rendered in a sharp, tactile 3D perspective, appearing to float against a clean, minimal white background with soft ambient shadows. The lighting is studio-quality, highlighting the sharp edges and metallic texture of the engineering component. The aesthetic is clean, technical, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7D_4DUttUeYg91i8XAIBhei4eDGeSWf8xdf4L-5xZ0PFT0QrSbYkmihCT8ZuKAeU5xv-sPJn1A8d0QbzTO2hHlwdAbl8NJPl2h1aZklhnJPzKwHgOu1gIKs-eWWFsPmDFnc5wZQyZif8ncT_1lSSN1Eawfnn1o41WPJV6Q4MTBEr5rOVJos22nA2G_AtAdo9n9VQtoLEccPCuZxkUJiLyszlpYqolakmlEit4SBHu0gagkOtMQQd4eiytOKPHI-ku8aUfzOGgWug"/>
+</div>
+<div class="space-y-3 mt-auto">
+<div class="flex justify-between items-center border-b border-border-warm pb-2">
+<span class="text-xs text-outline uppercase tracking-wider font-bold">Grade</span>
+<span class="font-technical-data text-ink-text">GC1105</span>
+</div>
+<div class="flex justify-between items-center border-b border-border-warm pb-2">
+<span class="text-xs text-outline uppercase tracking-wider font-bold">Vc Range</span>
+<span class="font-technical-data text-ink-text">120 - 280 m/min</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-outline uppercase tracking-wider font-bold">Feed Rate</span>
+<span class="font-technical-data text-ink-text">0.15 - 0.45 mm/r</span>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-sm mt-4 active:scale-95 transition-transform">Configure Tool</button>
+</div>
+</div>
+<!-- Tool Card 2 -->
+<div class="bg-surface-card rounded-[18px] card-shadow border-l-4 border-iso-m-amber p-card-padding flex flex-col h-full card-hover transition-all duration-300 group perspective-1000">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="bg-iso-m-amber/10 text-iso-m-amber font-technical-data text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border border-iso-m-amber/20">ISO M-30</span>
+<h3 class="font-product-grade text-ink-text mt-2">DuraMill X5</h3>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors cursor-pointer">favorite</span>
+</div>
+<div class="relative flex-1 min-h-[160px] flex items-center justify-center mb-6 preserve-3d">
+<img class="w-32 h-32 object-contain tool-tilt drop-shadow-2xl group-hover:scale-110 transition-transform duration-500" data-alt="A sophisticated solid carbide end mill tool for CNC machining, featuring a complex helical five-flute design with a dark grey PVD coating. The tool is shown in a dynamic 3D perspective, floating in a bright, modern light-mode studio setting. The metallic sheen and razor-sharp cutting edges are clearly visible, conveying extreme precision and high-end engineering quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGB-FNQqYROqvCsMflbBNRXKCyTrDAqXaSOK0Dcj2n46kIQCQtt2riwM8btA0YXZp5XUTDvRcuFckfRAU5D5WgNqpYNhde4rhekmFKtUh1yPEr5KXgR6gez3J3UlA9x_aq2sKSxw05vk6R8Sw_h21H6vNRs6ocljCgL90tb_UTmLTtWEI_Qv_6jjc2Vqfyz-Y2lsAfy67iN666sxmkwPfvM_423IeF4RBZXf270-vkaoWM3sr7Y_OVRyB1PgvKznCYFq7v2OOeuZ8"/>
+</div>
+<div class="space-y-3 mt-auto">
+<div class="flex justify-between items-center border-b border-border-warm pb-2">
+<span class="text-xs text-outline uppercase tracking-wider font-bold">Grade</span>
+<span class="font-technical-data text-ink-text">DM950</span>
+</div>
+<div class="flex justify-between items-center border-b border-border-warm pb-2">
+<span class="text-xs text-outline uppercase tracking-wider font-bold">Vc Range</span>
+<span class="font-technical-data text-ink-text">80 - 150 m/min</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-outline uppercase tracking-wider font-bold">Max Depth</span>
+<span class="font-technical-data text-ink-text">12.5 mm</span>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-sm mt-4 active:scale-95 transition-transform">Configure Tool</button>
+</div>
+</div>
+<!-- Tool Card 3 -->
+<div class="bg-surface-card rounded-[18px] card-shadow border-l-4 border-iso-m-amber p-card-padding flex flex-col h-full card-hover transition-all duration-300 group perspective-1000">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="bg-iso-m-amber/10 text-iso-m-amber font-technical-data text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border border-iso-m-amber/20">ISO M-10</span>
+<h3 class="font-product-grade text-ink-text mt-2">VersaCut V3</h3>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors cursor-pointer">favorite</span>
+</div>
+<div class="relative flex-1 min-h-[160px] flex items-center justify-center mb-6 preserve-3d">
+<img class="w-32 h-32 object-contain tool-tilt drop-shadow-2xl group-hover:scale-110 transition-transform duration-500" data-alt="A round, high-performance carbide milling insert with a polished top face and a golden titanium nitride coating on the edges. The insert is presented in a floating 3D view with subtle rotation, emphasizing its tactile depth and geometric complexity. The background is a soft, warm off-white, reflecting a premium Swiss-grade tool manufacturing aesthetic with high-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxOzTnKr9hNLF77VaIVCJtx-srV_4VVJv4akTujtnDaFED3Eh5Lpz1hic6fH-HnDi86Zf67SLHoDkeY_I2gxP_xHZyBsXFk6lQ5sbPUE9FcbcClotb6JeLN4gOrX15_hILyX5aKVPp6txxtyXRwcOZ-hiknimMd1fBjzbd1NIp3rPwBTL0rD2pakzNKmLJuvVxrert2GuolgmwkpVQQcJlt5Bi3hG8sW-D0zWWK7F2rR_HVxK8yATKFnkKbs63N5cuqF0Jcy-K3-I"/>
+</div>
+<div class="space-y-3 mt-auto">
+<div class="flex justify-between items-center border-b border-border-warm pb-2">
+<span class="text-xs text-outline uppercase tracking-wider font-bold">Grade</span>
+<span class="font-technical-data text-ink-text">VC2015</span>
+</div>
+<div class="flex justify-between items-center border-b border-border-warm pb-2">
+<span class="text-xs text-outline uppercase tracking-wider font-bold">Vc Range</span>
+<span class="font-technical-data text-ink-text">180 - 320 m/min</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-outline uppercase tracking-wider font-bold">Corner R</span>
+<span class="font-technical-data text-ink-text">0.8 mm</span>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-sm mt-4 active:scale-95 transition-transform">Configure Tool</button>
+</div>
+</div>
+<!-- Tool Card 4 -->
+<div class="bg-surface-card rounded-[18px] card-shadow border-l-4 border-iso-m-amber p-card-padding flex flex-col h-full card-hover transition-all duration-300 group perspective-1000">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="bg-iso-m-amber/10 text-iso-m-amber font-technical-data text-[10px] uppercase tracking-widest px-2 py-0.5 rounded border border-iso-m-amber/20">ISO M-25</span>
+<h3 class="font-product-grade text-ink-text mt-2">U-Drill Max</h3>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors cursor-pointer">favorite</span>
+</div>
+<div class="relative flex-1 min-h-[160px] flex items-center justify-center mb-6 preserve-3d">
+<img class="w-32 h-32 object-contain tool-tilt drop-shadow-2xl group-hover:scale-110 transition-transform duration-500" data-alt="A high-end indexable drill body for CNC operations, featuring two distinct golden carbide inserts mounted on a polished steel shaft. The tool body has internal coolant channels visible. The image is a sharp, technical 3D rendering with soft global illumination in a bright workshop environment, showcasing precision manufacturing and durability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMpZuQzsAk2418dNsPhe4623ZUsMPiSbjUC7o2kSiR7V8NhrFa9ayR8aVCNgCTcXw7qiD07s8Ui--USWgDObg3iu7gZ_1dUzIRqMaw7jdlR4_ZUlXbaG5koQr98MGkp7Gtqc8AMzN8ccmNPhoI7LYHD6lC1vmx40gAL7avUiwYvnYhSygIjZWYcdQxHvoeEF2I_dJJOsvAJsVoMITGvcFfzmzK8hmv8y-CW-lDRLHPZzKqAv0u48UqgRHqgwFcmdK10U_Y-cHlVSo"/>
+</div>
+<div class="space-y-3 mt-auto">
+<div class="flex justify-between items-center border-b border-border-warm pb-2">
+<span class="text-xs text-outline uppercase tracking-wider font-bold">Grade</span>
+<span class="font-technical-data text-ink-text">UM100</span>
+</div>
+<div class="flex justify-between items-center border-b border-border-warm pb-2">
+<span class="text-xs text-outline uppercase tracking-wider font-bold">Vc Range</span>
+<span class="font-technical-data text-ink-text">60 - 110 m/min</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-outline uppercase tracking-wider font-bold">Diameter</span>
+<span class="font-technical-data text-ink-text">25.00 mm</span>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-sm mt-4 active:scale-95 transition-transform">Configure Tool</button>
+</div>
+</div>
+</div>
+<!-- Bento Summary Section -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-surface-container-high rounded-[24px] p-8 flex items-center justify-between overflow-hidden relative">
+<div class="relative z-10 max-w-md">
+<h4 class="font-section-heading text-primary mb-4">Precision Grade Comparison</h4>
+<p class="text-on-surface-variant mb-6">Compare technical specifications across different ISO material groups to find the optimal cutting speed and tool life balance for your machining operations.</p>
+<button class="bg-primary text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-primary-container transition-colors">
+                            Launch Comparison Matrix
+                            <span class="material-symbols-outlined">trending_up</span>
+</button>
+</div>
+<div class="hidden lg:block relative -right-10 opacity-40">
+<span class="material-symbols-outlined text-[200px] text-primary/20">analytics</span>
+</div>
+</div>
+<div class="bg-iso-m-amber rounded-[24px] p-8 text-white flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl mb-4">bolt</span>
+<h4 class="text-xl font-bold mb-2">Live Tech Support</h4>
+<p class="text-white/80 text-sm">Need help choosing the right grade? Our engineers are online.</p>
+</div>
+<button class="w-full bg-white text-iso-m-amber py-3 rounded-xl font-bold text-sm mt-8">Chat with Engineering</button>
+</div>
+</div>
+</section>
+<footer class="bg-surface-container mt-12 border-t border-border-warm px-gutter py-stack-gap-lg">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-6">
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">ToolAdvisor Platform</span>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="terms.html">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="privacy.html">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="mailto:hello@tooladvisor.eu">Contact Engineering</a>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm font-medium opacity-80">© 2024 ToolAdvisor Intelligence Platform. Precision Swiss Grade.</p>
+</div>
+</footer>
+</main>
+
+<script>
+(function(){
+  var pages=[
+    {href:'index.html',     label:'Dashboard',  icon:'dashboard'},
+    {href:'tools.html',     label:'Directory',  icon:'precision_manufacturing'},
+    {href:'saved.html',     label:'Saved',      icon:'bookmark'},
+    {href:'community.html', label:'Community',  icon:'forum'},
+    {href:'guides.html',    label:'Guides',     icon:'menu_book'},
+    {href:'reviews.html',   label:'Reviews',    icon:'fact_check'},
+    {href:'profile.html',   label:'Profile',    icon:'person'},
+  ];
+  var here = location.pathname.split('/').pop() || 'index.html';
+  if(here==='') here='index.html';
+  var bar = document.createElement('div');
+  bar.style.cssText='position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:9999;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border:1px solid #E8E4DE;border-radius:999px;padding:5px;display:flex;gap:3px;box-shadow:0 8px 32px rgba(0,0,0,.12);font-family:"DM Sans",system-ui,sans-serif;';
+  pages.forEach(function(p){
+    var a=document.createElement('a');
+    a.href=p.href;
+    var active=p.href===here;
+    a.style.cssText='padding:6px 10px;border-radius:999px;font-size:11px;font-weight:600;text-decoration:none;transition:all .15s;display:flex;align-items:center;gap:4px;'+(active?'background:#123356;color:#fff;':'color:#1A1A2E;');
+    var icon=document.createElement('span');
+    icon.className='material-symbols-outlined';
+    icon.style.cssText='font-size:14px;';
+    icon.textContent=p.icon;
+    var txt=document.createElement('span');
+    txt.textContent=p.label;
+    a.appendChild(icon);
+    a.appendChild(txt);
+    if(!active){
+      a.addEventListener('mouseenter',function(){a.style.background='#F5F2EE';});
+      a.addEventListener('mouseleave',function(){a.style.background='transparent';});
+    }
+    bar.appendChild(a);
+  });
+  document.body.appendChild(bar);
+})();
+</script>
+</body></html>

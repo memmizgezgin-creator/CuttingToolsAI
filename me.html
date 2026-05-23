@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile · ToolAdvisor</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Nunito:wght@500;700;800&family=DM+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="polish.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="supabase/config.js"></script>
+  <script src="supabase/client.js"></script>
+</head>
+<body class="bg-surface text-on-surface font-body-md">
+  <main class="ml-sidebar-width min-h-screen p-container-margin">
+    <section class="max-w-4xl mx-auto space-y-4">
+      <!-- Auth Gate -->
+      <div id="auth-gate" class="bg-surface-card rounded-2xl border border-border-warm p-6" style="display:none;">
+        <p class="font-label-caps text-xs uppercase tracking-widest text-on-surface-variant">Account</p>
+        <h1 class="font-section-heading text-primary text-3xl mt-2">Sign in to ToolAdvisor</h1>
+        <p class="mt-2 text-on-surface-variant">Access your saved tools, quotas, and organization settings.</p>
+
+        <form id="magic-link-form" class="mt-6 space-y-3 max-w-md">
+          <label class="block text-sm font-medium text-on-surface-variant" for="magic-email">Email address</label>
+          <input id="magic-email" type="email" required placeholder="you@company.com"
+            class="w-full px-4 py-2 rounded-lg border border-border-warm bg-surface-container-lowest text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/30"/>
+          <button type="submit"
+            class="w-full px-4 py-2.5 rounded-lg bg-primary text-white font-bold text-sm hover:bg-primary-container hover:text-on-primary-container transition-colors">
+            Send magic link
+          </button>
+        </form>
+
+        <p id="magic-feedback" class="mt-4 text-sm text-on-surface-variant" style="display:none;"></p>
+      </div>
+
+      <!-- Profile View -->
+      <div id="profile-view" style="display:none;">
+        <div class="bg-surface-card rounded-2xl border border-border-warm p-6">
+          <p class="font-label-caps text-xs uppercase tracking-widest text-on-surface-variant">Account</p>
+          <h1 class="font-section-heading text-primary text-3xl mt-2">Profile</h1>
+          <p id="ta-profile-email" class="mt-2 text-on-surface-variant"></p>
+          <button id="ta-profile-signout" class="mt-4 px-4 py-2 rounded-lg border border-border-warm text-primary font-bold hover:bg-surface-container-low transition-colors">Sign out</button>
+        </div>
+
+        <div class="bg-surface-card rounded-2xl border border-border-warm p-6">
+          <div class="flex items-center justify-between">
+            <h2 class="font-section-heading text-xl text-primary">Saved tools</h2>
+            <span id="ta-saved-count" class="font-technical-data text-xs text-on-surface-variant">0 items</span>
+          </div>
+          <ul id="ta-saved-list" class="mt-4 space-y-2"></ul>
+          <p id="ta-saved-empty" class="text-on-surface-variant text-sm mt-2">No saved tools yet. Use Save button on product cards.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="page-switcher.js"></script>
+  <script>
+    (async function () {
+      function renderSavedRows(rows) {
+        const list = document.getElementById('ta-saved-list');
+        const empty = document.getElementById('ta-saved-empty');
+        const count = document.getElementById('ta-saved-count');
+        if (!list || !empty || !count) return;
+        list.innerHTML = '';
+        count.textContent = rows.length + ' items';
+        if (!rows.length) {
+          empty.style.display = 'block';
+          return;
+        }
+        empty.style.display = 'none';
+        rows.forEach((row) => {
+          const li = document.createElement('li');
+          li.className = 'flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container-low border border-border-warm';
+          li.innerHTML = '<span class="font-technical-data text-sm text-ink-text">' + row.sku + '</span>';
+          list.appendChild(li);
+        });
+      }
+
+      async function waitForApi(timeoutMs) {
+        const started = Date.now();
+        while (!window.taSupabase && Date.now() - started < timeoutMs) {
+          await new Promise((resolve) => setTimeout(resolve, 25));
+        }
+        return window.taSupabase || null;
+      }
+
+      const api = await waitForApi(1500);
+      const authGate = document.getElementById('auth-gate');
+      const profileView = document.getElementById('profile-view');
+
+      if (!api) {
+        // Show auth gate if API fails to load
+        if (authGate) authGate.style.display = 'block';
+        return;
+      }
+
+      const { data } = await api.client.auth.getSession();
+      const session = data && data.session ? data.session : null;
+
+      if (!session) {
+        // Signed-out: show auth gate
+        if (authGate) authGate.style.display = 'block';
+
+        const form = document.getElementById('magic-link-form');
+        const feedback = document.getElementById('magic-feedback');
+        if (form) {
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('magic-email').value.trim();
+            if (!email) return;
+            try {
+              const { error } = await api.sendMagicLink(email);
+              if (error) throw error;
+              if (feedback) {
+                feedback.textContent = 'Check your inbox for the magic link.';
+                feedback.style.display = 'block';
+              }
+            } catch (err) {
+              if (feedback) {
+                feedback.textContent = 'Could not send magic link. Please try again.';
+                feedback.style.display = 'block';
+              }
+            }
+          });
+        }
+        return;
+      }
+
+      // Signed-in: show profile view
+      await api.refreshSession();
+      const user = api.getUser();
+      if (!user) {
+        // Edge case: session exists but user missing, show gate
+        if (authGate) authGate.style.display = 'block';
+        return;
+      }
+
+      if (profileView) profileView.style.display = 'block';
+
+      const emailEl = document.getElementById('ta-profile-email');
+      if (emailEl) emailEl.textContent = user.email || '';
+
+      const rows = await api.fetchSavedTools();
+      renderSavedRows(rows);
+
+      const btn = document.getElementById('ta-profile-signout');
+      if (btn) {
+        btn.addEventListener('click', async () => {
+          await api.signOut();
+          window.location.href = '/';
+        });
+      }
+
+      window.addEventListener('ta:saved-tools-updated', async () => {
+        const fresh = await api.fetchSavedTools();
+        renderSavedRows(fresh);
+      });
+    })();
+  </script>
+</body>
+</html>

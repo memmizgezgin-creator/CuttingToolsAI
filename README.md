@@ -4,31 +4,27 @@ AI-powered cutting tool advisor and cross-reference platform.
 
 ## Stack
 - Static HTML/CSS/JS frontend
-- Netlify Functions (serverless) as Claude API proxy
+- GitHub Pages (free tier) for hosting
 - Claude claude-sonnet-4-20250514 for tool identification and recommendations
 
-## Deploy to Netlify
+## Deploy
 
-### Option A — GitHub (recommended)
-1. Push this repo to GitHub
-2. Go to app.netlify.com → "Add new site" → "Import from Git"
-3. Select your repo, click Deploy
-4. Go to Site settings → Environment variables → Add:
-   - `ANTHROPIC_API_KEY` = your key from console.anthropic.com
+This site is hosted on **GitHub Pages**.
 
-### Option B — Netlify Drop (quick demo)
-1. Zip this entire folder
-2. Drag to app.netlify.com/drop
-3. Add env variable in Site settings after deployment
+1. Push changes to the `main` branch on GitHub
+2. GitHub Pages automatically builds and deploys the site
+3. Custom domain (`tooladvisor.eu`) is configured via the `CNAME` file in the repo root
+
+No build step or CI configuration is required for static HTML/CSS/JS.
 
 ## Project Structure
 ```
 tooladvisor-deploy/
 ├── index.html              ← Main app (Visual Search + AI Advisor + Revenue Model)
-├── netlify.toml            ← Netlify config + routing
-├── netlify/
-│   └── functions/
-│       └── claude.js       ← Serverless proxy (keeps API key secure)
+├── catalog.html            ← Tool catalog
+├── advisor.html            ← AI advisor
+├── profile.html            ← User profile & saved tools
+├── CNAME                   ← Custom domain mapping (tooladvisor.eu)
 └── README.md
 ```
 
