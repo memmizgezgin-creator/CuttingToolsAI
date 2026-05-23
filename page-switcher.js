@@ -74,6 +74,10 @@
           ${linksHTML}
         </nav>
 
+        <button class="ta-hamburger" id="ta-hamburger-btn" aria-label="Open menu" style="margin-left:auto;">
+          <span class="material-symbols-outlined" style="font-size:24px;">menu</span>
+        </button>
+
         <div class="ta-nav-search" style="flex:1;max-width:340px;margin-left:auto;min-width:0;">
           <div style="position:relative;width:100%;">
             <span class="material-symbols-outlined" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#73777f;font-size:18px;pointer-events:none;">search</span>
@@ -585,8 +589,111 @@
   }
 
   // ============================================================
+  // MOBILE DRAWER
+  // ============================================================
+  function installMobileDrawer() {
+    if (document.getElementById('ta-mobile-drawer')) return;
+
+    const drawerLinks = [
+      {href:'advisor.html',   label:'AI Advisor',       icon:'auto_awesome'},
+      {href:'catalog.html',    label:'Catalog',          icon:'inventory_2'},
+      {href:'compare.html',   label:'Compare',          icon:'fact_check'},
+      {href:'saved.html',     label:'Saved Tools',      icon:'bookmark'},
+      {href:'pro.html',       label:'Pro',              icon:'workspace_premium'},
+      {href:'profile.html',   label:'Profile / Sign In',icon:'person'},
+    ];
+
+    const overlay = document.createElement('div');
+    overlay.className = 'ta-mobile-overlay';
+    overlay.id = 'ta-mobile-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+
+    const drawer = document.createElement('div');
+    drawer.className = 'ta-mobile-drawer';
+    drawer.id = 'ta-mobile-drawer';
+    drawer.setAttribute('role', 'dialog');
+    drawer.setAttribute('aria-modal', 'true');
+    drawer.setAttribute('aria-label', 'Navigation menu');
+
+    const resolved = here === 'index.html' ? 'advisor.html' : here;
+
+    const linksHTML = drawerLinks.map(l => {
+      const active = l.href.toLowerCase() === resolved;
+      return `<a href="${l.href}" class="ta-drawer-link" data-active="${active}">
+        <span class="material-symbols-outlined">${l.icon}</span>
+        <span>${l.label}</span>
+      </a>`;
+    }).join('');
+
+    drawer.innerHTML = `
+      <div class="ta-drawer-header">
+        <span>ToolAdvisor</span>
+        <button class="ta-drawer-close" id="ta-drawer-close" aria-label="Close menu">
+          <span class="material-symbols-outlined" style="font-size:22px;">close</span>
+        </button>
+      </div>
+      <nav class="ta-drawer-nav">
+        ${linksHTML}
+      </nav>
+      <div class="ta-drawer-footer" style="display:flex;align-items:center;gap:8px;">
+        <span class="material-symbols-outlined" style="font-size:18px;color:#8A8A9A;">info</span>
+        <span style="font-size:12px;color:#8A8A9A;font-weight:600;">Brand-neutral tool intelligence</span>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(drawer);
+
+    const openDrawer = () => {
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+      document.body.classList.add('drawer-locked');
+      drawer.setAttribute('aria-hidden', 'false');
+      const closeBtn = drawer.querySelector('#ta-drawer-close');
+      if (closeBtn) closeBtn.focus();
+    };
+
+    const closeDrawer = () => {
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.classList.remove('drawer-locked');
+      drawer.setAttribute('aria-hidden', 'true');
+      const hamburger = document.getElementById('ta-hamburger-btn');
+      if (hamburger) hamburger.focus();
+    };
+
+    // Wire hamburger
+    const hamburger = document.getElementById('ta-hamburger-btn');
+    if (hamburger) {
+      hamburger.addEventListener('click', openDrawer);
+    }
+
+    // Wire close button + overlay + Escape
+    drawer.querySelector('#ta-drawer-close')?.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+    });
+
+    // Swipe-right to close
+    let touchStartX = 0;
+    drawer.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, {passive:true});
+    drawer.addEventListener('touchend', (e) => {
+      const endX = e.changedTouches[0].screenX;
+      if (endX - touchStartX > 60) closeDrawer();
+    }, {passive:true});
+
+    // Navigation closes drawer
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => closeDrawer());
+    });
+  }
+
+  // ============================================================
   function run() {
     installTopNav();
+    installMobileDrawer();
     installSidebar();
     fixMainLayout();
     rewireFabs();
