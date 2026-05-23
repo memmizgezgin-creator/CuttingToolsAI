@@ -152,9 +152,32 @@
   window.taInsert3D = taInsert3D;
   window.taInsert3DHydrate = hydrate;
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => hydrate());
-  } else {
-    hydrate();
-  }
+  // Initial hydration for any existing elements
+  hydrate();
+
+  // MutationObserver for dynamically added elements (e.g., React cards)
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          // Check if the added node itself is a .ta-insert3d element
+          if (node.classList && node.classList.contains('ta-insert3d')) {
+            hydrate(node);
+          }
+          // Also check if it's a parent containing .ta-insert3d children
+          if (node.querySelectorAll) {
+            const inserts = node.querySelectorAll('.ta-insert3d:not([data-hydrated])');
+            if (inserts.length) {
+              hydrate(node);
+            }
+          }
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
 })();
