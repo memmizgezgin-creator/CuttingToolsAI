@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -6814,8 +6814,23 @@ input::placeholder, textarea::placeholder {
   color: rgba(203,195,216,0.6) !important;
 }
 </style>
+<style>
+/* Phase G: hide old dark sidebar + topbar, use page-switcher.js chrome */
+.sidebar, .stitch-topbar { display: none !important; }
+.app { display: block !important; }
+main.main {
+  margin-left: 260px !important;
+  margin-top: 64px !important;
+  min-height: calc(100vh - 64px);
+  background: #faf9fc;
+  color: #1a1c1e;
+}
+@media (max-width: 767px) {
+  main.main { margin-left: 0 !important; }
+}
+</style>
 </head>
-<body>
+<body class="ta-theme-manual light-mode">
 
 <a class="skip-link" href="#mainContent">Skip to content</a>
 <div class="app">
@@ -15921,7 +15936,8 @@ function exportAdvisorResultsPDF() {
     <p>${escapeHtmlAttr(context.operation || 'Operation')} · ISO ${escapeHtmlAttr(context.material || '—')} · ${escapeHtmlAttr(context.condition || 'Condition')}</p>
     <table><thead><tr><th>Rank</th><th>Brand</th><th>Grade</th><th>Coating</th><th>Confidence</th></tr></thead><tbody>${rows}</tbody></table>
     <script>window.onload=function(){window.print();}<\/script>
-    </body></html>`);
+    <script src="page-switcher.js"></script>
+</body></html>`);
   printable.document.close();
 }
 
