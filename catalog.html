@@ -19302,6 +19302,10 @@ window.QA_MANUAL_TEST_MATRIX = Object.freeze([
 const _QUOTA_KEY = 'ta_daily_quota_v1';
 const _QUOTA_MAX = 5;
 
+function _isAdmin() {
+  try { return localStorage.getItem('ta_admin') === 'true'; } catch (_) { return false; }
+}
+
 function _getQuotaData() {
   try {
     const today = new Date().toISOString().slice(0, 10);
@@ -19319,6 +19323,7 @@ function _saveQuotaData(d) {
 }
 
 function incrementQuota() {
+  if (_isAdmin()) return;
   const d = _getQuotaData();
   d.used = Math.min(d.used + 1, _QUOTA_MAX);
   _saveQuotaData(d);
@@ -19326,12 +19331,19 @@ function incrementQuota() {
 }
 
 function updateQuotaBar() {
-  const d = _getQuotaData();
-  const used = d.used;
   const textEl    = document.getElementById('quota-text');
   const fillEl    = document.getElementById('quota-bar-fill');
   const upgradeEl = document.getElementById('quota-upgrade');
   if (!textEl) return;
+  if (_isAdmin()) {
+    textEl.textContent = 'Admin: unlimited queries';
+    textEl.style.color = '#2C4A6E';
+    if (fillEl) { fillEl.style.width = '100%'; fillEl.style.background = '#2C4A6E'; }
+    if (upgradeEl) upgradeEl.style.display = 'none';
+    return;
+  }
+  const d = _getQuotaData();
+  const used = d.used;
   textEl.textContent = `Free plan: ${used} / ${_QUOTA_MAX} queries used`;
   const pct = Math.round((used / _QUOTA_MAX) * 100);
   if (fillEl) { fillEl.style.width = pct + '%'; }

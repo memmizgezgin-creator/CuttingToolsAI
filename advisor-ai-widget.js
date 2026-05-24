@@ -219,6 +219,11 @@
     { id:'cheapswap', icon:'savings',       label:'Cheapest cross-brand swap', prompt:null, pro:true },
   ];
 
+  // ── admin bypass ───────────────────────────────────────────────────────────
+  function isAdmin() {
+    try { return localStorage.getItem('ta_admin') === 'true'; } catch { return false; }
+  }
+
   // ── quota ──────────────────────────────────────────────────────────────────
   function getCount() {
     try {
@@ -229,12 +234,16 @@
     } catch { return { day: new Date().toISOString().slice(0, 10), used: 0 }; }
   }
   function incrCount() {
+    if (isAdmin()) return getCount();
     const c = getCount();
     c.used += 1;
     try { localStorage.setItem(LS_KEY, JSON.stringify(c)); } catch {}
     return c;
   }
-  function remaining() { return Math.max(0, FREE_DAILY - getCount().used); }
+  function remaining() {
+    if (isAdmin()) return 999;
+    return Math.max(0, FREE_DAILY - getCount().used);
+  }
 
   // ── open pro modal or fallback ─────────────────────────────────────────────
   function openPro() {
@@ -325,14 +334,25 @@
   // ── state helpers ─────────────────────────────────────────────────────────
   function updateQuota() {
     const r = remaining();
+    if (isAdmin()) {
+      badge.textContent      = 'Admin';
+      badge.style.background = '#2C4A6E';
+      badge.style.color      = '#fff';
+      quotaLabel.textContent = 'Admin: unlimited';
+      creditsBar.classList.remove('show');
+      input.disabled   = busy;
+      sendBtn.disabled = busy || !input.value.trim();
+      input.placeholder = 'Ask about tools, speeds, materials…';
+      return;
+    }
     badge.textContent      = `${r}/${FREE_DAILY} free`;
+    badge.style.background = '';
+    badge.style.color      = '';
     quotaLabel.textContent = `${r}/${FREE_DAILY} free today`;
     creditsBar.classList.toggle('show', r <= 0);
-    input.disabled = busy || r <= 0;
+    input.disabled   = busy || r <= 0;
     sendBtn.disabled = busy || !input.value.trim() || r <= 0;
-    if (r <= 0) {
-      input.placeholder = 'Out of free questions — upgrade to continue';
-    }
+    input.placeholder = r > 0 ? 'Ask about tools, speeds, materials…' : 'Out of free questions — upgrade to continue';
   }
 
   function setInputState() {
