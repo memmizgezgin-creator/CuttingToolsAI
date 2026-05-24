@@ -209,7 +209,7 @@
   document.head.appendChild(style);
 
   // ── constants ──────────────────────────────────────────────────────────────
-  const WORKER_URL  = 'https://tooladvisor-ai.memmizgezgin.workers.dev/api/chat';
+  const API_URL = '/api/claude';
   const FREE_DAILY  = 3;
   const LS_KEY      = 'ta:ai:count';
   const QUICK_ACTIONS = [
@@ -395,14 +395,19 @@
     const typingRow = showTyping();
 
     try {
-      const res = await fetch(WORKER_URL, {
+      const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: prompt })
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1024,
+          system: 'You are ToolAdvisor\'s metalworking AI assistant. Help machinists and engineers choose cutting tools. Be concise, technical, and direct — prefer bullet points and short sentences. Cover speeds, feeds, ISO groups, grades, coatings, geometry, and troubleshooting.',
+          messages: [{ role: 'user', content: prompt }]
+        })
       });
       const data = await res.json();
       typingRow.remove();
-      const reply = data.reply || data.error || 'Sorry, I had trouble answering that.';
+      const reply = data.content?.[0]?.text || data.error?.message || data.error || 'Sorry, I had trouble answering that.';
       addMessage('ai', escapeHtml(reply).replace(/\n/g, '<br>'));
     } catch {
       typingRow.remove();
