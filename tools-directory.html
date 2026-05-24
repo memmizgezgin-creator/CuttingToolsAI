@@ -50,9 +50,11 @@
   }
   .ai-dot { animation: ta-ai-dot 1.2s ease-in-out infinite; display:inline-block; }
 
-  /* Hide page-switcher's default FAB on this page — the AI Dock launcher replaces it. */
+  /* Hide page-switcher's default FAB and the React AIDock — advisor-ai-widget.js replaces both. */
   body > button.fixed.bottom-8.right-8,
-  body > button[class*="fixed"][class*="bottom-8"][class*="right-8"] {
+  body > button[class*="fixed"][class*="bottom-8"][class*="right-8"],
+  button[aria-label="Open Advisor AI chat"],
+  div[aria-label="Advisor AI"][role="dialog"] {
     display: none !important;
   }
 </style>
@@ -86,5 +88,6 @@
 <!-- Catalog data + app -->
 <script src="directory-data.js"></script>
 <script type="text/babel" src="directory-app.jsx" data-presets="react"></script>
+<script src="advisor-ai-widget.js"></script>
 </body>
 </html>
