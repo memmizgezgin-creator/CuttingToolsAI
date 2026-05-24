@@ -53,8 +53,8 @@
   /* Hide page-switcher's default FAB and the React AIDock — advisor-ai-widget.js replaces both. */
   body > button.fixed.bottom-8.right-8,
   body > button[class*="fixed"][class*="bottom-8"][class*="right-8"],
-  button[aria-label="Open Advisor AI chat"],
-  div[aria-label="Advisor AI"][role="dialog"] {
+  button[aria-label="Open Advisor AI chat"]:not(#ta-ai-launcher),
+  div[aria-label="Advisor AI"][role="dialog"]:not(#ta-ai-panel) {
     display: none !important;
   }
 </style>
