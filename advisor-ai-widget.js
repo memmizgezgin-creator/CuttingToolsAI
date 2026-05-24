@@ -209,7 +209,7 @@
   document.head.appendChild(style);
 
   // ── constants ──────────────────────────────────────────────────────────────
-  const API_URL = '/api/claude';
+  const API_URL = '/api/chat';
   const FREE_DAILY  = 3;
   const LS_KEY      = 'ta:ai:count';
   const QUICK_ACTIONS = [

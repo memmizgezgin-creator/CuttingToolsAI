@@ -1,0 +1,3 @@
+name = "tooladvisor"
+main = "functions/api-chat.js"
+compatibility_date = "2025-01-01"
