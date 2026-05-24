@@ -4,6 +4,12 @@
 # Node
 node_modules/
 
+# Python envs
+.venv/
+.venv2/
+venv/
+__pycache__/
+
 # OS
 .DS_Store
 
