@@ -6812,6 +6812,156 @@ input[type="search"]:focus, textarea:focus {
 input::placeholder, textarea::placeholder {
   color: rgba(203,195,216,0.6) !important;
 }
+
+/* ── Quota Bar ─────────────────────────────────────────── */
+#quota-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 20px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  position: sticky;
+  top: 0;
+  z-index: 120;
+}
+#quota-text { transition: color 0.3s; }
+#quota-upgrade a { color: var(--navy); font-weight: 700; text-decoration: none; }
+#quota-upgrade a:hover { text-decoration: underline; }
+#quota-bar-fill-wrap {
+  flex: 1;
+  max-width: 120px;
+  height: 3px;
+  background: var(--outline-variant, #e0dde8);
+  border-radius: 99px;
+  overflow: hidden;
+}
+#quota-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.3s, background 0.3s;
+}
+
+/* ── Pro Modal ─────────────────────────────────────────── */
+#proModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+}
+#proModal-inner {
+  background: #fff;
+  border-radius: 18px;
+  padding: 36px 32px 28px;
+  max-width: 480px;
+  width: calc(100% - 32px);
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+}
+#proModal h2 { font-family: 'Nunito', sans-serif; font-size: 24px; font-weight: 800; color: var(--navy); margin: 0 0 4px; }
+#proModal .pro-modal-subtitle { font-size: 13px; color: var(--ink2, #6b6974); margin-bottom: 20px; }
+#proModal .pro-features { list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 9px; }
+#proModal .pro-features li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink); }
+#proModal .pro-features li::before { content: '✓'; color: #10b981; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+#proModal input[type="email"] {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+#proModal input[type="email"]:focus { border-color: var(--navy); }
+#proModal .pro-notify-btn {
+  width: 100%;
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+#proModal .pro-notify-btn:hover { background: #1a3a5c; }
+#proModal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--ink3, #8A8898);
+  line-height: 1;
+  padding: 4px;
+}
+#proSubmitConfirm { font-size: 13px; margin-top: 10px; }
+
+/* ── Advisor AI Panel ──────────────────────────────────── */
+#advisorAIPanel {
+  margin: 0 0 16px;
+  padding: 14px 18px;
+  background: #f0f7ff;
+  border: 1px solid #cce0f5;
+  border-radius: 12px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink);
+  white-space: pre-wrap;
+  font-family: 'DM Mono', monospace;
+}
+.dark-mode #advisorAIPanel { background: #1a2535; border-color: #2c4a6e; }
+
+/* ── Cross-ref Not Found ───────────────────────────────── */
+#crossref-not-found {
+  padding: 24px 20px;
+  text-align: left;
+}
+#crossref-not-found p { font-size: 13px; color: var(--ink2); margin: 0 0 10px; line-height: 1.6; }
+#crossref-not-found input,
+#crossref-not-found textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+  background: var(--bg);
+  color: var(--ink);
+}
+#crossref-not-found input:focus,
+#crossref-not-found textarea:focus { border-color: var(--navy); }
+#crossref-not-found textarea { resize: vertical; min-height: 64px; }
+#crossref-not-found .cr-submit-btn {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+#crossref-not-found .cr-submit-btn:hover { background: #1a3a5c; }
 </style>
 </head>
 <body>
@@ -6967,6 +7117,11 @@ input::placeholder, textarea::placeholder {
       <button class="stitch-icon-btn" type="button" onclick="openUtilityModal('notifications')" aria-label="Notification preferences" data-tooltip="Notifications">•</button>
       <button class="stitch-enterprise-btn" type="button" onclick="openProAccessModal()">Request Access</button>
     </div>
+  </div>
+  <div id="quota-bar">
+    <span id="quota-text">Free plan: 0 / 5 queries used</span>
+    <div id="quota-bar-fill-wrap"><div id="quota-bar-fill" style="width:0%;background:#10b981"></div></div>
+    <span id="quota-upgrade" style="display:none">— <a href="#" onclick="openProModal();return false;">Upgrade to Pro →</a></span>
   </div>
   <div class="crumb" id="topBreadcrumb">
     <span id="crumbGroup">Selection Tools</span><span class="sep">›</span><strong id="crumbSurface">AI Advisor</strong>
@@ -16221,6 +16376,8 @@ function showResults() {
   // Show results, collapse steps
   document.getElementById('resultsSection').style.display = 'block';
   renderAdvisorResultsView(true);
+  renderAdvisorAIPanel(selMat, selOp);
+  incrementQuota();
 }
 
 function resetAdvisor() {
@@ -16546,9 +16703,20 @@ function loadCR(code, options = {}) {
     } else {
       // Genuinely unknown code
       const suggestion = suggestInsertCode(code);
+      const safeCode = escapeHtmlAttr(code);
       noMatchMsg = `
-        ${renderEmptyState('No cross-reference match yet', `No match for ${code}. Try CNMG120408, THR-FULL-60-M, GRV-NEUTRAL-2MM or DRL-SOLID-PM-3XD.`)}
-        ${suggestion ? `<div style="padding:10px 16px;text-align:center;font-size:12px;color:var(--ink2)">Did you mean <button class="cr-hist-chip" type="button" onclick="loadCR('${suggestion}')">${suggestion}</button>?</div>` : ''}`;
+        <div id="crossref-not-found">
+          <p>We don't have <strong id="searched-code">${safeCode}</strong> in our database yet.</p>
+          <p>Help us grow — submit this code and we'll add it within 48 hours.</p>
+          ${suggestion ? `<p style="font-size:12px">Did you mean <button class="cr-hist-chip" type="button" onclick="loadCR('${escapeHtmlAttr(suggestion)}')">${escapeHtmlAttr(suggestion)}</button>?</p>` : ''}
+          <div>
+            <input type="text" id="submit-code" value="${safeCode}" placeholder="Insert code (e.g. TNMG160408)">
+            <input type="text" id="submit-brand" placeholder="Brand you use (e.g. Sandvik)">
+            <textarea id="submit-notes" placeholder="Any notes? (optional)"></textarea>
+            <button class="cr-submit-btn" type="button" onclick="submitMissingCode()">Submit for Review</button>
+          </div>
+          <p id="submit-confirm" style="display:none;color:#10b981;font-size:13px;margin-top:8px">Thanks! We'll review and add this code soon.</p>
+        </div>`;
     }
     document.getElementById('crRows').innerHTML = noMatchMsg;
     return;
@@ -16978,6 +17146,13 @@ function sendChatMsg() {
   const msgs = document.getElementById('chatMessages');
   msgs.innerHTML += `<div class="chat-bubble user">${escapeHtmlAttr(msg)}</div>`;
   inp.value = '';
+
+  if (!CONFIG.claude.enabled) {
+    msgs.innerHTML += `<div class="chat-bubble ai">AI Chat is in maintenance mode. For tool recommendations please use the AI Advisor tab, or join the Pro waitlist.</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+    return;
+  }
+
   const id = 't' + Date.now();
   msgs.innerHTML += `<div class="chat-bubble ai" id="${id}" style="opacity:.4">…</div>`;
   msgs.scrollTop = msgs.scrollHeight;
@@ -17086,6 +17261,8 @@ function handleGlobalKeyboardShortcuts(e) {
     return;
   }
   if (e.key === 'Escape') {
+    const proModalOpen = document.getElementById('proModal')?.style.display === 'flex';
+    if (proModalOpen) { closeProModal(); return; }
     const detailOpen = document.getElementById('productDetailOverlay')?.classList.contains('open');
     const compareOpen = document.getElementById('compareModal')?.classList.contains('open');
     if (detailOpen || compareOpen) {
@@ -17632,6 +17809,7 @@ function renderSessionSummary() {
   renderResourceFaq();
   renderCookieConsent();
   renderSessionSummary();
+  updateQuotaBar();
   renderTabLastUpdated();
   renderAdvisorQuickSearchHistory();
   renderSidebar();
@@ -19117,6 +19295,204 @@ window.QA_MANUAL_TEST_MATRIX = Object.freeze([
   { id:'MT-20', area:'Quota',          test:'Refresh page mid-session — quota persists from localStorage, daily reset works',               expected:'PASS',       priority:'P1' }
 ]);
 // ─────────────────────────────────────────────────────────────────────────────
+
+/* ============================================================
+   QUOTA (localStorage, daily reset, max 5 free queries)
+============================================================ */
+const _QUOTA_KEY = 'ta_daily_quota_v1';
+const _QUOTA_MAX = 5;
+
+function _getQuotaData() {
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+    const raw = localStorage.getItem(_QUOTA_KEY);
+    if (raw) {
+      const d = JSON.parse(raw);
+      if (d && d.date === today) return d;
+    }
+    return { date: today, used: 0 };
+  } catch (_) { return { date: new Date().toISOString().slice(0, 10), used: 0 }; }
+}
+
+function _saveQuotaData(d) {
+  try { localStorage.setItem(_QUOTA_KEY, JSON.stringify(d)); } catch (_) {}
+}
+
+function incrementQuota() {
+  const d = _getQuotaData();
+  d.used = Math.min(d.used + 1, _QUOTA_MAX);
+  _saveQuotaData(d);
+  updateQuotaBar();
+}
+
+function updateQuotaBar() {
+  const d = _getQuotaData();
+  const used = d.used;
+  const textEl    = document.getElementById('quota-text');
+  const fillEl    = document.getElementById('quota-bar-fill');
+  const upgradeEl = document.getElementById('quota-upgrade');
+  if (!textEl) return;
+  textEl.textContent = `Free plan: ${used} / ${_QUOTA_MAX} queries used`;
+  const pct = Math.round((used / _QUOTA_MAX) * 100);
+  if (fillEl) { fillEl.style.width = pct + '%'; }
+  if (used >= _QUOTA_MAX) {
+    textEl.style.color = '#ef4444';
+    if (fillEl) fillEl.style.background = '#ef4444';
+    if (upgradeEl) upgradeEl.style.display = 'inline';
+  } else if (used >= 3) {
+    textEl.style.color = '#f59e0b';
+    if (fillEl) fillEl.style.background = '#f59e0b';
+    if (upgradeEl) upgradeEl.style.display = 'none';
+  } else {
+    textEl.style.color = '#10b981';
+    if (fillEl) fillEl.style.background = '#10b981';
+    if (upgradeEl) upgradeEl.style.display = 'none';
+  }
+}
+
+/* ============================================================
+   PRO MODAL
+============================================================ */
+function openProModal() {
+  const m = document.getElementById('proModal');
+  if (m) { m.style.display = 'flex'; document.getElementById('proEmailInput')?.focus(); }
+}
+
+function closeProModal() {
+  const m = document.getElementById('proModal');
+  if (m) m.style.display = 'none';
+  const confirm = document.getElementById('proSubmitConfirm');
+  if (confirm) confirm.style.display = 'none';
+}
+
+function submitProEmail() {
+  const inp = document.getElementById('proEmailInput');
+  const email = (inp?.value || '').trim();
+  if (!email || !email.includes('@')) { toast('Please enter a valid email address.', 'error'); return; }
+  try { localStorage.setItem('ta_pro_email_v1', email); } catch (_) {}
+  if (inp) inp.value = '';
+  const confirm = document.getElementById('proSubmitConfirm');
+  if (confirm) confirm.style.display = 'block';
+  taTrack('pro_waitlist_join', { email });
+}
+
+/* ============================================================
+   AI ADVISOR FALLBACK (rule-based when Claude is offline)
+============================================================ */
+function getAIFallbackResponse(material, operation, params) {
+  const recommendations = {
+    P: {
+      turning:   { grade: 'GC4325 (Sandvik) / IC8250 (ISCAR) / KC5010 (Kennametal)', geometry: 'CNMG120408-MR or WNMG080408-MM', vc: '220-320 m/min', fn: '0.15-0.35 mm/rev', ap: '1.5-4.0 mm', tip: 'Prioritise chip breaker geometry for stable chip control.' },
+      milling:   { grade: 'GC2220 (Sandvik) / IC830 (ISCAR)', geometry: 'APMT1604PDER', vc: '180-280 m/min', fz: '0.10-0.25 mm/tooth', ap: '1.0-3.0 mm', tip: 'If vibration appears reduce fz, increase ap.' },
+      drilling:  { grade: 'Guhring RT100 / OSG AE-VTSS DLC', vc: '80-140 m/min', fn: '0.15-0.30 mm/rev', tip: 'Coolant pressure min 40 bar recommended.' },
+      threading: { grade: 'GC1125 (Sandvik) / IC908 (ISCAR)', tip: 'Use thread-specific inserts; verify pitch tolerance before production.' },
+      grooving:  { grade: 'CoroCut QD (Sandvik) / ISCAR GSFN', tip: 'Use centre coolant; avoid feed pauses mid-groove.' }
+    },
+    M: {
+      turning:  { grade: 'IC8150 (ISCAR) / WPP20S (Walter)', geometry: 'CNMG120408 positive geometry', vc: '140-220 m/min', fn: '0.10-0.25 mm/rev', ap: '1.0-3.0 mm', tip: 'BUE risk is high on stainless — positive geometry and strong coolant are mandatory.' },
+      milling:  { grade: 'WPP10S (Walter) / T9115 (Tungaloy)', geometry: 'APMT1604PDER', vc: '120-200 m/min', fz: '0.08-0.18 mm/tooth', tip: 'Prefer climb milling for better surface finish.' },
+      drilling: { grade: 'Guhring Duo-Lock / Kennametal KSEM', vc: '60-100 m/min', fn: '0.10-0.22 mm/rev', tip: 'High coolant pressure critical; watch for work hardening.' }
+    },
+    K: {
+      turning:  { grade: 'H13A (Sandvik) / KD120 (Kennametal)', geometry: 'DCMT11T304 — sharp edge', vc: '300-500 m/min', fn: '0.05-0.20 mm/rev', tip: 'Consider CBN or cermet for cast iron at high speeds.' },
+      milling:  { grade: 'H13A uncoated (Sandvik)', vc: '250-400 m/min', fz: '0.10-0.25 mm/tooth', tip: 'Dry machining or MQL preferred for grey cast iron.' },
+      drilling: { grade: 'Sandvik CoroDrill 460 / Walter DC150', vc: '100-180 m/min', fn: '0.18-0.35 mm/rev', tip: 'Sharp cutting edges; avoid excessive feed on hardened variants.' }
+    },
+    N: {
+      turning:  { grade: 'H13A uncoated / IB50 (ISCAR PCD)', geometry: 'Positive sharp geometry required', vc: '400-800 m/min', fn: '0.05-0.15 mm/rev', tip: 'Aluminium BUE risk — prefer PCD or sharp uncoated grade.' },
+      milling:  { grade: 'PCD cutter / Sandvik CoroMill 790', vc: '600-1200 m/min', fz: '0.05-0.15 mm/tooth', tip: 'High spindle speed, low chip load, avoid re-cutting chips.' },
+      drilling: { grade: 'OSG EXOPRO or PCD drill for Al', vc: '150-300 m/min', fn: '0.10-0.25 mm/rev', tip: 'Coolant flush essential to clear chips; wide flute geometry.' }
+    },
+    S: {
+      turning:  { grade: 'CB7025 (Sandvik) / AH3225 (Tungaloy)', geometry: 'CNMG120408 — strong edge', vc: '40-80 m/min', fn: '0.10-0.20 mm/rev', ap: '0.5-2.0 mm', tip: 'Low Vc and high coolant pressure critical for Ti and Inconel.' },
+      milling:  { grade: 'S05F (Walter) / Kennametal KCSM30', vc: '30-60 m/min', fz: '0.05-0.12 mm/tooth', tip: 'Trochoidal toolpaths strongly recommended to manage heat.' },
+      drilling: { grade: 'Kennametal KSEM Plus / Guhring Superion', vc: '20-45 m/min', fn: '0.05-0.12 mm/rev', tip: 'High-pressure through-tool coolant mandatory; peck drill if deep.' }
+    },
+    H: {
+      turning:  { grade: 'CB7025 CBN (Sandvik) / KCSM30 (Kennametal)', geometry: 'Negative geometry — strong edge', vc: '80-180 m/min', fn: '0.05-0.15 mm/rev', tip: 'Hardened steel requires CBN; do not use coolant.' },
+      milling:  { grade: 'CBN end mills / Walter MP4 CBN', vc: '60-120 m/min', fz: '0.03-0.08 mm/tooth', tip: 'Dry hard milling; rigid setup essential, no vibration allowed.' },
+      drilling: { grade: 'Solid carbide drill — high TiAlN coating', vc: '30-60 m/min', fn: '0.04-0.10 mm/rev', tip: 'Avoid interrupted cuts; pre-drill pilot if hardness >55 HRC.' }
+    }
+  };
+
+  const matGroup = String(material || 'P').toUpperCase()[0];
+  const op       = String(operation  || 'turning').toLowerCase();
+  const rec      = (recommendations[matGroup] || recommendations['P'])[op]
+                || (recommendations[matGroup] || recommendations['P'])['turning'];
+
+  const lines = [
+    '⚠ AI is in maintenance mode — rule-based recommendation shown.',
+    '',
+    `Recommended Grade : ${rec.grade}`,
+    rec.geometry ? `Geometry          : ${rec.geometry}` : null,
+    rec.vc       ? `Vc                : ${rec.vc}`       : null,
+    rec.fn       ? `fn                : ${rec.fn}`       : null,
+    rec.fz       ? `fz                : ${rec.fz}`       : null,
+    rec.ap       ? `ap                : ${rec.ap}`       : null,
+    '',
+    `Application note  : ${rec.tip}`,
+    '',
+    'Full AI analysis will be calculated in real time once the Pro plan is active.'
+  ].filter(l => l !== null).join('\n');
+
+  return lines;
+}
+
+function renderAdvisorAIPanel(material, operation) {
+  const resultsSection = document.getElementById('resultsSection');
+  if (!resultsSection) return;
+  let panel = document.getElementById('advisorAIPanel');
+  if (!panel) {
+    panel = document.createElement('div');
+    panel.id = 'advisorAIPanel';
+    resultsSection.insertAdjacentElement('afterbegin', panel);
+  }
+  if (!CONFIG.claude.enabled) {
+    panel.textContent = getAIFallbackResponse(material, operation, {});
+    panel.style.display = 'block';
+  } else {
+    panel.style.display = 'none';
+  }
+}
+
+/* ============================================================
+   CROSS-REF MISSING CODE SUBMISSION
+============================================================ */
+function submitMissingCode() {
+  const code  = (document.getElementById('submit-code')?.value  || '').trim();
+  const brand = (document.getElementById('submit-brand')?.value || '').trim();
+  const notes = (document.getElementById('submit-notes')?.value || '').trim();
+  if (!code) { toast('Please enter the insert code.', 'error'); return; }
+  try {
+    const existing = JSON.parse(localStorage.getItem('ta_pending_codes_v1') || '[]');
+    existing.push({ code, brand, notes, ts: Date.now() });
+    localStorage.setItem('ta_pending_codes_v1', JSON.stringify(existing));
+  } catch (_) {}
+  const confirm = document.getElementById('submit-confirm');
+  if (confirm) confirm.style.display = 'block';
+  if (document.getElementById('submit-brand'))  document.getElementById('submit-brand').value  = '';
+  if (document.getElementById('submit-notes'))  document.getElementById('submit-notes').value  = '';
+  taTrack('crossref_missing_submitted', { code, brand });
+}
 </script>
+
+<!-- ── Pro Modal ──────────────────────────────────────────────────────────── -->
+<div id="proModal" role="dialog" aria-modal="true" aria-labelledby="proModalTitle" onclick="if(event.target===this)closeProModal()">
+  <div id="proModal-inner">
+    <button id="proModal-close" type="button" onclick="closeProModal()" aria-label="Close">×</button>
+    <h2 id="proModalTitle">ToolAdvisor Pro</h2>
+    <p class="pro-modal-subtitle">Unlimited queries · Visual ID · AI Chat · €29/month</p>
+    <ul class="pro-features">
+      <li>Unlimited AI Advisor queries</li>
+      <li>Visual ID — identify any insert from a photo</li>
+      <li>AI Chat PRO — ask anything about cutting tools</li>
+      <li>Full cross-reference database (500+ codes)</li>
+      <li>Priority support</li>
+    </ul>
+    <input type="email" id="proEmailInput" placeholder="your@email.com" autocomplete="email">
+    <button class="pro-notify-btn" type="button" onclick="submitProEmail()">Notify me when Pro launches</button>
+    <p id="proSubmitConfirm" style="display:none;color:#10b981">You're on the list. We'll email you when Pro goes live.</p>
+  </div>
+</div>
 </body>
 </html>
