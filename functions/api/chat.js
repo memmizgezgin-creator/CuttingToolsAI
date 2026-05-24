@@ -22,10 +22,11 @@ export async function onRequest(context) {
 
   const apiKey = env.ANTHROPIC_API_KEY;
   if (!apiKey) {
-    return Response.json({ error: 'no key' }, { headers: CORS });
+    return new Response(
+      JSON.stringify({ error: 'API key not configured. Add ANTHROPIC_API_KEY in Cloudflare Pages environment variables.' }),
+      { status: 500, headers: { ...CORS, 'Content-Type': 'application/json' } }
+    );
   }
-  // TEMP DEBUG — remove after confirming key arrives
-  return Response.json({ debug: apiKey.substring(0, 10) }, { headers: CORS });
 
   try {
     const body = await request.json();
