@@ -172,50 +172,26 @@
   }
 
   // ============================================================
-  // SIDEBAR (filter-first design — active-state aware, count-aware)
+  // SIDEBAR (Precision Intelligence + Tool Families + Material Filter)
   // ============================================================
   const toolFamilies = [
-    {key:'Turning',    iconKey:'turning',   label:'Turning Inserts'},
-    {key:'Milling',    iconKey:'milling',   label:'Milling Tools'},
-    {key:'Drilling',   iconKey:'drilling',  label:'Drilling Tools'},
-    {key:'Reaming',    iconKey:'reamers',   label:'Reamers'},
-    {key:'Threading',  iconKey:'threading', label:'Threading Tools'},
-    {key:'Grooving',   iconKey:'grooving',  label:'Grooving & Parting'},
+    {iconKey:'turning',   label:'Turning Inserts'},
+    {iconKey:'milling',   label:'Milling Tools'},
+    {iconKey:'drilling',  label:'Drilling Tools'},
+    {iconKey:'reamers',   label:'Reamers'},
+    {iconKey:'threading', label:'Threading Tools'},
+    {iconKey:'grooving',  label:'Grooving & Parting'},
   ];
   // Material Filter — each material gets a tone-matched mini 3D insert
   // whose SHAPE is the typical insert geometry for that ISO group.
   const materials = [
-    {iso:'P', shape:'C', tone:'iso-p', label:'Steel',        color:'#3B82F6'},
-    {iso:'M', shape:'V', tone:'iso-m', label:'Stainless',    color:'#F59E0B'},
-    {iso:'K', shape:'W', tone:'iso-k', label:'Cast iron',    color:'#EF4444'},
-    {iso:'N', shape:'R', tone:'iso-n', label:'Non-ferrous',  color:'#10B981'},
-    {iso:'S', shape:'T', tone:'iso-s', label:'Superalloy',   color:'#F97316'},
-    {iso:'H', shape:'D', tone:'iso-h', label:'Hardened',     color:'#64748B'},
+    {shape:'C', tone:'iso-p', label:'ISO P Steel',       color:'#3B82F6'},
+    {shape:'V', tone:'iso-m', label:'ISO M Stainless',   color:'#F59E0B'},
+    {shape:'W', tone:'iso-k', label:'ISO K Cast Iron',   color:'#EF4444'},
+    {shape:'R', tone:'iso-n', label:'ISO N Non-Ferrous', color:'#10B981'},
+    {shape:'T', tone:'iso-s', label:'ISO S Superalloys', color:'#F97316'},
+    {shape:'D', tone:'iso-h', label:'ISO H Hardened',    color:'#64748B'},
   ];
-
-  const isCatalogPage = here === 'tools-directory.html';
-
-  function getCounts() {
-    if (!window.TA_TOOLS) return { families:{}, isos:{}, total:0, ready:false };
-    const families = {}, isos = {};
-    for (const t of window.TA_TOOLS) {
-      families[t.family] = (families[t.family] || 0) + 1;
-      isos[t.iso]        = (isos[t.iso]        || 0) + 1;
-    }
-    return { families, isos, total: window.TA_TOOLS.length, ready:true };
-  }
-
-  function navOrFilter(kind, value) {
-    // On catalog page: in-page filter event. Elsewhere: navigate to catalog with URL param.
-    if (isCatalogPage) {
-      window.dispatchEvent(new CustomEvent(`ta:${kind}-filter`, { detail: { [kind]: value } }));
-    } else {
-      const params = new URLSearchParams();
-      if (value) params.set(kind, value);
-      const qs = params.toString();
-      window.location.href = `tools-directory.html${qs ? '?' + qs : ''}`;
-    }
-  }
 
   function buildSidebar() {
     const aside = document.createElement('aside');
@@ -226,131 +202,83 @@
       width:260px;height:calc(100vh - 64px);
       background:#F5F2EE;border-right:1px solid #E8E4DE;
       display:flex;flex-direction:column;
+      padding:24px 0;
       z-index:30;
       font-family:"DM Sans",system-ui,sans-serif;`;
 
-    const sectionLabel = (txt) => `
-      <div style="margin:14px 18px 6px;">
-        <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8A8A9A;font-weight:700;margin:0;">${txt}</p>
-      </div>`;
-
-    const counts = getCounts();
-    void counts; // counts retained for future use; not surfaced to users to avoid "small catalog" perception
-
-    // Filter status header
-    const statusHTML = `
-      <div data-ta-filter-status style="padding:16px 14px 12px;border-bottom:1px solid #E8E4DE;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-          <span class="material-symbols-outlined" style="font-size:18px;color:#123356;">filter_alt</span>
-          <p style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#123356;margin:0;flex:1;">Filters</p>
-          <span data-ta-filter-count style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;color:#8A8A9A;font-weight:600;">Brand-neutral</span>
+    const brandHTML = `
+      <div style="display:flex;align-items:center;gap:12px;padding:0 20px;margin-bottom:24px;">
+        <div style="width:40px;height:40px;background:#123356;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span class="material-symbols-outlined" style="color:#fff;font-size:22px;">precision_manufacturing</span>
         </div>
-        <div data-ta-active-chips style="display:none;flex-wrap:wrap;gap:4px;margin-top:6px;"></div>
-        <button data-ta-clear style="display:none;margin-top:8px;background:transparent;border:none;color:#123356;font-size:11px;font-weight:700;cursor:pointer;text-decoration:underline;padding:0;">Clear all filters</button>
-        <button data-ta-all data-active="true" style="
-            display:flex;align-items:center;gap:8px;width:100%;
-            padding:8px 10px;margin-top:6px;border-radius:8px;border:none;
-            background:#fff;color:#123356;cursor:pointer;
-            font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;
-            box-shadow: inset 3px 0 0 0 #123356;
-            transition:background .15s;">
-          <span class="material-symbols-outlined" style="font-size:18px;">inventory_2</span>
-          <span style="flex:1;text-align:left;">All tools</span>
-        </button>
+        <div style="min-width:0;">
+          <p style="font-family:'Nunito',sans-serif;font-weight:700;font-size:15px;color:#123356;margin:0;line-height:1.2;">Precision Intelligence</p>
+          <p style="font-size:12px;color:#43474e;margin:2px 0 0;">Tool Decision Platform</p>
+        </div>
       </div>`;
 
-    // Tool family row — clickable, active state (no counts: keeps catalog scale neutral)
-    const toolItem = (it) => {
-      return `
-        <button data-ta-family="${it.key}" class="ta-sb-item ta-sb-family" style="
-            display:flex;align-items:center;gap:12px;width:calc(100% - 16px);
-            padding:8px 12px;margin:0 8px 1px;border-radius:10px;border:none;
-            background:transparent;color:#43474e;cursor:pointer;
-            font-family:'Nunito',sans-serif;font-weight:500;font-size:14px;text-align:left;
-            transition:background .15s,color .15s,box-shadow .2s;">
-          <span class="ta-sb-glyph" style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;color:#43474e;transition:color .15s;">
-            <span class="ta-tool-icon" data-icon="${it.iconKey}" data-size="20"></span>
-          </span>
-          <span style="flex:1;">${it.label}</span>
-        </button>`;
-    };
+    const sectionLabel = (txt) => `
+      <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8A8A9A;font-weight:600;margin:18px 20px 8px;">${txt}</p>`;
 
-    // Material tile — bigger 3D insert, color-coded (no counts)
-    const matItem = (it) => {
-      return `
-        <button data-ta-iso="${it.iso}" class="ta-sb-item ta-sb-mat" style="
-            position:relative;
-            display:flex;align-items:center;gap:10px;width:calc(100% - 16px);
-            padding:9px 10px;margin:0 8px 4px;border-radius:10px;
-            background:#fff;border:1px solid #ECE7E0;cursor:pointer;
-            color:#43474e;text-align:left;
-            font-family:'Nunito',sans-serif;font-weight:600;font-size:13px;
-            transition:transform .15s, box-shadow .2s, border-color .2s;">
-          <span class="ta-insert3d" data-shape="${it.shape}" data-tone="${it.tone}" data-size="xs" style="flex-shrink:0;width:32px;height:32px;"></span>
-          <span style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.15;">
-            <span style="color:#1A1A2E;">${it.label}</span>
-            <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;color:${it.color};font-weight:800;margin-top:2px;">ISO ${it.iso}</span>
-          </span>
-        </button>`;
-    };
+    // Tool family row — custom SVG glyph + label
+    const toolItem = (it) => `
+      <a href="#" class="ta-sb-item" style="
+          display:flex;align-items:center;gap:12px;
+          padding:7px 14px;margin:0 8px;border-radius:10px;
+          color:#43474e;
+          font-family:'Nunito',sans-serif;font-weight:500;font-size:14px;
+          text-decoration:none;transition:background .15s,color .15s;">
+        <span class="ta-sb-glyph" style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;color:#43474e;transition:color .15s;">
+          <span class="ta-tool-icon" data-icon="${it.iconKey}" data-size="20"></span>
+        </span>
+        <span>${it.label}</span>
+      </a>`;
+
+    // Material row — mini 3D insert + label.
+    // Using inline data-attrs; the 3D hydrator picks it up after we render.
+    const matItem = (it) => `
+      <a href="#" class="ta-sb-item ta-sb-mat" data-mat-key="${it.shape}" style="
+          display:flex;align-items:center;gap:12px;
+          padding:8px 14px;margin:0 8px;border-radius:10px;
+          color:#43474e;
+          font-family:'Nunito',sans-serif;font-weight:500;font-size:14px;
+          text-decoration:none;transition:background .15s,color .15s,box-shadow .2s;
+          position:relative;">
+        <span class="ta-insert3d" data-shape="${it.shape}" data-tone="${it.tone}" data-size="xs" style="flex-shrink:0;"></span>
+        <span style="display:flex;flex-direction:column;line-height:1.2;">
+          <span>${it.label.replace(/^ISO\s\w\s/, '')}</span>
+          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.10em;color:${it.color};font-weight:700;margin-top:2px;">ISO ${it.label.match(/ISO\s(\w)/)?.[1]||''}</span>
+        </span>
+      </a>`;
 
     aside.innerHTML = `
-      ${statusHTML}
-      <div style="flex:1;overflow-y:auto;padding:6px 0 8px;" class="custom-scrollbar">
-        ${sectionLabel('Tool family')}
+      ${brandHTML}
+      <div style="flex:1;overflow-y:auto;padding-bottom:8px;" class="custom-scrollbar">
+        ${sectionLabel('Tool Families')}
         ${toolFamilies.map(toolItem).join('')}
-        ${sectionLabel('ISO material group')}
+        ${sectionLabel('Material Filter')}
         ${materials.map(matItem).join('')}
-
-        ${sectionLabel('Pro features')}
-        <button data-modal-open="pro-upgrade" class="ta-sb-item ta-sb-pro" style="
-            display:flex;align-items:center;gap:12px;width:calc(100% - 16px);
-            padding:8px 12px;margin:0 8px 1px;border-radius:10px;border:none;
-            background:transparent;color:#92400E;cursor:pointer;
-            font-family:'Nunito',sans-serif;font-weight:600;font-size:13px;text-align:left;
-            transition:background .15s;">
-          <span class="material-symbols-outlined" style="font-size:18px;color:#B45309;">bookmark_added</span>
-          <span style="flex:1;">Saved searches</span>
-          <span style="background:linear-gradient(135deg,#FBBF24,#D97706);color:#fff;font-size:9px;font-weight:900;letter-spacing:.10em;padding:2px 6px;border-radius:5px;text-transform:uppercase;">Pro</span>
-        </button>
-        <button data-modal-open="pro-upgrade" class="ta-sb-item ta-sb-pro" style="
-            display:flex;align-items:center;gap:12px;width:calc(100% - 16px);
-            padding:8px 12px;margin:0 8px 1px;border-radius:10px;border:none;
-            background:transparent;color:#92400E;cursor:pointer;
-            font-family:'Nunito',sans-serif;font-weight:600;font-size:13px;text-align:left;
-            transition:background .15s;">
-          <span class="material-symbols-outlined" style="font-size:18px;color:#B45309;">picture_as_pdf</span>
-          <span style="flex:1;">Bulk PDF export</span>
-          <span style="background:linear-gradient(135deg,#FBBF24,#D97706);color:#fff;font-size:9px;font-weight:900;letter-spacing:.10em;padding:2px 6px;border-radius:5px;text-transform:uppercase;">Pro</span>
-        </button>
       </div>
-
-      <div style="padding:10px 14px 14px;border-top:1px solid #E8E4DE;">
+      <div style="padding:0 16px;margin-top:8px;">
         <a href="pro.html" data-modal-open="pro-upgrade" style="
-            position:relative;overflow:hidden;
-            display:flex;align-items:center;gap:10px;
-            background:linear-gradient(135deg,#1a3554 0%,#123356 100%);color:#fff;
-            padding:12px 14px;border-radius:12px;
+            display:flex;align-items:center;justify-content:center;gap:8px;
+            background:#123356;color:#fff;
+            padding:11px 16px;border-radius:10px;
             font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;
-            text-decoration:none;cursor:pointer;
+            text-decoration:none;letter-spacing:.02em;cursor:pointer;
             transition:transform .15s, box-shadow .15s;"
-            onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 6px 18px rgba(18,51,86,.28)';"
+            onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 12px rgba(18,51,86,.2)';"
             onmouseout="this.style.transform='';this.style.boxShadow='';">
-          <span class="material-symbols-outlined" style="font-size:20px;color:#FBBF24;">workspace_premium</span>
-          <span style="flex:1;">
-            <span style="display:block;line-height:1.15;">Upgrade to Pro</span>
-            <span style="display:block;font-family:'DM Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.10em;color:rgba(255,255,255,.6);margin-top:2px;text-transform:uppercase;">14-day free trial</span>
-          </span>
-          <span class="material-symbols-outlined" style="font-size:16px;color:rgba(255,255,255,.5);">arrow_forward</span>
+          Upgrade to Pro
         </a>
-        <div style="margin-top:10px;display:flex;gap:14px;">
-          <a href="#" class="ta-sb-foot" style="display:flex;align-items:center;gap:6px;color:#73777f;text-decoration:none;font-size:11px;font-weight:600;">
-            <span class="material-symbols-outlined" style="font-size:14px;">help</span>
-            <span>Help</span>
+        <div style="border-top:1px solid #E8E4DE;margin-top:14px;padding-top:12px;display:flex;flex-direction:column;gap:6px;">
+          <a href="#" class="ta-sb-foot" style="display:flex;align-items:center;gap:10px;padding:6px 6px;color:#43474e;text-decoration:none;font-size:13px;font-weight:500;">
+            <span class="material-symbols-outlined" style="font-size:18px;">help</span>
+            <span>Help Center</span>
           </a>
-          <a href="#" class="ta-sb-foot" style="display:flex;align-items:center;gap:6px;color:#73777f;text-decoration:none;font-size:11px;font-weight:600;">
-            <span class="material-symbols-outlined" style="font-size:14px;">description</span>
-            <span>Docs</span>
+          <a href="#" class="ta-sb-foot" style="display:flex;align-items:center;gap:10px;padding:6px 6px;color:#43474e;text-decoration:none;font-size:13px;font-weight:500;">
+            <span class="material-symbols-outlined" style="font-size:18px;">description</span>
+            <span>Documentation</span>
           </a>
         </div>
       </div>`;
@@ -358,122 +286,57 @@
     return aside;
   }
 
-  // Sidebar state sync — set/clear active visual state on family + material items
-  function applySidebarState(sb, state) {
-    const { family, iso } = state || {};
-    // All tools button: active when no family + no iso
-    const all = sb.querySelector('[data-ta-all]');
-    if (all) {
-      const isAll = !family && !iso;
-      all.setAttribute('data-active', isAll ? 'true' : 'false');
-      all.style.background = isAll ? '#fff' : 'transparent';
-      all.style.boxShadow = isAll ? 'inset 3px 0 0 0 #123356' : 'none';
-      all.style.color = isAll ? '#123356' : '#43474e';
-    }
-    sb.querySelectorAll('.ta-sb-family').forEach(el => {
-      const on = el.dataset.taFamily === family;
-      el.setAttribute('data-active', on ? 'true' : 'false');
-      el.style.background = on ? '#fff' : 'transparent';
-      el.style.color = on ? '#123356' : '#43474e';
-      el.style.boxShadow = on ? 'inset 3px 0 0 0 #123356, 0 2px 6px rgba(18,51,86,.08)' : 'none';
-      el.style.fontWeight = on ? 700 : 500;
-      const g = el.querySelector('.ta-sb-glyph'); if (g) g.style.color = on ? '#123356' : '#43474e';
-    });
-    sb.querySelectorAll('.ta-sb-mat').forEach(el => {
-      const on = el.dataset.taIso === iso;
-      el.setAttribute('data-active', on ? 'true' : 'false');
-      const color = materials.find(m => m.iso === el.dataset.taIso)?.color || '#123356';
-      el.style.borderColor = on ? color : '#ECE7E0';
-      el.style.boxShadow = on ? `inset 4px 0 0 0 ${color}, 0 4px 12px ${color}22` : 'none';
-      el.style.transform = on ? 'translateX(2px)' : '';
-    });
-
-    // Filter status section
-    const chipsHost = sb.querySelector('[data-ta-active-chips]');
-    const clearBtn  = sb.querySelector('[data-ta-clear]');
-    if (chipsHost && clearBtn) {
-      const chips = [];
-      if (family) chips.push({ label: family, kind:'family' });
-      if (iso)    chips.push({ label: `ISO ${iso}`, kind:'iso' });
-      if (chips.length) {
-        chipsHost.style.display = 'flex';
-        clearBtn.style.display = 'block';
-        chipsHost.innerHTML = chips.map(c => `
-          <span style="display:inline-flex;align-items:center;gap:4px;background:#123356;color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;letter-spacing:.02em;">
-            ${c.label}
-          </span>`).join('');
-      } else {
-        chipsHost.style.display = 'none';
-        clearBtn.style.display = 'none';
-        chipsHost.innerHTML = '';
-      }
-    }
-  }
-
-  function refreshSidebarCounts(/* sb */) {
-    // Counts intentionally suppressed: showing absolute size of a still-growing catalog
-    // is hostile to perception. The in-page result counter (filtered/visible) is
-    // sufficient context for active sessions.
-  }
-
   function installSidebar() {
+    // Remove any existing <aside> at top level so we don't double up
     document.querySelectorAll('body > aside').forEach(a => a.remove());
 
+    // Hide sidebar on narrow viewports
     const sb = buildSidebar();
     document.body.insertBefore(sb, document.body.firstChild.nextSibling);
 
-    // Hover styles — only affect non-active items
+    // Hover styles
     sb.querySelectorAll('.ta-sb-item').forEach(el => {
-      const isMat = el.classList.contains('ta-sb-mat');
       el.addEventListener('mouseenter',()=>{
         if (el.getAttribute('data-active') === 'true') return;
-        if (isMat) { el.style.borderColor = '#C7C2BA'; el.style.transform = 'translateX(1px)'; }
-        else { el.style.background='#FFFFFF';el.style.color='#123356'; const g = el.querySelector('.ta-sb-glyph'); if (g) g.style.color = '#123356'; }
+        el.style.background='#FFFFFF';el.style.color='#123356';
+        const g = el.querySelector('.ta-sb-glyph'); if (g) g.style.color = '#123356';
       });
       el.addEventListener('mouseleave',()=>{
         if (el.getAttribute('data-active') === 'true') return;
-        if (isMat) { el.style.borderColor = '#ECE7E0'; el.style.transform = ''; }
-        else { el.style.background='transparent';el.style.color='#43474e'; const g = el.querySelector('.ta-sb-glyph'); if (g) g.style.color = '#43474e'; }
+        el.style.background='transparent';el.style.color='#43474e';
+        const g = el.querySelector('.ta-sb-glyph'); if (g) g.style.color = '#43474e';
       });
     });
 
-    // All-tools button → clear filters
-    sb.querySelector('[data-ta-all]')?.addEventListener('click', () => {
-      if (isCatalogPage) {
-        window.dispatchEvent(new CustomEvent('ta:clear-filters'));
-      } else {
-        window.location.href = 'tools-directory.html';
-      }
-    });
-    sb.querySelector('[data-ta-clear]')?.addEventListener('click', () => {
-      window.dispatchEvent(new CustomEvent('ta:clear-filters'));
-    });
-
-    // Tool family clicks
-    sb.querySelectorAll('.ta-sb-family').forEach(el => {
+    // Material filter: click-to-toggle. Only one active at a time (radio).
+    // State is local — broadcasts a window event so other parts of the page can react.
+    const materialKeys = Array.from(sb.querySelectorAll('.ta-sb-mat'));
+    materialKeys.forEach(el => {
       el.addEventListener('click', (e) => {
         e.preventDefault();
-        const fam = el.dataset.taFamily;
         const wasActive = el.getAttribute('data-active') === 'true';
-        navOrFilter('family', wasActive ? null : fam);
-      });
-    });
-
-    // Material clicks (event uses iso letter directly now)
-    sb.querySelectorAll('.ta-sb-mat').forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        const iso = el.dataset.taIso;
-        const wasActive = el.getAttribute('data-active') === 'true';
-        navOrFilter('iso', wasActive ? null : iso);
+        materialKeys.forEach(m => {
+          m.removeAttribute('data-active');
+          m.style.background = 'transparent';
+          m.style.boxShadow = '';
+        });
+        if (!wasActive) {
+          el.setAttribute('data-active', 'true');
+          el.style.background = '#FFFFFF';
+          el.style.boxShadow = 'inset 3px 0 0 0 currentColor, 0 2px 6px rgba(18,51,86,.10)';
+        }
+        window.dispatchEvent(new CustomEvent('ta:material-filter', {
+          detail: { shape: wasActive ? null : el.dataset.matKey }
+        }));
       });
     });
     sb.querySelectorAll('.ta-sb-foot').forEach(el => {
       el.addEventListener('mouseenter',()=>{el.style.color='#123356';});
-      el.addEventListener('mouseleave',()=>{el.style.color='#73777f';});
+      el.addEventListener('mouseleave',()=>{el.style.color='#43474e';});
     });
 
-    // Hydrate 3D inserts & tool icons (defer scripts may not have finished by now)
+    // Hydrate freshly injected 3D inserts & tool icons (defer scripts may not
+    // have finished by now; retry on next tick if helpers are missing).
     const tryHydrate = () => {
       if (window.taInsert3DHydrate)  window.taInsert3DHydrate(sb);
       if (window.taToolIconHydrate)  window.taToolIconHydrate(sb);
@@ -481,37 +344,6 @@
     tryHydrate();
     setTimeout(tryHydrate, 60);
     setTimeout(tryHydrate, 250);
-
-    // Listen for state broadcasts from catalog page → update active visuals
-    window.addEventListener('ta:filter-state', (e) => applySidebarState(sb, e.detail || {}));
-
-    // Wait for TA_TOOLS to be ready and refresh counts
-    const waitForData = (tries=20) => {
-      if (window.TA_TOOLS) { refreshSidebarCounts(sb); return; }
-      if (tries <= 0) return;
-      setTimeout(() => waitForData(tries - 1), 80);
-    };
-    waitForData();
-
-    // Apply initial URL params (for cross-page filter handoff)
-    if (isCatalogPage) {
-      const p = new URLSearchParams(location.search);
-      const fam = p.get('family');
-      const iso = p.get('iso');
-      if (fam || iso) {
-        // Wait until App mounts then push state
-        const push = (tries=20) => {
-          if (window.TA_TOOLS && document.querySelector('#catalog-root [data-app-ready]')) {
-            if (fam) window.dispatchEvent(new CustomEvent('ta:family-filter', { detail:{ family: fam } }));
-            if (iso) window.dispatchEvent(new CustomEvent('ta:iso-filter', { detail:{ iso } }));
-            return;
-          }
-          if (tries <= 0) return;
-          setTimeout(() => push(tries - 1), 80);
-        };
-        push();
-      }
-    }
 
     // Show / hide on viewport size
     const applyResponsive = () => {
