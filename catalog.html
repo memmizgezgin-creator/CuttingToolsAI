@@ -17157,8 +17157,8 @@ function sendChatMsg() {
   msgs.innerHTML += `<div class="chat-bubble ai" id="${id}" style="opacity:.4">…</div>`;
   msgs.scrollTop = msgs.scrollHeight;
 
-  // Worker proxy mode — routes through tooladvisor-ai Cloudflare Worker
-  fetch('https://tooladvisor-ai.memmizgezgin.workers.dev/api/chat', {
+  // Worker proxy mode — routes through tooladvisor-ai-proxy Cloudflare Worker
+  fetch('https://tooladvisor-ai-proxy.memmizgezgin.workers.dev', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message: msg })
