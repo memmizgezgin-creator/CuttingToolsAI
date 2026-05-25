@@ -406,6 +406,7 @@
         })
       });
       const data = await res.json();
+      console.log('[ToolAdvisor AI] status:', res.status, 'response:', JSON.stringify(data).substring(0, 300));
       typingRow.remove();
       const reply = data.content?.[0]?.text || data.error?.message || data.error || 'Sorry, I had trouble answering that.';
       addMessage('ai', escapeHtml(reply).replace(/\n/g, '<br>'));
