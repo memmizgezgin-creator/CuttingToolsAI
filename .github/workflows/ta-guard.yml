@@ -1,0 +1,76 @@
+name: ToolAdvisor Guard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check critical files exist
+        run: |
+          FAIL=0
+          check() {
+            if [ -f "$1" ]; then echo "✅ $1"; else echo "❌ MISSING: $1"; FAIL=1; fi
+          }
+          check "CLOUDFLARE_MIGRATION.md"
+          check "TOOLADVISOR_WORKLOG.md"
+          check "index.html"
+          check "ToolAdvisor.html"
+          check "wrangler.toml"
+          check "functions/proxy.js"
+          check "advisor-ai-widget.js"
+          if [ $FAIL -eq 1 ]; then
+            echo "::error::One or more critical files are missing."
+            exit 1
+          fi
+
+      - name: Check no Netlify config
+        run: |
+          if [ -f "netlify.toml" ]; then
+            echo "::error::netlify.toml found — Netlify must not be used."
+            exit 1
+          fi
+          echo "✅ No netlify.toml"
+
+      - name: Check protected files not modified
+        run: |
+          FAIL=0
+          CHANGED=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || echo "")
+          echo "Changed files: $CHANGED"
+
+          if echo "$CHANGED" | grep -q "^wrangler\.toml$"; then
+            echo "::warning::wrangler.toml was modified — review required"
+          fi
+
+          if echo "$CHANGED" | grep -qi "PRODUCT_DB\|product.db"; then
+            echo "::error::PRODUCT_DB was modified — NOT allowed without approval"
+            FAIL=1
+          fi
+
+          if echo "$CHANGED" | grep -qi "netlify"; then
+            echo "::error::Netlify file modified — NOT allowed"
+            FAIL=1
+          fi
+
+          if [ $FAIL -eq 1 ]; then exit 1; fi
+
+      - name: Check WORKLOG updated (warn only)
+        run: |
+          CHANGED=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || echo "")
+          if ! echo "$CHANGED" | grep -q "TOOLADVISOR_WORKLOG.md"; then
+            echo "::warning::TOOLADVISOR_WORKLOG.md was not updated in this commit"
+          else
+            echo "✅ TOOLADVISOR_WORKLOG.md updated"
+          fi
+
+      - name: Summary
+        run: echo "✅ ToolAdvisor Guard passed."
