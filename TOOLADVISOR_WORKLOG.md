@@ -147,3 +147,39 @@ Deployment:
 Risk:
 - Active deploy source must still be verified before deleting or archiving legacy folders.
 - No legacy folder should be deleted until the active Cloudflare deployment source is confirmed.
+
+---
+
+## 2026-05-27 — Task 001: Research Review
+
+### Task
+001-review-research-outputs.md
+
+### Yapılan
+Tüm research/ dosyaları okundu ve incelendi:
+- current-data-model-audit.md
+- cutting-tool-site-research.md
+- implementation-roadmap.md
+- product-card-detail-recommendations.md
+- refactor-plan-no-code.md
+- missing-fields-list.json
+- tooladvisor-product-schema-proposal.json
+- filter-model-proposal.json
+- category-specific-fields.json
+
+### Çıktı
+research/001-research-review-decision.md oluşturuldu.
+
+### Özet Karar
+- Hemen: canonical schema migration, trust metadata, filter registry
+- Bekle: detail modal, compare matrix, cross-reference, Supabase
+- Yasak: synthetic economics gösterimi, bulk scraping, PRODUCT_DB değişikliği
+- İlk implementation sırası: schema → trust → filters → cards → detail → compare → cross-ref
+
+### Dosya Değişiklikleri
+- research/001-research-review-decision.md oluşturuldu
+- tasks/todo/001-review-research-outputs.md → tasks/done/ taşındı
+- TOOLADVISOR_WORKLOG.md güncellendi
+
+### Deploy
+Yapılmadı.
