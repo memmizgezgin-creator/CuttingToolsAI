@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tooladvisor.eu/schemas/cutting-tool-product.schema.json",
+  "title": "ToolAdvisor Cutting Tool Product",
+  "description": "Brand-neutral schema for cutting-tool advisory, comparison, and cross-reference. Designed for public structural intelligence and verified product records, not full catalogue cloning.",
+  "type": "object",
+  "required": [
+    "id",
+    "brand",
+    "product_code",
+    "tool_type",
+    "category",
+    "trust"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable ToolAdvisor internal ID."
+    },
+    "brand": {
+      "type": "string"
+    },
+    "manufacturer": {
+      "type": "string"
+    },
+    "product_code": {
+      "type": "string",
+      "description": "Primary visible product/order/catalog code."
+    },
+    "iso_code": {
+      "type": ["string", "null"]
+    },
+    "ansi_code": {
+      "type": ["string", "null"]
+    },
+    "series": {
+      "type": ["string", "null"]
+    },
+    "tool_type": {
+      "type": "string",
+      "enum": [
+        "turning_insert",
+        "milling_insert",
+        "solid_drill",
+        "indexable_drill_insert",
+        "tap",
+        "threading_insert",
+        "reamer",
+        "end_mill",
+        "future"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "turning",
+        "milling",
+        "drilling",
+        "threading",
+        "tapping",
+        "reaming",
+        "end_milling",
+        "future"
+      ]
+    },
+    "operation": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "finishing",
+          "medium",
+          "roughing",
+          "face_milling",
+          "shoulder_milling",
+          "slotting",
+          "profiling",
+          "high_feed",
+          "hsm",
+          "hpc",
+          "through_hole",
+          "blind_hole",
+          "external_threading",
+          "internal_threading",
+          "general"
+        ]
+      },
+      "default": []
+    },
+    "workpiece_materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["iso_group"],
+        "properties": {
+          "iso_group": {
+            "type": "string",
+            "enum": ["P", "M", "K", "N", "S", "H"]
+          },
+          "label": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["primary", "secondary", "possible", "not_recommended"]
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      },
+      "default": []
+    },
+    "grade": {
+      "type": ["string", "null"]
+    },
+    "coating": {
+      "type": ["string", "null"]
+    },
+    "tool_material": {
+      "type": ["string", "null"],
+      "examples": ["carbide", "HSS", "HSCo", "PM-HSS", "CBN", "PCD"]
+    },
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "insert_shape": { "type": ["string", "null"] },
+        "shape_code": { "type": ["string", "null"] },
+        "clearance_angle": { "type": ["number", "null"] },
+        "relief_angle": { "type": ["number", "null"] },
+        "tolerance_class": { "type": ["string", "null"] },
+        "chipbreaker": { "type": ["string", "null"] },
+        "chipformer": { "type": ["string", "null"] },
+        "rake": { "type": ["string", "null"] },
+        "hand": { "type": ["string", "null"], "enum": ["left", "right", "neutral", null] },
+        "cutting_direction": { "type": ["string", "null"], "enum": ["left_hand", "right_hand", "neutral", null] },
+        "corner_style": { "type": ["string", "null"], "enum": ["sharp", "corner_radius", "chamfer", "ball", "bullnose", null] },
+        "helix_angle_deg": { "type": ["number", "null"] },
+        "flute_type": { "type": ["string", "null"] },
+        "flute_count": { "type": ["integer", "null"] },
+        "point_angle_deg": { "type": ["number", "null"] },
+        "center_cutting": { "type": ["boolean", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "dimensions": {
+      "type": "object",
+      "properties": {
+        "diameter_mm": { "type": ["number", "null"] },
+        "cutting_diameter_mm": { "type": ["number", "null"] },
+        "shank_diameter_mm": { "type": ["number", "null"] },
+        "overall_length_mm": { "type": ["number", "null"] },
+        "cutting_length_mm": { "type": ["number", "null"] },
+        "flute_length_mm": { "type": ["number", "null"] },
+        "usable_length_mm": { "type": ["number", "null"] },
+        "functional_length_mm": { "type": ["number", "null"] },
+        "thread_length_mm": { "type": ["number", "null"] },
+        "inscribed_circle_mm": { "type": ["number", "null"] },
+        "insert_thickness_mm": { "type": ["number", "null"] },
+        "corner_radius_mm": { "type": ["number", "null"] },
+        "nose_radius_mm": { "type": ["number", "null"] },
+        "cutting_edge_length_mm": { "type": ["number", "null"] },
+        "ld_ratio": { "type": ["number", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "thread": {
+      "type": ["object", "null"],
+      "properties": {
+        "thread_size": { "type": ["string", "null"] },
+        "pitch_mm": { "type": ["number", "null"] },
+        "tpi": { "type": ["number", "null"] },
+        "thread_standard": { "type": ["string", "null"] },
+        "tap_type": {
+          "type": ["string", "null"],
+          "enum": ["machine_tap", "hand_tap", "spiral_flute", "spiral_point", "straight_flute", "form_tap", "thread_mill", null]
+        },
+        "hole_type": {
+          "type": ["string", "null"],
+          "enum": ["blind", "through", "blind_or_through", null]
+        },
+        "chamfer_form": { "type": ["string", "null"] },
+        "tolerance": { "type": ["string", "null"] }
+      }
+    },
+    "coolant": {
+      "type": "object",
+      "properties": {
+        "suitability": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["wet", "dry", "mql", "high_pressure", "external", "internal"] },
+          "default": []
+        },
+        "through_coolant": { "type": ["boolean", "null"] },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "cutting_data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "material_iso": { "type": "string", "enum": ["P", "M", "K", "N", "S", "H"] },
+          "operation": { "type": "string" },
+          "vc_min_m_per_min": { "type": ["number", "null"] },
+          "vc_max_m_per_min": { "type": ["number", "null"] },
+          "feed_min": { "type": ["number", "null"] },
+          "feed_max": { "type": ["number", "null"] },
+          "feed_unit": { "type": ["string", "null"], "enum": ["mm_rev", "mm_tooth", "mm_min", "pitch", null] },
+          "ap_min_mm": { "type": ["number", "null"] },
+          "ap_max_mm": { "type": ["number", "null"] },
+          "ae_min_mm": { "type": ["number", "null"] },
+          "ae_max_mm": { "type": ["number", "null"] },
+          "source_url": { "type": ["string", "null"], "format": "uri" },
+          "confidence_score": { "type": ["number", "null"], "minimum": 0, "maximum": 100 }
+        }
+      },
+      "default": []
+    },
+    "application": {
+      "type": "object",
+      "properties": {
+        "best_use_case": { "type": ["string", "null"] },
+        "recommended_use_cases": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "application_range": { "type": ["string", "null"] },
+        "watch_out_notes": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "stability_requirement": { "type": ["string", "null"], "enum": ["low", "medium", "high", null] }
+      }
+    },
+    "cross_reference": {
+      "type": "object",
+      "properties": {
+        "equivalent_ids": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "near_equivalent_ids": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "not_equivalent_notes": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "match_basis": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["iso_code", "geometry", "grade_application", "coating", "material_group", "operation", "dimensions", "manual_review"] },
+          "default": []
+        }
+      }
+    },
+    "commercial": {
+      "type": "object",
+      "description": "Optional only. ToolAdvisor is not a marketplace.",
+      "properties": {
+        "price_tier": { "type": ["integer", "null"], "minimum": 1, "maximum": 5 },
+        "availability_indicator": { "type": ["string", "null"], "enum": ["unknown", "usually_available", "limited", "special_order", "discontinued", null] },
+        "region": { "type": ["string", "null"] }
+      }
+    },
+    "trust": {
+      "type": "object",
+      "required": ["source_tier", "validation_status", "confidence_score", "source_name", "last_checked"],
+      "properties": {
+        "source_tier": {
+          "type": "string",
+          "enum": ["manufacturer", "authorized_distributor", "neutral_data_platform", "public_catalog_pdf", "manual_review", "estimated", "unknown"]
+        },
+        "validation_status": {
+          "type": "string",
+          "enum": ["verified", "partially_verified", "needs_review", "estimated", "stale", "rejected"]
+        },
+        "confidence_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "source_name": { "type": "string" },
+        "source_url": { "type": ["string", "null"], "format": "uri" },
+        "source_file": { "type": ["string", "null"] },
+        "source_page": { "type": ["string", "null"] },
+        "last_checked": { "type": "string", "format": "date" },
+        "risk_flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "estimated_field",
+              "stale_source",
+              "distributor_only",
+              "conflicting_sources",
+              "missing_dimensions",
+              "missing_grade",
+              "missing_coating",
+              "operation_unclear",
+              "material_suitability_unclear",
+              "commercial_only_source",
+              "manual_review_required"
+            ]
+          },
+          "default": []
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

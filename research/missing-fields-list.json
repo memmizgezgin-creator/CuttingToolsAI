@@ -1,0 +1,227 @@
+{
+  "auditDate": "2026-05-27",
+  "sourceWorkspace": "/Users/muratonder/Desktop/ToolAdvisor",
+  "requestedWorkspaceMissing": "/Users/muratonder/Desktop/tooladvisor-v5-final/tooladvisor-deploy/",
+  "activeDataset": {
+    "name": "window.TA_TOOLS",
+    "file": "/Users/muratonder/Desktop/ToolAdvisor/directory-data.js",
+    "recordCount": 36
+  },
+  "currentFields": {
+    "stored": [
+      "id",
+      "brand",
+      "code",
+      "grade",
+      "shape",
+      "tone",
+      "iso",
+      "family",
+      "op",
+      "vcMin",
+      "vcMax",
+      "fMin",
+      "fMax",
+      "apMin",
+      "apMax",
+      "coolant",
+      "stability",
+      "bestFor",
+      "confidence",
+      "source",
+      "supply",
+      "equivalents",
+      "lastVerified"
+    ],
+    "derived": [
+      "equivIds",
+      "costTier",
+      "lifeRel",
+      "unitPrice",
+      "costPerEdge",
+      "edges",
+      "weeklyPicks",
+      "valueIndex",
+      "peerIds",
+      "betterValueId",
+      "betterValueDelta"
+    ]
+  },
+  "missingUniversalFields": [
+    {
+      "field": "category",
+      "priority": "critical",
+      "reason": "Need normalized category separate from UI family."
+    },
+    {
+      "field": "subcategory",
+      "priority": "critical",
+      "reason": "Professional logic needs insert, solid drill, indexable drill, tap, reamer, end mill, holder, etc."
+    },
+    {
+      "field": "manufacturer_part_number",
+      "priority": "critical",
+      "reason": "Code alone is not a stable SKU."
+    },
+    {
+      "field": "designation_normalized",
+      "priority": "critical",
+      "reason": "Cross-reference and compare require canonical designations."
+    },
+    {
+      "field": "designation_attributes",
+      "priority": "critical",
+      "reason": "Insert/tap/drill/end mill codes must be decoded into comparable geometry attributes."
+    },
+    {
+      "field": "material_applications",
+      "priority": "critical",
+      "reason": "Single ISO letter is insufficient; tools may support multiple groups with different cutting data."
+    },
+    {
+      "field": "cutting_data_by_material",
+      "priority": "critical",
+      "reason": "Vc/feed/depth must be scoped to material, operation and tool diameter/context."
+    },
+    {
+      "field": "unit_metadata",
+      "priority": "critical",
+      "reason": "Feed and depth fields currently mean different things by category."
+    },
+    {
+      "field": "coating",
+      "priority": "high",
+      "reason": "Present in legacy schema but missing in active TA_TOOLS records."
+    },
+    {
+      "field": "substrate",
+      "priority": "high",
+      "reason": "Grade comparison needs substrate and coating distinction."
+    },
+    {
+      "field": "compatibility",
+      "priority": "high",
+      "reason": "Need holder/body/shank/thread compatibility."
+    },
+    {
+      "field": "application_constraints",
+      "priority": "high",
+      "reason": "Machine, coolant, rigidity and interrupted-cut constraints drive real selection."
+    },
+    {
+      "field": "avoid_when",
+      "priority": "high",
+      "reason": "Professional recommendations need negative constraints, not only bestFor text."
+    },
+    {
+      "field": "source_records",
+      "priority": "critical",
+      "reason": "Current source is only a label; confidence needs evidence."
+    },
+    {
+      "field": "field_confidence",
+      "priority": "critical",
+      "reason": "Need per-field confidence instead of one product-level score."
+    },
+    {
+      "field": "price_basis",
+      "priority": "medium",
+      "reason": "Synthetic unitPrice/costTier need real currency, pack size and date."
+    },
+    {
+      "field": "availability_records",
+      "priority": "medium",
+      "reason": "Supply count is not enough for procurement."
+    }
+  ],
+  "weakCurrentFields": [
+    {
+      "field": "family",
+      "issue": "String values mix category and workflow, and some records appear misclassified."
+    },
+    {
+      "field": "op",
+      "issue": "Flat values are not comparable across turning, milling, drilling, threading and reaming."
+    },
+    {
+      "field": "shape",
+      "issue": "Insert-specific; solid categories use '-' and lose geometry."
+    },
+    {
+      "field": "iso",
+      "issue": "Single ISO group only; no primary/secondary or material-specific data."
+    },
+    {
+      "field": "fMin/fMax",
+      "issue": "Rendered as mm/rev even for milling and threading."
+    },
+    {
+      "field": "apMin/apMax",
+      "issue": "Meaning changes by category and is invalid for some drill/tap/reamer contexts."
+    },
+    {
+      "field": "coolant",
+      "issue": "Free text mixes wet/dry/MQL/high-pressure delivery."
+    },
+    {
+      "field": "confidence",
+      "issue": "Single score with no evidence, field breakdown, source count or stale-data handling."
+    },
+    {
+      "field": "source",
+      "issue": "Coarse label only; no URL, document, date, field mapping or reviewer."
+    },
+    {
+      "field": "costTier/unitPrice/costPerEdge",
+      "issue": "Synthetic economics; should be flagged as estimated and excluded from verified comparisons."
+    },
+    {
+      "field": "equivIds",
+      "issue": "Derived only from same shape, ISO and family; insufficient for real cross-reference."
+    }
+  ],
+  "mandatoryNormalizedFields": [
+    "id",
+    "canonical_code",
+    "manufacturer",
+    "manufacturer_part_number",
+    "brand",
+    "category",
+    "subcategory",
+    "product_type",
+    "standard_system",
+    "designation_raw",
+    "designation_normalized",
+    "iso_material_groups",
+    "primary_material_group",
+    "operations",
+    "geometry",
+    "grade",
+    "coating",
+    "cutting_data",
+    "application_constraints",
+    "data_confidence",
+    "sources",
+    "last_verified_at",
+    "status"
+  ],
+  "optionalFields": [
+    "marketing_name",
+    "series",
+    "image_url",
+    "model_3d_url",
+    "buy_links",
+    "datasheet_url",
+    "cad_url",
+    "video_url",
+    "community_pick_count",
+    "user_notes",
+    "review_summary",
+    "alternative_notes",
+    "recommended_use_cases",
+    "avoid_when",
+    "regional_availability",
+    "price_history",
+    "legacy_codes"
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "research_date": "2026-05-27",
+  "principle": "Filters should answer machining selection questions, not reproduce every catalogue facet.",
+  "groups": [
+    {
+      "id": "tool_type",
+      "label": "Tool Type",
+      "priority": "must_have_now",
+      "controls": [
+        { "field": "tool_type", "label": "Tool type", "type": "multi_select", "values": ["turning_insert", "milling_insert", "solid_drill", "indexable_drill_insert", "tap", "threading_insert", "reamer", "end_mill"] },
+        { "field": "category", "label": "Category", "type": "multi_select", "values": ["turning", "milling", "drilling", "threading", "tapping", "reaming", "end_milling"] }
+      ]
+    },
+    {
+      "id": "operation",
+      "label": "Operation",
+      "priority": "must_have_now",
+      "controls": [
+        { "field": "operation", "label": "Operation type", "type": "multi_select", "values": ["finishing", "medium", "roughing", "face_milling", "shoulder_milling", "slotting", "profiling", "high_feed", "hsm", "hpc", "through_hole", "blind_hole", "external_threading", "internal_threading"] },
+        { "field": "application.stability_requirement", "label": "Setup stability", "type": "single_select", "values": ["low", "medium", "high"] },
+        { "field": "coolant.suitability", "label": "Coolant", "type": "multi_select", "values": ["wet", "dry", "mql", "high_pressure", "external", "internal"] }
+      ]
+    },
+    {
+      "id": "workpiece_material",
+      "label": "Workpiece Material",
+      "priority": "must_have_now",
+      "controls": [
+        { "field": "workpiece_materials.iso_group", "label": "ISO material group", "type": "multi_select", "values": ["P", "M", "K", "N", "S", "H"] },
+        { "field": "workpiece_materials.priority", "label": "Suitability strength", "type": "single_select", "values": ["primary", "secondary", "possible"] }
+      ]
+    },
+    {
+      "id": "geometry",
+      "label": "Geometry",
+      "priority": "must_have_now",
+      "controls": [
+        { "field": "geometry.insert_shape", "label": "Insert shape", "type": "multi_select", "category_scope": ["turning_insert", "milling_insert", "threading_insert"] },
+        { "field": "geometry.chipbreaker", "label": "Chipbreaker / chipformer", "type": "search_select", "category_scope": ["turning_insert", "milling_insert"] },
+        { "field": "dimensions.corner_radius_mm", "label": "Corner / nose radius", "type": "range", "unit": "mm" },
+        { "field": "geometry.flute_count", "label": "Number of flutes", "type": "multi_select", "category_scope": ["solid_drill", "tap", "reamer", "end_mill"] },
+        { "field": "geometry.flute_type", "label": "Flute type", "type": "multi_select", "category_scope": ["tap", "reamer", "end_mill"] },
+        { "field": "geometry.helix_angle_deg", "label": "Helix angle", "type": "range", "unit": "deg", "priority": "good_later" },
+        { "field": "geometry.point_angle_deg", "label": "Point angle", "type": "range", "unit": "deg", "category_scope": ["solid_drill"] }
+      ]
+    },
+    {
+      "id": "dimensions",
+      "label": "Dimensions",
+      "priority": "must_have_now",
+      "controls": [
+        { "field": "dimensions.diameter_mm", "label": "Diameter", "type": "range", "unit": "mm" },
+        { "field": "dimensions.cutting_diameter_mm", "label": "Cutting diameter", "type": "range", "unit": "mm" },
+        { "field": "dimensions.inscribed_circle_mm", "label": "Inscribed circle", "type": "range", "unit": "mm", "category_scope": ["turning_insert", "milling_insert"] },
+        { "field": "dimensions.overall_length_mm", "label": "Overall length", "type": "range", "unit": "mm" },
+        { "field": "dimensions.cutting_length_mm", "label": "Cutting length", "type": "range", "unit": "mm" },
+        { "field": "dimensions.flute_length_mm", "label": "Flute length", "type": "range", "unit": "mm" },
+        { "field": "dimensions.shank_diameter_mm", "label": "Shank diameter", "type": "range", "unit": "mm" },
+        { "field": "dimensions.ld_ratio", "label": "L/D ratio", "type": "range", "category_scope": ["solid_drill", "end_mill"] }
+      ]
+    },
+    {
+      "id": "grade_coating",
+      "label": "Grade / Coating",
+      "priority": "must_have_now",
+      "controls": [
+        { "field": "grade", "label": "Grade", "type": "search_select" },
+        { "field": "coating", "label": "Coating / finish", "type": "multi_select" },
+        { "field": "tool_material", "label": "Tool material", "type": "multi_select", "values": ["carbide", "HSS", "HSCo", "PM-HSS", "CBN", "PCD", "cermet"] }
+      ]
+    },
+    {
+      "id": "standard",
+      "label": "Standard",
+      "priority": "must_have_now",
+      "controls": [
+        { "field": "iso_code", "label": "ISO code", "type": "text" },
+        { "field": "ansi_code", "label": "ANSI code", "type": "text" },
+        { "field": "thread.thread_standard", "label": "Thread standard", "type": "multi_select", "category_scope": ["tap", "threading_insert"] },
+        { "field": "thread.thread_size", "label": "Thread size", "type": "text", "category_scope": ["tap", "threading_insert"] },
+        { "field": "thread.pitch_mm", "label": "Pitch", "type": "range", "unit": "mm", "category_scope": ["tap", "threading_insert"] },
+        { "field": "thread.tolerance", "label": "Thread tolerance / class", "type": "multi_select", "category_scope": ["tap"] }
+      ]
+    },
+    {
+      "id": "source_confidence",
+      "label": "Source Confidence",
+      "priority": "must_have_now",
+      "controls": [
+        { "field": "trust.source_tier", "label": "Source tier", "type": "multi_select", "values": ["manufacturer", "authorized_distributor", "neutral_data_platform", "public_catalog_pdf", "manual_review", "estimated"] },
+        { "field": "trust.validation_status", "label": "Validation status", "type": "multi_select", "values": ["verified", "partially_verified", "needs_review", "estimated", "stale"] },
+        { "field": "trust.confidence_score", "label": "Minimum confidence", "type": "range", "unit": "score_0_100" },
+        { "field": "trust.risk_flags", "label": "Risk flags", "type": "multi_select" }
+      ]
+    },
+    {
+      "id": "brand",
+      "label": "Brand",
+      "priority": "must_have_now",
+      "controls": [
+        { "field": "brand", "label": "Brand", "type": "multi_select" },
+        { "field": "manufacturer", "label": "Manufacturer", "type": "multi_select", "priority": "good_later" }
+      ]
+    },
+    {
+      "id": "availability_commercial",
+      "label": "Availability / Commercial",
+      "priority": "optional_only",
+      "controls": [
+        { "field": "commercial.price_tier", "label": "Price tier", "type": "range", "unit": "tier_1_5" },
+        { "field": "commercial.availability_indicator", "label": "Availability", "type": "multi_select", "values": ["unknown", "usually_available", "limited", "special_order", "discontinued"] },
+        { "field": "commercial.region", "label": "Region", "type": "single_select" }
+      ],
+      "guardrail": "Do not rank products by commercial fields unless the user explicitly chooses a cost/availability priority."
+    }
+  ],
+  "category_specific_quick_filters": {
+    "turning_insert": ["iso_code", "geometry.insert_shape", "dimensions.corner_radius_mm", "geometry.chipbreaker", "grade", "coating", "workpiece_materials.iso_group", "operation", "coolant.suitability", "geometry.cutting_direction"],
+    "tap": ["thread.thread_size", "thread.pitch_mm", "thread.thread_standard", "thread.hole_type", "thread.tap_type", "geometry.flute_type", "coating", "tool_material", "dimensions.shank_diameter_mm", "dimensions.overall_length_mm", "thread.tolerance", "geometry.cutting_direction"],
+    "solid_drill": ["dimensions.diameter_mm", "dimensions.flute_length_mm", "dimensions.overall_length_mm", "geometry.point_angle_deg", "coating", "tool_material", "dimensions.shank_diameter_mm", "coolant.through_coolant", "dimensions.ld_ratio", "workpiece_materials.iso_group"],
+    "end_mill": ["dimensions.cutting_diameter_mm", "geometry.flute_count", "dimensions.corner_radius_mm", "dimensions.cutting_length_mm", "dimensions.overall_length_mm", "dimensions.shank_diameter_mm", "coating", "geometry.helix_angle_deg", "workpiece_materials.iso_group", "operation"],
+    "milling_insert": ["iso_code", "geometry.insert_shape", "dimensions.corner_radius_mm", "geometry.chipbreaker", "grade", "coating", "workpiece_materials.iso_group", "operation"],
+    "reamer": ["dimensions.diameter_mm", "thread.tolerance", "geometry.flute_count", "dimensions.overall_length_mm", "dimensions.cutting_length_mm", "coating", "tool_material", "coolant.through_coolant", "workpiece_materials.iso_group"]
+  }
+}

@@ -1,0 +1,351 @@
+{
+  "auditDate": "2026-05-27",
+  "supportedNow": {
+    "families": [
+      "Turning",
+      "Milling",
+      "Drilling",
+      "Threading",
+      "Reaming"
+    ],
+    "isoGroups": {
+      "P": "Steel",
+      "M": "Stainless",
+      "K": "Cast iron",
+      "N": "Non-ferrous",
+      "S": "Superalloy",
+      "H": "Hardened"
+    },
+    "operationsByFamily": {
+      "Turning": [
+        "Finishing",
+        "Mixed",
+        "Roughing"
+      ],
+      "Milling": [
+        "Face",
+        "HSM",
+        "High-feed",
+        "Shoulder"
+      ],
+      "Drilling": [
+        "Indexable",
+        "Roughing",
+        "Solid"
+      ],
+      "Threading": [
+        "External",
+        "Grooving",
+        "Internal"
+      ],
+      "Reaming": [
+        "Finishing",
+        "Prep"
+      ]
+    }
+  },
+  "recommendedCategories": {
+    "turning_insert": {
+      "mandatoryFields": [
+        "iso_1832_designation",
+        "insert_shape",
+        "clearance_angle",
+        "tolerance_class",
+        "insert_size",
+        "thickness",
+        "nose_radius",
+        "chipbreaker",
+        "hand",
+        "rake_type",
+        "edge_prep",
+        "grade",
+        "coating",
+        "compatible_holders",
+        "cutting_data_by_material"
+      ],
+      "filters": [
+        "shape",
+        "clearance",
+        "size",
+        "nose_radius",
+        "chipbreaker",
+        "grade_family",
+        "coating_family",
+        "operation",
+        "iso_material_group"
+      ],
+      "compareFields": [
+        "geometry_match",
+        "nose_radius",
+        "chipbreaker",
+        "grade",
+        "coating",
+        "vc_range",
+        "feed_range",
+        "ap_range",
+        "interrupted_cut_suitability",
+        "holder_compatibility",
+        "confidence"
+      ]
+    },
+    "milling_insert": {
+      "mandatoryFields": [
+        "insert_designation",
+        "cutter_system",
+        "insert_shape",
+        "insert_size",
+        "corner_radius",
+        "chipbreaker",
+        "hand",
+        "grade",
+        "coating",
+        "compatible_cutters",
+        "cutting_data_by_material"
+      ],
+      "filters": [
+        "cutter_system",
+        "operation",
+        "insert_shape",
+        "corner_radius",
+        "grade_family",
+        "coating_family",
+        "iso_material_group"
+      ],
+      "compareFields": [
+        "cutter_compatibility",
+        "corner_geometry",
+        "grade",
+        "coating",
+        "vc_range",
+        "fz_range",
+        "ap_range",
+        "ae_range",
+        "confidence"
+      ]
+    },
+    "solid_drill": {
+      "mandatoryFields": [
+        "diameter_mm",
+        "length_ratio_xd",
+        "flute_length_mm",
+        "overall_length_mm",
+        "shank_type",
+        "shank_diameter_mm",
+        "point_angle_deg",
+        "point_geometry",
+        "flute_count",
+        "helix_angle_deg",
+        "tool_material",
+        "coating",
+        "through_coolant",
+        "hole_tolerance",
+        "cutting_data_by_material"
+      ],
+      "filters": [
+        "diameter_range",
+        "length_ratio",
+        "tool_material",
+        "coating_family",
+        "through_coolant",
+        "shank_type",
+        "point_angle",
+        "iso_material_group"
+      ],
+      "compareFields": [
+        "diameter",
+        "length_ratio",
+        "through_coolant",
+        "point_geometry",
+        "vc_range",
+        "feed_per_rev_range",
+        "hole_tolerance",
+        "confidence"
+      ]
+    },
+    "indexable_drill": {
+      "mandatoryFields": [
+        "diameter_mm",
+        "length_ratio_xd",
+        "body_code",
+        "insert_codes",
+        "shank_type",
+        "coolant_through",
+        "insert_seat_count",
+        "center_insert_grade",
+        "peripheral_insert_grade",
+        "cutting_data_by_material"
+      ],
+      "filters": [
+        "diameter_range",
+        "length_ratio",
+        "body_system",
+        "insert_system",
+        "coolant_through",
+        "iso_material_group"
+      ],
+      "compareFields": [
+        "body_compatibility",
+        "insert_compatibility",
+        "diameter",
+        "length_ratio",
+        "vc_range",
+        "feed_per_rev_range",
+        "confidence"
+      ]
+    },
+    "tap": {
+      "mandatoryFields": [
+        "thread_standard",
+        "thread_size",
+        "pitch_mm_or_tpi",
+        "tolerance_class",
+        "tap_style",
+        "hole_type",
+        "chamfer_form",
+        "flute_type",
+        "flute_count",
+        "thread_length_mm",
+        "overall_length_mm",
+        "shank_standard",
+        "shank_diameter_mm",
+        "square_size_mm",
+        "tool_material",
+        "coating",
+        "coolant_capability",
+        "cutting_speed_by_material"
+      ],
+      "filters": [
+        "thread_standard",
+        "thread_size",
+        "pitch",
+        "tolerance_class",
+        "hole_type",
+        "tap_style",
+        "tool_material",
+        "coating_family",
+        "coolant_capability",
+        "iso_material_group"
+      ],
+      "compareFields": [
+        "thread_compatibility",
+        "tolerance_class",
+        "tap_style",
+        "hole_type",
+        "material",
+        "coating",
+        "recommended_speed",
+        "confidence"
+      ]
+    },
+    "reamer": {
+      "mandatoryFields": [
+        "nominal_diameter_mm",
+        "tolerance_class",
+        "reamer_type",
+        "flute_count",
+        "flute_geometry",
+        "lead_angle_deg",
+        "overall_length_mm",
+        "flute_length_mm",
+        "shank_type",
+        "tool_material",
+        "coating",
+        "stock_allowance_min_mm",
+        "stock_allowance_max_mm",
+        "expected_surface_finish",
+        "cutting_data_by_material"
+      ],
+      "filters": [
+        "diameter_range",
+        "tolerance_class",
+        "reamer_type",
+        "flute_count",
+        "tool_material",
+        "coating_family",
+        "stock_allowance",
+        "iso_material_group"
+      ],
+      "compareFields": [
+        "diameter",
+        "tolerance_class",
+        "stock_allowance",
+        "surface_finish",
+        "vc_range",
+        "feed_per_rev_range",
+        "confidence"
+      ]
+    },
+    "end_mill": {
+      "mandatoryFields": [
+        "diameter_mm",
+        "flute_count",
+        "length_of_cut_mm",
+        "overall_length_mm",
+        "shank_diameter_mm",
+        "neck_diameter_mm",
+        "neck_length_mm",
+        "corner_type",
+        "corner_radius_mm",
+        "helix_angle_deg",
+        "variable_pitch",
+        "center_cutting",
+        "tool_material",
+        "coating",
+        "application_strategy",
+        "cutting_data_by_material"
+      ],
+      "filters": [
+        "diameter_range",
+        "flute_count",
+        "corner_type",
+        "corner_radius",
+        "length_of_cut",
+        "helix_angle",
+        "center_cutting",
+        "application_strategy",
+        "tool_material",
+        "coating_family",
+        "iso_material_group"
+      ],
+      "compareFields": [
+        "diameter",
+        "flute_count",
+        "corner_geometry",
+        "loc",
+        "helix",
+        "vc_range",
+        "fz_range",
+        "ap_range",
+        "ae_range",
+        "strategy_fit",
+        "confidence"
+      ]
+    }
+  },
+  "dataConfidenceFields": {
+    "mandatory": [
+      "overall_score",
+      "identity_score",
+      "geometry_score",
+      "cutting_data_score",
+      "commercial_score",
+      "source_records",
+      "field_scores",
+      "last_verified_at",
+      "verification_status",
+      "estimated_fields",
+      "conflict_flags"
+    ],
+    "sourceRecordFields": [
+      "source_id",
+      "source_type",
+      "source_name",
+      "source_url",
+      "document_title",
+      "retrieved_at",
+      "published_at",
+      "fields_supported",
+      "confidence_weight"
+    ]
+  }
+}
