@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 2
 
@@ -23,6 +23,7 @@ jobs:
           }
           check "CLOUDFLARE_MIGRATION.md"
           check "TOOLADVISOR_WORKLOG.md"
+          check "AGENT_PROTOCOL.md"
           check "index.html"
           check "ToolAdvisor.html"
           check "wrangler.toml"
@@ -45,23 +46,38 @@ jobs:
         run: |
           FAIL=0
           CHANGED=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || echo "")
-          echo "Changed files: $CHANGED"
+          echo "Changed files in this commit:"
+          echo "$CHANGED"
+          echo "---"
 
+          # wrangler.toml — warn (deployment config)
           if echo "$CHANGED" | grep -q "^wrangler\.toml$"; then
             echo "::warning::wrangler.toml was modified — review required"
           fi
 
-          if echo "$CHANGED" | grep -qi "PRODUCT_DB\|product.db"; then
-            echo "::error::PRODUCT_DB was modified — NOT allowed without approval"
-            FAIL=1
+          # directory-data.js — check for TA_TOOLS base record changes (locked)
+          # Canonical/schema additions are allowed; raw { id:'Txx' } record edits are not.
+          if echo "$CHANGED" | grep -qiE "^directory-data\.js$|PRODUCT_DB|product\.db"; then
+            # Inspect diff for base record lines (lines starting with { id: )
+            TA_DIFF=$(git diff HEAD~1 HEAD -- directory-data.js 2>/dev/null | grep -E "^\+.*\{ id:'T[0-9]+" || true)
+            if [ -n "$TA_DIFF" ]; then
+              echo "::error::TA_TOOLS base records in directory-data.js were modified — NOT allowed without explicit approval"
+              echo "Affected lines:"
+              echo "$TA_DIFF"
+              FAIL=1
+            else
+              echo "::warning::directory-data.js was modified — non-record change (canonical fields, derived logic). Review required."
+            fi
           fi
 
+          # Netlify files — hard block
           if echo "$CHANGED" | grep -qi "netlify"; then
-            echo "::error::Netlify file modified — NOT allowed"
+            echo "::error::Netlify file modified — NOT allowed (Cloudflare-only project)"
             FAIL=1
           fi
 
           if [ $FAIL -eq 1 ]; then exit 1; fi
+          echo "✅ No forbidden file modifications"
 
       - name: Check WORKLOG updated (warn only)
         run: |
