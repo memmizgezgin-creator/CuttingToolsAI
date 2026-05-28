@@ -1076,7 +1076,7 @@ function App() {
         onRemove={toggleCompare}
         onClear={() => setCompare(new Set())}
         onOpen={openDetail}
-        onCompare={() => { window.location.href = 'compare.html'; }}
+        onCompare={() => { const ids = [...compare].join(','); window.location.href = `compare.html?ids=${ids}`; }}
         onExport={() => exportCSV(compareTools)}
       />
       <AIDock

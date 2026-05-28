@@ -8,6 +8,38 @@ All assistants and coding agents must read CLOUDFLARE_MIGRATION.md before doing 
 
 ---
 
+## 2026-05-28 — Task 020: Compare URL Routing
+
+### Task
+Catalog CompareDrawer → compare.html navigasyonuna `?ids=T01,T02` URL parametresi ekle.
+
+### Result
+COMPLETED ✅
+
+### Change
+**`directory-app.jsx` satır 1079** — 1 satır:
+```js
+// Önce:
+onCompare={() => { window.location.href = 'compare.html'; }}
+// Sonra:
+onCompare={() => { const ids = [...compare].join(','); window.location.href = `compare.html?ids=${ids}`; }}
+```
+
+### QA
+- 2 araç seçip Compare now → `compare.html?ids=T01,T02` ✅
+- Boş ids → compare.html yüklenmeye devam ediyor ✅
+- Console errors: 0 ✅
+
+### Files Changed
+| File | Action |
+|------|--------|
+| `directory-app.jsx` | 1 satır — URL params routing |
+
+### Deployment
+Not performed.
+
+---
+
 ## 2026-05-28 — Task 019: Compare Phase B Dynamic Planning
 
 ### Task
