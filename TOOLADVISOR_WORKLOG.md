@@ -8,6 +8,30 @@ All assistants and coding agents must read CLOUDFLARE_MIGRATION.md before doing 
 
 ---
 
+## 2026-05-28 — Task 018: Phase A Summary + Next Roadmap
+
+### Task
+Tasks 008–017 faz özeti ve sıradaki 5 task önerisi.
+
+### Result
+COMPLETED ✅ — `research/018-phase-a-summary-next-roadmap.md` oluşturuldu.
+
+### Key Points
+- Tasks 008–017 başarıyla tamamlandı: TrustBadge, canonical schema, compare trust rows, display standard, bar fix
+- 6 commit, tümü Guard ✅ + Pages ✅
+- Kalan riskler: compare.html statik (Phase B), bar rengi hardcoded (Phase B), minor cleanup items
+- Önerilen sıradaki tasklar: 019 (compare Phase B planning), 020 (sort fix), 021 (cleanup), 022 (knowledge page), 023 (css cleanup)
+
+### Files Changed
+| File | Action |
+|------|--------|
+| `research/018-phase-a-summary-next-roadmap.md` | created |
+
+### Deployment
+Not performed.
+
+---
+
 ## 2026-05-28 — Task 017: Compare Confidence Bar Fix
 
 ### Task
