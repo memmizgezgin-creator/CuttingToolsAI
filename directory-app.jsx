@@ -68,6 +68,130 @@ function Confidence({pct, source}) {
   );
 }
 
+// ---------- trust / canonical helpers ----------
+const TOOL_TYPE_LABEL = {
+  turning_insert:         'T-Insert',
+  milling_insert:         'M-Insert',
+  threading_insert:       'Threading',
+  reamer:                 'Reamer',
+  tap:                    'Tap',
+  solid_drill:            'Drill',
+  indexable_drill_insert: 'IDI',
+  end_mill:               'End mill',
+};
+
+const SOURCE_TIER_LABEL = {
+  manufacturer:           'Manufacturer data',
+  authorized_distributor: 'Authorized distributor',
+  neutral_data_platform:  'Licensed data platform',
+  public_catalog_pdf:     'Public catalogue PDF',
+  manual_review:          'Manual review',
+  estimated:              'Estimated',
+  unknown:                'Unknown source',
+};
+
+const RISK_FLAG_LABEL = {
+  economics_estimated:    'Economics estimated',
+  stale_source:           'Source may be stale',
+  distributor_only:       'Distributor source only',
+  conflicting_sources:    'Conflicting sources',
+  missing_dimensions:     'Dimensions incomplete',
+  missing_grade:          'Grade/coating incomplete',
+  operation_unclear:      'Operation scope unclear',
+  material_unclear:       'Material fit unclear',
+  manual_review_required: 'Manual review required',
+};
+
+// TrustBadge — replaces flat Confidence component.
+// compact=false (default on cards): bar + % + status icon + hover tooltip
+// expanded=true  (detail modal): full source chain + risk flags
+function TrustBadge({tool, expanded=false}) {
+  const trust = tool.trust || null;
+  const score       = trust ? trust.confidence_score   : (tool.confidence  || 0);
+  const status      = trust ? trust.validation_status  : null;
+  const sourceTier  = trust ? (SOURCE_TIER_LABEL[trust.source_tier] || trust.source_tier) : null;
+  const sourceName  = trust ? trust.source_name        : (tool.source      || null);
+  const lastChecked = trust ? trust.last_checked       : (tool.lastVerified || null);
+  const riskFlags   = trust ? (trust.risk_flags || []) : [];
+
+  // literal Tailwind classes kept here so CDN JIT captures them:
+  // bg-iso-n-green bg-iso-m-amber bg-iso-k-red
+  // text-iso-n-green text-iso-m-amber text-on-surface-variant
+  const isVerified = status === 'verified'           || (!status && score >= 90);
+  const isPartial  = status === 'partially_verified' || (!status && score >= 80 && !isVerified);
+  const barCls     = isVerified ? 'bg-iso-n-green' : isPartial ? 'bg-iso-m-amber' : 'bg-iso-k-red';
+  const badgeCls   = isVerified ? 'text-iso-n-green' : isPartial ? 'text-iso-m-amber' : 'text-on-surface-variant';
+  const statusIcon = isVerified ? 'verified' : isPartial ? 'info' : 'help';
+  const statusLabel = status === 'verified'
+    ? 'Verified'
+    : status === 'partially_verified' ? 'Partial'
+    : status === 'estimated'          ? 'Estimated'
+    : `${score}%`;
+
+  if (!expanded) {
+    const tooltipLines = [sourceTier, sourceName, lastChecked ? `Checked: ${lastChecked}` : null]
+      .filter(Boolean).join(' · ');
+    return (
+      <div className="group/trust relative inline-flex items-center gap-2">
+        <div className="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden">
+          <div className={`h-full ${barCls}`} style={{width:`${score}%`}}></div>
+        </div>
+        <span className="font-technical-data text-xs text-ink-text font-bold">{score}%</span>
+        <Icon name={statusIcon} size={13} className={badgeCls}/>
+        <div role="tooltip" className="opacity-0 group-hover/trust:opacity-100 pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 rounded-lg bg-ink-text text-white text-[11px] font-medium whitespace-nowrap shadow-xl z-20 transition-opacity">
+          <div className="font-bold text-[10px] uppercase tracking-widest text-white/60 mb-0.5">Data source</div>
+          {tooltipLines || 'No source info'}
+          <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-ink-text"></div>
+        </div>
+      </div>
+    );
+  }
+
+  // Expanded modal form
+  return (
+    <div>
+      <div className="flex items-center gap-3 mb-3">
+        <div className="w-24 h-2 bg-surface-container-low rounded-full overflow-hidden">
+          <div className={`h-full ${barCls}`} style={{width:`${score}%`}}></div>
+        </div>
+        <span className="font-technical-data text-sm text-ink-text font-bold">{score}%</span>
+        <span className={`flex items-center gap-1 text-xs font-bold ${badgeCls}`}>
+          <Icon name={statusIcon} size={14}/> {statusLabel}
+        </span>
+      </div>
+      <div className="space-y-1.5 text-xs text-on-surface-variant">
+        {sourceTier  && (
+          <p>
+            <span className="font-bold text-outline uppercase tracking-wider text-[10px]">Source tier</span>
+            <span className="ml-2">{sourceTier}</span>
+          </p>
+        )}
+        {sourceName  && (
+          <p>
+            <span className="font-bold text-outline uppercase tracking-wider text-[10px]">Source</span>
+            <span className="ml-2">{sourceName}</span>
+          </p>
+        )}
+        {lastChecked && (
+          <p>
+            <span className="font-bold text-outline uppercase tracking-wider text-[10px]">Checked</span>
+            <span className="ml-2 font-technical-data">{lastChecked}</span>
+          </p>
+        )}
+      </div>
+      {riskFlags.length > 0 && (
+        <div className="flex flex-wrap gap-1.5 mt-3">
+          {riskFlags.map(flag => (
+            <span key={flag} className="flex items-center gap-1 text-[10px] font-bold bg-iso-m-amber/10 text-iso-m-amber border border-iso-m-amber/25 px-2 py-0.5 rounded-full">
+              <Icon name="warning" size={11}/> {RISK_FLAG_LABEL[flag] || flag}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ---------- tool card ----------
 function ToolCard({tool, view, isCompared, onToggleCompare, isFav, onToggleFav, onOpen}) {
   const t = tool;
@@ -94,7 +218,7 @@ function ToolCard({tool, view, isCompared, onToggleCompare, isFav, onToggleFav, 
             <span>{t.bestFor}</span>
           </p>
         </div>
-        <div className="hidden md:block shrink-0"><Confidence pct={t.confidence} source={t.source} /></div>
+        <div className="hidden md:block shrink-0"><TrustBadge tool={t} /></div>
         <CardActions
           tool={t}
           isCompared={isCompared}
@@ -130,6 +254,11 @@ function ToolCard({tool, view, isCompared, onToggleCompare, isFav, onToggleFav, 
         <div className="flex flex-col items-end gap-1.5 shrink-0">
           <div className="ta-insert3d" data-shape={t.shape} data-tone={t.tone} data-size="sm" aria-label={`${t.shape} shape insert`}></div>
           <span className={`font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border whitespace-nowrap ${bgChip}`}>ISO {t.iso}</span>
+          {t.tool_type && (
+            <span className="font-technical-data text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full border border-border-warm bg-surface-container-low text-on-surface-variant whitespace-nowrap">
+              {TOOL_TYPE_LABEL[t.tool_type] || t.tool_type}
+            </span>
+          )}
         </div>
       </div>
 
@@ -166,13 +295,17 @@ function ToolCard({tool, view, isCompared, onToggleCompare, isFav, onToggleFav, 
       </div>
 
       {/* Economics row */}
-      <div className="flex items-center justify-between text-[11px] mb-3 -mt-1">
-        <span className="font-technical-data text-ink-text font-bold" title="Cost tier (brand-neutral)">
+      <div className="flex items-center text-[11px] mb-3 -mt-1">
+        <span
+          className="font-technical-data text-ink-text font-bold"
+          title={t.economicsEstimated
+            ? 'Cost tier (estimated from published data ranges — not commercial pricing)'
+            : 'Cost tier (brand-neutral)'}
+        >
           <span className="text-ink-text">{'\u20ac'.repeat(t.costTier)}</span><span className="text-outline">{'\u20ac'.repeat(4-t.costTier)}</span>
-          <span className="text-on-surface-variant ml-1.5 font-normal">· €{t.costPerEdge}/edge</span>
-        </span>
-        <span className="flex items-center gap-1 text-on-surface-variant" title="Community pick signal (last 7 days)">
-          <Icon name="trending_up" size={12}/> <span className="font-technical-data font-bold text-ink-text">{t.weeklyPicks}</span> picks
+          <span className="text-on-surface-variant ml-1.5 font-normal">
+            · ~€{t.costPerEdge}/edge{t.economicsEstimated && <span className="text-[9px] text-outline ml-1">(est.)</span>}
+          </span>
         </span>
       </div>
 
@@ -180,7 +313,7 @@ function ToolCard({tool, view, isCompared, onToggleCompare, isFav, onToggleFav, 
       <div className="flex items-center justify-between mt-auto mb-3 pt-3 border-t border-border-warm">
         <div>
           <p className="text-[10px] uppercase tracking-widest text-outline font-bold">Data confidence</p>
-          <div className="mt-1"><Confidence pct={t.confidence} source={`${t.source} · verified ${t.lastVerified}`} /></div>
+          <div className="mt-1"><TrustBadge tool={t} /></div>
         </div>
         <div className="text-right">
           <p className="text-[10px] uppercase tracking-widest text-outline font-bold">Supply</p>
@@ -302,7 +435,9 @@ function DetailModal({tool, onClose, onOpenTool, tools}) {
         <div className={`p-6 border-b-4 ${ISO_CLASSES[tool.iso].border} flex items-start gap-6`}>
           <div className="ta-insert3d shrink-0" data-shape={tool.shape} data-tone={tool.tone} data-size="lg"></div>
           <div className="flex-1 min-w-0">
-            <p className="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">{tool.brand} · {tool.family}</p>
+            <p className="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">
+              {tool.brand} · {tool.family}{tool.tool_type ? ` · ${TOOL_TYPE_LABEL[tool.tool_type] || tool.tool_type}` : ''}
+            </p>
             <h2 id="modal-title" className="font-section-heading text-display-hero text-ink-text leading-tight tracking-tight">{tool.code}</h2>
             <p className="text-on-surface-variant mt-1">{tool.bestFor}</p>
             <div className="flex flex-wrap gap-2 mt-3">
@@ -327,13 +462,15 @@ function DetailModal({tool, onClose, onOpenTool, tools}) {
         <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Data confidence</p>
-            <Confidence pct={tool.confidence} source={`${tool.source} · verified ${tool.lastVerified}`}/>
-            <p className="text-xs text-on-surface-variant mt-2">Source: {tool.source}. Last verified {tool.lastVerified}.</p>
+            <TrustBadge tool={tool} expanded />
           </div>
           <div>
             <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Supply &amp; availability</p>
             <p className="text-sm text-ink-text"><span className="font-technical-data font-bold">{tool.supply}</span> verified suppliers</p>
             <p className="text-xs text-on-surface-variant mt-1">Lead time typically 5–14 days. Pricing brand-neutral; request quote.</p>
+            {tool.economicsEstimated && (
+              <p className="text-[10px] text-outline italic mt-2">Cost figures are estimates from published data ranges — not commercial pricing.</p>
+            )}
           </div>
         </div>
 

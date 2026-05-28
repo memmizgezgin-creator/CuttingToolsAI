@@ -8,6 +8,142 @@ All assistants and coding agents must read CLOUDFLARE_MIGRATION.md before doing 
 
 ---
 
+## 2026-05-28 — Task 009: Product Card + Detail Modal Implementation v1
+
+### Task
+Implement Phase 1 + Phase 2 trust/canonical UI from the Task 008 plan. Changes to `directory-app.jsx` only — no PRODUCT_DB, no `directory-data.js`, no `index.html`.
+
+### Result
+COMPLETED — all 7 changes applied and verified locally.
+
+### Changes Made to `directory-app.jsx`
+
+#### 1 — New constants added (before ToolCard)
+- `TOOL_TYPE_LABEL` — maps `tool_type` enum values to abbreviated human-readable labels (T-Insert, M-Insert, Tap, Drill, etc.)
+- `SOURCE_TIER_LABEL` — maps `source_tier` enum values to readable strings
+- `RISK_FLAG_LABEL` — maps `risk_flags` array values to readable warning strings
+
+#### 2 — `TrustBadge` component added (replaces `Confidence` on all cards + modal)
+- **Compact form (cards):** confidence bar + % + status icon (verified ✓ / partial ~ / estimated —) + hover tooltip showing source_tier · source_name · last_checked
+- **Expanded form (detail modal):** confidence bar + % + status label + Source tier / Source / Checked rows + risk_flags chips (amber, only if non-empty)
+- **Graceful fallback:** if `t.trust` is absent, falls back to `t.confidence`, `t.source`, `t.lastVerified`
+
+#### 3 — Tool type chip on grid card (header, right column)
+- `{t.tool_type && <span>…{TOOL_TYPE_LABEL[t.tool_type]}</span>}` added below ISO chip
+- Only renders if `tool_type` field is present
+
+#### 4 — Economics row: marked as estimated, `weeklyPicks` hidden
+- `costPerEdge` now shows `~€{value}/edge` prefix
+- `(est.)` label appended when `t.economicsEstimated === true`
+- Tooltip updated: "estimated from published data ranges — not commercial pricing"
+- `weeklyPicks` trending_up display removed from card (was synthetic data)
+
+#### 5 — Grid card confidence row: `<Confidence>` → `<TrustBadge tool={t} />`
+#### 6 — List card confidence: `<Confidence>` → `<TrustBadge tool={t} />`
+
+#### 7 — Detail modal updates
+- Eyebrow (brand · family line) extended: now shows `Sandvik · Turning · T-Insert`
+- Confidence section: replaced flat `<Confidence>` + source text with `<TrustBadge tool={tool} expanded />`
+- Supply section: added economics disclaimer when `tool.economicsEstimated` is true:
+  "Cost figures are estimates from published data ranges — not commercial pricing."
+
+### Local QA Result: ✅ PASS
+
+| Check | Result |
+|-------|--------|
+| 36 records load | ✅ |
+| `tool_type` field present on records | ✅ `turning_insert` on T01 |
+| `trust` object present on records | ✅ all 7 fields populated |
+| `economicsEstimated` flag present | ✅ `true` on all records |
+| 12 cards rendered | ✅ |
+| Tool type chips visible (12) | ✅ "T-Insert" on first 4 checked |
+| `(est.)` labels (12) | ✅ one per card |
+| `~€` cost markers (24) | ✅ |
+| Status icons on cards (13) | ✅ |
+| Detail modal opens | ✅ |
+| Eyebrow shows tool type | ✅ "Sandvik · Turning · T-Insert" |
+| Trust section: Source tier shown | ✅ "Manufacturer data" |
+| Trust section: Checked date shown | ✅ "2024-08-01" |
+| Economics disclaimer in modal | ✅ |
+| JS errors | ✅ Zero |
+| New warnings | ✅ Zero (only pre-existing Tailwind + Babel CDN warnings) |
+
+### Files Changed
+- `directory-app.jsx` — modified (new components, card + modal updates)
+
+### Files Not Changed
+- `directory-data.js` — not touched (PRODUCT_DB locked)
+- `index.html` — not touched
+- `wrangler.toml` — not touched
+- `compare.html` — not touched (out of scope for this task)
+- Any other file — not touched
+
+### Deployment
+Not performed. Owner must commit and push.
+
+### Suggested Git Commands
+```bash
+git add directory-app.jsx
+git commit -m "feat: add TrustBadge, tool_type chip, economics est. labels (Task 009)"
+git push
+```
+
+---
+
+## 2026-05-28 — Task 008: Product Card & Detail Modal Implementation Plan
+
+### Task
+Create a planning document (`research/008-product-card-detail-plan.md`) covering:
+- Which fields are shown on product cards, detail modal, and compare screen
+- How trust badge and `economicsEstimated` should be presented to users
+- Implementation order (no PRODUCT_DB changes)
+- Files that need changing
+- Risks
+
+### Result
+COMPLETED — planning document created. No code changes made.
+
+### Output
+- `research/008-product-card-detail-plan.md` — created ✅
+
+### Summary of Plan
+
+**Current state:** 36 records have canonical schema + trust objects from Task 002. UI has not yet been updated to use these new fields.
+
+**Phase 1 (highest priority — trust & economics):**
+- Add `TrustBadge` component using `t.trust.confidence_score`, `t.trust.validation_status`, `t.trust.source_tier`, `t.trust.source_name`, `t.trust.last_checked`, `t.trust.risk_flags`
+- Mark economics as estimated: `~€{costPerEdge}/edge`, hide synthetic `weeklyPicks`
+- Add economics disclaimer to detail modal
+
+**Phase 2 (tool type + materials):**
+- Add `tool_type` chip to card header and modal identity block (human-readable)
+- Add `workpiece_materials` chips to detail modal
+
+**Phase 3 (compare cleanup):**
+- Remove "Buy" / purchase actions from compare.html
+- Add trust row and tool_type row to compare matrix
+
+**Phase 4 (category-aware compare):**
+- Cross-category warning
+- Category-specific row groups per tool_type
+
+**Files that need changing:** only `directory-app.jsx` (Phase 1–2) and `compare.html` (Phase 3).  
+**No PRODUCT_DB changes required** — canonical schema already applied in Task 002.
+
+### Files Changed
+- `research/008-product-card-detail-plan.md` — created (planning doc, no code)
+
+### Files Not Changed
+- `directory-data.js` — not touched
+- `directory-app.jsx` — not touched (plan only)
+- `index.html` — not touched
+- Any production file — not touched
+
+### Deployment
+Not performed.
+
+---
+
 ## 2026-05-27 — Task 007: Fix GitHub Guard Workflow
 
 ### Task
