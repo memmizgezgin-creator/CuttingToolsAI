@@ -8,6 +8,58 @@ All assistants and coding agents must read CLOUDFLARE_MIGRATION.md before doing 
 
 ---
 
+## 2026-05-28 — Task 015: Final Regression QA (Tasks 009 + 012 + 014)
+
+### Task
+Site-wide regression test after canonical schema (Task 014), compare trust (Task 012), TrustBadge (Task 009).
+
+### Result
+COMPLETED ✅ — All checks green. Zero console errors.
+
+### QA Summary
+- Catalog loads, 36 tools, T-INSERT chips, confidence bars, `(est.)` labels ✅
+- `window.TA_TOOLS`: all 36 records have `tool_type`, `canonical_category`, `trust`, `workpiece_materials`, `economicsEstimated` ✅
+- T07 override: `turning_insert` / `turning` (family='Reaming' data error corrected) ✅
+- Detail modal: TrustBadge shows 96% Verified, SOURCE TIER: Manufacturer data, CHECKED: 2024-08-01 ✅
+- Compare screen: 3 cards, TURNING INSERT chips, TOOL TYPE row, DATA CONFIDENCE (96%/89%/94%), SOURCE, DATA RISKS ✅
+- Zebra striping alternating white/#f4f3f6 ✅
+- ToolAdvisor.html, cross-reference.html open without errors ✅
+- GitHub Actions: ToolAdvisor Guard ✅ success, pages build ✅ success
+
+### Output
+- `research/015-final-regression-qa.md` created
+
+---
+
+## 2026-05-28 — Task 014: Commit Canonical Schema Runtime Additions
+
+### Task
+Commit Task 002 backlog `directory-data.js` canonical runtime metadata additions (previously uncommitted).
+
+### Result
+COMPLETED ✅ — Commit `52ff736`
+
+### Changes Made
+**directory-data.js** — additive `TOOLS.forEach` blocks only; no base records touched:
+- `t.tool_type` — canonical enum via family map + per-record overrides (T07, T14 tap)
+- `t.canonical_category` — category enum
+- `t.product_code` — alias of `t.code`
+- `t.workpiece_materials` — primary ISO group as `[{iso_group, label, priority}]`
+- `t.trust` — `{source_tier, validation_status, confidence_score, source_name, source_url, last_checked, risk_flags}`
+- `t.economicsEstimated = true`
+
+### Guard Result
+- ToolAdvisor Guard: ✅ success
+- Warning: `directory-data.js` non-record change → review required (expected, non-blocking)
+- Warning: `TOOLADVISOR_WORKLOG.md` not in commit (resolved in Task 015)
+
+### Files Changed
+| File | Action |
+|------|--------|
+| `directory-data.js` | 71 lines added — runtime forEach canonical field additions |
+
+---
+
 ## 2026-05-28 — Task 012: Compare Screen Trust Implementation
 
 ### Task
