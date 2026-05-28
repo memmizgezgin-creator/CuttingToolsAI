@@ -75,6 +75,75 @@
       .map(o => o.id);
   });
 
+  // -------- CANONICAL SCHEMA FIELDS (task 002 — 2026-05-27) --------
+  // Adds canonical fields alongside existing flat fields (UI backward-compatible).
+  // Schema source: research/tooladvisor-product-schema-proposal.json
+  // Existing fields (code, iso, family, op, etc.) are preserved unchanged.
+  const _TOOL_TYPE_MAP = {
+    Turning:   'turning_insert',
+    Milling:   'milling_insert',
+    Drilling:  'solid_drill',
+    Threading: 'threading_insert',
+    Reaming:   'reamer',
+  };
+  const _CATEGORY_MAP = {
+    Turning:   'turning',
+    Milling:   'milling',
+    Drilling:  'drilling',
+    Threading: 'threading',
+    Reaming:   'reaming',
+  };
+  const _ISO_LABEL_MAP = {
+    P: 'Steel',
+    M: 'Stainless Steel',
+    K: 'Cast Iron',
+    N: 'Non-Ferrous',
+    S: 'Super Alloys',
+    H: 'Hardened Steel',
+  };
+  TOOLS.forEach(t => {
+    // tool_type — canonical enum; refine for per-record anomalies in the source data
+    let tt = _TOOL_TYPE_MAP[t.family] || 'future';
+    if (t.family === 'Drilling' && t.op === 'Indexable') tt = 'indexable_drill_insert';
+    if (t.code && t.code.startsWith('A-TAP'))            tt = 'tap';                // T14 misclassified in family
+    if (t.id === 'T07')                                  tt = 'turning_insert';     // T07: TPMR is a turning insert; family='Reaming' is a data error (see audit)
+    t.tool_type = tt;
+
+    // canonical_category — enum; override misclassifications
+    let cc = _CATEGORY_MAP[t.family] || 'future';
+    if (tt === 'tap')            cc = 'tapping';
+    if (tt === 'turning_insert') cc = 'turning';  // catches T07 whose family='Reaming'
+    t.canonical_category = cc;
+
+    // product_code — canonical alias; preserves existing `code` field for UI
+    t.product_code = t.code;
+
+    // workpiece_materials — primary ISO group as canonical array entry
+    t.workpiece_materials = [{
+      iso_group: t.iso,
+      label:     _ISO_LABEL_MAP[t.iso] || t.iso,
+      priority:  'primary',
+    }];
+
+    // trust — canonical trust metadata block derived from existing source + lastVerified fields
+    const srcTier = t.source === 'Generated estimate' ? 'estimated' : 'manufacturer';
+    const valStat = t.source === 'Manufacturer data'       ? 'verified'
+                  : t.source === 'Manufacturer + reviewed' ? 'partially_verified'
+                  :                                          'estimated';
+    const riskFlags = [];
+    if (t.source === 'Generated estimate')      riskFlags.push('estimated_field');
+    if (t.source === 'Manufacturer + reviewed') riskFlags.push('manual_review_required');
+    t.trust = {
+      source_tier:       srcTier,
+      validation_status: valStat,
+      confidence_score:  t.confidence,
+      source_name:       t.source,
+      source_url:        null,
+      last_checked:      t.lastVerified ? (t.lastVerified + '-01') : '2024-01-01',
+      risk_flags:        riskFlags,
+    };
+  });
+
   // -------- ECONOMICS (synthetic but believable) --------
   // costTier 1-4 (€..€€€€), lifeRel 1-5, picks (synthetic community-pick count)
   // Heuristic: known premium brands trend slightly higher cost; CBN/superalloy higher cost;
@@ -106,6 +175,8 @@
     t.weeklyPicks = Math.round(8 + t.confidence * 0.7 + t.supply * 4 + (PREMIUM_BRANDS.has(t.brand) ? 12 : 0) - (t.source === 'Generated estimate' ? 18 : 0));
     // Value index — higher = better value (used to rank "better value" suggestions)
     t.valueIndex = (t.confidence * 0.6) + (t.lifeRel * 8) + (t.supply * 3) - (t.costTier * 10);
+    // All economics values above are synthetic estimates — not verified commercial data.
+    t.economicsEstimated = true;
   });
 
   // -------- "ENGINEERS ALSO PICKED" + "BETTER VALUE" --------
