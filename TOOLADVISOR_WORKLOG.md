@@ -8,6 +8,39 @@ All assistants and coding agents must read CLOUDFLARE_MIGRATION.md before doing 
 
 ---
 
+## 2026-05-28 — Task 019: Compare Phase B Dynamic Planning
+
+### Task
+`compare.html` statik → dinamik geçiş için kapsamlı plan.
+
+### Result
+COMPLETED ✅ — `research/019-compare-phase-b-dynamic-plan.md` oluşturuldu.
+
+### Key Findings
+- compare.html şu an `directory-data.js` yüklemiyor → `window.TA_TOOLS` erişilemez
+- `directory-app.jsx` CompareDrawer hiç ID geçirmiyor (`window.location.href = 'compare.html'`)
+- 5/18 matrix satırı TA_TOOLS'ta karşılığı olmayan alan kullanıyor (geometry, coating, interrupted, riskLevel, avoidWhen)
+- Önerilen: **Hybrid Seçenek A** — 13 satır dinamik, 5 satır "—", PRODUCT_DB değişikliği yok
+- Veri bağlantısı: URL query string `?ids=T01,T04,T03`
+
+### Implementation Faz Planı
+| Faz | Task | Kapsam |
+|-----|------|--------|
+| B1 | Task 020 | URL routing + header cards + 13 satır dinamik |
+| B2 | Task 021 | SVG envelope dinamik (opsiyonel) |
+| B3 | Task 022 | Final recommendation algoritması (opsiyonel) |
+
+### Files Changed
+| File | Action |
+|------|--------|
+| `research/019-compare-phase-b-dynamic-plan.md` | created |
+| `tasks/done/019-compare-phase-b-dynamic-plan.md` | created |
+
+### Deployment
+Not performed.
+
+---
+
 ## 2026-05-28 — Task 018: Phase A Summary + Next Roadmap
 
 ### Task
