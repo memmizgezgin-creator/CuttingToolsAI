@@ -8,6 +8,42 @@ All assistants and coding agents must read CLOUDFLARE_MIGRATION.md before doing 
 
 ---
 
+## 2026-05-28 — Task 016: Data Confidence Layer Standard
+
+### Task
+Catalog, detail modal ve compare ekranındaki trust/confidence görüntüleme mantığını analiz edip tek standart hale getir. Kod yok — sadece plan.
+
+### Result
+COMPLETED ✅ — `research/016-data-confidence-layer-standard.md` oluşturuldu.
+
+### Key Findings
+- `directory-app.jsx` TrustBadge zaten standarda uygun ✅
+- `compare.html`'de 2 minor görsel sapma tespit edildi: bar track bg (`bg-border-warm` → `bg-surface-container-low`) ve bar width (`w-16` → `w-14`)
+- Hardcoded green color, always-Verified badge, missing SOURCE TIER row, "None" risk flags → Phase B (dynamic rewire) işleri olarak belgelendi
+- Canonical status vocabulary: Verified / Partial / Estimated
+- Bar standard: compact 56×6px · full 96×8px · track: bg-surface-container-low
+
+### Recommended Next Tasks
+- Task 017: Phase A bar fixes (2 attr changes in compare.html)
+- Task 018: Phase B compare dynamic rewire (ayrı planlama)
+
+### Files Changed
+| File | Action |
+|------|--------|
+| `research/016-data-confidence-layer-standard.md` | created |
+| `tasks/done/016-data-confidence-layer-standard.md` | created |
+
+### Files NOT Changed
+- `directory-app.jsx` ✅ (analysis only)
+- `directory-data.js` ✅ (locked)
+- `compare.html` ✅ (analysis only — fixes in Task 017)
+- `index.html` ✅ (locked)
+
+### Deployment
+Not performed.
+
+---
+
 ## 2026-05-28 — Task 015: Final Regression QA (Tasks 009 + 012 + 014)
 
 ### Task
