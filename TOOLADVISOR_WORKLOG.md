@@ -8,6 +8,40 @@ All assistants and coding agents must read CLOUDFLARE_MIGRATION.md before doing 
 
 ---
 
+## 2026-05-28 — Task 017: Compare Confidence Bar Fix
+
+### Task
+`compare.html` DATA CONFIDENCE satırındaki 2 bar görsel sapmasını Task 016 standardına uygun hale getir.
+
+### Result
+COMPLETED ✅
+
+### Changes Made
+**compare.html** — 3 bar track div (replace_all):
+- `w-16` → `w-14` (56px, standart compact genişlik)
+- `bg-border-warm` → `bg-surface-container-low` (standart track rengi)
+
+### QA
+- 3 bar: `w-14 bg-surface-container-low` class ✅
+- computedBg: `rgb(244, 243, 246)` ✅
+- width: 56px ✅
+- Console errors: 0 ✅
+
+### Files Changed
+| File | Action |
+|------|--------|
+| `compare.html` | 3 × bar track class güncellendi |
+
+### Files NOT Changed
+- `directory-app.jsx` ✅
+- `directory-data.js` ✅ (locked)
+- `index.html` ✅ (locked)
+
+### Deployment
+Not performed.
+
+---
+
 ## 2026-05-28 — Task 016: Data Confidence Layer Standard
 
 ### Task
