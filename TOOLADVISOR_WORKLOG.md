@@ -8,6 +8,142 @@ All assistants and coding agents must read CLOUDFLARE_MIGRATION.md before doing 
 
 ---
 
+## 2026-05-28 — Task 012: Compare Screen Trust Implementation
+
+### Task
+Implement trust / tool_type / estimated economics in `compare.html` and `polish.css`. No JS changes.
+
+### Result
+COMPLETED ✅
+
+### Changes Made
+
+**compare.html**
+- Header description updated to include "data confidence"
+- Disclaimer banner: split into two badges; second badge adds economics caveat
+- All 3 product header cards: added `Turning insert` tool-type chip
+- Matrix outer wrapper: added `cmp-matrix` class for zebra CSS
+- New first row: **Tool type** (Turning insert × 3)
+- All matrix row `bg-surface-container-low` classes removed (replaced by CSS zebra)
+- Cost tier row: added ⓘ info tooltip to label; each value cell shows `(est.)` suffix
+- New last 3 rows: **Data confidence** (96% / 89% / 94%, all Verified), **Source** (Manufacturer data + brand + date), **Data risks** (None × 3)
+- Inline `<style>` block added in `<head>` for zebra rule (polish.css appended rules were silently dropped by browser parser after `@media` blocks)
+
+**polish.css**
+- Zebra-stripe rules appended at end of file (served correctly; browser parse issue documented — inline fallback used)
+
+### QA Results
+- 18 matrix rows render ✅
+- Alternating white / #f4f3f6 zebra rows ✅
+- Tool type chips on all 3 header cards ✅
+- Cost tier `(est.)` labels ✅
+- Data confidence bars + Verified badges ✅
+- Source rows with brand + date ✅
+- Data risks "None" rows ✅
+- Zero console errors ✅
+- Nav links intact ✅
+
+### Files Changed
+| File | Action |
+|------|--------|
+| `compare.html` | modified — new rows, chips, est. labels, inline zebra style |
+| `polish.css` | modified — zebra rules appended (served; inline style is active fallback) |
+
+### Files NOT Changed
+- `directory-app.jsx` ✅
+- `directory-data.js` ✅ (locked)
+- `index.html` ✅ (locked)
+
+---
+
+## 2026-05-28 — Task 011: Compare Screen Trust Plan
+
+### Task
+Plan how to add trust / tool_type / estimated economics to the compare screen. No code changes — planning only.
+
+### Result
+COMPLETED — `research/011-compare-screen-plan.md` created.
+
+### Key Finding
+`compare.html` is **fully static HTML** — not connected to `window.TA_TOOLS`. This shapes the entire implementation approach.
+
+### Recommended Approach
+**Phase A (Task 012):** Static HTML additions to `compare.html` + 5-line CSS rule in `polish.css`. No JS changes.
+**Phase B (future):** Full dynamic rewire connecting compare to `window.TA_TOOLS`. Separate task.
+
+### Rows to Add
+| Row | Position |
+|-----|----------|
+| Tool type | Top of matrix, before Geometry |
+| Data confidence | End of matrix, after Avoid when |
+| Source | After Data confidence |
+| Risk flags | After Source (omit if all tools have empty risk_flags) |
+| Cost tier modification | Add `(est.)` suffix + info tooltip to existing row |
+
+### Additional Changes
+- Tool type chip added to each product header card
+- Header description updated to mention data confidence
+- Disclaimer banner updated with economics caveat
+- `.cmp-matrix` CSS class added for automatic zebra striping (avoids manual row-by-row class toggling)
+
+### Files to Change (Task 012)
+- `compare.html` — ~80 lines added/modified
+- `polish.css` — ~5 lines added
+
+### Files NOT to Change
+- `directory-app.jsx` — no change
+- `directory-data.js` — locked
+- `index.html` — locked
+
+### Output
+- `research/011-compare-screen-plan.md` — created ✅
+
+---
+
+## 2026-05-28 — Task 010: Commit + GitHub Actions Check for Task 009
+
+### Task
+Commit Task 009 changes (directory-app.jsx, TOOLADVISOR_WORKLOG.md, tasks/done/009-…) and verify GitHub Actions Guard passes.
+
+### Result
+✅ PASS — commit pushed, Guard completed in 8 seconds, all steps green.
+
+### Commit
+`d078b2d` — feat: add TrustBadge, tool_type chip, economics est. labels (Task 009)
+
+### Files in Commit
+| File | Action |
+|------|--------|
+| `directory-app.jsx` | modified (Task 009 implementation) |
+| `TOOLADVISOR_WORKLOG.md` | modified (Task 009 worklog entry) |
+| `tasks/done/009-product-card-detail-implementation-v1.md` | created |
+
+### Files NOT in Commit (verified)
+- `directory-data.js` — not staged, not committed ✅
+- `index.html` — not modified ✅
+- `wrangler.toml` — not modified ✅
+
+### GitHub Actions Result
+
+| Workflow | Commit | Duration | Result |
+|----------|--------|----------|--------|
+| ToolAdvisor Guard | d078b2d | 8s | ✅ success |
+| pages-build-deployment | d078b2d | in progress at check time | — |
+
+#### Guard Steps
+| Step | Result |
+|------|--------|
+| Checkout | ✅ |
+| Check critical files exist | ✅ |
+| Check no Netlify config | ✅ |
+| Check protected files not modified | ✅ |
+| Check WORKLOG updated | ✅ |
+| Summary | ✅ |
+
+No errors. No warnings from guard.
+
+---
+
 ## 2026-05-28 — Task 009: Product Card + Detail Modal Implementation v1
 
 ### Task

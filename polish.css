@@ -120,6 +120,8 @@ main > section:nth-of-type(5)                              { animation-delay: 16
    COMPARE MATRIX — visual encoding for quantitative rows
    ============================================================ */
 
+/* Auto zebra-stripe rule is at the bottom of this file. */
+
 /* Range bar: shows min-max within a common scale */
 .cmp-range {
   position: relative;
@@ -462,3 +464,8 @@ main > section:nth-of-type(5)                              { animation-delay: 16
 @media (prefers-reduced-motion: reduce) {
   .ta-insert3d > svg { animation: none; transition: none; }
 }
+
+/* Auto zebra-stripe for compare matrix rows.
+   .cmp-matrix on the outer wrapper; individual row bg classes not needed. */
+.cmp-matrix > div:nth-child(odd)  { background: #ffffff; }
+.cmp-matrix > div:nth-child(even) { background: #f4f3f6; }

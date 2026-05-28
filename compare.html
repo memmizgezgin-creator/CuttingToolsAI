@@ -8,6 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="tw-config.js"></script>
 <link rel="stylesheet" href="polish.css"/>
+<style>
+/* Compare matrix zebra striping — inline fallback because polish.css @media tail can suppress appended rules */
+.cmp-matrix > div:nth-child(odd)  { background: #ffffff; }
+.cmp-matrix > div:nth-child(even) { background: #f4f3f6; }
+</style>
 </head>
 <body class="font-body-md text-on-surface selection:bg-primary/20">
 <!-- Sidebar Navigation -->
@@ -18,9 +23,14 @@
 <section class="px-gutter pt-12 pb-8 bg-gradient-to-br from-surface to-border-warm">
   <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-3">Compare</p>
   <h1 class="font-display-hero text-display-hero text-primary mb-3">Side-by-side technical matrix.</h1>
-  <p class="font-body-lg text-on-surface-variant max-w-3xl">Match three inserts on the variables that actually drive a decision: geometry, grade, ISO coverage, operation envelope, tool life, cost tier and risk.</p>
-  <div class="mt-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-border-warm text-on-surface-variant text-xs font-medium">
-    <span class="material-symbols-outlined text-sm text-iso-m-amber">info</span> Sample comparison — always verify on a sample part before production
+  <p class="font-body-lg text-on-surface-variant max-w-3xl">Match three inserts on the variables that actually drive a decision: geometry, grade, ISO coverage, operation envelope, tool life, cost tier, risk and data confidence.</p>
+  <div class="mt-6 flex flex-wrap gap-2">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-border-warm text-on-surface-variant text-xs font-medium">
+      <span class="material-symbols-outlined text-sm text-iso-m-amber">info</span> Sample comparison — always verify on a sample part before production
+    </div>
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-border-warm text-on-surface-variant text-xs font-medium">
+      <span class="material-symbols-outlined text-sm text-outline">analytics</span> Cost tier and tool life are estimates from published data — not commercial pricing
+    </div>
   </div>
 </section>
 
@@ -35,6 +45,7 @@
             <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Sandvik Coromant</p>
             <h3 class="font-product-grade text-primary text-xl">GC4325</h3>
             <p class="font-technical-data text-sm text-on-surface-variant">CNMG 120408-PM</p>
+            <span class="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-full bg-surface-container-low border border-border-warm text-[10px] font-technical-data uppercase tracking-widest text-on-surface-variant">Turning insert</span>
           </div>
           <span class="px-2.5 py-1 rounded-full bg-iso-p-blue/15 text-iso-p-blue font-bold text-[10px] tracking-widest shrink-0">BASELINE</span>
         </div>
@@ -48,6 +59,7 @@
             <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Kennametal</p>
             <h3 class="font-product-grade text-primary text-xl">KCP25C</h3>
             <p class="font-technical-data text-sm text-on-surface-variant">CNMG 432 MP</p>
+            <span class="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-full bg-surface-container-low border border-border-warm text-[10px] font-technical-data uppercase tracking-widest text-on-surface-variant">Turning insert</span>
           </div>
           <span class="px-2.5 py-1 rounded-full bg-iso-m-amber/15 text-iso-m-amber font-bold text-[10px] tracking-widest shrink-0">NEAR EQV.</span>
         </div>
@@ -61,6 +73,7 @@
             <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Walter</p>
             <h3 class="font-product-grade text-primary text-xl">WPP20S</h3>
             <p class="font-technical-data text-sm text-on-surface-variant">CNMG 120408-NM4</p>
+            <span class="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-full bg-surface-container-low border border-border-warm text-[10px] font-technical-data uppercase tracking-widest text-on-surface-variant">Turning insert</span>
           </div>
           <span class="px-2.5 py-1 rounded-full bg-iso-n-green/15 text-iso-n-green font-bold text-[10px] tracking-widest shrink-0">PREMIUM</span>
         </div>
@@ -72,7 +85,21 @@
 
 <!-- Matrix -->
 <section class="px-gutter pb-10">
-  <div class="bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden">
+  <div class="bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden cmp-matrix">
+
+    <!-- Tool type -->
+    <div class="grid grid-cols-4 gap-0">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Tool type</div>
+      <div class="p-4 border-r border-border-warm flex items-center">
+        <span class="text-sm font-medium text-on-surface">Turning insert</span>
+      </div>
+      <div class="p-4 border-r border-border-warm flex items-center">
+        <span class="text-sm font-medium text-on-surface">Turning insert</span>
+      </div>
+      <div class="p-4 flex items-center">
+        <span class="text-sm font-medium text-on-surface">Turning insert</span>
+      </div>
+    </div>
 
     <!-- Geometry -->
     <div class="grid grid-cols-4 gap-0">
@@ -83,7 +110,7 @@
     </div>
 
     <!-- Grade -->
-    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+    <div class="grid grid-cols-4 gap-0">
       <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Grade</div>
       <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">GC4325 <span class="ml-2 text-on-surface-variant text-xs">CVD Ti(C,N)+Al₂O₃</span></div>
       <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">KCP25C <span class="ml-2 text-on-surface-variant text-xs">multilayer CVD</span></div>
@@ -99,7 +126,7 @@
     </div>
 
     <!-- ISO group -->
-    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+    <div class="grid grid-cols-4 gap-0">
       <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">ISO material group</div>
       <div class="p-4 border-r border-border-warm flex items-center gap-1.5">
         <span class="ta-iso-badge ta-iso-P">ISO P</span><span class="ta-iso-badge ta-iso-M">ISO M</span>
@@ -121,7 +148,7 @@
     </div>
 
     <!-- Vc range (m/min) — scale 150–450 -->
-    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+    <div class="grid grid-cols-4 gap-0">
       <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center">
         <span>Vc envelope</span>
         <span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">scale 150–450 m/min</span>
@@ -173,7 +200,7 @@
     </div>
 
     <!-- Depth of cut (mm) — scale 0–6 -->
-    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+    <div class="grid grid-cols-4 gap-0">
       <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center">
         <span>Depth envelope</span>
         <span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">scale 0–6 mm</span>
@@ -207,7 +234,7 @@
     </div>
 
     <!-- Tool life -->
-    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+    <div class="grid grid-cols-4 gap-0">
       <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center">
         <span>Tool life</span>
         <span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">5-point relative</span>
@@ -228,23 +255,26 @@
 
     <!-- Cost tier -->
     <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Cost tier</div>
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center gap-1">
+        Cost tier
+        <span class="material-symbols-outlined text-outline" style="font-size:14px;" title="Estimated from published data ranges — not commercial pricing">info</span>
+      </div>
       <div class="p-4 border-r border-border-warm flex items-center gap-3">
         <span class="cmp-cost"><span class="on">€</span><span class="on">€</span><span class="on">€</span><span class="off">€</span><span class="off">€</span></span>
-        <span class="text-xs text-on-surface-variant">3/5</span>
+        <span class="text-xs text-on-surface-variant">3/5 <span class="text-[10px] text-outline">(est.)</span></span>
       </div>
       <div class="p-4 border-r border-border-warm flex items-center gap-3">
         <span class="cmp-cost"><span class="on">€</span><span class="on">€</span><span class="off">€</span><span class="off">€</span><span class="off">€</span></span>
-        <span class="text-xs text-on-surface-variant">2/5</span>
+        <span class="text-xs text-on-surface-variant">2/5 <span class="text-[10px] text-outline">(est.)</span></span>
       </div>
       <div class="p-4 flex items-center gap-3">
         <span class="cmp-cost"><span class="on">€</span><span class="on">€</span><span class="on">€</span><span class="on">€</span><span class="off">€</span></span>
-        <span class="text-xs text-on-surface-variant">4/5</span>
+        <span class="text-xs text-on-surface-variant">4/5 <span class="text-[10px] text-outline">(est.)</span></span>
       </div>
     </div>
 
     <!-- Risk level -->
-    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+    <div class="grid grid-cols-4 gap-0">
       <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Risk level</div>
       <div class="p-4 border-r border-border-warm flex items-center"><span class="cmp-risk" data-level="low">Low</span></div>
       <div class="p-4 border-r border-border-warm flex items-center"><span class="cmp-risk" data-level="medium">Low-Medium</span></div>
@@ -260,11 +290,74 @@
     </div>
 
     <!-- Avoid when -->
-    <div class="grid grid-cols-4 gap-0 bg-surface-container-low">
+    <div class="grid grid-cols-4 gap-0">
       <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Avoid when</div>
       <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Heavy interrupted cuts</div>
       <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Continuous high-Vc runs</div>
       <div class="p-4 text-sm text-on-surface flex items-center font-medium">Cost-sensitive short runs</div>
+    </div>
+
+    <!-- Data confidence -->
+    <div class="grid grid-cols-4 gap-0">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Data confidence</div>
+      <div class="p-4 border-r border-border-warm flex items-center gap-3">
+        <div class="w-16 h-1.5 bg-border-warm rounded-full overflow-hidden shrink-0">
+          <div class="h-full bg-iso-n-green" style="width:96%;"></div>
+        </div>
+        <span class="font-technical-data text-sm font-bold text-ink-text">96%</span>
+        <span class="flex items-center gap-1 text-xs font-bold text-iso-n-green">
+          <span class="material-symbols-outlined" style="font-size:13px;">verified</span> Verified
+        </span>
+      </div>
+      <div class="p-4 border-r border-border-warm flex items-center gap-3">
+        <div class="w-16 h-1.5 bg-border-warm rounded-full overflow-hidden shrink-0">
+          <div class="h-full bg-iso-n-green" style="width:89%;"></div>
+        </div>
+        <span class="font-technical-data text-sm font-bold text-ink-text">89%</span>
+        <span class="flex items-center gap-1 text-xs font-bold text-iso-n-green">
+          <span class="material-symbols-outlined" style="font-size:13px;">verified</span> Verified
+        </span>
+      </div>
+      <div class="p-4 flex items-center gap-3">
+        <div class="w-16 h-1.5 bg-border-warm rounded-full overflow-hidden shrink-0">
+          <div class="h-full bg-iso-n-green" style="width:94%;"></div>
+        </div>
+        <span class="font-technical-data text-sm font-bold text-ink-text">94%</span>
+        <span class="flex items-center gap-1 text-xs font-bold text-iso-n-green">
+          <span class="material-symbols-outlined" style="font-size:13px;">verified</span> Verified
+        </span>
+      </div>
+    </div>
+
+    <!-- Source -->
+    <div class="grid grid-cols-4 gap-0">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Source</div>
+      <div class="p-4 border-r border-border-warm flex flex-col gap-0.5">
+        <span class="text-xs font-bold text-on-surface">Manufacturer data</span>
+        <span class="text-[10px] text-on-surface-variant">Sandvik · 2024-08</span>
+      </div>
+      <div class="p-4 border-r border-border-warm flex flex-col gap-0.5">
+        <span class="text-xs font-bold text-on-surface">Manufacturer data</span>
+        <span class="text-[10px] text-on-surface-variant">Kennametal · 2024-05</span>
+      </div>
+      <div class="p-4 flex flex-col gap-0.5">
+        <span class="text-xs font-bold text-on-surface">Manufacturer data</span>
+        <span class="text-[10px] text-on-surface-variant">Walter · 2024-09</span>
+      </div>
+    </div>
+
+    <!-- Risk flags -->
+    <div class="grid grid-cols-4 gap-0">
+      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Data risks</div>
+      <div class="p-4 border-r border-border-warm flex items-center">
+        <span class="text-xs text-on-surface-variant">None</span>
+      </div>
+      <div class="p-4 border-r border-border-warm flex items-center">
+        <span class="text-xs text-on-surface-variant">None</span>
+      </div>
+      <div class="p-4 flex items-center">
+        <span class="text-xs text-on-surface-variant">None</span>
+      </div>
     </div>
 
   </div>
