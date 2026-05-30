@@ -42,6 +42,59 @@ const SORTS = [
 
 const PAGE_SIZE = 12;
 
+// ---------- NON-INSERT TOOL GUARDS (Phase 1) ----------
+// Guards for handling products without ISO codes, grades, coatings, or cutting data
+// These prevent crashes when rendering non-insert tools (reamers, drills, taps, etc.)
+
+function getPrimaryProductCode(tool) {
+  // Fallback: if iso_code missing, use product_code or tool_no
+  if (tool.iso || tool.code) return tool.code;
+  return tool.product_code || tool.tool_no || '(no code)';
+}
+
+function getIsoClassesOrDefault(tool) {
+  // If no iso, use neutral gray fallback instead of crashing on ISO_CLASSES[undefined]
+  if (!tool.iso) {
+    return { border:'border-border-warm', chip:'bg-surface-container-low text-on-surface-variant border-border-warm' };
+  }
+  return ISO_CLASSES[tool.iso] || { border:'border-border-warm', chip:'bg-surface-container-low text-on-surface-variant border-border-warm' };
+}
+
+function getIsoColorOrDefault(tool) {
+  // If no iso, use neutral gray color instead of undefined
+  if (!tool.iso) return '#CCCCCC';
+  return ISO_COLOR[tool.iso] || '#CCCCCC';
+}
+
+function getDisplayGrade(tool) {
+  // Show grade if present, otherwise show "Not specified in source" placeholder
+  if (tool.grade) return tool.grade;
+  return 'Not specified in source';
+}
+
+function getDisplayCoating(tool) {
+  // Show coating if present, otherwise show "Not specified in source" placeholder
+  if (tool.coating) return tool.coating;
+  return 'Not specified in source';
+}
+
+function shouldRenderCuttingData(tool) {
+  // Only render Vc/Feed/aₚ rows if all three have values
+  return tool.vcMin !== null && tool.vcMax !== null && tool.fMin !== null && tool.fMax !== null && tool.apMin !== null && tool.apMax !== null;
+}
+
+function shouldRenderInsert3d(tool) {
+  // Only render insert 3D visualization if tool has shape/tone (insert-specific)
+  // Non-inserts (reamers, drills) have null shape/tone
+  return tool.shape && tool.tone;
+}
+
+function shouldRenderIsoCodeBadge(tool) {
+  // Only render ISO code badge if tool has an iso code (insert-specific)
+  // Non-inserts without iso_code should show tool_code badge instead
+  return tool.iso !== null && tool.iso !== undefined;
+}
+
 // ---------- atoms ----------
 function Icon({name, size=18, fill=false, weight, className=''}) {
   const props = {};
@@ -195,26 +248,31 @@ function TrustBadge({tool, expanded=false}) {
 // ---------- tool card ----------
 function ToolCard({tool, view, isCompared, onToggleCompare, isFav, onToggleFav, onOpen}) {
   const t = tool;
-  const cls = ISO_CLASSES[t.iso];
+  const cls = getIsoClassesOrDefault(t);
   const borderClass = cls.border;
   const bgChip = cls.chip;
+  const hasCuttingData = shouldRenderCuttingData(t);
 
   if (view === 'list') {
     return (
       <article className={`bg-surface-card rounded-2xl card-shadow border-l-4 ${borderClass} p-4 flex items-center gap-4 hover:shadow-md transition-all`}>
-        <div className="ta-insert3d shrink-0" data-shape={t.shape} data-tone={t.tone} data-size="xs"></div>
+        {shouldRenderInsert3d(t) && <div className="ta-insert3d shrink-0" data-shape={t.shape} data-tone={t.tone} data-size="xs"></div>}
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline gap-3 flex-wrap">
             <p className="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">{t.brand}</p>
-            <h3 className="font-product-grade text-base text-ink-text leading-tight">{t.code}</h3>
-            <span className={`font-technical-data text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full border ${bgChip}`}>ISO {t.iso}</span>
+            <h3 className="font-product-grade text-base text-ink-text leading-tight">{getPrimaryProductCode(t)}</h3>
+            {shouldRenderIsoCodeBadge(t) && <span className={`font-technical-data text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full border ${bgChip}`}>ISO {t.iso}</span>}
             <span className="text-[11px] text-outline">· {t.family} · {t.op}</span>
           </div>
           <p className="text-xs text-on-surface-variant mt-1">
-            <span className="font-technical-data text-ink-text">Vc {t.vcMin}–{t.vcMax} m/min</span>
-            <span className="mx-2 text-outline">·</span>
-            <span className="font-technical-data text-ink-text">f {t.fMin}–{t.fMax} mm/rev</span>
-            <span className="mx-2 text-outline">·</span>
+            {hasCuttingData ? (
+              <>
+                <span className="font-technical-data text-ink-text">Vc {t.vcMin}–{t.vcMax} m/min</span>
+                <span className="mx-2 text-outline">·</span>
+                <span className="font-technical-data text-ink-text">f {t.fMin}–{t.fMax} mm/rev</span>
+                <span className="mx-2 text-outline">·</span>
+              </>
+            ) : null}
             <span>{t.bestFor}</span>
           </p>
         </div>
@@ -249,11 +307,11 @@ function ToolCard({tool, view, isCompared, onToggleCompare, isFav, onToggleFav, 
       <div className="flex justify-between items-start mb-4 pr-10">
         <div>
           <p className="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">{t.brand}</p>
-          <h3 className="font-product-grade text-ink-text leading-tight">{t.code}</h3>
+          <h3 className="font-product-grade text-ink-text leading-tight">{getPrimaryProductCode(t)}</h3>
         </div>
         <div className="flex flex-col items-end gap-1.5 shrink-0">
-          <div className="ta-insert3d" data-shape={t.shape} data-tone={t.tone} data-size="sm" aria-label={`${t.shape} shape insert`}></div>
-          <span className={`font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border whitespace-nowrap ${bgChip}`}>ISO {t.iso}</span>
+          {shouldRenderInsert3d(t) && <div className="ta-insert3d" data-shape={t.shape} data-tone={t.tone} data-size="sm" aria-label={`${t.shape} shape insert`}></div>}
+          {shouldRenderIsoCodeBadge(t) && <span className={`font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border whitespace-nowrap ${bgChip}`}>ISO {t.iso}</span>}
           {t.tool_type && (
             <span className="font-technical-data text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full border border-border-warm bg-surface-container-low text-on-surface-variant whitespace-nowrap">
               {TOOL_TYPE_LABEL[t.tool_type] || t.tool_type}
@@ -264,24 +322,30 @@ function ToolCard({tool, view, isCompared, onToggleCompare, isFav, onToggleFav, 
 
       <p className="text-xs text-on-surface-variant mb-3">
         <span className="font-bold text-on-surface">{t.family} · {t.op}</span>
-        <span className="mx-1">·</span>
-        Grade <span className="font-technical-data">{t.grade}</span>
+        {t.grade && (
+          <>
+            <span className="mx-1">·</span>
+            Grade <span className="font-technical-data">{getDisplayGrade(t)}</span>
+          </>
+        )}
       </p>
 
-      <div className="space-y-1.5 mb-3">
-        <div className="flex justify-between items-center text-xs">
-          <span className="text-outline uppercase tracking-wider font-bold">Vc</span>
-          <span className="font-technical-data text-ink-text">{t.vcMin}–{t.vcMax} m/min</span>
+      {hasCuttingData && (
+        <div className="space-y-1.5 mb-3">
+          <div className="flex justify-between items-center text-xs">
+            <span className="text-outline uppercase tracking-wider font-bold">Vc</span>
+            <span className="font-technical-data text-ink-text">{t.vcMin}–{t.vcMax} m/min</span>
+          </div>
+          <div className="flex justify-between items-center text-xs">
+            <span className="text-outline uppercase tracking-wider font-bold">Feed</span>
+            <span className="font-technical-data text-ink-text">{t.fMin}–{t.fMax} mm/rev</span>
+          </div>
+          <div className="flex justify-between items-center text-xs">
+            <span className="text-outline uppercase tracking-wider font-bold">aₚ</span>
+            <span className="font-technical-data text-ink-text">{t.apMin}–{t.apMax} mm</span>
+          </div>
         </div>
-        <div className="flex justify-between items-center text-xs">
-          <span className="text-outline uppercase tracking-wider font-bold">Feed</span>
-          <span className="font-technical-data text-ink-text">{t.fMin}–{t.fMax} mm/rev</span>
-        </div>
-        <div className="flex justify-between items-center text-xs">
-          <span className="text-outline uppercase tracking-wider font-bold">aₚ</span>
-          <span className="font-technical-data text-ink-text">{t.apMin}–{t.apMax} mm</span>
-        </div>
-      </div>
+      )}
 
       {/* Structured best-for */}
       <div className="pt-2 mb-3 border-t border-border-warm">
@@ -429,23 +493,26 @@ function CompareDrawer({tools, onRemove, onClear, onOpen, onExport, onCompare}) 
 function DetailModal({tool, onClose, onOpenTool, tools}) {
   if (!tool) return null;
   const equivs = tool.equivIds.map(id => tools.find(o => o.id === id)).filter(Boolean);
+  const cls = getIsoClassesOrDefault(tool);
+  const hasCuttingData = shouldRenderCuttingData(tool);
   return (
     <div role="dialog" aria-modal="true" aria-labelledby="modal-title" className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-glass-backdrop backdrop-blur-sm" onClick={onClose}>
       <div className="bg-surface-card rounded-2xl shadow-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
-        <div className={`p-6 border-b-4 ${ISO_CLASSES[tool.iso].border} flex items-start gap-6`}>
-          <div className="ta-insert3d shrink-0" data-shape={tool.shape} data-tone={tool.tone} data-size="lg"></div>
+        <div className={`p-6 border-b-4 ${cls.border} flex items-start gap-6`}>
+          {shouldRenderInsert3d(tool) && <div className="ta-insert3d shrink-0" data-shape={tool.shape} data-tone={tool.tone} data-size="lg"></div>}
           <div className="flex-1 min-w-0">
             <p className="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">
               {tool.brand} · {tool.family}{tool.tool_type ? ` · ${TOOL_TYPE_LABEL[tool.tool_type] || tool.tool_type}` : ''}
             </p>
-            <h2 id="modal-title" className="font-section-heading text-display-hero text-ink-text leading-tight tracking-tight">{tool.code}</h2>
+            <h2 id="modal-title" className="font-section-heading text-display-hero text-ink-text leading-tight tracking-tight">{getPrimaryProductCode(tool)}</h2>
             <p className="text-on-surface-variant mt-1">{tool.bestFor}</p>
             <div className="flex flex-wrap gap-2 mt-3">
-              <span className={`font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border ${ISO_CLASSES[tool.iso].chip}`}>ISO {tool.iso} · {ISO_LABEL[tool.iso]}</span>
-              <Tag>Grade {tool.grade}</Tag>
+              {shouldRenderIsoCodeBadge(tool) && <span className={`font-technical-data text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border ${cls.chip}`}>ISO {tool.iso} · {ISO_LABEL[tool.iso]}</span>}
+              {tool.grade && <Tag>Grade {getDisplayGrade(tool)}</Tag>}
+              {tool.coating && <Tag>{getDisplayCoating(tool)}</Tag>}
               <Tag>{tool.op}</Tag>
-              <Tag>{tool.stability} stability</Tag>
-              <Tag>{tool.coolant}</Tag>
+              {tool.stability && <Tag>{tool.stability} stability</Tag>}
+              {tool.coolant && <Tag>{tool.coolant}</Tag>}
             </div>
           </div>
           <button onClick={onClose} aria-label="Close" className="w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container-high flex items-center justify-center shrink-0">
@@ -453,11 +520,13 @@ function DetailModal({tool, onClose, onOpenTool, tools}) {
           </button>
         </div>
 
-        <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-border-warm">
-          <Spec label="Cutting speed Vc" value={`${tool.vcMin}–${tool.vcMax}`} unit="m/min"/>
-          <Spec label="Feed rate" value={`${tool.fMin}–${tool.fMax}`} unit="mm/rev"/>
-          <Spec label="Depth of cut aₚ" value={`${tool.apMin}–${tool.apMax}`} unit="mm"/>
-        </div>
+        {hasCuttingData && (
+          <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-border-warm">
+            <Spec label="Cutting speed Vc" value={`${tool.vcMin}–${tool.vcMax}`} unit="m/min"/>
+            <Spec label="Feed rate" value={`${tool.fMin}–${tool.fMax}`} unit="mm/rev"/>
+            <Spec label="Depth of cut aₚ" value={`${tool.apMin}–${tool.apMax}`} unit="mm"/>
+          </div>
+        )}
 
         <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -706,11 +775,12 @@ function App() {
     const q = query.trim().toLowerCase();
     let out = TOOLS.filter(t => {
       if (family !== 'All' && t.family !== family) return false;
-      if (iso && t.iso !== iso) return false;
+      if (iso && !(Array.isArray(t.iso_all) ? t.iso_all.includes(iso) : t.iso === iso)) return false;
       if (op && t.op !== op) return false;
       if (t.confidence < confMin) return false;
       if (q) {
-        const hay = `${t.brand} ${t.code} ${t.grade} ${t.family} ${t.op} ${t.bestFor} ISO${t.iso}`.toLowerCase();
+        const isoHay = Array.isArray(t.iso_all) ? t.iso_all.map(g => `ISO${g}`).join(' ') : `ISO${t.iso}`;
+        const hay = `${t.brand} ${t.code} ${t.grade} ${t.family} ${t.op} ${t.bestFor} ${isoHay}`.toLowerCase();
         if (!hay.includes(q)) return false;
       }
       return true;
