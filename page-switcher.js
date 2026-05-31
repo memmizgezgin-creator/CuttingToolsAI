@@ -196,11 +196,20 @@
 
   const isCatalogPage = here === 'tools-directory.html';
 
+  // Maps raw DB family names → sidebar key (mirrors directory-app.jsx FAMILY_MAP)
+  const DB_TO_SIDEBAR = {
+    'Drilling': 'Hole Making',
+    'Reaming':  'Hole Making',
+  };
+
   function getCounts() {
     if (!window.TA_TOOLS) return { families:{}, isos:{}, total:0, ready:false };
     const families = {}, isos = {};
     for (const t of window.TA_TOOLS) {
-      if (t.family) families[t.family] = (families[t.family] || 0) + 1;
+      if (t.family) {
+        const key = DB_TO_SIDEBAR[t.family] || t.family;
+        families[key] = (families[key] || 0) + 1;
+      }
       const isoGroups = Array.isArray(t.iso_all) ? t.iso_all : (t.iso ? [t.iso] : []);
       for (const g of isoGroups) isos[g] = (isos[g] || 0) + 1;
     }
