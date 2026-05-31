@@ -30,8 +30,28 @@ const ISO_CLASSES = {
   S: { border:'border-iso-s-orange', chip:'bg-iso-s-orange/10 text-iso-s-orange border-iso-s-orange/20' },
   H: { border:'border-iso-h-slate',  chip:'bg-iso-h-slate/10 text-iso-h-slate border-iso-h-slate/20'  },
 };
-const FAMILIES = ['All','Turning','Milling','Drilling','Threading','Reaming','Grooving'];
-const COMING_SOON_FAMILIES = ['Insert', 'Toolholder'];
+// ── Family Structure (Phase 1 & Phase 1.5) ──────────────────────────────
+// Phase 1: Hole Making + Milling + Turning (solid) + Grooving
+// Phase 1.5: Threading (hidden until ready)
+// Phase 2: Boring + Toolholding + Special
+const FAMILIES = ['All','Hole Making','Milling','Turning','Grooving'];
+const COMING_SOON_FAMILIES = ['Insert & Indexable Inserts','Threading','Boring','Toolholding','Special/Secondary'];
+
+// Family mapping: old database names → new UI family names
+// Consolidates Drilling/Reaming/Countersinking into "Hole Making"
+const FAMILY_MAP = {
+  'Drilling': 'Hole Making',
+  'Reaming': 'Hole Making',
+  // Countersinking would map here if present in data
+  'Milling': 'Milling',
+  'Turning': 'Turning',
+  'Grooving': 'Grooving',
+  'Threading': 'Threading',
+  // Phase 2 families (not yet in data)
+  'Boring': 'Boring',
+  'Toolholding': 'Toolholding',
+};
+
 const SORTS = [
   { id:'relevance',   label:'Relevance' },
   { id:'confidence',  label:'Data confidence ↓' },
@@ -780,7 +800,9 @@ function App() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     let out = TOOLS.filter(t => {
-      if (family !== 'All' && t.family !== family) return false;
+      // Map old family names (Drilling, Reaming) to new grouped family (Hole Making)
+      const mappedFamily = FAMILY_MAP[t.family] || t.family;
+      if (family !== 'All' && mappedFamily !== family) return false;
       if (iso && !(Array.isArray(t.iso_all) ? t.iso_all.includes(iso) : t.iso === iso)) return false;
       if (op && t.op !== op) return false;
       if (brand && t.brand !== brand) return false;
@@ -811,9 +833,10 @@ function App() {
 
   // operations cluster — show only those present in current family
   const ops = useMemo(() => {
-    const set = new Set(TOOLS.filter(t =>
-      (family === 'All' || t.family === family) && (!brand || t.brand === brand)
-    ).map(t => t.op));
+    const set = new Set(TOOLS.filter(t => {
+      const mappedFamily = FAMILY_MAP[t.family] || t.family;
+      return (family === 'All' || mappedFamily === family) && (!brand || t.brand === brand);
+    }).map(t => t.op));
     return [...set].sort();
   }, [TOOLS, family, brand]);
 
@@ -1006,7 +1029,10 @@ function App() {
 
         {/* Brand filter row — only shown when 2+ brands present */}
         {(() => {
-          const famFilter = family === 'All' ? TOOLS : TOOLS.filter(t => t.family === family);
+          const famFilter = family === 'All' ? TOOLS : TOOLS.filter(t => {
+            const mappedFamily = FAMILY_MAP[t.family] || t.family;
+            return mappedFamily === family;
+          });
           const brands = [...new Set(famFilter.map(t => t.brand).filter(Boolean))].sort();
           if (brands.length < 2) return null;
           return (
@@ -1370,7 +1396,8 @@ function retrieveTools(query, filters, top = 15) {
     }
 
     // Active UI filter bonuses
-    if (filters.family && filters.family !== 'All' && t.family === filters.family) score += 20;
+    const mappedFamily = FAMILY_MAP[t.family] || t.family;
+    if (filters.family && filters.family !== 'All' && mappedFamily === filters.family) score += 20;
     if (filters.iso && (t.iso === filters.iso || tIsos.includes(filters.iso))) score += 15;
     if (filters.brand && t.brand === filters.brand) score += 15;
     if (filters.op && t.op === filters.op) score += 10;
@@ -1380,8 +1407,8 @@ function retrieveTools(query, filters, top = 15) {
       if (tIsos.includes(iso)) score += 12;
     }
 
-    // Query-implied family bonus
-    if (impliedFam.size > 0 && impliedFam.has(t.family)) score += 15;
+    // Query-implied family bonus (check against original family name in data)
+    if (impliedFam.size > 0 && (impliedFam.has(t.family) || impliedFam.has(mappedFamily))) score += 15;
 
     // Subtle confidence boost (0–5 pts)
     score += ((t.confidence || 70) - 70) * 0.1;
