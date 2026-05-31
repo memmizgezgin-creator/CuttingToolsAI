@@ -1217,14 +1217,15 @@ function retrieveTools(query, filters, top = 15) {
   // Each entry is an array of surface forms that all map to the same concept.
   // Add new languages or brand-specific terms here — nowhere else needed.
   const ISO_KW = {
-    // ISO P — carbon / alloy / mild steel
+    // ISO P — carbon / alloy / mild / structural steel
     P: [
-      'steel','carbon steel','alloy steel','mild steel','ferritic','structural steel',
-      'low carbon','s235','s355','c45',                  // EN
-      'çelik','karbon','alaşımlı çelik','konstrüksiyon', // TR
-      'staal','constructiestaal','koolstofstaal',        // NL
-      'acier','acier carbone',                           // FR
-      'stahl','baustahl',                                // DE
+      'steel','carbon steel','alloy steel','mild steel','low carbon steel',
+      'structural steel','construction steel','ferritic','low carbon','s235','s355','c45', // EN
+      'yumuşak çelik','yapı çeliği','konstrüksiyon çeliği',
+      'çelik','karbon','alaşımlı çelik','konstrüksiyon',                                  // TR
+      'zachtstaal','constructiestaal','koolstofstaal','staal',                            // NL
+      'acier doux','acier de construction','acier','acier carbone',                       // FR
+      'konstruktionsstahl','stahl','baustahl',                                            // DE
     ],
     // ISO M — stainless steel
     M: [
