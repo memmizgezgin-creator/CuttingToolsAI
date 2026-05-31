@@ -1,0 +1,135 @@
+[   1/135] 1% — pages 1–5 → 0 records (total: 0)
+[   2/135] 1% — pages 6–10 → 0 records (total: 0)
+[   3/135] 2% — pages 11–15 → 4 records (total: 4)
+[   4/135] 3% — pages 16–20 → 0 records (total: 4)
+[   5/135] 4% — pages 21–25 → SKIP: API timeout after 30s
+[   6/135] 4% — pages 26–30 → 0 records (total: 4)
+[   7/135] 5% — pages 31–35 → SKIP: API timeout after 30s
+[   8/135] 6% — pages 36–40 → SKIP: API timeout after 30s
+[   9/135] 7% — pages 41–45 → SKIP: API timeout after 30s
+[  10/135] 7% — pages 46–50 → SKIP: API timeout after 30s
+[  11/135] 8% — pages 51–55 → SKIP: API timeout after 30s
+[  12/135] 9% — pages 56–60 → SKIP: API timeout after 30s
+[  13/135] 10% — pages 61–65 → SKIP: API timeout after 30s
+[  14/135] 10% — pages 66–70 → 0 records (total: 4)
+[  15/135] 11% — pages 71–75 → SKIP: API timeout after 30s
+[  16/135] 12% — pages 76–80 → SKIP: API timeout after 30s
+[  17/135] 13% — pages 81–85 → SKIP: API timeout after 30s
+[  18/135] 13% — pages 86–90 → SKIP: API timeout after 30s
+[  19/135] 14% — pages 91–95 → SKIP: API timeout after 30s
+[  20/135] 15% — pages 96–100 → SKIP: API timeout after 30s
+[  21/135] 16% — pages 101–105 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"Number of concurrent connections has exceeded your rate limit. Please try again later or contact sales at https://claude.com/contact-sales to discuss your options for a rate limit increase."},"request_id":"req_011CbZWC3AGmrtQcWkH1sD4F"}
+[  22/135] 16% — pages 106–110 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"Number of concurrent connections has exceeded your rate limit. Please try again later or contact sales at https://claude.com/contact-sales to discuss your options for a rate limit increase."},"request_id":"req_011CbZWCCgkv31aVVHU85byC"}
+[  23/135] 17% — pages 111–115 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"This request would exceed your organization's rate limit of 10,000 output tokens per minute (org: 5028fa0d-9b9f-49f4-94e7-b0f7510d28d6, model: claude-haiku-4-5-20251001). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Reduce the prompt length or the maximum tokens requested, or try again later. View your current limits at https://console.anthropic.com/settings/limits. To raise this limit, purchase credits to advance to the next usage tier at https://console.anthropic.com/settings/billing."},"request_id":"req_011CbZWCN26BwWadEpRUiXhk"}
+[  24/135] 18% — pages 116–120 → SKIP: API timeout after 30s
+[  25/135] 19% — pages 121–125 → SKIP: API timeout after 30s
+[  26/135] 19% — pages 126–130 → SKIP: API timeout after 30s
+[  27/135] 20% — pages 131–135 → SKIP: API timeout after 30s
+[  28/135] 21% — pages 136–140 → SKIP: API timeout after 30s
+[  29/135] 21% — pages 141–145 → SKIP: API timeout after 30s
+[  30/135] 22% — pages 146–150 → SKIP: API timeout after 30s
+[  31/135] 23% — pages 151–155 → SKIP: API timeout after 30s
+[  32/135] 24% — pages 156–160 → SKIP: API timeout after 30s
+[  33/135] 24% — pages 161–165 → SKIP: API timeout after 30s
+[  34/135] 25% — pages 166–170 → SKIP: API timeout after 30s
+[  35/135] 26% — pages 171–175 → 0 records (total: 4)
+[  36/135] 27% — pages 176–180 → SKIP: API timeout after 30s
+[  37/135] 27% — pages 181–185 → SKIP: API timeout after 30s
+[  38/135] 28% — pages 186–190 → SKIP: API timeout after 30s
+[  39/135] 29% — pages 191–195 → SKIP: API timeout after 30s
+[  40/135] 30% — pages 196–200 → SKIP: API timeout after 30s
+[  41/135] 30% — pages 201–205 → SKIP: API timeout after 30s
+[  42/135] 31% — pages 206–210 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"Number of concurrent connections has exceeded your rate limit. Please try again later or contact sales at https://claude.com/contact-sales to discuss your options for a rate limit increase."},"request_id":"req_011CbZWssGpfKDE1Z2KMiwwF"}
+[  43/135] 32% — pages 211–215 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"Number of concurrent connections has exceeded your rate limit. Please try again later or contact sales at https://claude.com/contact-sales to discuss your options for a rate limit increase."},"request_id":"req_011CbZWt2oJxD3VGZJVxvTah"}
+[  44/135] 33% — pages 216–220 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"This request would exceed your organization's rate limit of 50,000 input tokens per minute (org: 5028fa0d-9b9f-49f4-94e7-b0f7510d28d6, model: claude-haiku-4-5-20251001). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Reduce the prompt length or the maximum tokens requested, or try again later. View your current limits at https://console.anthropic.com/settings/limits. To raise this limit, purchase credits to advance to the next usage tier at https://console.anthropic.com/settings/billing."},"request_id":"req_011CbZWu41Wg28SXR55wrQfe"}
+[  45/135] 33% — pages 221–225 → SKIP: API timeout after 30s
+[  46/135] 34% — pages 226–230 → SKIP: API timeout after 30s
+[  47/135] 35% — pages 231–235 → SKIP: API timeout after 30s
+[  48/135] 36% — pages 236–240 → SKIP: API timeout after 30s
+[  49/135] 36% — pages 241–245 → SKIP: API timeout after 30s
+[  50/135] 37% — pages 246–250 → SKIP: API timeout after 30s
+[  51/135] 38% — pages 251–255 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"Number of concurrent connections has exceeded your rate limit. Please try again later or contact sales at https://claude.com/contact-sales to discuss your options for a rate limit increase."},"request_id":"req_011CbZX8aMFcwoCHMBDn7C7a"}
+[  52/135] 39% — pages 256–260 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"Number of concurrent connections has exceeded your rate limit. Please try again later or contact sales at https://claude.com/contact-sales to discuss your options for a rate limit increase."},"request_id":"req_011CbZX8j5d5hMEAwjisBRnu"}
+[  53/135] 39% — pages 261–265 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"This request would exceed your organization's rate limit of 10,000 output tokens per minute (org: 5028fa0d-9b9f-49f4-94e7-b0f7510d28d6, model: claude-haiku-4-5-20251001). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Reduce the prompt length or the maximum tokens requested, or try again later. View your current limits at https://console.anthropic.com/settings/limits. To raise this limit, purchase credits to advance to the next usage tier at https://console.anthropic.com/settings/billing."},"request_id":"req_011CbZX9BjkAwfk1nPnQt5r5"}
+[  54/135] 40% — pages 266–270 → SKIP: API timeout after 30s
+[  55/135] 41% — pages 271–275 → SKIP: API timeout after 30s
+[  56/135] 41% — pages 276–280 → SKIP: API timeout after 30s
+[  57/135] 42% — pages 281–285 → SKIP: API timeout after 30s
+[  58/135] 43% — pages 286–290 → SKIP: API timeout after 30s
+[  59/135] 44% — pages 291–295 → SKIP: API timeout after 30s
+[  60/135] 44% — pages 296–300 → 0 records (total: 4)
+[  61/135] 45% — pages 301–305 → SKIP: API timeout after 30s
+[  62/135] 46% — pages 306–310 → SKIP: API timeout after 30s
+[  63/135] 47% — pages 311–315 → SKIP: API timeout after 30s
+[  64/135] 47% — pages 316–320 → SKIP: API timeout after 30s
+[  65/135] 48% — pages 321–325 → SKIP: API timeout after 30s
+[  66/135] 49% — pages 326–330 → SKIP: API timeout after 30s
+[  67/135] 50% — pages 331–335 → 0 records (total: 4)
+[  68/135] 50% — pages 336–340 → SKIP: API timeout after 30s
+[  69/135] 51% — pages 341–345 → SKIP: API timeout after 30s
+[  70/135] 52% — pages 346–350 → SKIP: API timeout after 30s
+[  71/135] 53% — pages 351–355 → SKIP: API timeout after 30s
+[  72/135] 53% — pages 356–360 → SKIP: API timeout after 30s
+[  73/135] 54% — pages 361–365 → SKIP: API timeout after 30s
+[  74/135] 55% — pages 366–370 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"This request would exceed your organization's rate limit of 10,000 output tokens per minute (org: 5028fa0d-9b9f-49f4-94e7-b0f7510d28d6, model: claude-haiku-4-5-20251001). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Reduce the prompt length or the maximum tokens requested, or try again later. View your current limits at https://console.anthropic.com/settings/limits. To raise this limit, purchase credits to advance to the next usage tier at https://console.anthropic.com/settings/billing."},"request_id":"req_011CbZXv4cNaBYLG8LnDDmo2"}
+[  75/135] 56% — pages 371–375 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"This request would exceed your organization's rate limit of 10,000 output tokens per minute (org: 5028fa0d-9b9f-49f4-94e7-b0f7510d28d6, model: claude-haiku-4-5-20251001). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Reduce the prompt length or the maximum tokens requested, or try again later. View your current limits at https://console.anthropic.com/settings/limits. To raise this limit, purchase credits to advance to the next usage tier at https://console.anthropic.com/settings/billing."},"request_id":"req_011CbZXvMNgab9sg79Dwd5pr"}
+[  76/135] 56% — pages 376–380 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"This request would exceed your organization's rate limit of 50 requests per minute (org: 5028fa0d-9b9f-49f4-94e7-b0f7510d28d6, model: claude-haiku-4-5-20251001). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Try again later. View your current limits at https://console.anthropic.com/settings/limits. To raise this limit, purchase credits to advance to the next usage tier at https://console.anthropic.com/settings/billing."},"request_id":"req_011CbZXvZVSmjoUBBzk1wSRX"}
+[  77/135] 57% — pages 381–385 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"This request would exceed your organization's rate limit of 50 requests per minute (org: 5028fa0d-9b9f-49f4-94e7-b0f7510d28d6, model: claude-haiku-4-5-20251001). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Try again later. View your current limits at https://console.anthropic.com/settings/limits. To raise this limit, purchase credits to advance to the next usage tier at https://console.anthropic.com/settings/billing."},"request_id":"req_011CbZXvn1WjM6CAYnypUvyN"}
+[  78/135] 58% — pages 386–390 → SKIP: API timeout after 30s
+[  79/135] 59% — pages 391–395 → SKIP: API timeout after 30s
+[  80/135] 59% — pages 396–400 → SKIP: API timeout after 30s
+[  81/135] 60% — pages 401–405 → SKIP: API timeout after 30s
+[  82/135] 61% — pages 406–410 → SKIP: API timeout after 30s
+[  83/135] 61% — pages 411–415 → SKIP: API timeout after 30s
+[  84/135] 62% — pages 416–420 → SKIP: API timeout after 30s
+[  85/135] 63% — pages 421–425 → 0 records (total: 4)
+[  86/135] 64% — pages 426–430 → SKIP: API timeout after 30s
+[  87/135] 64% — pages 431–435 → SKIP: API timeout after 30s
+[  88/135] 65% — pages 436–440 → SKIP: API timeout after 30s
+[  89/135] 66% — pages 441–445 → 0 records (total: 4)
+[  90/135] 67% — pages 446–450 → 0 records (total: 4)
+[  91/135] 67% — pages 451–455 → 0 records (total: 4)
+[  92/135] 68% — pages 456–460 → 0 records (total: 4)
+[  93/135] 69% — pages 461–465 → 0 records (total: 4)
+[  94/135] 70% — pages 466–470 → 0 records (total: 4)
+[  95/135] 70% — pages 471–475 → 0 records (total: 4)
+[  96/135] 71% — pages 476–480 → 0 records (total: 4)
+[  97/135] 72% — pages 481–485 → 0 records (total: 4)
+[  98/135] 73% — pages 486–490 → 0 records (total: 4)
+[  99/135] 73% — pages 491–495 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"This request would exceed your organization's rate limit of 90,000 output tokens per minute (org: 5028fa0d-9b9f-49f4-94e7-b0f7510d28d6, model: claude-haiku-4-5-20251001). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Reduce the prompt length or the maximum tokens requested, or try again later. View your current limits at https://console.anthropic.com/settings/limits. To raise this limit, purchase credits to advance to the next usage tier at https://console.anthropic.com/settings/billing."},"request_id":"req_011CbZYYx7UzKuY8YoBVP6rV"}
+[ 100/135] 74% — pages 496–500 → 0 records (total: 4)
+[ 101/135] 75% — pages 501–505 → 0 records (total: 4)
+[ 102/135] 76% — pages 506–510 → 0 records (total: 4)
+[ 103/135] 76% — pages 511–515 → 0 records (total: 4)
+[ 104/135] 77% — pages 516–520 → 0 records (total: 4)
+[ 105/135] 78% — pages 521–525 → 0 records (total: 4)
+[ 106/135] 79% — pages 526–530 → 0 records (total: 4)
+[ 107/135] 79% — pages 531–535 → 0 records (total: 4)
+[ 108/135] 80% — pages 536–540 → 0 records (total: 4)
+[ 109/135] 81% — pages 541–545 → 0 records (total: 4)
+[ 110/135] 81% — pages 546–550 → 0 records (total: 4)
+[ 111/135] 82% — pages 551–555 → 0 records (total: 4)
+[ 112/135] 83% — pages 556–560 → 0 records (total: 4)
+[ 113/135] 84% — pages 561–565 → 0 records (total: 4)
+[ 114/135] 84% — pages 566–570 → 0 records (total: 4)
+[ 115/135] 85% — pages 571–575 → 0 records (total: 4)
+[ 116/135] 86% — pages 576–580 → 0 records (total: 4)
+[ 117/135] 87% — pages 581–585 → 0 records (total: 4)
+[ 118/135] 87% — pages 586–590 → 0 records (total: 4)
+[ 119/135] 88% — pages 591–595 → 0 records (total: 4)
+[ 120/135] 89% — pages 596–600 → 0 records (total: 4)
+[ 121/135] 90% — pages 601–605 → 0 records (total: 4)
+[ 122/135] 90% — pages 606–610 → 0 records (total: 4)
+[ 123/135] 91% — pages 611–615 → 0 records (total: 4)
+[ 124/135] 92% — pages 616–620 → 0 records (total: 4)
+[ 125/135] 93% — pages 621–625 → 0 records (total: 4)
+[ 126/135] 93% — pages 626–630 → 0 records (total: 4)
+[ 127/135] 94% — pages 631–635 → 0 records (total: 4)
+[ 128/135] 95% — pages 636–640 → 0 records (total: 4)
+[ 129/135] 96% — pages 641–645 → 0 records (total: 4)
+[ 130/135] 96% — pages 646–650 → 0 records (total: 4)
+[ 131/135] 97% — pages 651–655 → 0 records (total: 4)
+[ 132/135] 98% — pages 656–660 → 0 records (total: 4)
+[ 133/135] 99% — pages 661–665 → 14 records (total: 18)
+[ 134/135] 99% — pages 666–670 → 0 records (total: 18)
+[ 135/135] 100% — pages 671–674 → 0 records (total: 18)

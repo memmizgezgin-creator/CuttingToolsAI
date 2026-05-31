@@ -1,0 +1,533 @@
+[
+  {
+    "brand": "ISCAR",
+    "product_name": "MULTI-MASTER solid carbide head",
+    "article_number": null,
+    "family": "milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 25,
+    "diameter_max": 25,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 45,
+      "vc_max": 45,
+      "feed_min": 0.076,
+      "feed_max": 0.076
+    },
+    "source_page": 44,
+    "confidence": 60,
+    "confidence_reason": "Product name and brand present, but no article number found. Diameter and cutting speed extracted from example. Material suitability only inferred from titanium alloy machining example (not explicitly stated in product specs). No other technical specifications provided.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:26.605Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "anti-vibration shank for MULTI-MASTER heads",
+    "article_number": null,
+    "family": "MULTI-MASTER",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 49,
+    "confidence": 60,
+    "confidence_reason": "Product mentioned but no article number, specifications, or material suitability data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:30.484Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "CHATTERFREE solid carbide endmill",
+    "article_number": null,
+    "family": "CHATTERFREE",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "solid carbide",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 50,
+    "confidence": 60,
+    "confidence_reason": "Product family name and material type provided but no article number, dimensions, or cutting parameters",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:30.484Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "MULTI-MASTER rotating tool with exchangeable heads",
+    "article_number": null,
+    "family": "MULTI-MASTER",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 50,
+    "confidence": 60,
+    "confidence_reason": "Product family mentioned but no article number, specifications, or material suitability data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:30.484Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "Shell mills and mills with shank",
+    "article_number": null,
+    "family": "Indexable Milling Cutters",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 6,
+    "diameter_max": 315,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 69,
+    "confidence": 60,
+    "confidence_reason": "Product type and diameter range explicitly stated in Table 4, but no article number, material grade, or PMKNSH data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:41.354Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "Disc-shape slotting and slitting cutters",
+    "article_number": null,
+    "family": "Indexable Milling Cutters",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 21,
+    "diameter_max": 425,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 69,
+    "confidence": 60,
+    "confidence_reason": "Product type and diameter range explicitly stated in Table 4, but no article number, material grade, or PMKNSH data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:41.354Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "Solid Endmills",
+    "article_number": null,
+    "family": "Solid Endmills",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 0.2,
+    "diameter_max": 25,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 69,
+    "confidence": 60,
+    "confidence_reason": "Product type and diameter range explicitly stated in Table 4, but no article number, material grade, or PMKNSH data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:41.354Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "MULTI-MASTER Endmills",
+    "article_number": null,
+    "family": "MULTI-MASTER",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 5,
+    "diameter_max": 32,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 69,
+    "confidence": 60,
+    "confidence_reason": "Product type and diameter range explicitly stated in Table 4, but no article number, material grade, or PMKNSH data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:41.354Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "MULTI-MASTER Disc-shape cutters",
+    "article_number": null,
+    "family": "MULTI-MASTER",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 7.7,
+    "diameter_max": 28,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 69,
+    "confidence": 60,
+    "confidence_reason": "Product type and diameter range explicitly stated in Table 4, but no article number, material grade, or PMKNSH data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:41.354Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "T-SLOT Disc-shape cutters",
+    "article_number": null,
+    "family": "T-SLOT",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 25,
+    "diameter_max": 50,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 69,
+    "confidence": 60,
+    "confidence_reason": "Product type and diameter range explicitly stated in Table 4, but no article number, material grade, or PMKNSH data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:41.355Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "T-FACE Face mills",
+    "article_number": null,
+    "family": "T-FACE",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 32,
+    "diameter_max": 50,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 69,
+    "confidence": 60,
+    "confidence_reason": "Product type and diameter range explicitly stated in Table 4, but no article number, material grade, or PMKNSH data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:41.355Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "TANGSLIT indexable slitting cutters",
+    "article_number": null,
+    "family": "Slitting cutters",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 78,
+    "confidence": 60,
+    "confidence_reason": "Product name identified from figure caption but no article number, dimensions, or technical specifications provided in text",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:44.717Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "NEODO double-sided square rough milling inserts",
+    "article_number": null,
+    "family": "NEODO",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 81,
+    "confidence": 60,
+    "confidence_reason": "Product name and brand confirmed, but no article number, material grades, cutting data, or PMKNSH symbols present. Insert type identified but specifications incomplete.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:48.403Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "TANGFIN step milling cutter",
+    "article_number": null,
+    "family": "TANGFIN",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 83,
+    "confidence": 60,
+    "confidence_reason": "Product name and brand confirmed with description of design features, but no article number, material grades, cutting data, or PMKNSH symbols present.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_milling_applications_and_cutter_basics_guide.pdf",
+    "run_id": "run-1780180575284",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:36:48.403Z"
+  }
+]

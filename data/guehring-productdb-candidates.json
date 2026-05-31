@@ -1,0 +1,764 @@
+{
+  "metadata": {
+    "extraction_date": "2026-05-30",
+    "source_file": "parsed-products/guehring-drilling-full.json",
+    "conversion_type": "Verified extraction \u2192 PRODUCT_DB candidates",
+    "total_verified": 25,
+    "total_review_required_skipped": 26,
+    "total_output_records": 25,
+    "all_records_preview_only": true,
+    "not_merged_into_product_db": true
+  },
+  "candidates": [
+    {
+      "id": "guehring-rt100-2469",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 2469,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "2469",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-2471",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 2471,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "2471",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-2472",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 2472,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "2472",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-2473",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 2473,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "2473",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-2474",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 2474,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "2474",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-2477",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 2477,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "2477",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-2479",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 2479,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "2479",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-2480",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 2480,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "2480",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-2713",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 2713,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "2713",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-2719",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 2719,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "2719",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-2996",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 2996,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "2996",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-5651",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 5651,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "5651",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-6023",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 6023,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "6023",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-6024",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 6024,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "6024",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-6025",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 6025,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "6025",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-6026",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 U",
+      "article_number": 6026,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 U",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "6026",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-6596",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 FB",
+      "article_number": 6596,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 FB",
+      "material_suitability": {
+        "P": false,
+        "M": false,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 95,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "6596",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-8520",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 HF",
+      "article_number": 8520,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 HF",
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 75,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "8520",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-8521",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 HF",
+      "article_number": 8521,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 HF",
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 75,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "8521",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-8522",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 HF",
+      "article_number": 8522,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 HF",
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 75,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "8522",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-8524",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 HF",
+      "article_number": 8524,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 HF",
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 75,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "8524",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-8610",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 HF",
+      "article_number": 8610,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 HF",
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 75,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "8610",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-8611",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 HF",
+      "article_number": 8611,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 HF",
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 75,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "8611",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-8620",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 HF",
+      "article_number": 8620,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 HF",
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 75,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "8620",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    },
+    {
+      "id": "guehring-rt100-8621",
+      "brand": "G\u00fchring",
+      "product_type": "Drilling Tool",
+      "product_name": "RT 100 HF",
+      "article_number": 8621,
+      "tool_family": "Solid carbide drills",
+      "tool_designation": "RT 100 HF",
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true
+      },
+      "source": {
+        "pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Solid Carbide Drills (pages 55\u2013130)",
+        "cutting_data_page": 386,
+        "extraction_date": "2026-05-30",
+        "confidence": 75,
+        "status": "verified_extraction"
+      },
+      "sourcing": {
+        "brand": "G\u00fchring",
+        "article_id": "8621",
+        "available_from": "G\u00fchring official catalogue"
+      }
+    }
+  ]
+}

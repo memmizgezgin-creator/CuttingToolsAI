@@ -1,0 +1,1186 @@
+{
+  "metadata": {
+    "extraction_date": "2026-05-30",
+    "total_records": 51,
+    "verified_records": 25,
+    "review_required_records": 26,
+    "rejected": 0,
+    "pages": "55\u2013130",
+    "all_preview_only": true
+  },
+  "records": [
+    {
+      "id": "guehring-drilling-full-001",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 1025,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-002",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 2469,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-003",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 2471,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-004",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 2472,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-005",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 2473,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-006",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 2474,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-007",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 2477,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-008",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 2479,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-009",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 2480,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-010",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 2713,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-011",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 2719,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-012",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 2996,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-013",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 3899,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-014",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 4044,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-015",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 4045,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-016",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 5498,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-017",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 5499,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-018",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 5525,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-019",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 5650,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-020",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 5651,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-021",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 5768,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-022",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6023,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-023",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6024,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-024",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6025,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-025",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6026,
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-026",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6068,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-027",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6069,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-028",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6070,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-029",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6498,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-030",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6499,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-031",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6501,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-032",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6502,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-033",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6509,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-034",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6511,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-035",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6512,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-036",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6513,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-037",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6514,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-038",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6515,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-039",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6516,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-040",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6517,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-041",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 6596,
+      "material_suitability": {
+        "P": false,
+        "M": false,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-042",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 8510,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-043",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 8511,
+      "material_suitability": {
+        "P": null,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": null,
+        "H": null,
+        "source_backed": false,
+        "parsing_confidence": 50
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "review_required"
+    },
+    {
+      "id": "guehring-drilling-full-044",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 8520,
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 75
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-045",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 8521,
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 75
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-046",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 8522,
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 75
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-047",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 8524,
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 75
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-048",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 8610,
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 75
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-049",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 8611,
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 75
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-050",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 8620,
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 75
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-full-051",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "article_number": 8621,
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true,
+        "source_backed": true,
+        "parsing_confidence": 75
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "cutting_data_page": 386
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    }
+  ]
+}

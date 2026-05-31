@@ -1,0 +1,11 @@
+claude-extract run: run-1780180097473
+PDF: kennametal_kennametal-turning-brochure_en.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-30T22:28:45.322Z
+
+Total records extracted: 6
+Auto-approved (conf >= 85): 0
+Review required (conf < 85): 6
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/kennametal-kennametal-turning-brochure-en-pdf/run-1780180097473

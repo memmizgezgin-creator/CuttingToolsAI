@@ -1,0 +1,43 @@
+{
+  "input_file": "/Users/muratonder/Desktop/ToolAdvisor/research/ingestion/maford-series-272-normalization-review.json",
+  "reviewed_sample_file": "/Users/muratonder/Desktop/ToolAdvisor/research/ingestion/maford-series-272-manual-validation-reviewed.json",
+  "generated_at": "2026-05-30T10:44:50.494Z",
+  "total_records_checked": 924,
+  "passed_records": 924,
+  "failed_records": 0,
+  "duplicate_count": 0,
+  "missing_tool_no_count": 0,
+  "missing_edp_count": 0,
+  "page_range_validation": {
+    "expected_pdf_page_min": 11,
+    "expected_pdf_page_max": 32,
+    "valid": true
+  },
+  "catalog_page_range_validation": {
+    "expected_catalog_page_min": 386,
+    "expected_catalog_page_max": 407,
+    "valid": true
+  },
+  "warning_counts": {
+    "coating_or_surface_not_present_in_source_row": 924,
+    "material_grade_not_present_in_source_row": 924,
+    "mixed_unit_fields_preserved_without_conversion": 139
+  },
+  "failure_counts": {},
+  "manually_reviewed_sample_evidence": {
+    "reviewed_records": 13,
+    "passed_records": 13,
+    "failed_records": 0,
+    "uncertain_records": 0,
+    "pages_reviewed": [
+      11,
+      20,
+      21,
+      32
+    ],
+    "row_alignment_concerns": 0,
+    "safe_for_validation_pass_script": true
+  },
+  "safe_for_product_candidate_generation": true,
+  "safe_for_PRODUCT_DB_merge": false
+}

@@ -1,0 +1,1167 @@
+[
+  {
+    "brand": "Kennametal",
+    "product_name": "A4 Grooving & Turning Inserts",
+    "article_number": null,
+    "family": "Grooving & Turning Inserts",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "KCS10B Grade",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 4,
+    "confidence": 60,
+    "confidence_reason": "Product name and grade present but no article number, no PMKNSH symbols, no cutting data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:27.268Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "A4 Grooving & Turning Inserts",
+    "article_number": null,
+    "family": "Grooving & Turning Inserts",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "KYS25 Grade",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 4,
+    "confidence": 60,
+    "confidence_reason": "Product name and grade present but no article number, no PMKNSH symbols, no cutting data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:27.269Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "A4 Grooving & Turning Inserts",
+    "article_number": null,
+    "family": "Grooving & Turning Inserts",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "KYS30 Grade",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 4,
+    "confidence": 60,
+    "confidence_reason": "Product name and grade present but no article number, no PMKNSH symbols, no cutting data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:27.269Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "Beyond Evolution™ Grooving & Cut-Off",
+    "article_number": null,
+    "family": "Grooving & Cut-Off",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 4,
+    "confidence": 60,
+    "confidence_reason": "Product name present but no article number, no grade, no PMKNSH symbols, no cutting data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:27.269Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "GOdrill™ Solid Carbide Drills",
+    "article_number": null,
+    "family": "Solid Carbide Drills",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 4,
+    "diameter_max": 25,
+    "material_grade": "KCSM15A",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 70,
+    "confidence_reason": "Product name, diameter range (4-25mm), and grade present; suitable for titanium (S material) indicated by context; no article number, no PMKNSH clarity for other materials, no cutting data",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:27.269Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "HARVI™ III Solid End Mills",
+    "article_number": null,
+    "family": "Solid End Mills",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 10,
+    "diameter_max": 25,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 70,
+    "confidence_reason": "Product name and diameter range (10-25mm) present; suitable for nickel-based high-temp alloys (S material); no article number, no grade information, no PMKNSH clarity for other materials, no cutting data",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:27.269Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "HARVI IV Solid End Mills",
+    "article_number": null,
+    "family": "Solid End Mills",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Product name present only; no article number, no diameter information, no grade, no PMKNSH symbols, no cutting data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:27.269Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "Ceramic End Mills",
+    "article_number": null,
+    "family": "Ceramic End Mills",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Product name present only; no article number, no diameter information, no grade, no PMKNSH symbols, no cutting data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:27.269Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "SGL Solid Carbide Drills",
+    "article_number": null,
+    "family": "Solid Carbide Drills",
+    "shank_form": null,
+    "depth_multiplier": "10xD",
+    "diameter_min": 12.5,
+    "diameter_max": 40,
+    "material_grade": "KCMS15",
+    "material_suitability": {
+      "P": null,
+      "M": true,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 75,
+    "confidence_reason": "Product name and specifications present, KCMS15 grade mentioned for stainless steels and high-temp alloys, diameter range and depth multiplier specified. No article number found.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "KSEM Modular Drills",
+    "article_number": null,
+    "family": "Modular Drills",
+    "shank_form": null,
+    "depth_multiplier": "10xD",
+    "diameter_min": 12.5,
+    "diameter_max": 40,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 70,
+    "confidence_reason": "Product name and basic specifications present. Designed for high-temp alloys and airframe structural parts. Diameter range and depth multiplier specified. No article number or material grade found.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "7792 High-Feed Milling Cutters",
+    "article_number": "7792",
+    "family": "High-Feed Milling Cutters",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 70,
+    "confidence_reason": "Product name identified as article number. Designed for high-temp alloys with up to 8 cutting edges per insert. Multiple corner radii available. No diameter range or specific material grade provided.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "HARVI Ultra 8X Helical Milling Cutters",
+    "article_number": null,
+    "family": "Helical Milling Cutters",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 65,
+    "confidence_reason": "Product name present. Designed to deliver highest MRR in high-temp alloys with maximum tool stiffness and life. No article number, diameter range, or specific material grade provided.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "GOdrill Solid Carbide Drills",
+    "article_number": null,
+    "family": "Solid Carbide Drills",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 4,
+    "diameter_max": 25,
+    "material_grade": "KCSM15A",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 7,
+    "confidence": 80,
+    "confidence_reason": "Product name, material grade KCSM15A for titanium machining, diameter range clearly specified. No article number found. Multiple insert geometries available (square, radius, ball nose, taper ball nose).",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "HARVI III Solid End Mills",
+    "article_number": null,
+    "family": "Solid End Mills",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 10,
+    "diameter_max": 25,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 7,
+    "confidence": 70,
+    "confidence_reason": "Product name and diameter range specified. Features internal coolant supply and chipbreakers. 8-flute design mentioned. Available in square and radius. No article number or material grade provided.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "HARVI IV Solid End Mills",
+    "article_number": null,
+    "family": "Solid End Mills",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 10,
+    "diameter_max": 25,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 7,
+    "confidence": 70,
+    "confidence_reason": "Product name and diameter range specified. Features internal coolant supply and chipbreakers. 8-flute design mentioned. Available in square and radius. No article number or material grade provided.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "KSEM PLUS Modular Drill for Large Diameter Drilling",
+    "article_number": null,
+    "family": "Modular Drills",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 9,
+    "confidence": 70,
+    "confidence_reason": "Product name clearly identified with trademark. Engineered for titanium, stainless steels, and high-temp alloys. 4 chip flutes and multiple cutting edges specified. No article number or diameter range provided.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "FBX Drill",
+    "article_number": null,
+    "family": "Drills",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 9,
+    "confidence": 70,
+    "confidence_reason": "Product name with trademark identified. Engineered for titanium and stainless steels. Features flat bottom drill point design with 2 cutting edges and chip splitters. No article number or diameter range provided.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "KSRM Daisy Copy Milling Cutters",
+    "article_number": null,
+    "family": "Daisy Copy Milling Cutters",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 9,
+    "confidence": 65,
+    "confidence_reason": "Product name with trademark identified. Features 8 indexable positions and capabilities for pocketing, ramping, plunging and helical interpolation. No article number, diameter range, or material suitability provided.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "Mill 4-11 Shoulder Milling Cutters",
+    "article_number": null,
+    "family": "Shoulder Milling Cutters",
+    "shank_form": null,
+    "depth_multiplier": "12xD",
+    "diameter_min": 6,
+    "diameter_max": 26,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": true,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 10,
+    "confidence": 80,
+    "confidence_reason": "Product name clearly identified. Diameter range and depth multiplier specified. Applicable for roughing to finishing in steel, cast iron, stainless steels, non-ferrous materials and high-temp alloys. Large polished chip flutes and 4-margin land design noted. No article number provided.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "Mill 4-15 Shoulder Milling Cutters",
+    "article_number": null,
+    "family": "Shoulder Milling Cutters",
+    "shank_form": null,
+    "depth_multiplier": "12xD",
+    "diameter_min": 6,
+    "diameter_max": 26,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 10,
+    "confidence": 80,
+    "confidence_reason": "Product name clearly identified. Diameter range and depth multiplier specified. Applicable for roughing to finishing in steel, cast iron, stainless steels and titanium. Large polished chip flutes and 4-margin land design noted. No article number provided.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "KenTIP FS Modular Drills",
+    "article_number": null,
+    "family": "Modular Drills",
+    "shank_form": null,
+    "depth_multiplier": "12xD",
+    "diameter_min": 6,
+    "diameter_max": 26,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 10,
+    "confidence": 70,
+    "confidence_reason": "Product name with trademark clearly identified. Diameter range and depth multiplier specified. Features large ultra-high polished chip flutes and 4-margin land design. All shanks fulfill DIN 6535 and 69090-03 requirements. No article number or material suitability provided.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "Kenna Universal Drills",
+    "article_number": null,
+    "family": "Drills",
+    "shank_form": null,
+    "depth_multiplier": "12xD",
+    "diameter_min": 6,
+    "diameter_max": 26,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 10,
+    "confidence": 70,
+    "confidence_reason": "Product name with trademark clearly identified. Diameter range and depth multiplier specified. Features large bearing surface and low thrust drill point design with excellent centering capabilities. All shanks fulfill DIN 6535 and 69090-03 requirements. No article number or material suitability provided.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:46.372Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "KenTIP FS – SPF",
+    "article_number": null,
+    "family": "Drilling/Countersinking tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 60,
+    "confidence_reason": "Product name present but no article number, dimensions, material suitability codes, or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:56.164Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "KenShape™",
+    "article_number": null,
+    "family": "Routers",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 60,
+    "confidence_reason": "Product name present but no article number, dimensions, material suitability codes, or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:56.164Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "MaPACS",
+    "article_number": null,
+    "family": "Drilling/Countersinking tools",
+    "shank_form": "brazed",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 60,
+    "confidence_reason": "Product name and shank form present but no article number, dimensions, material suitability codes, or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:56.164Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "MaxPACS",
+    "article_number": null,
+    "family": "Drilling/Countersinking tools",
+    "shank_form": "indexable",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 60,
+    "confidence_reason": "Product name and shank form present but no article number, dimensions, material suitability codes, or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:56.164Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "HiPACS",
+    "article_number": null,
+    "family": "Drilling/Countersinking tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 60,
+    "confidence_reason": "Product name present but no article number, dimensions, material suitability codes, or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:56.164Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "KenCut™ Routers",
+    "article_number": null,
+    "family": "Routers",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 60,
+    "confidence_reason": "Product name present but no article number, dimensions, material suitability codes, or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:56.164Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "KenTIP FS – DAL",
+    "article_number": null,
+    "family": "Drilling tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 60,
+    "confidence_reason": "Product name present but no article number, dimensions, material suitability codes, or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:56.164Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "KenTIP FS – DAV",
+    "article_number": null,
+    "family": "Drilling tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 60,
+    "confidence_reason": "Product name present but no article number, dimensions, material suitability codes, or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:56.164Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "HARVI III",
+    "article_number": null,
+    "family": "End mills",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "solid carbide",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 13,
+    "confidence": 60,
+    "confidence_reason": "Product name and material grade present but no article number, dimensions, material suitability codes, or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal-aerospace-brochure_en.pdf",
+    "run_id": "run-1780180097493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:56.164Z"
+  }
+]

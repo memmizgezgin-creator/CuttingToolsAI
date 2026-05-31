@@ -1,0 +1,11 @@
+[   1/92] 1% — pages 1–5 → SKIP: API timeout after 30s
+[   2/92] 2% — pages 6–10 → SKIP: API timeout after 30s
+[   3/92] 3% — pages 11–15 → SKIP: API timeout after 30s
+[   4/92] 4% — pages 16–20 → SKIP: API timeout after 30s
+[   5/92] 5% — pages 21–25 → SKIP: API timeout after 30s
+[   6/92] 7% — pages 26–30 → SKIP: API timeout after 30s
+[   7/92] 8% — pages 31–35 → 0 records (total: 0)
+[   8/92] 9% — pages 36–40 → SKIP: 429 {"type":"error","error":{"type":"rate_limit_error","message":"This request would exceed your organization's rate limit of 50 requests per minute (org: 5028fa0d-9b9f-49f4-94e7-b0f7510d28d6, model: claude-haiku-4-5-20251001). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Try again later. View your current limits at https://console.anthropic.com/settings/limits. To raise this limit, purchase credits to advance to the next usage tier at https://console.anthropic.com/settings/billing."},"request_id":"req_011CbZXwKJgpD2Phcyw48k6e"}
+[   9/92] 10% — pages 41–45 → SKIP: API timeout after 30s
+[  10/92] 11% — pages 46–50 → SKIP: API timeout after 30s
+[  11/92] 12% — pages 51–55 → SKIP: API timeout after 30s

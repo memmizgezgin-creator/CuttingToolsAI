@@ -1,0 +1,703 @@
+[
+  {
+    "article_no": "8524 3.000",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.0,
+      "d2_mm": 6.0,
+      "l1_mm": 62.0,
+      "l2_mm": 20.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.100",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.1,
+      "d2_mm": 6.0,
+      "l1_mm": 62.0,
+      "l2_mm": 20.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.170",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.17,
+      "d1_inch": "1/8",
+      "d2_mm": 6.0,
+      "l1_mm": 62.0,
+      "l2_mm": 20.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.200",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.2,
+      "d2_mm": 6.0,
+      "l1_mm": 62.0,
+      "l2_mm": 20.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.250",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.25,
+      "d2_mm": 6.0,
+      "l1_mm": 62.0,
+      "l2_mm": 20.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.300",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.3,
+      "d2_mm": 6.0,
+      "l1_mm": 62.0,
+      "l2_mm": 20.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.400",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.4,
+      "d2_mm": 6.0,
+      "l1_mm": 62.0,
+      "l2_mm": 20.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.500",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.5,
+      "d2_mm": 6.0,
+      "l1_mm": 62.0,
+      "l2_mm": 20.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.570",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.57,
+      "d1_inch": "9/64",
+      "d2_mm": 6.0,
+      "l1_mm": 62.0,
+      "l2_mm": 20.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.600",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.6,
+      "d2_mm": 6.0,
+      "l1_mm": 62.0,
+      "l2_mm": 20.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.700",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.7,
+      "d2_mm": 6.0,
+      "l1_mm": 62.0,
+      "l2_mm": 20.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.800",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.8,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.900",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.9,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 3.970",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 3.97,
+      "d1_inch": "5/32",
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.000",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.0,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.100",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.1,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.200",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.2,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.300",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.3,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.370",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.37,
+      "d1_inch": "11/64",
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.400",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.4,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.500",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.5,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.600",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.6,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.650",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.65,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.700",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.7,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 24.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.760",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.76,
+      "d1_inch": "3/16",
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 28.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.800",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.8,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 28.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 4.900",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 4.9,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 28.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 5.000",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 5.0,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 28.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {
+    "article_no": "8524 5.100",
+    "brand": "Gühring",
+    "product_family": "8524",
+    "product_type": "solid carbide drill",
+    "operation": "drilling",
+    "description": "Ratio drills without coolant ducts, relieved cone, slightly concave main cutting edge, optimised cutting edge geometry",
+    "dimensions": {
+      "d1_mm": 5.1,
+      "d2_mm": 6.0,
+      "l1_mm": 66.0,
+      "l2_mm": 28.0,
+      "l3_mm": 36.0
+    },
+    "iso_groups": ["P"],
+    "geometry_notes": "Web thinning ≥ Ø 3.000, double margin, m7 tolerance, 140° point angle",
+    "source": {
+      "source_tier": "manufacturer_catalogue",
+      "validation_status": "candidate",
+      "confidence_score": 0.85,
+      "economicsEstimated": true,
+      "risk_flags": []
+    }
+  },
+  {

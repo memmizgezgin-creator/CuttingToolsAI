@@ -1,0 +1,11 @@
+claude-extract run: run-1780180097531
+PDF: walter_complete.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-30T22:52:32.047Z
+
+Total records extracted: 15
+Auto-approved (conf >= 85): 0
+Review required (conf < 85): 15
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/walter-complete-pdf/run-1780180097531

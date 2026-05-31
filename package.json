@@ -31,7 +31,10 @@
     "extract": "ANTHROPIC_API_KEY=$(grep ANTHROPIC_API_KEY .env | cut -d'=' -f2) node ingestion/scripts/claude-extract.js",
     "iso13399": "node ingestion/scripts/iso13399-parse.js",
     "crawl": "node ingestion/scripts/catalogue-crawler.js",
-    "crawl:no-extract": "node ingestion/scripts/catalogue-crawler.js --no-extract"
+    "crawl:no-extract": "node ingestion/scripts/catalogue-crawler.js --no-extract",
+    "pipeline": "node ingestion/scripts/pipeline.js",
+    "pipeline:no-crawl": "node ingestion/scripts/pipeline.js --no-crawl",
+    "pipeline:dry-run": "node ingestion/scripts/pipeline.js --dry-run"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.100.1",

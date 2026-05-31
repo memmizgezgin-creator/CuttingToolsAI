@@ -1,0 +1,11 @@
+claude-extract run: run-1780220539618
+PDF: walter_handbook-walter-insert-drill-en.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-31T09:45:14.248Z
+
+Total records extracted: 39
+Auto-approved (conf >= 85): 10
+Review required (conf < 85): 29
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/walter-handbook-walter-insert-drill-en-pdf/run-1780220539618

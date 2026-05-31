@@ -1,0 +1,1960 @@
+[
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill B 4212",
+    "article_number": "B 4212",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "2x D, 3x D, 4x D, 5x D",
+    "diameter_min": 13.5,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 3,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed in contents and text. Diameter range and depth multipliers present. Material suitability inferred from application description (steel, cast iron, stainless) but PMKNSH symbols not explicitly provided. Cutting data not found on these pages.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:25.600Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill B 4213",
+    "article_number": "B 4213",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "2x D, 3x D, 4x D, 5x D",
+    "diameter_min": 13.5,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 3,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed in contents and text. Diameter range and depth multipliers present. Material suitability inferred from application description (steel, cast iron, stainless) but PMKNSH symbols not explicitly provided. Cutting data not found on these pages.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:25.601Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill B 4214",
+    "article_number": "B 4214",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "2x D, 3x D, 4x D, 5x D",
+    "diameter_min": 13.5,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 3,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed in contents and text. Diameter range and depth multipliers present. Material suitability inferred from application description (steel, cast iron, stainless) but PMKNSH symbols not explicitly provided. Cutting data not found on these pages.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:25.601Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill B 4215",
+    "article_number": "B 4215",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "2x D, 3x D, 4x D, 5x D",
+    "diameter_min": 13.5,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 3,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed in contents and text. Diameter range and depth multipliers present. Material suitability inferred from application description (steel, cast iron, stainless) but PMKNSH symbols not explicitly provided. Cutting data not found on these pages.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:25.601Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill B 4213.N",
+    "article_number": "B 4213.N",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "2x D, 3x D, 4x D, 5x D",
+    "diameter_min": 13.5,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 3,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed in contents and text. Diameter range and depth multipliers present. Material suitability inferred from application description (steel, cast iron, stainless) but PMKNSH symbols not explicitly provided. Cutting data not found on these pages.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:25.601Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": "B4212-5898410",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "1 x Dc up to 5 x Dc",
+    "diameter_min": 23.7,
+    "diameter_max": 23.7,
+    "material_grade": "WKP25S / WKP35S",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 210,
+      "vc_max": 210,
+      "feed_min": 0.08,
+      "feed_max": 0.08
+    },
+    "source_page": 8,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, diameter and cutting data present, material grade specified but PMKNSH coverage incomplete",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:31.989Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": "B4214.F40.40.Z1.160R-6",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "1 x Dc up to 5 x Dc",
+    "diameter_min": 40,
+    "diameter_max": 40,
+    "material_grade": "WKP35S / WXP40",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 220,
+      "vc_max": 220,
+      "feed_min": 0.05,
+      "feed_max": 0.05
+    },
+    "source_page": 9,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, diameter and cutting data present, material grade specified but PMKNSH coverage incomplete",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:31.989Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": "B4212-5642880",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "1 x Dc up to 5 x Dc",
+    "diameter_min": 31.5,
+    "diameter_max": 31.5,
+    "material_grade": "WKP25S / WKP35S",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 120,
+      "vc_max": 140,
+      "feed_min": 0.18,
+      "feed_max": 0.21
+    },
+    "source_page": 10,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, diameter and cutting data present, material grade specified but PMKNSH coverage incomplete",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:31.989Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": null,
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "1 x Dc up to 5 x Dc",
+    "diameter_min": 59,
+    "diameter_max": 120,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": true,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Product description without specific article number, diameter range from general specification, material suitability inferred from application text but not explicitly marked with PMKNSH symbols",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:31.989Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": "B4212-5538329",
+    "family": "Xtra·tec® Insert Drill 9",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 22,
+    "diameter_max": 22,
+    "material_grade": "WKP35S / WXP40",
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 120,
+      "vc_max": 130,
+      "feed_min": 0.1,
+      "feed_max": 0.12
+    },
+    "source_page": 11,
+    "confidence": 85,
+    "confidence_reason": "Complete article number and cutting data present; material suitability inferred from application context (GGG-40 cast iron)",
+    "validation_issues": [],
+    "auto_approved": true,
+    "review_required": false,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:40.110Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Point Drill Insert P6001",
+    "article_number": "P6001",
+    "family": "P6001, P6002, P6003, P6004",
+    "shank_form": null,
+    "depth_multiplier": "2 x D",
+    "diameter_min": 12,
+    "diameter_max": 15.9,
+    "material_grade": "WXP 45",
+    "material_suitability": {
+      "P": true,
+      "M": false,
+      "K": false,
+      "N": false,
+      "S": false,
+      "H": false
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.2,
+      "feed_max": 0.25
+    },
+    "source_page": 15,
+    "confidence": 90,
+    "confidence_reason": "Clear article number, diameter range, grade, and material group mapping (P only); feed data from table",
+    "validation_issues": [],
+    "auto_approved": true,
+    "review_required": false,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:40.110Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Point Drill Insert P6002",
+    "article_number": "P6002",
+    "family": "P6001, P6002, P6003, P6004",
+    "shank_form": null,
+    "depth_multiplier": "2 x D",
+    "diameter_min": 12,
+    "diameter_max": 15.9,
+    "material_grade": "WXK 25",
+    "material_suitability": {
+      "P": false,
+      "M": false,
+      "K": true,
+      "N": false,
+      "S": false,
+      "H": false
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.2,
+      "feed_max": 0.25
+    },
+    "source_page": 15,
+    "confidence": 90,
+    "confidence_reason": "Clear article number, diameter range, grade, and material group mapping (K only); feed data from table",
+    "validation_issues": [],
+    "auto_approved": true,
+    "review_required": false,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:40.110Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Point Drill Insert P6003",
+    "article_number": "P6003",
+    "family": "P6001, P6002, P6003, P6004",
+    "shank_form": null,
+    "depth_multiplier": "2 x D, 3 x D, 4 x D",
+    "diameter_min": 12,
+    "diameter_max": 15.9,
+    "material_grade": "WMP 35",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": false,
+      "N": false,
+      "S": true,
+      "H": false
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.2,
+      "feed_max": 0.25
+    },
+    "source_page": 15,
+    "confidence": 90,
+    "confidence_reason": "Clear article number, diameter range, grade, and material group mapping (P, M, S); feed data from table",
+    "validation_issues": [],
+    "auto_approved": true,
+    "review_required": false,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:40.110Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Point Drill Insert P6004",
+    "article_number": "P6004",
+    "family": "P6001, P6002, P6003, P6004",
+    "shank_form": null,
+    "depth_multiplier": "2 x D",
+    "diameter_min": 12,
+    "diameter_max": 15.9,
+    "material_grade": "WNN 25",
+    "material_suitability": {
+      "P": false,
+      "M": false,
+      "K": false,
+      "N": true,
+      "S": false,
+      "H": false
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.2,
+      "feed_max": 0.25
+    },
+    "source_page": 15,
+    "confidence": 90,
+    "confidence_reason": "Clear article number, diameter range, grade, and material group mapping (N only); feed data from table",
+    "validation_issues": [],
+    "auto_approved": true,
+    "review_required": false,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:28:40.110Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B4212",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": "Parallel shank with flat acc. with ISO 9766",
+    "depth_multiplier": "2 x Dc",
+    "diameter_min": 13.5,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 30,
+    "confidence": 85,
+    "confidence_reason": "Product specifications and variants clearly documented with dimensions; material suitability not provided in data table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B4011",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "1.3 x Dc",
+    "diameter_min": 12,
+    "diameter_max": 25,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 28,
+    "confidence": 75,
+    "confidence_reason": "Product referenced with depth multiplier and diameter range; limited details available",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B4013",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "2 x Dc",
+    "diameter_min": 12,
+    "diameter_max": 38,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 28,
+    "confidence": 75,
+    "confidence_reason": "Product referenced with depth multiplier and diameter range; limited details available",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B4213",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "3 x Dc",
+    "diameter_min": 13.5,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 28,
+    "confidence": 75,
+    "confidence_reason": "Product referenced with depth multiplier and diameter range; limited details available",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B4213.N",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "3 x Dc",
+    "diameter_min": 59,
+    "diameter_max": 120,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 28,
+    "confidence": 75,
+    "confidence_reason": "Product variant referenced with depth multiplier and diameter range; limited details available",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B3212",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 10,
+    "diameter_max": 18,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 28,
+    "confidence": 70,
+    "confidence_reason": "Product referenced with diameter range only; minimal details",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B3011M",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 59.8,
+    "diameter_max": 120,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 28,
+    "confidence": 70,
+    "confidence_reason": "Product referenced with diameter range only; minimal details",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B3213",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 10,
+    "diameter_max": 18,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 28,
+    "confidence": 70,
+    "confidence_reason": "Product referenced with diameter range only; minimal details",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B3213",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 16,
+    "diameter_max": 58,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 28,
+    "confidence": 70,
+    "confidence_reason": "Duplicate article number with different diameter range; minimal details",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B4015",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "4 x Dc",
+    "diameter_min": 12,
+    "diameter_max": 38,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 29,
+    "confidence": 75,
+    "confidence_reason": "Product referenced with depth multiplier and diameter range; limited details",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B4017",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "5 x Dc",
+    "diameter_min": 12,
+    "diameter_max": 32,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 29,
+    "confidence": 75,
+    "confidence_reason": "Product referenced with depth multiplier and diameter range; limited details",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B4010",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "7 x Dc",
+    "diameter_min": 18,
+    "diameter_max": 25,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 29,
+    "confidence": 75,
+    "confidence_reason": "Product referenced with depth multiplier and diameter range; limited details",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B4012C",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "10 x Dc",
+    "diameter_min": 12,
+    "diameter_max": 29,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 29,
+    "confidence": 75,
+    "confidence_reason": "Product referenced with depth multiplier and diameter range; limited details",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B4214",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "4 x Dc",
+    "diameter_min": 17,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 29,
+    "confidence": 75,
+    "confidence_reason": "Product referenced with depth multiplier and diameter range; limited details",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B4215",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "5 x Dc",
+    "diameter_min": 17,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 29,
+    "confidence": 75,
+    "confidence_reason": "Product referenced with depth multiplier and diameter range; limited details",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Insert Drill",
+    "article_number": "B3214",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": "2 x Dc",
+    "diameter_min": 16,
+    "diameter_max": 58,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 29,
+    "confidence": 75,
+    "confidence_reason": "Product referenced with depth multiplier and diameter range; limited details",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:29:28.315Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": "B4213.N8.065.Z1.195R-5",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": "Modular adaptor",
+    "depth_multiplier": "3 x D",
+    "diameter_min": 65,
+    "diameter_max": 65,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 46,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, diameter and geometry present; material suitability not explicitly listed for this specific tool variant",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:31.975Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": "B4213.N8.068.Z1.204R-6",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": "Modular adaptor",
+    "depth_multiplier": "3 x D",
+    "diameter_min": 68,
+    "diameter_max": 68,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 46,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, diameter and geometry present; material suitability not explicitly listed for this specific tool variant",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:31.975Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": "B4213.N8.070.Z1.210R-6",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": "Modular adaptor",
+    "depth_multiplier": "3 x D",
+    "diameter_min": 70,
+    "diameter_max": 70,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 46,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, diameter and geometry present; material suitability not explicitly listed for this specific tool variant",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:31.975Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": "B4213.N8.078.Z1.234R-6",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": "Modular adaptor",
+    "depth_multiplier": "3 x D",
+    "diameter_min": 78,
+    "diameter_max": 78,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 46,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, diameter and geometry present; material suitability not explicitly listed for this specific tool variant",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:31.975Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": "B4213.N8.080.Z1.240R-5",
+    "family": "Xtra·tec® Insert Drill",
+    "shank_form": "Modular adaptor",
+    "depth_multiplier": "3 x D",
+    "diameter_min": 80,
+    "diameter_max": 80,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 46,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, diameter and geometry present; material suitability not explicitly listed for this specific tool variant",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:31.975Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": "E 57",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 13.5,
+    "diameter_max": 59.4,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": true,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.05,
+      "feed_max": 0.23
+    },
+    "source_page": 51,
+    "confidence": 85,
+    "confidence_reason": "Insert geometry and feed data present for all material groups, but no specific article numbers for individual materials listed",
+    "validation_issues": [],
+    "auto_approved": true,
+    "review_required": false,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:37.217Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": "E 67",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 13.5,
+    "diameter_max": 59.4,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": true,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.05,
+      "feed_max": 0.23
+    },
+    "source_page": 53,
+    "confidence": 85,
+    "confidence_reason": "Insert geometry E 67 with feed data for all material groups, cutting speed data provided on page 55",
+    "validation_issues": [],
+    "auto_approved": true,
+    "review_required": false,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:37.217Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill",
+    "article_number": "P484.P",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 13.5,
+    "diameter_max": 59.4,
+    "material_grade": "WKP 25S, WKP 35S, WSP 45",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": true,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 40,
+      "vc_max": 450,
+      "feed_min": 0.06,
+      "feed_max": 0.16
+    },
+    "source_page": 55,
+    "confidence": 80,
+    "confidence_reason": "Cutting material grade P484.P with three variants (WKP 25S, WKP 35S, WSP 45) and corresponding cutting speeds, but incomplete data for some material groups",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:37.217Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill B421x",
+    "article_number": "B4212",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 13.5,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 58,
+    "confidence": 75,
+    "confidence_reason": "Article number B4212 mentioned on page 58, product name and diameter range confirmed, but no material suitability symbols, cutting data, or shank form explicitly stated",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:48.152Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill B421x",
+    "article_number": "B4213",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 13.5,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 58,
+    "confidence": 75,
+    "confidence_reason": "Article number B4213 mentioned on page 58, product name and diameter range confirmed, but no material suitability symbols, cutting data, or shank form explicitly stated",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:48.152Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "P 4840",
+    "article_number": "P4840",
+    "family": "Insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "Master insert",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 58,
+    "confidence": 65,
+    "confidence_reason": "Insert article number identified on page 58 as master insert type, but missing diameter range, material suitability, and cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:48.152Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "P 4841",
+    "article_number": "P4841",
+    "family": "Insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "Sintered insert",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 58,
+    "confidence": 65,
+    "confidence_reason": "Insert article number identified on page 58 as sintered insert type, but missing diameter range, material suitability, and cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:48.152Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "P 484 P (Outer insert)",
+    "article_number": "P484P",
+    "family": "Insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "Tiger·tec® Silver",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 59,
+    "confidence": 70,
+    "confidence_reason": "Outer insert article number pattern P484P identified on page 59 as Tiger·tec® Silver, but missing specific diameter range and cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:48.152Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "P 484 C (Centre insert)",
+    "article_number": "P484C",
+    "family": "Insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "Tiger·tec® Silver and WXP40",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 59,
+    "confidence": 70,
+    "confidence_reason": "Centre insert article number pattern P484C identified on page 59 with material grades specified, but missing specific diameter range and cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:48.152Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Sleeve adapter S 2131",
+    "article_number": "S2131",
+    "family": "Adapter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 58,
+    "confidence": 60,
+    "confidence_reason": "Sleeve adapter article number mentioned on page 58, but minimal product details available",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:48.152Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Sleeve adapter S 2132",
+    "article_number": "S2132",
+    "family": "Adapter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 58,
+    "confidence": 60,
+    "confidence_reason": "Sleeve adapter article number mentioned on page 58, but minimal product details available",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:48.152Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Sleeve adapter S 2133",
+    "article_number": "S2133",
+    "family": "Adapter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 58,
+    "confidence": 60,
+    "confidence_reason": "Sleeve adapter article number mentioned on page 58, but minimal product details available",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:48.152Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Sleeve adapter S 2165",
+    "article_number": "S2165",
+    "family": "Adapter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 58,
+    "confidence": 60,
+    "confidence_reason": "Sleeve adapter article number mentioned on page 58, but minimal product details available",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:48.152Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill B421x",
+    "article_number": "B421x",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 13.5,
+    "diameter_max": 120,
+    "material_grade": "C45 – (1.0503) steel, steel casting [Rm = 650 N/mm²]",
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 100,
+      "vc_max": null,
+      "feed_min": 0.04,
+      "feed_max": 0.3
+    },
+    "source_page": 62,
+    "confidence": 75,
+    "confidence_reason": "Product name and article number clearly identified; material and diameter range explicit; cutting speed reference at 100 m/min found; PMKNSH symbols not provided in source material; feed range extracted from tables",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:52.982Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill B421x",
+    "article_number": "B421x",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 13.5,
+    "diameter_max": 120,
+    "material_grade": "42CrMo4 – Cr-Mo alloyed heat treatable steel [Rm = 750–900 N/mm²]",
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 100,
+      "vc_max": null,
+      "feed_min": 0.04,
+      "feed_max": 0.3
+    },
+    "source_page": 64,
+    "confidence": 75,
+    "confidence_reason": "Same product as page 62 but for different material grade; article number B421x; diameter and feed range consistent; PMKNSH symbols not provided; cutting speed reference 100 m/min stated",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:30:52.982Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill B421x",
+    "article_number": "B421x",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 13.5,
+    "diameter_max": 120,
+    "material_grade": "GG25 (0.6025) cast iron, ferritic [180-200 HB]",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 100,
+      "vc_max": null,
+      "feed_min": 0.04,
+      "feed_max": 0.3
+    },
+    "source_page": 66,
+    "confidence": 75,
+    "confidence_reason": "Product name and article number clear, material grade explicit, feed range extracted from table, but PMKNSH material suitability only K confirmed by context (cast iron), vc based on power requirement footnote reference",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:31:00.364Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill 65",
+    "article_number": "65",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 13.5,
+    "diameter_max": 120,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 100,
+      "vc_max": null,
+      "feed_min": 0.04,
+      "feed_max": 0.3
+    },
+    "source_page": 67,
+    "confidence": 60,
+    "confidence_reason": "Product name present but no explicit article number confirmation, no material grade specified for this variant, PMKNSH all null, feed range from table, vc from footnote",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:31:00.364Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill B421x",
+    "article_number": "B421x",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 13.5,
+    "diameter_max": 120,
+    "material_grade": "GGG70 (0.7070) cast iron with spheroidal graphite [Rm = 690 N/mm²]",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 100,
+      "vc_max": null,
+      "feed_min": 0.04,
+      "feed_max": 0.3
+    },
+    "source_page": 68,
+    "confidence": 75,
+    "confidence_reason": "Same article as page 66 but different material grade (GGG70 vs GG25), both cast iron (K=true), feed range from table, vc from footnote",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:31:00.364Z"
+  },
+  {
+    "brand": "Walter",
+    "product_name": "Xtra·tec® Insert Drill 67",
+    "article_number": "67",
+    "family": "Insert Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 13.5,
+    "diameter_max": 120,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 100,
+      "vc_max": null,
+      "feed_min": 0.04,
+      "feed_max": 0.3
+    },
+    "source_page": 69,
+    "confidence": 60,
+    "confidence_reason": "Product name present but no explicit article number confirmation, no material grade specified, PMKNSH all null, feed range from table, vc from footnote",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "walter_handbook-walter-insert-drill-en.pdf",
+    "run_id": "run-1780180097486",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T22:31:00.364Z"
+  }
+]

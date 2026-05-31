@@ -1,0 +1,680 @@
+{
+  "metadata": {
+    "extraction_date": "2026-05-30",
+    "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+    "section": "Drilling Tools \u2192 Solid Carbide Drills",
+    "pages_processed": "55\u201380",
+    "extraction_stage": "manual_validation_pilot",
+    "total_records": 12,
+    "all_preview_only": true,
+    "no_product_db_merge": true,
+    "cross_brand_inference": false
+  },
+  "records": [
+    {
+      "id": "guehring-drilling-pilot-001",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "programme": "Solid carbide internal cooling",
+      "tool_designation": "RT 100 FB",
+      "designation_variant": "standard",
+      "shank_form": "HA",
+      "standard_material": "Carbide WN",
+      "surface": "F",
+      "depth_multiplier": "~3xD",
+      "diameter_range": {
+        "min": 3.0,
+        "max": 20.0,
+        "unit": "mm"
+      },
+      "article_number": 6596,
+      "article_number_source": "programme_table_page_55",
+      "material_suitability": {
+        "P": false,
+        "M": false,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "source_table": "Solid carbide drills programme",
+        "source_page": 55,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Drilling Tools",
+        "programme_page": 55,
+        "product_detail_page": 55,
+        "cutting_data_page": 386,
+        "table_row": 1,
+        "extraction_date": "2026-05-30"
+      },
+      "validation_status": "extracted_candidate",
+      "confidence": {
+        "level": "high",
+        "score": 95,
+        "basis": [
+          "source_backed_from_official_programme_table",
+          "clear_pmknsh_symbols",
+          "article_number_present",
+          "page_reference_present"
+        ]
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-pilot-002",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "programme": "Solid carbide internal cooling",
+      "tool_designation": "RT 100 U",
+      "designation_variant": "6537 K",
+      "shank_form": "HA",
+      "standard_material": "Carbide 6537 K",
+      "surface": "F",
+      "depth_multiplier": "3xD",
+      "diameter_range": {
+        "min": 3.0,
+        "max": 20.0,
+        "unit": "mm"
+      },
+      "article_number": 2480,
+      "article_number_source": "programme_table_page_57",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "source_table": "Solid carbide drills programme",
+        "source_page": 57,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Drilling Tools",
+        "programme_page": 57,
+        "product_detail_page": 57,
+        "cutting_data_page": 386,
+        "table_row": 2,
+        "extraction_date": "2026-05-30"
+      },
+      "validation_status": "extracted_candidate",
+      "confidence": {
+        "level": "high",
+        "score": 95,
+        "basis": [
+          "source_backed_from_official_programme_table",
+          "clear_pmknsh_symbols",
+          "article_number_present",
+          "page_reference_present"
+        ]
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-pilot-003",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "programme": "Solid carbide internal cooling",
+      "tool_designation": "RT 100 U",
+      "designation_variant": "6537 K",
+      "shank_form": "HE",
+      "standard_material": "Carbide 6537 K",
+      "surface": "F",
+      "depth_multiplier": "3xD",
+      "diameter_range": {
+        "min": 3.0,
+        "max": 20.0,
+        "unit": "mm"
+      },
+      "article_number": 2472,
+      "article_number_source": "programme_table_page_57",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "source_table": "Solid carbide drills programme",
+        "source_page": 57,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Drilling Tools",
+        "programme_page": 57,
+        "product_detail_page": 57,
+        "cutting_data_page": 386,
+        "table_row": 3,
+        "extraction_date": "2026-05-30"
+      },
+      "validation_status": "extracted_candidate",
+      "confidence": {
+        "level": "high",
+        "score": 95,
+        "basis": [
+          "source_backed_from_official_programme_table",
+          "clear_pmknsh_symbols",
+          "article_number_present",
+          "page_reference_present"
+        ]
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-pilot-004",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "programme": "Solid carbide internal cooling",
+      "tool_designation": "RT 100 U",
+      "designation_variant": "6537 K",
+      "shank_form": "HB",
+      "standard_material": "Carbide 6537 K",
+      "surface": "F",
+      "depth_multiplier": "3xD",
+      "diameter_range": {
+        "min": 3.0,
+        "max": 20.0,
+        "unit": "mm"
+      },
+      "article_number": 6026,
+      "article_number_source": "programme_table_page_59",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "source_table": "Solid carbide drills programme",
+        "source_page": 59,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Drilling Tools",
+        "programme_page": 59,
+        "product_detail_page": 59,
+        "cutting_data_page": 386,
+        "table_row": 4,
+        "extraction_date": "2026-05-30"
+      },
+      "validation_status": "extracted_candidate",
+      "confidence": {
+        "level": "high",
+        "score": 95,
+        "basis": [
+          "source_backed_from_official_programme_table",
+          "clear_pmknsh_symbols",
+          "article_number_present",
+          "page_reference_present"
+        ]
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-pilot-005",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "programme": "Solid carbide internal cooling",
+      "tool_designation": "RT 100 U",
+      "designation_variant": "DIN 6539",
+      "shank_form": "Cyl",
+      "standard_material": "Carbide DIN 6539",
+      "surface": "F",
+      "depth_multiplier": "3xD",
+      "diameter_range": {
+        "min": 3.0,
+        "max": 16.0,
+        "unit": "mm"
+      },
+      "article_number": 2473,
+      "article_number_source": "programme_table_page_61",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "source_table": "Solid carbide drills programme",
+        "source_page": 61,
+        "parsing_confidence": 90
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Drilling Tools",
+        "programme_page": 61,
+        "product_detail_page": 61,
+        "cutting_data_page": 386,
+        "table_row": 5,
+        "extraction_date": "2026-05-30"
+      },
+      "validation_status": "extracted_candidate",
+      "confidence": {
+        "level": "high",
+        "score": 90,
+        "basis": [
+          "source_backed_from_official_programme_table",
+          "clear_pmknsh_symbols",
+          "article_number_present",
+          "page_reference_present",
+          "partial_row_incomplete_symbols"
+        ]
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-pilot-006",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "programme": "Solid carbide internal cooling high feed",
+      "tool_designation": "RT 100 HF",
+      "designation_variant": "6537 K",
+      "shank_form": "HA",
+      "standard_material": "Carbide 6537 K",
+      "surface": "F",
+      "depth_multiplier": "3xD",
+      "diameter_range": {
+        "min": 3.0,
+        "max": 20.0,
+        "unit": "mm"
+      },
+      "article_number": 8524,
+      "article_number_source": "programme_table_page_62",
+      "material_suitability": {
+        "P": false,
+        "M": null,
+        "K": null,
+        "N": null,
+        "S": false,
+        "H": true,
+        "source_backed": true,
+        "source_table": "Solid carbide drills programme",
+        "source_page": 62,
+        "parsing_confidence": 75
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Drilling Tools",
+        "programme_page": 62,
+        "product_detail_page": 62,
+        "cutting_data_page": 386,
+        "table_row": 6,
+        "extraction_date": "2026-05-30"
+      },
+      "validation_status": "extracted_candidate",
+      "confidence": {
+        "level": "high",
+        "score": 75,
+        "basis": [
+          "source_backed_from_official_programme_table",
+          "clear_pmknsh_symbols",
+          "article_number_present",
+          "page_reference_present",
+          "conditional_suitability_blank_cells_reduced"
+        ]
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-pilot-007",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "programme": "Solid carbide internal cooling 5xD",
+      "tool_designation": "RT 100 U",
+      "designation_variant": "6537 L",
+      "shank_form": "HA",
+      "standard_material": "Carbide 6537 L",
+      "surface": "F",
+      "depth_multiplier": "5xD",
+      "diameter_range": {
+        "min": 2.5,
+        "max": 20.0,
+        "unit": "mm"
+      },
+      "article_number": 2996,
+      "article_number_source": "programme_table_page_64",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "source_table": "Solid carbide drills programme",
+        "source_page": 64,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Drilling Tools",
+        "programme_page": 64,
+        "product_detail_page": 64,
+        "cutting_data_page": 386,
+        "table_row": 7,
+        "extraction_date": "2026-05-30"
+      },
+      "validation_status": "extracted_candidate",
+      "confidence": {
+        "level": "high",
+        "score": 95,
+        "basis": [
+          "source_backed_from_official_programme_table",
+          "clear_pmknsh_symbols",
+          "article_number_present",
+          "page_reference_present"
+        ]
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-pilot-008",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "programme": "Solid carbide internal cooling 5xD",
+      "tool_designation": "RT 100 U",
+      "designation_variant": "6537 L",
+      "shank_form": "HE",
+      "standard_material": "Carbide 6537 L",
+      "surface": "F",
+      "depth_multiplier": "5xD",
+      "diameter_range": {
+        "min": 3.0,
+        "max": 20.0,
+        "unit": "mm"
+      },
+      "article_number": 2719,
+      "article_number_source": "programme_table_page_64",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "source_table": "Solid carbide drills programme",
+        "source_page": 64,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Drilling Tools",
+        "programme_page": 64,
+        "product_detail_page": 64,
+        "cutting_data_page": 386,
+        "table_row": 8,
+        "extraction_date": "2026-05-30"
+      },
+      "validation_status": "extracted_candidate",
+      "confidence": {
+        "level": "high",
+        "score": 95,
+        "basis": [
+          "source_backed_from_official_programme_table",
+          "clear_pmknsh_symbols",
+          "article_number_present",
+          "page_reference_present"
+        ]
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-pilot-009",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "programme": "Solid carbide internal cooling 5xD",
+      "tool_designation": "RT 100 U",
+      "designation_variant": "6537 L",
+      "shank_form": "HB",
+      "standard_material": "Carbide 6537 L",
+      "surface": "F",
+      "depth_multiplier": "5xD",
+      "diameter_range": {
+        "min": 3.0,
+        "max": 20.0,
+        "unit": "mm"
+      },
+      "article_number": 5651,
+      "article_number_source": "programme_table_page_66",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "source_table": "Solid carbide drills programme",
+        "source_page": 66,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Drilling Tools",
+        "programme_page": 66,
+        "product_detail_page": 66,
+        "cutting_data_page": 386,
+        "table_row": 9,
+        "extraction_date": "2026-05-30"
+      },
+      "validation_status": "extracted_candidate",
+      "confidence": {
+        "level": "high",
+        "score": 95,
+        "basis": [
+          "source_backed_from_official_programme_table",
+          "clear_pmknsh_symbols",
+          "article_number_present",
+          "page_reference_present"
+        ]
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-pilot-010",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "programme": "Solid carbide internal cooling 5xD",
+      "tool_designation": "RT 100 U",
+      "designation_variant": "WN",
+      "shank_form": "Cyl",
+      "standard_material": "Carbide WN",
+      "surface": "F",
+      "depth_multiplier": "5xD",
+      "diameter_range": {
+        "min": 5.0,
+        "max": 16.0,
+        "unit": "mm"
+      },
+      "article_number": 2474,
+      "article_number_source": "programme_table_page_68",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "source_table": "Solid carbide drills programme",
+        "source_page": 68,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Drilling Tools",
+        "programme_page": 68,
+        "product_detail_page": 68,
+        "cutting_data_page": 386,
+        "table_row": 10,
+        "extraction_date": "2026-05-30"
+      },
+      "validation_status": "extracted_candidate",
+      "confidence": {
+        "level": "high",
+        "score": 95,
+        "basis": [
+          "source_backed_from_official_programme_table",
+          "clear_pmknsh_symbols",
+          "article_number_present",
+          "page_reference_present"
+        ]
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-pilot-011",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "programme": "Solid carbide internal cooling",
+      "tool_designation": "RT 100 U",
+      "designation_variant": "6537 K",
+      "shank_form": "HA",
+      "standard_material": "Carbide 6537 K",
+      "surface": "F",
+      "depth_multiplier": "3xD",
+      "diameter_range": {
+        "min": 3.0,
+        "max": 20.0,
+        "unit": "mm"
+      },
+      "article_number": 2477,
+      "article_number_source": "programme_table_page_69",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "source_table": "Solid carbide drills programme",
+        "source_page": 69,
+        "parsing_confidence": 95
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Drilling Tools",
+        "programme_page": 69,
+        "product_detail_page": 69,
+        "cutting_data_page": 386,
+        "table_row": 11,
+        "extraction_date": "2026-05-30"
+      },
+      "validation_status": "extracted_candidate",
+      "confidence": {
+        "level": "high",
+        "score": 95,
+        "basis": [
+          "source_backed_from_official_programme_table",
+          "clear_pmknsh_symbols",
+          "article_number_present",
+          "page_reference_present"
+        ]
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    },
+    {
+      "id": "guehring-drilling-pilot-012",
+      "brand": "G\u00fchring",
+      "category": "drilling",
+      "tool_family": "Solid carbide drills",
+      "programme": "Solid carbide internal cooling",
+      "tool_designation": "RT 100 U",
+      "designation_variant": "6537 K",
+      "shank_form": "HE",
+      "standard_material": "Carbide 6537 K",
+      "surface": "F",
+      "depth_multiplier": "3xD",
+      "diameter_range": {
+        "min": 3.0,
+        "max": 20.0,
+        "unit": "mm"
+      },
+      "article_number": 2469,
+      "article_number_source": "programme_table_page_69",
+      "material_suitability": {
+        "P": false,
+        "M": true,
+        "K": false,
+        "N": true,
+        "S": true,
+        "H": true,
+        "source_backed": true,
+        "source_table": "Solid carbide drills programme",
+        "source_page": 69,
+        "parsing_confidence": 95,
+        "note": "Last record in initial pilot sample"
+      },
+      "source_traceability": {
+        "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
+        "section": "Drilling Tools",
+        "programme_page": 69,
+        "product_detail_page": 69,
+        "cutting_data_page": 386,
+        "table_row": 12,
+        "extraction_date": "2026-05-30"
+      },
+      "validation_status": "extracted_candidate",
+      "confidence": {
+        "level": "high",
+        "score": 95,
+        "basis": [
+          "source_backed_from_official_programme_table",
+          "clear_pmknsh_symbols",
+          "article_number_present",
+          "page_reference_present"
+        ]
+      },
+      "merge_status": "preview_only_not_merged",
+      "review_state": "pending_manual_review"
+    }
+  ],
+  "summary": {
+    "total_extracted": 12,
+    "high_confidence_90_plus": 12,
+    "medium_confidence_70_89": 0,
+    "low_confidence_below_70": 0,
+    "all_source_backed": true,
+    "all_have_source_page": true,
+    "all_have_pmknsh": true,
+    "all_have_article_number": true,
+    "extraction_quality": "high",
+    "ready_for_manual_review": true,
+    "merge_status_all": "preview_only_not_merged",
+    "next_step": "Manual validation against PDF, then expand to full Solid Carbide family (pages 55-130)"
+  }
+}

@@ -61,7 +61,32 @@
 </head>
 <body class="bg-background text-on-surface font-body-md antialiased min-h-screen">
 <main class="ml-sidebar-width min-h-screen">
-  <div id="catalog-root"></div>
+  <div id="catalog-root">
+    <!-- Loading skeleton — replaced by React when Babel finishes compiling (~2-4s) -->
+    <div id="ta-loading-skeleton" style="padding:24px 32px;">
+      <div style="display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+        <div style="height:36px;width:80px;border-radius:18px;background:#e8e4de;animation:ta-pulse 1.4s ease-in-out infinite;"></div>
+        <div style="height:36px;width:100px;border-radius:18px;background:#e8e4de;animation:ta-pulse 1.4s ease-in-out infinite .1s;"></div>
+        <div style="height:36px;width:90px;border-radius:18px;background:#e8e4de;animation:ta-pulse 1.4s ease-in-out infinite .2s;"></div>
+        <div style="height:36px;width:110px;border-radius:18px;background:#e8e4de;animation:ta-pulse 1.4s ease-in-out infinite .3s;"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;">
+        <div style="height:220px;border-radius:16px;background:#e8e4de;animation:ta-pulse 1.4s ease-in-out infinite;"></div>
+        <div style="height:220px;border-radius:16px;background:#e8e4de;animation:ta-pulse 1.4s ease-in-out infinite .08s;"></div>
+        <div style="height:220px;border-radius:16px;background:#e8e4de;animation:ta-pulse 1.4s ease-in-out infinite .16s;"></div>
+        <div style="height:220px;border-radius:16px;background:#e8e4de;animation:ta-pulse 1.4s ease-in-out infinite .24s;"></div>
+        <div style="height:220px;border-radius:16px;background:#e8e4de;animation:ta-pulse 1.4s ease-in-out infinite .32s;"></div>
+        <div style="height:220px;border-radius:16px;background:#e8e4de;animation:ta-pulse 1.4s ease-in-out infinite .4s;"></div>
+      </div>
+      <p style="text-align:center;margin-top:32px;font-size:12px;color:#8A8A9A;font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;">Loading catalog…</p>
+    </div>
+    <style>
+      @keyframes ta-pulse {
+        0%,100% { opacity:1; }
+        50% { opacity:.45; }
+      }
+    </style>
+  </div>
 </main>
 
 <footer class="bg-surface-container mt-12 border-t border-border-warm px-gutter py-stack-gap-lg ml-sidebar-width">
@@ -87,7 +112,21 @@
 
 <!-- Catalog data + app -->
 <script src="directory-data.js"></script>
+<script src="directory-data-extracted.js"></script>
 <script type="text/babel" src="directory-app.jsx" data-presets="react"></script>
+<script>
+  // Remove loading skeleton once React mounts (watches for data-app-ready marker)
+  (function() {
+    const check = (tries) => {
+      const ready = document.querySelector('#catalog-root [data-app-ready]');
+      const skeleton = document.getElementById('ta-loading-skeleton');
+      if (ready && skeleton) { skeleton.remove(); return; }
+      if (tries > 0) setTimeout(() => check(tries - 1), 150);
+      else if (skeleton) skeleton.remove(); // remove after 15s regardless
+    };
+    setTimeout(() => check(100), 200); // start checking after 200ms
+  })();
+</script>
 <script src="advisor-ai-widget.js"></script>
 </body>
 </html>

@@ -1,0 +1,18 @@
+# ToolAdvisor
+
+ToolAdvisor is a brand-neutral cutting tool advisor for machinists, CNC programmers and manufacturing engineers.
+
+Primary pages:
+
+- https://tooladvisor.eu/ - Advisor landing page and AI assistant entry point
+- https://tooladvisor.eu/catalog - Canonical cutting tool catalog with ISO material and tool-family filters
+- https://tooladvisor.eu/cross-reference - Insert cross-reference workflow for equivalent tool codes
+- https://tooladvisor.eu/compare - Side-by-side technical comparison matrix
+- https://tooladvisor.eu/knowledge - Engineering guide library
+- https://tooladvisor.eu/contact - Support and engineering contact
+
+Data notes:
+
+- Tool records combine published manufacturer-style fields, reviewed examples and clearly marked estimates.
+- Recommendations should be validated against current manufacturer catalog data before production machining.
+- ToolAdvisor does not sell manufacturer placement in recommendations.

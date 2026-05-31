@@ -1,0 +1,11 @@
+claude-extract run: run-1780180640594
+PDF: iscar_aluminum_machining.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-30T22:45:01.121Z
+
+Total records extracted: 29
+Auto-approved (conf >= 85): 10
+Review required (conf < 85): 19
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/iscar-aluminum-machining-pdf/run-1780180640594

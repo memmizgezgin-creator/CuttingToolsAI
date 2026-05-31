@@ -1,0 +1,11 @@
+claude-extract run: run-1780172700878
+PDF: GUE_general-catalogue_EN_compressed.pdf
+Pages: 55–60
+Model: claude-haiku-4-5
+Date: 2026-05-30T20:25:12.401Z
+
+Total records extracted: 5
+Auto-approved (conf >= 85): 5
+Review required (conf < 85): 0
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/gue-general-catalogue-en-compressed-pdf/run-1780172700878

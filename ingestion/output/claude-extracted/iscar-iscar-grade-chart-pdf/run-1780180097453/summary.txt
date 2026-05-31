@@ -1,0 +1,11 @@
+claude-extract run: run-1780180097453
+PDF: iscar_iscar_grade_chart.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-30T22:28:35.128Z
+
+Total records extracted: 0
+Auto-approved (conf >= 85): 0
+Review required (conf < 85): 0
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/iscar-iscar-grade-chart-pdf/run-1780180097453

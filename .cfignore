@@ -1,0 +1,13 @@
+node_modules/
+*.pdf
+ingestion/
+parsed-products/
+reports/
+data/
+.git/
+*.backup
+*.log
+.env
+__pycache__/
+.venv/
+.venv2/

@@ -1913,6 +1913,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .prod-search:focus{border-color:var(--purple);background-color:var(--white)}
 .prod-search::placeholder{color:var(--ink3);font-family:'IBM Plex Sans',sans-serif;font-size:13px}
 .prod-filter-stack{display:grid;gap:7px}
+.prod-filter-stack [data-prod-filter-key][hidden]{display:none!important}
 .prod-filter-chip-row{display:flex;flex-wrap:wrap;gap:7px;min-height:0;margin:10px 0 6px}
 .prod-filter-chip{
   display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(212,176,85,.35);
@@ -5838,6 +5839,125 @@ body{
   background:#e3c285;
   color:#14130f;
 }
+.detail-decision-card,
+.detail-window-card,
+.detail-evidence-card,
+.detail-alt-section{
+  border:1px solid rgba(227,226,223,.11);
+  border-radius:12px;
+  background:#1f201e;
+  padding:14px;
+  box-shadow:none;
+}
+.detail-decision-card{
+  border-color:rgba(204,189,255,.18);
+  background:linear-gradient(180deg,rgba(204,189,255,.07),rgba(31,32,30,.94));
+}
+.detail-window-card{
+  border-color:rgba(227,194,133,.20);
+}
+.detail-verdict-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.detail-verdict-item,
+.detail-window-metric,
+.detail-evidence-item{
+  border:1px solid rgba(227,226,223,.09);
+  border-radius:9px;
+  background:rgba(13,15,13,.38);
+  padding:10px;
+}
+.detail-verdict-label,
+.detail-window-label,
+.detail-evidence-label{
+  color:#8a90a2;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+.detail-verdict-value,
+.detail-window-value,
+.detail-evidence-value{
+  color:#fff;
+  font-size:12px;
+  font-weight:750;
+  line-height:1.38;
+}
+.detail-verdict-value.muted,
+.detail-window-value.muted,
+.detail-evidence-value.muted{
+  color:#c8c2d1;
+  font-weight:650;
+}
+.detail-window-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.detail-window-grid.compact{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  margin-top:10px;
+}
+.detail-context-line{
+  color:#c8c2d1;
+  font-size:12px;
+  font-weight:750;
+  line-height:1.45;
+}
+.detail-role-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:24px;
+  padding:4px 9px;
+  border:1px solid rgba(227,226,223,.16);
+  border-radius:999px;
+  background:rgba(227,226,223,.08);
+  color:#f4f1ff;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.detail-role-badge.review{
+  border-color:rgba(255,180,171,.34);
+  background:rgba(255,180,171,.10);
+  color:#ffcabf;
+}
+.detail-role-badge.candidate,
+.detail-role-badge.possible{
+  border-color:rgba(227,194,133,.36);
+  background:rgba(227,194,133,.10);
+  color:#e3c285;
+}
+.detail-role-badge.best{
+  border-color:rgba(66,211,139,.34);
+  background:rgba(66,211,139,.10);
+  color:#a8f4c8;
+}
+.detail-source-note{
+  color:#8a90a2;
+  font-size:11px;
+  line-height:1.45;
+  margin-top:8px;
+}
+.detail-alt-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.detail-technical-section{
+  display:grid;
+  gap:10px;
+}
+.detail-why-block > .detail-bullet-list{
+  padding:0!important;
+}
 .detail-body{
   gap:9px!important;
 }
@@ -6750,18 +6870,21 @@ body.light-mode .dark-only{display:none!important}
 .best-match-badge{
   border-radius:999px!important;
 }
-.detail-action-bar{
-  display:flex!important;
-  flex-wrap:wrap!important;
-  gap:10px!important;
-}
-.detail-action-bar button{
-  min-height:38px!important;
-  border-radius:9px!important;
-}
+  .detail-action-bar{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    gap:10px!important;
+  }
+  .detail-action-bar button{
+    min-height:38px!important;
+    border-radius:9px!important;
+  }
 @media(max-width:900px){
   .detail-hero-sheet{grid-template-columns:1fr}
   .detail-product-visual{min-height:280px!important}
+  .detail-verdict-grid,
+  .detail-window-grid,
+  .detail-alt-grid{grid-template-columns:1fr!important}
   .prod-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))!important}
 }
 @media(max-width:560px){
@@ -8024,24 +8147,24 @@ input::placeholder, textarea::placeholder {
             Diameter filtering is hidden until catalogue records include normalized diameter ranges.
           </div>
           <div class="prod-filter-stack">
-          <label class="stitch-filter-label">Category</label>
-          <select class="prod-filter-select" id="prodCategoryFilter" onchange="setProdSelectFilter('category', this.value)">
+          <label class="stitch-filter-label" data-prod-filter-key="category">Category</label>
+          <select class="prod-filter-select" id="prodCategoryFilter" data-prod-filter-key="category" onchange="setProdSelectFilter('category', this.value)">
             <option value="all">All categories</option>
           </select>
-          <label class="stitch-filter-label">Geometry</label>
-          <select class="prod-filter-select" id="prodGeometryFilter" onchange="setProdSelectFilter('geometry', this.value)">
+          <label class="stitch-filter-label" data-prod-filter-key="geometry">Geometry</label>
+          <select class="prod-filter-select" id="prodGeometryFilter" data-prod-filter-key="geometry" onchange="setProdSelectFilter('geometry', this.value)">
             <option value="all">All geometry families</option>
           </select>
-          <label class="stitch-filter-label">Coating Type</label>
-          <select class="prod-filter-select stitch-coating-select" id="prodCoatingFilter" aria-label="Coating type filter" onchange="setProdSelectFilter('coating', this.value)">
+          <label class="stitch-filter-label" data-prod-filter-key="coating">Coating Type</label>
+          <select class="prod-filter-select stitch-coating-select" id="prodCoatingFilter" data-prod-filter-key="coating" aria-label="Coating type filter" onchange="setProdSelectFilter('coating', this.value)">
             <option value="all">All coating families</option>
           </select>
-          <label class="stitch-filter-label">Application</label>
-          <select class="prod-filter-select" id="prodApplicationFilter" onchange="setProdSelectFilter('application', this.value)">
+          <label class="stitch-filter-label" data-prod-filter-key="application">Application</label>
+          <select class="prod-filter-select" id="prodApplicationFilter" data-prod-filter-key="application" onchange="setProdSelectFilter('application', this.value)">
             <option value="all">All applications</option>
           </select>
-          <label class="stitch-filter-label">Operation</label>
-          <select class="prod-filter-select" id="prodOperationFilter" onchange="setProdSelectFilter('op', this.value)">
+          <label class="stitch-filter-label" data-prod-filter-key="op">Operation</label>
+          <select class="prod-filter-select" id="prodOperationFilter" data-prod-filter-key="op" onchange="setProdSelectFilter('op', this.value)">
             <option value="all">All operations</option>
             <option value="Turning">Turning</option>
             <option value="Milling">Milling</option>
@@ -8049,8 +8172,8 @@ input::placeholder, textarea::placeholder {
             <option value="Threading">Threading</option>
             <option value="Grooving">Grooving</option>
           </select>
-          <label class="stitch-filter-label">Brand</label>
-          <select class="prod-filter-select" id="prodBrandFilter" onchange="setProdSelectFilter('brand', this.value)">
+          <label class="stitch-filter-label" data-prod-filter-key="brand">Brand</label>
+          <select class="prod-filter-select" id="prodBrandFilter" data-prod-filter-key="brand" onchange="setProdSelectFilter('brand', this.value)">
             <option value="all">All brands</option>
             <option value="Sandvik">Sandvik</option>
             <option value="ISCAR">ISCAR</option>
@@ -8063,12 +8186,12 @@ input::placeholder, textarea::placeholder {
             <option value="Mitsubishi">Mitsubishi</option>
             <option value="OSG">OSG</option>
           </select>
-          <label class="stitch-filter-label">Chipbreaker</label>
-          <select class="prod-filter-select" id="prodChipbreakerFilter" onchange="setProdSelectFilter('chipbreaker', this.value)">
+          <label class="stitch-filter-label" data-prod-filter-key="chipbreaker">Chipbreaker</label>
+          <select class="prod-filter-select" id="prodChipbreakerFilter" data-prod-filter-key="chipbreaker" onchange="setProdSelectFilter('chipbreaker', this.value)">
             <option value="all">All chipbreakers</option>
           </select>
-          <label class="stitch-filter-label">Handedness</label>
-          <select class="prod-filter-select" id="prodHandednessFilter" onchange="setProdSelectFilter('handedness', this.value)">
+          <label class="stitch-filter-label" data-prod-filter-key="handedness">Handedness</label>
+          <select class="prod-filter-select" id="prodHandednessFilter" data-prod-filter-key="handedness" onchange="setProdSelectFilter('handedness', this.value)">
             <option value="all">All handedness</option>
           </select>
           </div>
@@ -14242,6 +14365,41 @@ function buildRelationList(title, ids) {
       <ul class="detail-rel-list">${arr.map(id => `<li>${getRelationLabel(id)}</li>`).join('')}</ul>
     </div>`;
 }
+function inferDetailCoolant(product) {
+  const text = `${product?.coolant || ''} ${product?.coolantMode || ''} ${product?.technicalBadges?.coolant || ''} ${product?.applicationNotes || ''} ${product?.toolLife || ''}`.toLowerCase();
+  if (/dry only|dry machining|no coolant/.test(text)) return 'Dry preferred / avoid coolant';
+  if (/high[-\s]?pressure|80\+ bar/.test(text)) return 'High-pressure coolant';
+  if (/through[-\s]?coolant|internal coolant|internal cooling/.test(text)) return 'Through-coolant';
+  if (/\bmql\b/.test(text)) return 'MQL / dry capable';
+  if (/coolant|flood/.test(text)) return 'Coolant recommended';
+  return 'Not specified';
+}
+function inferDetailStability(product, signals = {}) {
+  const text = `${product?.geometry || ''} ${product?.applicationNotes || ''} ${product?.toolLife || ''}`.toLowerCase();
+  if (signals.lowConfidence) return 'Validate setup';
+  if (/heavy|rough|negative|robust|interrupted|stable|stability|security/.test(text)) return 'Stable / robust setup';
+  if (/finish|positive|sharp|low force|precision/.test(text)) return 'Stable, low-force setup';
+  if (signals.productivitySignal) return 'Rigid setup needed';
+  return 'Not specified';
+}
+function getDetailRoleMeta(trust = {}, signals = {}) {
+  const score = Number(trust.score || 0);
+  if (trust.lowConfidence || score < 65) return { label: 'Review needed', cls: 'review' };
+  if (score < 78) return { label: 'Candidate', cls: 'candidate' };
+  if (signals.contextMatch && score >= 85) return { label: 'Best match', cls: 'best' };
+  if (signals.nicheProfile) return { label: 'Specialist option', cls: 'possible' };
+  if (signals.saferScore > signals.specialistScore + 5) return { label: 'Safer option', cls: 'possible' };
+  if (signals.valueSignal) return { label: 'Flexible option', cls: 'possible' };
+  return { label: 'Possible fit', cls: 'possible' };
+}
+function renderDetailInfoItem(label, value, extraClass = '') {
+  const clean = value && String(value).trim() ? String(value) : '—';
+  return `
+    <div class="${extraClass || 'detail-verdict-item'}">
+      <div class="${extraClass === 'detail-window-metric' ? 'detail-window-label' : extraClass === 'detail-evidence-item' ? 'detail-evidence-label' : 'detail-verdict-label'}">${escapeHtmlAttr(label)}</div>
+      <div class="${extraClass === 'detail-window-metric' ? 'detail-window-value' : extraClass === 'detail-evidence-item' ? 'detail-evidence-value' : 'detail-verdict-value'}">${escapeHtmlAttr(clean)}</div>
+    </div>`;
+}
 const _RECENT_VIEWED_KEY = 'ta_recent_viewed_products_v1';
 
 function readRecentlyViewedProducts() {
@@ -14317,11 +14475,9 @@ function openProductDetail(productId, sourceSurface = 'products', event) {
     ? `Tentative: ${signals.tradeoff?.line || 'balanced profile under limited signal coverage'}.`
     : `${signals.tradeoff?.line || 'balanced profile for the current process context'}.`;
   const detailSummaryRows = buildDetailDecisionSummaryRows(context, signals, sourceSurface);
-  const whyToolBullets = buildDetailWhyBullets(product, context, signals, trust);
-  const watchBullets = buildDecisionWatchBullets(product, signals, trust, warningText);
+  const whyToolBullets = buildDecisionFitBullets(product, context, signals, trust).slice(0, 3);
+  const watchBullets = buildDecisionWatchBullets(product, signals, trust, warningText).slice(0, 3);
   const equivalentCode = getEquivalentLookupCode(product);
-  const bk = (product.brand || '').split(' ')[0];
-  const buyLinks = getBuyLinks(bk, product.productName || product.id || '');
   const title = `${product.brand || 'Unknown brand'} · ${product.productName || product.id || 'Product'}`;
   const subtitleParts = [];
   if (product.series) subtitleParts.push(`Series ${product.series}`);
@@ -14339,6 +14495,27 @@ function openProductDetail(productId, sourceSurface = 'products', event) {
   // If we have a specific operation+material context, surface its cuttingData entry too
   const cdKey = opContext && matContext ? `${opContext}-${matContext}` : null;
   const cd = cdKey && product.cuttingData ? product.cuttingData[cdKey] : null;
+  const role = getDetailRoleMeta(trust, signals);
+  const decisionSummary = signals.decisionSummary || buildProductDecisionSummary(signals, trust);
+  const bestWhen = decisionSummary.bestWhen || 'Use when operation and material fit match this product record.';
+  const whenNot = signals.whenNot || decisionSummary.watchIf || warningText;
+  const coolantText = inferDetailCoolant(product);
+  const stabilityText = inferDetailStability(product, signals);
+  const contextLine = [
+    opContext ? `Operation: ${opContext}` : 'Operation: not selected',
+    matContext ? `Material: ISO ${matContext} (${decisionMaterialLabel(matContext)})` : 'Material: not selected',
+    sourceSurface === 'advisor' ? 'Advisor context' : 'Catalog context'
+  ].join(' · ');
+  const cdLine = cd
+    ? `Vc ${cd.vc || '—'} · f ${cd.fn || '—'} · ap ${cd.ap || '—'}${cd.note ? ` · ${cd.note}` : ''}`
+    : 'No context-specific cuttingData row; using catalog range.';
+  const sourceLabel = product._isGenerated
+    ? `PDF import${product.sourcePDF ? ` · ${product.sourcePDF}` : ''}`
+    : (product.sourceType || product.ingestionStatus || 'Local catalog record');
+  const riskText = trust.lowConfidence
+    ? 'Limited signal coverage. Use as a candidate, not a final production choice.'
+    : (trust.warning || signals.decisionLens || 'No major data-quality warning in current record.');
+  const technicalStrip = renderProductTechnicalStrip(product, 6);
   document.getElementById('productDetailBody').innerHTML = `
     <div class="detail-hero-sheet">
       <div class="detail-product-visual">
@@ -14351,83 +14528,101 @@ function openProductDetail(productId, sourceSurface = 'products', event) {
       <div class="detail-hero-summary">
         <div class="detail-decision-topstrip">
           <div class="detail-decision-badges">
-            <span class="best-match-badge">Best match</span>
+            <span class="detail-role-badge ${role.cls}">${escapeHtmlAttr(role.label)}</span>
             <span class="detail-confidence-badge">${trust.score}% confidence</span>
           </div>
-          <div class="detail-validated-line">Validated for your case</div>
+          <div class="detail-validated-line">${escapeHtmlAttr(trust.band)}</div>
         </div>
         ${renderProductMetaTags(product, context)}
+        <div class="detail-context-line">${escapeHtmlAttr(contextLine)}</div>
         <div class="detail-decision-summary">
-          <div class="detail-section-title">Recommended for:</div>
+          <div class="detail-section-title">Context summary</div>
           <ul class="detail-summary-list">
             ${detailSummaryRows.map(([label, value]) => `<li><strong>${escapeHtmlAttr(label)}:</strong> ${escapeHtmlAttr(value)}</li>`).join('')}
           </ul>
         </div>
       </div>
     </div>
-    <details class="detail-why-block" open>
-      <summary>Why this tool?</summary>
+
+    <section class="detail-decision-card" aria-label="Decision verdict">
+      <div class="detail-section-title">Decision verdict</div>
+      <div class="detail-verdict-grid">
+        ${renderDetailInfoItem('Best when', bestWhen)}
+        ${renderDetailInfoItem('Trade-off', tradeoffLine)}
+        ${renderDetailInfoItem('When not', whenNot)}
+      </div>
+    </section>
+
+    <section class="detail-window-card" aria-label="Operating window">
+      <div class="detail-section-title">Operating window</div>
+      <div class="detail-window-grid">
+        ${renderDetailInfoItem('Vc', `${dash(product.vcRange)}${product.vcRange ? ' m/min' : ''}`, 'detail-window-metric')}
+        ${renderDetailInfoItem('Feed', `${dash(product.fnRange)}${product.fnRange ? ' mm' : ''}`, 'detail-window-metric')}
+        ${renderDetailInfoItem('ap', `${dash(product.apRange)}${product.apRange ? ' mm' : ''}`, 'detail-window-metric')}
+      </div>
+      <div class="detail-window-grid compact">
+        ${renderDetailInfoItem('Coolant', coolantText, 'detail-window-metric')}
+        ${renderDetailInfoItem('Stability', stabilityText, 'detail-window-metric')}
+      </div>
+      <div class="detail-source-note">${escapeHtmlAttr(cdLine)}</div>
+    </section>
+
+    <section class="detail-why-block" aria-label="Why this fits">
+      <div class="detail-section-title">Why this fits</div>
       <ul class="detail-bullet-list">
         ${whyToolBullets.map(point => `<li>${escapeHtmlAttr(point)}</li>`).join('')}
       </ul>
-    </details>
-    <div class="detail-watch-block">
-      <div class="detail-section-title">Watch out:</div>
+    </section>
+    <section class="detail-watch-block" aria-label="Watch out">
+      <div class="detail-section-title">Watch out</div>
       <ul class="detail-bullet-list">
         ${watchBullets.map(point => `<li>${escapeHtmlAttr(point)}</li>`).join('')}
       </ul>
-    </div>
+    </section>
+
+    <section class="detail-technical-section" aria-label="Technical facts">
+      <div class="detail-section-title">Technical facts</div>
+      ${technicalStrip || ''}
+      <div class="detail-grid">
+        <div class="detail-chip"><div class="detail-k">Brand</div><div class="detail-v">${dash(product.brand)}</div></div>
+        <div class="detail-chip"><div class="detail-k">Product</div><div class="detail-v">${dash(product.productName)}</div></div>
+        ${product.series ? `<div class="detail-chip"><div class="detail-k">Series</div><div class="detail-v">${escapeHtmlAttr(product.series)}</div></div>` : ''}
+        <div class="detail-chip"><div class="detail-k">Grade</div><div class="detail-v">${dash(product.grade)}</div></div>
+        <div class="detail-chip"><div class="detail-k">Coating</div><div class="detail-v">${dash(product.coating)}</div></div>
+        <div class="detail-chip"><div class="detail-k">Geometry</div><div class="detail-v">${dash(product.geometry)}</div></div>
+        <div class="detail-chip"><div class="detail-k">ISO codes</div><div class="detail-v">${escapeHtmlAttr(listOrDash(isoCodesArr))}</div></div>
+        <div class="detail-chip"><div class="detail-k">Operations</div><div class="detail-v">${escapeHtmlAttr(listOrDash(operationsArr))}</div></div>
+        <div class="detail-chip"><div class="detail-k">ISO materials</div><div class="detail-v">${escapeHtmlAttr(listOrDash(materialsArr))}</div></div>
+        ${product.toolLife ? `<div class="detail-chip"><div class="detail-k">Tool life</div><div class="detail-v">${escapeHtmlAttr(product.toolLife)}</div></div>` : ''}
+        ${product.applicationNotes ? `<div class="detail-chip"><div class="detail-k">Application notes</div><div class="detail-v small">${escapeHtmlAttr(product.applicationNotes)}</div></div>` : ''}
+      </div>
+      ${renderToolAdvisorTechnicalDetail(product)}
+    </section>
+
+    <section class="detail-alt-section" aria-label="Alternatives">
+      <div class="detail-section-title">Alternatives</div>
+      <div class="detail-alt-grid">
+        ${buildRelationList('Exact equivalents', product.exactEquivalents)}
+        ${buildRelationList('Functional alternatives', product.functionalAlternatives)}
+        ${buildRelationList('Value alternatives', product.valueAlternatives)}
+        ${buildRelationList('Related products', product.relatedProducts)}
+      </div>
+    </section>
+
+    <section class="detail-evidence-card" aria-label="Evidence">
+      <div class="detail-section-title">Evidence</div>
+      <div class="detail-window-grid">
+        ${renderDetailInfoItem('Source', sourceLabel, 'detail-evidence-item')}
+        ${renderDetailInfoItem('Confidence', `${trust.score}% · ${trust.band}`, 'detail-evidence-item')}
+        ${renderDetailInfoItem('Risk note', riskText, 'detail-evidence-item')}
+      </div>
+      <div class="detail-source-note">Confidence reflects data quality and signal coverage. It is not measured cutting performance.</div>
+    </section>
+
     <div class="detail-action-bar">
       <button class="primary" type="button" onclick="addProductToCompareFromDetail('${product.id}',event)">Compare</button>
       <button type="button" ${equivalentCode ? `onclick="viewProductEquivalents('${product.id}',event)"` : 'disabled'}>View Equivalents</button>
       <button type="button" onclick="toggleFavoriteProduct('${product.id}',event)">Save / Shortlist</button>
-    </div>
-    <div class="detail-grid">
-      <div class="detail-chip"><div class="detail-k">Brand</div><div class="detail-v">${dash(product.brand)}</div></div>
-      <div class="detail-chip"><div class="detail-k">Product</div><div class="detail-v">${dash(product.productName)}</div></div>
-      ${product.series ? `<div class="detail-chip"><div class="detail-k">Series</div><div class="detail-v">${product.series}</div></div>` : ''}
-      <div class="detail-chip"><div class="detail-k">Grade</div><div class="detail-v">${dash(product.grade)}</div></div>
-      <div class="detail-chip"><div class="detail-k">Coating</div><div class="detail-v">${dash(product.coating)}</div></div>
-      <div class="detail-chip"><div class="detail-k">Geometry</div><div class="detail-v">${dash(product.geometry)}</div></div>
-      <div class="detail-chip"><div class="detail-k">ISO codes</div><div class="detail-v">${listOrDash(isoCodesArr)}</div></div>
-      <div class="detail-chip"><div class="detail-k">Operations</div><div class="detail-v">${listOrDash(operationsArr)}</div></div>
-      <div class="detail-chip"><div class="detail-k">ISO materials</div><div class="detail-v">${listOrDash(materialsArr)}</div></div>
-      <div class="detail-chip"><div class="detail-k">Cutting speed Vc</div><div class="detail-v">${dash(product.vcRange)}${product.vcRange ? ' m/min' : ''}</div></div>
-      <div class="detail-chip"><div class="detail-k">Feed fn / fz</div><div class="detail-v">${dash(product.fnRange)}${product.fnRange ? ' mm' : ''}</div></div>
-      <div class="detail-chip"><div class="detail-k">Depth ap</div><div class="detail-v">${dash(product.apRange)}${product.apRange ? ' mm' : ''}</div></div>
-      ${product.toolLife ? `<div class="detail-chip"><div class="detail-k">Tool life</div><div class="detail-v">${product.toolLife}</div></div>` : ''}
-      <div class="detail-chip"><div class="detail-k">Confidence</div><div class="detail-v">${trust.score}% · ${trust.band}</div></div>
-    </div>
-    ${renderToolAdvisorTechnicalDetail(product)}
-    ${product.applicationNotes ? `
-    <div class="detail-chip">
-      <div class="detail-k">Application notes</div>
-      <div class="detail-v">${product.applicationNotes}</div>
-    </div>` : ''}
-    ${cd ? `
-    <div class="detail-chip">
-      <div class="detail-k">Cutting data — ${cdKey}</div>
-      <div class="detail-v">Vc ${cd.vc || '—'} m/min · fn ${cd.fn || '—'} mm · ap ${cd.ap || '—'} mm${cd.note ? ` · ${cd.note}` : ''}</div>
-    </div>` : ''}
-    <div class="detail-chip">
-      <div class="detail-k">Why this</div>
-      <div class="detail-v">${truncLine(trust.why, 160)}</div>
-    </div>
-    <div class="detail-chip">
-      <div class="detail-k">When not / warning</div>
-      <div class="detail-v small">${truncLine(warningText, 180)}</div>
-    </div>
-    <div class="detail-chip">
-      <div class="detail-k">Trade-off</div>
-      <div class="detail-v small">${truncLine(tradeoffLine, 180)}</div>
-    </div>
-    ${buildRelationList('Exact equivalents', product.exactEquivalents)}
-    ${buildRelationList('Functional alternatives', product.functionalAlternatives)}
-    ${buildRelationList('Value alternatives', product.valueAlternatives)}
-    ${buildRelationList('Related products', product.relatedProducts)}
-    <div class="detail-buy-wrap">
-      <div class="detail-k">Buy links</div>
-      <div class="detail-buy-links">${buyLinks}</div>
     </div>
   `;
   const overlay = document.getElementById('productDetailOverlay');
@@ -17792,6 +17987,9 @@ function renderSessionSummary() {
   el.textContent = `${getSessionCounter('ta_searches_today')} searches today, ${getSessionCounter('ta_products_viewed')} products viewed`;
 }
 
+const _QUOTA_KEY = 'ta_daily_quota_v1';
+const _QUOTA_MAX = 5;
+
 (function init() {
   resetInteractionLayers();
   applyDarkModePreference();
@@ -17890,6 +18088,14 @@ const PRODUCT_FILTER_ALL_LABELS = {
   chipbreaker: 'All chipbreakers',
   handedness: 'All handedness'
 };
+const PRODUCT_CONTEXTUAL_FILTER_KEYS = ['geometry','coating','application','chipbreaker','handedness'];
+const PRODUCT_VISIBLE_FILTERS_BY_CONTEXT = {
+  'solid tool': ['geometry','coating','application'],
+  'drilling tool': ['geometry','coating','application'],
+  'threading tool': ['geometry','coating','application','handedness'],
+  'grooving tool': ['geometry','coating','application','handedness'],
+  holder: ['application','handedness']
+};
 let _productFacetCache = { signature: '', facets: null };
 const _productSearchIndex = new Map();
 
@@ -17923,6 +18129,41 @@ function titleFacetValue(value) {
     if (upperKeep.has(plain)) return part.toUpperCase();
     return part.charAt(0).toUpperCase() + part.slice(1);
   }).join(' ');
+}
+
+function getProductFilterContextKey() {
+  const category = productFilterValueKey(prodFilters.category);
+  if (category && category !== 'all') return category;
+  const operation = productFilterValueKey(prodFilters.op);
+  if (operation === 'drilling') return 'drilling tool';
+  if (operation === 'threading') return 'threading tool';
+  if (operation === 'grooving') return 'grooving tool';
+  return 'all';
+}
+
+function getVisibleProductSelectKeys() {
+  const contextKey = getProductFilterContextKey();
+  const contextualKeys = PRODUCT_VISIBLE_FILTERS_BY_CONTEXT[contextKey] || PRODUCT_CONTEXTUAL_FILTER_KEYS;
+  return new Set(['category','op','brand','sort', ...contextualKeys]);
+}
+
+function syncProductFilterVisibility({ clearHidden = false } = {}) {
+  const visible = getVisibleProductSelectKeys();
+  let changed = false;
+  Object.keys(PRODUCT_SELECT_IDS).forEach(key => {
+    const isVisible = visible.has(key);
+    document.querySelectorAll(`[data-prod-filter-key="${key}"]`).forEach(el => {
+      el.hidden = !isVisible;
+      el.setAttribute('aria-hidden', String(!isVisible));
+    });
+    if (!isVisible && clearHidden && prodFilters[key] && prodFilters[key] !== 'all') {
+      prodFilters[key] = 'all';
+      const select = document.getElementById(PRODUCT_SELECT_IDS[key]);
+      if (select) select.value = 'all';
+      changed = true;
+    }
+  });
+  return changed;
 }
 
 function getProductCategoryFacet(product) {
@@ -18082,6 +18323,7 @@ function populateProductAdvancedFilters() {
     select.value = values.some(value => productFilterValueKey(value) === productFilterValueKey(previous)) ? previous : 'all';
     prodFilters[key] = select.value;
   });
+  if (syncProductFilterVisibility({ clearHidden: true })) updateProductFilterUrl();
 }
 
 function levenshteinDistance(a, b, limit = 3) {
@@ -18285,6 +18527,7 @@ function setProdSelectFilter(type, val) {
   prodFilters[type] = val;
   const select = document.getElementById(PRODUCT_SELECT_IDS[type]);
   if (select && select.value !== val) select.value = val;
+  if (type === 'category' || type === 'op') syncProductFilterVisibility({ clearHidden: true });
   updateProductFilterUrl();
   filterProducts();
 }
@@ -18341,6 +18584,7 @@ function clearProductFilters() {
     const select = document.getElementById(id);
     if (select) select.value = key === 'sort' ? 'score' : 'all';
   });
+  syncProductFilterVisibility({ clearHidden: true });
   document.querySelectorAll('.prod-filter-group').forEach(group => {
     const first = group.querySelector('.pf-btn');
     if (first) {
@@ -19299,9 +19543,6 @@ window.QA_MANUAL_TEST_MATRIX = Object.freeze([
 /* ============================================================
    QUOTA (localStorage, daily reset, max 5 free queries)
 ============================================================ */
-const _QUOTA_KEY = 'ta_daily_quota_v1';
-const _QUOTA_MAX = 5;
-
 function _isAdmin() {
   try { return localStorage.getItem('ta_admin') === 'true'; } catch (_) { return false; }
 }

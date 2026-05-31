@@ -1,0 +1,111 @@
+{
+  "runAt": "2026-05-30T22:46:31.330Z",
+  "downloaded": 8,
+  "skipped": 1,
+  "failed": 5,
+  "details": {
+    "downloaded": [
+      {
+        "manufacturer": "walter",
+        "name": "Walter",
+        "label": "Turning Catalogue 2024 (elibrary)",
+        "url": "https://elibrary.walter-tools.com/frontend/catalogs/682341/10/pdf/complete.pdf",
+        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/walter_complete.pdf"
+      },
+      {
+        "manufacturer": "kennametal",
+        "name": "Kennametal",
+        "label": "Turning Brochure",
+        "url": "https://www.kennametal.com/content/dam/final/kennametal/catalogs/turning/kennametal-turning-brochure_en.pdf",
+        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/kennametal_kennametal-turning-brochure_en.pdf"
+      },
+      {
+        "manufacturer": "kennametal",
+        "name": "Kennametal",
+        "label": "Drilling Tool Catalog",
+        "url": "https://drillingworld.com/pdf/Product%20Data%20Sheets/kennametal%20drilling%20tool%20catalog.pdf",
+        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/kennametal_kennametal_20drilling_20tool_20catalog.pdf"
+      },
+      {
+        "manufacturer": "iscar",
+        "name": "Iscar",
+        "label": "Multi-Master Indexable Solid",
+        "url": "https://www.iscar.com/Catalogs/Publication/english_1/MULTI_MASTER_INDEXABLE_SOLID/MULTI_MASTER_INDEXABLE_SOLID.pdf",
+        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/iscar_multi_master_indexable_solid.pdf"
+      },
+      {
+        "manufacturer": "iscar",
+        "name": "Iscar",
+        "label": "Milling Applications Guide",
+        "url": "https://www.iscar.com/Catalogs/Publication/Reference_Guide/english_1/Milling_Applications_and_Cutter_Basics_Guide/Milling_Applications_and_Cutter_Basics_Guide.pdf",
+        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/iscar_milling_applications_and_cutter_basics_guide.pdf"
+      },
+      {
+        "manufacturer": "iscar",
+        "name": "Iscar",
+        "label": "Aluminum Machining",
+        "url": "https://www.iscar.com/Catalogs/Publication/english_1/ALUMINUM_MACHINING/ALUMINUM_MACHINING.pdf",
+        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/iscar_aluminum_machining.pdf"
+      },
+      {
+        "manufacturer": "iscar",
+        "name": "Iscar",
+        "label": "Special Tailored Tools 2025",
+        "url": "https://www.iscar.com/Catalogs/Publication/english_1/Special_Tailored_Tools_2025/Special_Tailored_Tools_2025.pdf",
+        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/iscar_special_tailored_tools_2025.pdf"
+      },
+      {
+        "manufacturer": "iscar",
+        "name": "Iscar",
+        "label": "Grade Chart",
+        "url": "https://www.iscar.com/ecat/iscar_grade_chart.pdf",
+        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/iscar_iscar_grade_chart.pdf"
+      }
+    ],
+    "skipped": [
+      {
+        "manufacturer": "walter",
+        "name": "Walter",
+        "label": "Insert Drill Handbook",
+        "url": "https://cdn.walter-tools.com/files/sitecollectiondocuments/downloads/global/manuals/en-gb/handbook-walter-insert-drill-en.pdf"
+      }
+    ],
+    "failed": [
+      {
+        "manufacturer": "iscar",
+        "name": "Iscar",
+        "label": "Cutting Tools User Guide 2023",
+        "url": "https://www.iscar.com/Catalogs/publication-2023/english_1/Cutting_tools_user_guide_2023/Cutting_tools_user_guide_2023.pdf",
+        "reason": "HTTP 404"
+      },
+      {
+        "manufacturer": "iscar",
+        "name": "Iscar",
+        "label": "ISCAR World 2023",
+        "url": "https://www.iscar.com/Catalogs/publication-2023/english-1/ISCAR_WORLD_2023/ISCAR_WORLD_2023.pdf",
+        "reason": "HTTP 404"
+      },
+      {
+        "manufacturer": "yg1",
+        "name": "YG-1",
+        "label": "End Mill Catalogue",
+        "url": "https://europe.yg1.com/download/YG-1_EU_EndMill_Catalogue.pdf",
+        "reason": "HTTP 0"
+      },
+      {
+        "manufacturer": "kyocera",
+        "name": "Kyocera",
+        "label": "General Catalogue",
+        "url": "https://www.kyocera-unimerco.com/media/kyjaxiyk/kyocera-unimerco-general-catalogue.pdf",
+        "reason": "Invalid URL"
+      },
+      {
+        "manufacturer": "tungaloy",
+        "name": "Tungaloy",
+        "label": "General Catalogue",
+        "url": "https://www.tungaloy.com/us/wp-content/uploads/sites/2/2023/03/Tungaloy_General_Catalogue.pdf",
+        "reason": "HTTP 404"
+      }
+    ]
+  }
+}

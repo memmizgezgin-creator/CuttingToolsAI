@@ -1,0 +1,90 @@
+{
+  "description": "Test fixture mixing insert (PRODUCT_DB) and non-insert (preview) products for frontend guard testing",
+  "mixed_products": [
+    {
+      "id": "insert-1-iso-p",
+      "code": "CNMG120408",
+      "brand": "Sandvik Coromant",
+      "family": "Turning",
+      "iso": "P",
+      "grade": "GC4105",
+      "coating": "AlTiN",
+      "shape": "square",
+      "tone": "insert",
+      "tool_type": "turning_insert",
+      "vcMin": 200,
+      "vcMax": 400,
+      "fMin": 0.15,
+      "fMax": 0.35,
+      "apMin": 0.5,
+      "apMax": 3.0,
+      "op": "roughing",
+      "stability": "high",
+      "coolant": "flood",
+      "bestFor": "General steel turning, high productivity",
+      "costTier": 3,
+      "costPerEdge": 2.5,
+      "supply": 8,
+      "equivIds": [],
+      "peerIds": [],
+      "confidence": 95,
+      "note": "Standard PRODUCT_DB insert record"
+    },
+    {
+      "id": "preview-maford-272-001-27201300-03000",
+      "code": "27201300",
+      "brand": "M.A. Ford",
+      "family": "Reaming",
+      "iso": null,
+      "tool_no": "27201300",
+      "edp": "03000",
+      "product_code": "27201300",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27201300",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "grade": null,
+      "coating": null,
+      "shape": null,
+      "tone": null,
+      "tool_type": "reamer",
+      "dimensions": {
+        "D1": {
+          "decimal_inch": "0.0130"
+        },
+        "D2": {
+          "inch": "0.0130"
+        },
+        "L1": {
+          "inch": "1-1/2"
+        },
+        "L2": {
+          "inch": "3/16"
+        },
+        "flutes": 4,
+        "unit_system": "inch"
+      },
+      "vcMin": null,
+      "vcMax": null,
+      "fMin": null,
+      "fMax": null,
+      "apMin": null,
+      "apMax": null,
+      "op": "reaming",
+      "stability": null,
+      "coolant": null,
+      "bestFor": "Precise hole finishing in steel and non-ferrous materials",
+      "costTier": null,
+      "costPerEdge": null,
+      "supply": null,
+      "equivIds": [],
+      "peerIds": [],
+      "confidence": 90,
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 11,
+      "material_suitability": "review_required",
+      "merge_status": "preview_only_not_merged",
+      "note": "Non-insert reamer from ingestion preview"
+    }
+  ]
+}

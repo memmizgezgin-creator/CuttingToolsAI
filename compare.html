@@ -7,6 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="tw-config.js"></script>
+<script src="directory-data.js"></script>
+<script src="directory-data-extracted.js"></script>
 <link rel="stylesheet" href="polish.css"/>
 <style>
 /* Compare matrix zebra striping — inline fallback because polish.css @media tail can suppress appended rules */
@@ -36,331 +38,12 @@
 
 <!-- Selected items header -->
 <section class="px-gutter py-8">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    
-      <div class="bg-white rounded-2xl border border-border-warm card-shadow p-5 border-l-4 border-iso-p-blue">
-        <div class="flex items-start gap-4 mb-3">
-          <div class="ta-insert3d shrink-0" data-shape="C" data-tone="iso-p" data-size="sm" aria-label="CNMG insert"></div>
-          <div class="flex-1 min-w-0">
-            <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Sandvik Coromant</p>
-            <h3 class="font-product-grade text-primary text-xl">GC4325</h3>
-            <p class="font-technical-data text-sm text-on-surface-variant">CNMG 120408-PM</p>
-            <span class="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-full bg-surface-container-low border border-border-warm text-[10px] font-technical-data uppercase tracking-widest text-on-surface-variant">Turning insert</span>
-          </div>
-          <span class="px-2.5 py-1 rounded-full bg-iso-p-blue/15 text-iso-p-blue font-bold text-[10px] tracking-widest shrink-0">BASELINE</span>
-        </div>
-        <button class="text-sm text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all"><span class="material-symbols-outlined text-base">close</span> Remove</button>
-      </div>
-    
-      <div class="bg-white rounded-2xl border border-border-warm card-shadow p-5 border-l-4 border-iso-m-amber">
-        <div class="flex items-start gap-4 mb-3">
-          <div class="ta-insert3d shrink-0" data-shape="C" data-tone="iso-m" data-size="sm" aria-label="CNMG insert"></div>
-          <div class="flex-1 min-w-0">
-            <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Kennametal</p>
-            <h3 class="font-product-grade text-primary text-xl">KCP25C</h3>
-            <p class="font-technical-data text-sm text-on-surface-variant">CNMG 432 MP</p>
-            <span class="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-full bg-surface-container-low border border-border-warm text-[10px] font-technical-data uppercase tracking-widest text-on-surface-variant">Turning insert</span>
-          </div>
-          <span class="px-2.5 py-1 rounded-full bg-iso-m-amber/15 text-iso-m-amber font-bold text-[10px] tracking-widest shrink-0">NEAR EQV.</span>
-        </div>
-        <button class="text-sm text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all"><span class="material-symbols-outlined text-base">close</span> Remove</button>
-      </div>
-    
-      <div class="bg-white rounded-2xl border border-border-warm card-shadow p-5 border-l-4 border-iso-n-green">
-        <div class="flex items-start gap-4 mb-3">
-          <div class="ta-insert3d shrink-0" data-shape="C" data-tone="iso-n" data-size="sm" aria-label="CNMG insert"></div>
-          <div class="flex-1 min-w-0">
-            <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Walter</p>
-            <h3 class="font-product-grade text-primary text-xl">WPP20S</h3>
-            <p class="font-technical-data text-sm text-on-surface-variant">CNMG 120408-NM4</p>
-            <span class="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-full bg-surface-container-low border border-border-warm text-[10px] font-technical-data uppercase tracking-widest text-on-surface-variant">Turning insert</span>
-          </div>
-          <span class="px-2.5 py-1 rounded-full bg-iso-n-green/15 text-iso-n-green font-bold text-[10px] tracking-widest shrink-0">PREMIUM</span>
-        </div>
-        <button class="text-sm text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all"><span class="material-symbols-outlined text-base">close</span> Remove</button>
-      </div>
-    
-  </div>
+  <div id="compare-tool-cards" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
 </section>
 
 <!-- Matrix -->
 <section class="px-gutter pb-10">
-  <div class="bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden cmp-matrix">
-
-    <!-- Tool type -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Tool type</div>
-      <div class="p-4 border-r border-border-warm flex items-center">
-        <span class="text-sm font-medium text-on-surface">Turning insert</span>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center">
-        <span class="text-sm font-medium text-on-surface">Turning insert</span>
-      </div>
-      <div class="p-4 flex items-center">
-        <span class="text-sm font-medium text-on-surface">Turning insert</span>
-      </div>
-    </div>
-
-    <!-- Geometry -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Geometry</div>
-      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">80° rhomb · negative · CNMG</div>
-      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">80° rhomb · negative · CNMG</div>
-      <div class="p-4 text-sm text-on-surface flex items-center font-medium">80° rhomb · negative · CNMG</div>
-    </div>
-
-    <!-- Grade -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Grade</div>
-      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">GC4325 <span class="ml-2 text-on-surface-variant text-xs">CVD Ti(C,N)+Al₂O₃</span></div>
-      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">KCP25C <span class="ml-2 text-on-surface-variant text-xs">multilayer CVD</span></div>
-      <div class="p-4 text-sm text-on-surface flex items-center font-medium">WPP20S <span class="ml-2 text-on-surface-variant text-xs">Tiger·tec Silver CVD</span></div>
-    </div>
-
-    <!-- Coating -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Coating</div>
-      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">CVD</div>
-      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">CVD</div>
-      <div class="p-4 text-sm text-on-surface flex items-center font-medium">CVD multilayer</div>
-    </div>
-
-    <!-- ISO group -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">ISO material group</div>
-      <div class="p-4 border-r border-border-warm flex items-center gap-1.5">
-        <span class="ta-iso-badge ta-iso-P">ISO P</span><span class="ta-iso-badge ta-iso-M">ISO M</span>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center gap-1.5">
-        <span class="ta-iso-badge ta-iso-P">ISO P</span><span class="ta-iso-badge ta-iso-M">ISO M</span>
-      </div>
-      <div class="p-4 flex items-center gap-1.5">
-        <span class="ta-iso-badge ta-iso-P">ISO P</span>
-      </div>
-    </div>
-
-    <!-- Operation -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Operation</div>
-      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Medium turning</div>
-      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Medium turning</div>
-      <div class="p-4 text-sm text-on-surface flex items-center font-medium">Medium-heavy turning</div>
-    </div>
-
-    <!-- Vc range (m/min) — scale 150–450 -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center">
-        <span>Vc envelope</span>
-        <span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">scale 150–450 m/min</span>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center">
-        <div class="cmp-range">
-          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:16.7%;width:53.3%;"></div></div>
-          <div class="cmp-range-values"><span>200</span><span>360 <span class="cmp-unit">m/min</span></span></div>
-        </div>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center">
-        <div class="cmp-range">
-          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:13.3%;width:50%;"></div></div>
-          <div class="cmp-range-values"><span>190</span><span>340 <span class="cmp-unit">m/min</span></span></div>
-        </div>
-      </div>
-      <div class="p-4 flex items-center">
-        <div class="cmp-range">
-          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:23.3%;width:60%;"></div></div>
-          <div class="cmp-range-values"><span>220</span><span>400 <span class="cmp-unit">m/min</span></span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Feed range (mm/rev) — scale 0.10–0.60 -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center">
-        <span>Feed envelope</span>
-        <span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">scale 0.10–0.60 mm/rev</span>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center">
-        <div class="cmp-range">
-          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:10%;width:70%;"></div></div>
-          <div class="cmp-range-values"><span>0.15</span><span>0.50 <span class="cmp-unit">mm/rev</span></span></div>
-        </div>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center">
-        <div class="cmp-range">
-          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:10%;width:60%;"></div></div>
-          <div class="cmp-range-values"><span>0.15</span><span>0.45 <span class="cmp-unit">mm/rev</span></span></div>
-        </div>
-      </div>
-      <div class="p-4 flex items-center">
-        <div class="cmp-range">
-          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:16%;width:74%;"></div></div>
-          <div class="cmp-range-values"><span>0.18</span><span>0.55 <span class="cmp-unit">mm/rev</span></span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Depth of cut (mm) — scale 0–6 -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center">
-        <span>Depth envelope</span>
-        <span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">scale 0–6 mm</span>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center">
-        <div class="cmp-range">
-          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:8.3%;width:58.3%;"></div></div>
-          <div class="cmp-range-values"><span>0.5</span><span>4.0 <span class="cmp-unit">mm</span></span></div>
-        </div>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center">
-        <div class="cmp-range">
-          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:8.3%;width:58.3%;"></div></div>
-          <div class="cmp-range-values"><span>0.5</span><span>4.0 <span class="cmp-unit">mm</span></span></div>
-        </div>
-      </div>
-      <div class="p-4 flex items-center">
-        <div class="cmp-range">
-          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:8.3%;width:75%;"></div></div>
-          <div class="cmp-range-values"><span>0.5</span><span>5.0 <span class="cmp-unit">mm</span></span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Interrupted cut -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Interrupted cut</div>
-      <div class="p-4 border-r border-border-warm flex items-center"><span class="cmp-flag" data-q="good">Good</span></div>
-      <div class="p-4 border-r border-border-warm flex items-center"><span class="cmp-flag" data-q="ok">Acceptable</span></div>
-      <div class="p-4 flex items-center"><span class="cmp-flag" data-q="good">Good</span></div>
-    </div>
-
-    <!-- Tool life -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center">
-        <span>Tool life</span>
-        <span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">5-point relative</span>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center gap-3">
-        <div class="cmp-pips"><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span></div>
-        <span class="text-xs font-medium text-on-surface-variant">High</span>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center gap-3">
-        <div class="cmp-pips"><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip"></span></div>
-        <span class="text-xs font-medium text-on-surface-variant">Medium-High</span>
-      </div>
-      <div class="p-4 flex items-center gap-3">
-        <div class="cmp-pips"><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span><span class="cmp-pip on"></span></div>
-        <span class="text-xs font-medium text-on-surface-variant">High <span class="text-[10px] uppercase tracking-widest text-iso-n-green ml-0.5">unmanned</span></span>
-      </div>
-    </div>
-
-    <!-- Cost tier -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center gap-1">
-        Cost tier
-        <span class="material-symbols-outlined text-outline" style="font-size:14px;" title="Estimated from published data ranges — not commercial pricing">info</span>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center gap-3">
-        <span class="cmp-cost"><span class="on">€</span><span class="on">€</span><span class="on">€</span><span class="off">€</span><span class="off">€</span></span>
-        <span class="text-xs text-on-surface-variant">3/5 <span class="text-[10px] text-outline">(est.)</span></span>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center gap-3">
-        <span class="cmp-cost"><span class="on">€</span><span class="on">€</span><span class="off">€</span><span class="off">€</span><span class="off">€</span></span>
-        <span class="text-xs text-on-surface-variant">2/5 <span class="text-[10px] text-outline">(est.)</span></span>
-      </div>
-      <div class="p-4 flex items-center gap-3">
-        <span class="cmp-cost"><span class="on">€</span><span class="on">€</span><span class="on">€</span><span class="on">€</span><span class="off">€</span></span>
-        <span class="text-xs text-on-surface-variant">4/5 <span class="text-[10px] text-outline">(est.)</span></span>
-      </div>
-    </div>
-
-    <!-- Risk level -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Risk level</div>
-      <div class="p-4 border-r border-border-warm flex items-center"><span class="cmp-risk" data-level="low">Low</span></div>
-      <div class="p-4 border-r border-border-warm flex items-center"><span class="cmp-risk" data-level="medium">Low-Medium</span></div>
-      <div class="p-4 flex items-center"><span class="cmp-risk" data-level="low">Low</span></div>
-    </div>
-
-    <!-- Best use case -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Best use case</div>
-      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Production turning of P-group</div>
-      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Cost-balanced general turning</div>
-      <div class="p-4 text-sm text-on-surface flex items-center font-medium">Long unmanned P-group runs</div>
-    </div>
-
-    <!-- Avoid when -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Avoid when</div>
-      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Heavy interrupted cuts</div>
-      <div class="p-4 border-r border-border-warm text-sm text-on-surface flex items-center font-medium">Continuous high-Vc runs</div>
-      <div class="p-4 text-sm text-on-surface flex items-center font-medium">Cost-sensitive short runs</div>
-    </div>
-
-    <!-- Data confidence -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Data confidence</div>
-      <div class="p-4 border-r border-border-warm flex items-center gap-3">
-        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden shrink-0">
-          <div class="h-full bg-iso-n-green" style="width:96%;"></div>
-        </div>
-        <span class="font-technical-data text-sm font-bold text-ink-text">96%</span>
-        <span class="flex items-center gap-1 text-xs font-bold text-iso-n-green">
-          <span class="material-symbols-outlined" style="font-size:13px;">verified</span> Verified
-        </span>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center gap-3">
-        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden shrink-0">
-          <div class="h-full bg-iso-n-green" style="width:89%;"></div>
-        </div>
-        <span class="font-technical-data text-sm font-bold text-ink-text">89%</span>
-        <span class="flex items-center gap-1 text-xs font-bold text-iso-n-green">
-          <span class="material-symbols-outlined" style="font-size:13px;">verified</span> Verified
-        </span>
-      </div>
-      <div class="p-4 flex items-center gap-3">
-        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden shrink-0">
-          <div class="h-full bg-iso-n-green" style="width:94%;"></div>
-        </div>
-        <span class="font-technical-data text-sm font-bold text-ink-text">94%</span>
-        <span class="flex items-center gap-1 text-xs font-bold text-iso-n-green">
-          <span class="material-symbols-outlined" style="font-size:13px;">verified</span> Verified
-        </span>
-      </div>
-    </div>
-
-    <!-- Source -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Source</div>
-      <div class="p-4 border-r border-border-warm flex flex-col gap-0.5">
-        <span class="text-xs font-bold text-on-surface">Manufacturer data</span>
-        <span class="text-[10px] text-on-surface-variant">Sandvik · 2024-08</span>
-      </div>
-      <div class="p-4 border-r border-border-warm flex flex-col gap-0.5">
-        <span class="text-xs font-bold text-on-surface">Manufacturer data</span>
-        <span class="text-[10px] text-on-surface-variant">Kennametal · 2024-05</span>
-      </div>
-      <div class="p-4 flex flex-col gap-0.5">
-        <span class="text-xs font-bold text-on-surface">Manufacturer data</span>
-        <span class="text-[10px] text-on-surface-variant">Walter · 2024-09</span>
-      </div>
-    </div>
-
-    <!-- Risk flags -->
-    <div class="grid grid-cols-4 gap-0">
-      <div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">Data risks</div>
-      <div class="p-4 border-r border-border-warm flex items-center">
-        <span class="text-xs text-on-surface-variant">None</span>
-      </div>
-      <div class="p-4 border-r border-border-warm flex items-center">
-        <span class="text-xs text-on-surface-variant">None</span>
-      </div>
-      <div class="p-4 flex items-center">
-        <span class="text-xs text-on-surface-variant">None</span>
-      </div>
-    </div>
-
-  </div>
+  <div id="compare-matrix" class="bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden cmp-matrix"></div>
 </section>
 
 <!-- Operating envelope plot -->
@@ -369,20 +52,20 @@
     <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
       <div>
         <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Operating envelope</p>
-        <h2 class="font-section-heading text-xl text-primary">Where each tool lives in Vc × feed space.</h2>
-        <p class="text-sm text-on-surface-variant mt-2 max-w-2xl">Each rectangle shows the manufacturer's published Vc / feed envelope. Overlap means equivalent performance; non-overlap shows where one tool extends further.</p>
+        <h2 class="font-section-heading text-xl text-primary">Illustrative Vc × feed space.</h2>
+        <p class="text-sm text-on-surface-variant mt-2 max-w-2xl">This plot is a static visual reference for how envelopes are read. Product-specific envelope rendering is not enabled yet; use the dynamic Vc and feed rows above for selected-tool values.</p>
       </div>
       <!-- Legend -->
       <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
-        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#123356;"></span> GC4325</span>
-        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#F59E0B;"></span> KCP25C</span>
-        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#10B981;"></span> WPP20S</span>
+        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#123356;"></span> Example A</span>
+        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#F59E0B;"></span> Example B</span>
+        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#10B981;"></span> Example C</span>
       </div>
     </div>
 
     <!-- Plot -->
     <div class="overflow-x-auto">
-      <svg viewBox="0 0 620 360" class="w-full h-auto min-w-[560px]" role="img" aria-label="Operating envelope plot — Vc versus feed">
+      <svg viewBox="0 0 620 360" class="w-full h-auto min-w-[560px]" role="img" aria-label="Illustrative operating envelope plot — Vc versus feed">
         <!-- ===== Grid ===== -->
         <g stroke="#F0EDE8" stroke-width="1">
           <!-- vertical grid (feed) -->
@@ -427,35 +110,35 @@
           <text x="-160" y="20" transform="rotate(-90)" text-anchor="middle" letter-spacing="0.04em">Cutting speed <tspan fill="#8A8A9A" font-weight="500">(m/min)</tspan></text>
         </g>
 
-        <!-- ===== WPP20S envelope (220-400 Vc, 0.18-0.55 feed) ===== -->
+        <!-- ===== Example envelope C ===== -->
         <rect x="211" y="59" width="290" height="104" fill="#10B981" fill-opacity="0.15" stroke="#10B981" stroke-width="2" rx="2"/>
         <g font-family="Nunito, sans-serif">
           <circle cx="356" cy="111" r="3.5" fill="#10B981"/>
           <rect x="376" y="98" width="86" height="26" rx="6" fill="#fff" stroke="#10B981" stroke-width="1.5"/>
-          <text x="384" y="115" font-size="12" font-weight="700" fill="#10B981">WPP20S</text>
+          <text x="384" y="115" font-size="12" font-weight="700" fill="#10B981">Example C</text>
         </g>
 
-        <!-- ===== GC4325 envelope (200-360 Vc, 0.15-0.50 feed) ===== -->
+        <!-- ===== Example envelope A ===== -->
         <rect x="188" y="82" width="274" height="92" fill="#123356" fill-opacity="0.15" stroke="#123356" stroke-width="2" rx="2"/>
         <g font-family="Nunito, sans-serif">
           <circle cx="325" cy="128" r="3.5" fill="#123356"/>
           <rect x="245" y="142" width="86" height="26" rx="6" fill="#fff" stroke="#123356" stroke-width="1.5"/>
-          <text x="253" y="159" font-size="12" font-weight="700" fill="#123356">GC4325</text>
+          <text x="253" y="159" font-size="12" font-weight="700" fill="#123356">Example A</text>
         </g>
 
-        <!-- ===== KCP25C envelope (190-340 Vc, 0.15-0.45 feed) ===== -->
+        <!-- ===== Example envelope B ===== -->
         <rect x="188" y="94" width="235" height="87" fill="#F59E0B" fill-opacity="0.18" stroke="#F59E0B" stroke-width="2" stroke-dasharray="0" rx="2"/>
         <g font-family="Nunito, sans-serif">
           <circle cx="305" cy="137" r="3.5" fill="#F59E0B"/>
           <rect x="118" y="182" width="86" height="26" rx="6" fill="#fff" stroke="#F59E0B" stroke-width="1.5"/>
-          <text x="128" y="199" font-size="12" font-weight="700" fill="#F59E0B">KCP25C</text>
+          <text x="128" y="199" font-size="12" font-weight="700" fill="#F59E0B">Example B</text>
           <line x1="305" y1="140" x2="161" y2="184" stroke="#F59E0B" stroke-width="1" stroke-dasharray="2 2"/>
         </g>
 
-        <!-- ===== Annotation: "WPP20S extends furthest" ===== -->
+        <!-- ===== Static reference annotation ===== -->
         <g font-family="DM Mono, monospace" font-size="9" fill="#10B981" font-weight="600">
           <line x1="500" y1="59" x2="540" y2="40" stroke="#10B981" stroke-width="1" stroke-dasharray="2 2"/>
-          <text x="544" y="38" letter-spacing="0.06em">+12% Vc headroom</text>
+          <text x="544" y="38" letter-spacing="0.06em">range example</text>
         </g>
       </svg>
     </div>
@@ -463,55 +146,29 @@
     <!-- Key insights -->
     <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
       <div class="p-3 rounded-lg bg-surface-container-low border-l-2" style="border-color:#10B981;">
-        <p class="font-technical-data text-[10px] uppercase tracking-widest font-bold mb-1" style="color:#10B981;">Widest envelope</p>
-        <p class="text-sm text-on-surface"><span class="font-bold">WPP20S</span> — highest Vc and feed reach</p>
+        <p class="font-technical-data text-[10px] uppercase tracking-widest font-bold mb-1" style="color:#10B981;">Static reference</p>
+        <p class="text-sm text-on-surface">Envelope rectangles show range shape only; they are not selected-tool results.</p>
       </div>
       <div class="p-3 rounded-lg bg-surface-container-low border-l-2" style="border-color:#123356;">
-        <p class="font-technical-data text-[10px] uppercase tracking-widest font-bold mb-1" style="color:#123356;">Balanced center</p>
-        <p class="text-sm text-on-surface"><span class="font-bold">GC4325</span> — overlaps both alternatives</p>
+        <p class="font-technical-data text-[10px] uppercase tracking-widest font-bold mb-1" style="color:#123356;">Selected values</p>
+        <p class="text-sm text-on-surface">Use Vc, feed, and depth rows above for current product data.</p>
       </div>
       <div class="p-3 rounded-lg bg-surface-container-low border-l-2" style="border-color:#F59E0B;">
-        <p class="font-technical-data text-[10px] uppercase tracking-widest font-bold mb-1" style="color:#F59E0B;">Tightest fit</p>
-        <p class="text-sm text-on-surface"><span class="font-bold">KCP25C</span> — narrowest envelope, lowest cost</p>
+        <p class="font-technical-data text-[10px] uppercase tracking-widest font-bold mb-1" style="color:#F59E0B;">Decision note</p>
+        <p class="text-sm text-on-surface">No product-specific conclusion is inferred from this illustrative plot.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Final recommendation -->
+<!-- Comparison summary -->
 <section class="px-gutter pb-20">
   <div class="bg-primary text-white rounded-3xl p-10 relative overflow-hidden">
     <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-iso-m-amber blur-3xl opacity-20 pointer-events-none"></div>
-    <p class="font-technical-data text-xs uppercase tracking-widest text-iso-m-amber mb-3">Final recommendation</p>
-    <h2 class="font-section-heading text-section-heading mb-2">Picks by priority.</h2>
-    <p class="text-blue-100/80 mb-8 max-w-2xl">A clear best-of for each common decision goal. Always validate on a sample part before locking in production.</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      
-        <div class="bg-white/5 backdrop-blur rounded-2xl p-5 border border-white/10">
-          <p class="text-xs uppercase tracking-widest text-iso-m-amber font-bold mb-3">Best for productivity</p>
-          <p class="font-product-grade text-2xl text-white mb-2">WPP20S</p>
-          <p class="text-sm text-blue-100/90 leading-relaxed">Highest Vc envelope and tool life for unmanned P-group runs.</p>
-        </div>
-      
-        <div class="bg-white/5 backdrop-blur rounded-2xl p-5 border border-white/10">
-          <p class="text-xs uppercase tracking-widest text-iso-m-amber font-bold mb-3">Best for cost</p>
-          <p class="font-product-grade text-2xl text-white mb-2">KCP25C</p>
-          <p class="text-sm text-blue-100/90 leading-relaxed">Lowest cost tier with full P/M coverage and acceptable risk.</p>
-        </div>
-      
-        <div class="bg-white/5 backdrop-blur rounded-2xl p-5 border border-white/10">
-          <p class="text-xs uppercase tracking-widest text-iso-m-amber font-bold mb-3">Best for stainless</p>
-          <p class="font-product-grade text-2xl text-white mb-2">GC4325</p>
-          <p class="text-sm text-blue-100/90 leading-relaxed">Strongest published M-group performance; PM chipbreaker.</p>
-        </div>
-      
-        <div class="bg-white/5 backdrop-blur rounded-2xl p-5 border border-white/10">
-          <p class="text-xs uppercase tracking-widest text-iso-m-amber font-bold mb-3">Safest general choice</p>
-          <p class="font-product-grade text-2xl text-white mb-2">GC4325</p>
-          <p class="text-sm text-blue-100/90 leading-relaxed">Widest envelope, lowest risk note, broadest field validation.</p>
-        </div>
-      
-    </div>
+    <p class="font-technical-data text-xs uppercase tracking-widest text-iso-m-amber mb-3">Comparison summary</p>
+    <h2 class="font-section-heading text-section-heading mb-2">Available-data signals.</h2>
+    <p class="text-blue-100/80 mb-8 max-w-2xl">These notes use only fields available in the current catalog record. They are not a final engineering recommendation; validate on a sample part before production.</p>
+    <div id="comparison-summary-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
     <div class="mt-8 flex flex-wrap gap-3">
       <a href="pro.html" class="bg-white text-primary font-bold px-6 py-3 rounded-xl hover:-translate-y-0.5 transition-all flex items-center gap-2"><span class="material-symbols-outlined">download</span> Export decision PDF <span class="ml-2 px-2 py-0.5 rounded-full bg-iso-m-amber/15 text-iso-m-amber text-[10px] tracking-widest">PRO</span></a>
       <a href="cross-reference.html" class="bg-white/10 text-white border border-white/20 font-bold px-6 py-3 rounded-xl hover:bg-white/20 transition-all">Cross-reference another insert</a>
@@ -537,6 +194,336 @@
 <button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-transform z-50 group">
 <span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform">add</span>
 </button>
+<script>
+(function () {
+  const MAX_TOOLS = 3;
+  const toolsDb = Array.isArray(window.TA_TOOLS) ? window.TA_TOOLS : [];
+  const cardRoot = document.getElementById('compare-tool-cards');
+  const matrixRoot = document.getElementById('compare-matrix');
+  const summaryRoot = document.getElementById('comparison-summary-cards');
+  let skippedIds = [];
+
+  const toneClasses = {
+    'iso-p': { border: 'border-iso-p-blue', badgeBg: 'bg-iso-p-blue/15', badgeText: 'text-iso-p-blue' },
+    'iso-m': { border: 'border-iso-m-amber', badgeBg: 'bg-iso-m-amber/15', badgeText: 'text-iso-m-amber' },
+    'iso-k': { border: 'border-iso-k-red', badgeBg: 'bg-iso-k-red/15', badgeText: 'text-iso-k-red' },
+    'iso-n': { border: 'border-iso-n-green', badgeBg: 'bg-iso-n-green/15', badgeText: 'text-iso-n-green' },
+    'iso-s': { border: 'border-iso-s-orange', badgeBg: 'bg-iso-s-orange/15', badgeText: 'text-iso-s-orange' },
+    'iso-h': { border: 'border-outline', badgeBg: 'bg-surface-container-low', badgeText: 'text-on-surface-variant' },
+  };
+  const sourceTierLabel = {
+    manufacturer: 'Manufacturer data',
+    reviewed: 'Manufacturer + reviewed',
+    estimated: 'Generated estimate',
+  };
+  const statusLabel = {
+    verified: 'Verified',
+    partially_verified: 'Partial',
+    estimated: 'Estimated',
+  };
+  const riskLabel = {
+    estimated_field: 'Estimated field',
+    manual_review_required: 'Manual review required',
+  };
+
+  function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    }[char]));
+  }
+
+  function sentenceCase(value) {
+    return String(value || '')
+      .replace(/_/g, ' ')
+      .replace(/\b\w/g, (char) => char.toUpperCase());
+  }
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function fmtNumber(value) {
+    if (!Number.isFinite(value)) return '—';
+    return Math.abs(value) < 1 ? value.toFixed(2) : String(Math.round(value * 10) / 10).replace(/\.0$/, '');
+  }
+
+  function toolLabel(tool) {
+    return tool ? `${tool.grade || tool.code}` : '—';
+  }
+
+  function selectedTools() {
+    const params = new URLSearchParams(window.location.search);
+    const idsParam = params.get('ids');
+    const requestedIds = (idsParam || '')
+      .split(',')
+      .map((id) => id.trim())
+      .filter(Boolean);
+    const seen = new Set();
+    skippedIds = [];
+    if (!idsParam || !requestedIds.length) {
+      return { tools: [], emptyTitle: 'No tools selected for comparison.', emptyBody: 'Select two or more tools from the catalog to build a side-by-side matrix.' };
+    }
+    const tools = requestedIds
+      .filter((id) => {
+        if (seen.has(id)) return false;
+        seen.add(id);
+        return true;
+      })
+      .map((id) => {
+        const tool = toolsDb.find((item) => item.id === id);
+        if (!tool) skippedIds.push(id);
+        return tool;
+      })
+      .filter(Boolean)
+      .slice(0, MAX_TOOLS);
+    return {
+      tools,
+      emptyTitle: 'No matching tools found.',
+      emptyBody: 'The selected comparison link does not match any tools in the current catalog.',
+    };
+  }
+
+  function gridStyle(tools) {
+    return `grid-template-columns:minmax(160px,.8fr) repeat(${tools.length},minmax(180px,1fr));`;
+  }
+
+  function cellClass(index, tools) {
+    return `p-4 ${index < tools.length - 1 ? 'border-r border-border-warm ' : ''}`;
+  }
+
+  function renderToolCards(tools) {
+    cardRoot.innerHTML = tools.map((tool, index) => {
+      const tone = toneClasses[tool.tone] || toneClasses['iso-h'];
+      const label = index === 0 ? 'BASELINE' : `ALT ${index}`;
+      return `
+        <div class="bg-white rounded-2xl border border-border-warm card-shadow p-5 border-l-4 ${tone.border}">
+          <div class="flex items-start gap-4">
+            <div class="ta-insert3d shrink-0" data-shape="${escapeHtml(tool.shape || '-')}" data-tone="${escapeHtml(tool.tone || 'brushed')}" data-size="sm" aria-label="${escapeHtml(tool.code)} insert"></div>
+            <div class="flex-1 min-w-0">
+              <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">${escapeHtml(tool.brand)}</p>
+              <h3 class="font-product-grade text-primary text-xl">${escapeHtml(tool.grade)}</h3>
+              <p class="font-technical-data text-sm text-on-surface-variant">${escapeHtml(tool.code)}</p>
+              <span class="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-full bg-surface-container-low border border-border-warm text-[10px] font-technical-data uppercase tracking-widest text-on-surface-variant">${escapeHtml(sentenceCase(tool.tool_type || tool.family))}</span>
+            </div>
+            <span class="px-2.5 py-1 rounded-full ${tone.badgeBg} ${tone.badgeText} font-bold text-[10px] tracking-widest shrink-0">${label}</span>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  function renderSummaryCard(label, tool, body) {
+    return `
+      <div class="bg-white/5 backdrop-blur rounded-2xl p-5 border border-white/10">
+        <p class="text-xs uppercase tracking-widest text-iso-m-amber font-bold mb-3">${escapeHtml(label)}</p>
+        <p class="font-product-grade text-2xl text-white mb-2">${escapeHtml(toolLabel(tool))}</p>
+        <p class="text-sm text-blue-100/90 leading-relaxed">${escapeHtml(body)}</p>
+      </div>`;
+  }
+
+  function pickBy(tools, getter, mode = 'max') {
+    const candidates = tools
+      .map((tool) => ({ tool, value: getter(tool) }))
+      .filter((item) => Number.isFinite(item.value));
+    if (!candidates.length) return null;
+    candidates.sort((a, b) => mode === 'min' ? a.value - b.value : b.value - a.value);
+    return candidates[0];
+  }
+
+  function renderSummary(tools) {
+    if (!summaryRoot) return;
+    if (!tools.length) {
+      summaryRoot.innerHTML = `
+        <div class="bg-white/5 backdrop-blur rounded-2xl p-5 border border-white/10 md:col-span-2 lg:col-span-4">
+          <p class="text-xs uppercase tracking-widest text-iso-m-amber font-bold mb-3">No selected tools</p>
+          <p class="font-product-grade text-2xl text-white mb-2">—</p>
+          <p class="text-sm text-blue-100/90 leading-relaxed">Select tools from the catalog to show available-data comparison signals.</p>
+        </div>`;
+      return;
+    }
+
+    const confidence = pickBy(tools, (tool) => Number(tool.trust?.confidence_score ?? tool.confidence), 'max');
+    const vcRange = pickBy(tools, (tool) => Number(tool.vcMax) - Number(tool.vcMin), 'max');
+    const cost = pickBy(tools, (tool) => Number(tool.costTier), 'min');
+    const life = pickBy(tools, (tool) => Number(tool.lifeRel), 'max');
+    const cards = [
+      confidence
+        ? renderSummaryCard('Highest data confidence', confidence.tool, `${confidence.value}% confidence from available source metadata.`)
+        : renderSummaryCard('Highest data confidence', null, 'Not available in selected records.'),
+      vcRange
+        ? renderSummaryCard('Widest Vc range', vcRange.tool, `${fmtNumber(vcRange.value)} m/min span based on vcMin/vcMax.`)
+        : renderSummaryCard('Widest Vc range', null, 'Not available in selected records.'),
+      cost
+        ? renderSummaryCard('Lowest estimated cost tier', cost.tool, `${cost.value}/4 cost tier${cost.tool.economicsEstimated ? ' (estimated)' : ''}.`)
+        : renderSummaryCard('Lowest estimated cost tier', null, 'Not available in selected records.'),
+      life
+        ? renderSummaryCard('Highest relative tool life', life.tool, `${life.value}/5 relative tool life signal.`)
+        : renderSummaryCard('Highest relative tool life', null, 'Not available in selected records.'),
+    ];
+    summaryRoot.innerHTML = cards.join('');
+  }
+
+  function renderNotice() {
+    if (!skippedIds.length) return '';
+    return `
+      <div class="mb-4 rounded-xl border border-iso-m-amber/25 bg-iso-m-amber/10 px-4 py-3 flex items-start gap-2 text-sm text-on-surface-variant">
+        <span class="material-symbols-outlined text-iso-m-amber shrink-0" style="font-size:18px;">info</span>
+        <p><span class="font-bold text-on-surface">Skipped invalid tool ID${skippedIds.length > 1 ? 's' : ''}:</span> ${escapeHtml(skippedIds.join(', '))}</p>
+      </div>`;
+  }
+
+  function renderEmptyState(title, body) {
+    cardRoot.innerHTML = '';
+    matrixRoot.classList.remove('cmp-matrix', 'overflow-hidden');
+    matrixRoot.innerHTML = `
+      ${renderNotice()}
+      <div class="p-10 text-center">
+        <div class="mx-auto mb-4 w-12 h-12 rounded-full bg-surface-container-low border border-border-warm flex items-center justify-center">
+          <span class="material-symbols-outlined text-outline">fact_check</span>
+        </div>
+        <h2 class="font-section-heading text-xl text-primary mb-2">${escapeHtml(title)}</h2>
+        <p class="text-sm text-on-surface-variant max-w-xl mx-auto">${escapeHtml(body)}</p>
+        <a href="tools-directory.html" class="inline-flex items-center gap-2 mt-6 bg-primary text-white font-bold px-5 py-2.5 rounded-xl hover:-translate-y-0.5 transition-all">
+          Open catalog
+          <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+        </a>
+      </div>`;
+  }
+
+  function renderRow(tools, label, cells, sublabel = '') {
+    const labelMarkup = sublabel
+      ? `<div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center"><span>${escapeHtml(label)}</span><span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">${escapeHtml(sublabel)}</span></div>`
+      : `<div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">${escapeHtml(label)}</div>`;
+    return `<div class="grid gap-0" style="${gridStyle(tools)}">${labelMarkup}${cells.join('')}</div>`;
+  }
+
+  function textCell(value, index, tools) {
+    return `<div class="${cellClass(index, tools)}text-sm text-on-surface flex items-center font-medium">${escapeHtml(value || '—')}</div>`;
+  }
+
+  function unavailableCell(index, tools) {
+    return `<div class="${cellClass(index, tools)}text-sm text-on-surface-variant flex items-center font-medium">—</div>`;
+  }
+
+  function isoCell(tool, index, tools) {
+    return `<div class="${cellClass(index, tools)}flex items-center gap-1.5"><span class="ta-iso-badge ta-iso-${escapeHtml(tool.iso)}">ISO ${escapeHtml(tool.iso)}</span></div>`;
+  }
+
+  function rangeScale(tools, minKey, maxKey) {
+    const values = tools.flatMap((tool) => [Number(tool[minKey]), Number(tool[maxKey])]).filter(Number.isFinite);
+    if (!values.length) return { min: 0, max: 1 };
+    const min = Math.floor(Math.min(...values) * 100) / 100;
+    const max = Math.ceil(Math.max(...values) * 100) / 100;
+    return min === max ? { min: min - 1, max: max + 1 } : { min, max };
+  }
+
+  function rangeCell(tool, index, tools, minKey, maxKey, scale, unit) {
+    const min = Number(tool[minKey]);
+    const max = Number(tool[maxKey]);
+    if (!Number.isFinite(min) || !Number.isFinite(max)) return unavailableCell(index, tools);
+    const span = scale.max - scale.min;
+    const left = clamp(((min - scale.min) / span) * 100, 0, 100);
+    const width = clamp(((max - min) / span) * 100, 0, 100 - left);
+    return `
+      <div class="${cellClass(index, tools)}flex items-center">
+        <div class="cmp-range">
+          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:${left.toFixed(1)}%;width:${Math.max(width, 2).toFixed(1)}%;"></div></div>
+          <div class="cmp-range-values"><span>${fmtNumber(min)}</span><span>${fmtNumber(max)} <span class="cmp-unit">${escapeHtml(unit)}</span></span></div>
+        </div>
+      </div>`;
+  }
+
+  function lifeCell(tool, index, tools) {
+    const life = clamp(Number(tool.lifeRel) || 0, 0, 5);
+    const labels = ['Unavailable', 'Very low', 'Low', 'Medium', 'Medium-High', 'High'];
+    const pips = Array.from({ length: 5 }, (_, i) => `<span class="cmp-pip${i < life ? ' on' : ''}"></span>`).join('');
+    return `<div class="${cellClass(index, tools)}flex items-center gap-3"><div class="cmp-pips">${pips}</div><span class="text-xs font-medium text-on-surface-variant">${labels[life]}</span></div>`;
+  }
+
+  function costCell(tool, index, tools) {
+    const cost = clamp(Number(tool.costTier) || 0, 0, 4);
+    const euros = Array.from({ length: 4 }, (_, i) => `<span class="${i < cost ? 'on' : 'off'}">€</span>`).join('');
+    const estimated = tool.economicsEstimated ? ' <span class="text-[10px] text-outline">(est.)</span>' : '';
+    return `<div class="${cellClass(index, tools)}flex items-center gap-3"><span class="cmp-cost">${euros}</span><span class="text-xs text-on-surface-variant">${cost}/4${estimated}</span></div>`;
+  }
+
+  function confidenceCell(tool, index, tools) {
+    const trust = tool.trust || {};
+    const score = clamp(Number(trust.confidence_score ?? tool.confidence) || 0, 0, 100);
+    const status = trust.validation_status || (score >= 90 ? 'verified' : score >= 80 ? 'partially_verified' : 'estimated');
+    const colorClass = status === 'verified' ? 'text-iso-n-green' : status === 'partially_verified' ? 'text-iso-m-amber' : 'text-iso-k-red';
+    const barClass = status === 'verified' ? 'bg-iso-n-green' : status === 'partially_verified' ? 'bg-iso-m-amber' : 'bg-iso-k-red';
+    return `
+      <div class="${cellClass(index, tools)}flex items-center gap-3">
+        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden shrink-0">
+          <div class="h-full ${barClass}" style="width:${score}%;"></div>
+        </div>
+        <span class="font-technical-data text-sm font-bold text-ink-text">${score}%</span>
+        <span class="flex items-center gap-1 text-xs font-bold ${colorClass}">
+          <span class="material-symbols-outlined" style="font-size:13px;">verified</span> ${escapeHtml(statusLabel[status] || sentenceCase(status))}
+        </span>
+      </div>`;
+  }
+
+  function sourceCell(tool, index, tools) {
+    const trust = tool.trust || {};
+    const source = sourceTierLabel[trust.source_tier] || trust.source_name || tool.source || '—';
+    const checked = trust.last_checked ? String(trust.last_checked).slice(0, 7) : (tool.lastVerified || '—');
+    return `<div class="${cellClass(index, tools)}flex flex-col gap-0.5"><span class="text-xs font-bold text-on-surface">${escapeHtml(source)}</span><span class="text-[10px] text-on-surface-variant">${escapeHtml(tool.brand)} · ${escapeHtml(checked)}</span></div>`;
+  }
+
+  function riskFlagsCell(tool, index, tools) {
+    const flags = tool.trust?.risk_flags || [];
+    if (!flags.length) {
+      return `<div class="${cellClass(index, tools)}flex items-center"><span class="text-xs text-on-surface-variant">None</span></div>`;
+    }
+    const chips = flags.map((flag) => `<span class="px-2 py-1 rounded-full bg-iso-m-amber/15 text-iso-m-amber text-[10px] font-bold tracking-widest uppercase">${escapeHtml(riskLabel[flag] || sentenceCase(flag))}</span>`).join('');
+    return `<div class="${cellClass(index, tools)}flex flex-wrap items-center gap-1.5">${chips}</div>`;
+  }
+
+  function renderMatrix(tools) {
+    matrixRoot.classList.add('cmp-matrix', 'overflow-hidden');
+    const vcScale = rangeScale(tools, 'vcMin', 'vcMax');
+    const feedScale = rangeScale(tools, 'fMin', 'fMax');
+    const depthScale = rangeScale(tools, 'apMin', 'apMax');
+    const rows = [
+      renderRow(tools, 'Tool type', tools.map((tool, index) => textCell(sentenceCase(tool.tool_type || tool.family), index, tools))),
+      renderRow(tools, 'Geometry', tools.map((_, index) => unavailableCell(index, tools))),
+      renderRow(tools, 'Grade', tools.map((tool, index) => textCell(tool.grade, index, tools))),
+      renderRow(tools, 'Coating', tools.map((_, index) => unavailableCell(index, tools))),
+      renderRow(tools, 'ISO material group', tools.map(isoCell)),
+      renderRow(tools, 'Operation', tools.map((tool, index) => textCell(tool.op, index, tools))),
+      renderRow(tools, 'Vc envelope', tools.map((tool, index) => rangeCell(tool, index, tools, 'vcMin', 'vcMax', vcScale, 'm/min')), `scale ${fmtNumber(vcScale.min)}-${fmtNumber(vcScale.max)} m/min`),
+      renderRow(tools, 'Feed envelope', tools.map((tool, index) => rangeCell(tool, index, tools, 'fMin', 'fMax', feedScale, 'mm/rev')), `scale ${fmtNumber(feedScale.min)}-${fmtNumber(feedScale.max)} mm/rev`),
+      renderRow(tools, 'Depth envelope', tools.map((tool, index) => rangeCell(tool, index, tools, 'apMin', 'apMax', depthScale, 'mm')), `scale ${fmtNumber(depthScale.min)}-${fmtNumber(depthScale.max)} mm`),
+      renderRow(tools, 'Interrupted cut', tools.map((_, index) => unavailableCell(index, tools))),
+      renderRow(tools, 'Tool life', tools.map(lifeCell), '5-point relative'),
+      renderRow(tools, 'Cost tier', tools.map(costCell), 'estimated from published ranges'),
+      renderRow(tools, 'Risk level', tools.map((_, index) => unavailableCell(index, tools))),
+      renderRow(tools, 'Best use case', tools.map((tool, index) => textCell(tool.bestFor, index, tools))),
+      renderRow(tools, 'Avoid when', tools.map((_, index) => unavailableCell(index, tools))),
+      renderRow(tools, 'Data confidence', tools.map(confidenceCell)),
+      renderRow(tools, 'Source', tools.map(sourceCell)),
+      renderRow(tools, 'Data risks', tools.map(riskFlagsCell)),
+    ];
+    matrixRoot.innerHTML = renderNotice() + rows.join('');
+  }
+
+  const selection = selectedTools();
+  const tools = selection.tools;
+  if (!tools.length) {
+    renderEmptyState(selection.emptyTitle, selection.emptyBody);
+    renderSummary([]);
+    return;
+  }
+  renderToolCards(tools);
+  renderMatrix(tools);
+  renderSummary(tools);
+})();
+</script>
 <script src="page-switcher.js"></script>
 <script src="advisor-ai-widget.js"></script>
 </body></html>

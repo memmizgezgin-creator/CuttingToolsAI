@@ -1,0 +1,11 @@
+claude-extract run: run-1780220460007
+PDF: iscar_special_tailored_tools_2025.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-31T09:41:04.900Z
+
+Total records extracted: 0
+Auto-approved (conf >= 85): 0
+Review required (conf < 85): 0
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/iscar-special-tailored-tools-2025-pdf/run-1780220460007

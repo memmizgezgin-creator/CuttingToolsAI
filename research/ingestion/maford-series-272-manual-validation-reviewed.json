@@ -1,0 +1,1483 @@
+{
+  "source_input": "/Users/muratonder/Desktop/ToolAdvisor/research/ingestion/maford-series-272-manual-validation-sample.json",
+  "generated_at": "2026-05-30T10:42:33.731Z",
+  "review_method": "manual_sample_comparison_against_source_pdf_table",
+  "review_summary": {
+    "reviewed_records": 13,
+    "passed_records": 13,
+    "failed_records": 0,
+    "uncertain_records": 0,
+    "pages_reviewed": [
+      11,
+      20,
+      21,
+      32
+    ],
+    "row_alignment_concerns": 0,
+    "note_about_even_pages": "Even pages 20 and 32 have horizontal page offset relative to odd pages, but row values align with their own shifted headers.",
+    "safe_for_validation_pass_script": true,
+    "safe_for_PRODUCT_DB_merge": false
+  },
+  "restrictions": {
+    "product_db_merge": false,
+    "ai_used": false,
+    "frontend_changes": false,
+    "series_scope": "272"
+  },
+  "samples": [
+    {
+      "sample_id": "maford-272-sample-001",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 11,
+      "catalog_page": 386,
+      "row_index": 1,
+      "tool_no": "27201300",
+      "edp": "03000",
+      "raw_fields": {
+        "d1_diameter_inch": null,
+        "d1_diameter_wire": null,
+        "d1_diameter_mm": null,
+        "d1_diameter_decimal": "0.0130",
+        "d2_shank_inch": "0.0130",
+        "d2_shank_mm": null,
+        "l1_oal_inch": "1-1/2",
+        "l1_oal_mm": null,
+        "l2_flute_length_inch": "3/16",
+        "l2_flute_length_mm": null,
+        "flutes": "4",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27201300",
+          "03000",
+          "0.0130",
+          "0.0130",
+          "1-1/2",
+          "3/16",
+          "4"
+        ],
+        "raw_y": 621.8,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27201300",
+        "edp": "03000",
+        "diameter": {
+          "d1_diameter_inch": null,
+          "d1_diameter_wire": null,
+          "d1_diameter_mm": null,
+          "d1_diameter_decimal_inch": {
+            "value": "0.0130",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": {
+            "value": "3/16",
+            "unit": "inch",
+            "source_field": "l2_flute_length_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "overall_length": {
+          "inch": {
+            "value": "1-1/2",
+            "unit": "inch",
+            "source_field": "l1_oal_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.0130",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "flutes": {
+          "value": "4",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "inch",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    },
+    {
+      "sample_id": "maford-272-sample-002",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 11,
+      "catalog_page": 386,
+      "row_index": 2,
+      "tool_no": "27201350",
+      "edp": "01001",
+      "raw_fields": {
+        "d1_diameter_inch": null,
+        "d1_diameter_wire": "80",
+        "d1_diameter_mm": null,
+        "d1_diameter_decimal": "0.0135",
+        "d2_shank_inch": "0.0135",
+        "d2_shank_mm": null,
+        "l1_oal_inch": "1-1/2",
+        "l1_oal_mm": null,
+        "l2_flute_length_inch": "3/16",
+        "l2_flute_length_mm": null,
+        "flutes": "4",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27201350",
+          "01001",
+          "80",
+          "0.0135",
+          "0.0135",
+          "1-1/2",
+          "3/16",
+          "4"
+        ],
+        "raw_y": 608.3,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27201350",
+        "edp": "01001",
+        "diameter": {
+          "d1_diameter_inch": null,
+          "d1_diameter_wire": {
+            "value": "80",
+            "unit": "wire_size",
+            "source_field": "d1_diameter_wire",
+            "conversion_applied": false
+          },
+          "d1_diameter_mm": null,
+          "d1_diameter_decimal_inch": {
+            "value": "0.0135",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": {
+            "value": "3/16",
+            "unit": "inch",
+            "source_field": "l2_flute_length_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "overall_length": {
+          "inch": {
+            "value": "1-1/2",
+            "unit": "inch",
+            "source_field": "l1_oal_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.0135",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "flutes": {
+          "value": "4",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "inch",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    },
+    {
+      "sample_id": "maford-272-sample-003",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 11,
+      "catalog_page": 386,
+      "row_index": 3,
+      "tool_no": "27201380",
+      "edp": "01005",
+      "raw_fields": {
+        "d1_diameter_inch": null,
+        "d1_diameter_wire": null,
+        "d1_diameter_mm": "0.35",
+        "d1_diameter_decimal": "0.0138",
+        "d2_shank_inch": "0.0138",
+        "d2_shank_mm": "0.35",
+        "l1_oal_inch": null,
+        "l1_oal_mm": "38",
+        "l2_flute_length_inch": null,
+        "l2_flute_length_mm": "5.0",
+        "flutes": "4",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27201380",
+          "01005",
+          "0.35",
+          "0.0138",
+          "0.0138",
+          "0.35",
+          "38",
+          "5.0",
+          "4"
+        ],
+        "raw_y": 594.9,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27201380",
+        "edp": "01005",
+        "diameter": {
+          "d1_diameter_inch": null,
+          "d1_diameter_wire": null,
+          "d1_diameter_mm": {
+            "value": "0.35",
+            "unit": "mm",
+            "source_field": "d1_diameter_mm",
+            "conversion_applied": false
+          },
+          "d1_diameter_decimal_inch": {
+            "value": "0.0138",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": null,
+          "mm": {
+            "value": "5.0",
+            "unit": "mm",
+            "source_field": "l2_flute_length_mm",
+            "conversion_applied": false
+          }
+        },
+        "overall_length": {
+          "inch": null,
+          "mm": {
+            "value": "38",
+            "unit": "mm",
+            "source_field": "l1_oal_mm",
+            "conversion_applied": false
+          }
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.0138",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": {
+            "value": "0.35",
+            "unit": "mm",
+            "source_field": "d2_shank_mm",
+            "conversion_applied": false
+          }
+        },
+        "flutes": {
+          "value": "4",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "mixed",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    },
+    {
+      "sample_id": "maford-272-sample-004",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 20,
+      "catalog_page": 395,
+      "row_index": 43,
+      "tool_no": "27217910",
+      "edp": "01613",
+      "raw_fields": {
+        "d1_diameter_inch": null,
+        "d1_diameter_wire": null,
+        "d1_diameter_mm": "4.55",
+        "d1_diameter_decimal": "0.1791",
+        "d2_shank_inch": "0.1740",
+        "d2_shank_mm": "4.42",
+        "l1_oal_inch": null,
+        "l1_oal_mm": "70",
+        "l2_flute_length_inch": null,
+        "l2_flute_length_mm": "22.0",
+        "flutes": "4",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27217910",
+          "01613",
+          "4.55",
+          "0.1791",
+          "0.1740",
+          "4.42",
+          "70",
+          "22.0",
+          "4"
+        ],
+        "raw_y": 97.4,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27217910",
+        "edp": "01613",
+        "diameter": {
+          "d1_diameter_inch": null,
+          "d1_diameter_wire": null,
+          "d1_diameter_mm": {
+            "value": "4.55",
+            "unit": "mm",
+            "source_field": "d1_diameter_mm",
+            "conversion_applied": false
+          },
+          "d1_diameter_decimal_inch": {
+            "value": "0.1791",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": null,
+          "mm": {
+            "value": "22.0",
+            "unit": "mm",
+            "source_field": "l2_flute_length_mm",
+            "conversion_applied": false
+          }
+        },
+        "overall_length": {
+          "inch": null,
+          "mm": {
+            "value": "70",
+            "unit": "mm",
+            "source_field": "l1_oal_mm",
+            "conversion_applied": false
+          }
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.1740",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": {
+            "value": "4.42",
+            "unit": "mm",
+            "source_field": "d2_shank_mm",
+            "conversion_applied": false
+          }
+        },
+        "flutes": {
+          "value": "4",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "mixed",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    },
+    {
+      "sample_id": "maford-272-sample-005",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 20,
+      "catalog_page": 395,
+      "row_index": 44,
+      "tool_no": "27217950",
+      "edp": "03256",
+      "raw_fields": {
+        "d1_diameter_inch": null,
+        "d1_diameter_wire": null,
+        "d1_diameter_mm": null,
+        "d1_diameter_decimal": "0.1795",
+        "d2_shank_inch": "0.1740",
+        "d2_shank_mm": null,
+        "l1_oal_inch": "2-3/4",
+        "l1_oal_mm": null,
+        "l2_flute_length_inch": "7/8",
+        "l2_flute_length_mm": null,
+        "flutes": "4",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27217950",
+          "03256",
+          "0.1795",
+          "0.1740",
+          "2-3/4",
+          "7/8",
+          "4"
+        ],
+        "raw_y": 83.9,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27217950",
+        "edp": "03256",
+        "diameter": {
+          "d1_diameter_inch": null,
+          "d1_diameter_wire": null,
+          "d1_diameter_mm": null,
+          "d1_diameter_decimal_inch": {
+            "value": "0.1795",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": {
+            "value": "7/8",
+            "unit": "inch",
+            "source_field": "l2_flute_length_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "overall_length": {
+          "inch": {
+            "value": "2-3/4",
+            "unit": "inch",
+            "source_field": "l1_oal_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.1740",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "flutes": {
+          "value": "4",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "inch",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    },
+    {
+      "sample_id": "maford-272-sample-006",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 21,
+      "catalog_page": 396,
+      "row_index": 1,
+      "tool_no": "27218000",
+      "edp": "01617",
+      "raw_fields": {
+        "d1_diameter_inch": null,
+        "d1_diameter_wire": "15",
+        "d1_diameter_mm": null,
+        "d1_diameter_decimal": "0.1800",
+        "d2_shank_inch": "0.1740",
+        "d2_shank_mm": null,
+        "l1_oal_inch": "2-3/4",
+        "l1_oal_mm": null,
+        "l2_flute_length_inch": "7/8",
+        "l2_flute_length_mm": null,
+        "flutes": "4",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27218000",
+          "01617",
+          "15",
+          "0.1800",
+          "0.1740",
+          "2-3/4",
+          "7/8",
+          "4"
+        ],
+        "raw_y": 621.8,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27218000",
+        "edp": "01617",
+        "diameter": {
+          "d1_diameter_inch": null,
+          "d1_diameter_wire": {
+            "value": "15",
+            "unit": "wire_size",
+            "source_field": "d1_diameter_wire",
+            "conversion_applied": false
+          },
+          "d1_diameter_mm": null,
+          "d1_diameter_decimal_inch": {
+            "value": "0.1800",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": {
+            "value": "7/8",
+            "unit": "inch",
+            "source_field": "l2_flute_length_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "overall_length": {
+          "inch": {
+            "value": "2-3/4",
+            "unit": "inch",
+            "source_field": "l1_oal_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.1740",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "flutes": {
+          "value": "4",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "inch",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    },
+    {
+      "sample_id": "maford-272-sample-007",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 32,
+      "catalog_page": 407,
+      "row_index": 12,
+      "tool_no": "27260940",
+      "edp": "02027",
+      "raw_fields": {
+        "d1_diameter_inch": "39/64",
+        "d1_diameter_wire": null,
+        "d1_diameter_mm": null,
+        "d1_diameter_decimal": "0.6094",
+        "d2_shank_inch": "0.5950",
+        "d2_shank_mm": null,
+        "l1_oal_inch": "4",
+        "l1_oal_mm": null,
+        "l2_flute_length_inch": "1-3/4",
+        "l2_flute_length_mm": null,
+        "flutes": "6",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27260940",
+          "02027",
+          "39/64",
+          "0.6094",
+          "0.5950",
+          "4",
+          "1-3/4",
+          "6"
+        ],
+        "raw_y": 514.7,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27260940",
+        "edp": "02027",
+        "diameter": {
+          "d1_diameter_inch": {
+            "value": "39/64",
+            "unit": "inch",
+            "source_field": "d1_diameter_inch",
+            "conversion_applied": false
+          },
+          "d1_diameter_wire": null,
+          "d1_diameter_mm": null,
+          "d1_diameter_decimal_inch": {
+            "value": "0.6094",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": {
+            "value": "1-3/4",
+            "unit": "inch",
+            "source_field": "l2_flute_length_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "overall_length": {
+          "inch": {
+            "value": "4",
+            "unit": "inch",
+            "source_field": "l1_oal_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.5950",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "flutes": {
+          "value": "6",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "inch",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    },
+    {
+      "sample_id": "maford-272-sample-008",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 32,
+      "catalog_page": 407,
+      "row_index": 13,
+      "tool_no": "27262500",
+      "edp": "02029",
+      "raw_fields": {
+        "d1_diameter_inch": "5/8",
+        "d1_diameter_wire": null,
+        "d1_diameter_mm": null,
+        "d1_diameter_decimal": "0.6250",
+        "d2_shank_inch": "0.5950",
+        "d2_shank_mm": null,
+        "l1_oal_inch": "4",
+        "l1_oal_mm": null,
+        "l2_flute_length_inch": "1-3/4",
+        "l2_flute_length_mm": null,
+        "flutes": "6",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27262500",
+          "02029",
+          "5/8",
+          "0.6250",
+          "0.5950",
+          "4",
+          "1-3/4",
+          "6"
+        ],
+        "raw_y": 501.2,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27262500",
+        "edp": "02029",
+        "diameter": {
+          "d1_diameter_inch": {
+            "value": "5/8",
+            "unit": "inch",
+            "source_field": "d1_diameter_inch",
+            "conversion_applied": false
+          },
+          "d1_diameter_wire": null,
+          "d1_diameter_mm": null,
+          "d1_diameter_decimal_inch": {
+            "value": "0.6250",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": {
+            "value": "1-3/4",
+            "unit": "inch",
+            "source_field": "l2_flute_length_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "overall_length": {
+          "inch": {
+            "value": "4",
+            "unit": "inch",
+            "source_field": "l1_oal_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.5950",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": null
+        },
+        "flutes": {
+          "value": "6",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "inch",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    },
+    {
+      "sample_id": "maford-272-sample-009",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 32,
+      "catalog_page": 407,
+      "row_index": 14,
+      "tool_no": "27262990",
+      "edp": "02031",
+      "raw_fields": {
+        "d1_diameter_inch": null,
+        "d1_diameter_wire": null,
+        "d1_diameter_mm": "16.00",
+        "d1_diameter_decimal": "0.6299",
+        "d2_shank_inch": "0.5950",
+        "d2_shank_mm": "15.11",
+        "l1_oal_inch": null,
+        "l1_oal_mm": "102",
+        "l2_flute_length_inch": null,
+        "l2_flute_length_mm": "44.5",
+        "flutes": "6",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27262990",
+          "02031",
+          "16.00",
+          "0.6299",
+          "0.5950",
+          "15.11",
+          "102",
+          "44.5",
+          "6"
+        ],
+        "raw_y": 487.8,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27262990",
+        "edp": "02031",
+        "diameter": {
+          "d1_diameter_inch": null,
+          "d1_diameter_wire": null,
+          "d1_diameter_mm": {
+            "value": "16.00",
+            "unit": "mm",
+            "source_field": "d1_diameter_mm",
+            "conversion_applied": false
+          },
+          "d1_diameter_decimal_inch": {
+            "value": "0.6299",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": null,
+          "mm": {
+            "value": "44.5",
+            "unit": "mm",
+            "source_field": "l2_flute_length_mm",
+            "conversion_applied": false
+          }
+        },
+        "overall_length": {
+          "inch": null,
+          "mm": {
+            "value": "102",
+            "unit": "mm",
+            "source_field": "l1_oal_mm",
+            "conversion_applied": false
+          }
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.5950",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": {
+            "value": "15.11",
+            "unit": "mm",
+            "source_field": "d2_shank_mm",
+            "conversion_applied": false
+          }
+        },
+        "flutes": {
+          "value": "6",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "mixed",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    },
+    {
+      "sample_id": "maford-272-sample-010",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 11,
+      "catalog_page": 386,
+      "row_index": 9,
+      "tool_no": "27201570",
+      "edp": "01017",
+      "raw_fields": {
+        "d1_diameter_inch": null,
+        "d1_diameter_wire": null,
+        "d1_diameter_mm": "0.40",
+        "d1_diameter_decimal": "0.0157",
+        "d2_shank_inch": "0.0157",
+        "d2_shank_mm": "0.40",
+        "l1_oal_inch": null,
+        "l1_oal_mm": "38",
+        "l2_flute_length_inch": null,
+        "l2_flute_length_mm": "5.0",
+        "flutes": "4",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27201570",
+          "01017",
+          "0.40",
+          "0.0157",
+          "0.0157",
+          "0.40",
+          "38",
+          "5.0",
+          "4"
+        ],
+        "raw_y": 514.1,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27201570",
+        "edp": "01017",
+        "diameter": {
+          "d1_diameter_inch": null,
+          "d1_diameter_wire": null,
+          "d1_diameter_mm": {
+            "value": "0.40",
+            "unit": "mm",
+            "source_field": "d1_diameter_mm",
+            "conversion_applied": false
+          },
+          "d1_diameter_decimal_inch": {
+            "value": "0.0157",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": null,
+          "mm": {
+            "value": "5.0",
+            "unit": "mm",
+            "source_field": "l2_flute_length_mm",
+            "conversion_applied": false
+          }
+        },
+        "overall_length": {
+          "inch": null,
+          "mm": {
+            "value": "38",
+            "unit": "mm",
+            "source_field": "l1_oal_mm",
+            "conversion_applied": false
+          }
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.0157",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": {
+            "value": "0.40",
+            "unit": "mm",
+            "source_field": "d2_shank_mm",
+            "conversion_applied": false
+          }
+        },
+        "flutes": {
+          "value": "4",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "mixed",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    },
+    {
+      "sample_id": "maford-272-sample-011",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 11,
+      "catalog_page": 386,
+      "row_index": 14,
+      "tool_no": "27201770",
+      "edp": "01025",
+      "raw_fields": {
+        "d1_diameter_inch": null,
+        "d1_diameter_wire": null,
+        "d1_diameter_mm": "0.45",
+        "d1_diameter_decimal": "0.0177",
+        "d2_shank_inch": "0.0177",
+        "d2_shank_mm": "0.45",
+        "l1_oal_inch": null,
+        "l1_oal_mm": "38",
+        "l2_flute_length_inch": null,
+        "l2_flute_length_mm": "5.0",
+        "flutes": "4",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27201770",
+          "01025",
+          "0.45",
+          "0.0177",
+          "0.0177",
+          "0.45",
+          "38",
+          "5.0",
+          "4"
+        ],
+        "raw_y": 446.8,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27201770",
+        "edp": "01025",
+        "diameter": {
+          "d1_diameter_inch": null,
+          "d1_diameter_wire": null,
+          "d1_diameter_mm": {
+            "value": "0.45",
+            "unit": "mm",
+            "source_field": "d1_diameter_mm",
+            "conversion_applied": false
+          },
+          "d1_diameter_decimal_inch": {
+            "value": "0.0177",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": null,
+          "mm": {
+            "value": "5.0",
+            "unit": "mm",
+            "source_field": "l2_flute_length_mm",
+            "conversion_applied": false
+          }
+        },
+        "overall_length": {
+          "inch": null,
+          "mm": {
+            "value": "38",
+            "unit": "mm",
+            "source_field": "l1_oal_mm",
+            "conversion_applied": false
+          }
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.0177",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": {
+            "value": "0.45",
+            "unit": "mm",
+            "source_field": "d2_shank_mm",
+            "conversion_applied": false
+          }
+        },
+        "flutes": {
+          "value": "4",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "mixed",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    },
+    {
+      "sample_id": "maford-272-sample-012",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 11,
+      "catalog_page": 386,
+      "row_index": 19,
+      "tool_no": "27201970",
+      "edp": "01033",
+      "raw_fields": {
+        "d1_diameter_inch": null,
+        "d1_diameter_wire": null,
+        "d1_diameter_mm": "0.50",
+        "d1_diameter_decimal": "0.0197",
+        "d2_shank_inch": "0.0197",
+        "d2_shank_mm": "0.50",
+        "l1_oal_inch": null,
+        "l1_oal_mm": "38",
+        "l2_flute_length_inch": null,
+        "l2_flute_length_mm": "5.0",
+        "flutes": "4",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27201970",
+          "01033",
+          "0.50",
+          "0.0197",
+          "0.0197",
+          "0.50",
+          "38",
+          "5.0",
+          "4"
+        ],
+        "raw_y": 379.5,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27201970",
+        "edp": "01033",
+        "diameter": {
+          "d1_diameter_inch": null,
+          "d1_diameter_wire": null,
+          "d1_diameter_mm": {
+            "value": "0.50",
+            "unit": "mm",
+            "source_field": "d1_diameter_mm",
+            "conversion_applied": false
+          },
+          "d1_diameter_decimal_inch": {
+            "value": "0.0197",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": null,
+          "mm": {
+            "value": "5.0",
+            "unit": "mm",
+            "source_field": "l2_flute_length_mm",
+            "conversion_applied": false
+          }
+        },
+        "overall_length": {
+          "inch": null,
+          "mm": {
+            "value": "38",
+            "unit": "mm",
+            "source_field": "l1_oal_mm",
+            "conversion_applied": false
+          }
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.0197",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": {
+            "value": "0.50",
+            "unit": "mm",
+            "source_field": "d2_shank_mm",
+            "conversion_applied": false
+          }
+        },
+        "flutes": {
+          "value": "4",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "mixed",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    },
+    {
+      "sample_id": "maford-272-sample-013",
+      "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+      "pdf_page": 11,
+      "catalog_page": 386,
+      "row_index": 24,
+      "tool_no": "27202170",
+      "edp": "01045",
+      "raw_fields": {
+        "d1_diameter_inch": null,
+        "d1_diameter_wire": null,
+        "d1_diameter_mm": "0.55",
+        "d1_diameter_decimal": "0.0217",
+        "d2_shank_inch": "0.0217",
+        "d2_shank_mm": "0.55",
+        "l1_oal_inch": null,
+        "l1_oal_mm": "38",
+        "l2_flute_length_inch": null,
+        "l2_flute_length_mm": "6.5",
+        "flutes": "4",
+        "lead_angle": 45,
+        "cutting_direction": "RHC",
+        "raw_row": [
+          "27202170",
+          "01045",
+          "0.55",
+          "0.0217",
+          "0.0217",
+          "0.55",
+          "38",
+          "6.5",
+          "4"
+        ],
+        "raw_y": 312.1,
+        "warnings": []
+      },
+      "normalized_draft_fields": {
+        "brand": "M.A. Ford",
+        "product_family": "Reamer",
+        "series": "272",
+        "product_type": "TrueSize Carbide Reamer Straight Flute",
+        "tool_no": "27202170",
+        "edp": "01045",
+        "diameter": {
+          "d1_diameter_inch": null,
+          "d1_diameter_wire": null,
+          "d1_diameter_mm": {
+            "value": "0.55",
+            "unit": "mm",
+            "source_field": "d1_diameter_mm",
+            "conversion_applied": false
+          },
+          "d1_diameter_decimal_inch": {
+            "value": "0.0217",
+            "unit": "inch_decimal",
+            "source_field": "d1_diameter_decimal",
+            "conversion_applied": false
+          }
+        },
+        "flute_length": {
+          "inch": null,
+          "mm": {
+            "value": "6.5",
+            "unit": "mm",
+            "source_field": "l2_flute_length_mm",
+            "conversion_applied": false
+          }
+        },
+        "overall_length": {
+          "inch": null,
+          "mm": {
+            "value": "38",
+            "unit": "mm",
+            "source_field": "l1_oal_mm",
+            "conversion_applied": false
+          }
+        },
+        "shank_diameter": {
+          "inch": {
+            "value": "0.0217",
+            "unit": "inch",
+            "source_field": "d2_shank_inch",
+            "conversion_applied": false
+          },
+          "mm": {
+            "value": "0.55",
+            "unit": "mm",
+            "source_field": "d2_shank_mm",
+            "conversion_applied": false
+          }
+        },
+        "flutes": {
+          "value": "4",
+          "source_field": "flutes",
+          "conversion_applied": false
+        },
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree",
+          "source_field": "lead_angle",
+          "conversion_applied": false
+        },
+        "cutting_direction": "RHC",
+        "coating_or_surface": null,
+        "material_grade_if_present": null,
+        "unit_system": "mixed",
+        "normalization_status": "normalized_cleanly"
+      },
+      "normalization_warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "validation_status": "valid_manual_sample",
+      "reviewer_notes": "Compared against source PDF/table. tool_no, edp, dimensional fields and flutes matched. No row alignment concern."
+    }
+  ]
+}

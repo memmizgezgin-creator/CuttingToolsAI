@@ -1,0 +1,152 @@
+[
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CoroMill® Plura",
+    "article_number": null,
+    "family": "Milling tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 13,
+    "confidence": 60,
+    "confidence_reason": "Product name present but no article number, dimensions, grades, or cutting data available",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "Solid round tools catalogue 26.1_C-1040-400 (en-gb).pdf",
+    "run_id": "run-1780177823394",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T21:51:15.999Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CoroMill® Dura",
+    "article_number": null,
+    "family": "Milling tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1730",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 15,
+    "confidence": 60,
+    "confidence_reason": "Product name and grade present; material suitability inferred from aluminium mention; no article number or cutting data",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "Solid round tools catalogue 26.1_C-1040-400 (en-gb).pdf",
+    "run_id": "run-1780177823394",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T21:51:16.000Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CoroMill® Dura",
+    "article_number": null,
+    "family": "Milling tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "H10F",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 15,
+    "confidence": 60,
+    "confidence_reason": "Product name and grade present; uncoated variant for aluminium; no article number or cutting data",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "Solid round tools catalogue 26.1_C-1040-400 (en-gb).pdf",
+    "run_id": "run-1780177823394",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T21:51:16.000Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CoroMill® 316",
+    "article_number": null,
+    "family": "Milling tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 13,
+    "confidence": 60,
+    "confidence_reason": "Product name present but no article number, dimensions, grades, or cutting data available",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "Solid round tools catalogue 26.1_C-1040-400 (en-gb).pdf",
+    "run_id": "run-1780177823394",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-30T21:51:16.000Z"
+  }
+]

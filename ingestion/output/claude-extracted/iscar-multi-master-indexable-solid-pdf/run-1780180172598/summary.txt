@@ -1,0 +1,11 @@
+claude-extract run: run-1780180172598
+PDF: iscar_multi_master_indexable_solid.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-30T22:35:45.792Z
+
+Total records extracted: 5
+Auto-approved (conf >= 85): 0
+Review required (conf < 85): 5
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/iscar-multi-master-indexable-solid-pdf/run-1780180172598

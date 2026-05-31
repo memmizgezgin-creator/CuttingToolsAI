@@ -1,0 +1,2071 @@
+{
+  "source_input": "/Users/muratonder/Desktop/ToolAdvisor/research/ingestion/maford-series-272-product-candidates.json",
+  "adapter_schema": "/Users/muratonder/Desktop/ToolAdvisor/research/ingestion/non-insert-schema-adapter-plan.md",
+  "generated_at": "2026-05-30T11:03:11.543Z",
+  "restrictions": {
+    "product_db_merge": false,
+    "frontend_changes": false,
+    "ai_used": false,
+    "series_scope": "272"
+  },
+  "preview_record_count": 20,
+  "safe_for_direct_PRODUCT_DB_merge": false,
+  "product_db_untouched": true,
+  "frontend_files_untouched": true,
+  "warning_counts": {
+    "coating_or_surface_not_present_in_source_row": 20,
+    "material_grade_not_present_in_source_row": 20,
+    "mixed_unit_fields_preserved_without_conversion": 8
+  },
+  "records": [
+    {
+      "id": "preview-maford-272-001-27201300-03000",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27201300",
+      "manufacturer_order_code": "27201300",
+      "tool_no": "27201300",
+      "edp": "03000",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27201300",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": null,
+          "decimal_inch": "0.0130",
+          "source_fields": [
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.0130",
+          "mm": null,
+          "source_fields": [
+            "d2_shank_inch"
+          ]
+        },
+        "L1": {
+          "inch": "1-1/2",
+          "mm": null,
+          "source_fields": [
+            "l1_oal_inch"
+          ]
+        },
+        "L2": {
+          "inch": "3/16",
+          "mm": null,
+          "source_fields": [
+            "l2_flute_length_inch"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "inch",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 11,
+        "catalog_page": 386,
+        "row_index": 1,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27201300",
+          "03000",
+          "0.0130",
+          "0.0130",
+          "1-1/2",
+          "3/16",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-002-27201350-01001",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27201350",
+      "manufacturer_order_code": "27201350",
+      "tool_no": "27201350",
+      "edp": "01001",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27201350",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": "80",
+          "mm": null,
+          "decimal_inch": "0.0135",
+          "source_fields": [
+            "d1_diameter_wire",
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.0135",
+          "mm": null,
+          "source_fields": [
+            "d2_shank_inch"
+          ]
+        },
+        "L1": {
+          "inch": "1-1/2",
+          "mm": null,
+          "source_fields": [
+            "l1_oal_inch"
+          ]
+        },
+        "L2": {
+          "inch": "3/16",
+          "mm": null,
+          "source_fields": [
+            "l2_flute_length_inch"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "inch",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 11,
+        "catalog_page": 386,
+        "row_index": 2,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27201350",
+          "01001",
+          "80",
+          "0.0135",
+          "0.0135",
+          "1-1/2",
+          "3/16",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-003-27201380-01005",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27201380",
+      "manufacturer_order_code": "27201380",
+      "tool_no": "27201380",
+      "edp": "01005",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27201380",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": "0.35",
+          "decimal_inch": "0.0138",
+          "source_fields": [
+            "d1_diameter_mm",
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.0138",
+          "mm": "0.35",
+          "source_fields": [
+            "d2_shank_inch",
+            "d2_shank_mm"
+          ]
+        },
+        "L1": {
+          "inch": null,
+          "mm": "38",
+          "source_fields": [
+            "l1_oal_mm"
+          ]
+        },
+        "L2": {
+          "inch": null,
+          "mm": "5.0",
+          "source_fields": [
+            "l2_flute_length_mm"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "mixed",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 11,
+        "catalog_page": 386,
+        "row_index": 3,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27201380",
+          "01005",
+          "0.35",
+          "0.0138",
+          "0.0138",
+          "0.35",
+          "38",
+          "5.0",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-004-27201400-03001",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27201400",
+      "manufacturer_order_code": "27201400",
+      "tool_no": "27201400",
+      "edp": "03001",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27201400",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": null,
+          "decimal_inch": "0.0140",
+          "source_fields": [
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.0140",
+          "mm": null,
+          "source_fields": [
+            "d2_shank_inch"
+          ]
+        },
+        "L1": {
+          "inch": "1-1/2",
+          "mm": null,
+          "source_fields": [
+            "l1_oal_inch"
+          ]
+        },
+        "L2": {
+          "inch": "3/16",
+          "mm": null,
+          "source_fields": [
+            "l2_flute_length_inch"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "inch",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 11,
+        "catalog_page": 386,
+        "row_index": 4,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27201400",
+          "03001",
+          "0.0140",
+          "0.0140",
+          "1-1/2",
+          "3/16",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-005-27201450-01009",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27201450",
+      "manufacturer_order_code": "27201450",
+      "tool_no": "27201450",
+      "edp": "01009",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27201450",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": "79",
+          "mm": null,
+          "decimal_inch": "0.0145",
+          "source_fields": [
+            "d1_diameter_wire",
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.0145",
+          "mm": null,
+          "source_fields": [
+            "d2_shank_inch"
+          ]
+        },
+        "L1": {
+          "inch": "1-1/2",
+          "mm": null,
+          "source_fields": [
+            "l1_oal_inch"
+          ]
+        },
+        "L2": {
+          "inch": "3/16",
+          "mm": null,
+          "source_fields": [
+            "l2_flute_length_inch"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "inch",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 11,
+        "catalog_page": 386,
+        "row_index": 5,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27201450",
+          "01009",
+          "79",
+          "0.0145",
+          "0.0145",
+          "1-1/2",
+          "3/16",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-006-27219050-03276",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27219050",
+      "manufacturer_order_code": "27219050",
+      "tool_no": "27219050",
+      "edp": "03276",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27219050",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": null,
+          "decimal_inch": "0.1905",
+          "source_fields": [
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.1820",
+          "mm": null,
+          "source_fields": [
+            "d2_shank_inch"
+          ]
+        },
+        "L1": {
+          "inch": "2-3/4",
+          "mm": null,
+          "source_fields": [
+            "l1_oal_inch"
+          ]
+        },
+        "L2": {
+          "inch": "7/8",
+          "mm": null,
+          "source_fields": [
+            "l2_flute_length_inch"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "inch",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 21,
+        "catalog_page": 396,
+        "row_index": 29,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27219050",
+          "03276",
+          "0.1905",
+          "0.1820",
+          "2-3/4",
+          "7/8",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-007-27219090-01653",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27219090",
+      "manufacturer_order_code": "27219090",
+      "tool_no": "27219090",
+      "edp": "01653",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27219090",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": "4.85",
+          "decimal_inch": "0.1909",
+          "source_fields": [
+            "d1_diameter_mm",
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.1820",
+          "mm": "4.62",
+          "source_fields": [
+            "d2_shank_inch",
+            "d2_shank_mm"
+          ]
+        },
+        "L1": {
+          "inch": null,
+          "mm": "70",
+          "source_fields": [
+            "l1_oal_mm"
+          ]
+        },
+        "L2": {
+          "inch": null,
+          "mm": "22.0",
+          "source_fields": [
+            "l2_flute_length_mm"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "mixed",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 21,
+        "catalog_page": 396,
+        "row_index": 30,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27219090",
+          "01653",
+          "4.85",
+          "0.1909",
+          "0.1820",
+          "4.62",
+          "70",
+          "22.0",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-008-27219100-01657",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27219100",
+      "manufacturer_order_code": "27219100",
+      "tool_no": "27219100",
+      "edp": "01657",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27219100",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": "11",
+          "mm": null,
+          "decimal_inch": "0.1910",
+          "source_fields": [
+            "d1_diameter_wire",
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.1820",
+          "mm": null,
+          "source_fields": [
+            "d2_shank_inch"
+          ]
+        },
+        "L1": {
+          "inch": "2-3/4",
+          "mm": null,
+          "source_fields": [
+            "l1_oal_inch"
+          ]
+        },
+        "L2": {
+          "inch": "7/8",
+          "mm": null,
+          "source_fields": [
+            "l2_flute_length_inch"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "inch",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 21,
+        "catalog_page": 396,
+        "row_index": 31,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27219100",
+          "01657",
+          "11",
+          "0.1910",
+          "0.1820",
+          "2-3/4",
+          "7/8",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-009-27219150-03277",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27219150",
+      "manufacturer_order_code": "27219150",
+      "tool_no": "27219150",
+      "edp": "03277",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27219150",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": null,
+          "decimal_inch": "0.1915",
+          "source_fields": [
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.1900",
+          "mm": null,
+          "source_fields": [
+            "d2_shank_inch"
+          ]
+        },
+        "L1": {
+          "inch": "3",
+          "mm": null,
+          "source_fields": [
+            "l1_oal_inch"
+          ]
+        },
+        "L2": {
+          "inch": "1",
+          "mm": null,
+          "source_fields": [
+            "l2_flute_length_inch"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "inch",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 21,
+        "catalog_page": 396,
+        "row_index": 32,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27219150",
+          "03277",
+          "0.1915",
+          "0.1900",
+          "3",
+          "1",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-010-27219200-03278",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27219200",
+      "manufacturer_order_code": "27219200",
+      "tool_no": "27219200",
+      "edp": "03278",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27219200",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": null,
+          "decimal_inch": "0.1920",
+          "source_fields": [
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.1900",
+          "mm": null,
+          "source_fields": [
+            "d2_shank_inch"
+          ]
+        },
+        "L1": {
+          "inch": "3",
+          "mm": null,
+          "source_fields": [
+            "l1_oal_inch"
+          ]
+        },
+        "L2": {
+          "inch": "1",
+          "mm": null,
+          "source_fields": [
+            "l2_flute_length_inch"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "inch",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 21,
+        "catalog_page": 396,
+        "row_index": 33,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27219200",
+          "03278",
+          "0.1920",
+          "0.1900",
+          "3",
+          "1",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-011-27259050-02023",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27259050",
+      "manufacturer_order_code": "27259050",
+      "tool_no": "27259050",
+      "edp": "02023",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27259050",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": "15.00",
+          "decimal_inch": "0.5905",
+          "source_fields": [
+            "d1_diameter_mm",
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.5650",
+          "mm": "14.35",
+          "source_fields": [
+            "d2_shank_inch",
+            "d2_shank_mm"
+          ]
+        },
+        "L1": {
+          "inch": null,
+          "mm": "102",
+          "source_fields": [
+            "l1_oal_mm"
+          ]
+        },
+        "L2": {
+          "inch": null,
+          "mm": "44.5",
+          "source_fields": [
+            "l2_flute_length_mm"
+          ]
+        },
+        "flutes": 6,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "mixed",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 32,
+        "catalog_page": 407,
+        "row_index": 10,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27259050",
+          "02023",
+          "15.00",
+          "0.5905",
+          "0.5650",
+          "14.35",
+          "102",
+          "44.5",
+          "6"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-012-27259380-02025",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27259380",
+      "manufacturer_order_code": "27259380",
+      "tool_no": "27259380",
+      "edp": "02025",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27259380",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": null,
+          "decimal_inch": "0.5938",
+          "source_fields": [
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.5650",
+          "mm": null,
+          "source_fields": [
+            "d2_shank_inch"
+          ]
+        },
+        "L1": {
+          "inch": "4",
+          "mm": null,
+          "source_fields": [
+            "l1_oal_inch"
+          ]
+        },
+        "L2": {
+          "inch": "1-3/4",
+          "mm": null,
+          "source_fields": [
+            "l2_flute_length_inch"
+          ]
+        },
+        "flutes": 6,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "inch",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 32,
+        "catalog_page": 407,
+        "row_index": 11,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27259380",
+          "02025",
+          "19/32",
+          "0.5938",
+          "0.5650",
+          "4",
+          "1-3/4",
+          "6"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-013-27260940-02027",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27260940",
+      "manufacturer_order_code": "27260940",
+      "tool_no": "27260940",
+      "edp": "02027",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27260940",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": null,
+          "decimal_inch": "0.6094",
+          "source_fields": [
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.5950",
+          "mm": null,
+          "source_fields": [
+            "d2_shank_inch"
+          ]
+        },
+        "L1": {
+          "inch": "4",
+          "mm": null,
+          "source_fields": [
+            "l1_oal_inch"
+          ]
+        },
+        "L2": {
+          "inch": "1-3/4",
+          "mm": null,
+          "source_fields": [
+            "l2_flute_length_inch"
+          ]
+        },
+        "flutes": 6,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "inch",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 32,
+        "catalog_page": 407,
+        "row_index": 12,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27260940",
+          "02027",
+          "39/64",
+          "0.6094",
+          "0.5950",
+          "4",
+          "1-3/4",
+          "6"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-014-27262500-02029",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27262500",
+      "manufacturer_order_code": "27262500",
+      "tool_no": "27262500",
+      "edp": "02029",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27262500",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": null,
+          "decimal_inch": "0.6250",
+          "source_fields": [
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.5950",
+          "mm": null,
+          "source_fields": [
+            "d2_shank_inch"
+          ]
+        },
+        "L1": {
+          "inch": "4",
+          "mm": null,
+          "source_fields": [
+            "l1_oal_inch"
+          ]
+        },
+        "L2": {
+          "inch": "1-3/4",
+          "mm": null,
+          "source_fields": [
+            "l2_flute_length_inch"
+          ]
+        },
+        "flutes": 6,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "inch",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 32,
+        "catalog_page": 407,
+        "row_index": 13,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27262500",
+          "02029",
+          "5/8",
+          "0.6250",
+          "0.5950",
+          "4",
+          "1-3/4",
+          "6"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-015-27262990-02031",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27262990",
+      "manufacturer_order_code": "27262990",
+      "tool_no": "27262990",
+      "edp": "02031",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27262990",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": "16.00",
+          "decimal_inch": "0.6299",
+          "source_fields": [
+            "d1_diameter_mm",
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.5950",
+          "mm": "15.11",
+          "source_fields": [
+            "d2_shank_inch",
+            "d2_shank_mm"
+          ]
+        },
+        "L1": {
+          "inch": null,
+          "mm": "102",
+          "source_fields": [
+            "l1_oal_mm"
+          ]
+        },
+        "L2": {
+          "inch": null,
+          "mm": "44.5",
+          "source_fields": [
+            "l2_flute_length_mm"
+          ]
+        },
+        "flutes": 6,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "mixed",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 32,
+        "catalog_page": 407,
+        "row_index": 14,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27262990",
+          "02031",
+          "16.00",
+          "0.6299",
+          "0.5950",
+          "15.11",
+          "102",
+          "44.5",
+          "6"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-016-27201570-01017",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27201570",
+      "manufacturer_order_code": "27201570",
+      "tool_no": "27201570",
+      "edp": "01017",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27201570",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": "0.40",
+          "decimal_inch": "0.0157",
+          "source_fields": [
+            "d1_diameter_mm",
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.0157",
+          "mm": "0.40",
+          "source_fields": [
+            "d2_shank_inch",
+            "d2_shank_mm"
+          ]
+        },
+        "L1": {
+          "inch": null,
+          "mm": "38",
+          "source_fields": [
+            "l1_oal_mm"
+          ]
+        },
+        "L2": {
+          "inch": null,
+          "mm": "5.0",
+          "source_fields": [
+            "l2_flute_length_mm"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "mixed",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 11,
+        "catalog_page": 386,
+        "row_index": 9,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27201570",
+          "01017",
+          "0.40",
+          "0.0157",
+          "0.0157",
+          "0.40",
+          "38",
+          "5.0",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-017-27201770-01025",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27201770",
+      "manufacturer_order_code": "27201770",
+      "tool_no": "27201770",
+      "edp": "01025",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27201770",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": "0.45",
+          "decimal_inch": "0.0177",
+          "source_fields": [
+            "d1_diameter_mm",
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.0177",
+          "mm": "0.45",
+          "source_fields": [
+            "d2_shank_inch",
+            "d2_shank_mm"
+          ]
+        },
+        "L1": {
+          "inch": null,
+          "mm": "38",
+          "source_fields": [
+            "l1_oal_mm"
+          ]
+        },
+        "L2": {
+          "inch": null,
+          "mm": "5.0",
+          "source_fields": [
+            "l2_flute_length_mm"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "mixed",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 11,
+        "catalog_page": 386,
+        "row_index": 14,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27201770",
+          "01025",
+          "0.45",
+          "0.0177",
+          "0.0177",
+          "0.45",
+          "38",
+          "5.0",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-018-27201970-01033",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27201970",
+      "manufacturer_order_code": "27201970",
+      "tool_no": "27201970",
+      "edp": "01033",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27201970",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": "0.50",
+          "decimal_inch": "0.0197",
+          "source_fields": [
+            "d1_diameter_mm",
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.0197",
+          "mm": "0.50",
+          "source_fields": [
+            "d2_shank_inch",
+            "d2_shank_mm"
+          ]
+        },
+        "L1": {
+          "inch": null,
+          "mm": "38",
+          "source_fields": [
+            "l1_oal_mm"
+          ]
+        },
+        "L2": {
+          "inch": null,
+          "mm": "5.0",
+          "source_fields": [
+            "l2_flute_length_mm"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "mixed",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 11,
+        "catalog_page": 386,
+        "row_index": 19,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27201970",
+          "01033",
+          "0.50",
+          "0.0197",
+          "0.0197",
+          "0.50",
+          "38",
+          "5.0",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-019-27202170-01045",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27202170",
+      "manufacturer_order_code": "27202170",
+      "tool_no": "27202170",
+      "edp": "01045",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27202170",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": "0.55",
+          "decimal_inch": "0.0217",
+          "source_fields": [
+            "d1_diameter_mm",
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.0217",
+          "mm": "0.55",
+          "source_fields": [
+            "d2_shank_inch",
+            "d2_shank_mm"
+          ]
+        },
+        "L1": {
+          "inch": null,
+          "mm": "38",
+          "source_fields": [
+            "l1_oal_mm"
+          ]
+        },
+        "L2": {
+          "inch": null,
+          "mm": "6.5",
+          "source_fields": [
+            "l2_flute_length_mm"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "mixed",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 11,
+        "catalog_page": 386,
+        "row_index": 24,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27202170",
+          "01045",
+          "0.55",
+          "0.0217",
+          "0.0217",
+          "0.55",
+          "38",
+          "6.5",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row",
+        "mixed_unit_fields_preserved_without_conversion"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    },
+    {
+      "id": "preview-maford-272-020-27201500-03002",
+      "brand": "M.A. Ford",
+      "category": "reaming",
+      "product_family": "Reamer",
+      "product_type": "TrueSize Carbide Reamer Straight Flute",
+      "series": "272",
+      "product_code": "27201500",
+      "manufacturer_order_code": "27201500",
+      "tool_no": "27201500",
+      "edp": "03002",
+      "display_identity": "M.A. Ford Series 272 TrueSize Carbide Reamer Straight Flute 27201500",
+      "dimensions": {
+        "D1": {
+          "inch_fraction": null,
+          "wire": null,
+          "mm": null,
+          "decimal_inch": "0.0150",
+          "source_fields": [
+            "d1_diameter_decimal"
+          ]
+        },
+        "D2": {
+          "inch": "0.0150",
+          "mm": null,
+          "source_fields": [
+            "d2_shank_inch"
+          ]
+        },
+        "L1": {
+          "inch": "1-1/2",
+          "mm": null,
+          "source_fields": [
+            "l1_oal_inch"
+          ]
+        },
+        "L2": {
+          "inch": "3/16",
+          "mm": null,
+          "source_fields": [
+            "l2_flute_length_inch"
+          ]
+        },
+        "flutes": 4,
+        "lead_angle": {
+          "value": 45,
+          "unit": "degree"
+        },
+        "cutting_direction": "RHC",
+        "unit_system": "inch",
+        "raw_mixed_units": null
+      },
+      "optional_fields": {
+        "iso_code": null,
+        "grade": null,
+        "coating": null,
+        "material_suitability": "review_required",
+        "cutting_data": null
+      },
+      "source_traceability": {
+        "source_pdf": "/Users/muratonder/Desktop/MAFord_2018_Master_Catalog_Reamers.pdf",
+        "pdf_page": 11,
+        "catalog_page": 386,
+        "row_index": 6,
+        "parser_name": "maford-reamer-272-full-range",
+        "parser_version": "extract-maford-reamer-272-full-range.js",
+        "raw_row": [
+          "27201500",
+          "03002",
+          "0.0150",
+          "0.0150",
+          "1-1/2",
+          "3/16",
+          "4"
+        ]
+      },
+      "confidence": {
+        "level": "review_high",
+        "score": 90,
+        "basis": [
+          "format_specific_parser_validated_on_manual_sample",
+          "automated_validation_passed_all_924_records",
+          "source_traceability_preserved",
+          "not_human_approved_for_merge"
+        ],
+        "safe_for_direct_PRODUCT_DB_merge": false
+      },
+      "warnings": [
+        "coating_or_surface_not_present_in_source_row",
+        "material_grade_not_present_in_source_row"
+      ],
+      "frontend_display_rules": {
+        "identity_fallback": "product_code/tool_no",
+        "missing_iso_behavior": "show_tool_no_as_primary_code",
+        "missing_grade_behavior": "show_not_specified_in_source",
+        "missing_coating_behavior": "show_not_specified_in_source",
+        "source_traceability_required": true
+      },
+      "merge_status": "preview_only_not_merged"
+    }
+  ]
+}

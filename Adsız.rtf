@@ -1,0 +1,325 @@
+{\rtf1\ansi\ansicpg1254\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+# ToolAdvisor Automation Context\
+\
+## Purpose\
+\
+This project is not only about improving ToolAdvisor manually.\
+\
+The goal is to build a controlled agent-based workflow where Murat acts as the product owner and decision maker, while Claude Code and Codex execute research, planning, implementation, QA and reporting tasks through a structured automation flow.\
+\
+Murat should not manually track every file, every decision, every GitHub result or every task.  \
+The system must make this operationally visible and controlled.\
+\
+## Core Objective\
+\
+ToolAdvisor must become a professional cutting-tools decision platform.\
+\
+It is not a generic catalogue, not a webshop, and not a blog.\
+\
+The product direction is:\
+\
+- brand-neutral cutting tool selection\
+- product comparison\
+- cross-reference logic\
+- product detail intelligence\
+- data confidence layer\
+- trusted recommendation reasoning\
+- controlled product data growth\
+- no blind scraping\
+- no uncontrolled PRODUCT_DB changes\
+\
+## Working Model\
+\
+The intended workflow is:\
+\
+1. Murat gives an idea, direction or decision in natural language.\
+2. The agent system converts that input into a structured task.\
+3. The correct agent type is selected:\
+   - Claude Code for planning, architecture, research, review, documentation and reasoning-heavy work.\
+   - Codex for implementation, code changes, tests and controlled file edits.\
+4. The agent reads the required control files.\
+5. The agent executes only the approved task.\
+6. The agent updates the worklog.\
+7. GitHub Actions checks the result.\
+8. Murat reviews the outcome and decides:\
+   - approve\
+   - reject\
+   - revise\
+   - continue\
+\
+Murat should mainly decide direction, priority and approval.  \
+Agents should handle execution and reporting.\
+\
+## Current Control Files\
+\
+These files define the operating rules:\
+\
+- `CLOUDFLARE_MIGRATION.md`\
+- `TOOLADVISOR_WORKLOG.md`\
+- `AGENT_PROTOCOL.md`\
+\
+Before doing anything, every agent must read:\
+\
+- `CLOUDFLARE_MIGRATION.md`\
+- `TOOLADVISOR_WORKLOG.md`\
+- `AGENT_PROTOCOL.md`\
+\
+If a decision is unclear or not covered, the agent must stop and ask.\
+\
+## Active Project Root\
+\
+The active project root is:\
+\
+`/Users/muratonder/Desktop/ToolAdvisor/`\
+\
+Older folders such as `tooladvisor-v5-final`, `tooladvisor-deploy-v2`, `tv5` or similar are legacy/archive unless explicitly reactivated.\
+\
+## Deployment Rule\
+\
+Cloudflare Pages / Wrangler is the only valid deployment path.\
+\
+Netlify must not be used.\
+\
+No deploy may happen without explicit approval.\
+\
+## PRODUCT_DB Rule\
+\
+`PRODUCT_DB` is locked.\
+\
+No agent may modify `PRODUCT_DB` in any form without explicit approval.\
+\
+This includes:\
+\
+- PDF extracted data\
+- web extracted data\
+- AI generated data\
+- manually entered data\
+- demo/sample data\
+- cleanup\
+- normalization\
+- schema changes\
+- small corrections\
+\
+All new product data must first go through staging, review and approval.\
+\
+## What Has Been Done\
+\
+The following foundation has been created:\
+\
+- active project root standardized as `/Users/muratonder/Desktop/ToolAdvisor/`\
+- `CLOUDFLARE_MIGRATION.md` established as single source of truth\
+- `TOOLADVISOR_WORKLOG.md` created/updated as operational log\
+- `AGENT_PROTOCOL.md` created\
+- `tasks/` workflow created:\
+  - `tasks/todo/`\
+  - `tasks/in-progress/`\
+  - `tasks/done/`\
+  - `tasks/blocked/`\
+- GitHub guard workflow created\
+- research outputs created under `/research/`\
+- Task 001 completed: research outputs reviewed\
+- Task 002 completed: canonical schema fields added to `directory-data.js`\
+- Task 003 completed: canonical schema QA passed\
+\
+## Current Technical State\
+\
+Task 002 added canonical schema fields to all 36 `TA_TOOLS` records at runtime in `directory-data.js`.\
+\
+Added/normalized fields include:\
+\
+- `tool_type`\
+- `canonical_category`\
+- `product_code`\
+- `workpiece_materials`\
+- `trust`\
+- `economicsEstimated`\
+\
+Important:\
+Existing flat fields were preserved.  \
+The change is backward-compatible.  \
+`PRODUCT_DB` was not changed.\
+\
+Task 003 QA result:\
+\
+- local site works\
+- key pages return HTTP 200\
+- `TA_TOOLS.length === 36`\
+- catalog renders\
+- filters work\
+- search works\
+- product detail modal opens\
+- no console errors\
+- no missing canonical fields\
+- postflight clean\
+\
+Verdict:\
+\
+Canonical schema is accepted as safe.\
+\
+## Immediate Next Direction\
+\
+The next major step is not random UI work.\
+\
+The next strategic step is to build the Agent Dispatcher layer.\
+\
+## Agent Dispatcher Goal\
+\
+Create a system/process where Murat\'92s natural language request can be converted into a structured task file.\
+\
+The dispatcher must decide:\
+\
+- is this a research task?\
+- is this a planning task?\
+- is this an implementation task?\
+- is this a QA task?\
+- should Claude Code handle it?\
+- should Codex handle it?\
+- should it stop and ask?\
+- what files are allowed?\
+- what files are forbidden?\
+- what output is expected?\
+- should GitHub Actions be checked?\
+- should worklog be updated?\
+\
+## Required Next Files\
+\
+Create or refine:\
+\
+- `AGENT_DISPATCHER.md`\
+- `tasks/template.md`\
+- `research/004-agent-dispatcher-plan.md`\
+\
+Do not modify production files for this step.\
+\
+## Task Flow\
+\
+Each task should follow this flow:\
+\
+1. `tasks/todo/`\
+2. `tasks/in-progress/`\
+3. execution\
+4. QA / postflight\
+5. worklog update\
+6. `tasks/done/` or `tasks/blocked/`\
+7. GitHub Actions result\
+8. Murat decision\
+\
+## Task Types\
+\
+### Research Task\
+\
+Used for market research, schema review, feature investigation, product strategy.\
+\
+Usually handled by Claude Code.\
+\
+No production changes.\
+\
+### Planning Task\
+\
+Used for implementation plans, migration strategy, risk analysis, architecture.\
+\
+Usually handled by Claude Code.\
+\
+No production changes unless explicitly approved.\
+\
+### Implementation Task\
+\
+Used for actual code or data structure changes.\
+\
+Usually handled by Codex.\
+\
+Must define allowed files and forbidden files.\
+\
+### QA Task\
+\
+Used for browser testing, console checks, regression checks, GitHub Actions interpretation.\
+\
+Can be handled by Claude Code or Codex.\
+\
+No production changes unless explicitly approved.\
+\
+## Stop Conditions\
+\
+Agent must stop if:\
+\
+- active root is unclear\
+- requested change touches `PRODUCT_DB`\
+- task requires deploy\
+- task requires Netlify\
+- production file changes are not explicitly allowed\
+- multiple conflicting source files exist\
+- GitHub Actions fails and reason is unclear\
+- task conflicts with `CLOUDFLARE_MIGRATION.md`\
+- task conflicts with `AGENT_PROTOCOL.md`\
+\
+## GitHub Role\
+\
+GitHub is the control and visibility layer.\
+\
+It should show:\
+\
+- what changed\
+- whether guard passed\
+- whether forbidden files changed\
+- whether `PRODUCT_DB` was touched\
+- whether Netlify files appeared\
+- whether worklog was updated\
+\
+Murat should be able to look at GitHub and decide approve/reject/revise.\
+\
+## Owner Role\
+\
+Murat\'92s role:\
+\
+- set product direction\
+- decide priority\
+- approve/reject/revise results\
+- decide when deploy is allowed\
+- decide when PRODUCT_DB may be changed\
+- decide when a feature is accepted\
+\
+Murat should not manually inspect every small technical detail unless flagged.\
+\
+## Current Priority\
+\
+The current priority is:\
+\
+1. Finish Agent Dispatcher design.\
+2. Make task creation and routing consistent.\
+3. Keep GitHub Actions as guard layer.\
+4. Then move to product-facing improvements:\
+   - product card\
+   - product detail modal\
+   - compare logic\
+   - trust badges\
+   - Data Confidence Layer\
+   - category-specific filters\
+\
+## Do Not Do Yet\
+\
+Do not start with:\
+\
+- mass PDF ingestion\
+- live web scraping\
+- Supabase migration\
+- marketplace/cart features\
+- pricing/payment features\
+- major redesign\
+- PRODUCT_DB expansion\
+- deployment\
+\
+These come later.\
+\
+## Final Principle\
+\
+ToolAdvisor must be built through controlled, auditable, agent-driven execution.\
+\
+The system must prevent uncontrolled changes, not depend on memory, and keep every decision traceable through repo files, tasks, worklog and GitHub Actions.}

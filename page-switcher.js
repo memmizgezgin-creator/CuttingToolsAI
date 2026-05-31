@@ -16,7 +16,9 @@
   injectAsset('script', {src:'ta-3d-insert.js', defer:''});
   injectAsset('script', {src:'ta-tool-icons.js', defer:''});
 
-  const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  // Cloudflare Pages strips .html → normalise so 'tools-directory' === 'tools-directory.html'
+  const _rawHere = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  const here = _rawHere.endsWith('.html') ? _rawHere : _rawHere + '.html';
 
   // ============================================================
   // TOP NAV
@@ -199,8 +201,9 @@
     if (!window.TA_TOOLS) return { families:{}, isos:{}, total:0, ready:false };
     const families = {}, isos = {};
     for (const t of window.TA_TOOLS) {
-      families[t.family] = (families[t.family] || 0) + 1;
-      isos[t.iso]        = (isos[t.iso]        || 0) + 1;
+      if (t.family) families[t.family] = (families[t.family] || 0) + 1;
+      const isoGroups = Array.isArray(t.iso_all) ? t.iso_all : (t.iso ? [t.iso] : []);
+      for (const g of isoGroups) isos[g] = (isos[g] || 0) + 1;
     }
     return { families, isos, total: window.TA_TOOLS.length, ready:true };
   }
@@ -235,7 +238,6 @@
       </div>`;
 
     const counts = getCounts();
-    void counts; // counts retained for future use; not surfaced to users to avoid "small catalog" perception
 
     // Filter status header
     const statusHTML = `
@@ -261,9 +263,12 @@
 
     // Tool family row — clickable, active state (no counts: keeps catalog scale neutral)
     const toolItem = (it) => {
+      // Hide family button if no tools in this category yet
+      const famCount = counts.ready ? (counts.families[it.key] || 0) : -1;
+      const displayStyle = famCount === 0 ? 'display:none;' : 'display:flex;';
       return `
         <button data-ta-family="${it.key}" class="ta-sb-item ta-sb-family" style="
-            display:flex;align-items:center;gap:12px;width:calc(100% - 16px);
+            ${displayStyle}align-items:center;gap:12px;width:calc(100% - 16px);
             padding:8px 12px;margin:0 8px 1px;border-radius:10px;border:none;
             background:transparent;color:#43474e;cursor:pointer;
             font-family:'Nunito',sans-serif;font-weight:500;font-size:14px;text-align:left;
@@ -272,6 +277,7 @@
             <span class="ta-tool-icon" data-icon="${it.iconKey}" data-size="20"></span>
           </span>
           <span style="flex:1;">${it.label}</span>
+          <span data-ta-family-count="${it.key}" style="font-family:'DM Mono',monospace;font-size:10px;color:#8A8A9A;font-weight:700;"></span>
         </button>`;
     };
 
@@ -291,6 +297,7 @@
             <span style="color:#1A1A2E;">${it.label}</span>
             <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;color:${it.color};font-weight:800;margin-top:2px;">ISO ${it.iso}</span>
           </span>
+          <span data-ta-iso-count="${it.iso}" style="font-family:'DM Mono',monospace;font-size:10px;color:#8A8A9A;font-weight:700;"></span>
         </button>`;
     };
 
@@ -360,7 +367,7 @@
 
   // Sidebar state sync — set/clear active visual state on family + material items
   function applySidebarState(sb, state) {
-    const { family, iso } = state || {};
+    const { family, iso, brand } = state || {};
     // All tools button: active when no family + no iso
     const all = sb.querySelector('[data-ta-all]');
     if (all) {
@@ -410,10 +417,29 @@
     }
   }
 
-  function refreshSidebarCounts(/* sb */) {
-    // Counts intentionally suppressed: showing absolute size of a still-growing catalog
-    // is hostile to perception. The in-page result counter (filtered/visible) is
-    // sufficient context for active sessions.
+  function refreshSidebarCounts(sb) {
+    const counts = getCounts();
+    if (!counts.ready) return;
+    const status = sb.querySelector('[data-ta-filter-count]');
+    if (status) status.textContent = `${counts.total} tools`;
+
+    // Family buttons: show/hide based on count; never display count number
+    sb.querySelectorAll('[data-ta-family-count]').forEach(el => {
+      el.textContent = ''; // never show count number
+      const btn = el.closest('.ta-sb-family');
+      if (!btn) return;
+      const count = counts.families[el.dataset.taFamilyCount] || 0;
+      btn.style.display = count === 0 ? 'none' : 'flex';
+    });
+
+    // ISO material tiles: show/hide based on count; never display count number
+    sb.querySelectorAll('[data-ta-iso-count]').forEach(el => {
+      el.textContent = ''; // never show count number
+      const btn = el.closest('.ta-sb-mat');
+      if (!btn) return;
+      const count = counts.isos[el.dataset.taIsoCount] || 0;
+      btn.style.display = count === 0 ? 'none' : 'flex';
+    });
   }
 
   function installSidebar() {
@@ -446,7 +472,11 @@
       }
     });
     sb.querySelector('[data-ta-clear]')?.addEventListener('click', () => {
-      window.dispatchEvent(new CustomEvent('ta:clear-filters'));
+      if (isCatalogPage) {
+        window.dispatchEvent(new CustomEvent('ta:clear-filters'));
+      } else {
+        window.location.href = 'tools-directory.html';
+      }
     });
 
     // Tool family clicks
@@ -499,15 +529,38 @@
       const fam = p.get('family');
       const iso = p.get('iso');
       if (fam || iso) {
-        // Wait until App mounts then push state
-        const push = (tries=20) => {
+        // Wait until React App mounts (Babel compile can take >2s), then push
+        // until React echoes the state back. The ready marker can render before
+        // React's effect listeners are attached, so a single dispatch is racy.
+        let applied = false;
+        const onState = (e) => {
+          const state = e.detail || {};
+          const familyOk = !fam || state.family === fam;
+          const isoOk = !iso || state.iso === iso;
+          if (familyOk && isoOk) {
+            applied = true;
+            window.removeEventListener('ta:filter-state', onState);
+          }
+        };
+        window.addEventListener('ta:filter-state', onState);
+        const dispatch = () => {
+          if (fam) window.dispatchEvent(new CustomEvent('ta:family-filter', { detail:{ family: fam } }));
+          if (iso) window.dispatchEvent(new CustomEvent('ta:iso-filter', { detail:{ iso } }));
+        };
+        const push = (tries=80) => {
+          if (applied) return;
           if (window.TA_TOOLS && document.querySelector('#catalog-root [data-app-ready]')) {
-            if (fam) window.dispatchEvent(new CustomEvent('ta:family-filter', { detail:{ family: fam } }));
-            if (iso) window.dispatchEvent(new CustomEvent('ta:iso-filter', { detail:{ iso } }));
+            dispatch();
+            if (tries <= 0) window.removeEventListener('ta:filter-state', onState);
+            else setTimeout(() => push(tries - 1), 150);
             return;
           }
-          if (tries <= 0) return;
-          setTimeout(() => push(tries - 1), 80);
+          if (tries <= 0) {
+            dispatch();
+            window.removeEventListener('ta:filter-state', onState);
+            return;
+          }
+          setTimeout(() => push(tries - 1), 100);
         };
         push();
       }
@@ -556,7 +609,8 @@
   // FAB — wire the floating button(s) into the advisor wizard
   // ============================================================
   function rewireFabs() {
-    const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const _rawH = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const here = _rawH.endsWith('.html') ? _rawH : _rawH + '.html';
     // Per-page action: catalog → filter, knowledge → search focus, else → advisor
     const target = {
       'tools-directory.html': { modal: 'filter',          icon: 'tune',            label: 'Advanced filters' },

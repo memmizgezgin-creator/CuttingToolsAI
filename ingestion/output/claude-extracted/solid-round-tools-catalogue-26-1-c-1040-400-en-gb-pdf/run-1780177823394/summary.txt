@@ -1,0 +1,11 @@
+claude-extract run: run-1780177823394
+PDF: Solid round tools catalogue 26.1_C-1040-400 (en-gb).pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-30T22:39:38.955Z
+
+Total records extracted: 18
+Auto-approved (conf >= 85): 14
+Review required (conf < 85): 4
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/solid-round-tools-catalogue-26-1-c-1040-400-en-gb-pdf/run-1780177823394

@@ -1,0 +1,11 @@
+claude-extract run: run-1780180097457
+PDF: iscar_milling_applications_and_cutter_basics_guide.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-30T22:28:56.111Z
+
+Total records extracted: 14
+Auto-approved (conf >= 85): 0
+Review required (conf < 85): 14
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/iscar-milling-applications-and-cutter-basics-guide-pdf/run-1780180097457
