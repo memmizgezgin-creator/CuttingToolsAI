@@ -31,38 +31,64 @@ const { URL } = require('url');
 const { spawn } = require('child_process');
 
 // ─── Bilinen direkt PDF URL'leri ──────────────────────────────────────────
-// Bu URL'ler web aramasıyla doğrulandı. Yeni katalog çıkınca buraya ekle.
+// Bu URL'ler HEAD isteğiyle doğrulandı (✅ = HTTP 200 + PDF).
+// Yeni katalog eklerken HEAD doğrulaması yapılmalı.
 const KNOWN_PDFS = [
 
   // ── WALTER TOOLS ──────────────────────────────────────────────────────
+  // ✅ 40.9 MB — resmi elibrary
+  {
+    manufacturer: 'walter',
+    name: 'Walter',
+    label: 'Turning Catalogue 2024 (Catalogue A)',
+    url: 'https://elibrary.walter-tools.com/frontend/catalogs/682341/10/pdf/complete.pdf',
+  },
+  // ✅ 15.8 MB — resmi CDN (manuals/)
+  {
+    manufacturer: 'walter',
+    name: 'Walter',
+    label: 'Technical Compendium Holemaking 2024',
+    url: 'https://cdn.walter-tools.com/files/sitecollectiondocuments/downloads/global/manuals/en-gb/technical-compendium-holemaking-2024-en.pdf',
+  },
+  // ✅ resmi CDN (manuals/)
   {
     manufacturer: 'walter',
     name: 'Walter',
     label: 'Insert Drill Handbook',
     url: 'https://cdn.walter-tools.com/files/sitecollectiondocuments/downloads/global/manuals/en-gb/handbook-walter-insert-drill-en.pdf',
   },
-  {
-    manufacturer: 'walter',
-    name: 'Walter',
-    label: 'Turning Catalogue 2024 (elibrary)',
-    url: 'https://elibrary.walter-tools.com/frontend/catalogs/682341/10/pdf/complete.pdf',
-  },
 
   // ── KENNAMETAL ────────────────────────────────────────────────────────
+  // ✅ resmi content/dam
   {
     manufacturer: 'kennametal',
     name: 'Kennametal',
     label: 'Turning Brochure',
     url: 'https://www.kennametal.com/content/dam/final/kennametal/catalogs/turning/kennametal-turning-brochure_en.pdf',
   },
+  // ✅ 4.7 MB — distribütör mirror (drillingworld.com)
   {
     manufacturer: 'kennametal',
     name: 'Kennametal',
     label: 'Drilling Tool Catalog',
     url: 'https://drillingworld.com/pdf/Product%20Data%20Sheets/kennametal%20drilling%20tool%20catalog.pdf',
   },
+  // ✅ 5.2 MB — distribütör mirror (indrilling.com master distributor)
+  {
+    manufacturer: 'kennametal',
+    name: 'Kennametal',
+    label: 'General Catalogue 2024',
+    url: 'https://indrilling.com/wp-content/uploads/2024/07/kennametal_catalogue_2.pdf',
+  },
 
   // ── ISCAR ─────────────────────────────────────────────────────────────
+  // ✅ resmi iscar.com
+  {
+    manufacturer: 'iscar',
+    name: 'Iscar',
+    label: 'ISCAR Article — What\'s New 2025',
+    url: 'https://www.iscar.com/Catalogs/Publication/english_1/world_Magazines/ISCAR_ARTICLE_2025/ISCAR_ARTICLE_2025.pdf',
+  },
   {
     manufacturer: 'iscar',
     name: 'Iscar',
@@ -107,30 +133,89 @@ const KNOWN_PDFS = [
   },
 
   // ── SANDVIK COROMANT ──────────────────────────────────────────────────
-  // CoroPlus login gerektiriyor — kullanıcının indirdiği PDF pipeline'dan geçirilecek
+  // ✅ 2.6 MB — distribütör Turner Supply
+  {
+    manufacturer: 'sandvik',
+    name: 'Sandvik Coromant',
+    label: 'Main Catalogue A — General Turning',
+    url: 'https://www.turnersupply.com/userfiles/products/documents/s/sandvik_5765079_catalog.pdf',
+  },
+  // ✅ 2.9 MB — distribütör DGI Supply (CA)
+  {
+    manufacturer: 'sandvik',
+    name: 'Sandvik Coromant',
+    label: 'Catalogue — Solid Round Tools',
+    url: 'https://cdn.dgisupply.ca/img/product-images/Asset_URL/Sandvik_5765051_Catalog.pdf',
+  },
+  // ✅ 2.5 MB — resmi cdn.sandvik.coromant.com
+  {
+    manufacturer: 'sandvik',
+    name: 'Sandvik Coromant',
+    label: 'CoroTurn® Prime — PrimeTurning™ Brochure',
+    url: 'https://cdn.sandvik.coromant.com/files/sitecollectiondocuments/downloads/global/brochures/en-gb/c-1040-191.pdf',
+  },
+  // ✅ 8.5 MB — resmi Azure CDN (coromantstrgprod.blob.core.windows.net)
+  {
+    manufacturer: 'sandvik',
+    name: 'Sandvik Coromant',
+    label: 'Turning Handbook — General Turning / Grooving / Threading',
+    url: 'https://coromantstrgprod.blob.core.windows.net/files/sitecollectiondocuments/downloads/global/technical%20guides/en-gb/c-1020-18.pdf',
+  },
 
   // ── YG-1 ──────────────────────────────────────────────────────────────
   {
     manufacturer: 'yg1',
     name: 'YG-1',
-    label: 'End Mill Catalogue',
+    label: 'End Mill Catalogue (EU)',
     url: 'https://europe.yg1.com/download/YG-1_EU_EndMill_Catalogue.pdf',
   },
 
   // ── KYOCERA ───────────────────────────────────────────────────────────
+  // Previous URL (kyocera-unimerco.com/media/…) now returns HTML — replaced.
+  // ✅ 1.6 MB — resmi asia.kyocera.com (2024-2026 General Catalog Chapter A)
   {
     manufacturer: 'kyocera',
     name: 'Kyocera',
-    label: 'General Catalogue',
-    url: 'https://www.kyocera-unimerco.com/media/kyjaxiyk/kyocera-unimerco-general-catalogue.pdf',
+    label: 'General Catalog 2024 — Chapter A: Insert Grades',
+    url: 'https://asia.kyocera.com/products/cuttingtools/wp-content/uploads/2025/02/02_Chapter_A_2024_KAP.pdf',
+  },
+  // ✅ 25.4 MB — resmi asia.kyocera.com
+  {
+    manufacturer: 'kyocera',
+    name: 'Kyocera',
+    label: 'General Catalog 2024 — Chapter K: Drilling',
+    url: 'https://asia.kyocera.com/products/cuttingtools/wp-content/uploads/2025/02/11_Chapter_K_2024_KAP.pdf',
   },
 
   // ── TUNGALOY ──────────────────────────────────────────────────────────
+  // Previous URL (tungaloy.com/us/wp-content/…) now returns 404 — replaced.
+  // ✅ 45.8 MB — resmi tungaloy.com
   {
     manufacturer: 'tungaloy',
     name: 'Tungaloy',
-    label: 'General Catalogue',
-    url: 'https://www.tungaloy.com/us/wp-content/uploads/sites/2/2023/03/Tungaloy_General_Catalogue.pdf',
+    label: 'General Catalog 2023/2024 Vol.2 — Milling',
+    url: 'https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_Milling.pdf',
+  },
+  // ✅ 11.3 MB — resmi tungaloy.com
+  {
+    manufacturer: 'tungaloy',
+    name: 'Tungaloy',
+    label: 'General Catalog 2023/2024 Vol.3 — Drilling',
+    url: 'https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_Drilling.pdf',
+  },
+  // ✅ 12.4 MB — resmi tungaloy.com
+  {
+    manufacturer: 'tungaloy',
+    name: 'Tungaloy',
+    label: 'General Catalog 2023/2024 Vol.4 — Tooling System',
+    url: 'https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_Tooling.pdf',
+  },
+  // ✅ 7.7 MB — resmi tungaloy.com
+  {
+    manufacturer: 'tungaloy',
+    name: 'Tungaloy',
+    label: 'General Catalog 2023/2024 Vol.5 — User\'s Guide',
+    url: 'https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_UsersGuide.pdf',
   },
 ];
 
