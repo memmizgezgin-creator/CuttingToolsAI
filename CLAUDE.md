@@ -2,10 +2,13 @@
 
 ## NEVER touch these files
 - directory-data.js (product database)
-- directory-app.jsx (React catalog app)
 - ToolAdvisor.html (Advisor page)
 - index.html (redirect only, must stay as redirect to ToolAdvisor.html)
 - CNAME (domain config)
+
+## Edit with caution
+- directory-app.jsx - core catalog file, contains family filters and view logic
+- modals.js - global modal system
 
 ## Nav link format — always use these exact paths
 - Advisor → ToolAdvisor.html

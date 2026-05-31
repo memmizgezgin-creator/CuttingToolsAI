@@ -31,6 +31,7 @@ const ISO_CLASSES = {
   H: { border:'border-iso-h-slate',  chip:'bg-iso-h-slate/10 text-iso-h-slate border-iso-h-slate/20'  },
 };
 const FAMILIES = ['All','Turning','Milling','Drilling','Threading','Reaming','Grooving'];
+const COMING_SOON_FAMILIES = ['Insert', 'Toolholder'];
 const SORTS = [
   { id:'relevance',   label:'Relevance' },
   { id:'confidence',  label:'Data confidence ↓' },
@@ -721,6 +722,7 @@ function App() {
   const [sort, setSort] = useState('relevance');
   const [view, setView] = useState('grid');
   const [visible, setVisible] = useState(PAGE_SIZE);
+  const [comingSoonToast, setComingSoonToast] = useState(false);
 
   // selection
   const [compare, setCompare] = useState(() => new Set(LS.get('ta:compare', [])));
@@ -979,8 +981,28 @@ function App() {
               }`}
             >{f}</button>
           ))}
+          {COMING_SOON_FAMILIES.map(f => (
+            <button
+              key={f}
+              onClick={() => { setComingSoonToast(true); setTimeout(() => setComingSoonToast(false), 3000); }}
+              aria-disabled="true"
+              title="Coming Soon"
+              style={{cursor:'not-allowed'}}
+              className="px-4 py-2 rounded-full font-bold text-xs border border-dashed border-border-warm text-on-surface-variant bg-surface-container-low opacity-60 select-none"
+            >
+              {f}
+              <span className="ml-1.5 font-technical-data text-[9px] uppercase tracking-widest opacity-70">soon</span>
+            </button>
+          ))}
           <span className="ml-3 text-[11px] text-on-surface-variant hidden lg:inline">ISO material is a refinement — use the left sidebar.</span>
         </div>
+        {comingSoonToast && (
+          <div style={{position:'fixed',bottom:'24px',left:'50%',transform:'translateX(-50%)',zIndex:9999,background:'#1A1A2E',color:'#fff',padding:'12px 20px',borderRadius:'12px',boxShadow:'0 8px 32px rgba(0,0,0,.25)',display:'flex',alignItems:'center',gap:'10px',whiteSpace:'nowrap'}} role="alert">
+            <span className="material-symbols-outlined" style={{fontSize:'18px',color:'#F59E0B'}}>construction</span>
+            <span style={{fontWeight:700,fontSize:'14px'}}>Coming Soon</span>
+            <span style={{fontSize:'14px',opacity:.75}}>— We're building something great</span>
+          </div>
+        )}
 
         {/* Brand filter row — only shown when 2+ brands present */}
         {(() => {
