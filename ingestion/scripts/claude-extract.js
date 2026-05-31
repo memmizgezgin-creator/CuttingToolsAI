@@ -33,7 +33,9 @@ const CONF_AUTO    = 85;     // confidence >= this → approved automatically
 const MODEL        = 'claude-haiku-4-5'; // fast + cheap; swap to claude-sonnet-4-5 for tricky PDFs
 const MAX_TOKENS   = 4096;
 const API_TIMEOUT  = 30000;  // 30 seconds max per chunk
-const CHUNK_DELAY  = 150;    // ms between chunks
+const CHUNK_DELAY  = 500;    // ms between chunks (was 150 — raised to reduce 429 rate)
+const MAX_RETRIES  = 3;      // max attempts per chunk before logging to failed_chunks.log
+const RETRY_DELAY  = 60000;  // base wait on 429 (ms); doubles each attempt
 
 const OUTPUT_BASE  = path.resolve(__dirname, '..', 'output', 'claude-extracted');
 
@@ -194,6 +196,65 @@ function validateRecord(rec, pdfName, runId) {
   };
 }
 
+// ─── Exponential backoff wrapper ──────────────────────────────────────────
+/**
+ * Calls extractChunk with up to MAX_RETRIES attempts.
+ * On HTTP 429 (rate limit): waits RETRY_DELAY * 2^attempt ms before retrying.
+ * On any other error: retries immediately (up to MAX_RETRIES).
+ * If all attempts fail: logs to failed_chunks.log and returns [] so the run continues.
+ *
+ * @param {Anthropic} client
+ * @param {Array}     pageTexts
+ * @param {string}    pdfName
+ * @param {string}    outDir     — directory where failed_chunks.log is written
+ * @returns {Promise<Array>}     — extracted records ([] on total failure)
+ */
+async function extractChunkWithRetry(client, pageTexts, pdfName, outDir) {
+  const failedLog = path.join(outDir, 'failed_chunks.log');
+  const pageRange = `${pageTexts[0].pageNumber}–${pageTexts[pageTexts.length - 1].pageNumber}`;
+
+  for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+    try {
+      return await extractChunk(client, pageTexts, pdfName);
+    } catch (err) {
+      const is429 = err.status === 429
+        || err.message?.includes('429')
+        || err.message?.toLowerCase().includes('rate limit')
+        || err.message?.toLowerCase().includes('overloaded');
+
+      const isLastAttempt = attempt === MAX_RETRIES - 1;
+
+      if (isLastAttempt) {
+        // All retries exhausted — log to failed_chunks.log, return null so caller skips
+        const failEntry = [
+          `[${new Date().toISOString()}]`,
+          `  PDF:      ${pdfName}`,
+          `  Pages:    ${pageRange}`,
+          `  Attempts: ${MAX_RETRIES}`,
+          `  Error:    ${err.message}`,
+        ].join('\n');
+        fs.appendFileSync(failedLog, failEntry + '\n\n');
+        process.stdout.write(`FAILED (${err.message}) — logged to failed_chunks.log\n`);
+        return null; // sentinel: caller must not push to allRecords
+      }
+
+      if (is429) {
+        const waitMs = RETRY_DELAY * Math.pow(2, attempt); // 60s, 120s, 240s
+        const waitSec = Math.round(waitMs / 1000);
+        process.stdout.write(`429 rate-limit — waiting ${waitSec}s before retry ${attempt + 2}/${MAX_RETRIES}... `);
+        await new Promise(r => setTimeout(r, waitMs));
+        process.stdout.write(`retrying... `);
+      } else {
+        // Non-429 error: short wait then retry
+        process.stdout.write(`error (${err.message}) — retry ${attempt + 2}/${MAX_RETRIES}... `);
+        await new Promise(r => setTimeout(r, 2000));
+      }
+    }
+  }
+
+  return null; // unreachable, but satisfies linter
+}
+
 // ─── Main ──────────────────────────────────────────────────────────────────
 async function main() {
   const [,, pdfArg, startArg, endArg] = process.argv;
@@ -249,16 +310,15 @@ async function main() {
 
     process.stdout.write(`  ${logLine}... `);
 
-    try {
-      const records   = await extractChunk(client, pages, pdfName);
+    const records = await extractChunkWithRetry(client, pages, pdfName, outDir);
+    if (records === null) {
+      // All retries failed — status already printed by retry wrapper
+      fs.appendFileSync(progressLog, `${logLine} → FAILED (see failed_chunks.log)\n`);
+    } else {
       const validated = records.map(r => validateRecord(r, pdfName, runId));
       allRecords.push(...validated);
-      const done = `${logLine} → ${records.length} records (total: ${allRecords.length})`;
       process.stdout.write(`${records.length} records\n`);
-      fs.appendFileSync(progressLog, done + '\n');
-    } catch (err) {
-      process.stdout.write(`SKIP (${err.message})\n`);
-      fs.appendFileSync(progressLog, `${logLine} → SKIP: ${err.message}\n`);
+      fs.appendFileSync(progressLog, `${logLine} → ${records.length} records (total: ${allRecords.length})\n`);
     }
 
     // Write partial results every 50 chunks
