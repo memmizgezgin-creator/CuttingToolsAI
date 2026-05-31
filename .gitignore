@@ -34,8 +34,6 @@ ingestion/output/
 # Temp / personal notes
 *.rtf
 *sohbet*
-*worklog*
-*WORKLOG*
 
 # Nested repo copies / legacy folders
 ToolAdvisor/
