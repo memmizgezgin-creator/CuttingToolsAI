@@ -30,7 +30,7 @@ const ISO_CLASSES = {
   S: { border:'border-iso-s-orange', chip:'bg-iso-s-orange/10 text-iso-s-orange border-iso-s-orange/20' },
   H: { border:'border-iso-h-slate',  chip:'bg-iso-h-slate/10 text-iso-h-slate border-iso-h-slate/20'  },
 };
-const FAMILIES = ['All','Turning','Milling','Drilling','Threading','Reaming'];
+const FAMILIES = ['All','Turning','Milling','Drilling','Threading','Reaming','Grooving'];
 const SORTS = [
   { id:'relevance',   label:'Relevance' },
   { id:'confidence',  label:'Data confidence ↓' },
@@ -716,6 +716,7 @@ function App() {
   const [family, setFamily] = useState('All');
   const [iso, setIso] = useState(null);   // ISO letter or null
   const [op, setOp] = useState(null);
+  const [brand, setBrand] = useState(null); // brand filter
   const [confMin, setConfMin] = useState(0);
   const [sort, setSort] = useState('relevance');
   const [view, setView] = useState('grid');
@@ -740,15 +741,18 @@ function App() {
       setOp(null);
       setVisible(PAGE_SIZE);
     };
+    const onBrand = (e) => { setBrand(e.detail?.brand ?? null); setVisible(PAGE_SIZE); };
     const onClear = () => {
-      setQuery(''); setFamily('All'); setIso(null); setOp(null); setConfMin(0); setVisible(PAGE_SIZE);
+      setQuery(''); setFamily('All'); setIso(null); setOp(null); setBrand(null); setConfMin(0); setVisible(PAGE_SIZE);
     };
     window.addEventListener('ta:iso-filter', onIso);
     window.addEventListener('ta:family-filter', onFam);
+    window.addEventListener('ta:brand-filter', onBrand);
     window.addEventListener('ta:clear-filters', onClear);
     return () => {
       window.removeEventListener('ta:iso-filter', onIso);
       window.removeEventListener('ta:family-filter', onFam);
+      window.removeEventListener('ta:brand-filter', onBrand);
       window.removeEventListener('ta:clear-filters', onClear);
     };
   }, []);
@@ -756,9 +760,9 @@ function App() {
   // Broadcast state to sidebar so it can update active visuals
   useEffect(() => {
     window.dispatchEvent(new CustomEvent('ta:filter-state', {
-      detail: { family: family === 'All' ? null : family, iso }
+      detail: { family: family === 'All' ? null : family, iso, brand }
     }));
-  }, [family, iso]);
+  }, [family, iso, brand]);
 
   // listen for top-nav search (cmd-K-ish) → focus our local search instead
   const searchRef = useRef(null);
@@ -777,11 +781,14 @@ function App() {
       if (family !== 'All' && t.family !== family) return false;
       if (iso && !(Array.isArray(t.iso_all) ? t.iso_all.includes(iso) : t.iso === iso)) return false;
       if (op && t.op !== op) return false;
+      if (brand && t.brand !== brand) return false;
       if (t.confidence < confMin) return false;
       if (q) {
-        const isoHay = Array.isArray(t.iso_all) ? t.iso_all.map(g => `ISO${g}`).join(' ') : `ISO${t.iso}`;
-        const hay = `${t.brand} ${t.code} ${t.grade} ${t.family} ${t.op} ${t.bestFor} ${isoHay}`.toLowerCase();
-        if (!hay.includes(q)) return false;
+        const isoHay = Array.isArray(t.iso_all) ? t.iso_all.map(g => `ISO${g} ${ISO_LABEL[g]||''}`).join(' ') : `ISO${t.iso} ${ISO_LABEL[t.iso]||''}`;
+        const hay = `${t.brand} ${t.code} ${t.grade} ${t.family} ${t.op} ${t.bestFor} ${t.article} ${isoHay}`.toLowerCase();
+        // Multi-token search: every word must appear somewhere
+        const tokens = q.trim().split(/\s+/);
+        if (!tokens.every(tok => hay.includes(tok))) return false;
       }
       return true;
     });
@@ -802,9 +809,11 @@ function App() {
 
   // operations cluster — show only those present in current family
   const ops = useMemo(() => {
-    const set = new Set(TOOLS.filter(t => family === 'All' || t.family === family).map(t => t.op));
+    const set = new Set(TOOLS.filter(t =>
+      (family === 'All' || t.family === family) && (!brand || t.brand === brand)
+    ).map(t => t.op));
     return [...set].sort();
-  }, [TOOLS, family]);
+  }, [TOOLS, family, brand]);
 
   // actions
   const toggleCompare = useCallback((id) => {
@@ -842,10 +851,11 @@ function App() {
 
   // active filter chips
   const activeChips = [];
-  if (query)         activeChips.push({ key:'q',    label:`"${query}"`,                       onClear:() => setQuery('') });
+  if (query)         activeChips.push({ key:'q',     label:`"${query}"`,                       onClear:() => setQuery('') });
   if (family!=='All')activeChips.push({ key:'fam',  label:`Family: ${family}`,                onClear:() => setFamily('All') });
   if (iso)           activeChips.push({ key:'iso',  label:`ISO ${iso} · ${ISO_LABEL[iso]}`,   onClear:() => setIso(null) });
   if (op)            activeChips.push({ key:'op',   label:`Op: ${op}`,                        onClear:() => setOp(null) });
+  if (brand)         activeChips.push({ key:'brand',label:`Brand: ${brand}`,                  onClear:() => setBrand(null) });
   if (confMin>0)     activeChips.push({ key:'conf', label:`Confidence ≥ ${confMin}%`,         onClear:() => setConfMin(0) });
 
   // export CSV
@@ -971,6 +981,28 @@ function App() {
           ))}
           <span className="ml-3 text-[11px] text-on-surface-variant hidden lg:inline">ISO material is a refinement — use the left sidebar.</span>
         </div>
+
+        {/* Brand filter row — only shown when 2+ brands present */}
+        {(() => {
+          const famFilter = family === 'All' ? TOOLS : TOOLS.filter(t => t.family === family);
+          const brands = [...new Set(famFilter.map(t => t.brand).filter(Boolean))].sort();
+          if (brands.length < 2) return null;
+          return (
+            <div className="flex flex-wrap items-center gap-2 mb-4 -mt-1">
+              <span className="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mr-1">Brand ·</span>
+              <button onClick={() => { setBrand(null); setVisible(PAGE_SIZE); }} aria-pressed={!brand}
+                className={`px-3 py-1.5 rounded-full text-[11px] font-bold transition-all ${!brand ? 'bg-ink-text text-white' : 'bg-white border border-border-warm text-on-surface-variant hover:bg-surface-container-low'}`}>
+                All
+              </button>
+              {brands.map(b => (
+                <button key={b} onClick={() => { setBrand(brand === b ? null : b); setVisible(PAGE_SIZE); }} aria-pressed={brand === b}
+                  className={`px-3 py-1.5 rounded-full text-[11px] font-bold transition-all ${brand === b ? 'bg-ink-text text-white' : 'bg-white border border-border-warm text-on-surface-variant hover:bg-surface-container-low'}`}>
+                  {b}
+                </button>
+              ))}
+            </div>
+          );
+        })()}
 
         {/* Operation sub-filter (only when a family is selected) */}
         {family !== 'All' && ops.length > 1 && (
@@ -1173,7 +1205,85 @@ const AI_QUICK_ACTIONS = [
 
 const FREE_DAILY = 3;
 
-function aiCtx(filters, shortlist, compare) {
+// ── Keyword-score every tool in TOOLS against the user's question ──────────
+// Returns top-N tools sorted by relevance score (>0 only).
+function retrieveTools(query, filters, top = 15) {
+  if (!query || !query.trim()) return [];
+
+  const q = query.toLowerCase().trim();
+  const tokens = q.split(/\s+/).filter(Boolean);
+
+  // Keyword → ISO group mapping (EN + TR terms)
+  const ISO_KW = {
+    P: ['steel','carbon steel','alloy steel','mild steel','ferritic','çelik','karbon','alaşımlı'],
+    M: ['stainless','inox','paslanmaz','duplex','austenitic'],
+    K: ['cast iron','dökme','gray cast','ductile','spheroidal'],
+    N: ['aluminum','aluminium','alüminyum','copper','brass','non-ferrous','bakır','pirinç'],
+    S: ['titanium','inconel','superalloy','nickel','heat resistant','hrsa','titanyum'],
+    H: ['hardened','hard turning','sertleştirilmiş','tempered','hrc'],
+  };
+
+  // Keyword → family mapping (EN + TR)
+  const FAM_KW = {
+    Drilling:  ['drill','drilling','matkap','delik','bore'],
+    Milling:   ['mill','milling','freze','shoulder','face mill','slot mill','cutter'],
+    Turning:   ['turn','turning','torna','insert','lathe','çevirme'],
+    Threading: ['thread','threading','diş','tap','tapping','helix'],
+    Reaming:   ['ream','reaming','rayba','finish bore'],
+    Grooving:  ['groove','grooving','parting','cut-off','kanal'],
+  };
+
+  // Detect ISO groups implied by the query
+  const impliedISO = new Set();
+  for (const [iso, kws] of Object.entries(ISO_KW)) {
+    if (kws.some(kw => q.includes(kw))) impliedISO.add(iso);
+  }
+
+  // Detect families implied by the query
+  const impliedFam = new Set();
+  for (const [fam, kws] of Object.entries(FAM_KW)) {
+    if (kws.some(kw => q.includes(kw))) impliedFam.add(fam);
+  }
+
+  const scored = TOOLS.map(t => {
+    let score = 0;
+    const tIsos = Array.isArray(t.iso_all) ? t.iso_all : [t.iso];
+    const hay = `${t.brand} ${t.code} ${t.grade||''} ${t.family} ${t.op||''} ${t.bestFor||''} ${t.article||''} ${tIsos.join(' ')}`.toLowerCase();
+
+    // +10 per query token found in haystack
+    for (const tok of tokens) {
+      if (hay.includes(tok)) score += 10;
+    }
+
+    // Active UI filter bonuses
+    if (filters.family && filters.family !== 'All' && t.family === filters.family) score += 20;
+    if (filters.iso && (t.iso === filters.iso || tIsos.includes(filters.iso))) score += 15;
+    if (filters.brand && t.brand === filters.brand) score += 15;
+    if (filters.op && t.op === filters.op) score += 10;
+
+    // Query-implied ISO bonus
+    for (const iso of impliedISO) {
+      if (tIsos.includes(iso)) score += 12;
+    }
+
+    // Query-implied family bonus
+    if (impliedFam.size > 0 && impliedFam.has(t.family)) score += 15;
+
+    // Subtle confidence boost (0–5 pts)
+    score += ((t.confidence || 70) - 70) * 0.1;
+
+    return { t, score };
+  });
+
+  return scored
+    .filter(x => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, top)
+    .map(x => x.t);
+}
+
+// ── Build AI context string (filters + shortlist + compare + retrieved) ─────
+function aiCtx(filters, shortlist, compare, retrieved = []) {
   const parts = [];
   if (filters.family !== 'All') parts.push(`Family: ${filters.family}`);
   if (filters.iso) parts.push(`ISO ${filters.iso} (${ISO_LABEL[filters.iso]})`);
@@ -1183,6 +1293,16 @@ function aiCtx(filters, shortlist, compare) {
   if (parts.length) ctx.push(`Active filters → ${parts.join(', ')}.`);
   if (shortlist.length) ctx.push(`User's shortlist: ${shortlist.map(t => `${t.brand} ${t.code} (ISO ${t.iso}, ${t.family})`).join('; ')}.`);
   if (compare.length) ctx.push(`In compare drawer: ${compare.map(t => `${t.brand} ${t.code}`).join('; ')}.`);
+  if (retrieved.length) {
+    const lines = retrieved.map(t => {
+      const isos = (Array.isArray(t.iso_all) ? t.iso_all : [t.iso]).join('/');
+      const vc = (t.vcMin && t.vcMax) ? `Vc ${t.vcMin}-${t.vcMax} m/min` : '';
+      const fn = (t.fMin && t.fMax) ? `fn ${t.fMin}-${t.fMax} mm/rev` : '';
+      const params = [vc, fn].filter(Boolean).join(', ');
+      return `- [${t.brand}] ${t.code} | ISO ${isos} | ${t.family} | ${t.op||'—'} | ${params} | Grade: ${t.grade||'—'} | Coolant: ${t.coolant||'—'} | ${t.bestFor||''}`;
+    });
+    ctx.push(`\nRelevant tools from catalog (top ${retrieved.length} keyword matches):\n${lines.join('\n')}`);
+  }
   return ctx.join('\n');
 }
 
@@ -1251,7 +1371,10 @@ function AIDock({filters, shortlistTools, compareTools, onOpenTool}) {
     setInput('');
     setBusy(true);
 
-    const sys = `You are ToolAdvisor's in-app metalworking AI assistant. You help machinists and engineers choose cutting tools. Be concise, technical, and direct — prefer bullet points and short sentences. Never invent specs; if user data isn't given, reason from ISO group conventions. Refer to specific tools in user's shortlist or compare drawer when relevant. Don't recommend external brands not in the catalog.\n\n${aiCtx(filters, shortlistTools, compareTools)}`;
+    // Retrieve top-15 tools from DB relevant to this question (skip for shortlist prompts)
+    const retrieved = rawPrompt !== 'CTX_SHORTLIST' ? retrieveTools(rawPrompt, filters) : [];
+
+    const sys = `You are ToolAdvisor's in-app metalworking AI assistant. You help machinists and engineers choose cutting tools. Be concise, technical, and direct — prefer bullet points and short sentences. Never invent specs; if user data isn't given, reason from ISO group conventions. When catalog tools are listed below, prefer recommending from those specific entries and cite them by brand + code. Don't recommend brands not in the catalog.\n\n${aiCtx(filters, shortlistTools, compareTools, retrieved)}`;
 
     try {
       const reply = await window.claude.complete({
