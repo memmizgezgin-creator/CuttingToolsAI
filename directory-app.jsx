@@ -31,20 +31,20 @@ const ISO_CLASSES = {
   H: { border:'border-iso-h-slate',  chip:'bg-iso-h-slate/10 text-iso-h-slate border-iso-h-slate/20'  },
 };
 // ── Family Structure (Phase 1 & Phase 1.5) ──────────────────────────────
-// Phase 1: Hole Making + Milling + Turning (solid) + Grooving
+// Phase 1: Hole Making + Milling + Grooving (solid tools only)
 // Phase 1.5: Threading (hidden until ready)
-// Phase 2: Boring + Toolholding + Special
-const FAMILIES = ['All','Hole Making','Milling','Turning','Grooving'];
-const COMING_SOON_FAMILIES = ['Insert & Indexable Inserts','Threading','Boring','Toolholding','Special/Secondary'];
+// Phase 2: Turning & Inserts, Boring, Toolholding, Special
+const FAMILIES = ['All','Hole Making','Milling','Grooving'];
+const COMING_SOON_FAMILIES = ['Turning & Inserts','Threading','Boring','Toolholding','Special/Secondary'];
 
 // Family mapping: old database names → new UI family names
-// Consolidates Drilling/Reaming/Countersinking into "Hole Making"
+// Consolidates Drilling/Reaming → "Hole Making", Turning → "Turning & Inserts" (Phase 2)
 const FAMILY_MAP = {
   'Drilling': 'Hole Making',
   'Reaming': 'Hole Making',
   // Countersinking would map here if present in data
   'Milling': 'Milling',
-  'Turning': 'Turning',
+  'Turning': 'Turning & Inserts',    // Hidden from Phase 1 UI (57 records in DB)
   'Grooving': 'Grooving',
   'Threading': 'Threading',
   // Phase 2 families (not yet in data)
