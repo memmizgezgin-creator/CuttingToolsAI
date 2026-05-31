@@ -26,6 +26,7 @@ const fs      = require('fs');
 const path    = require('path');
 const https   = require('https');
 const http    = require('http');
+const zlib    = require('zlib');
 const { URL } = require('url');
 const { spawn } = require('child_process');
 
@@ -145,6 +146,41 @@ const SEARCH_QUERIES = [
   { manufacturer: 'sumitomo', query: 'site:sumitool.com filetype:pdf catalogue 2024' },
 ];
 
+// ─── Sitemap-based PDF discovery ─────────────────────────────────────────
+// sitemap.xml'leri tara → catalogue/catalog/brochure içeren .pdf URL'lerini bul.
+// Sitemap index dosyaları otomatik olarak özyinelemeli takip edilir (derinlik ≤ 3).
+// URLs verified with HEAD requests — each returns HTTP 200.
+const SITEMAP_SOURCES = [
+  {
+    manufacturer: 'walter',
+    name: 'Walter',
+    sitemapUrl: 'https://www.walter-tools.com/sitemap_index.xml', // index → sub-sitemaps
+  },
+  {
+    manufacturer: 'iscar',
+    name: 'ISCAR',
+    sitemapUrl: 'https://www.iscar.com/sitemap_index.xml',        // /sitemap.xml → 404
+  },
+  {
+    manufacturer: 'kennametal',
+    name: 'Kennametal',
+    sitemapUrl: 'https://www.kennametal.com/us/en.sitemap.xml',   // /sitemap.xml → 301 → 404
+  },
+  {
+    manufacturer: 'tungaloy',
+    name: 'Tungaloy',
+    sitemapUrl: 'https://tungaloy.com/sitemap_index.xml',         // www redirects → apex
+  },
+  {
+    manufacturer: 'kyocera',
+    name: 'Kyocera',
+    sitemapUrl: 'https://www.kyocera-unimerco.com/en-global/sitemap_index.xml', // 307 resolved
+  },
+];
+
+// URL'nin katalog PDF'si sayılması için en az biri içermeli (case-insensitive)
+const PDF_KEYWORDS = ['catalogue', 'catalog', 'brochure', 'handbook', 'katalog', 'prospekt'];
+
 // ─── Config ────────────────────────────────────────────────────────────────
 const INPUT_DIR     = path.resolve(__dirname, '..', 'input', 'pending');
 const EXTRACT_SCRIPT = path.resolve(__dirname, 'claude-extract.js');
@@ -227,6 +263,146 @@ function downloadFile(url, destPath) {
   });
 }
 
+// ─── Sitemap helpers ───────────────────────────────────────────────────────
+
+/**
+ * URL'den içerik çek; gzip (Content-Encoding veya .gz uzantısı) varsa aç.
+ * Redirect'leri 5 derinliğe kadar takip eder.
+ */
+function fetchText(url, redirects = 0) {
+  return new Promise((resolve, reject) => {
+    if (redirects > 5) return reject(new Error('Too many redirects'));
+    try {
+      const proto = url.startsWith('https') ? https : http;
+      const req = proto.get(url, {
+        headers: {
+          'User-Agent': 'ToolAdvisor-Catalogue-Bot/1.0',
+          'Accept-Encoding': 'gzip, deflate',
+        },
+        timeout: 20000,
+      }, res => {
+        // Redirect
+        if ([301, 302, 303, 307, 308].includes(res.statusCode) && res.headers.location) {
+          const next = res.headers.location.startsWith('http')
+            ? res.headers.location
+            : new URL(res.headers.location, url).href;
+          return fetchText(next, redirects + 1).then(resolve).catch(reject);
+        }
+        if (res.statusCode !== 200) return reject(new Error(`HTTP ${res.statusCode}`));
+
+        const chunks = [];
+        res.on('data', c => chunks.push(c));
+        res.on('end', () => {
+          const buf = Buffer.concat(chunks);
+          const enc = (res.headers['content-encoding'] || '').toLowerCase();
+          const isGz = enc.includes('gzip') || url.endsWith('.gz');
+          if (isGz) {
+            zlib.gunzip(buf, (err, result) =>
+              err ? reject(err) : resolve(result.toString('utf8')));
+          } else {
+            resolve(buf.toString('utf8'));
+          }
+        });
+      });
+      req.on('error', reject);
+      req.on('timeout', () => { req.destroy(); reject(new Error('Timeout')); });
+    } catch (e) { reject(e); }
+  });
+}
+
+/**
+ * Sitemap XML metninden tüm <loc> değerlerini çıkar.
+ * Hem sitemap index (<sitemap><loc>) hem urlset (<url><loc>) formatını destekler.
+ */
+function parseSitemapLocs(xml) {
+  const locs = [];
+  const re = /<loc>\s*(https?[^<\s]+)\s*<\/loc>/gi;
+  let m;
+  while ((m = re.exec(xml)) !== null) locs.push(m[1].trim());
+  return locs;
+}
+
+/**
+ * Bir sitemap URL'sini özyinelemeli olarak tara ve katalog PDF URL'lerini döndür.
+ * @param {string}  sitemapUrl  Taranacak sitemap adresi
+ * @param {string}  manufacturer  Üretici slug'ı (log için)
+ * @param {number}  depth       Özyineleme derinliği (max 3)
+ * @param {Set}     seen        Ziyaret edilen URL'ler (döngü koruması)
+ * @returns {Promise<string[]>} Eşleşen PDF URL'leri
+ */
+async function fetchSitemapPdfs(sitemapUrl, manufacturer, depth = 0, seen = new Set()) {
+  if (depth > 3 || seen.has(sitemapUrl)) return [];
+  seen.add(sitemapUrl);
+
+  let xml;
+  try {
+    xml = await fetchText(sitemapUrl);
+  } catch (err) {
+    console.log(`    ⚠ Sitemap fetch failed (depth ${depth}): ${sitemapUrl.slice(0, 80)} — ${err.message}`);
+    return [];
+  }
+
+  const locs = parseSitemapLocs(xml);
+  const pdfs = [];
+  const subSitemaps = [];
+
+  for (const loc of locs) {
+    const lower = loc.toLowerCase();
+    if (lower.endsWith('.xml') || lower.endsWith('.xml.gz')) {
+      subSitemaps.push(loc);
+    } else if (lower.endsWith('.pdf') && PDF_KEYWORDS.some(kw => lower.includes(kw))) {
+      pdfs.push(loc);
+    }
+  }
+
+  if (subSitemaps.length > 0) {
+    console.log(`    ↳ Index sitemap: ${subSitemaps.length} sub-sitemaps found`);
+    for (const sub of subSitemaps) {
+      await sleep(250);
+      const subPdfs = await fetchSitemapPdfs(sub, manufacturer, depth + 1, seen);
+      pdfs.push(...subPdfs);
+    }
+  }
+
+  return pdfs;
+}
+
+/**
+ * Tüm SITEMAP_SOURCES'ları tara ve KNOWN_PDFS formatında sonuç döndür.
+ * allPdfs ile birleştirilirken URL bazlı deduplikasyon yapılır.
+ */
+async function discoverFromSitemaps(targetSlug, existingUrls) {
+  const sources = SITEMAP_SOURCES.filter(s => !targetSlug || s.manufacturer === targetSlug);
+  if (sources.length === 0) return [];
+
+  const discovered = [];
+  const existing = new Set(existingUrls);
+  console.log(`\n🗺  Scanning sitemaps (${sources.length} domains)...`);
+
+  for (const { manufacturer, name, sitemapUrl } of sources) {
+    process.stdout.write(`  [${name}] ${sitemapUrl} … `);
+    const pdfs = await fetchSitemapPdfs(sitemapUrl, manufacturer);
+    const fresh = pdfs.filter(url => !existing.has(url));
+    console.log(`${pdfs.length} PDF(s) found, ${fresh.length} new`);
+
+    for (const url of fresh) {
+      const label = path.basename(new URL(url).pathname, '.pdf').replace(/[-_]/g, ' ');
+      discovered.push({
+        manufacturer,
+        name,
+        label: `Sitemap · ${label}`,
+        url,
+        source: 'sitemap',
+      });
+      existing.add(url); // deduplicate within this run
+    }
+
+    await sleep(600); // polite delay between domains
+  }
+
+  return discovered;
+}
+
 // ─── Bing Search API — yeni PDF keşfi ─────────────────────────────────────
 async function searchBing(query) {
   const apiKey = process.env.BING_API_KEY;
@@ -287,13 +463,24 @@ async function main() {
   const registry = loadRegistry();
 
   console.log(`\n🌐 ToolAdvisor Catalogue Crawler — ${new Date().toLocaleString()}`);
-  console.log(`   Known PDF seeds: ${KNOWN_PDFS.filter(p => !p.skip).length}`);
-  console.log(`   Bing Search queries: ${SEARCH_QUERIES.length} ${process.env.BING_API_KEY ? '✅' : '(no BING_API_KEY — skipped)'}`);
+  console.log(`   Known PDF seeds:    ${KNOWN_PDFS.filter(p => !p.skip).length}`);
+  console.log(`   Sitemap sources:    ${SITEMAP_SOURCES.length} domains (Walter, ISCAR, Kennametal, Tungaloy, Kyocera)`);
+  console.log(`   Bing Search:        ${SEARCH_QUERIES.length} queries ${process.env.BING_API_KEY ? '✅' : '(no BING_API_KEY — skipped)'}`);
 
-  // 1. Collect all PDF URLs
+  // 1. Start with known seeds
   let allPdfs = KNOWN_PDFS.filter(p => !p.skip);
 
-  // 2. Bing search for new ones (if API key available)
+  // 2. Sitemap discovery — tüm domainleri tara, yeni PDF'leri ekle
+  const sitemapPdfs = await discoverFromSitemaps(
+    targetSlug,
+    allPdfs.map(p => p.url),  // zaten bilinen URL'ler — tekrar indirme
+  );
+  if (sitemapPdfs.length > 0) {
+    console.log(`  → ${sitemapPdfs.length} new catalogue PDF(s) discovered via sitemap`);
+    allPdfs = allPdfs.concat(sitemapPdfs);
+  }
+
+  // 3. Bing search for additional discovery (if API key available)
   if (process.env.BING_API_KEY) {
     console.log('\n🔎 Searching Bing for new catalogues...');
     for (const { manufacturer, query } of SEARCH_QUERIES) {
@@ -308,7 +495,7 @@ async function main() {
     }
   }
 
-  // 3. Filter by target if specified
+  // 4. Filter by target if specified
   if (targetSlug) {
     allPdfs = allPdfs.filter(p => p.manufacturer === targetSlug);
     if (allPdfs.length === 0) {
