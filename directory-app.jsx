@@ -34,8 +34,8 @@ const ISO_CLASSES = {
 // Phase 1: Hole Making + Milling + Grooving (solid tools only)
 // Phase 1.5: Threading (hidden until ready)
 // Phase 2: Turning & Inserts, Boring, Toolholding, Special
-const FAMILIES = ['All','Hole Making','Milling','Grooving'];
-const COMING_SOON_FAMILIES = ['Threading','Boring','Toolholding','Special/Secondary'];
+const FAMILIES = ['All','Hole Making','Milling','Threading','Grooving'];
+const COMING_SOON_FAMILIES = ['Boring','Toolholding','Special/Secondary'];
 
 // Family mapping: old database names → new UI family names
 // Consolidates Drilling/Reaming → "Hole Making", Turning → "Turning & Inserts" (Phase 2)
