@@ -1213,24 +1213,115 @@ function retrieveTools(query, filters, top = 15) {
   const q = query.toLowerCase().trim();
   const tokens = q.split(/\s+/).filter(Boolean);
 
-  // Keyword → ISO group mapping (EN + TR terms)
+  // ── Synonym / alias tables ─────────────────────────────────────────────────
+  // Each entry is an array of surface forms that all map to the same concept.
+  // Add new languages or brand-specific terms here — nowhere else needed.
   const ISO_KW = {
-    P: ['steel','carbon steel','alloy steel','mild steel','ferritic','çelik','karbon','alaşımlı'],
-    M: ['stainless','inox','paslanmaz','duplex','austenitic'],
-    K: ['cast iron','dökme','gray cast','ductile','spheroidal'],
-    N: ['aluminum','aluminium','alüminyum','copper','brass','non-ferrous','bakır','pirinç'],
-    S: ['titanium','inconel','superalloy','nickel','heat resistant','hrsa','titanyum'],
-    H: ['hardened','hard turning','sertleştirilmiş','tempered','hrc'],
+    // ISO P — carbon / alloy / mild steel
+    P: [
+      'steel','carbon steel','alloy steel','mild steel','ferritic','structural steel',
+      'low carbon','s235','s355','c45',                  // EN
+      'çelik','karbon','alaşımlı çelik','konstrüksiyon', // TR
+      'staal','constructiestaal','koolstofstaal',        // NL
+      'acier','acier carbone',                           // FR
+      'stahl','baustahl',                                // DE
+    ],
+    // ISO M — stainless steel
+    M: [
+      'stainless','stainless steel','inox','inox steel','ss304','ss316',
+      'austenitic','duplex','martensitic','ferritic stainless',
+      'paslanmaz','paslanmaz çelik','korozyon',           // TR
+      'roestvrij','rvs','roestvrijstaal',                 // NL
+      'acier inoxydable',                                 // FR
+      'rostfrei','edelstahl',                             // DE
+    ],
+    // ISO K — cast iron
+    K: [
+      'cast iron','grey cast iron','gray cast iron','ductile iron',
+      'spheroidal graphite','flake graphite','compacted graphite','cgi',
+      'dökme demir','gri dökme','sfero dökme',            // TR
+      'gietijzer','grijs gietijzer','nodulair',           // NL
+      'fonte','fonte grise',                              // FR
+      'grauguss','gusseisen','sphäroguss',                // DE
+    ],
+    // ISO N — non-ferrous (aluminium, copper, brass, plastics)
+    N: [
+      'aluminum','aluminium','alu','6061','7075','2024',
+      'copper','brass','bronze','zinc','plastic','composite',
+      'alüminyum','bakır','pirinç','bronz','non-ferrous',  // TR
+      'aluminium','koper','messing',                       // NL (aluminium same as EN)
+      'cuivre','laiton',                                   // FR
+      'kupfer','messing','aluminium',                      // DE
+    ],
+    // ISO S — superalloys, titanium, high-temp alloys
+    S: [
+      'titanium','ti6al4v','inconel','inconel 718','inconel 625',
+      'hastelloy','waspaloy','nimonic','rene','incoloy',
+      'superalloy','nickel alloy','cobalt alloy','heat resistant','hrsa',
+      'titanyum','nikel alaşımı','yüksek sıcaklık',       // TR
+      'titanium','nikkellegering','hittebestendig',        // NL
+      'titane','superalliage',                             // FR
+      'titan','nickellegierung','hochtemperatur',          // DE
+    ],
+    // ISO H — hardened steel / hard turning
+    H: [
+      'hardened','hardened steel','hard turning','chilled cast','tempered',
+      'hrc 45','hrc 50','hrc 55','hrc 60','hrc 62',
+      'sertleştirilmiş','sertleştirilmiş çelik','sert torna', // TR
+      'gehard','gehard staal',                               // NL
+      'acier trempé','trempe',                               // FR
+      'gehärtet','gehärteter stahl','hartdrehen',            // DE
+    ],
   };
 
-  // Keyword → family mapping (EN + TR)
+  // Keyword → family mapping (EN + TR + NL + FR + DE)
   const FAM_KW = {
-    Drilling:  ['drill','drilling','matkap','delik','bore'],
-    Milling:   ['mill','milling','freze','shoulder','face mill','slot mill','cutter'],
-    Turning:   ['turn','turning','torna','insert','lathe','çevirme'],
-    Threading: ['thread','threading','diş','tap','tapping','helix'],
-    Reaming:   ['ream','reaming','rayba','finish bore'],
-    Grooving:  ['groove','grooving','parting','cut-off','kanal'],
+    Drilling: [
+      'drill','drilling','drills','bore','boring','holemaking','center drill','spot drill',
+      'matkap','delme','delik','delmek',                   // TR
+      'boor','boren','boormachine','spiraalboor',          // NL
+      'foret','perçage','forer',                           // FR
+      'bohrer','bohren','bohren',                          // DE
+    ],
+    Milling: [
+      'mill','milling','end mill','face mill','shoulder mill','slot mill',
+      'cutter','roughing','finishing mill','ball nose','trochoidal',
+      'freze','frezeleme','parmak freze','alın freze',     // TR
+      'frees','frezen','kopffrezen','vlakfrezen',          // NL
+      'fraise','fraisage','fraise deux tailles',           // FR
+      'fräser','fräsen','schaftfräser','planfräsen',       // DE
+    ],
+    Turning: [
+      'turn','turning','lathe','insert','face turn','external','internal',
+      'longitudinal','profiling','boring bar','torna',
+      'tornalama','dış çap','iç çap','profil',             // TR
+      'draaien','draaibank','wisselplaat','buitendraaien', // NL
+      'tournage','plaquette','tour',                       // FR
+      'drehen','drehmaschine','wendeplatte','außendrehen', // DE
+    ],
+    Threading: [
+      'thread','threading','tap','tapping','thread mill','thread turn',
+      'metric thread','unified thread','pipe thread','helical',
+      'diş','diş açma','kılavuz','diş tornalama',         // TR
+      'draad','draadtap','draadfrezen','draaddraaien',     // NL
+      'filetage','taraud','fileter',                       // FR
+      'gewinde','gewindebohrer','gewindefräsen','gewindedrehen', // DE
+    ],
+    Reaming: [
+      'ream','reaming','reamer','finish bore','h7','h6','precision hole',
+      'rayba','reamerleme','hassas delik',                 // TR
+      'ruimen','ruimer','nauwkeurig boren',                // NL
+      'alésage','alésoir',                                 // FR
+      'reiben','reibahle','passbohrung',                   // DE
+    ],
+    Grooving: [
+      'groove','grooving','parting','cut-off','plunge','face groove',
+      'undercut','snap ring','o-ring groove',
+      'kanal','kanal açma','kesme','nervür',               // TR
+      'groef','groefdraaien','afsteken','insteken',        // NL
+      'gorge','rainurage','saigner',                       // FR
+      'einstechen','abstechen','nutendrehen',              // DE
+    ],
   };
 
   // Detect ISO groups implied by the query
