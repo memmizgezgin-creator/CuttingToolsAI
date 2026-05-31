@@ -180,8 +180,8 @@
     {key:'Hole Making', iconKey:'drilling',  label:'Hole Making'},    // Consolidates Drilling + Reaming + Countersinking
     {key:'Milling',    iconKey:'milling',   label:'Milling Tools'},
     {key:'Grooving',   iconKey:'grooving',  label:'Grooving & Parting'},
+    {key:'Threading',  iconKey:'threading', label:'Threading Tools'},
     // Phase 2: Turning removed (hidden, moved to Coming Soon as "Turning & Inserts")
-    // Phase 1.5: Threading hidden until ready
   ];
   // Material Filter — each material gets a tone-matched mini 3D insert
   // whose SHAPE is the typical insert geometry for that ISO group.

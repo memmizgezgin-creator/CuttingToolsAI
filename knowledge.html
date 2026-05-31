@@ -35,25 +35,18 @@
       <span class="material-symbols-outlined text-on-surface-variant">search</span>
       <input class="flex-1 ml-3 bg-transparent outline-none font-medium" placeholder="Search guides (e.g. CNMG, stainless, chipbreaker)" type="text"/>
     </div>
-    <div class="flex flex-wrap gap-2">
-      
-        <button class="px-4 h-14 rounded-2xl border bg-primary text-white border-primary font-bold text-sm transition-all">All</button>
-      
-        <button class="px-4 h-14 rounded-2xl border bg-white border-border-warm text-primary hover:bg-surface-container-low font-bold text-sm transition-all">Fundamentals</button>
-      
-        <button class="px-4 h-14 rounded-2xl border bg-white border-border-warm text-primary hover:bg-surface-container-low font-bold text-sm transition-all">Code reading</button>
-      
-        <button class="px-4 h-14 rounded-2xl border bg-white border-border-warm text-primary hover:bg-surface-container-low font-bold text-sm transition-all">Geometry</button>
-      
-        <button class="px-4 h-14 rounded-2xl border bg-white border-border-warm text-primary hover:bg-surface-container-low font-bold text-sm transition-all">Material</button>
-      
-        <button class="px-4 h-14 rounded-2xl border bg-white border-border-warm text-primary hover:bg-surface-container-low font-bold text-sm transition-all">Parameters</button>
-      
+    <div id="filter-btns" class="flex flex-wrap gap-2">
+        <button data-cat="all" class="filter-btn active px-4 h-14 rounded-2xl border bg-primary text-white border-primary font-bold text-sm transition-all">All</button>
+        <button data-cat="fundamentals" class="filter-btn px-4 h-14 rounded-2xl border bg-white border-border-warm text-primary hover:bg-surface-container-low font-bold text-sm transition-all">Fundamentals</button>
+        <button data-cat="code-reading" class="filter-btn px-4 h-14 rounded-2xl border bg-white border-border-warm text-primary hover:bg-surface-container-low font-bold text-sm transition-all">Code reading</button>
+        <button data-cat="geometry" class="filter-btn px-4 h-14 rounded-2xl border bg-white border-border-warm text-primary hover:bg-surface-container-low font-bold text-sm transition-all">Geometry</button>
+        <button data-cat="material" class="filter-btn px-4 h-14 rounded-2xl border bg-white border-border-warm text-primary hover:bg-surface-container-low font-bold text-sm transition-all">Material</button>
+        <button data-cat="parameters" class="filter-btn px-4 h-14 rounded-2xl border bg-white border-border-warm text-primary hover:bg-surface-container-low font-bold text-sm transition-all">Parameters</button>
     </div>
   </div>
 
   <!-- Featured guide -->
-  <a href="#" class="block bg-gradient-to-br from-primary via-primary-container to-primary text-white rounded-3xl overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all relative mb-8">
+  <a href="#" data-cat="fundamentals" data-title="how to choose turning inserts" class="guide-card block bg-gradient-to-br from-primary via-primary-container to-primary text-white rounded-3xl overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all relative mb-8">
     <!-- decorative glow -->
     <div class="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-iso-m-amber/20 blur-3xl pointer-events-none"></div>
     <div class="absolute -left-10 -bottom-10 w-72 h-72 rounded-full bg-iso-p-blue/15 blur-3xl pointer-events-none"></div>
@@ -245,7 +238,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
     <!-- 02. ISO material groups -->
-    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+    <a href="#" data-cat="fundamentals" data-title="iso material groups explained p m k n s h" class="guide-card block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
       <div class="h-28 bg-gradient-to-br from-surface-container-low to-border-warm/40 flex items-center justify-center px-6">
         <svg viewBox="0 0 240 60" class="w-full h-auto max-w-[220px]" aria-hidden="true">
           <g font-family="DM Mono, monospace" font-size="14" font-weight="700">
@@ -279,7 +272,7 @@
     </a>
 
     <!-- 03. Insert code reading -->
-    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+    <a href="#" data-cat="code-reading" data-title="how to read an insert code cnmg vcmt dcmt shape clearance tolerance" class="guide-card block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
       <div class="h-28 bg-gradient-to-br from-primary-fixed/40 to-surface-container-low flex items-center justify-center px-6">
         <svg viewBox="0 0 240 60" class="w-full h-auto max-w-[220px]" aria-hidden="true">
           <g font-family="DM Mono, monospace" font-size="16" font-weight="700" fill="#123356">
@@ -322,7 +315,7 @@
     </a>
 
     <!-- 04. CNMG vs WNMG vs DNMG -->
-    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+    <a href="#" data-cat="geometry" data-title="cnmg vs wnmg vs dnmg insert shape compare geometry" class="guide-card block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
       <div class="h-28 bg-gradient-to-br from-surface-container-low to-border-warm/40 flex items-center justify-center px-6">
         <svg viewBox="0 0 240 70" class="w-full h-auto max-w-[220px]" aria-hidden="true">
           <!-- C: 80° rhomb -->
@@ -357,7 +350,7 @@
     </a>
 
     <!-- 05. Stainless steel -->
-    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+    <a href="#" data-cat="material" data-title="choosing tools for stainless steel austenitic duplex coatings chipbreakers" class="guide-card block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
       <div class="h-28 bg-gradient-to-br from-iso-m-amber/15 to-iso-m-amber/5 flex items-center justify-center px-6">
         <svg viewBox="0 0 220 60" class="w-full h-auto max-w-[200px]" aria-hidden="true">
           <!-- chip curl paths -->
@@ -385,7 +378,7 @@
     </a>
 
     <!-- 06. Positive vs negative -->
-    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+    <a href="#" data-cat="geometry" data-title="positive vs negative inserts cutting forces edge strength finish" class="guide-card block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
       <div class="h-28 bg-gradient-to-br from-surface-container-low to-border-warm/40 flex items-center justify-center px-6">
         <svg viewBox="0 0 240 60" class="w-full h-auto max-w-[220px]" aria-hidden="true">
           <!-- Positive insert: wedge angled outward -->
@@ -417,7 +410,7 @@
     </a>
 
     <!-- 07. Chipbreaker selection -->
-    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+    <a href="#" data-cat="geometry" data-title="chipbreaker selection light medium heavy feed range" class="guide-card block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
       <div class="h-28 bg-gradient-to-br from-surface-container-low to-border-warm/40 flex items-center justify-center px-6">
         <svg viewBox="0 0 240 60" class="w-full h-auto max-w-[220px]" aria-hidden="true">
           <!-- Three chip flow patterns -->
@@ -458,7 +451,7 @@
     </a>
 
     <!-- 08. Vc / feed / depth -->
-    <a href="#" class="block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
+    <a href="#" data-cat="parameters" data-title="vc feed depth of cut cutting speed parameters ranges" class="guide-card block bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden hover:-translate-y-1 transition-all group">
       <div class="h-28 bg-gradient-to-br from-primary-fixed/30 to-surface-container-low flex items-center justify-center px-6">
         <svg viewBox="0 0 240 70" class="w-full h-auto max-w-[220px]" aria-hidden="true">
           <!-- 3 stacked envelope bars -->
@@ -552,4 +545,44 @@
 </button>
 <script src="page-switcher.js"></script>
 <script src="advisor-ai-widget.js"></script>
+<script>
+(function () {
+  const btns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.guide-card');
+  const searchInput = document.querySelector('input[type="text"]');
+  let activeCat = 'all';
+  let searchQuery = '';
+
+  const activeClasses   = ['bg-primary','text-white','border-primary'];
+  const inactiveClasses = ['bg-white','text-primary','border-border-warm'];
+
+  function applyFilters() {
+    cards.forEach(card => {
+      const cat   = card.dataset.cat || '';
+      const title = card.dataset.title || '';
+      const catMatch   = activeCat === 'all' || cat === activeCat;
+      const queryMatch = !searchQuery || title.includes(searchQuery);
+      card.style.display = (catMatch && queryMatch) ? '' : 'none';
+    });
+  }
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => {
+        b.classList.remove(...activeClasses);
+        b.classList.add(...inactiveClasses);
+      });
+      btn.classList.remove(...inactiveClasses);
+      btn.classList.add(...activeClasses);
+      activeCat = btn.dataset.cat;
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener('input', () => {
+    searchQuery = searchInput.value.toLowerCase().trim();
+    applyFilters();
+  });
+})();
+</script>
 </body></html>

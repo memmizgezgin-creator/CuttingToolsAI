@@ -11,7 +11,7 @@
       "filename": "kennametal_kennametal-turning-brochure_en.pdf",
       "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/kennametal_kennametal-turning-brochure_en.pdf",
       "lastModified": null,
-      "downloadedAt": "2026-05-30T22:02:46.272Z",
+      "downloadedAt": "2026-05-31T11:54:31.856Z",
       "bytes": 9046638
     },
     "https://www.kennametal.com/content/dam/final/kennametal/catalogs/aerospace/kennametal-aerospace-brochure_en.pdf": {
@@ -69,7 +69,98 @@
       "lastModified": "Sun, 16 Oct 2011 01:26:34 GMT",
       "downloadedAt": "2026-05-30T22:02:59.129Z",
       "bytes": 613233
+    },
+    "https://cdn.walter-tools.com/files/sitecollectiondocuments/downloads/global/manuals/en-gb/technical-compendium-holemaking-2024-en.pdf": {
+      "filename": "walter_technical-compendium-holemaking-2024-en.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/walter_technical-compendium-holemaking-2024-en.pdf",
+      "lastModified": "Tue, 29 Apr 2025 08:34:00 GMT",
+      "downloadedAt": "2026-05-31T11:54:29.664Z",
+      "bytes": 16611445
+    },
+    "https://indrilling.com/wp-content/uploads/2024/07/kennametal_catalogue_2.pdf": {
+      "filename": "kennametal_kennametal_catalogue_2.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/kennametal_kennametal_catalogue_2.pdf",
+      "lastModified": "Fri, 08 May 2026 14:47:08 GMT",
+      "downloadedAt": "2026-05-31T11:54:34.350Z",
+      "bytes": 5403215
+    },
+    "https://www.iscar.com/Catalogs/Publication/english_1/world_Magazines/ISCAR_ARTICLE_2025/ISCAR_ARTICLE_2025.pdf": {
+      "filename": "iscar_iscar_article_2025.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/iscar_iscar_article_2025.pdf",
+      "lastModified": "Thu, 16 Jan 2025 13:36:00 GMT",
+      "downloadedAt": "2026-05-31T11:54:35.177Z",
+      "bytes": 5980747
+    },
+    "https://www.turnersupply.com/userfiles/products/documents/s/sandvik_5765079_catalog.pdf": {
+      "filename": "sandvik_sandvik_5765079_catalog.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/sandvik_sandvik_5765079_catalog.pdf",
+      "lastModified": "Sun, 31 May 2026 11:54:38 GMT",
+      "downloadedAt": "2026-05-31T11:54:40.376Z",
+      "bytes": 2725904
+    },
+    "https://cdn.dgisupply.ca/img/product-images/Asset_URL/Sandvik_5765051_Catalog.pdf": {
+      "filename": "sandvik_sandvik_5765051_catalog.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/sandvik_sandvik_5765051_catalog.pdf",
+      "lastModified": "Mon, 02 Nov 2020 03:25:20 GMT",
+      "downloadedAt": "2026-05-31T11:54:42.611Z",
+      "bytes": 3026335
+    },
+    "https://cdn.sandvik.coromant.com/files/sitecollectiondocuments/downloads/global/brochures/en-gb/c-1040-191.pdf": {
+      "filename": "sandvik_c-1040-191.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/sandvik_c-1040-191.pdf",
+      "lastModified": "Fri, 11 Dec 2020 08:20:47 GMT",
+      "downloadedAt": "2026-05-31T11:54:44.878Z",
+      "bytes": 2593145
+    },
+    "https://coromantstrgprod.blob.core.windows.net/files/sitecollectiondocuments/downloads/global/technical%20guides/en-gb/c-1020-18.pdf": {
+      "filename": "sandvik_c-1020-18.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/sandvik_c-1020-18.pdf",
+      "lastModified": "Fri, 11 Dec 2020 08:23:07 GMT",
+      "downloadedAt": "2026-05-31T11:54:45.914Z",
+      "bytes": 8885195
+    },
+    "https://asia.kyocera.com/products/cuttingtools/wp-content/uploads/2025/02/02_Chapter_A_2024_KAP.pdf": {
+      "filename": "kyocera_02_chapter_a_2024_kap.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/kyocera_02_chapter_a_2024_kap.pdf",
+      "lastModified": "Wed, 12 Feb 2025 00:00:24 GMT",
+      "downloadedAt": "2026-05-31T11:54:58.765Z",
+      "bytes": 1648820
+    },
+    "https://asia.kyocera.com/products/cuttingtools/wp-content/uploads/2025/02/11_Chapter_K_2024_KAP.pdf": {
+      "filename": "kyocera_11_chapter_k_2024_kap.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/kyocera_11_chapter_k_2024_kap.pdf",
+      "lastModified": "Wed, 12 Feb 2025 00:00:17 GMT",
+      "downloadedAt": "2026-05-31T11:55:02.842Z",
+      "bytes": 26671285
+    },
+    "https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_Milling.pdf": {
+      "filename": "tungaloy_gc_2023-2024_g_milling.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/tungaloy_gc_2023-2024_g_milling.pdf",
+      "lastModified": "Thu, 19 Mar 2026 23:34:00 GMT",
+      "downloadedAt": "2026-05-31T11:55:05.308Z",
+      "bytes": 48003268
+    },
+    "https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_Drilling.pdf": {
+      "filename": "tungaloy_gc_2023-2024_g_drilling.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/tungaloy_gc_2023-2024_g_drilling.pdf",
+      "lastModified": "Wed, 17 Sep 2025 05:03:32 GMT",
+      "downloadedAt": "2026-05-31T11:55:06.175Z",
+      "bytes": 11809865
+    },
+    "https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_Tooling.pdf": {
+      "filename": "tungaloy_gc_2023-2024_g_tooling.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/tungaloy_gc_2023-2024_g_tooling.pdf",
+      "lastModified": "Wed, 21 Jan 2026 04:39:25 GMT",
+      "downloadedAt": "2026-05-31T11:55:07.141Z",
+      "bytes": 13040089
+    },
+    "https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_UsersGuide.pdf": {
+      "filename": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+      "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/tungaloy_gc_2023-2024_g_usersguide.pdf",
+      "lastModified": "Wed, 21 Jan 2026 04:39:01 GMT",
+      "downloadedAt": "2026-05-31T11:55:07.981Z",
+      "bytes": 8084486
     }
   },
-  "lastRun": "2026-05-30T22:46:31.332Z"
+  "lastRun": "2026-05-31T13:10:08.709Z"
 }
