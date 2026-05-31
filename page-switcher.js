@@ -177,12 +177,11 @@
   // SIDEBAR (filter-first design — active-state aware, count-aware)
   // ============================================================
   const toolFamilies = [
-    {key:'Turning',    iconKey:'turning',   label:'Turning Inserts'},
+    {key:'Hole Making', iconKey:'drilling',  label:'Hole Making'},    // Consolidates Drilling + Reaming + Countersinking
     {key:'Milling',    iconKey:'milling',   label:'Milling Tools'},
-    {key:'Drilling',   iconKey:'drilling',  label:'Drilling Tools'},
-    {key:'Reaming',    iconKey:'reamers',   label:'Reamers'},
-    {key:'Threading',  iconKey:'threading', label:'Threading Tools'},
     {key:'Grooving',   iconKey:'grooving',  label:'Grooving & Parting'},
+    // Phase 2: Turning removed (hidden, moved to Coming Soon as "Turning & Inserts")
+    // Phase 1.5: Threading hidden until ready
   ];
   // Material Filter — each material gets a tone-matched mini 3D insert
   // whose SHAPE is the typical insert geometry for that ISO group.
