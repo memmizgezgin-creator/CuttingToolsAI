@@ -19,4 +19,28 @@ __pycache__/
 # Local backups
 *-fixed.html
 *.bak
+*.backup
+*.backup-*
 .env
+
+# PDF catalogs — large binary files, processed locally only
+*.pdf
+ingestion/input/
+ingestion/output/
+
+# Large text dumps from PDF extraction
+*.txt
+
+# Temp / personal notes
+*.rtf
+*sohbet*
+*worklog*
+*WORKLOG*
+
+# Nested repo copies / legacy folders
+ToolAdvisor/
+.codex/
+
+# Staging data files
+directory-data-staging.js
+data/
