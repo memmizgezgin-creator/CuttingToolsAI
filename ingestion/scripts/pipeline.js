@@ -31,6 +31,9 @@ const EXTRACTED_JS  = path.join(ROOT, 'directory-data-extracted.js');
 const DEPLOY_DIR    = '/tmp/tooladvisor-deploy';
 const EXTRACTED_OUT = path.join(ROOT, 'ingestion/output/claude-extracted');
 const CRAWLER       = path.join(__dirname, 'catalogue-crawler.js');
+const EXTRACT       = path.join(__dirname, 'claude-extract.js');
+const INBOX_DIR     = path.join(ROOT, 'ingestion/inbox');
+const PROCESSED_DIR = path.join(ROOT, 'ingestion/output/processed');
 
 // ─── Args ──────────────────────────────────────────────────────────────────
 const args      = process.argv.slice(2);
@@ -78,6 +81,73 @@ function stepCrawl() {
   } else {
     log('  ✅ Crawler tamamlandı');
   }
+}
+
+// ─── Step 1b: Process inbox PDFs ───────────────────────────────────────────
+function stepInbox() {
+  log('\n📥 ADIM 1B: Inbox PDF\'leri işle');
+
+  if (!fs.existsSync(INBOX_DIR)) {
+    log('  ℹ inbox klasörü yok');
+    return;
+  }
+
+  const pdfFiles = fs.readdirSync(INBOX_DIR)
+    .filter(f => f.toLowerCase().endsWith('.pdf'));
+
+  if (pdfFiles.length === 0) {
+    log('  ℹ inbox klasöründe PDF yok');
+    return;
+  }
+
+  log(`  📁 ${pdfFiles.length} PDF bulundu`);
+
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    log('  ⚠ API key bulunamadı, inbox atlandı');
+    return;
+  }
+
+  const env = { ...process.env };
+  if (apiKey) env.ANTHROPIC_API_KEY = apiKey;
+
+  // Her PDF'i işle
+  let processed = 0;
+  for (const pdfFile of pdfFiles) {
+    const pdfPath = path.join(INBOX_DIR, pdfFile);
+    log(`  📄 İşleniyor: ${pdfFile}`);
+
+    if (dryRun) {
+      log(`    [dry-run] claude-extract atlandı`);
+      processed++;
+      continue;
+    }
+
+    // claude-extract.js'i çalıştır
+    const result = spawnSync('node', [EXTRACT, pdfPath], {
+      cwd: ROOT,
+      env,
+      stdio: 'inherit',
+      timeout: 4 * 60 * 60 * 1000 // 4 saat max
+    });
+
+    if (result.status === 0) {
+      // İşlenmiş PDF'i processed/ klasörüne taşı
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-').split('Z')[0];
+      if (!fs.existsSync(PROCESSED_DIR)) {
+        fs.mkdirSync(PROCESSED_DIR, { recursive: true });
+      }
+
+      const destPath = path.join(PROCESSED_DIR, `${timestamp}_${pdfFile}`);
+      fs.renameSync(pdfPath, destPath);
+      log(`  ✅ ${pdfFile} işlendi ve archived`);
+      processed++;
+    } else {
+      log(`  ⚠ ${pdfFile} işlenemedi (status ${result.status})`);
+    }
+  }
+
+  log(`  📊 ${processed}/${pdfFiles.length} PDF başarıyla işlendi`);
 }
 
 // ─── Step 2: Merge all approved records ────────────────────────────────────
@@ -391,6 +461,9 @@ async function main() {
   } else {
     log('\n⏭  ADIM 1 atlandı (--no-crawl)');
   }
+
+  // Step 1b: Inbox (her zaman çalışır, --no-crawl ile atlanmaz)
+  stepInbox();
 
   // Step 2: Merge
   const allTools = stepMerge();
