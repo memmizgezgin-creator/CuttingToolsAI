@@ -32,3 +32,5 @@ Bu klasore PDF at, pipeline calistir, sistem otomatik isler.
 - Ayni PDF'i tekrar koyarsan tekrar islenir, processed/ klasoru sadece arsiv
 - Cron her gun 03:17'de otomatik calisir (KNOWN_PDFS + sitemap kaynaklari)
 - Inbox sadece sen manuel calistirinca islenir
+cd ~/Desktop/ToolAdvisor
+node ingestion/scripts/pipeline.js --no-crawl
