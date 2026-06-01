@@ -1,17 +1,10 @@
 {
-  "runAt": "2026-05-31T13:10:08.707Z",
-  "downloaded": 14,
-  "skipped": 8,
+  "runAt": "2026-06-01T07:51:17.167Z",
+  "downloaded": 2,
+  "skipped": 20,
   "failed": 3,
   "details": {
     "downloaded": [
-      {
-        "manufacturer": "walter",
-        "name": "Walter",
-        "label": "Technical Compendium Holemaking 2024",
-        "url": "https://cdn.walter-tools.com/files/sitecollectiondocuments/downloads/global/manuals/en-gb/technical-compendium-holemaking-2024-en.pdf",
-        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/walter_technical-compendium-holemaking-2024-en.pdf"
-      },
       {
         "manufacturer": "kennametal",
         "name": "Kennametal",
@@ -20,88 +13,11 @@
         "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/kennametal_kennametal-turning-brochure_en.pdf"
       },
       {
-        "manufacturer": "kennametal",
-        "name": "Kennametal",
-        "label": "General Catalogue 2024",
-        "url": "https://indrilling.com/wp-content/uploads/2024/07/kennametal_catalogue_2.pdf",
-        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/kennametal_kennametal_catalogue_2.pdf"
-      },
-      {
-        "manufacturer": "iscar",
-        "name": "Iscar",
-        "label": "ISCAR Article — What's New 2025",
-        "url": "https://www.iscar.com/Catalogs/Publication/english_1/world_Magazines/ISCAR_ARTICLE_2025/ISCAR_ARTICLE_2025.pdf",
-        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/iscar_iscar_article_2025.pdf"
-      },
-      {
         "manufacturer": "sandvik",
         "name": "Sandvik Coromant",
         "label": "Main Catalogue A — General Turning",
         "url": "https://www.turnersupply.com/userfiles/products/documents/s/sandvik_5765079_catalog.pdf",
         "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/sandvik_sandvik_5765079_catalog.pdf"
-      },
-      {
-        "manufacturer": "sandvik",
-        "name": "Sandvik Coromant",
-        "label": "Catalogue — Solid Round Tools",
-        "url": "https://cdn.dgisupply.ca/img/product-images/Asset_URL/Sandvik_5765051_Catalog.pdf",
-        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/sandvik_sandvik_5765051_catalog.pdf"
-      },
-      {
-        "manufacturer": "sandvik",
-        "name": "Sandvik Coromant",
-        "label": "CoroTurn® Prime — PrimeTurning™ Brochure",
-        "url": "https://cdn.sandvik.coromant.com/files/sitecollectiondocuments/downloads/global/brochures/en-gb/c-1040-191.pdf",
-        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/sandvik_c-1040-191.pdf"
-      },
-      {
-        "manufacturer": "sandvik",
-        "name": "Sandvik Coromant",
-        "label": "Turning Handbook — General Turning / Grooving / Threading",
-        "url": "https://coromantstrgprod.blob.core.windows.net/files/sitecollectiondocuments/downloads/global/technical%20guides/en-gb/c-1020-18.pdf",
-        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/sandvik_c-1020-18.pdf"
-      },
-      {
-        "manufacturer": "kyocera",
-        "name": "Kyocera",
-        "label": "General Catalog 2024 — Chapter A: Insert Grades",
-        "url": "https://asia.kyocera.com/products/cuttingtools/wp-content/uploads/2025/02/02_Chapter_A_2024_KAP.pdf",
-        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/kyocera_02_chapter_a_2024_kap.pdf"
-      },
-      {
-        "manufacturer": "kyocera",
-        "name": "Kyocera",
-        "label": "General Catalog 2024 — Chapter K: Drilling",
-        "url": "https://asia.kyocera.com/products/cuttingtools/wp-content/uploads/2025/02/11_Chapter_K_2024_KAP.pdf",
-        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/kyocera_11_chapter_k_2024_kap.pdf"
-      },
-      {
-        "manufacturer": "tungaloy",
-        "name": "Tungaloy",
-        "label": "General Catalog 2023/2024 Vol.2 — Milling",
-        "url": "https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_Milling.pdf",
-        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/tungaloy_gc_2023-2024_g_milling.pdf"
-      },
-      {
-        "manufacturer": "tungaloy",
-        "name": "Tungaloy",
-        "label": "General Catalog 2023/2024 Vol.3 — Drilling",
-        "url": "https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_Drilling.pdf",
-        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/tungaloy_gc_2023-2024_g_drilling.pdf"
-      },
-      {
-        "manufacturer": "tungaloy",
-        "name": "Tungaloy",
-        "label": "General Catalog 2023/2024 Vol.4 — Tooling System",
-        "url": "https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_Tooling.pdf",
-        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/tungaloy_gc_2023-2024_g_tooling.pdf"
-      },
-      {
-        "manufacturer": "tungaloy",
-        "name": "Tungaloy",
-        "label": "General Catalog 2023/2024 Vol.5 — User's Guide",
-        "url": "https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_UsersGuide.pdf",
-        "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/tungaloy_gc_2023-2024_g_usersguide.pdf"
       }
     ],
     "skipped": [
@@ -114,6 +30,12 @@
       {
         "manufacturer": "walter",
         "name": "Walter",
+        "label": "Technical Compendium Holemaking 2024",
+        "url": "https://cdn.walter-tools.com/files/sitecollectiondocuments/downloads/global/manuals/en-gb/technical-compendium-holemaking-2024-en.pdf"
+      },
+      {
+        "manufacturer": "walter",
+        "name": "Walter",
         "label": "Insert Drill Handbook",
         "url": "https://cdn.walter-tools.com/files/sitecollectiondocuments/downloads/global/manuals/en-gb/handbook-walter-insert-drill-en.pdf"
       },
@@ -122,6 +44,18 @@
         "name": "Kennametal",
         "label": "Drilling Tool Catalog",
         "url": "https://drillingworld.com/pdf/Product%20Data%20Sheets/kennametal%20drilling%20tool%20catalog.pdf"
+      },
+      {
+        "manufacturer": "kennametal",
+        "name": "Kennametal",
+        "label": "General Catalogue 2024",
+        "url": "https://indrilling.com/wp-content/uploads/2024/07/kennametal_catalogue_2.pdf"
+      },
+      {
+        "manufacturer": "iscar",
+        "name": "Iscar",
+        "label": "ISCAR Article — What's New 2025",
+        "url": "https://www.iscar.com/Catalogs/Publication/english_1/world_Magazines/ISCAR_ARTICLE_2025/ISCAR_ARTICLE_2025.pdf"
       },
       {
         "manufacturer": "iscar",
@@ -152,6 +86,60 @@
         "name": "Iscar",
         "label": "Grade Chart",
         "url": "https://www.iscar.com/ecat/iscar_grade_chart.pdf"
+      },
+      {
+        "manufacturer": "sandvik",
+        "name": "Sandvik Coromant",
+        "label": "Catalogue — Solid Round Tools",
+        "url": "https://cdn.dgisupply.ca/img/product-images/Asset_URL/Sandvik_5765051_Catalog.pdf"
+      },
+      {
+        "manufacturer": "sandvik",
+        "name": "Sandvik Coromant",
+        "label": "CoroTurn® Prime — PrimeTurning™ Brochure",
+        "url": "https://cdn.sandvik.coromant.com/files/sitecollectiondocuments/downloads/global/brochures/en-gb/c-1040-191.pdf"
+      },
+      {
+        "manufacturer": "sandvik",
+        "name": "Sandvik Coromant",
+        "label": "Turning Handbook — General Turning / Grooving / Threading",
+        "url": "https://coromantstrgprod.blob.core.windows.net/files/sitecollectiondocuments/downloads/global/technical%20guides/en-gb/c-1020-18.pdf"
+      },
+      {
+        "manufacturer": "kyocera",
+        "name": "Kyocera",
+        "label": "General Catalog 2024 — Chapter A: Insert Grades",
+        "url": "https://asia.kyocera.com/products/cuttingtools/wp-content/uploads/2025/02/02_Chapter_A_2024_KAP.pdf"
+      },
+      {
+        "manufacturer": "kyocera",
+        "name": "Kyocera",
+        "label": "General Catalog 2024 — Chapter K: Drilling",
+        "url": "https://asia.kyocera.com/products/cuttingtools/wp-content/uploads/2025/02/11_Chapter_K_2024_KAP.pdf"
+      },
+      {
+        "manufacturer": "tungaloy",
+        "name": "Tungaloy",
+        "label": "General Catalog 2023/2024 Vol.2 — Milling",
+        "url": "https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_Milling.pdf"
+      },
+      {
+        "manufacturer": "tungaloy",
+        "name": "Tungaloy",
+        "label": "General Catalog 2023/2024 Vol.3 — Drilling",
+        "url": "https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_Drilling.pdf"
+      },
+      {
+        "manufacturer": "tungaloy",
+        "name": "Tungaloy",
+        "label": "General Catalog 2023/2024 Vol.4 — Tooling System",
+        "url": "https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_Tooling.pdf"
+      },
+      {
+        "manufacturer": "tungaloy",
+        "name": "Tungaloy",
+        "label": "General Catalog 2023/2024 Vol.5 — User's Guide",
+        "url": "https://tungaloy.com/wpdata/wp-content/uploads/GC_2023-2024_G_UsersGuide.pdf"
       }
     ],
     "failed": [

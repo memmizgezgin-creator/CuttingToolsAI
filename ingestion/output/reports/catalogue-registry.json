@@ -11,7 +11,7 @@
       "filename": "kennametal_kennametal-turning-brochure_en.pdf",
       "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/kennametal_kennametal-turning-brochure_en.pdf",
       "lastModified": null,
-      "downloadedAt": "2026-05-31T11:54:31.856Z",
+      "downloadedAt": "2026-06-01T07:49:04.211Z",
       "bytes": 9046638
     },
     "https://www.kennametal.com/content/dam/final/kennametal/catalogs/aerospace/kennametal-aerospace-brochure_en.pdf": {
@@ -94,8 +94,8 @@
     "https://www.turnersupply.com/userfiles/products/documents/s/sandvik_5765079_catalog.pdf": {
       "filename": "sandvik_sandvik_5765079_catalog.pdf",
       "localPath": "/Users/muratonder/Desktop/ToolAdvisor/ingestion/input/pending/sandvik_sandvik_5765079_catalog.pdf",
-      "lastModified": "Sun, 31 May 2026 11:54:38 GMT",
-      "downloadedAt": "2026-05-31T11:54:40.376Z",
+      "lastModified": "Mon, 01 Jun 2026 07:49:07 GMT",
+      "downloadedAt": "2026-06-01T07:49:07.976Z",
       "bytes": 2725904
     },
     "https://cdn.dgisupply.ca/img/product-images/Asset_URL/Sandvik_5765051_Catalog.pdf": {
@@ -162,5 +162,5 @@
       "bytes": 8084486
     }
   },
-  "lastRun": "2026-05-31T13:10:08.709Z"
+  "lastRun": "2026-06-01T07:51:17.168Z"
 }

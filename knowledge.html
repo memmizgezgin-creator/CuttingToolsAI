@@ -585,6 +585,16 @@
     searchQuery = searchInput.value.toLowerCase().trim();
     applyFilters();
   });
+
+  cards.forEach(card => {
+    card.addEventListener('click', e => {
+      e.preventDefault();
+      const title = card.dataset.title || '';
+      if (title) {
+        window.location.href = 'ToolAdvisor.html?q=' + encodeURIComponent(title);
+      }
+    });
+  });
 })();
 </script>
 </body></html>

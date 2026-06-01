@@ -1,0 +1,23 @@
+# Cloudflare Worker — ToolAdvisor Pipeline
+# Bu dosya Pages'in wrangler.toml'undan AYRIDIR.
+# Deploy: cd cloudflare-worker && npx wrangler deploy
+
+name            = "tooladvisor-pipeline"
+main            = "pipeline-worker.js"
+compatibility_date = "2025-01-01"
+
+# Cron: her gün 03:17 UTC
+[triggers]
+crons = ["17 3 * * *"]
+
+# KV Namespace — aşağıdaki id'yi gerçek KV id'siyle değiştir:
+#   npx wrangler kv namespace create PIPELINE_KV
+#   → çıktıdaki id'yi buraya yaz
+[[kv_namespaces]]
+binding = "PIPELINE_KV"
+id      = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+
+# Secrets (wrangler.toml'a yazılmaz, ayrıca set edilir):
+#   npx wrangler secret put GITHUB_TOKEN
+#   npx wrangler secret put GITHUB_REPO    → memmizgezgin-creator/ToolAdvisor
+#   npx wrangler secret put GITHUB_BRANCH  → main
