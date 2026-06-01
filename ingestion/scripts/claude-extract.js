@@ -14,8 +14,8 @@
  * Output:
  *   ingestion/output/claude-extracted/<pdf-slug>/<timestamp>/
  *     records.json      → all extracted records
- *     approved.json     → confidence >= 85
- *     review.json       → confidence < 85, needs human check
+ *     approved.json     → confidence >= 70 (auto-approved)
+ *     review.json       → confidence < 70 (needs human check)
  *     summary.txt       → run summary
  */
 
@@ -29,7 +29,7 @@ const Anthropic = require('@anthropic-ai/sdk');
 
 // ─── Config ────────────────────────────────────────────────────────────────
 const PAGE_CHUNK   = 5;      // pages sent to Claude per request
-const CONF_AUTO    = 85;     // confidence >= this → approved automatically
+const CONF_AUTO    = 70;     // confidence >= this → approved automatically (lowered from 85)
 const MODEL        = 'claude-haiku-4-5'; // fast + cheap; swap to claude-sonnet-4-5 for tricky PDFs
 const MAX_TOKENS   = 4096;
 const API_TIMEOUT  = 30000;  // 30 seconds max per chunk
