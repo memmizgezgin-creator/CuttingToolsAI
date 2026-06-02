@@ -1,5 +1,5 @@
 // ToolAdvisor — Extracted tool records (908 tools from manufacturer catalogues)
-// Auto-generated 2026-06-01 by pipeline.js — DO NOT edit manually
+// Auto-generated 2026-06-02 by pipeline.js — DO NOT edit manually
 (function () {
   if (!window.TA_TOOLS) window.TA_TOOLS = [];
   const EXTRACTED = [
@@ -16,6 +16,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'701'
   },
@@ -32,6 +34,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3899'
   },
@@ -48,6 +52,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'301'
   },
@@ -64,6 +70,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'660'
   },
@@ -80,6 +88,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'303'
   },
@@ -96,6 +106,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6405'
   },
@@ -112,6 +124,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6408'
   },
@@ -128,6 +142,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6412'
   },
@@ -144,6 +160,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6487'
   },
@@ -160,6 +178,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6488'
   },
@@ -176,6 +196,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6489'
   },
@@ -192,6 +214,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6490'
   },
@@ -208,6 +232,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6491'
   },
@@ -224,6 +250,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6493'
   },
@@ -240,6 +268,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6596'
   },
@@ -256,6 +286,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2480'
   },
@@ -272,6 +304,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2472'
   },
@@ -288,6 +322,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6026'
   },
@@ -304,6 +340,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6026'
   },
@@ -320,6 +358,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2473'
   },
@@ -336,6 +376,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2996'
   },
@@ -352,6 +394,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2719'
   },
@@ -368,6 +412,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5651'
   },
@@ -384,6 +430,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2474'
   },
@@ -400,6 +448,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2477'
   },
@@ -416,6 +466,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2469'
   },
@@ -432,6 +484,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2479'
   },
@@ -448,6 +502,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2471'
   },
@@ -464,6 +520,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5650'
   },
@@ -480,6 +538,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5498'
   },
@@ -496,6 +556,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5768'
   },
@@ -512,6 +574,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6501'
   },
@@ -528,6 +592,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4044'
   },
@@ -544,6 +610,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4045'
   },
@@ -560,6 +628,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5499'
   },
@@ -576,6 +646,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6516'
   },
@@ -592,6 +664,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6517'
   },
@@ -608,6 +682,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6509'
   },
@@ -624,6 +700,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6511'
   },
@@ -640,6 +718,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6512'
   },
@@ -656,6 +736,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6513'
   },
@@ -672,6 +754,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6514'
   },
@@ -688,6 +772,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'611'
   },
@@ -704,6 +790,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6590'
   },
@@ -720,6 +808,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1946'
   },
@@ -736,6 +826,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'703'
   },
@@ -752,6 +844,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5685'
   },
@@ -768,6 +862,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5646'
   },
@@ -784,6 +880,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5686'
   },
@@ -800,6 +898,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5647'
   },
@@ -816,6 +916,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5687'
   },
@@ -832,6 +934,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5648'
   },
@@ -848,6 +952,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5632'
   },
@@ -864,6 +970,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5024'
   },
@@ -880,6 +988,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5633'
   },
@@ -896,6 +1006,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5020'
   },
@@ -912,6 +1024,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5637'
   },
@@ -928,6 +1042,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5026'
   },
@@ -944,6 +1060,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5638'
   },
@@ -960,6 +1078,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5021'
   },
@@ -976,6 +1096,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5639'
   },
@@ -992,6 +1114,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5018'
   },
@@ -1008,6 +1132,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5640'
   },
@@ -1024,6 +1150,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5460'
   },
@@ -1040,6 +1168,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5022'
   },
@@ -1056,6 +1186,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5689'
   },
@@ -1072,6 +1204,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5669'
   },
@@ -1088,6 +1222,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5641'
   },
@@ -1104,6 +1240,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5023'
   },
@@ -1120,6 +1258,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5690'
   },
@@ -1136,6 +1276,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5642'
   },
@@ -1152,6 +1294,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5691'
   },
@@ -1168,6 +1312,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5688'
   },
@@ -1184,6 +1330,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5692'
   },
@@ -1200,6 +1348,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5164'
   },
@@ -1216,6 +1366,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5693'
   },
@@ -1232,6 +1384,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5681'
   },
@@ -1248,6 +1402,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5694'
   },
@@ -1264,6 +1420,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5682'
   },
@@ -1280,6 +1438,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5644'
   },
@@ -1296,6 +1456,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5029'
   },
@@ -1312,6 +1474,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5702'
   },
@@ -1328,6 +1492,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5705'
   },
@@ -1344,6 +1510,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5707'
   },
@@ -1360,6 +1528,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6005'
   },
@@ -1376,6 +1546,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6006'
   },
@@ -1392,6 +1564,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'252226'
   },
@@ -1408,6 +1582,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'552'
   },
@@ -1424,6 +1600,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'553'
   },
@@ -1440,6 +1618,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'329'
   },
@@ -1456,6 +1636,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'659'
   },
@@ -1472,6 +1654,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'329'
   },
@@ -1488,6 +1672,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'659'
   },
@@ -1504,6 +1690,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2461'
   },
@@ -1520,6 +1708,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1228'
   },
@@ -1536,6 +1726,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2498'
   },
@@ -1552,6 +1744,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'572'
   },
@@ -1568,6 +1762,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1259'
   },
@@ -1584,6 +1780,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'515'
   },
@@ -1600,6 +1798,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'730'
   },
@@ -1616,6 +1816,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2463'
   },
@@ -1632,6 +1834,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'549'
   },
@@ -1648,6 +1852,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'652'
   },
@@ -1664,6 +1870,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'549'
   },
@@ -1680,6 +1888,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'652'
   },
@@ -1696,6 +1906,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'550'
   },
@@ -1712,6 +1924,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'305'
   },
@@ -1728,6 +1942,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'622'
   },
@@ -1744,6 +1960,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'658'
   },
@@ -1760,6 +1978,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2459'
   },
@@ -1776,6 +1996,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'605'
   },
@@ -1792,6 +2014,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'657'
   },
@@ -1808,6 +2032,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2458'
   },
@@ -1824,6 +2050,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'629'
   },
@@ -1840,6 +2068,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'9000'
   },
@@ -1856,6 +2086,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1018'
   },
@@ -1872,6 +2104,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1146'
   },
@@ -1888,6 +2122,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1199'
   },
@@ -1904,6 +2140,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'693'
   },
@@ -1920,6 +2158,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'732 2464'
   },
@@ -1936,6 +2176,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2601'
   },
@@ -1952,6 +2194,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'211'
   },
@@ -1968,6 +2212,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'217'
   },
@@ -1984,6 +2230,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'219'
   },
@@ -2000,6 +2248,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'535'
   },
@@ -2016,6 +2266,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'668'
   },
@@ -2032,6 +2284,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'501'
   },
@@ -2048,6 +2302,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'336'
   },
@@ -2064,6 +2320,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'396'
   },
@@ -2080,6 +2338,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'617'
   },
@@ -2096,6 +2356,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'669'
   },
@@ -2112,6 +2374,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'235'
   },
@@ -2128,6 +2392,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'502'
   },
@@ -2144,6 +2410,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'524'
   },
@@ -2160,6 +2428,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'618'
   },
@@ -2176,6 +2446,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'9670'
   },
@@ -2192,6 +2464,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'619'
   },
@@ -2208,6 +2482,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'9671'
   },
@@ -2224,6 +2500,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'504'
   },
@@ -2240,6 +2518,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'571'
   },
@@ -2256,6 +2536,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'9672'
   },
@@ -2272,6 +2554,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'244'
   },
@@ -2288,6 +2572,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'243'
   },
@@ -2304,6 +2590,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'242'
   },
@@ -2320,6 +2608,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'577'
   },
@@ -2336,6 +2626,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'579'
   },
@@ -2352,6 +2644,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1132'
   },
@@ -2368,6 +2662,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'128'
   },
@@ -2384,6 +2680,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'645'
   },
@@ -2400,6 +2698,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1262'
   },
@@ -2416,6 +2716,8 @@
     confidence:88, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'257'
   },
@@ -2432,6 +2734,8 @@
     confidence:88, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'551'
   },
@@ -2448,6 +2752,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'370'
   },
@@ -2464,6 +2770,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'374'
   },
@@ -2480,6 +2788,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'736'
   },
@@ -2496,6 +2806,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'581'
   },
@@ -2512,6 +2824,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'613'
   },
@@ -2528,6 +2842,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'381'
   },
@@ -2544,6 +2860,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6503'
   },
@@ -2560,6 +2878,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'582'
   },
@@ -2576,6 +2896,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'584'
   },
@@ -2592,6 +2914,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'583'
   },
@@ -2608,6 +2932,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'614'
   },
@@ -2624,6 +2950,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'585 6504'
   },
@@ -2640,6 +2968,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6504'
   },
@@ -2656,6 +2986,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'292'
   },
@@ -2672,6 +3004,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'595'
   },
@@ -2688,6 +3022,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'594'
   },
@@ -2704,6 +3040,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'280'
   },
@@ -2720,6 +3058,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'281'
   },
@@ -2736,6 +3076,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'589'
   },
@@ -2752,6 +3094,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'588'
   },
@@ -2768,6 +3112,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'587'
   },
@@ -2784,6 +3130,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6027'
   },
@@ -2800,6 +3148,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'723'
   },
@@ -2816,6 +3166,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1133'
   },
@@ -2832,6 +3184,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'559'
   },
@@ -2848,6 +3202,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'557'
   },
@@ -2864,6 +3220,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'568'
   },
@@ -2880,6 +3238,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6028'
   },
@@ -2896,6 +3256,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'724'
   },
@@ -2912,6 +3274,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'556'
   },
@@ -2928,6 +3292,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'567'
   },
@@ -2944,6 +3310,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1135'
   },
@@ -2960,6 +3328,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6029'
   },
@@ -2976,6 +3346,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'546'
   },
@@ -2992,6 +3364,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'554'
   },
@@ -3008,6 +3382,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6996'
   },
@@ -3024,6 +3400,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1137'
   },
@@ -3040,6 +3418,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'574'
   },
@@ -3056,6 +3436,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'274'
   },
@@ -3072,6 +3454,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'576'
   },
@@ -3088,6 +3472,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'575'
   },
@@ -3104,6 +3490,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'238'
   },
@@ -3120,6 +3508,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'378'
   },
@@ -3136,6 +3526,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1147'
   },
@@ -3152,6 +3544,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'249'
   },
@@ -3168,6 +3562,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'379'
   },
@@ -3184,6 +3580,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'250'
   },
@@ -3200,6 +3598,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'380'
   },
@@ -3216,6 +3616,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'636'
   },
@@ -3232,6 +3634,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'536'
   },
@@ -3248,6 +3652,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'514'
   },
@@ -3264,6 +3670,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'538'
   },
@@ -3280,6 +3688,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'540'
   },
@@ -3296,6 +3706,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'541'
   },
@@ -3312,6 +3724,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'539'
   },
@@ -3328,6 +3742,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'533'
   },
@@ -3344,6 +3760,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'534'
   },
@@ -3360,6 +3778,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'555'
   },
@@ -3376,6 +3796,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'RT 100 FB'
   },
@@ -3392,6 +3814,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'RT 100 U'
   },
@@ -3408,6 +3832,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'RT 100 HF'
   },
@@ -3424,6 +3850,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'RT 100 XF'
   },
@@ -3440,6 +3868,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'RT 100 AL'
   },
@@ -3456,6 +3886,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'RT 100 R'
   },
@@ -3472,6 +3904,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'RT 150 GG'
   },
@@ -3488,6 +3922,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'RT 150 GG'
   },
@@ -3504,6 +3940,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'RT 150 GN'
   },
@@ -3520,6 +3958,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3891'
   },
@@ -3536,6 +3976,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3892'
   },
@@ -3552,6 +3994,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3540'
   },
@@ -3568,6 +4012,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3729'
   },
@@ -3584,6 +4030,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3636'
   },
@@ -3600,6 +4048,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3730'
   },
@@ -3616,6 +4066,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6737'
   },
@@ -3632,6 +4084,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6736'
   },
@@ -3648,6 +4102,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6801'
   },
@@ -3664,6 +4120,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6802'
   },
@@ -3680,6 +4138,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6716'
   },
@@ -3696,6 +4156,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6887'
   },
@@ -3712,6 +4174,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6888'
   },
@@ -3728,6 +4192,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6889'
   },
@@ -3744,6 +4210,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6890'
   },
@@ -3760,6 +4228,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3723'
   },
@@ -3776,6 +4246,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3365'
   },
@@ -3792,6 +4264,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6966'
   },
@@ -3808,6 +4282,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6967'
   },
@@ -3824,6 +4300,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6866'
   },
@@ -3840,6 +4318,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6870'
   },
@@ -3856,6 +4336,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6871'
   },
@@ -3872,6 +4354,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6793'
   },
@@ -3888,6 +4372,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6984'
   },
@@ -3904,6 +4390,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3358'
   },
@@ -3920,6 +4408,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6721'
   },
@@ -3936,6 +4426,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6711'
   },
@@ -3952,6 +4444,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6712'
   },
@@ -3968,6 +4462,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6810'
   },
@@ -3984,6 +4480,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6811'
   },
@@ -4000,6 +4498,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6714'
   },
@@ -4016,6 +4516,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6715'
   },
@@ -4032,6 +4534,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6812'
   },
@@ -4048,6 +4552,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6813'
   },
@@ -4064,6 +4570,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6815'
   },
@@ -4080,6 +4588,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6816'
   },
@@ -4096,6 +4606,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6817'
   },
@@ -4112,6 +4624,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6818'
   },
@@ -4128,6 +4642,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6819'
   },
@@ -4144,6 +4660,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6833'
   },
@@ -4160,6 +4678,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6832'
   },
@@ -4176,6 +4696,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6835'
   },
@@ -4192,6 +4714,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6834'
   },
@@ -4208,6 +4732,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6836'
   },
@@ -4224,6 +4750,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6845'
   },
@@ -4240,6 +4768,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6844'
   },
@@ -4256,6 +4786,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6847'
   },
@@ -4272,6 +4804,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6846'
   },
@@ -4288,6 +4822,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6849'
   },
@@ -4304,6 +4840,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6848'
   },
@@ -4320,6 +4858,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3679'
   },
@@ -4336,6 +4876,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3049'
   },
@@ -4352,6 +4894,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3050'
   },
@@ -4368,6 +4912,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3727'
   },
@@ -4384,6 +4930,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6823'
   },
@@ -4400,6 +4948,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6824'
   },
@@ -4416,6 +4966,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6837'
   },
@@ -4432,6 +4984,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6838'
   },
@@ -4448,6 +5002,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6850'
   },
@@ -4464,6 +5020,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6851'
   },
@@ -4480,6 +5038,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6852'
   },
@@ -4496,6 +5056,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6853'
   },
@@ -4512,6 +5074,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6854'
   },
@@ -4528,6 +5092,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6855'
   },
@@ -4544,6 +5110,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6831'
   },
@@ -4560,6 +5128,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6943'
   },
@@ -4576,6 +5146,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6944'
   },
@@ -4592,6 +5164,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6828'
   },
@@ -4608,6 +5182,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6827'
   },
@@ -4624,6 +5200,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6946'
   },
@@ -4640,6 +5218,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6945'
   },
@@ -4656,6 +5236,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3635'
   },
@@ -4672,6 +5254,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3154'
   },
@@ -4688,6 +5272,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3021'
   },
@@ -4704,6 +5290,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3684'
   },
@@ -4720,6 +5308,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3686'
   },
@@ -4736,6 +5326,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3558'
   },
@@ -4752,6 +5344,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3719'
   },
@@ -4768,6 +5362,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3560'
   },
@@ -4784,6 +5380,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3720'
   },
@@ -4800,6 +5398,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3429'
   },
@@ -4816,6 +5416,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3705'
   },
@@ -4832,6 +5434,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3432'
   },
@@ -4848,6 +5452,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3706'
   },
@@ -4864,6 +5470,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3322'
   },
@@ -4880,6 +5488,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3668'
   },
@@ -4896,6 +5506,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3340'
   },
@@ -4912,6 +5524,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3660'
   },
@@ -4928,6 +5542,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6756'
   },
@@ -4944,6 +5560,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3451'
   },
@@ -4960,6 +5578,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3663'
   },
@@ -4976,6 +5596,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3452'
   },
@@ -4992,6 +5614,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3694'
   },
@@ -5008,6 +5632,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3453'
   },
@@ -5024,6 +5650,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3695'
   },
@@ -5040,6 +5668,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3466'
   },
@@ -5056,6 +5686,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3703'
   },
@@ -5072,6 +5704,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3467'
   },
@@ -5088,6 +5722,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3704'
   },
@@ -5104,6 +5740,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3143'
   },
@@ -5120,6 +5758,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3145'
   },
@@ -5136,6 +5776,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3142'
   },
@@ -5152,6 +5794,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3144'
   },
@@ -5168,6 +5812,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3458'
   },
@@ -5184,6 +5830,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3651'
   },
@@ -5200,6 +5848,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3459'
   },
@@ -5216,6 +5866,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3664'
   },
@@ -5232,6 +5884,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3460'
   },
@@ -5248,6 +5902,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3836'
   },
@@ -5264,6 +5920,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3428'
   },
@@ -5280,6 +5938,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3670'
   },
@@ -5296,6 +5956,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3431'
   },
@@ -5312,6 +5974,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3692'
   },
@@ -5328,6 +5992,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3433'
   },
@@ -5344,6 +6010,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3346'
   },
@@ -5360,6 +6028,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3690'
   },
@@ -5376,6 +6046,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3347'
   },
@@ -5392,6 +6064,8 @@
     confidence:95, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3650'
   },
@@ -5408,6 +6082,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3343'
   },
@@ -5424,6 +6100,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3669'
   },
@@ -5440,6 +6118,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3342'
   },
@@ -5456,6 +6136,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3698'
   },
@@ -5472,6 +6154,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3117'
   },
@@ -5488,6 +6172,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3121'
   },
@@ -5504,6 +6190,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3440'
   },
@@ -5520,6 +6208,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3120'
   },
@@ -5536,6 +6226,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3530'
   },
@@ -5552,6 +6244,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3504'
   },
@@ -5568,6 +6262,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3654'
   },
@@ -5584,6 +6280,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3187'
   },
@@ -5600,6 +6298,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3185'
   },
@@ -5616,6 +6316,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3749'
   },
@@ -5632,6 +6334,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3580'
   },
@@ -5648,6 +6352,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3570'
   },
@@ -5664,6 +6370,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3574'
   },
@@ -5680,6 +6388,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3577'
   },
@@ -5696,6 +6406,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3572'
   },
@@ -5712,6 +6424,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3576'
   },
@@ -5728,6 +6442,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3176'
   },
@@ -5744,6 +6460,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4645'
   },
@@ -5760,6 +6478,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4218'
   },
@@ -5776,6 +6496,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4638'
   },
@@ -5792,6 +6514,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4639'
   },
@@ -5808,6 +6532,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4640'
   },
@@ -5824,6 +6550,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4644'
   },
@@ -5840,6 +6568,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4651'
   },
@@ -5856,6 +6586,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4646'
   },
@@ -5872,6 +6604,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4648'
   },
@@ -5888,6 +6622,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4219'
   },
@@ -5904,6 +6640,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4641'
   },
@@ -5920,6 +6658,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4649'
   },
@@ -5936,6 +6676,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4647'
   },
@@ -5952,6 +6694,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4643'
   },
@@ -5968,6 +6712,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4642'
   },
@@ -5984,6 +6730,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4682'
   },
@@ -6000,6 +6748,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4220'
   },
@@ -6016,6 +6766,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4680'
   },
@@ -6032,6 +6784,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4633'
   },
@@ -6048,6 +6802,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'393'
   },
@@ -6064,6 +6820,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4625'
   },
@@ -6080,6 +6838,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4626'
   },
@@ -6096,6 +6856,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4627'
   },
@@ -6112,6 +6874,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4629'
   },
@@ -6128,6 +6892,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4630'
   },
@@ -6144,6 +6910,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4650'
   },
@@ -6160,6 +6928,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4634'
   },
@@ -6176,6 +6946,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4636'
   },
@@ -6192,6 +6964,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'394'
   },
@@ -6208,6 +6982,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4628'
   },
@@ -6224,6 +7000,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4631'
   },
@@ -6240,6 +7018,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4860'
   },
@@ -6256,6 +7036,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2990'
   },
@@ -6272,6 +7054,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1870'
   },
@@ -6288,6 +7072,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2869'
   },
@@ -6304,6 +7090,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1871'
   },
@@ -6320,6 +7108,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4672'
   },
@@ -6336,6 +7126,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2901'
   },
@@ -6352,6 +7144,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2916'
   },
@@ -6368,6 +7162,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2887'
   },
@@ -6384,6 +7180,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'967'
   },
@@ -6400,6 +7198,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2875'
   },
@@ -6416,6 +7216,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1010'
   },
@@ -6432,6 +7234,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'SC-MTM3'
   },
@@ -6448,6 +7252,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'MTMH3-Z'
   },
@@ -6464,6 +7270,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNMG 120404-GN'
   },
@@ -6480,6 +7288,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNMG 120408-GN'
   },
@@ -6496,6 +7306,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNMG 120404-PP'
   },
@@ -6512,6 +7324,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNMG 120408-PP'
   },
@@ -6528,6 +7342,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNMS 120408-12'
   },
@@ -6544,6 +7360,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNGG 090402-F3N-P'
   },
@@ -6560,6 +7378,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNGG 090404-F3N-P'
   },
@@ -6576,6 +7396,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNGG 090408-F3N-P'
   },
@@ -6592,6 +7414,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNGX 090604-M3N-P'
   },
@@ -6608,6 +7432,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNGX 090608-M3N-P'
   },
@@ -6624,6 +7450,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'326R06-B1502006-CH'
   },
@@ -6640,6 +7468,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'326R06-B2502006-CH'
   },
@@ -6656,6 +7486,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'326R08-B2502012-CH'
   },
@@ -6672,6 +7504,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'326R08-B3502012-CH'
   },
@@ -6688,6 +7522,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A326R06-M1502006-CH'
   },
@@ -6704,6 +7540,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A326R06-M2502006-CH'
   },
@@ -6720,6 +7558,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A326R08-M2502012-CH'
   },
@@ -6736,6 +7576,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A326R08-M3502012-CH'
   },
@@ -6752,6 +7594,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'326R06-B15050VM-TH'
   },
@@ -6768,6 +7612,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'326R08-B25050VM-TH'
   },
@@ -6784,6 +7630,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'326R08-B25100VM-TH'
   },
@@ -6800,6 +7648,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A326R06-M15050VM-TH'
   },
@@ -6816,6 +7666,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A326R08-M25050VM-TH'
   },
@@ -6832,6 +7684,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A326R08-M25100VM-TH'
   },
@@ -6848,6 +7702,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4212-5538329'
   },
@@ -6864,6 +7720,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P6001'
   },
@@ -6880,6 +7738,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P6002'
   },
@@ -6896,6 +7756,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P6003'
   },
@@ -6912,6 +7774,8 @@
     confidence:90, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P6004'
   },
@@ -6928,6 +7792,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'E 57'
   },
@@ -6944,6 +7810,8 @@
     confidence:85, supply:3, equivalents:2,
     equivIds:[],
     betterValueId:null,
+    source:'Claude extraction 2026-05-31',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'E 67'
   },
@@ -6960,6 +7828,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'8524'
   },
@@ -6976,6 +7846,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6023'
   },
@@ -6992,6 +7864,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'8520'
   },
@@ -7008,6 +7882,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'8620'
   },
@@ -7024,6 +7900,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6498'
   },
@@ -7040,6 +7918,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'768'
   },
@@ -7056,6 +7936,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6068'
   },
@@ -7072,6 +7954,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'8521'
   },
@@ -7088,6 +7972,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'8621'
   },
@@ -7104,6 +7990,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'8511'
   },
@@ -7120,6 +8008,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'8611'
   },
@@ -7136,6 +8026,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6025'
   },
@@ -7152,6 +8044,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4044'
   },
@@ -7168,6 +8062,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4045'
   },
@@ -7184,6 +8080,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'8522'
   },
@@ -7200,6 +8098,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6502'
   },
@@ -7216,6 +8116,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'773'
   },
@@ -7232,6 +8134,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5525'
   },
@@ -7248,6 +8152,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6499'
   },
@@ -7264,6 +8170,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2713'
   },
@@ -7280,6 +8188,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1025'
   },
@@ -7296,6 +8206,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'703'
   },
@@ -7312,6 +8224,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4105'
   },
@@ -7328,6 +8242,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4106'
   },
@@ -7344,6 +8260,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4107'
   },
@@ -7360,6 +8278,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4114'
   },
@@ -7376,6 +8296,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4115'
   },
@@ -7392,6 +8314,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'7645'
   },
@@ -7408,6 +8332,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4071'
   },
@@ -7424,6 +8350,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6128'
   },
@@ -7440,6 +8368,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5030'
   },
@@ -7456,6 +8386,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5665'
   },
@@ -7472,6 +8404,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5667'
   },
@@ -7488,6 +8422,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5666'
   },
@@ -7504,6 +8440,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5668'
   },
@@ -7520,6 +8458,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5703'
   },
@@ -7536,6 +8476,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5705'
   },
@@ -7552,6 +8494,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5707'
   },
@@ -7568,6 +8512,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5704'
   },
@@ -7584,6 +8530,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5706'
   },
@@ -7600,6 +8548,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5748'
   },
@@ -7616,6 +8566,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5747'
   },
@@ -7632,6 +8584,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5749'
   },
@@ -7648,6 +8602,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5750'
   },
@@ -7664,6 +8620,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'223'
   },
@@ -7680,6 +8638,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'653'
   },
@@ -7696,6 +8656,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'223653'
   },
@@ -7712,6 +8674,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'224'
   },
@@ -7728,6 +8692,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'225'
   },
@@ -7744,6 +8710,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'730 2463'
   },
@@ -7760,6 +8728,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'205'
   },
@@ -7776,6 +8746,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'651'
   },
@@ -7792,6 +8764,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'205651'
   },
@@ -7808,6 +8782,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'208'
   },
@@ -7824,6 +8800,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'664'
   },
@@ -7840,6 +8818,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'206'
   },
@@ -7856,6 +8836,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'209'
   },
@@ -7872,6 +8854,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'207'
   },
@@ -7888,6 +8872,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2997'
   },
@@ -7904,6 +8890,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'305 2997'
   },
@@ -7920,6 +8908,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'308'
   },
@@ -7936,6 +8926,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'605'
   },
@@ -7952,6 +8944,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'732'
   },
@@ -7968,6 +8962,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2464'
   },
@@ -7984,6 +8980,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'666'
   },
@@ -8000,6 +8998,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'667'
   },
@@ -8016,6 +9016,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'217'
   },
@@ -8032,6 +9034,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'220'
   },
@@ -8048,6 +9052,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'204'
   },
@@ -8064,6 +9070,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'501'
   },
@@ -8080,6 +9088,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'317'
   },
@@ -8096,6 +9106,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'236'
   },
@@ -8112,6 +9124,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'503'
   },
@@ -8128,6 +9142,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'237'
   },
@@ -8144,6 +9160,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'578'
   },
@@ -8160,6 +9178,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'580'
   },
@@ -8176,6 +9196,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'390'
   },
@@ -8192,6 +9214,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'268'
   },
@@ -8208,6 +9232,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'201'
   },
@@ -8224,6 +9250,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'17'
   },
@@ -8240,6 +9268,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'16'
   },
@@ -8256,6 +9286,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'18'
   },
@@ -8272,6 +9304,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'9001'
   },
@@ -8288,6 +9322,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1083'
   },
@@ -8304,6 +9340,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6030'
   },
@@ -8320,6 +9358,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'363'
   },
@@ -8336,6 +9376,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'663'
   },
@@ -8352,6 +9394,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'299'
   },
@@ -8368,6 +9412,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'298'
   },
@@ -8384,6 +9430,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'254'
   },
@@ -8400,6 +9448,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'255'
   },
@@ -8416,6 +9466,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'253'
   },
@@ -8432,6 +9484,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'270'
   },
@@ -8448,6 +9502,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'585'
   },
@@ -8464,6 +9520,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'RT 100 HF'
   },
@@ -8480,6 +9538,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:''
   },
@@ -8496,6 +9556,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'RT 100 VA'
   },
@@ -8512,6 +9574,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'RT 100 T AL'
   },
@@ -8528,6 +9592,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6728'
   },
@@ -8544,6 +9610,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3741'
   },
@@ -8560,6 +9628,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6754'
   },
@@ -8576,6 +9646,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6755'
   },
@@ -8592,6 +9664,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6478'
   },
@@ -8608,6 +9682,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6479'
   },
@@ -8624,6 +9700,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6883'
   },
@@ -8640,6 +9718,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6884'
   },
@@ -8656,6 +9736,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6881'
   },
@@ -8672,6 +9754,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6882'
   },
@@ -8688,6 +9772,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6885'
   },
@@ -8704,6 +9790,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6886'
   },
@@ -8720,6 +9808,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3804 4.000'
   },
@@ -8736,6 +9826,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3805 4.000'
   },
@@ -8752,6 +9844,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3800 3.000'
   },
@@ -8768,6 +9862,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3803 3.000'
   },
@@ -8784,6 +9880,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6707 4.000'
   },
@@ -8800,6 +9898,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6708 4.000'
   },
@@ -8816,6 +9916,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3806 6.000'
   },
@@ -8832,6 +9934,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3807 6.000'
   },
@@ -8848,6 +9952,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6879 6.000'
   },
@@ -8864,6 +9970,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6880 6.000'
   },
@@ -8880,6 +9988,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6877 5.000'
   },
@@ -8896,6 +10006,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6878 5.000'
   },
@@ -8912,6 +10024,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3498 6.005'
   },
@@ -8928,6 +10042,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3499 6.005'
   },
@@ -8944,6 +10060,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6968'
   },
@@ -8960,6 +10078,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3629'
   },
@@ -8976,6 +10096,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3630'
   },
@@ -8992,6 +10114,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6764'
   },
@@ -9008,6 +10132,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3366'
   },
@@ -9024,6 +10150,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6766'
   },
@@ -9040,6 +10168,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6761'
   },
@@ -9056,6 +10186,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6765'
   },
@@ -9072,6 +10204,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6760'
   },
@@ -9088,6 +10222,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6780'
   },
@@ -9104,6 +10240,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6778'
   },
@@ -9120,6 +10258,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6978'
   },
@@ -9136,6 +10276,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6979'
   },
@@ -9152,6 +10294,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3472'
   },
@@ -9168,6 +10312,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6702'
   },
@@ -9184,6 +10330,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6982'
   },
@@ -9200,6 +10348,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6983'
   },
@@ -9216,6 +10366,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3599'
   },
@@ -9232,6 +10384,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6729'
   },
@@ -9248,6 +10402,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6730'
   },
@@ -9264,6 +10420,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6731'
   },
@@ -9280,6 +10438,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3473'
   },
@@ -9296,6 +10456,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6703'
   },
@@ -9312,6 +10474,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6734'
   },
@@ -9328,6 +10492,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6735'
   },
@@ -9344,6 +10510,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6732'
   },
@@ -9360,6 +10528,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6733'
   },
@@ -9376,6 +10546,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6762'
   },
@@ -9392,6 +10564,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3202'
   },
@@ -9408,6 +10582,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3319'
   },
@@ -9424,6 +10600,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6974'
   },
@@ -9440,6 +10618,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6975'
   },
@@ -9456,6 +10636,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6976'
   },
@@ -9472,6 +10654,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6977'
   },
@@ -9488,6 +10672,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6868'
   },
@@ -9504,6 +10690,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6869'
   },
@@ -9520,6 +10708,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3309'
   },
@@ -9536,6 +10726,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6723'
   },
@@ -9552,6 +10744,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6722'
   },
@@ -9568,6 +10762,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6725'
   },
@@ -9584,6 +10780,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6724'
   },
@@ -9600,6 +10798,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6769'
   },
@@ -9616,6 +10816,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6805'
   },
@@ -9632,6 +10834,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6770'
   },
@@ -9648,6 +10852,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6806'
   },
@@ -9664,6 +10870,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6719'
   },
@@ -9680,6 +10888,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6717'
   },
@@ -9696,6 +10906,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6720'
   },
@@ -9712,6 +10924,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5493'
   },
@@ -9728,6 +10942,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'5492'
   },
@@ -9744,6 +10960,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6788'
   },
@@ -9760,6 +10978,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'495'
   },
@@ -9776,6 +10996,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3043'
   },
@@ -9792,6 +11014,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6820'
   },
@@ -9808,6 +11032,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6821'
   },
@@ -9824,6 +11050,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6822'
   },
@@ -9840,6 +11068,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6814'
   },
@@ -9856,6 +11086,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6830'
   },
@@ -9872,6 +11104,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3682'
   },
@@ -9888,6 +11122,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3709'
   },
@@ -9904,6 +11140,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3676'
   },
@@ -9920,6 +11158,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3677'
   },
@@ -9936,6 +11176,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3711'
   },
@@ -9952,6 +11194,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'3023'
   },
@@ -9968,6 +11212,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2991'
   },
@@ -9984,6 +11230,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'942'
   },
@@ -10000,6 +11248,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2942'
   },
@@ -10016,6 +11266,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2941'
   },
@@ -10032,6 +11284,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1575'
   },
@@ -10048,6 +11302,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4792'
   },
@@ -10064,6 +11320,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2710'
   },
@@ -10080,6 +11338,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4791'
   },
@@ -10096,6 +11356,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1872'
   },
@@ -10112,6 +11374,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2311'
   },
@@ -10128,6 +11392,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'805'
   },
@@ -10144,6 +11410,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4675'
   },
@@ -10160,6 +11428,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1858'
   },
@@ -10176,6 +11446,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4794'
   },
@@ -10192,6 +11464,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2983'
   },
@@ -10208,6 +11482,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1873'
   },
@@ -10224,6 +11500,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2871'
   },
@@ -10240,6 +11518,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1860'
   },
@@ -10256,6 +11536,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1861'
   },
@@ -10272,6 +11554,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2903'
   },
@@ -10288,6 +11572,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2917'
   },
@@ -10304,6 +11590,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'878'
   },
@@ -10320,6 +11608,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'873'
   },
@@ -10336,6 +11626,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2883'
   },
@@ -10352,6 +11644,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2881'
   },
@@ -10368,6 +11662,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1985'
   },
@@ -10384,6 +11680,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2873'
   },
@@ -10400,6 +11698,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1980'
   },
@@ -10416,6 +11716,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2872'
   },
@@ -10432,6 +11734,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2885'
   },
@@ -10448,6 +11752,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'962'
   },
@@ -10464,6 +11770,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4795'
   },
@@ -10480,6 +11788,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'980'
   },
@@ -10496,6 +11806,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'848'
   },
@@ -10512,6 +11824,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'844'
   },
@@ -10528,6 +11842,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4155'
   },
@@ -10544,6 +11860,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4154'
   },
@@ -10560,6 +11878,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'836'
   },
@@ -10576,6 +11896,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2440'
   },
@@ -10592,6 +11914,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1288'
   },
@@ -10608,6 +11932,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'826'
   },
@@ -10624,6 +11950,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2441'
   },
@@ -10640,6 +11968,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1289'
   },
@@ -10656,6 +11986,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2994'
   },
@@ -10672,6 +12004,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2995'
   },
@@ -10688,6 +12022,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4153'
   },
@@ -10704,6 +12040,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'196'
   },
@@ -10720,6 +12058,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'1577'
   },
@@ -10736,6 +12076,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2851'
   },
@@ -10752,6 +12094,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'362'
   },
@@ -10768,6 +12112,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2850'
   },
@@ -10784,6 +12130,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'361'
   },
@@ -10800,6 +12148,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2985'
   },
@@ -10816,6 +12166,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'2986'
   },
@@ -10832,6 +12184,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'779'
   },
@@ -10848,6 +12202,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'778'
   },
@@ -10864,6 +12220,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'MTM'
   },
@@ -10880,6 +12238,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'TM/TMC'
   },
@@ -10896,6 +12256,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'TMU'
   },
@@ -10912,6 +12274,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4619'
   },
@@ -10928,6 +12292,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4221'
   },
@@ -10944,6 +12310,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4664'
   },
@@ -10960,6 +12328,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4620'
   },
@@ -10976,6 +12346,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4666'
   },
@@ -10992,6 +12364,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4598'
   },
@@ -11008,6 +12382,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4723'
   },
@@ -11024,6 +12400,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4725'
   },
@@ -11040,6 +12418,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4712'
   },
@@ -11056,6 +12436,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4722'
   },
@@ -11072,6 +12454,8 @@
     confidence:85, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4717'
   },
@@ -11088,6 +12472,8 @@
     confidence:90, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4363'
   },
@@ -11104,6 +12490,8 @@
     confidence:85, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4714'
   },
@@ -11120,6 +12508,8 @@
     confidence:90, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4297'
   },
@@ -11136,6 +12526,8 @@
     confidence:90, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4724'
   },
@@ -11152,6 +12544,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4709'
   },
@@ -11168,6 +12562,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4360'
   },
@@ -11184,6 +12580,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4760'
   },
@@ -11200,6 +12598,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4713'
   },
@@ -11216,6 +12616,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4941'
   },
@@ -11232,6 +12634,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4987'
   },
@@ -11248,6 +12652,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4915'
   },
@@ -11264,6 +12670,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4989'
   },
@@ -11280,6 +12688,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4988'
   },
@@ -11296,6 +12706,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4916'
   },
@@ -11312,6 +12724,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4912'
   },
@@ -11328,6 +12742,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4921'
   },
@@ -11344,6 +12760,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4926'
   },
@@ -11360,6 +12778,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4925'
   },
@@ -11376,6 +12796,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4927'
   },
@@ -11392,6 +12814,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4928'
   },
@@ -11408,6 +12832,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'25325'
   },
@@ -11424,6 +12850,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'27002'
   },
@@ -11440,6 +12868,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'27018'
   },
@@ -11456,6 +12886,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'25017'
   },
@@ -11472,6 +12904,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'25319'
   },
@@ -11488,6 +12922,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'25321'
   },
@@ -11504,6 +12940,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'27016'
   },
@@ -11520,6 +12958,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'25006'
   },
@@ -11536,6 +12976,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'25302'
   },
@@ -11552,6 +12994,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'27015'
   },
@@ -11568,6 +13012,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6.001'
   },
@@ -11584,6 +13030,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6.002'
   },
@@ -11600,6 +13048,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6.003'
   },
@@ -11616,6 +13066,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'6.004'
   },
@@ -11632,6 +13084,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'8.001'
   },
@@ -11648,6 +13102,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'8.002'
   },
@@ -11664,6 +13120,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'8.003'
   },
@@ -11680,6 +13138,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'8.004'
   },
@@ -11696,6 +13156,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4.001'
   },
@@ -11712,6 +13174,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'4.002'
   },
@@ -11728,6 +13192,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNMG 120404-TF'
   },
@@ -11744,6 +13210,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNMG 120408-TF'
   },
@@ -11760,6 +13228,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CNMG 120412-TF'
   },
@@ -11776,6 +13246,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'TPG UNC 1/4-20 M HE Ti'
   },
@@ -11792,6 +13264,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'SOGX 050204-AL'
   },
@@ -11808,6 +13282,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'SOGX 060304-AL'
   },
@@ -11824,6 +13300,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'SOGX 070305-AL'
   },
@@ -11840,6 +13318,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'SOGT 09T306-AL'
   },
@@ -11856,6 +13336,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'SOGT 120408-AL'
   },
@@ -11872,6 +13354,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'AOGT 040204-90AL'
   },
@@ -11888,6 +13372,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:''
   },
@@ -11904,6 +13390,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'7792'
   },
@@ -11920,6 +13408,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'KCP25C'
   },
@@ -11936,6 +13426,8 @@
     confidence:78, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'KCU10B'
   },
@@ -11952,6 +13444,8 @@
     confidence:78, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'KCU25B'
   },
@@ -11968,6 +13462,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'KCS10B'
   },
@@ -11984,6 +13480,8 @@
     confidence:72, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'KYK10'
   },
@@ -12000,6 +13498,8 @@
     confidence:78, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'KBH10B'
   },
@@ -12016,6 +13516,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:''
   },
@@ -12032,6 +13534,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B 4212'
   },
@@ -12048,6 +13552,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B 4213'
   },
@@ -12064,6 +13570,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B 4214'
   },
@@ -12080,6 +13588,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B 4215'
   },
@@ -12096,6 +13606,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B 4213.N'
   },
@@ -12112,6 +13624,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4212-5898410'
   },
@@ -12128,6 +13642,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4214.F40.40.Z1.160R-6'
   },
@@ -12144,6 +13660,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4212-5642880'
   },
@@ -12160,6 +13678,8 @@
     confidence:85, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4212'
   },
@@ -12176,6 +13696,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4011'
   },
@@ -12192,6 +13714,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4013'
   },
@@ -12208,6 +13732,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4213'
   },
@@ -12224,6 +13750,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4213.N'
   },
@@ -12240,6 +13768,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B3212'
   },
@@ -12256,6 +13786,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B3011M'
   },
@@ -12272,6 +13804,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B3213'
   },
@@ -12288,6 +13822,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4015'
   },
@@ -12304,6 +13840,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4017'
   },
@@ -12320,6 +13858,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4010'
   },
@@ -12336,6 +13876,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4012C'
   },
@@ -12352,6 +13894,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4214'
   },
@@ -12368,6 +13912,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4215'
   },
@@ -12384,6 +13930,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B3214'
   },
@@ -12400,6 +13948,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4213.N8.065.Z1.195R-5'
   },
@@ -12416,6 +13966,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4213.N8.068.Z1.204R-6'
   },
@@ -12432,6 +13984,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4213.N8.070.Z1.210R-6'
   },
@@ -12448,6 +14002,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4213.N8.078.Z1.234R-6'
   },
@@ -12464,6 +14020,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4213.N8.080.Z1.240R-5'
   },
@@ -12480,6 +14038,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P484.P'
   },
@@ -12496,6 +14056,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P484P'
   },
@@ -12512,6 +14074,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P484C'
   },
@@ -12528,6 +14092,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B421x'
   },
@@ -12544,6 +14110,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P4840P-.R-A57'
   },
@@ -12560,6 +14128,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P4840P-.R-E57'
   },
@@ -12576,6 +14146,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P4840P-.R-E67'
   },
@@ -12592,6 +14164,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P4841P-.R-A57'
   },
@@ -12608,6 +14182,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P4841P-.R-E57'
   },
@@ -12624,6 +14200,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P4841C-.R-A57'
   },
@@ -12640,6 +14218,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P4841C-.R-E57'
   },
@@ -12656,6 +14236,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P4840C-.R-E67'
   },
@@ -12672,6 +14254,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:''
   },
@@ -12688,6 +14272,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P 484.P'
   },
@@ -12704,6 +14290,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P 484.C'
   },
@@ -12720,6 +14308,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P 4840'
   },
@@ -12736,6 +14326,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P 4841'
   },
@@ -12752,6 +14344,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:''
   },
@@ -12768,6 +14362,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'GC1125'
   },
@@ -12784,6 +14380,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'GC2135'
   },
@@ -12800,6 +14398,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'GC1105'
   },
@@ -12816,6 +14416,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'GC4225'
   },
@@ -12832,6 +14434,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CB7015'
   },
@@ -12848,6 +14452,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:''
   },
@@ -12864,6 +14470,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'570-3C'
   },
@@ -12880,6 +14488,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'570-4C'
   },
@@ -12896,6 +14506,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CP-A1108-L5 4325'
   },
@@ -12912,6 +14524,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'CP-B1108-M5 2025'
   },
@@ -12928,6 +14542,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'570-DTFNR/L-80-16'
   },
@@ -12944,6 +14560,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'570-DTFNR/L-80-22'
   },
@@ -12960,6 +14578,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'570-SDUCR/L-80-11'
   },
@@ -12976,6 +14596,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'570-SVLBR/L-80-16'
   },
@@ -12992,6 +14614,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'R566.0KFC-804557-27'
   },
@@ -13008,6 +14632,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'570-3C 80 880'
   },
@@ -13024,6 +14650,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'570-3C 100 1100'
   },
@@ -13040,6 +14668,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'570-3C 80 1200'
   },
@@ -13056,6 +14686,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'570-3C 100 1500'
   },
@@ -13072,6 +14704,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'570-80 17-580-80'
   },
@@ -13088,6 +14722,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:''
   },
@@ -13104,6 +14740,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A3367'
   },
@@ -13120,6 +14758,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'DB131-02-A0'
   },
@@ -13136,6 +14776,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'DB131-02-A1'
   },
@@ -13152,6 +14794,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B321'
   },
@@ -13168,6 +14812,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WXP30'
   },
@@ -13184,6 +14830,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WPP45C'
   },
@@ -13200,6 +14848,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WKK45C'
   },
@@ -13216,6 +14866,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WMP35'
   },
@@ -13232,6 +14884,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WNN25'
   },
@@ -13248,6 +14902,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WPP25'
   },
@@ -13264,6 +14920,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'D3120'
   },
@@ -13280,6 +14938,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'FS 1208'
   },
@@ -13296,6 +14956,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'FS 722'
   },
@@ -13312,6 +14974,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'FS 723'
   },
@@ -13328,6 +14992,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'FS 724'
   },
@@ -13344,6 +15010,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A 170 M 0 63 079'
   },
@@ -13360,6 +15028,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A 170 M 0 80 079'
   },
@@ -13376,6 +15046,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A 170 M 0 80 087'
   },
@@ -13392,6 +15064,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A 170 M 0 80 096'
   },
@@ -13408,6 +15082,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'D4140'
   },
@@ -13424,6 +15100,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'D4140.03'
   },
@@ -13440,6 +15118,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'D4240'
   },
@@ -13456,6 +15136,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'D4120'
   },
@@ -13472,6 +15154,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'D4170'
   },
@@ -13488,6 +15172,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'A3143'
   },
@@ -13504,6 +15190,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'DC180-05-03.000A1-WJ30EZ'
   },
@@ -13520,6 +15208,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P4840C-2R-E77'
   },
@@ -13536,6 +15226,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'P6006-D37.99R-WPP25'
   },
@@ -13552,6 +15244,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'LCG X06T204-E77'
   },
@@ -13568,6 +15262,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WKK10S'
   },
@@ -13584,6 +15280,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WKK20S'
   },
@@ -13600,6 +15298,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WEP10'
   },
@@ -13616,6 +15316,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WCB50'
   },
@@ -13632,6 +15334,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WCB80'
   },
@@ -13648,6 +15352,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WCD10'
   },
@@ -13664,6 +15370,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WDN10'
   },
@@ -13680,6 +15388,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WKP01G'
   },
@@ -13696,6 +15406,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WPP20G'
   },
@@ -13712,6 +15424,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WPP30G'
   },
@@ -13728,6 +15442,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WSM10S'
   },
@@ -13744,6 +15460,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WSM20S'
   },
@@ -13760,6 +15478,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WSM30S'
   },
@@ -13776,6 +15496,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'WPP10G'
   },
@@ -13792,6 +15514,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B5110'
   },
@@ -13808,6 +15532,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B5115'
   },
@@ -13824,6 +15550,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B5125'
   },
@@ -13840,6 +15568,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B5120'
   },
@@ -13856,6 +15586,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B5460'
   },
@@ -13872,6 +15604,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B5560'
   },
@@ -13888,6 +15622,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B3230'
   },
@@ -13904,6 +15640,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4030'
   },
@@ -13920,6 +15658,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B4035'
   },
@@ -13936,6 +15676,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B3220'
   },
@@ -13952,6 +15694,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-05-31',
     article:'B3221'
   },
@@ -13968,6 +15712,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:''
   },
@@ -13984,6 +15730,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'LCMT 030203-GH-E'
   },
@@ -14000,6 +15748,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'LCMT 030203-GM-E'
   },
@@ -14016,6 +15766,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'LCMT 030203-SM-E'
   },
@@ -14032,6 +15784,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'TXQ12R050M22.0E03'
   },
@@ -14048,6 +15802,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'TXQ12R050M22.2-03'
   },
@@ -14064,6 +15820,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'TXQ12R052M22.0E03'
   },
@@ -14080,6 +15838,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'TXQ12R063M22.0E04'
   },
@@ -14096,6 +15856,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'TXQ12R063M22.2-04'
   },
@@ -14112,6 +15874,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'TXQ12R066M27.0E04'
   },
@@ -14128,6 +15892,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'TXQ12R080M27.0E05'
   },
@@ -14144,6 +15910,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'TXQ12R080M31.7-05'
   },
@@ -14160,6 +15928,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'TXQ12R100M31.7-06'
   },
@@ -14176,6 +15946,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'TXQ12R100M32.0E06'
   },
@@ -14192,6 +15964,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'TXQ12R125M38.1-07'
   },
@@ -14208,6 +15982,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'TXQ12R125M40.0E07'
   },
@@ -14224,6 +16000,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'NMS09080R'
   },
@@ -14240,6 +16018,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'NMS09100R'
   },
@@ -14256,6 +16036,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'NMS09125R'
   },
@@ -14272,6 +16054,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'NMS09160R'
   },
@@ -14288,6 +16072,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'NMS09200R'
   },
@@ -14304,6 +16090,8 @@
     confidence:80, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'EMS09080R'
   },
@@ -14320,6 +16108,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'DEB1040'
   },
@@ -14336,6 +16126,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'DEB1050'
   },
@@ -14352,6 +16144,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'DEB1060'
   },
@@ -14368,6 +16162,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'DEB1080'
   },
@@ -14384,6 +16180,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'DEB1100'
   },
@@ -14400,6 +16198,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'DEB1120'
   },
@@ -14416,6 +16216,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'BBB2006'
   },
@@ -14432,6 +16234,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'BBB2008'
   },
@@ -14448,6 +16252,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'BBB2010'
   },
@@ -14464,6 +16270,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'BBB2020'
   },
@@ -14480,6 +16288,8 @@
     confidence:70, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'DGL3-025'
   },
@@ -14496,6 +16306,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'STH300-SR'
   },
@@ -14512,6 +16324,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'STH500-SR'
   },
@@ -14528,6 +16342,8 @@
     confidence:75, supply:3, equivalents:0,
     equivIds:[],
     betterValueId:null,
+    source:'initial-import',
+    dateAdded:'2025-01-01',
     lastVerified:'2026-06-01',
     article:'DSW'
   }

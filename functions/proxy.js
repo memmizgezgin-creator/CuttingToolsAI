@@ -1,5 +1,5 @@
 // ToolAdvisor — Cloudflare Pages Function: Claude API Proxy
-// Route: /api/chat  (Cloudflare Pages auto-maps functions/api-chat.js)
+// Route: /proxy
 // Set ANTHROPIC_API_KEY in Cloudflare Pages environment variables.
 
 const CORS = {
@@ -8,17 +8,12 @@ const CORS = {
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
 };
 
-export async function onRequest(context) {
+export async function onRequestOptions() {
+  return new Response(null, { status: 204, headers: CORS });
+}
+
+export async function onRequestPost(context) {
   const { request, env } = context;
-
-  // CORS preflight
-  if (request.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: CORS });
-  }
-
-  if (request.method !== 'POST') {
-    return new Response('Method Not Allowed', { status: 405, headers: CORS });
-  }
 
   const apiKey = env.ANTHROPIC_API_KEY;
   if (!apiKey) {
@@ -53,4 +48,8 @@ export async function onRequest(context) {
       { status: 500, headers: { ...CORS, 'Content-Type': 'application/json' } }
     );
   }
+}
+
+export async function onRequest() {
+  return new Response('Method Not Allowed', { status: 405, headers: CORS });
 }

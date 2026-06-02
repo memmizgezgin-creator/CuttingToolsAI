@@ -192,6 +192,8 @@ function mapRawRecord(r, id) {
     coolant: '', stability: '', bestFor,
     confidence: Math.round(r.confidence || 70),
     supply: 3, equivalents: 0, equivIds: [], betterValueId: null,
+    source: r.source || 'initial-import',
+    dateAdded: r.dateAdded || '2025-01-01',
     lastVerified: new Date().toISOString().slice(0, 10),
     article: String(r.article_number || ''),
     source_pdf: r.source_pdf || ''
@@ -326,6 +328,8 @@ function toolToJS(t) {
     confidence:${t.confidence||85}, supply:${t.supply||3}, equivalents:${t.equivalents||0},
     equivIds:${Array.isArray(t.equivIds) ? JSON.stringify(t.equivIds) : '[]'},
     betterValueId:${t.betterValueId ? `'${sanitize(t.betterValueId)}'` : 'null'},
+    source:'${sanitize(t.source||'initial-import')}',
+    dateAdded:'${sanitize(t.dateAdded||'2025-01-01')}',
     lastVerified:'${sanitize(t.lastVerified||new Date().toISOString().slice(0,10))}',
     article:'${sanitize(String(t.article||''))}'
   }`;

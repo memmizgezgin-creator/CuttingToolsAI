@@ -24,3 +24,6 @@
 
 /proxy
   Cache-Control: no-store
+
+/api/chat
+  Cache-Control: no-store
