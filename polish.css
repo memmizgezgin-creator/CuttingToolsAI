@@ -465,6 +465,13 @@ main > section:nth-of-type(5)                              { animation-delay: 16
   .ta-insert3d > svg { animation: none; transition: none; }
 }
 
+/* ============================================================
+   COOKIE BANNER — ensure it stays below AI widget
+   ============================================================ */
+.ta-cookie-banner {
+  z-index: 9999 !important;
+}
+
 /* Auto zebra-stripe for compare matrix rows.
    .cmp-matrix on the outer wrapper; individual row bg classes not needed. */
 .cmp-matrix > div:nth-child(odd)  { background: #ffffff; }
