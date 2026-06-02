@@ -1,0 +1,380 @@
+{
+  "date": "2026-06-02",
+  "generated_at_utc": "2026-06-02T08:17:25Z",
+  "status": "CRITICAL",
+  "site_health": {
+    "target": "https://tooladvisor.eu",
+    "root": {
+      "url": "https://tooladvisor.eu",
+      "expected_http_status": 200,
+      "http_status": null,
+      "ok": false,
+      "failure": "shell curl could not resolve host: tooladvisor.eu; direct IP attempts to 75.2.60.5 and 99.83.190.102 could not connect; external web browser content load did not expose raw HTTP status",
+      "shell_curl_error": "curl: (6) Could not resolve host: tooladvisor.eu",
+      "external_web_content_observed": true,
+      "external_web_content_note": "The external browsing tool returned homepage content for https://tooladvisor.eu/, but no response headers or exact status code were exposed."
+    },
+    "directory_data_extracted_js": {
+      "url": "https://tooladvisor.eu/directory-data-extracted.js",
+      "expected": "loads",
+      "http_status": null,
+      "loads": null,
+      "ok": false,
+      "failure": "shell curl could not resolve host: tooladvisor.eu; raw live JS response could not be fetched in this environment",
+      "shell_curl_error": "curl: (6) Could not resolve host: tooladvisor.eu",
+      "local_file_exists": true,
+      "local_file_first_line": "// ToolAdvisor — Extracted tool records (908 tools from manufacturer catalogues)",
+      "local_file_declared_total": 908
+    },
+    "cloudflare_worker_proxy": {
+      "url": "https://tooladvisor.eu/functions/proxy",
+      "expected_http_statuses": [
+        405,
+        200
+      ],
+      "http_status": null,
+      "ok": false,
+      "failure": "shell curl could not resolve host: tooladvisor.eu; previous browser-observable audit on 2026-06-01 rendered ToolAdvisor 404 at this path",
+      "shell_curl_error": "curl: (6) Could not resolve host: tooladvisor.eu"
+    },
+    "csp_headers": {
+      "expected": "Content-Security-Policy header present in HTTP response",
+      "live_header_verified": false,
+      "ok": false,
+      "failure": "live response headers could not be fetched because local DNS resolution failed",
+      "local_headers_file": "/Users/muratonder/Desktop/ToolAdvisor/_headers",
+      "present_in_local_headers_file": true,
+      "configured_policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://tooladvisor.eu https://www.tooladvisor.eu https://tooladvisor-ai-proxy.memmizgezgin.workers.dev https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests"
+    },
+    "environment_limitations": {
+      "shell_curl_root": "curl: (6) Could not resolve host: tooladvisor.eu",
+      "shell_curl_directory_data_extracted_js": "curl: (6) Could not resolve host: tooladvisor.eu",
+      "shell_curl_functions_proxy": "curl: (6) Could not resolve host: tooladvisor.eu",
+      "shell_curl_resolve_75_2_60_5": "curl: (7) Failed to connect to tooladvisor.eu port 443 after 0 ms: Couldn't connect to server",
+      "shell_curl_resolve_99_83_190_102": "curl: (7) Failed to connect to tooladvisor.eu port 443 after 0 ms: Couldn't connect to server"
+    }
+  },
+  "pipeline_quality": {
+    "file": "/Users/muratonder/Desktop/ToolAdvisor/data/extracted-productdb-candidates.json",
+    "declared_total": 908,
+    "total_tool_count": 908,
+    "brand_breakdown": {
+      "Gühring": 701,
+      "Walter": 108,
+      "ISCAR": 21,
+      "Sandvik": 34,
+      "Kennametal": 8,
+      "other": 36
+    },
+    "family_breakdown": {
+      "Drilling": 496,
+      "Milling": 255,
+      "Threading": 109,
+      "Turning": 42,
+      "other": 6
+    },
+    "confidence_below_70": {
+      "count": 0,
+      "tools": []
+    },
+    "missing_brand_or_family": {
+      "count": 0,
+      "tools": []
+    },
+    "traceability_required_fields": {
+      "required": [
+        "source_file",
+        "source_page",
+        "raw_row_ref"
+      ],
+      "missing_source_file_count": 112,
+      "missing_source_page_count": 908,
+      "missing_raw_row_ref_count": 908,
+      "records_with_all_required_traceability_fields": 0
+    },
+    "yesterday_comparison": {
+      "yesterday_report": "/Users/muratonder/Desktop/ToolAdvisor/reports/2026-06-01.json",
+      "yesterday_date": "2026-06-01",
+      "today_total": 908,
+      "yesterday_total": 908,
+      "delta_count": 0,
+      "change_percent": 0,
+      "drop_percent": 0,
+      "drop_gt_5_percent": false,
+      "comparison_status": "ok"
+    }
+  },
+  "ai_quality": {
+    "function": "retrieveTools()",
+    "function_source": "/Users/muratonder/Desktop/ToolAdvisor/directory-app.jsx",
+    "execution_note": "Audit executed the retrieveTools() source with TOOLS bound to directory-data.js + directory-data-extracted.js, matching the browser catalog dataset.",
+    "tool_db_loaded_for_test": {
+      "directory_data_js_plus_directory_data_extracted_js_count": 944,
+      "extracted_productdb_candidates_count": 908
+    },
+    "queries": [
+      {
+        "query": "stainless steel 8mm drill",
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring EB 100 M single-fluted gun drill (EB 100 M) article 5685",
+          "Gühring EB 100 M single-fluted gun drill (EB 100 M) article 5686",
+          "Gühring EB 100 M single-fluted gun drill (EB 100 M) article 5687"
+        ],
+        "top_3_tool_ids": [
+          "X0054",
+          "X0056",
+          "X0058"
+        ],
+        "expected_iso": "M",
+        "expected_family": "Drilling",
+        "expected_brand": null,
+        "iso_filter_matched_top3": true,
+        "family_filter_matched_top3": true,
+        "brand_filter_matched_top3": true,
+        "non_empty": true
+      },
+      {
+        "query": "aluminum milling ISO N",
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring Ball nose end mills G-Mold 55 B (55 HRC) article 6845",
+          "Gühring Ball nose end mills G-Mold 55 B (55 HRC) article 6844",
+          "Gühring Ball nose end mills G-Mold 55 B (55 HRC) article 6847"
+        ],
+        "top_3_tool_ids": [
+          "X0278",
+          "X0279",
+          "X0280"
+        ],
+        "expected_iso": "N",
+        "expected_family": "Milling",
+        "expected_brand": null,
+        "iso_filter_matched_top3": true,
+        "family_filter_matched_top3": true,
+        "brand_filter_matched_top3": true,
+        "non_empty": true
+      },
+      {
+        "query": "threading tap M10 steel",
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring Taps for ISO metric threads (HSS-E) article 1871",
+          "Gühring 4724 article 4724",
+          "Gühring Taps for ISO metric threads (HSS-E) article 1870"
+        ],
+        "top_3_tool_ids": [
+          "X0408",
+          "X0696",
+          "X0406"
+        ],
+        "expected_iso": "P",
+        "expected_family": "Threading",
+        "expected_brand": null,
+        "iso_filter_matched_top3": true,
+        "family_filter_matched_top3": true,
+        "brand_filter_matched_top3": true,
+        "non_empty": true
+      },
+      {
+        "query": "turning insert CNMG paslanmaz",
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "ISCAR CNMG 120404-TF (TF) article CNMG 120404-TF",
+          "ISCAR CNMG 120408-TF (TF) article CNMG 120408-TF",
+          "ISCAR CNMG 120412-TF (TF) article CNMG 120412-TF"
+        ],
+        "top_3_tool_ids": [
+          "X0733",
+          "X0734",
+          "X0735"
+        ],
+        "expected_iso": "M",
+        "expected_family": "Turning",
+        "expected_brand": null,
+        "iso_filter_matched_top3": true,
+        "family_filter_matched_top3": true,
+        "brand_filter_matched_top3": true,
+        "non_empty": true
+      },
+      {
+        "query": "solid carbide drill roestvrij",
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring Solid carbide micro-precision drills wit (WN) article 3899",
+          "Gühring Solid carbide drills (RT 100) article 5651",
+          "Gühring Solid carbide drills (RT 100) article 2474"
+        ],
+        "top_3_tool_ids": [
+          "X0002",
+          "X0030",
+          "X0031"
+        ],
+        "expected_iso": "M",
+        "expected_family": "Drilling",
+        "expected_brand": null,
+        "iso_filter_matched_top3": true,
+        "family_filter_matched_top3": true,
+        "brand_filter_matched_top3": true,
+        "non_empty": true
+      }
+    ],
+    "empty_result_queries": []
+  },
+  "synonym_coverage": {
+    "checked_terms": [
+      {
+        "term": "stainless",
+        "expected_iso": "M",
+        "expected_family": null,
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Mitsubishi CCMT 09T308-SM (VP15TF)",
+          "Iscar VCMT 160404 (IC907)",
+          "Tungaloy XPMT 060204-DJ (AH725)"
+        ],
+        "resolves_correctly": true
+      },
+      {
+        "term": "paslanmaz",
+        "expected_iso": "M",
+        "expected_family": null,
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring Solid carbide micro-precision drills wit (WN) article 3899",
+          "Gühring Ratio drills without coolant ducts (RT 100) article 2480",
+          "Gühring Ratio drills without coolant ducts (RT 100) article 2472"
+        ],
+        "resolves_correctly": true
+      },
+      {
+        "term": "roestvrij",
+        "expected_iso": "M",
+        "expected_family": null,
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring Solid carbide micro-precision drills wit (WN) article 3899",
+          "Gühring Ratio drills without coolant ducts (RT 100) article 2480",
+          "Gühring Ratio drills without coolant ducts (RT 100) article 2472"
+        ],
+        "resolves_correctly": true
+      },
+      {
+        "term": "aluminum",
+        "expected_iso": "N",
+        "expected_family": null,
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "ISCAR SOGX 050204-AL (IC08) article SOGX 050204-AL",
+          "ISCAR SOGX 060304-AL (IC08) article SOGX 060304-AL",
+          "ISCAR SOGX 070305-AL (IC08) article SOGX 070305-AL"
+        ],
+        "resolves_correctly": true
+      },
+      {
+        "term": "alüminyum",
+        "expected_iso": "N",
+        "expected_family": null,
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring Solid carbide micro-precision drills wit (WN) article 3899",
+          "Gühring ExclusiveLine micro-precision drills wit (WN) article 6405",
+          "Gühring ExclusiveLine micro-precision drills wit (WN) article 6408"
+        ],
+        "resolves_correctly": true
+      },
+      {
+        "term": "aluminium",
+        "expected_iso": "N",
+        "expected_family": null,
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Mitsubishi SCGT 120408-AL (AP25N)",
+          "Sandvik R390-11T308M-PL (1130)",
+          "Tungaloy DEB1040 article DEB1040"
+        ],
+        "resolves_correctly": true
+      },
+      {
+        "term": "matkap",
+        "expected_iso": null,
+        "expected_family": "Drilling",
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring Solid carbide micro-precision drills wit (WN) article 701",
+          "Gühring Solid carbide micro-precision drills wit (WN) article 3899",
+          "Gühring HSS-E-PM micro-precision drills without (Co-alloyed high speed steel) article 301"
+        ],
+        "resolves_correctly": true
+      },
+      {
+        "term": "boor",
+        "expected_iso": null,
+        "expected_family": "Drilling",
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring Solid carbide micro-precision drills wit (WN) article 701",
+          "Gühring Solid carbide micro-precision drills wit (WN) article 3899",
+          "Gühring HSS-E-PM micro-precision drills without (Co-alloyed high speed steel) article 301"
+        ],
+        "resolves_correctly": true
+      },
+      {
+        "term": "drill",
+        "expected_iso": null,
+        "expected_family": "Drilling",
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring Solid carbide micro-precision drills wit (WN) article 701",
+          "Gühring Solid carbide micro-precision drills wit (WN) article 3899",
+          "Gühring HSS-E-PM micro-precision drills without (Co-alloyed high speed steel) article 301"
+        ],
+        "resolves_correctly": true
+      },
+      {
+        "term": "freze",
+        "expected_iso": null,
+        "expected_family": "Milling",
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring Standard Ratio end mills RF 100 U (3-flu (HA) article 3891",
+          "Gühring Standard Ratio end mills RF 100 U (3-flu (HB) article 3892",
+          "Gühring Ratio end mills RF 100 Diver (HA 48 HRC) article 6737"
+        ],
+        "resolves_correctly": true
+      },
+      {
+        "term": "frees",
+        "expected_iso": null,
+        "expected_family": "Milling",
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring Standard Ratio end mills RF 100 U (3-flu (HA) article 3891",
+          "Gühring Standard Ratio end mills RF 100 U (3-flu (HB) article 3892",
+          "Gühring Ratio end mills RF 100 Diver (HA 48 HRC) article 6737"
+        ],
+        "resolves_correctly": true
+      },
+      {
+        "term": "mill",
+        "expected_iso": null,
+        "expected_family": "Milling",
+        "returned_count": 15,
+        "top_3_tool_names": [
+          "Gühring Standard Ratio end mills RF 100 U (3-flu (HA) article 3891",
+          "Gühring Standard Ratio end mills RF 100 U (3-flu (HB) article 3892",
+          "Gühring Ratio end mills RF 100 Diver (HA 48 HRC) article 6737"
+        ],
+        "resolves_correctly": true
+      }
+    ],
+    "missing_or_broken_aliases": []
+  },
+  "action_items": [
+    "Re-run live site health from a network with DNS access; local curl cannot resolve tooladvisor.eu today.",
+    "Verify https://tooladvisor.eu/directory-data-extracted.js from a header-capable network check.",
+    "Fix or reconcile https://tooladvisor.eu/functions/proxy: audit expects 405 or 200, and today could not verify the endpoint.",
+    "Verify live Content-Security-Policy response headers; local _headers contains CSP but live headers were unavailable.",
+    "Restore ingestion traceability: 908/908 missing source_page, 908/908 missing raw_row_ref, 112/908 missing source_file."
+  ]
+}
