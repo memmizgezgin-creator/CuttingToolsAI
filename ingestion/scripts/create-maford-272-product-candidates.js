@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { buildCandidateValidation } = require('./candidate-schema-validator');
 
 const INPUT_JSON = path.resolve(
   __dirname,
@@ -40,7 +41,7 @@ function ensureDir(dirPath) {
 function warningCounts(candidates) {
   const counts = {};
   for (const candidate of candidates) {
-    for (const warning of candidate.warnings || []) {
+    for (const warning of candidate.risk_flags || []) {
       counts[warning] = (counts[warning] || 0) + 1;
     }
   }
@@ -65,44 +66,124 @@ function dimensionalFields(record) {
   };
 }
 
-function sourceTraceability(record) {
-  return {
-    source_pdf: record.source_pdf,
-    source_file: record.source_file,
-    pdf_page: record.pdf_page,
-    catalog_page: record.catalog_page,
-    row_index: record.row_index,
-    parser_name: record.parser_name,
-    parser_version: record.parser_version,
-    extraction_status: record.extraction_status,
-    normalizer_name: record.normalizer_name,
-    normalizer_version: record.normalizer_version,
-    raw_row: record.raw_fields?.raw_row ?? null
-  };
+function sourcePage(record) {
+  return record.source_page ?? record.pdf_page ?? null;
+}
+
+function rawRowRef(record) {
+  if (!record.source_file || record.pdf_page === undefined || record.row_index === undefined) return null;
+  return `raw-page-text/${record.source_file}#page-${record.pdf_page}-row-${record.row_index}`;
+}
+
+function mmValue(field) {
+  if (!field || !field.mm) return null;
+  const value = Number(field.mm.value);
+  return Number.isFinite(value) ? value : null;
+}
+
+function integerValue(field) {
+  if (!field || field.value === undefined || field.value === null) return null;
+  const value = Number(field.value);
+  return Number.isInteger(value) ? value : null;
+}
+
+function handedness(record) {
+  if (record.cutting_direction === 'RHC') return 'RH';
+  if (record.cutting_direction === 'LHC') return 'LH';
+  return null;
+}
+
+function designation(record) {
+  if (!record.product_type && !record.tool_no) return null;
+  return [record.product_type, record.tool_no].filter(Boolean).join(' ');
+}
+
+function baseConfidence(record) {
+  let score = 90;
+  if (!record.source_file) score -= 15;
+  if (!sourcePage(record)) score -= 20;
+  if (!rawRowRef(record)) score -= 30;
+  if (!record.brand) score -= 10;
+  if (!record.tool_no && !record.edp) score -= 15;
+  if (['diameter', 'shank_diameter', 'overall_length', 'flute_length'].every((field) => mmValue(record[field]) === null) && integerValue(record.flutes) === null) {
+    score -= 10;
+  }
+  if (!record.coating_or_surface) score -= 5;
+  if (!record.material_grade_if_present) score -= 5;
+  return Math.max(0, Math.min(100, score));
+}
+
+function confidenceReason(record) {
+  const reasons = [
+    'M.A. Ford Series 272 row identity and traceability were extracted by the format-specific PDF table parser.'
+  ];
+  if (!record.coating_or_surface) reasons.push('Coating/surface is not present in the source row and remains null.');
+  if (!record.material_grade_if_present) reasons.push('Material grade is not present in the source row and remains null.');
+  if (['diameter', 'shank_diameter', 'overall_length', 'flute_length'].some((field) => mmValue(record[field]) === null)) {
+    reasons.push('Inch-only dimensional values were preserved in raw_fields and not converted into mm schema fields.');
+  }
+  reasons.push('No PRODUCT_DB merge is allowed from this candidate output.');
+  return reasons.join(' ');
 }
 
 function toCandidate(record, index) {
-  return {
-    candidate_id: candidateId(record, index),
-    brand: 'M.A. Ford',
-    source_pdf: record.source_pdf,
-    pdf_page: record.pdf_page,
-    catalog_page: record.catalog_page,
-    series: '272',
-    product_family: 'Reamer',
-    product_type: record.product_type,
-    tool_no: record.tool_no,
-    edp: record.edp,
-    normalized_dimensional_fields: dimensionalFields(record),
-    raw_fields: record.raw_fields,
-    unit_system: record.unit_system,
-    coating_or_surface: null,
-    material_grade_if_present: null,
-    warnings: record.normalization_warnings || [],
-    validation_status: 'validated_candidate_review',
+  const candidate = {
+    id: candidateId(record, index),
+    source_file: record.source_file ?? null,
+    source_page: sourcePage(record),
+    raw_row_ref: rawRowRef(record),
+    raw_table_ref: null,
+    source_type: 'manufacturer_catalogue',
+    source_name: 'M.A. Ford 2018 Master Catalog Reamers',
+    extraction_method: 'pdf-table',
+    designation: designation(record),
+    article_no: record.tool_no ?? record.edp ?? null,
+    product_family: record.product_family ?? null,
+    brand: record.brand ?? 'M.A. Ford',
+    type: 'reamer',
+    diameter_d1_mm: mmValue(record.diameter),
+    diameter_d2_mm: mmValue(record.shank_diameter),
+    oal_l1_mm: mmValue(record.overall_length),
+    flute_length_l2_mm: mmValue(record.flute_length),
+    flutes: integerValue(record.flutes),
+    handedness: handedness(record),
+    shank_type: null,
+    tolerance_d1: null,
+    din_norm: null,
+    coating: record.coating_or_surface ?? null,
+    substrate: null,
+    iso_grade: record.material_grade_if_present ?? null,
+    insert_shape: null,
+    chipbreaker: null,
+    iso_materials: null,
+    operations: null,
+    vc_min: null,
+    vc_max: null,
+    feed_min: null,
+    feed_max: null,
+    cutting_data_by_material: null,
+    confidence_score: baseConfidence(record),
+    confidence_reason: confidenceReason(record),
+    risk_flags: record.normalization_warnings || [],
+    validation_status: 'extracted_candidate',
+    ai_inferred_fields: [],
+    last_checked: '2026-06-02',
     merge_status: 'not_merged',
-    source_traceability: sourceTraceability(record)
+    raw_fields: record.raw_fields ?? null,
+    normalized_dimensional_fields: dimensionalFields(record),
+    source_traceability: {
+      source_pdf: record.source_pdf ?? null,
+      catalog_page: record.catalog_page ?? null,
+      row_index: record.row_index ?? null,
+      parser_name: record.parser_name ?? null,
+      parser_version: record.parser_version ?? null,
+      extraction_status: record.extraction_status ?? null,
+      normalizer_name: record.normalizer_name ?? null,
+      normalizer_version: record.normalizer_version ?? null
+    }
   };
+
+  return buildCandidateValidation(candidate).candidate;
 }
 
 function markdownTable(rows, headers) {
@@ -123,31 +204,47 @@ function writeReport(candidates, validationSummary) {
     .map(([warning, count]) => ({ Warning: warning, Count: count }));
 
   const mappedFields = [
-    'candidate_id',
+    'id',
     'brand',
-    'source_pdf',
-    'pdf_page',
-    'catalog_page',
-    'series',
+    'source_file',
+    'source_page',
+    'raw_row_ref',
+    'raw_table_ref',
+    'source_type',
+    'source_name',
+    'extraction_method',
+    'designation',
+    'article_no',
     'product_family',
-    'product_type',
-    'tool_no',
-    'edp',
-    'normalized_dimensional_fields',
-    'raw_fields',
-    'unit_system',
-    'warnings',
+    'type',
+    'diameter_d1_mm',
+    'diameter_d2_mm',
+    'oal_l1_mm',
+    'flute_length_l2_mm',
+    'flutes',
+    'handedness',
+    'coating',
+    'iso_materials',
+    'operations',
+    'confidence_score',
+    'confidence_reason',
+    'risk_flags',
     'validation_status',
-    'merge_status',
-    'source_traceability'
+    'ai_inferred_fields',
+    'last_checked'
   ];
 
   const rawOnlyFields = [
     'raw_fields.raw_row',
     'raw_fields.raw_y',
     'raw_fields.warnings',
-    'coating_or_surface',
-    'material_grade_if_present'
+    'inch-only dimensions',
+    'coating',
+    'substrate',
+    'iso_grade',
+    'iso_materials',
+    'operations',
+    'cutting data'
   ];
 
   const lines = [
@@ -176,17 +273,18 @@ function writeReport(candidates, validationSummary) {
     '',
     rawOnlyFields.map((field) => `- \`${field}\``).join('\n'),
     '',
-    '`coating_or_surface` and `material_grade_if_present` remain null because the source table rows do not contain those values. Mixed unit rows remain flagged and are not converted.',
+    '`coating`, `substrate`, `iso_grade`, `iso_materials`, `operations`, and cutting-data fields remain null because the source table rows do not contain those values. Inch-only dimensions are preserved in `raw_fields` and are not converted into mm schema fields.',
     '',
     '## Merge Status',
     '',
     '- PRODUCT_DB merge: blocked',
     '- Candidate merge_status: not_merged',
-    '- Candidate validation_status: validated_candidate_review',
+    '- New candidates start as validation_status: extracted_candidate',
+    '- Candidates with warnings or missing required technical fields are moved to validation_status: needs_review',
     '',
     '## Exact Next Step',
     '',
-    'Create a small 20-record PRODUCT_DB schema preview outside PRODUCT_DB.'
+    'Human review these candidate records against the source PDF/raw rows before any separate merge workflow is considered.'
   ];
 
   fs.writeFileSync(OUTPUT_REPORT, `${lines.join('\n')}\n`);
@@ -205,6 +303,11 @@ function main() {
 
   const records = (input.records || []).filter((record) => record.series === '272');
   const candidates = records.map(toCandidate);
+  const validationResults = candidates.map((candidate) => buildCandidateValidation(candidate, { newRecord: false }));
+  const invalidCandidates = validationResults.filter((result) => !result.valid);
+  if (invalidCandidates.length) {
+    throw new Error(`Candidate schema validation failed for ${invalidCandidates.length} record(s): ${JSON.stringify(invalidCandidates[0].errors)}`);
+  }
   const warnings = warningCounts(candidates);
 
   ensureDir(OUTPUT_DIR);
