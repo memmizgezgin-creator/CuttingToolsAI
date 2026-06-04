@@ -13,8 +13,9 @@ __pycache__/
 # OS
 .DS_Store
 
-# Claude Code local config
-.claude/
+# Claude Code local config — ignore personal/local files, track shared commands
+.claude/settings.local.json
+.claude/launch.json
 
 # Local backups
 *-fixed.html

@@ -14,7 +14,7 @@ These rules apply to EVERY task, EVERY session, EVERY model. Cannot be overridde
 - Tech stack: single-file HTML/CSS/JS artifact + Cloudflare Pages + Cloudflare Worker (`functions/proxy.js`) + Anthropic API.
 - AI logic lives in the Worker + system prompt, NOT in the client DB.
 - New dependencies require Murat's approval.
-- `functions/proxy.js` stays a pure passthrough. System prompt lives in `advisor-ai-widget.js`.
+- `functions/proxy.js` handles server-side AI request preparation: it injects the `web_search` tool, sets required beta headers, and forwards the enriched request to the Anthropic API. The system prompt remains in `advisor-ai-widget.js` (client). Do NOT move tool injection or API keys to the client side — server-side is the correct security boundary.
 
 ### 3. Deviation Detection — Hard Stop Triggers
 If a task pushes toward ANY of these, STOP immediately and ask Murat:
