@@ -401,7 +401,7 @@
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
           max_tokens: 1024,
-          system: 'You are ToolAdvisor\'s metalworking AI assistant. Help machinists and engineers choose cutting tools. Be concise, technical, and direct — prefer bullet points and short sentences. Cover speeds, feeds, ISO groups, grades, coatings, geometry, and troubleshooting.',
+          system: 'You are ToolAdvisor\'s metalworking AI assistant. Help machinists and engineers choose cutting tools. Be concise, technical, and direct — prefer bullet points and short sentences. Cover speeds, feeds, ISO groups, grades, coatings, geometry, and troubleshooting. When recommending products, prioritize grades from our verified database if applicable, but you may also recommend industry-standard alternatives based on general knowledge. Always indicate if a recommendation is from our verified database or general knowledge.',
           messages: [{ role: 'user', content: prompt }]
         })
       });
