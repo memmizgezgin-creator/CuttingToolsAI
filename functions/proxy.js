@@ -25,6 +25,10 @@ export async function onRequestPost(context) {
 
   try {
     const body = await request.json();
+    const enrichedBody = {
+      ...body,
+      tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+    };
 
     const upstream = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -32,8 +36,9 @@ export async function onRequestPost(context) {
         'Content-Type': 'application/json',
         'x-api-key': apiKey,
         'anthropic-version': '2023-06-01',
+        'anthropic-beta': 'web-search-2025-03-05',
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(enrichedBody),
     });
 
     const data = await upstream.json();
