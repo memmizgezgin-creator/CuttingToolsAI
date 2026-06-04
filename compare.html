@@ -3,20 +3,13 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Compare Cutting Inserts Side by Side | ToolAdvisor</title>
-<meta name="description" content="Compare cutting insert grades, coatings and application data side by side across multiple brands."/>
+<title>Compare Cutting Grades with AI | ToolAdvisor</title>
+<meta name="description" content="Compare two or three cutting insert grades with AI-generated side-by-side technical reasoning."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="tw-config.js"></script>
-<script src="directory-data.js"></script>
-<script src="directory-data-extracted.js"></script>
 <link rel="stylesheet" href="polish.css"/>
-<style>
-/* Compare matrix zebra striping — inline fallback because polish.css @media tail can suppress appended rules */
-.cmp-matrix > div:nth-child(odd)  { background: #ffffff; }
-.cmp-matrix > div:nth-child(even) { background: #f4f3f6; }
-</style>
 </head>
 <body class="font-body-md text-on-surface selection:bg-primary/20">
 <!-- Sidebar Navigation -->
@@ -26,154 +19,56 @@
 <!-- Compare header -->
 <section class="px-gutter pt-12 pb-8 bg-gradient-to-br from-surface to-border-warm">
   <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-3">Compare</p>
-  <h1 class="font-display-hero text-display-hero text-primary mb-3">Side-by-side technical matrix.</h1>
-  <p class="font-body-lg text-on-surface-variant max-w-3xl">Match three inserts on the variables that actually drive a decision: geometry, grade, ISO coverage, operation envelope, tool life, cost tier, risk and data confidence.</p>
-  <div class="mt-6 flex flex-wrap gap-2">
-    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-border-warm text-on-surface-variant text-xs font-medium">
-      <span class="material-symbols-outlined text-sm text-iso-m-amber">info</span> Sample comparison — always verify on a sample part before production
+  <h1 class="font-display-hero text-display-hero text-primary mb-3">Ask AI for a side-by-side grade comparison.</h1>
+  <p class="font-body-lg text-on-surface-variant max-w-3xl">Enter two or three grade names, insert codes or brand references. ToolAdvisor searches public engineering sources and returns a plain-text technical comparison.</p>
+
+  <form id="compare-ai-form" class="mt-10 max-w-5xl">
+    <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-4">Grade inputs</p>
+    <div class="bg-white rounded-2xl border border-border-warm card-shadow p-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="flex flex-col gap-2">
+          <label class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant" for="compare-grade-1">Grade 1</label>
+          <input id="compare-grade-1" class="h-12 px-4 rounded-xl border border-border-warm bg-white outline-none text-sm font-medium text-on-surface transition-shadow focus:border-primary focus:ring-2 focus:ring-primary/20" placeholder="e.g. GC4325" type="text" autocomplete="off"/>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant" for="compare-grade-2">Grade 2</label>
+          <input id="compare-grade-2" class="h-12 px-4 rounded-xl border border-border-warm bg-white outline-none text-sm font-medium text-on-surface transition-shadow focus:border-primary focus:ring-2 focus:ring-primary/20" placeholder="e.g. KCP25C" type="text" autocomplete="off"/>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant" for="compare-grade-3">Grade 3 <span class="normal-case tracking-normal">(optional)</span></label>
+          <input id="compare-grade-3" class="h-12 px-4 rounded-xl border border-border-warm bg-white outline-none text-sm font-medium text-on-surface transition-shadow focus:border-primary focus:ring-2 focus:ring-primary/20" placeholder="e.g. IC8150" type="text" autocomplete="off"/>
+        </div>
+      </div>
+      <div class="mt-4 flex flex-col sm:flex-row sm:items-center gap-3">
+        <button id="compare-submit" class="bg-primary text-white font-bold px-6 py-3 rounded-xl hover:-translate-y-0.5 transition-all inline-flex items-center justify-center gap-2" type="submit">
+          <span class="material-symbols-outlined text-base">auto_awesome</span>
+          Compare grades
+        </button>
+        <p id="compare-input-note" class="text-xs text-on-surface-variant">At least two inputs are required. Unknown values stay marked as not verified.</p>
+      </div>
     </div>
-    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-border-warm text-on-surface-variant text-xs font-medium">
-      <span class="material-symbols-outlined text-sm text-outline">analytics</span> Cost tier and tool life are estimates from published data — not commercial pricing
-    </div>
-  </div>
+  </form>
 </section>
 
-<!-- Selected items header -->
-<section class="px-gutter py-8">
-  <div id="compare-tool-cards" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
-</section>
-
-<!-- Matrix -->
-<section class="px-gutter pb-10">
-  <div id="compare-matrix" class="bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden cmp-matrix"></div>
-</section>
-
-<!-- Operating envelope plot -->
-<section class="px-gutter pb-10">
-  <div class="bg-white rounded-2xl border border-border-warm card-shadow p-8">
-    <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
-      <div>
-        <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Operating envelope</p>
-        <h2 class="font-section-heading text-xl text-primary">Illustrative Vc × feed space.</h2>
-        <p class="text-sm text-on-surface-variant mt-2 max-w-2xl">This plot is a static visual reference for how envelopes are read. Product-specific envelope rendering is not enabled yet; use the dynamic Vc and feed rows above for selected-tool values.</p>
-      </div>
-      <!-- Legend -->
-      <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
-        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#123356;"></span> Example A</span>
-        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#F59E0B;"></span> Example B</span>
-        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 rounded-sm" style="background:#10B981;"></span> Example C</span>
-      </div>
+<!-- AI comparison output -->
+<section class="px-gutter py-8 pb-20">
+  <div class="max-w-5xl">
+    <div class="mb-5 flex items-center gap-2">
+      <span class="material-symbols-outlined text-sm text-on-surface-variant">fact_check</span>
+      <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant">AI-generated side-by-side comparison</p>
     </div>
 
-    <!-- Plot -->
-    <div class="overflow-x-auto">
-      <svg viewBox="0 0 620 360" class="w-full h-auto min-w-[560px]" role="img" aria-label="Illustrative operating envelope plot — Vc versus feed">
-        <!-- ===== Grid ===== -->
-        <g stroke="#F0EDE8" stroke-width="1">
-          <!-- vertical grid (feed) -->
-          <line x1="148" y1="30" x2="148" y2="290"/>
-          <line x1="227" y1="30" x2="227" y2="290"/>
-          <line x1="305" y1="30" x2="305" y2="290"/>
-          <line x1="383" y1="30" x2="383" y2="290"/>
-          <line x1="462" y1="30" x2="462" y2="290"/>
-          <!-- horizontal grid (Vc) -->
-          <line x1="70" y1="232" x2="540" y2="232"/>
-          <line x1="70" y1="174" x2="540" y2="174"/>
-          <line x1="70" y1="117" x2="540" y2="117"/>
-          <line x1="70" y1="59"  x2="540" y2="59"/>
-        </g>
-
-        <!-- ===== Axes ===== -->
-        <g stroke="#43474e" stroke-width="1.5" fill="none">
-          <line x1="70" y1="290" x2="546" y2="290"/>  <!-- X axis -->
-          <line x1="70" y1="290" x2="70" y2="24"/>    <!-- Y axis -->
-          <!-- arrowheads -->
-          <polygon points="546,290 540,287 540,293" fill="#43474e"/>
-          <polygon points="70,24 67,30 73,30" fill="#43474e"/>
-        </g>
-
-        <!-- ===== Axis labels ===== -->
-        <g font-family="DM Mono, monospace" font-size="10" fill="#8A8A9A" font-weight="600">
-          <!-- X ticks -->
-          <text x="148" y="306" text-anchor="middle">0.1</text>
-          <text x="227" y="306" text-anchor="middle">0.2</text>
-          <text x="305" y="306" text-anchor="middle">0.3</text>
-          <text x="383" y="306" text-anchor="middle">0.4</text>
-          <text x="462" y="306" text-anchor="middle">0.5</text>
-          <text x="540" y="306" text-anchor="middle">0.6</text>
-          <!-- Y ticks -->
-          <text x="60" y="236" text-anchor="end">100</text>
-          <text x="60" y="178" text-anchor="end">200</text>
-          <text x="60" y="121" text-anchor="end">300</text>
-          <text x="60" y="63"  text-anchor="end">400</text>
-        </g>
-        <g font-family="DM Sans, sans-serif" font-size="11" fill="#43474e" font-weight="600">
-          <text x="305" y="334" text-anchor="middle" letter-spacing="0.04em">Feed <tspan fill="#8A8A9A" font-weight="500">(mm/rev)</tspan></text>
-          <text x="-160" y="20" transform="rotate(-90)" text-anchor="middle" letter-spacing="0.04em">Cutting speed <tspan fill="#8A8A9A" font-weight="500">(m/min)</tspan></text>
-        </g>
-
-        <!-- ===== Example envelope C ===== -->
-        <rect x="211" y="59" width="290" height="104" fill="#10B981" fill-opacity="0.15" stroke="#10B981" stroke-width="2" rx="2"/>
-        <g font-family="Nunito, sans-serif">
-          <circle cx="356" cy="111" r="3.5" fill="#10B981"/>
-          <rect x="376" y="98" width="86" height="26" rx="6" fill="#fff" stroke="#10B981" stroke-width="1.5"/>
-          <text x="384" y="115" font-size="12" font-weight="700" fill="#10B981">Example C</text>
-        </g>
-
-        <!-- ===== Example envelope A ===== -->
-        <rect x="188" y="82" width="274" height="92" fill="#123356" fill-opacity="0.15" stroke="#123356" stroke-width="2" rx="2"/>
-        <g font-family="Nunito, sans-serif">
-          <circle cx="325" cy="128" r="3.5" fill="#123356"/>
-          <rect x="245" y="142" width="86" height="26" rx="6" fill="#fff" stroke="#123356" stroke-width="1.5"/>
-          <text x="253" y="159" font-size="12" font-weight="700" fill="#123356">Example A</text>
-        </g>
-
-        <!-- ===== Example envelope B ===== -->
-        <rect x="188" y="94" width="235" height="87" fill="#F59E0B" fill-opacity="0.18" stroke="#F59E0B" stroke-width="2" stroke-dasharray="0" rx="2"/>
-        <g font-family="Nunito, sans-serif">
-          <circle cx="305" cy="137" r="3.5" fill="#F59E0B"/>
-          <rect x="118" y="182" width="86" height="26" rx="6" fill="#fff" stroke="#F59E0B" stroke-width="1.5"/>
-          <text x="128" y="199" font-size="12" font-weight="700" fill="#F59E0B">Example B</text>
-          <line x1="305" y1="140" x2="161" y2="184" stroke="#F59E0B" stroke-width="1" stroke-dasharray="2 2"/>
-        </g>
-
-        <!-- ===== Static reference annotation ===== -->
-        <g font-family="DM Mono, monospace" font-size="9" fill="#10B981" font-weight="600">
-          <line x1="500" y1="59" x2="540" y2="40" stroke="#10B981" stroke-width="1" stroke-dasharray="2 2"/>
-          <text x="544" y="38" letter-spacing="0.06em">range example</text>
-        </g>
-      </svg>
-    </div>
-
-    <!-- Key insights -->
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
-      <div class="p-3 rounded-lg bg-surface-container-low border-l-2" style="border-color:#10B981;">
-        <p class="font-technical-data text-[10px] uppercase tracking-widest font-bold mb-1" style="color:#10B981;">Static reference</p>
-        <p class="text-sm text-on-surface">Envelope rectangles show range shape only; they are not selected-tool results.</p>
+    <div class="bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden">
+      <div class="px-6 py-4 border-b border-border-warm bg-surface-container-low flex items-center justify-between gap-4">
+        <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant">Comparison output</p>
+        <span id="compare-status" class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Ready</span>
       </div>
-      <div class="p-3 rounded-lg bg-surface-container-low border-l-2" style="border-color:#123356;">
-        <p class="font-technical-data text-[10px] uppercase tracking-widest font-bold mb-1" style="color:#123356;">Selected values</p>
-        <p class="text-sm text-on-surface">Use Vc, feed, and depth rows above for current product data.</p>
+      <div id="compare-output" class="p-6 md:p-8 min-h-[360px]">
+        <div class="max-w-2xl">
+          <p class="font-product-grade text-primary text-xl mb-3">Enter two or three grades above.</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed">The AI response will be rendered as a readable text/table comparison with source-backed fields, confidence notes and production risks. Unknown fields stay marked as not verified.</p>
+        </div>
       </div>
-      <div class="p-3 rounded-lg bg-surface-container-low border-l-2" style="border-color:#F59E0B;">
-        <p class="font-technical-data text-[10px] uppercase tracking-widest font-bold mb-1" style="color:#F59E0B;">Decision note</p>
-        <p class="text-sm text-on-surface">No product-specific conclusion is inferred from this illustrative plot.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Comparison summary -->
-<section class="px-gutter pb-20">
-  <div class="bg-primary text-white rounded-3xl p-10 relative overflow-hidden">
-    <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-iso-m-amber blur-3xl opacity-20 pointer-events-none"></div>
-    <p class="font-technical-data text-xs uppercase tracking-widest text-iso-m-amber mb-3">Comparison summary</p>
-    <h2 class="font-section-heading text-section-heading mb-2">Available-data signals.</h2>
-    <p class="text-blue-100/80 mb-8 max-w-2xl">These notes use only fields available in the current catalog record. They are not a final engineering recommendation; validate on a sample part before production.</p>
-    <div id="comparison-summary-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a href="pro.html" class="bg-white text-primary font-bold px-6 py-3 rounded-xl hover:-translate-y-0.5 transition-all flex items-center gap-2"><span class="material-symbols-outlined">download</span> Export decision PDF <span class="ml-2 px-2 py-0.5 rounded-full bg-iso-m-amber/15 text-iso-m-amber text-[10px] tracking-widest">PRO</span></a>
-      <a href="cross-reference.html" class="bg-white/10 text-white border border-white/20 font-bold px-6 py-3 rounded-xl hover:bg-white/20 transition-all">Cross-reference another insert</a>
     </div>
   </div>
 </section>
@@ -192,340 +87,148 @@
 </div>
 </footer>
 </main>
-<!-- Contextual FAB - Only for main navigation screens -->
-<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-transform z-50 group">
-<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform">add</span>
-</button>
 <script>
 (function () {
-  const MAX_TOOLS = 3;
-  const toolsDb = Array.isArray(window.TA_TOOLS) ? window.TA_TOOLS : [];
-  const cardRoot = document.getElementById('compare-tool-cards');
-  const matrixRoot = document.getElementById('compare-matrix');
-  const summaryRoot = document.getElementById('comparison-summary-cards');
-  let skippedIds = [];
+  const API_URL = '/proxy';
+  const SYSTEM_PROMPT = [
+    'You are ToolAdvisor Compare AI for CNC cutting tool grades.',
+    'Use web search to find public manufacturer or distributor specifications for the requested grades or insert references.',
+    'Return a side-by-side comparison in plain text. A compact Markdown table is allowed because it renders as text in the UI.',
+    'Compare only source-backed or clearly stated public information: brand, grade family, coating class, ISO material group, intended operation, application strengths, limitations, and confidence.',
+    'Do not invent technical values. If a field is not found in public source text, write not verified.',
+    'Do not provide shopping links, pricing, stock status, export workflows, shortlist language, or catalog browsing output.',
+    'Keep the answer concise, brand-neutral, and practical. End with sample-part verification guidance.'
+  ].join(' ');
 
-  const toneClasses = {
-    'iso-p': { border: 'border-iso-p-blue', badgeBg: 'bg-iso-p-blue/15', badgeText: 'text-iso-p-blue' },
-    'iso-m': { border: 'border-iso-m-amber', badgeBg: 'bg-iso-m-amber/15', badgeText: 'text-iso-m-amber' },
-    'iso-k': { border: 'border-iso-k-red', badgeBg: 'bg-iso-k-red/15', badgeText: 'text-iso-k-red' },
-    'iso-n': { border: 'border-iso-n-green', badgeBg: 'bg-iso-n-green/15', badgeText: 'text-iso-n-green' },
-    'iso-s': { border: 'border-iso-s-orange', badgeBg: 'bg-iso-s-orange/15', badgeText: 'text-iso-s-orange' },
-    'iso-h': { border: 'border-outline', badgeBg: 'bg-surface-container-low', badgeText: 'text-on-surface-variant' },
-  };
-  const sourceTierLabel = {
-    manufacturer: 'AI recommendation based on engineering principles',
-    reviewed: 'AI recommendation based on engineering principles',
-    estimated: 'Generated estimate',
-  };
-  const statusLabel = {
-    verified: 'Verified',
-    partially_verified: 'Partial',
-    estimated: 'Estimated',
-  };
-  const riskLabel = {
-    estimated_field: 'Estimated field',
-    manual_review_required: 'Manual review required',
-  };
+  const form = document.getElementById('compare-ai-form');
+  const inputs = [
+    document.getElementById('compare-grade-1'),
+    document.getElementById('compare-grade-2'),
+    document.getElementById('compare-grade-3')
+  ];
+  const output = document.getElementById('compare-output');
+  const status = document.getElementById('compare-status');
+  const submit = document.getElementById('compare-submit');
+  const note = document.getElementById('compare-input-note');
+  let busy = false;
 
   function escapeHtml(value) {
-    return String(value ?? '').replace(/[&<>"']/g, (char) => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#39;',
-    }[char]));
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
 
-  function sentenceCase(value) {
-    return String(value || '')
-      .replace(/_/g, ' ')
-      .replace(/\b\w/g, (char) => char.toUpperCase());
-  }
-
-  function clamp(value, min, max) {
-    return Math.max(min, Math.min(max, value));
-  }
-
-  function fmtNumber(value) {
-    if (!Number.isFinite(value)) return '—';
-    return Math.abs(value) < 1 ? value.toFixed(2) : String(Math.round(value * 10) / 10).replace(/\.0$/, '');
-  }
-
-  function toolLabel(tool) {
-    return tool ? `${tool.grade || tool.code}` : '—';
-  }
-
-  function selectedTools() {
-    const params = new URLSearchParams(window.location.search);
-    const idsParam = params.get('ids');
-    const requestedIds = (idsParam || '')
-      .split(',')
-      .map((id) => id.trim())
-      .filter(Boolean);
+  function selectedGrades() {
     const seen = new Set();
-    skippedIds = [];
-    if (!idsParam || !requestedIds.length) {
-      return { tools: [], emptyTitle: 'No tools selected for comparison.', emptyBody: 'Select two or more tools from the catalog to build a side-by-side matrix.' };
-    }
-    const tools = requestedIds
-      .filter((id) => {
-        if (seen.has(id)) return false;
-        seen.add(id);
+    return inputs
+      .map((input) => input.value.trim())
+      .filter(Boolean)
+      .filter((value) => {
+        const key = value.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
         return true;
       })
-      .map((id) => {
-        const tool = toolsDb.find((item) => item.id === id);
-        if (!tool) skippedIds.push(id);
-        return tool;
-      })
-      .filter(Boolean)
-      .slice(0, MAX_TOOLS);
-    return {
-      tools,
-      emptyTitle: 'No matching tools found.',
-      emptyBody: 'The selected comparison link does not match any tools in the current catalog.',
-    };
+      .slice(0, 3);
   }
 
-  function gridStyle(tools) {
-    return `grid-template-columns:minmax(160px,.8fr) repeat(${tools.length},minmax(180px,1fr));`;
+  function setBusy(nextBusy) {
+    busy = nextBusy;
+    inputs.forEach((input) => { input.disabled = busy; });
+    submit.disabled = busy;
+    submit.classList.toggle('opacity-60', busy);
+    submit.classList.toggle('cursor-wait', busy);
+    status.textContent = busy ? 'Searching' : 'Ready';
   }
 
-  function cellClass(index, tools) {
-    return `p-4 ${index < tools.length - 1 ? 'border-r border-border-warm ' : ''}`;
+  function renderText(text) {
+    output.innerHTML = '<div class="whitespace-pre-wrap overflow-x-auto text-[15px] leading-7 text-on-surface">' + escapeHtml(text) + '</div>';
   }
 
-  function renderToolCards(tools) {
-    cardRoot.innerHTML = tools.map((tool, index) => {
-      const tone = toneClasses[tool.tone] || toneClasses['iso-h'];
-      const label = index === 0 ? 'BASELINE' : `ALT ${index}`;
-      return `
-        <div class="bg-white rounded-2xl border border-border-warm card-shadow p-5 border-l-4 ${tone.border}">
-          <div class="flex items-start gap-4">
-            <div class="ta-insert3d shrink-0" data-shape="${escapeHtml(tool.shape || '-')}" data-tone="${escapeHtml(tool.tone || 'brushed')}" data-size="sm" aria-label="${escapeHtml(tool.code)} insert"></div>
-            <div class="flex-1 min-w-0">
-              <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">${escapeHtml(tool.brand)}</p>
-              <h3 class="font-product-grade text-primary text-xl">${escapeHtml(tool.grade)}</h3>
-              <p class="font-technical-data text-sm text-on-surface-variant">${escapeHtml(tool.code)}</p>
-              <span class="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-full bg-surface-container-low border border-border-warm text-[10px] font-technical-data uppercase tracking-widest text-on-surface-variant">${escapeHtml(sentenceCase(tool.tool_type || tool.family))}</span>
-            </div>
-            <span class="px-2.5 py-1 rounded-full ${tone.badgeBg} ${tone.badgeText} font-bold text-[10px] tracking-widest shrink-0">${label}</span>
-          </div>
-        </div>`;
-    }).join('');
+  function renderError(message) {
+    output.innerHTML = `
+      <div class="rounded-xl border border-iso-k-red/25 bg-iso-k-red/10 p-5 text-sm text-on-surface">
+        <p class="font-bold text-primary mb-2">AI comparison is unavailable.</p>
+        <p class="leading-relaxed">${escapeHtml(message || 'Please try again in a moment.')}</p>
+      </div>`;
+    status.textContent = 'Error';
   }
 
-  function renderSummaryCard(label, tool, body) {
-    return `
-      <div class="bg-white/5 backdrop-blur rounded-2xl p-5 border border-white/10">
-        <p class="text-xs uppercase tracking-widest text-iso-m-amber font-bold mb-3">${escapeHtml(label)}</p>
-        <p class="font-product-grade text-2xl text-white mb-2">${escapeHtml(toolLabel(tool))}</p>
-        <p class="text-sm text-blue-100/90 leading-relaxed">${escapeHtml(body)}</p>
+  function renderValidationError() {
+    note.textContent = 'Enter at least two distinct grade names or insert references.';
+    note.classList.add('text-iso-k-red');
+  }
+
+  function clearValidationError() {
+    note.textContent = 'At least two inputs are required. Unknown values stay marked as not verified.';
+    note.classList.remove('text-iso-k-red');
+  }
+
+  function renderLoading(grades) {
+    output.innerHTML = `
+      <div class="flex items-start gap-3 text-on-surface">
+        <span class="material-symbols-outlined text-primary animate-pulse">auto_awesome</span>
+        <div>
+          <p class="font-product-grade text-primary text-xl mb-2">Comparing ${escapeHtml(grades.join(' vs '))}</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Checking public source-backed grade signals and preparing a readable side-by-side output.</p>
+        </div>
       </div>`;
   }
 
-  function pickBy(tools, getter, mode = 'max') {
-    const candidates = tools
-      .map((tool) => ({ tool, value: getter(tool) }))
-      .filter((item) => Number.isFinite(item.value));
-    if (!candidates.length) return null;
-    candidates.sort((a, b) => mode === 'min' ? a.value - b.value : b.value - a.value);
-    return candidates[0];
+  async function runCompare(grades) {
+    if (busy || grades.length < 2) return;
+    setBusy(true);
+    renderLoading(grades);
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1600,
+          system: SYSTEM_PROMPT,
+          messages: [{
+            role: 'user',
+            content: `Compare these cutting tool grades or insert references side by side: ${grades.join(', ')}.
+
+Return plain text only:
+1. A compact Markdown table comparing brand/source, grade family, coating class, ISO material groups, operation fit, strengths, limits, and confidence.
+2. A short recommendation for when each grade is the better choice.
+3. Not-verified fields or source gaps.
+4. A sample-part verification note.`
+          }]
+        })
+      });
+      const data = await response.json();
+      const textBlock = data.content?.filter((block) => block.type === 'text').pop();
+      const reply = textBlock?.text || data.error?.message || data.error;
+      if (!response.ok) throw new Error(typeof reply === 'string' ? reply : `Request failed with status ${response.status}`);
+      renderText(reply || 'No answer returned.');
+    } catch (error) {
+      renderError(error.message);
+    } finally {
+      setBusy(false);
+    }
   }
 
-  function renderSummary(tools) {
-    if (!summaryRoot) return;
-    if (!tools.length) {
-      summaryRoot.innerHTML = `
-        <div class="bg-white/5 backdrop-blur rounded-2xl p-5 border border-white/10 md:col-span-2 lg:col-span-4">
-          <p class="text-xs uppercase tracking-widest text-iso-m-amber font-bold mb-3">No selected tools</p>
-          <p class="font-product-grade text-2xl text-white mb-2">—</p>
-          <p class="text-sm text-blue-100/90 leading-relaxed">Select tools from the catalog to show available-data comparison signals.</p>
-        </div>`;
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const grades = selectedGrades();
+    if (grades.length < 2) {
+      renderValidationError();
+      inputs.find((input) => !input.value.trim())?.focus();
       return;
     }
+    clearValidationError();
+    runCompare(grades);
+  });
 
-    const confidence = pickBy(tools, (tool) => Number(tool.trust?.confidence_score ?? tool.confidence), 'max');
-    const vcRange = pickBy(tools, (tool) => Number(tool.vcMax) - Number(tool.vcMin), 'max');
-    const cost = pickBy(tools, (tool) => Number(tool.costTier), 'min');
-    const life = pickBy(tools, (tool) => Number(tool.lifeRel), 'max');
-    const cards = [
-      confidence
-        ? renderSummaryCard('Highest data confidence', confidence.tool, `${confidence.value}% confidence from available source metadata.`)
-        : renderSummaryCard('Highest data confidence', null, 'Not available in selected records.'),
-      vcRange
-        ? renderSummaryCard('Widest Vc range', vcRange.tool, `${fmtNumber(vcRange.value)} m/min span based on vcMin/vcMax.`)
-        : renderSummaryCard('Widest Vc range', null, 'Not available in selected records.'),
-      cost
-        ? renderSummaryCard('Lowest estimated cost tier', cost.tool, `${cost.value}/4 cost tier${cost.tool.economicsEstimated ? ' (estimated)' : ''}.`)
-        : renderSummaryCard('Lowest estimated cost tier', null, 'Not available in selected records.'),
-      life
-        ? renderSummaryCard('Highest relative tool life', life.tool, `${life.value}/5 relative tool life signal.`)
-        : renderSummaryCard('Highest relative tool life', null, 'Not available in selected records.'),
-    ];
-    summaryRoot.innerHTML = cards.join('');
-  }
-
-  function renderNotice() {
-    if (!skippedIds.length) return '';
-    return `
-      <div class="mb-4 rounded-xl border border-iso-m-amber/25 bg-iso-m-amber/10 px-4 py-3 flex items-start gap-2 text-sm text-on-surface-variant">
-        <span class="material-symbols-outlined text-iso-m-amber shrink-0" style="font-size:18px;">info</span>
-        <p><span class="font-bold text-on-surface">Skipped invalid tool ID${skippedIds.length > 1 ? 's' : ''}:</span> ${escapeHtml(skippedIds.join(', '))}</p>
-      </div>`;
-  }
-
-  function renderEmptyState(title, body) {
-    cardRoot.innerHTML = '';
-    matrixRoot.classList.remove('cmp-matrix', 'overflow-hidden');
-    matrixRoot.innerHTML = `
-      ${renderNotice()}
-      <div class="p-10 text-center">
-        <div class="mx-auto mb-4 w-12 h-12 rounded-full bg-surface-container-low border border-border-warm flex items-center justify-center">
-          <span class="material-symbols-outlined text-outline">fact_check</span>
-        </div>
-        <h2 class="font-section-heading text-xl text-primary mb-2">${escapeHtml(title)}</h2>
-        <p class="text-sm text-on-surface-variant max-w-xl mx-auto">${escapeHtml(body)}</p>
-        <a href="tools-directory.html" class="inline-flex items-center gap-2 mt-6 bg-primary text-white font-bold px-5 py-2.5 rounded-xl hover:-translate-y-0.5 transition-all">
-          Open catalog
-          <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
-        </a>
-      </div>`;
-  }
-
-  function renderRow(tools, label, cells, sublabel = '') {
-    const labelMarkup = sublabel
-      ? `<div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex flex-col justify-center"><span>${escapeHtml(label)}</span><span class="text-[10px] normal-case tracking-normal text-on-surface-variant/70 font-normal mt-0.5">${escapeHtml(sublabel)}</span></div>`
-      : `<div class="p-4 border-r border-border-warm font-technical-data text-xs uppercase tracking-widest text-on-surface-variant flex items-center">${escapeHtml(label)}</div>`;
-    return `<div class="grid gap-0" style="${gridStyle(tools)}">${labelMarkup}${cells.join('')}</div>`;
-  }
-
-  function textCell(value, index, tools) {
-    return `<div class="${cellClass(index, tools)}text-sm text-on-surface flex items-center font-medium">${escapeHtml(value || '—')}</div>`;
-  }
-
-  function unavailableCell(index, tools) {
-    return `<div class="${cellClass(index, tools)}text-sm text-on-surface-variant flex items-center font-medium">—</div>`;
-  }
-
-  function isoCell(tool, index, tools) {
-    return `<div class="${cellClass(index, tools)}flex items-center gap-1.5"><span class="ta-iso-badge ta-iso-${escapeHtml(tool.iso)}">ISO ${escapeHtml(tool.iso)}</span></div>`;
-  }
-
-  function rangeScale(tools, minKey, maxKey) {
-    const values = tools.flatMap((tool) => [Number(tool[minKey]), Number(tool[maxKey])]).filter(Number.isFinite);
-    if (!values.length) return { min: 0, max: 1 };
-    const min = Math.floor(Math.min(...values) * 100) / 100;
-    const max = Math.ceil(Math.max(...values) * 100) / 100;
-    return min === max ? { min: min - 1, max: max + 1 } : { min, max };
-  }
-
-  function rangeCell(tool, index, tools, minKey, maxKey, scale, unit) {
-    const min = Number(tool[minKey]);
-    const max = Number(tool[maxKey]);
-    if (!Number.isFinite(min) || !Number.isFinite(max)) return unavailableCell(index, tools);
-    const span = scale.max - scale.min;
-    const left = clamp(((min - scale.min) / span) * 100, 0, 100);
-    const width = clamp(((max - min) / span) * 100, 0, 100 - left);
-    return `
-      <div class="${cellClass(index, tools)}flex items-center">
-        <div class="cmp-range">
-          <div class="cmp-range-track"><div class="cmp-range-fill" style="left:${left.toFixed(1)}%;width:${Math.max(width, 2).toFixed(1)}%;"></div></div>
-          <div class="cmp-range-values"><span>${fmtNumber(min)}</span><span>${fmtNumber(max)} <span class="cmp-unit">${escapeHtml(unit)}</span></span></div>
-        </div>
-      </div>`;
-  }
-
-  function lifeCell(tool, index, tools) {
-    const life = clamp(Number(tool.lifeRel) || 0, 0, 5);
-    const labels = ['Unavailable', 'Very low', 'Low', 'Medium', 'Medium-High', 'High'];
-    const pips = Array.from({ length: 5 }, (_, i) => `<span class="cmp-pip${i < life ? ' on' : ''}"></span>`).join('');
-    return `<div class="${cellClass(index, tools)}flex items-center gap-3"><div class="cmp-pips">${pips}</div><span class="text-xs font-medium text-on-surface-variant">${labels[life]}</span></div>`;
-  }
-
-  function costCell(tool, index, tools) {
-    const cost = clamp(Number(tool.costTier) || 0, 0, 4);
-    const euros = Array.from({ length: 4 }, (_, i) => `<span class="${i < cost ? 'on' : 'off'}">€</span>`).join('');
-    const estimated = tool.economicsEstimated ? ' <span class="text-[10px] text-outline">(est.)</span>' : '';
-    return `<div class="${cellClass(index, tools)}flex items-center gap-3"><span class="cmp-cost">${euros}</span><span class="text-xs text-on-surface-variant">${cost}/4${estimated}</span></div>`;
-  }
-
-  function confidenceCell(tool, index, tools) {
-    const trust = tool.trust || {};
-    const score = clamp(Number(trust.confidence_score ?? tool.confidence) || 0, 0, 100);
-    const status = trust.validation_status || (score >= 90 ? 'verified' : score >= 80 ? 'partially_verified' : 'estimated');
-    const colorClass = status === 'verified' ? 'text-iso-n-green' : status === 'partially_verified' ? 'text-iso-m-amber' : 'text-iso-k-red';
-    const barClass = status === 'verified' ? 'bg-iso-n-green' : status === 'partially_verified' ? 'bg-iso-m-amber' : 'bg-iso-k-red';
-    return `
-      <div class="${cellClass(index, tools)}flex items-center gap-3">
-        <div class="w-14 h-1.5 bg-surface-container-low rounded-full overflow-hidden shrink-0">
-          <div class="h-full ${barClass}" style="width:${score}%;"></div>
-        </div>
-        <span class="font-technical-data text-sm font-bold text-ink-text">${score}%</span>
-        <span class="flex items-center gap-1 text-xs font-bold ${colorClass}">
-          <span class="material-symbols-outlined" style="font-size:13px;">verified</span> ${escapeHtml(statusLabel[status] || sentenceCase(status))}
-        </span>
-      </div>`;
-  }
-
-  function sourceCell(tool, index, tools) {
-    const trust = tool.trust || {};
-    const source = sourceTierLabel[trust.source_tier] || trust.source_name || tool.source || '—';
-    const checked = trust.last_checked ? String(trust.last_checked).slice(0, 7) : (tool.lastVerified || '—');
-    return `<div class="${cellClass(index, tools)}flex flex-col gap-0.5"><span class="text-xs font-bold text-on-surface">${escapeHtml(source)}</span><span class="text-[10px] text-on-surface-variant">${escapeHtml(tool.brand)} · ${escapeHtml(checked)}</span></div>`;
-  }
-
-  function riskFlagsCell(tool, index, tools) {
-    const flags = tool.trust?.risk_flags || [];
-    if (!flags.length) {
-      return `<div class="${cellClass(index, tools)}flex items-center"><span class="text-xs text-on-surface-variant">None</span></div>`;
-    }
-    const chips = flags.map((flag) => `<span class="px-2 py-1 rounded-full bg-iso-m-amber/15 text-iso-m-amber text-[10px] font-bold tracking-widest uppercase">${escapeHtml(riskLabel[flag] || sentenceCase(flag))}</span>`).join('');
-    return `<div class="${cellClass(index, tools)}flex flex-wrap items-center gap-1.5">${chips}</div>`;
-  }
-
-  function renderMatrix(tools) {
-    matrixRoot.classList.add('cmp-matrix', 'overflow-hidden');
-    const vcScale = rangeScale(tools, 'vcMin', 'vcMax');
-    const feedScale = rangeScale(tools, 'fMin', 'fMax');
-    const depthScale = rangeScale(tools, 'apMin', 'apMax');
-    const rows = [
-      renderRow(tools, 'Tool type', tools.map((tool, index) => textCell(sentenceCase(tool.tool_type || tool.family), index, tools))),
-      renderRow(tools, 'Geometry', tools.map((_, index) => unavailableCell(index, tools))),
-      renderRow(tools, 'Grade', tools.map((tool, index) => textCell(tool.grade, index, tools))),
-      renderRow(tools, 'Coating', tools.map((_, index) => unavailableCell(index, tools))),
-      renderRow(tools, 'ISO material group', tools.map(isoCell)),
-      renderRow(tools, 'Operation', tools.map((tool, index) => textCell(tool.op, index, tools))),
-      renderRow(tools, 'Vc envelope', tools.map((tool, index) => rangeCell(tool, index, tools, 'vcMin', 'vcMax', vcScale, 'm/min')), `scale ${fmtNumber(vcScale.min)}-${fmtNumber(vcScale.max)} m/min`),
-      renderRow(tools, 'Feed envelope', tools.map((tool, index) => rangeCell(tool, index, tools, 'fMin', 'fMax', feedScale, 'mm/rev')), `scale ${fmtNumber(feedScale.min)}-${fmtNumber(feedScale.max)} mm/rev`),
-      renderRow(tools, 'Depth envelope', tools.map((tool, index) => rangeCell(tool, index, tools, 'apMin', 'apMax', depthScale, 'mm')), `scale ${fmtNumber(depthScale.min)}-${fmtNumber(depthScale.max)} mm`),
-      renderRow(tools, 'Interrupted cut', tools.map((_, index) => unavailableCell(index, tools))),
-      renderRow(tools, 'Tool life', tools.map(lifeCell), '5-point relative'),
-      renderRow(tools, 'Cost tier', tools.map(costCell), 'estimated from published ranges'),
-      renderRow(tools, 'Risk level', tools.map((_, index) => unavailableCell(index, tools))),
-      renderRow(tools, 'Best use case', tools.map((tool, index) => textCell(tool.bestFor, index, tools))),
-      renderRow(tools, 'Avoid when', tools.map((_, index) => unavailableCell(index, tools))),
-      renderRow(tools, 'Data confidence', tools.map(confidenceCell)),
-      renderRow(tools, 'Source', tools.map(sourceCell)),
-      renderRow(tools, 'Data risks', tools.map(riskFlagsCell)),
-    ];
-    matrixRoot.innerHTML = renderNotice() + rows.join('');
-  }
-
-  const selection = selectedTools();
-  const tools = selection.tools;
-  if (!tools.length) {
-    renderEmptyState(selection.emptyTitle, selection.emptyBody);
-    renderSummary([]);
-    return;
-  }
-  renderToolCards(tools);
-  renderMatrix(tools);
-  renderSummary(tools);
+  inputs.forEach((input) => input.addEventListener('input', clearValidationError));
 })();
 </script>
 <script src="page-switcher.js"></script>
-<script src="advisor-ai-widget.js"></script>
 </body></html>
