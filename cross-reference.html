@@ -3,8 +3,8 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Insert Cross-Reference Tool | ToolAdvisor</title>
-<meta name="description" content="Find equivalent cutting inserts across brands. Cross-reference CNMG, WNMG, DCMT and other ISO insert codes between Sandvik, ISCAR, Kennametal, Walter, Mitsubishi."/>
+<title>Insert Cross-Reference AI | ToolAdvisor</title>
+<meta name="description" content="Ask ToolAdvisor AI for cutting insert and grade equivalents across brands, with plain-text confidence reasoning."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -19,405 +19,43 @@
 <!-- Cross-Reference Header -->
 <section class="px-gutter pt-12 pb-8 bg-gradient-to-br from-surface to-border-warm">
   <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-3">Cross-Reference</p>
-  <h1 class="font-display-hero text-display-hero text-primary mb-3">Find ranked insert alternatives across major brands.</h1>
-  <p class="font-body-lg text-on-surface-variant max-w-3xl">Enter an ISO code, a manufacturer grade or a brand reference. We surface exact matches and ranked alternatives with geometry, coating and material-group reasoning.</p>
+  <h1 class="font-display-hero text-display-hero text-primary mb-3">Ask AI for equivalent inserts and grades.</h1>
+  <p class="font-body-lg text-on-surface-variant max-w-3xl">Enter one ISO insert code, manufacturer grade or brand reference. ToolAdvisor searches public engineering sources and returns a plain-text equivalence rationale.</p>
 
-  <!-- Search -->
-  <div class="mt-10 max-w-4xl">
-    <div class="bg-white rounded-2xl border border-border-warm card-shadow p-3 flex items-center gap-3">
-      <span class="material-symbols-outlined text-on-surface-variant ml-3 text-2xl">search</span>
-      <input class="flex-1 h-14 bg-transparent outline-none text-lg font-medium text-on-surface placeholder:text-on-surface-variant" placeholder="Enter ISO code, grade or brand reference (e.g. CNMG120408)" type="text" value="CNMG120408-PM"/>
-      <button class="bg-primary text-white font-bold px-6 py-3 rounded-xl hover:-translate-y-0.5 transition-all">Match</button>
-    </div>
-    <div class="mt-4 flex flex-wrap gap-2 items-center">
-      <span class="text-xs uppercase tracking-widest text-on-surface-variant font-technical-data">Try:</span>
-      
-        <button class="font-technical-data text-xs px-3 py-1.5 rounded-full bg-white border border-border-warm hover:bg-surface-container-low transition-colors">CNMG120408</button>
-      
-        <button class="font-technical-data text-xs px-3 py-1.5 rounded-full bg-white border border-border-warm hover:bg-surface-container-low transition-colors">VCMT160404</button>
-      
-        <button class="font-technical-data text-xs px-3 py-1.5 rounded-full bg-white border border-border-warm hover:bg-surface-container-low transition-colors">TP2501</button>
-      
-        <button class="font-technical-data text-xs px-3 py-1.5 rounded-full bg-white border border-border-warm hover:bg-surface-container-low transition-colors">IC908</button>
-      
-        <button class="font-technical-data text-xs px-3 py-1.5 rounded-full bg-white border border-border-warm hover:bg-surface-container-low transition-colors">WNMG080408</button>
-      
-        <button class="font-technical-data text-xs px-3 py-1.5 rounded-full bg-white border border-border-warm hover:bg-surface-container-low transition-colors">DCMT11T304</button>
-      
-    </div>
-  </div>
-</section>
-
-<!-- Active query summary -->
-<section class="px-gutter py-8">
-  <div class="bg-white rounded-2xl border border-border-warm card-shadow p-6 flex flex-col md:flex-row md:items-center gap-6 justify-between">
-    <div>
-      <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-2">Matching query</p>
-      <p class="font-product-grade text-primary text-xl">CNMG120408-PM <span class="font-technical-data text-sm text-on-surface-variant ml-2">· Sandvik Coromant · GC4325</span></p>
-    </div>
-    <div class="flex flex-wrap gap-3 text-xs font-technical-data">
-      <span class="px-3 py-1.5 rounded-full bg-iso-p-blue/10 text-iso-p-blue font-bold">ISO P / M</span>
-      <span class="px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant">Negative · 80° rhomb</span>
-      <span class="px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant">PM chipbreaker</span>
-      <span class="px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant">Ti(C,N)+Al₂O₃ CVD</span>
-    </div>
-  </div>
-</section>
-
-<!-- Note -->
-<section class="px-gutter pb-2">
-  <div class="flex gap-3 items-start p-4 bg-iso-m-amber/10 border border-iso-m-amber/30 rounded-xl">
-    <span class="material-symbols-outlined text-iso-m-amber">info</span>
-    <p class="text-sm text-on-surface leading-relaxed"><span class="font-bold">Operational equivalence</span> depends on grade, coating, chipbreaker and machine conditions. Match confidence is a starting point — always verify on a sample part before locking in production.</p>
-  </div>
-</section>
-
-<!-- Result groups -->
-<section class="px-gutter pb-20 space-y-10">
-  
-    <div>
-      <div class="flex items-center gap-3 mb-4">
-        <span class="material-symbols-outlined text-iso-n-green">check_circle</span>
-        <h2 class="font-section-heading text-xl text-primary">Exact Match</h2>
-        <span class="text-sm text-on-surface-variant">— Same ISO designation. Same operation envelope.</span>
+  <form id="xref-ai-form" class="mt-10 max-w-4xl">
+    <label class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-3 block" for="xref-query">Insert code or grade</label>
+    <div class="bg-white rounded-2xl border border-border-warm card-shadow p-3 flex flex-col sm:flex-row sm:items-center gap-3">
+      <div class="flex items-center gap-3 flex-1 min-w-0">
+        <span class="material-symbols-outlined text-on-surface-variant ml-1 sm:ml-3 text-2xl">search</span>
+        <input id="xref-query" class="flex-1 h-14 bg-transparent outline-none text-lg font-medium text-on-surface placeholder:text-on-surface-variant" placeholder="e.g. CNMG120408-PM, GC4325, IC908" type="text" autocomplete="off"/>
       </div>
-      <!-- Featured single card — full-width hero treatment -->
-      <div class="relative bg-gradient-to-br from-iso-n-green/5 via-white to-white rounded-3xl border-2 border-iso-n-green/25 card-shadow overflow-hidden">
-        <!-- Decorative giant verified icon -->
-        <div class="absolute -right-12 -bottom-16 opacity-[0.05] pointer-events-none select-none">
-          <span class="material-symbols-outlined" style="font-size:340px;color:#10B981;line-height:1;">verified</span>
-        </div>
-        <!-- "Top pick" ribbon -->
-        <div class="absolute top-6 right-6 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-iso-n-green text-white font-bold text-[10px] uppercase tracking-widest shadow-lg">
-          <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;">workspace_premium</span> Top pick
-        </div>
+      <button id="xref-submit" class="bg-primary text-white font-bold px-6 py-3 rounded-xl hover:-translate-y-0.5 transition-all inline-flex items-center justify-center gap-2" type="submit">
+        <span class="material-symbols-outlined text-base">auto_awesome</span>
+        Find equivalents
+      </button>
+    </div>
+  </form>
+</section>
 
-        <div class="relative grid lg:grid-cols-[1.1fr_1.6fr_1fr] gap-8 lg:gap-10 p-8 lg:p-10">
-          <!-- Brand / Grade -->
-          <div class="flex flex-col">
-            <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-2">Sandvik Coromant</p>
-            <p class="font-display-hero text-5xl xl:text-6xl text-primary mb-2 leading-[0.95] tracking-[-0.025em]">GC4325</p>
-            <p class="font-technical-data text-sm text-on-surface-variant mb-5">CNMG 12 04 08-PM</p>
-            <div class="flex flex-wrap gap-1.5 mb-4">
-              <span class="ta-iso-badge ta-iso-P">ISO P</span>
-              <span class="ta-iso-badge ta-iso-M">ISO M</span>
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-white border border-border-warm text-on-surface-variant font-technical-data text-[10px] uppercase tracking-widest font-bold">PM chipbreaker</span>
-            </div>
-            <div class="mt-auto inline-flex items-center gap-2 text-xs text-on-surface-variant">
-              <span class="material-symbols-outlined text-base text-iso-n-green">verified</span>
-              <span class="font-medium">AI recommendation based on engineering principles</span>
-            </div>
-          </div>
+<!-- AI output -->
+<section class="px-gutter py-8 pb-20">
+  <div class="max-w-4xl">
+    <div class="mb-5 flex items-center gap-2">
+      <span class="material-symbols-outlined text-sm text-on-surface-variant">auto_awesome</span>
+      <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant">AI-generated answer with confidence reasoning</p>
+    </div>
 
-          <!-- Spec breakdown -->
-          <div class="flex flex-col">
-            <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-4">Match breakdown</p>
-            <div class="space-y-3">
-              <div class="flex items-center justify-between gap-4 pb-3 border-b border-iso-n-green/15">
-                <span class="text-sm text-on-surface-variant font-medium">Geometry</span>
-                <span class="flex items-center gap-2 text-sm font-bold text-primary"><span class="material-symbols-outlined text-base text-iso-n-green">check</span> Identical · 80° rhomb · negative</span>
-              </div>
-              <div class="flex items-center justify-between gap-4 pb-3 border-b border-iso-n-green/15">
-                <span class="text-sm text-on-surface-variant font-medium">Coating</span>
-                <span class="flex items-center gap-2 text-sm font-bold text-primary"><span class="material-symbols-outlined text-base text-iso-n-green">check</span> Identical · Ti(C,N)+Al₂O₃ CVD</span>
-              </div>
-              <div class="flex items-center justify-between gap-4 pb-3 border-b border-iso-n-green/15">
-                <span class="text-sm text-on-surface-variant font-medium">Chipbreaker</span>
-                <span class="flex items-center gap-2 text-sm font-bold text-primary"><span class="material-symbols-outlined text-base text-iso-n-green">check</span> Identical · PM</span>
-              </div>
-              <div class="flex items-center justify-between gap-4 pb-3 border-b border-iso-n-green/15">
-                <span class="text-sm text-on-surface-variant font-medium">ISO designation</span>
-                <span class="flex items-center gap-2 text-sm font-bold text-primary"><span class="material-symbols-outlined text-base text-iso-n-green">check</span> Identical · P (primary) · M (secondary)</span>
-              </div>
-              <div class="flex items-center justify-between gap-4">
-                <span class="text-sm text-on-surface-variant font-medium">Risk note</span>
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-iso-n-green/12 text-iso-n-green text-xs font-bold uppercase tracking-widest">None</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Score gauge + CTAs -->
-          <div class="flex flex-col items-center justify-center text-center">
-            <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Geometry match</p>
-            <!-- Circular ring gauge -->
-            <div class="relative w-[150px] h-[150px] mb-2">
-              <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90">
-                <circle cx="50" cy="50" r="44" fill="none" stroke="#E8E4DE" stroke-width="8"/>
-                <circle cx="50" cy="50" r="44" fill="none" stroke="#10B981" stroke-width="8" stroke-linecap="round" stroke-dasharray="276.46" stroke-dashoffset="0"/>
-              </svg>
-              <div class="absolute inset-0 flex flex-col items-center justify-center">
-                <p class="font-display-hero text-[44px] text-iso-n-green leading-none tracking-[-0.03em] font-extrabold">100<span class="text-xl align-top">%</span></p>
-                <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mt-1">all signals</p>
-              </div>
-            </div>
-            <div class="flex flex-col gap-2 w-full max-w-[200px] mt-3">
-              <button class="bg-primary text-white font-bold py-3 rounded-xl text-sm hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"><span class="material-symbols-outlined text-base">fact_check</span> Add to Compare</button>
-              <button class="bg-white border border-border-warm text-primary font-bold py-3 rounded-xl text-sm hover:bg-surface-container-low transition-all">View Details</button>
-            </div>
-          </div>
+    <div class="bg-white rounded-2xl border border-border-warm card-shadow overflow-hidden">
+      <div class="px-6 py-4 border-b border-border-warm bg-surface-container-low flex items-center justify-between gap-4">
+        <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant">Equivalent list</p>
+        <span id="xref-status" class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Ready</span>
+      </div>
+      <div id="xref-output" class="p-6 md:p-8 min-h-[320px]">
+        <div class="max-w-2xl">
+          <p class="font-product-grade text-primary text-xl mb-3">Enter a code or grade above.</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed">The response will be rendered as text, not catalog cards. It should name likely brand equivalents, explain High / Medium / Low match confidence, and flag where public source evidence is weak.</p>
         </div>
       </div>
-    </div>
-  
-    <div>
-      <div class="flex items-center gap-3 mb-4">
-        <span class="material-symbols-outlined text-iso-p-blue">compare_arrows</span>
-        <h2 class="font-section-heading text-xl text-primary">Near Equivalent</h2>
-        <span class="text-sm text-on-surface-variant">— Same geometry family, different brand. Acceptable drop-in.</span>
-      </div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        
-          <div class="bg-white rounded-2xl border border-border-warm card-shadow p-6 border-l-4 border-iso-p-blue hover:-translate-y-1 transition-all">
-            <div class="flex items-start justify-between gap-4 mb-4">
-              <div>
-                <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Kennametal</p>
-                <h3 class="font-product-grade text-primary text-xl">KCP25C</h3>
-                <p class="font-technical-data text-sm text-on-surface-variant mt-1">CNMG 432 MP</p>
-              </div>
-              <div class="text-right">
-                <p class="font-display-hero text-2xl text-primary">92%</p>
-                <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data">confidence</p>
-              </div>
-            </div>
-            <div class="xref-signature">
-              <div class="xref-silhouette" data-tier="near" aria-hidden="true">
-    <div class="ta-insert3d" data-shape="C" data-tone="iso-p" style="width:64px;height:64px;"></div>
-  </div>
-              <div class="xref-match-bars">
-    <div class="xref-match-row"><span class="xref-match-label">Geometry</span><span class="xref-match-track"><span class="xref-match-fill" data-q="ident" style="width:99%"></span></span><span class="xref-match-value">99%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Coating</span><span class="xref-match-track"><span class="xref-match-fill" data-q="diff" style="width:78%"></span></span><span class="xref-match-value">78%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Chipbrk</span><span class="xref-match-track"><span class="xref-match-fill" data-q="close" style="width:84%"></span></span><span class="xref-match-value">84%</span></div>
-  </div>
-            </div>            <div class="mb-5 p-3 rounded-lg bg-surface-container-low border-l-2 border-iso-m-amber">
-              <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data mb-1">Risk note</p>
-              <p class="text-sm text-on-surface">Slightly lower max Vc on long P series</p>
-            </div>
-            <div class="flex gap-2">
-              <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-sm hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"><span class="material-symbols-outlined text-base">fact_check</span> Compare</button>
-              <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-sm hover:bg-surface-container-low transition-all">View Details</button>
-            </div>
-          </div>
-        
-          <div class="bg-white rounded-2xl border border-border-warm card-shadow p-6 border-l-4 border-iso-p-blue hover:-translate-y-1 transition-all">
-            <div class="flex items-start justify-between gap-4 mb-4">
-              <div>
-                <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Iscar</p>
-                <h3 class="font-product-grade text-primary text-xl">IC8150</h3>
-                <p class="font-technical-data text-sm text-on-surface-variant mt-1">CNMG 120408-PP</p>
-              </div>
-              <div class="text-right">
-                <p class="font-display-hero text-2xl text-primary">89%</p>
-                <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data">confidence</p>
-              </div>
-            </div>
-            <div class="xref-signature">
-              <div class="xref-silhouette" data-tier="near" aria-hidden="true">
-    <div class="ta-insert3d" data-shape="C" data-tone="iso-p" style="width:64px;height:64px;"></div>
-  </div>
-              <div class="xref-match-bars">
-    <div class="xref-match-row"><span class="xref-match-label">Geometry</span><span class="xref-match-track"><span class="xref-match-fill" data-q="ident" style="width:99%"></span></span><span class="xref-match-value">99%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Coating</span><span class="xref-match-track"><span class="xref-match-fill" data-q="match" style="width:92%"></span></span><span class="xref-match-value">92%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Chipbrk</span><span class="xref-match-track"><span class="xref-match-fill" data-q="close" style="width:81%"></span></span><span class="xref-match-value">81%</span></div>
-  </div>
-            </div>            <div class="mb-5 p-3 rounded-lg bg-surface-container-low border-l-2 border-iso-m-amber">
-              <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data mb-1">Risk note</p>
-              <p class="text-sm text-on-surface">Confirm M-group performance on duplex</p>
-            </div>
-            <div class="flex gap-2">
-              <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-sm hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"><span class="material-symbols-outlined text-base">fact_check</span> Compare</button>
-              <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-sm hover:bg-surface-container-low transition-all">View Details</button>
-            </div>
-          </div>
-        
-          <div class="bg-white rounded-2xl border border-border-warm card-shadow p-6 border-l-4 border-iso-p-blue hover:-translate-y-1 transition-all">
-            <div class="flex items-start justify-between gap-4 mb-4">
-              <div>
-                <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Mitsubishi</p>
-                <h3 class="font-product-grade text-primary text-xl">MC6025</h3>
-                <p class="font-technical-data text-sm text-on-surface-variant mt-1">CNMG 120408-MP</p>
-              </div>
-              <div class="text-right">
-                <p class="font-display-hero text-2xl text-primary">88%</p>
-                <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data">confidence</p>
-              </div>
-            </div>
-            <div class="xref-signature">
-              <div class="xref-silhouette" data-tier="near" aria-hidden="true">
-    <div class="ta-insert3d" data-shape="C" data-tone="iso-p" style="width:64px;height:64px;"></div>
-  </div>
-              <div class="xref-match-bars">
-    <div class="xref-match-row"><span class="xref-match-label">Geometry</span><span class="xref-match-track"><span class="xref-match-fill" data-q="ident" style="width:99%"></span></span><span class="xref-match-value">99%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Coating</span><span class="xref-match-track"><span class="xref-match-fill" data-q="close" style="width:88%"></span></span><span class="xref-match-value">88%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Chipbrk</span><span class="xref-match-track"><span class="xref-match-fill" data-q="close" style="width:80%"></span></span><span class="xref-match-value">80%</span></div>
-  </div>
-            </div>            <div class="mb-5 p-3 rounded-lg bg-surface-container-low border-l-2 border-iso-m-amber">
-              <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data mb-1">Risk note</p>
-              <p class="text-sm text-on-surface">Different chipbreaker rake — re-verify feed</p>
-            </div>
-            <div class="flex gap-2">
-              <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-sm hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"><span class="material-symbols-outlined text-base">fact_check</span> Compare</button>
-              <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-sm hover:bg-surface-container-low transition-all">View Details</button>
-            </div>
-          </div>
-        
-      </div>
-    </div>
-  
-    <div>
-      <div class="flex items-center gap-3 mb-4">
-        <span class="material-symbols-outlined text-iso-m-amber">workspace_premium</span>
-        <h2 class="font-section-heading text-xl text-primary">Premium Alternative</h2>
-        <span class="text-sm text-on-surface-variant">— Higher productivity at higher cost-per-edge.</span>
-      </div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        
-          <div class="bg-white rounded-2xl border border-border-warm card-shadow p-6 border-l-4 border-iso-m-amber hover:-translate-y-1 transition-all">
-            <div class="flex items-start justify-between gap-4 mb-4">
-              <div>
-                <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Walter</p>
-                <h3 class="font-product-grade text-primary text-xl">WPP20S</h3>
-                <p class="font-technical-data text-sm text-on-surface-variant mt-1">CNMG 120408-NM4</p>
-              </div>
-              <div class="text-right">
-                <p class="font-display-hero text-2xl text-primary">84%</p>
-                <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data">confidence</p>
-              </div>
-            </div>
-            <div class="xref-signature">
-              <div class="xref-silhouette" data-tier="premium" aria-hidden="true">
-    <div class="ta-insert3d" data-shape="C" data-tone="iso-m" style="width:64px;height:64px;"></div>
-  </div>
-              <div class="xref-match-bars">
-    <div class="xref-match-row"><span class="xref-match-label">Geometry</span><span class="xref-match-track"><span class="xref-match-fill" data-q="ident" style="width:99%"></span></span><span class="xref-match-value">99%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Coating</span><span class="xref-match-track"><span class="xref-match-fill" data-q="close" style="width:84%"></span></span><span class="xref-match-value">84%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Chipbrk</span><span class="xref-match-track"><span class="xref-match-fill" data-q="diff" style="width:72%"></span></span><span class="xref-match-value">72%</span></div>
-  </div>
-            </div>            <div class="mb-5 p-3 rounded-lg bg-surface-container-low border-l-2 border-iso-m-amber">
-              <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data mb-1">Risk note</p>
-              <p class="text-sm text-on-surface">Premium pricing; validate ROI vs cycle gain</p>
-            </div>
-            <div class="flex gap-2">
-              <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-sm hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"><span class="material-symbols-outlined text-base">fact_check</span> Compare</button>
-              <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-sm hover:bg-surface-container-low transition-all">View Details</button>
-            </div>
-          </div>
-        
-          <div class="bg-white rounded-2xl border border-border-warm card-shadow p-6 border-l-4 border-iso-m-amber hover:-translate-y-1 transition-all">
-            <div class="flex items-start justify-between gap-4 mb-4">
-              <div>
-                <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Tungaloy</p>
-                <h3 class="font-product-grade text-primary text-xl">T9125</h3>
-                <p class="font-technical-data text-sm text-on-surface-variant mt-1">CNMG 120408-TM</p>
-              </div>
-              <div class="text-right">
-                <p class="font-display-hero text-2xl text-primary">82%</p>
-                <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data">confidence</p>
-              </div>
-            </div>
-            <div class="xref-signature">
-              <div class="xref-silhouette" data-tier="premium" aria-hidden="true">
-    <div class="ta-insert3d" data-shape="C" data-tone="iso-m" style="width:64px;height:64px;"></div>
-  </div>
-              <div class="xref-match-bars">
-    <div class="xref-match-row"><span class="xref-match-label">Geometry</span><span class="xref-match-track"><span class="xref-match-fill" data-q="ident" style="width:99%"></span></span><span class="xref-match-value">99%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Coating</span><span class="xref-match-track"><span class="xref-match-fill" data-q="close" style="width:80%"></span></span><span class="xref-match-value">80%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Chipbrk</span><span class="xref-match-track"><span class="xref-match-fill" data-q="diff" style="width:75%"></span></span><span class="xref-match-value">75%</span></div>
-  </div>
-            </div>            <div class="mb-5 p-3 rounded-lg bg-surface-container-low border-l-2 border-iso-n-green">
-              <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data mb-1">Risk note</p>
-              <p class="text-sm text-on-surface">Best suited for unmanned long runs</p>
-            </div>
-            <div class="flex gap-2">
-              <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-sm hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"><span class="material-symbols-outlined text-base">fact_check</span> Compare</button>
-              <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-sm hover:bg-surface-container-low transition-all">View Details</button>
-            </div>
-          </div>
-        
-      </div>
-    </div>
-  
-    <div>
-      <div class="flex items-center gap-3 mb-4">
-        <span class="material-symbols-outlined text-iso-h-slate">savings</span>
-        <h2 class="font-section-heading text-xl text-primary">Economy Alternative</h2>
-        <span class="text-sm text-on-surface-variant">— Lower cost-per-edge. Expect reduced tool life or narrower envelope.</span>
-      </div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        
-          <div class="bg-white rounded-2xl border border-border-warm card-shadow p-6 border-l-4 border-iso-h-slate hover:-translate-y-1 transition-all">
-            <div class="flex items-start justify-between gap-4 mb-4">
-              <div>
-                <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">Korloy</p>
-                <h3 class="font-product-grade text-primary text-xl">NC3030</h3>
-                <p class="font-technical-data text-sm text-on-surface-variant mt-1">CNMG 120408-HM</p>
-              </div>
-              <div class="text-right">
-                <p class="font-display-hero text-2xl text-primary">78%</p>
-                <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data">confidence</p>
-              </div>
-            </div>
-            <div class="xref-signature">
-              <div class="xref-silhouette" data-tier="econ" aria-hidden="true">
-    <div class="ta-insert3d" data-shape="C" data-tone="iso-h" style="width:64px;height:64px;"></div>
-  </div>
-              <div class="xref-match-bars">
-    <div class="xref-match-row"><span class="xref-match-label">Geometry</span><span class="xref-match-track"><span class="xref-match-fill" data-q="ident" style="width:99%"></span></span><span class="xref-match-value">99%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Coating</span><span class="xref-match-track"><span class="xref-match-fill" data-q="diff" style="width:72%"></span></span><span class="xref-match-value">72%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Chipbrk</span><span class="xref-match-track"><span class="xref-match-fill" data-q="weak" style="width:68%"></span></span><span class="xref-match-value">68%</span></div>
-  </div>
-            </div>            <div class="mb-5 p-3 rounded-lg bg-surface-container-low border-l-2 border-iso-k-red">
-              <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data mb-1">Risk note</p>
-              <p class="text-sm text-on-surface">Lower expected edge life; not for unmanned</p>
-            </div>
-            <div class="flex gap-2">
-              <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-sm hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"><span class="material-symbols-outlined text-base">fact_check</span> Compare</button>
-              <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-sm hover:bg-surface-container-low transition-all">View Details</button>
-            </div>
-          </div>
-        
-          <div class="bg-white rounded-2xl border border-border-warm card-shadow p-6 border-l-4 border-iso-h-slate hover:-translate-y-1 transition-all">
-            <div class="flex items-start justify-between gap-4 mb-4">
-              <div>
-                <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-1">YG-1</p>
-                <h3 class="font-product-grade text-primary text-xl">YC213</h3>
-                <p class="font-technical-data text-sm text-on-surface-variant mt-1">CNMG 120408-MA</p>
-              </div>
-              <div class="text-right">
-                <p class="font-display-hero text-2xl text-primary">74%</p>
-                <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data">confidence</p>
-              </div>
-            </div>
-            <div class="xref-signature">
-              <div class="xref-silhouette" data-tier="econ" aria-hidden="true">
-    <div class="ta-insert3d" data-shape="C" data-tone="iso-h" style="width:64px;height:64px;"></div>
-  </div>
-              <div class="xref-match-bars">
-    <div class="xref-match-row"><span class="xref-match-label">Geometry</span><span class="xref-match-track"><span class="xref-match-fill" data-q="ident" style="width:99%"></span></span><span class="xref-match-value">99%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Coating</span><span class="xref-match-track"><span class="xref-match-fill" data-q="weak" style="width:68%"></span></span><span class="xref-match-value">68%</span></div>
-    <div class="xref-match-row"><span class="xref-match-label">Chipbrk</span><span class="xref-match-track"><span class="xref-match-fill" data-q="weak" style="width:62%"></span></span><span class="xref-match-value">62%</span></div>
-  </div>
-            </div>            <div class="mb-5 p-3 rounded-lg bg-surface-container-low border-l-2 border-iso-k-red">
-              <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-technical-data mb-1">Risk note</p>
-              <p class="text-sm text-on-surface">Limited published M-group data</p>
-            </div>
-            <div class="flex gap-2">
-              <button class="flex-1 bg-primary text-white font-bold py-2 rounded-lg text-sm hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"><span class="material-symbols-outlined text-base">fact_check</span> Compare</button>
-              <button class="flex-1 bg-white border border-border-warm text-primary font-bold py-2 rounded-lg text-sm hover:bg-surface-container-low transition-all">View Details</button>
-            </div>
-          </div>
-        
-      </div>
-    </div>
-  
-</section>
-
-<!-- Disclosure -->
-<section class="px-gutter pb-20">
-  <div class="bg-surface-container-low rounded-2xl p-6 border border-border-warm flex gap-4 items-start">
-    <span class="material-symbols-outlined text-primary">info</span>
-    <div>
-      <p class="font-bold text-primary mb-1">How matches are scored</p>
-      <p class="text-sm text-on-surface-variant leading-relaxed">Match confidence combines ISO designation overlap, geometry family, coating equivalence and published material-group coverage. Results are AI-generated recommendations based on engineering principles.</p>
     </div>
   </div>
 </section>
@@ -436,10 +74,121 @@
 </div>
 </footer>
 </main>
-<!-- Contextual FAB - Only for main navigation screens -->
-<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-transform z-50 group">
-<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform">add</span>
-</button>
+<script>
+(function () {
+  const API_URL = '/proxy';
+  const SYSTEM_PROMPT = [
+    'You are ToolAdvisor Cross-Reference AI for CNC cutting tools.',
+    'Use web search to find public manufacturer or distributor specifications for the user input.',
+    'Find brand equivalents across major cutting-tool brands and explain match confidence in plain text.',
+    'Rank likely equivalents as High, Medium, or Low confidence and explain the evidence: ISO geometry, grade/coating class, chipbreaker, material group, and operation envelope.',
+    'Do not invent technical values. If a dimension, coating, chipbreaker, speed/feed range, or material coverage is not found in public source text, say it is not verified.',
+    'Do not provide shopping links, pricing, stock status, affiliate language, or catalog browsing output.',
+    'Keep the answer concise, brand-neutral, and practical. End with a sample-part verification warning.'
+  ].join(' ');
+
+  const form = document.getElementById('xref-ai-form');
+  const input = document.getElementById('xref-query');
+  const output = document.getElementById('xref-output');
+  const status = document.getElementById('xref-status');
+  const submit = document.getElementById('xref-submit');
+  let busy = false;
+
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function setBusy(nextBusy) {
+    busy = nextBusy;
+    input.disabled = busy;
+    submit.disabled = busy;
+    submit.classList.toggle('opacity-60', busy);
+    submit.classList.toggle('cursor-wait', busy);
+    status.textContent = busy ? 'Searching' : 'Ready';
+  }
+
+  function renderText(text) {
+    output.innerHTML = '<div class="whitespace-pre-wrap text-[15px] leading-7 text-on-surface">' + escapeHtml(text) + '</div>';
+  }
+
+  function renderError(message) {
+    output.innerHTML = `
+      <div class="rounded-xl border border-iso-k-red/25 bg-iso-k-red/10 p-5 text-sm text-on-surface">
+        <p class="font-bold text-primary mb-2">AI cross-reference is unavailable.</p>
+        <p class="leading-relaxed">${escapeHtml(message || 'Please try again in a moment.')}</p>
+      </div>`;
+    status.textContent = 'Error';
+  }
+
+  function renderLoading(query) {
+    output.innerHTML = `
+      <div class="flex items-start gap-3 text-on-surface">
+        <span class="material-symbols-outlined text-primary animate-pulse">auto_awesome</span>
+        <div>
+          <p class="font-product-grade text-primary text-xl mb-2">Finding equivalents for ${escapeHtml(query)}</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Checking public source-backed signals and preparing a plain-text confidence summary.</p>
+        </div>
+      </div>`;
+  }
+
+  async function runCrossReference(query) {
+    if (busy || !query) return;
+    setBusy(true);
+    renderLoading(query);
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1400,
+          system: SYSTEM_PROMPT,
+          messages: [{
+            role: 'user',
+            content: `Find brand equivalents for this cutting insert code or grade: ${query}.
+
+Return plain text only:
+1. Interpreted input.
+2. Ranked equivalent list with brand, equivalent code/grade when source-backed, High/Medium/Low confidence, and why.
+3. Not-verified fields or risks.
+4. A short production verification note.`
+          }]
+        })
+      });
+      const data = await response.json();
+      const textBlock = data.content?.filter((block) => block.type === 'text').pop();
+      const reply = textBlock?.text || data.error?.message || data.error;
+      if (!response.ok) throw new Error(typeof reply === 'string' ? reply : `Request failed with status ${response.status}`);
+      renderText(reply || 'No answer returned.');
+    } catch (error) {
+      renderError(error.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const query = input.value.trim();
+    if (!query) {
+      input.focus();
+      return;
+    }
+    runCrossReference(query);
+  });
+
+  const queryFromUrl = new URLSearchParams(window.location.search).get('q');
+  if (queryFromUrl) {
+    input.value = queryFromUrl;
+    history.replaceState(null, '', window.location.pathname);
+  }
+})();
+</script>
 <script src="page-switcher.js"></script>
-<script src="advisor-ai-widget.js"></script>
 </body></html>
