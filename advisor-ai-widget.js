@@ -401,14 +401,15 @@
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
           max_tokens: 1024,
-          system: 'You are ToolAdvisor\'s metalworking AI assistant. Help machinists and engineers choose cutting tools. Be concise, technical, and direct — prefer bullet points and short sentences. Cover speeds, feeds, ISO groups, grades, coatings, geometry, and troubleshooting. When recommending products, prioritize grades from our verified database if applicable, but you may also recommend industry-standard alternatives based on general knowledge. Always indicate if a recommendation is from our verified database or general knowledge.',
+          system: 'You are ToolAdvisor\'s metalworking AI assistant. Help machinists and engineers choose cutting tools across all brands (Sandvik, Kennametal, Seco, Walter, Mitsubishi, Iscar, Tungaloy, OSG, Mapal, etc). Use web search to find current product information, grades, coatings, and specifications. Be brand-neutral and recommend the best tool for the application regardless of manufacturer. Be concise, technical, and direct. Cover speeds, feeds, ISO groups, grades, coatings, geometry, and troubleshooting.',
           messages: [{ role: 'user', content: prompt }]
         })
       });
       const data = await res.json();
       console.log('[ToolAdvisor AI] status:', res.status, 'response:', JSON.stringify(data).substring(0, 300));
       typingRow.remove();
-      const reply = data.content?.[0]?.text || data.error?.message || data.error || 'Sorry, I had trouble answering that.';
+      const textBlock = data.content?.filter(b => b.type === 'text').pop();
+      const reply = textBlock?.text || data.error?.message || data.error || 'Sorry, I had trouble answering that.';
       addMessage('ai', escapeHtml(reply).replace(/\n/g, '<br>'));
     } catch {
       typingRow.remove();
