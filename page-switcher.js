@@ -25,7 +25,6 @@
   // ============================================================
   const navLinks = [
     {href:'ToolAdvisor.html',     label:'Advisor',         shortLabel:'Advisor',    icon:'auto_awesome'},
-    {href:'tools-directory.html', label:'Catalog',         shortLabel:'Catalog',    icon:'inventory_2'},
     {href:'cross-reference.html', label:'Cross-Reference', shortLabel:'Cross-Ref',  icon:'compare_arrows'},
     {href:'compare.html',         label:'Compare',         shortLabel:'Compare',    icon:'fact_check'},
     {href:'knowledge.html',       label:'Knowledge',       shortLabel:'Knowledge',  icon:'menu_book'},
