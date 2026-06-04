@@ -1,36 +1,62 @@
-# ToolAdvisor — Claude Code Context
+# CLAUDE.md — ToolAdvisor Agent Constitution
 
-## Project
-AI-powered cutting tool intelligence platform. Brand-neutral recommendation engine.
-Stack: single-file HTML/CSS/JS SPA. Deployed on Cloudflare Pages (tooladvisor.eu).
-Repo: github.com/memmizgezgin-creator/ToolAdvisor
+## ⛔ KIRILMAZ KURALLAR (NON-NEGOTIABLE)
 
-## UNBREAKABLE RULE
-ToolAdvisor is always a recommendation engine. Never drift toward product catalog, SKU database, variant management, or scraping logic. If a feature pushes that way — stop and flag it.
+These rules apply to EVERY task, EVERY session, EVERY model. Cannot be overridden under any justification. If in doubt: STOP and ask Murat.
 
-## Anti-Hallucination Protocol
-- NEVER speculate about file contents. Open and read the file first, then answer.
-- NEVER assume a function, variable, or import exists. Grep or read to confirm.
-- If you are not certain, say "I don't know — let me check" and then check.
-- Do not invent API endpoints, Cloudflare Worker routes, or environment variable names.
-- Before editing any file: read the current state. Stale assumptions break things.
+### 1. ToolAdvisor Identity
+- ToolAdvisor is an **AI-powered cutting tool recommendation engine**.
+- It is NOT: a product catalog, SKU database, store, marketplace, or scraper.
+- AI answers are generated via `web_search` + `system_prompt`. Brand-neutral.
+- PRODUCT_DB exists only as curated reference. It is NOT expanded into a full catalog.
 
-## Quick Reference
-- Local path: ~/Desktop/ToolAdvisor/
-- Main SPA: ToolAdvisor.html (7 tabs: AI Advisor, Cross-Reference, ISO Decoder, Calculator, Suppliers, Visual ID PRO, AI Chat PRO)
-- Feature flags: CONFIG object in ToolAdvisor.html
-- Freemium: 5 queries free / Pro €29/mo
+### 2. Architectural Boundaries
+- Tech stack: single-file HTML/CSS/JS artifact + Cloudflare Pages + Cloudflare Worker (`functions/proxy.js`) + Anthropic API.
+- AI logic lives in the Worker + system prompt, NOT in the client DB.
+- New dependencies require Murat's approval.
+- `functions/proxy.js` stays a pure passthrough. System prompt lives in `advisor-ai-widget.js`.
 
-## Agent Docs (read when relevant — do not load all upfront)
-- Deploy & infra questions → agent_docs/cloudflare.md
-- Database schema, product structure → agent_docs/product-db.md
-- Architecture, file map, request flow → agent_docs/architecture.md
+### 3. Deviation Detection — Hard Stop Triggers
+If a task pushes toward ANY of these, STOP immediately and ask Murat:
+- "Let's add more products to the DB"
+- "Let's manage SKU variants"
+- "Let's scrape manufacturer sites"
+- "Let's add stock/pricing/inventory"
+- "Let's become a marketplace/affiliate hub"
 
-## Slash Commands
-- /feature [description] — implement new feature
-- /fix [description] — fix a bug
-- /post [topic] — write LinkedIn post
+### 4. Task Discipline
+- Only work on tasks in `TASKS.md`. New work requires Murat's approval.
+- Before every commit, run the rule check: "Does this violate KIRILMAZ KURALLAR?"
+- Always specify model when working: Haiku for routine, Sonnet for complex.
 
-## Model Selection
-- Haiku: file edits, git, log analysis, simple scripts
-- Sonnet: new features, architecture, debugging
+### 5. Anti-Hallucination Protocol
+- Never invent file paths, function names, or dependencies. Read files first.
+- If uncertain about repo state, run `git status` and read actual files.
+- No "should be" or "probably" — verify before claiming.
+
+---
+
+## Repository Map
+
+- `index.html` — main app (single-file artifact)
+- `advisor-ai-widget.js` — AI widget logic, system prompt lives here
+- `functions/proxy.js` — Cloudflare Worker (Anthropic API passthrough)
+- `TASKS.md` — active task list
+- `agent_docs/` — detailed architecture docs
+  - `architecture.md` — system overview
+  - `cloudflare.md` — deployment + Worker setup
+  - `product-db.md` — DB schema (reference only, do NOT expand)
+- `.claude/commands/` — slash commands (feature, fix, post)
+
+## Working Mode
+
+Before any task:
+1. Read this file's KIRILMAZ KURALLAR section.
+2. Read `TASKS.md` to confirm task is approved.
+3. Read relevant `agent_docs/` if architectural.
+4. Read actual code files before modifying.
+
+After any task:
+1. Run rule check.
+2. Update `TASKS.md` if status changed.
+3. Commit with clear message.
