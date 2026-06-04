@@ -25,7 +25,6 @@
   // ============================================================
   const navLinks = [
     {href:'ToolAdvisor.html',     label:'Advisor',         shortLabel:'Advisor',    icon:'auto_awesome'},
-    {href:'tools-directory.html', label:'Catalog',         shortLabel:'Catalog',    icon:'inventory_2'},
     {href:'cross-reference.html', label:'Cross-Reference', shortLabel:'Cross-Ref',  icon:'compare_arrows'},
     {href:'compare.html',         label:'Compare',         shortLabel:'Compare',    icon:'fact_check'},
     {href:'knowledge.html',       label:'Knowledge',       shortLabel:'Knowledge',  icon:'menu_book'},
@@ -195,6 +194,7 @@
   ];
 
   const isCatalogPage = here === 'tools-directory.html';
+  const shouldShowSidebar = isCatalogPage;
 
   // Maps raw DB family names → sidebar key (mirrors directory-app.jsx FAMILY_MAP)
   const DB_TO_SIDEBAR = {
@@ -585,14 +585,14 @@
   // ============================================================
   // Layout fix: push <main> right by 260px so it doesn't sit under sidebar
   // ============================================================
-  function fixMainLayout() {
+  function fixMainLayout(withSidebar) {
     const mains = document.querySelectorAll('main');
     mains.forEach(m => {
       const apply = () => {
-        if (window.innerWidth >= 768) {
+        if (withSidebar && window.innerWidth >= 768) {
           m.style.marginLeft = '260px';
         } else {
-          m.style.marginLeft = '';
+          m.style.marginLeft = '0';
         }
       };
       apply();
@@ -602,10 +602,10 @@
     // Same for footers
     document.querySelectorAll('body > footer, main + footer').forEach(f => {
       const apply = () => {
-        if (window.innerWidth >= 768) {
+        if (withSidebar && window.innerWidth >= 768) {
           f.style.marginLeft = '260px';
         } else {
-          f.style.marginLeft = '';
+          f.style.marginLeft = '0';
         }
       };
       apply();
@@ -659,8 +659,8 @@
   // ============================================================
   function run() {
     installTopNav();
-    installSidebar();
-    fixMainLayout();
+    if (shouldShowSidebar) installSidebar();
+    fixMainLayout(shouldShowSidebar);
     rewireFabs();
     // Re-attach modals.js search-dropdown to the newly-injected search input(s).
     // page-switcher runs at DOMContentLoaded; modals.js (deferred) ran a tick earlier

@@ -3,6 +3,8 @@
 (function () {
   'use strict';
 
+  const inlineHost = document.getElementById('ta-main-ai-widget');
+
   // Hide the generic page-switcher FAB that this widget replaces
   const style = document.createElement('style');
   style.textContent = `
@@ -205,6 +207,35 @@
       #ta-ai-panel { bottom:0; right:0; width:100vw; max-width:100vw; border-radius:18px 18px 0 0; height:70vh; max-height:70vh; }
       #ta-ai-launcher { bottom:16px; right:16px; }
     }
+
+    #ta-ai-widget.ta-ai-inline { width:100%; }
+    #ta-ai-widget.ta-ai-inline #ta-ai-launcher { display:none!important; }
+    #ta-ai-widget.ta-ai-inline #ta-ai-panel {
+      position:relative; bottom:auto; right:auto; z-index:1;
+      display:flex; width:100%; max-width:none; height:auto; min-height:620px; max-height:none;
+      border-radius:18px; animation:none;
+    }
+    #ta-ai-widget.ta-ai-inline #ta-ai-header { padding:16px 18px; }
+    #ta-ai-widget.ta-ai-inline #ta-ai-minimize { display:none; }
+    #ta-ai-widget.ta-ai-inline #ta-ai-quick { padding:14px 16px; }
+    #ta-ai-widget.ta-ai-inline #ta-ai-quick-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+    #ta-ai-widget.ta-ai-inline #ta-ai-messages { min-height:360px; padding:18px; }
+    #ta-ai-widget.ta-ai-inline .ta-ai-msg-bubble {
+      max-width:min(820px,86%); font-size:14.5px; line-height:1.7;
+    }
+    #ta-ai-widget.ta-ai-inline #ta-ai-empty { padding:54px 18px; }
+    #ta-ai-widget.ta-ai-inline #ta-ai-form { padding:16px; }
+    #ta-ai-widget.ta-ai-inline #ta-ai-input { height:48px; font-size:15px; }
+    #ta-ai-widget.ta-ai-inline #ta-ai-send { width:48px; height:48px; font-size:20px; }
+    @media (max-width:780px) {
+      #ta-ai-widget.ta-ai-inline #ta-ai-quick-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:480px) {
+      #ta-ai-widget.ta-ai-inline #ta-ai-panel {
+        bottom:auto; right:auto; width:100%; max-width:none; height:auto; max-height:none;
+        min-height:620px; border-radius:18px;
+      }
+    }
   `;
   document.head.appendChild(style);
 
@@ -312,7 +343,12 @@
       </form>
     </div>
   `;
-  document.body.appendChild(root);
+  if (inlineHost) {
+    root.classList.add('ta-ai-inline');
+    inlineHost.appendChild(root);
+  } else {
+    document.body.appendChild(root);
+  }
 
   // ── element refs ──────────────────────────────────────────────────────────
   const launcher    = document.getElementById('ta-ai-launcher');
@@ -330,6 +366,12 @@
   const launcherIcon = document.getElementById('ta-ai-launcher-icon');
 
   let busy = false;
+
+  if (inlineHost) {
+    panel.classList.add('open');
+    launcher.style.display = 'none';
+    launcherIcon.classList.remove('pulse');
+  }
 
   // ── state helpers ─────────────────────────────────────────────────────────
   function updateQuota() {
@@ -436,6 +478,7 @@
   });
 
   minimize.addEventListener('click', () => {
+    if (inlineHost) return;
     panel.classList.remove('open');
     launcher.style.display = '';
     updateQuota();
@@ -468,7 +511,7 @@
   input.addEventListener('input', setInputState);
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && panel.classList.contains('open')) {
+    if (!inlineHost && e.key === 'Escape' && panel.classList.contains('open')) {
       panel.classList.remove('open');
       launcher.style.display = '';
     }
@@ -476,7 +519,7 @@
 
   // ── pulse after 4s to draw attention ──────────────────────────────────────
   setTimeout(() => {
-    if (!panel.classList.contains('open')) launcherIcon.classList.add('pulse');
+    if (!inlineHost && !panel.classList.contains('open')) launcherIcon.classList.add('pulse');
   }, 4000);
 
   updateQuota();
