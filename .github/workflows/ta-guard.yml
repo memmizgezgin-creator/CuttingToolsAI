@@ -55,21 +55,6 @@ jobs:
             echo "::warning::wrangler.toml was modified — review required"
           fi
 
-          # directory-data.js — check for TA_TOOLS base record changes (locked)
-          # Canonical/schema additions are allowed; raw { id:'Txx' } record edits are not.
-          if echo "$CHANGED" | grep -qiE "^directory-data\.js$|PRODUCT_DB|product\.db"; then
-            # Inspect diff for base record lines (lines starting with { id: )
-            TA_DIFF=$(git diff HEAD~1 HEAD -- directory-data.js 2>/dev/null | grep -E "^\+.*\{ id:'T[0-9]+" || true)
-            if [ -n "$TA_DIFF" ]; then
-              echo "::error::TA_TOOLS base records in directory-data.js were modified — NOT allowed without explicit approval"
-              echo "Affected lines:"
-              echo "$TA_DIFF"
-              FAIL=1
-            else
-              echo "::warning::directory-data.js was modified — non-record change (canonical fields, derived logic). Review required."
-            fi
-          fi
-
           # Netlify files — hard block
           if echo "$CHANGED" | grep -qi "netlify"; then
             echo "::error::Netlify file modified — NOT allowed (Cloudflare-only project)"

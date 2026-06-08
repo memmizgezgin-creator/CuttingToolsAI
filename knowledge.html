@@ -8,28 +8,39 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=Nunito:ital,wght@0,200..1000;1,200..1000&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="tw-config.js"></script>
 <link rel="stylesheet" href="polish.css"/>
+<link rel="stylesheet" href="premium.css"/>
+<script src="premium.js"></script>
 </head>
 <body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
 <!-- Sidebar Navigation -->
 <!-- Main Canvas -->
 <main class="ml-sidebar-width min-h-screen">
 <!-- Top Navigation -->
+<!-- Knowledge hero -->
+<section style="background:linear-gradient(140deg,#0c1f38 0%,#123356 55%,#1a3f62 100%);position:relative;overflow:hidden;" class="px-gutter pt-14 pb-12">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 80% 50%,rgba(16,185,129,0.14) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 10% 85%,rgba(59,130,246,0.10) 0%,transparent 55%);pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.04) 1px,transparent 1.4px);background-size:30px 30px;pointer-events:none;"></div>
+  <div class="relative z-10 max-w-3xl">
+    <nav class="flex items-center gap-2 mb-6 font-label-caps text-label-caps" style="color:rgba(255,255,255,0.45);">
+      <a style="color:rgba(255,255,255,0.55);text-decoration:none;" href="ToolAdvisor.html">ADVISOR</a>
+      <span class="material-symbols-outlined text-sm">chevron_right</span>
+      <span style="color:rgba(255,255,255,0.80);">KNOWLEDGE</span>
+    </nav>
+    <div class="flex items-center gap-2 mb-5">
+      <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;background:rgba(16,185,129,0.18);color:#6EE7B7;font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;">
+        <span class="material-symbols-outlined" style="font-size:12px;">menu_book</span>
+        Engineering Knowledge
+      </span>
+    </div>
+    <h1 class="font-display-hero text-white mb-4 leading-tight" style="font-size:clamp(26px,3.5vw,40px);">Practical guides for cutting tool decisions.</h1>
+    <p style="color:rgba(255,255,255,0.60);font-size:17px;line-height:1.6;max-width:580px;">Short, opinionated, technically defensible. Written for machinists, production engineers and purchasing teams who need answers, not marketing.</p>
+  </div>
+</section>
+
 <!-- Knowledge index -->
 <div class="max-w-6xl mx-auto px-gutter py-container-margin">
-  <nav class="flex items-center gap-2 mb-8 font-label-caps text-label-caps text-on-surface-variant">
-    <a class="hover:text-primary" href="ToolAdvisor.html">ADVISOR</a>
-    <span class="material-symbols-outlined text-sm">chevron_right</span>
-    <span>KNOWLEDGE</span>
-  </nav>
-
-  <div class="mb-12 max-w-3xl">
-    <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-3">Engineering Knowledge</p>
-    <h1 class="font-display-hero text-display-hero text-primary mb-4">Practical guides for cutting tool decisions.</h1>
-    <p class="font-body-lg text-on-surface-variant leading-relaxed">Short, opinionated, technically defensible. Written for machinists, production engineers and purchasing teams who need answers, not marketing.</p>
-  </div>
 
   <!-- Search + filter -->
   <div class="mb-10 flex flex-col md:flex-row gap-3">
@@ -531,20 +542,16 @@
 <div class="absolute bottom-0 right-0 w-96 h-96 bg-iso-p-blue/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
 </div>
 <div class="mt-20 mb-12 flex flex-col md:flex-row justify-between items-center text-on-surface-variant font-body-md text-sm">
-<p>© 2024 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
+<p>© 2026 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
 <div class="flex gap-8 mt-4 md:mt-0">
-<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
-<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
-<a class="hover:text-primary transition-colors" href="#">Contact Engineering</a>
+<a class="hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="privacy.html">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="contact.html">Contact Engineering</a>
 </div>
 </div>
 </footer>
 </div>
 </main>
-<!-- FAB Action (Contextual: Knowledge Search) -->
-<button class="fixed bottom-8 right-8 h-14 w-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-transform z-50">
-<span class="material-symbols-outlined text-2xl">question_answer</span>
-</button>
 <script src="page-switcher.js"></script>
 <script src="advisor-ai-widget.js"></script>
 <script>

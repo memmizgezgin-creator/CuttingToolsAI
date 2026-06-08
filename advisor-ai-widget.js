@@ -94,9 +94,17 @@
     #ta-ai-quick-label {
       font-size:9px; text-transform:uppercase; letter-spacing:.1em;
       color:#6b6880; font-weight:700; font-family:'DM Mono',monospace;
-      margin-bottom:7px; display:flex; align-items:center;
+      margin-bottom:6px; display:flex; align-items:center;
     }
     #ta-ai-quick-label span { margin-left:auto; font-family:'DM Mono',monospace; font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; }
+    #ta-ai-quota-bar-bg {
+      height:3px; background:#e8e6f0; border-radius:99px;
+      overflow:hidden; margin-bottom:9px;
+    }
+    #ta-ai-quota-bar {
+      height:100%; border-radius:99px; background:#10B981;
+      transition:width .35s ease, background .35s ease; width:0%;
+    }
     #ta-ai-quick-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
     .ta-ai-qa-btn {
       text-align:left; padding:9px 10px; border-radius:10px;
@@ -171,7 +179,11 @@
       background:#fffbeb; border-top:1px solid #fde68a;
       align-items:center; gap:8px; flex-shrink:0;
     }
-    #ta-ai-credits-bar.show { display:flex; }
+    #ta-ai-credits-bar.show { display:flex; animation:ta-credits-in .3s ease both; }
+    @keyframes ta-credits-in {
+      from { opacity:0; transform:translateY(6px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
     #ta-ai-credits-bar span { font-size:11px; color:#78350f; flex:1; }
     #ta-ai-credits-upgrade {
       padding:4px 10px; border-radius:6px; border:none;
@@ -179,6 +191,48 @@
       font-size:10px; font-weight:800;
     }
     #ta-ai-credits-upgrade:hover { background:#FBBF24; }
+
+    /* Upgrade CTA card (injected into messages when quota = 0) */
+    .ta-upgrade-card {
+      margin:4px 0; padding:14px 16px;
+      background:linear-gradient(135deg,#1A1A2E 0%,#2C4A6E 100%);
+      border-radius:14px; color:#fff;
+      animation:ta-slide-up-r .3s cubic-bezier(.4,0,.2,1) both;
+    }
+    .ta-upgrade-card-title {
+      display:flex; align-items:center; gap:7px;
+      font-size:13px; font-weight:800; margin-bottom:6px;
+    }
+    .ta-upgrade-card-title span { font-family:'Material Symbols Outlined'; font-size:17px; font-variation-settings:'FILL' 1; color:#F59E0B; }
+    .ta-upgrade-card-body { font-size:11.5px; opacity:.8; line-height:1.55; margin-bottom:12px; }
+    .ta-upgrade-card-btn {
+      width:100%; padding:9px 14px; border-radius:9px; border:none;
+      background:#F59E0B; color:#451a03; font-weight:800; font-size:12px;
+      cursor:pointer; transition:background .15s;
+    }
+    .ta-upgrade-card-btn:hover { background:#FBBF24; }
+
+    /* Quota warning (1 remaining) */
+    .ta-quota-warning {
+      text-align:center; font-size:11px; color:#92400e; font-weight:600;
+      padding:6px 10px; background:#fffbeb; border-radius:8px;
+      border:1px solid #fde68a; margin:2px 0;
+    }
+
+    /* Error message with retry */
+    .ta-error-bubble {
+      max-width:80%; padding:9px 12px; border-radius:12px;
+      font-size:12.5px; line-height:1.55; border-top-left-radius:3px;
+      background:#fef2f2; color:#991b1b; border:1px solid #fecaca;
+    }
+    .ta-retry-btn {
+      display:inline-flex; align-items:center; gap:4px;
+      margin-top:7px; padding:4px 10px; border-radius:6px; border:none;
+      background:#fecaca; color:#7f1d1d; cursor:pointer;
+      font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.04em;
+      transition:background .12s;
+    }
+    .ta-retry-btn:hover { background:#fca5a5; }
 
     #ta-ai-form {
       padding:10px 12px; border-top:1px solid #e8e6f0;
@@ -241,7 +295,7 @@
 
   // ── constants ──────────────────────────────────────────────────────────────
   const API_URL = '/proxy';
-  const FREE_DAILY  = 3;
+  const FREE_DAILY  = 5;
   const LS_KEY      = 'ta:ai:count';
   const QUICK_ACTIONS = [
     { id:'iso-pm',    icon:'school',        label:'ISO P vs M inserts', prompt:'In 4 short bullet points, explain when to use ISO P (steel) vs ISO M (stainless) inserts. Focus on practical CNC operator criteria.', pro:false },
@@ -276,8 +330,9 @@
     return Math.max(0, FREE_DAILY - getCount().used);
   }
 
-  // ── open pro modal or fallback ─────────────────────────────────────────────
+  // ── open pro modal ─────────────────────────────────────────────────────────
   function openPro() {
+    if (window.TA && typeof window.TA.openModal === 'function') { window.TA.openModal('pro-upgrade'); return; }
     if (typeof window.openProModal === 'function') { window.openProModal(); return; }
     if (typeof window.TA_openProModal === 'function') { window.TA_openProModal(); return; }
     window.location.href = 'pro.html';
@@ -320,6 +375,7 @@
 
       <div id="ta-ai-quick">
         <div id="ta-ai-quick-label">Quick actions <span id="ta-ai-quota-label">${remaining()}/${FREE_DAILY} free today</span></div>
+        <div id="ta-ai-quota-bar-bg"><div id="ta-ai-quota-bar"></div></div>
         <div id="ta-ai-quick-grid">${quickBtns}</div>
       </div>
 
@@ -363,6 +419,7 @@
   const sendBtn     = document.getElementById('ta-ai-send');
   const badge       = document.getElementById('ta-ai-launcher-badge');
   const quotaLabel  = document.getElementById('ta-ai-quota-label');
+  const quotaBar    = document.getElementById('ta-ai-quota-bar');
   const launcherIcon = document.getElementById('ta-ai-launcher-icon');
 
   let busy = false;
@@ -381,6 +438,7 @@
       badge.style.background = '#2C4A6E';
       badge.style.color      = '#fff';
       quotaLabel.textContent = 'Admin: unlimited';
+      if (quotaBar) { quotaBar.style.width = '0%'; quotaBar.style.background = '#10B981'; }
       creditsBar.classList.remove('show');
       input.disabled   = busy;
       sendBtn.disabled = busy || !input.value.trim();
@@ -391,6 +449,12 @@
     badge.style.background = '';
     badge.style.color      = '';
     quotaLabel.textContent = `${r}/${FREE_DAILY} free today`;
+    if (quotaBar) {
+      const used = getCount().used;
+      const pct  = Math.min(100, (used / FREE_DAILY) * 100);
+      quotaBar.style.width      = pct + '%';
+      quotaBar.style.background = r === 0 ? '#EF4444' : r === 1 ? '#F59E0B' : '#10B981';
+    }
     creditsBar.classList.toggle('show', r <= 0);
     input.disabled   = busy || r <= 0;
     sendBtn.disabled = busy || !input.value.trim() || r <= 0;
@@ -413,6 +477,54 @@
     messages.appendChild(row);
     messages.scrollTop = messages.scrollHeight;
     return row.querySelector('.ta-ai-msg-bubble');
+  }
+
+  function addErrorMessage(text, retryPrompt) {
+    if (empty) empty.style.display = 'none';
+    const row = document.createElement('div');
+    row.className = 'ta-ai-msg ai';
+    const retryHTML = retryPrompt
+      ? `<button class="ta-retry-btn" onclick="this.closest('.ta-ai-msg').remove();ask(${JSON.stringify(retryPrompt)})">
+           <span style="font-family:'Material Symbols Outlined';font-size:12px;">refresh</span> Retry
+         </button>`
+      : '';
+    row.innerHTML = `
+      <div class="ta-ai-msg-avatar">error</div>
+      <div class="ta-error-bubble">${escapeHtml(text)}${retryHTML}</div>`;
+    // Wire retry after DOM insert (onclick in attribute won't have closure access)
+    messages.appendChild(row);
+    const retryBtn = row.querySelector('.ta-retry-btn');
+    if (retryBtn && retryPrompt) {
+      retryBtn.onclick = () => { row.remove(); ask(retryPrompt); };
+    }
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  let upgradeCTAShown = false;
+  function showUpgradeCta() {
+    if (upgradeCTAShown) return;
+    upgradeCTAShown = true;
+    if (empty) empty.style.display = 'none';
+    const wrap = document.createElement('div');
+    wrap.innerHTML = `
+      <div class="ta-upgrade-card">
+        <div class="ta-upgrade-card-title">
+          <span>workspace_premium</span> Free queries used up
+        </div>
+        <div class="ta-upgrade-card-body">Upgrade to Pro for unlimited advisor runs, deep cross-reference tiers, multi-tool compare exports, and no daily limits.</div>
+        <button class="ta-upgrade-card-btn" id="ta-cta-upgrade-btn">Upgrade to Pro — €29/mo</button>
+      </div>`;
+    messages.appendChild(wrap);
+    wrap.querySelector('#ta-cta-upgrade-btn').addEventListener('click', openPro);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function showQuotaWarning() {
+    const warn = document.createElement('div');
+    warn.className = 'ta-quota-warning';
+    warn.textContent = '⚠ This is your last free query today.';
+    messages.appendChild(warn);
+    messages.scrollTop = messages.scrollHeight;
   }
 
   function showTyping() {
@@ -447,19 +559,54 @@
           messages: [{ role: 'user', content: prompt }]
         })
       });
-      const data = await res.json();
+
+      let data = {};
+      try { data = await res.json(); } catch { /* non-JSON response */ }
+
       console.log('[ToolAdvisor AI] status:', res.status, 'response:', JSON.stringify(data).substring(0, 300));
       typingRow.remove();
-      const textBlock = data.content?.filter(b => b.type === 'text').pop();
-      const reply = textBlock?.text || data.error?.message || data.error || 'Sorry, I had trouble answering that.';
-      addMessage('ai', escapeHtml(reply).replace(/\n/g, '<br>'));
-    } catch {
+
+      if (!res.ok) {
+        if (res.status === 429) {
+          addErrorMessage('Rate limit reached — wait a moment and try again.', prompt);
+        } else if (res.status === 401) {
+          addErrorMessage('API key not authorised. Contact support if this persists.', null);
+        } else if (res.status === 500) {
+          const msg = (data.error || '');
+          if (typeof msg === 'string' && msg.includes('API key')) {
+            addErrorMessage('The advisor isn't configured yet. Check back soon.', null);
+          } else {
+            addErrorMessage('Server error — please try again in a moment.', prompt);
+          }
+        } else {
+          addErrorMessage(`Something went wrong (${res.status}). Please try again.`, prompt);
+        }
+      } else {
+        const reply = data.content?.[0]?.text
+          || data.error?.message
+          || (typeof data.error === 'string' ? data.error : null)
+          || 'Sorry, I had trouble answering that. Please try again.';
+        addMessage('ai', escapeHtml(reply).replace(/
+/g, '<br>'));
+      }
+    } catch (fetchErr) {
       typingRow.remove();
-      addMessage('ai', 'Connection error. Please try again in a moment.');
+      const isOffline = !navigator.onLine;
+      addErrorMessage(
+        isOffline
+          ? 'You appear to be offline. Reconnect and try again.'
+          : 'Connection error — please try again in a moment.',
+        prompt
+      );
     }
 
     incrCount();
     updateQuota();
+
+    const rem = remaining();
+    if (rem === 1) showQuotaWarning();
+    if (rem === 0) showUpgradeCta();
+
     busy = false;
     setInputState();
   }

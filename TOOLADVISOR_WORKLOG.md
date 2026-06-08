@@ -8,6 +8,73 @@ All assistants and coding agents must read CLOUDFLARE_MIGRATION.md before doing 
 
 ---
 
+## 2026-06-08 — Site-Wide UX & Quality Sweep
+
+### Purpose
+Full-site audit followed by sequential implementation of all UX/quality improvements in priority order.
+
+### Changes Applied
+
+**P1 — Footer year: © 2024/2025 → © 2026 (all pages)**
+- ToolAdvisor.html, compare.html, pro.html, knowledge.html, profile.html, tools-directory.html: 2024 → 2026
+- contact.html, privacy.html, terms.html: 2025 → 2026
+- index-mvp-map.html: 2024 → 2026
+- cross-reference.html was already 2026 ✓
+
+**P2 — Footer dead links fixed (all main pages)**
+- `href="#"` → real URLs (terms.html, privacy.html, contact.html) on ToolAdvisor.html, compare.html, pro.html, knowledge.html
+
+**P3 — Useless FAB (+) button removed**
+- Removed from ToolAdvisor.html, compare.html, cross-reference.html, knowledge.html
+- AI widget (`#ta-ai-launcher`) already handles bottom-right CTA on all pages
+
+**P4 — compare.html: ta-3d-insert.js added**
+- `<script src="ta-3d-insert.js">` inserted before page-switcher.js so `.ta-insert3d` thumbnails render in compare cards
+
+**P5 — Duplicate font/icon imports removed**
+- Removed duplicate `Material+Symbols+Outlined` `<link>` from ToolAdvisor.html, compare.html, pro.html, knowledge.html, profile.html
+
+**P6 — pro.html restructured**
+- Added `id="pricing"` to the existing 3-col Free/Pro/Team pricing section inside `<main>`
+- Wired `id="pro-pricing-btn"` + `id="pro-pricing-label"` to the Pro card's "Start trial" button (checkout script picks it up automatically)
+- Moved `pro-status` div (Stripe return message) into `<main>` above the Saved section
+- Removed the orphaned duplicate `#pricing` div that was rendered after `<footer>` — this was the root cause of "footer in the middle of the page"
+
+**P7 — ToolAdvisor.html hero upgraded to dark navy**
+- Background changed from light `bg-gradient-to-br from-surface via-surface-container-low to-border-warm` to full-bleed `linear-gradient(140deg,#0c1f38 0%,#123356 55%,#1a3f62 100%)` with dot-grid overlay + radial accent glows
+- Hero text colors updated: h1 → `text-white`, badge → blue-tinted glass pill, paragraph → `rgba(255,255,255,0.65)`, bottom check row → `rgba(255,255,255,0.60)`
+- SVG blueprint callout labels updated to white/rgba palette (was dark gray, invisible on dark)
+- Mobile chips updated to glass-style (was white on light)
+- Reference label updated to `rgba(255,255,255,0.35)`
+
+### No deployments made. Owner approval required before deploy.
+
+---
+
+## 2026-06-02 — Candidate Schema Validation Hardening
+
+### Purpose
+Candidate schema validation hardening for PDF ingestion candidate records.
+
+### Accepted Files
+- `ingestion/scripts/candidate-schema-validator.js`
+- `ingestion/scripts/candidate-schema-validator.test.js`
+
+### Excluded Pre-Existing Files
+- `.github/workflows/ta-guard.yml`
+- `advisor-ai-widget.js`
+- `research/ingestion/maford-series-272-product-candidates-report.md`
+- `reports/generate-sample-technical-report.py`
+
+### Test Results
+- `node ingestion/scripts/candidate-schema-validator.test.js` passed
+- `node --check ingestion/scripts/candidate-schema-validator.js` passed
+
+### Confirmation
+Isolated candidate schema validator accepted. Full mixed worktree was not accepted. `PRODUCT_DB`, `index.html`, `catalog.html`, `directory-data.js`, frontend/catalog files, and deployment config were not changed by this validation subset. Tests passed. No deploy performed.
+
+---
+
 ## 2026-05-30 — Gühring Drilling Tools Pilot Plan & Sample Extraction
 
 ### Task

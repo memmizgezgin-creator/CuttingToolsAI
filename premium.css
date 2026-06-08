@@ -1,0 +1,319 @@
+/* ============================================================
+   ToolAdvisor — PREMIUM LAYER
+   Loaded on every page AFTER polish.css.
+   Purpose: add depth, motion and a high-end feel without
+   touching existing markup. All effects are additive and
+   degrade to the plain layout if JS is disabled.
+
+   Activated by premium.js adding `.ta-premium` to <html>.
+   Brand tokens: primary #123356 · accent amber #F59E0B
+   ============================================================ */
+
+:root {
+  --ta-navy:        #123356;
+  --ta-navy-2:      #2c4a6e;
+  --ta-amber:       #F59E0B;
+  --ta-green:       #10B981;
+  --ta-blue:        #3B82F6;
+  --ta-ease:        cubic-bezier(.22, .61, .36, 1);
+  --ta-ease-out:    cubic-bezier(.16, 1, .3, 1);
+}
+
+/* ------------------------------------------------------------
+   1. AMBIENT BACKGROUND — animated gradient mesh
+   Injected element <div class="ta-mesh"> sits behind everything.
+   Very low opacity so text contrast is never harmed.
+   ------------------------------------------------------------ */
+.ta-mesh {
+  position: fixed;
+  inset: -20vmax;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.9;
+  background:
+    radial-gradient(38vmax 38vmax at 12% 18%, rgba(59,130,246,0.14), transparent 60%),
+    radial-gradient(34vmax 34vmax at 88% 12%, rgba(245,158,11,0.12), transparent 60%),
+    radial-gradient(40vmax 40vmax at 78% 88%, rgba(16,185,129,0.10), transparent 62%),
+    radial-gradient(46vmax 46vmax at 22% 92%, rgba(18,51,86,0.12), transparent 60%);
+  filter: blur(8px) saturate(115%);
+  animation: ta-mesh-drift 26s ease-in-out infinite alternate;
+}
+.ta-mesh::after {
+  /* faint engineering grid on top of the mesh */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(18,51,86,0.05) 1px, transparent 1.4px);
+  background-size: 34px 34px;
+  opacity: 0.5;
+  mask-image: radial-gradient(120vmax 120vmax at 50% 30%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(120vmax 120vmax at 50% 30%, #000 30%, transparent 75%);
+}
+@keyframes ta-mesh-drift {
+  0%   { transform: translate3d(-2%, -1%, 0) scale(1.02) rotate(0deg); }
+  50%  { transform: translate3d(2%, 1.5%, 0)  scale(1.06) rotate(1.2deg); }
+  100% { transform: translate3d(-1%, 2%, 0)  scale(1.03) rotate(-1deg); }
+}
+
+/* Keep the warm paper body but let the mesh peek through softly */
+html.ta-premium body {
+  background-color: #F7F5F1;
+}
+
+/* ------------------------------------------------------------
+   2. DEPTH — upgrade the global card shadow used 50+ times
+   Soft, layered, with a smooth lift on hover.
+   ------------------------------------------------------------ */
+html.ta-premium .card-shadow,
+html.ta-premium .ambient-shadow {
+  box-shadow:
+    0 1px 2px rgba(18, 28, 38, 0.04),
+    0 6px 16px -6px rgba(18, 28, 38, 0.10),
+    0 22px 40px -24px rgba(18, 51, 86, 0.18);
+  transition:
+    box-shadow .45s var(--ta-ease),
+    transform  .45s var(--ta-ease);
+}
+/* Cards that are links / interactive get a richer hover lift */
+html.ta-premium a.card-shadow:hover,
+html.ta-premium .ta-tilt:hover,
+html.ta-premium .group:hover > .card-shadow {
+  box-shadow:
+    0 2px 4px rgba(18, 28, 38, 0.05),
+    0 14px 30px -10px rgba(18, 28, 38, 0.16),
+    0 40px 70px -30px rgba(18, 51, 86, 0.28);
+}
+
+/* ------------------------------------------------------------
+   3. GLASS CHROME — page-switcher injects [data-ta-chrome].
+   Give the top nav a frosted, floating feel. Harmless if absent.
+   ------------------------------------------------------------ */
+html.ta-premium header[data-ta-chrome] {
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  backdrop-filter: saturate(160%) blur(12px);
+  background-color: rgba(247, 245, 241, 0.72) !important;
+  box-shadow: 0 1px 0 rgba(18,51,86,0.06), 0 8px 24px -16px rgba(18,51,86,0.30);
+}
+html.ta-premium aside[data-ta-chrome] {
+  box-shadow: 1px 0 0 rgba(18,51,86,0.05), 18px 0 40px -34px rgba(18,51,86,0.30);
+}
+
+/* ------------------------------------------------------------
+   4. BUTTON POLISH — depth + sweeping sheen on the primary CTA
+   ------------------------------------------------------------ */
+html.ta-premium a.bg-primary,
+html.ta-premium button.bg-primary {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(135deg, #1b4470 0%, #123356 55%, #0e2a47 100%);
+  box-shadow:
+    0 1px 2px rgba(18,51,86,0.20),
+    0 10px 24px -10px rgba(18,51,86,0.45);
+  transition: transform .35s var(--ta-ease), box-shadow .35s var(--ta-ease);
+}
+html.ta-premium a.bg-primary:hover,
+html.ta-premium button.bg-primary:hover {
+  box-shadow:
+    0 2px 4px rgba(18,51,86,0.22),
+    0 18px 36px -12px rgba(18,51,86,0.55);
+}
+html.ta-premium a.bg-primary::after,
+html.ta-premium button.bg-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.28), transparent);
+  transform: skewX(-18deg);
+  transition: none;
+  pointer-events: none;
+}
+html.ta-premium a.bg-primary:hover::after,
+html.ta-premium button.bg-primary:hover::after {
+  animation: ta-sheen 0.85s var(--ta-ease) forwards;
+}
+@keyframes ta-sheen {
+  to { left: 140%; }
+}
+
+/* Secondary (outline / white) buttons: subtle border glow on hover */
+html.ta-premium a.border-border-warm:hover,
+html.ta-premium button.border-border-warm:hover {
+  border-color: rgba(18,51,86,0.35);
+  box-shadow: 0 8px 22px -12px rgba(18,51,86,0.30);
+}
+
+/* ------------------------------------------------------------
+   5. SCROLL REVEAL
+   premium.js neutralizes the old polish.css load animations and
+   drives everything through these classes instead.
+   `.ta-reveal`  = hidden start state
+   `.ta-in`      = revealed
+   Fail-safe: premium.js force-adds .ta-in after a timeout so
+   content can NEVER stay hidden if the observer misfires.
+   ------------------------------------------------------------ */
+html.ta-premium main > section,
+html.ta-premium main > article,
+html.ta-premium main > div,
+html.ta-premium .grid > * {
+  /* turn off the eager polish.css load fade so it doesn't double up */
+  animation: none !important;
+}
+
+/* Attribute form ([data-ta-reveal] in markup) hides at first paint with
+   zero flash; class form (.ta-reveal added by JS) is for auto-tagged pages. */
+html.ta-premium [data-ta-reveal],
+.ta-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity .7s var(--ta-ease-out),
+    transform .7s var(--ta-ease-out);
+  transition-delay: var(--ta-d, 0ms);
+  will-change: opacity, transform;
+}
+html.ta-premium [data-ta-reveal="left"],
+.ta-reveal.ta-reveal-left  { transform: translateX(-32px); }
+html.ta-premium [data-ta-reveal="right"],
+.ta-reveal.ta-reveal-right { transform: translateX(32px); }
+html.ta-premium [data-ta-reveal="scale"],
+.ta-reveal.ta-reveal-scale { transform: translateY(20px) scale(.96); }
+html.ta-premium [data-ta-reveal].ta-in,
+.ta-reveal.ta-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------------
+   6. CARD 3D TILT — JS sets --rx / --ry / --mx / --my live
+   ------------------------------------------------------------ */
+html.ta-premium .ta-tilt {
+  transform-style: preserve-3d;
+  transform:
+    perspective(900px)
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg))
+    translateZ(0);
+  transition: transform .25s var(--ta-ease);
+}
+html.ta-premium .ta-tilt.ta-tilt-active {
+  transition: transform .08s linear;
+}
+/* glare that follows the cursor across a tilt card */
+html.ta-premium .ta-tilt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(255,255,255,0.45),
+    transparent 45%);
+  opacity: 0;
+  transition: opacity .4s var(--ta-ease);
+  pointer-events: none;
+  z-index: 2;
+}
+html.ta-premium .ta-tilt:hover::before { opacity: 0.7; }
+
+/* ------------------------------------------------------------
+   7. HERO SPOTLIGHT — cursor-tracking glow inside .ta-hero
+   ------------------------------------------------------------ */
+html.ta-premium .ta-hero {
+  position: relative;
+  isolation: isolate;
+}
+html.ta-premium .ta-hero .ta-spot {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    520px circle at var(--sx, 30%) var(--sy, 30%),
+    rgba(59,130,246,0.16),
+    rgba(245,158,11,0.06) 35%,
+    transparent 60%);
+  opacity: 0;
+  transition: opacity .6s var(--ta-ease);
+  mix-blend-mode: multiply;
+}
+html.ta-premium .ta-hero:hover .ta-spot { opacity: 1; }
+/* keep hero content above the spotlight */
+html.ta-premium .ta-hero > *:not(.ta-spot):not(svg) { position: relative; z-index: 1; }
+
+/* ------------------------------------------------------------
+   8. ANIMATED GRADIENT ACCENT TEXT
+   For the highlighted hero word (apply .ta-grad-text).
+   ------------------------------------------------------------ */
+html.ta-premium .ta-grad-text {
+  background: linear-gradient(100deg, #F59E0B 0%, #fbbf24 30%, #F59E0B 60%, #d97706 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: ta-grad-pan 5s linear infinite;
+}
+@keyframes ta-grad-pan {
+  to { background-position: 220% center; }
+}
+
+/* ------------------------------------------------------------
+   9. 3D HERO MOUNT — Three.js canvas drops in here.
+   Sits over the fallback SVG; SVG hides once WebGL is ready.
+   ------------------------------------------------------------ */
+.ta-3d-stage {
+  position: relative;
+  width: 100%;
+}
+.ta-3d-stage canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  cursor: grab;
+}
+.ta-3d-stage.ta-3d-ready .ta-3d-fallback {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s ease;
+}
+.ta-3d-stage .ta-3d-canvas {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+.ta-3d-stage.ta-3d-ready .ta-3d-canvas { opacity: 1; }
+
+/* ------------------------------------------------------------
+   10. COUNT-UP figures keep monospaced width while ticking
+   ------------------------------------------------------------ */
+html.ta-premium [data-countup] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------
+   11. Smoother global interactions
+   ------------------------------------------------------------ */
+html.ta-premium { scroll-behavior: smooth; }
+html.ta-premium ::selection { background: rgba(245,158,11,0.25); }
+html.ta-premium a { transition: color .2s var(--ta-ease); }
+
+/* ------------------------------------------------------------
+   12. RESPECT reduced-motion — kill all non-essential motion
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .ta-mesh { animation: none !important; }
+  .ta-grad-text { animation: none !important; }
+  .ta-reveal,
+  html.ta-premium [data-ta-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  html.ta-premium .ta-tilt { transform: none !important; }
+  .ta-3d-stage .ta-3d-canvas { transition: none; }
+}

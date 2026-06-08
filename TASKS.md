@@ -33,7 +33,6 @@
 
 ---
 
-- [ ] **AI graceful fallback** - API cevap vermediğinde kullanıcıya düzgün hata göster
 - [ ] **Cross-reference empty state** - sonuç yoksa submission form göster, cross-ref DB büyüt
 - [ ] **Freemium quota: localStorage → Supabase** - quota takibini güvenilir hale getir
 
@@ -50,6 +49,12 @@
 
 ## Done
 
+- [x] **AI graceful fallback** - API timeout/error → kullanıcıya düzgün mesaj
+- [x] **Quota UX overhaul** - FREE_DAILY=5, yeşil→sarı→kırmızı bar, Pro modal
+- [x] **Stripe Pro flow UI** - checkout → success/cancel dönüşü, hero + pricing butonları wired
+- [x] **Compare URL param pre-fill** - ?grade= → input pre-fill + auto-run
+- [x] **Hero visual consistency** - cross-reference.html dark navy hero redesign
+- [x] **Site-wide UX sweep (2026-06-08)** - footer yıl/linkler, FAB kaldırıldı, dup imports, ta-3d-insert.js, pro.html restructure, ToolAdvisor.html dark navy hero
 - [x] **PDF teknik analiz raporu MVP** - source_page, raw_row_ref, confidence_score, risk_flags alanlarını kullanan örnek rapor; reamer/drill/end_mill fixtures; argüman desteği (generate-sample-technical-report.py)
 - [x] **TA-Guard fix** - AI widget z-index sorununu çöz; cookie banner z-index: 9999 set, widget'ın altında kalır
 - [x] **Cookie banner z-index fix** - z-index 9999 set, AI widget'ın altında kalır

@@ -428,8 +428,7 @@
   function refreshSidebarCounts(sb) {
     const counts = getCounts();
     if (!counts.ready) return;
-    const status = sb.querySelector('[data-ta-filter-count]');
-    if (status) status.textContent = `${counts.total} tools`;
+    // Do not display a total count — avoid implying catalog scale
 
     // Family buttons: show/hide based on count; never display count number
     sb.querySelectorAll('[data-ta-family-count]').forEach(el => {

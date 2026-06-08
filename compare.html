@@ -7,9 +7,10 @@
 <meta name="description" content="Compare two or three cutting insert grades with AI-generated side-by-side technical reasoning."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="tw-config.js"></script>
 <link rel="stylesheet" href="polish.css"/>
+<link rel="stylesheet" href="premium.css"/>
+<script src="premium.js"></script>
 </head>
 <body class="font-body-md text-on-surface selection:bg-primary/20">
 <!-- Sidebar Navigation -->
@@ -78,12 +79,12 @@
 <footer class="w-full rounded-t-xl bg-surface-container dark:bg-surface-dim border-t border-border-warm flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
 <div class="mb-4 md:mb-0">
 <p class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor</p>
-<p class="text-on-surface-variant text-sm mt-1">© 2024 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
+<p class="text-on-surface-variant text-sm mt-1">© 2026 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
 </div>
 <div class="flex gap-8 items-center">
-<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Terms of Service</a>
-<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Privacy Policy</a>
-<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Contact Engineering</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="privacy.html">Privacy Policy</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="contact.html">Contact Engineering</a>
 </div>
 </footer>
 </main>
@@ -230,5 +231,31 @@ Return plain text only:
   inputs.forEach((input) => input.addEventListener('input', clearValidationError));
 })();
 </script>
+<script src="ta-3d-insert.js"></script>
 <script src="page-switcher.js"></script>
+<script src="advisor-ai-widget.js"></script>
+<script>
+// URL param pre-fill for compare page
+(function () {
+  'use strict';
+  function readGradeParams() {
+    const params = new URLSearchParams(window.location.search);
+    const all = params.getAll('grade');
+    const csv = params.get('grades') || '';
+    const fromCsv = csv.split(',').map(s => s.trim()).filter(Boolean);
+    return [...new Set([...all, ...fromCsv])].slice(0, 3);
+  }
+  const preGrades = readGradeParams();
+  if (preGrades.length) {
+    const ids = ['compare-grade-1', 'compare-grade-2', 'compare-grade-3'];
+    preGrades.forEach((g, i) => {
+      const el = document.getElementById(ids[i]);
+      if (el) el.value = g;
+    });
+    if (preGrades.length >= 2) {
+      setTimeout(() => document.getElementById('compare-submit')?.click(), 120);
+    }
+  }
+})();
+</script>
 </body></html>

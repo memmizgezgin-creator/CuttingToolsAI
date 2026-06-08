@@ -17,44 +17,65 @@ These are review-stage product candidate records only. No PRODUCT_DB or frontend
 | --- | --- |
 | coating_or_surface_not_present_in_source_row | 924 |
 | material_grade_not_present_in_source_row | 924 |
+| MISSING_COATING | 924 |
+| MISSING_CUTTING_DATA | 924 |
+| MISSING_ISO_MATERIALS | 924 |
+| MISSING_OPERATION | 924 |
 | mixed_unit_fields_preserved_without_conversion | 139 |
 
 ## Fields Mapped Into Candidate Schema
 
-- `candidate_id`
+- `id`
 - `brand`
-- `source_pdf`
-- `pdf_page`
-- `catalog_page`
-- `series`
+- `source_file`
+- `source_page`
+- `raw_row_ref`
+- `raw_table_ref`
+- `source_type`
+- `source_name`
+- `extraction_method`
+- `designation`
+- `article_no`
 - `product_family`
-- `product_type`
-- `tool_no`
-- `edp`
-- `normalized_dimensional_fields`
-- `raw_fields`
-- `unit_system`
-- `warnings`
+- `type`
+- `diameter_d1_mm`
+- `diameter_d2_mm`
+- `oal_l1_mm`
+- `flute_length_l2_mm`
+- `flutes`
+- `handedness`
+- `coating`
+- `iso_materials`
+- `operations`
+- `confidence_score`
+- `confidence_reason`
+- `risk_flags`
 - `validation_status`
-- `merge_status`
-- `source_traceability`
+- `ai_inferred_fields`
+- `last_checked`
 
 ## Fields Left Raw Or Review-Only
 
 - `raw_fields.raw_row`
 - `raw_fields.raw_y`
 - `raw_fields.warnings`
-- `coating_or_surface`
-- `material_grade_if_present`
+- `inch-only dimensions`
+- `coating`
+- `substrate`
+- `iso_grade`
+- `iso_materials`
+- `operations`
+- `cutting data`
 
-`coating_or_surface` and `material_grade_if_present` remain null because the source table rows do not contain those values. Mixed unit rows remain flagged and are not converted.
+`coating`, `substrate`, `iso_grade`, `iso_materials`, `operations`, and cutting-data fields remain null because the source table rows do not contain those values. Inch-only dimensions are preserved in `raw_fields` and are not converted into mm schema fields.
 
 ## Merge Status
 
 - PRODUCT_DB merge: blocked
 - Candidate merge_status: not_merged
-- Candidate validation_status: validated_candidate_review
+- New candidates start as validation_status: extracted_candidate
+- Candidates with warnings or missing required technical fields are moved to validation_status: needs_review
 
 ## Exact Next Step
 
-Create a small 20-record PRODUCT_DB schema preview outside PRODUCT_DB.
+Human review these candidate records against the source PDF/raw rows before any separate merge workflow is considered.

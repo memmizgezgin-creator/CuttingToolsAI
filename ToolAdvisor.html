@@ -7,9 +7,10 @@
 <meta name="description" content="AI-powered cutting tool recommendations across all major brands. Free to use."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="tw-config.js"></script>
 <link rel="stylesheet" href="polish.css"/>
+<link rel="stylesheet" href="premium.css"/>
+<script src="premium.js"></script>
 </head>
 <body class="font-body-md text-on-surface selection:bg-primary/20">
 <!-- Sidebar Navigation -->
@@ -17,46 +18,43 @@
 <main class="ml-sidebar-width min-h-screen">
 <!-- Top Navigation -->
 <!-- Hero -->
-<section class="relative overflow-hidden px-gutter py-20 lg:py-24 bg-gradient-to-br from-surface via-surface-container-low to-border-warm">
-  <!-- Faint blueprint grid background -->
-  <svg class="absolute inset-0 w-full h-full opacity-[0.18] pointer-events-none" aria-hidden="true">
-    <defs>
-      <pattern id="ta-grid" width="32" height="32" patternUnits="userSpaceOnUse">
-        <circle cx="1" cy="1" r="1" fill="#8A8A9A"/>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#ta-grid)"/>
-  </svg>
+<section class="ta-hero relative overflow-hidden px-gutter py-20 lg:py-24" style="background:linear-gradient(140deg,#0c1f38 0%,#123356 55%,#1a3f62 100%);">
+  <!-- Radial accent glows -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 85% 50%,rgba(59,130,246,0.15) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 10% 80%,rgba(245,158,11,0.10) 0%,transparent 55%);pointer-events:none;"></div>
+  <!-- Dot grid overlay -->
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.04) 1px,transparent 1.4px);background-size:30px 30px;pointer-events:none;"></div>
 
   <div class="relative grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center max-w-7xl">
 
     <!-- Left: copy -->
-    <div>
-      <span class="inline-block px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-xs uppercase tracking-widest mb-6">Brand-neutral · Engineering decision layer</span>
-      <h1 class="font-display-hero text-[44px] md:text-[56px] xl:text-[68px] 2xl:text-[76px] leading-[1.02] tracking-[-0.025em] text-primary mb-6">
+    <div data-ta-reveal="left">
+      <span class="inline-block px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-widest mb-6" style="background:rgba(59,130,246,0.18);color:#93C5FD;">Brand-neutral · Engineering decision layer</span>
+      <h1 class="font-display-hero text-[44px] md:text-[56px] xl:text-[68px] 2xl:text-[76px] leading-[1.02] tracking-[-0.025em] text-white mb-6">
         Neutral cutting tool<br/>
         selection. <span class="text-iso-m-amber">Faster.</span>
       </h1>
-      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">
+      <p class="font-body-lg text-body-lg max-w-xl mb-10 leading-relaxed" style="color:rgba(255,255,255,0.65)">
         Compare inserts, grades and alternatives across brands with clear technical reasoning, risk notes and ISO-based recommendations. No catalog noise — just decisions you can defend.
       </p>
       <div class="flex flex-wrap gap-3">
-        <a href="#advisor" class="bg-primary text-white font-bold px-7 py-4 rounded-xl shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all flex items-center gap-2">
-          <span class="material-symbols-outlined">auto_awesome</span> Open Advisor
+        <a href="#advisor" class="ta-magnetic bg-primary text-white font-bold px-7 py-4 rounded-xl shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+          <span class="material-symbols-outlined">auto_awesome</span> Start Advisor
         </a>
         <a href="cross-reference.html" class="bg-white text-primary border border-border-warm font-bold px-7 py-4 rounded-xl hover:bg-surface-container-low hover:-translate-y-0.5 transition-all flex items-center gap-2">
           <span class="material-symbols-outlined">compare_arrows</span> Ask for Equivalents
         </a>
       </div>
-      <div class="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-on-surface-variant">
+      <div class="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm" style="color:rgba(255,255,255,0.60);">
         <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> ISO P / M / K / N / S / H coverage</span>
         <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> Geometry &amp; coating match logic</span>
         <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-iso-n-green">check_circle</span> Risk &amp; data-confidence flags</span>
       </div>
     </div>
 
-    <!-- Right: annotated insert blueprint -->
-    <div class="relative hidden lg:block">
+    <!-- Right: annotated insert blueprint (Three.js 3D mounts over this, SVG is the fallback) -->
+    <div class="relative hidden lg:block" data-ta-reveal="right">
+      <div class="ta-3d-stage" data-ta-3d aria-label="Interactive 3D cutting insert">
+      <div class="ta-3d-fallback">
       <svg viewBox="0 0 700 620" class="w-full h-auto" aria-label="Annotated insert with technical callouts">
         <defs>
           <!-- Top face gradient: brushed steel -->
@@ -109,29 +107,29 @@
         </g>
 
         <!-- ===================== CALLOUTS ===================== -->
-        <g font-family="DM Mono, monospace" font-size="10" fill="#43474e" letter-spacing="0.12em">
+        <g font-family="DM Mono, monospace" font-size="10" fill="#cbd5e1" letter-spacing="0.12em">
 
           <!-- TOP-LEFT: Geometry -->
-          <line x1="220" y1="240" x2="100" y2="120" stroke="#123356" stroke-width="1.2"/>
-          <circle cx="220" cy="240" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
-          <text x="40" y="100" font-weight="600" fill="#8A8A9A">GEOMETRY</text>
-          <text x="40" y="124" font-family="Nunito, sans-serif" font-size="20" font-weight="800" fill="#123356" letter-spacing="-0.01em">80° rhomb</text>
-          <text x="40" y="146" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="#43474e" letter-spacing="0">CNMG · negative</text>
+          <line x1="220" y1="240" x2="100" y2="120" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+          <circle cx="220" cy="240" r="4" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+          <text x="40" y="100" font-weight="600" fill="rgba(255,255,255,0.45)">GEOMETRY</text>
+          <text x="40" y="124" font-family="Nunito, sans-serif" font-size="20" font-weight="800" fill="#ffffff" letter-spacing="-0.01em">80° rhomb</text>
+          <text x="40" y="146" font-family="DM Sans, sans-serif" font-size="13" font-weight="500" fill="rgba(255,255,255,0.70)" letter-spacing="0">CNMG · negative</text>
 
           <!-- TOP-RIGHT: Match confidence (big number) -->
-          <line x1="480" y1="240" x2="600" y2="130" stroke="#123356" stroke-width="1.2"/>
-          <circle cx="480" cy="240" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
-          <text x="552" y="100" font-weight="600" fill="#8A8A9A">MATCH CONFIDENCE</text>
+          <line x1="480" y1="240" x2="600" y2="130" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+          <circle cx="480" cy="240" r="4" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+          <text x="552" y="100" font-weight="600" fill="rgba(255,255,255,0.45)">MATCH CONFIDENCE</text>
           <text x="552" y="142" font-family="Nunito, sans-serif" font-size="40" font-weight="800" fill="#10B981" letter-spacing="-0.02em">92<tspan font-size="22">%</tspan></text>
           <!-- Mini confidence bar -->
           <rect x="552" y="156" width="110" height="5" rx="2.5" fill="#E8E4DE"/>
           <rect x="552" y="156" width="101" height="5" rx="2.5" fill="#10B981"/>
 
           <!-- BOTTOM-LEFT: Alternatives -->
-          <line x1="220" y1="380" x2="90" y2="500" stroke="#123356" stroke-width="1.2"/>
-          <circle cx="220" cy="380" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
-          <text x="40" y="498" font-weight="600" fill="#8A8A9A">ALTERNATIVES</text>
-          <text x="40" y="525" font-family="Nunito, sans-serif" font-size="22" font-weight="800" fill="#123356" letter-spacing="-0.01em">3 ranked</text>
+          <line x1="220" y1="380" x2="90" y2="500" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+          <circle cx="220" cy="380" r="4" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+          <text x="40" y="498" font-weight="600" fill="rgba(255,255,255,0.45)">ALTERNATIVES</text>
+          <text x="40" y="525" font-family="Nunito, sans-serif" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="-0.01em">3 ranked</text>
           <!-- 3 dots representing ranked alternatives -->
           <g transform="translate(40, 540)">
             <rect x="0" y="0" width="34" height="5" rx="2.5" fill="#3B82F6"/>
@@ -140,9 +138,9 @@
           </g>
 
           <!-- BOTTOM-RIGHT: ISO coverage -->
-          <line x1="480" y1="380" x2="600" y2="500" stroke="#123356" stroke-width="1.2"/>
-          <circle cx="480" cy="380" r="4" fill="#fff" stroke="#123356" stroke-width="1.5"/>
-          <text x="552" y="498" font-weight="600" fill="#8A8A9A">ISO COVERAGE</text>
+          <line x1="480" y1="380" x2="600" y2="500" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+          <circle cx="480" cy="380" r="4" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+          <text x="552" y="498" font-weight="600" fill="rgba(255,255,255,0.45)">ISO COVERAGE</text>
           <g transform="translate(552, 510)" font-family="DM Mono, monospace" font-size="10" font-weight="700" letter-spacing="0.1em">
             <rect x="0"  y="0" width="30" height="22" rx="11" fill="rgba(59,130,246,.14)" stroke="rgba(59,130,246,.3)"/>
             <text x="9"  y="15" fill="#3B82F6">P</text>
@@ -162,23 +160,25 @@
           </g>
         </g>
       </svg>
+      </div><!-- /.ta-3d-fallback -->
+      </div><!-- /.ta-3d-stage -->
 
       <!-- subtle reference label overlay -->
-      <div class="absolute top-0 right-0 font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant/70">REF · CNMG 120408-PM</div>
+      <div class="absolute top-0 right-0 font-technical-data text-[10px] uppercase tracking-widest z-10" style="color:rgba(255,255,255,0.35)">REF · CNMG 120408-PM · drag to rotate</div>
     </div>
 
     <!-- Mobile: simple summary chips -->
     <div class="lg:hidden flex flex-wrap gap-2 -mt-2">
-      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-border-warm text-xs font-medium text-on-surface-variant"><span class="material-symbols-outlined text-base text-iso-n-green">verified</span> 92% match confidence</span>
-      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-border-warm text-xs font-medium text-on-surface-variant"><span class="material-symbols-outlined text-base text-iso-p-blue">category</span> ISO P / M</span>
-      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-iso-m-amber/40 text-xs font-medium text-on-surface-variant"><span class="material-symbols-outlined text-base text-iso-m-amber">warning</span> Verify chipbreaker</span>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.15);"><span class="material-symbols-outlined text-base text-iso-n-green">verified</span> 92% match confidence</span>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.15);"><span class="material-symbols-outlined text-base text-iso-p-blue">category</span> ISO P / M</span>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium" style="background:rgba(245,158,11,0.15);color:rgba(255,255,255,0.75);border:1px solid rgba(245,158,11,0.30);"><span class="material-symbols-outlined text-base text-iso-m-amber">warning</span> Verify chipbreaker</span>
     </div>
   </div>
 </section>
 
 <!-- Advisor Wizard intro -->
 <section id="advisor" class="px-gutter py-16">
-  <div class="max-w-5xl 2xl:max-w-6xl">
+  <div class="max-w-5xl 2xl:max-w-6xl" data-ta-reveal>
     <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-3">Decision Advisor</p>
     <h2 class="font-section-heading text-section-heading text-primary mb-3">Tell us the job. Get a defensible tool choice.</h2>
     <p class="text-on-surface-variant max-w-2xl mb-10">Four inputs. One AI response with reasoning, alternatives, risk and confidence notes.</p>
@@ -247,21 +247,21 @@
 <section class="px-gutter py-12">
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-stack-gap-lg">
     
-      <a href="cross-reference.html" class="block bg-white rounded-2xl p-7 card-shadow border border-border-warm hover:-translate-y-1 transition-all group">
+      <a href="cross-reference.html" class="ta-tilt relative block bg-white rounded-2xl p-7 card-shadow border border-border-warm transition-all group" data-tilt="5" data-ta-reveal="scale">
         <span class="material-symbols-outlined text-3xl text-primary mb-4 block">compare_arrows</span>
         <h3 class="font-product-grade text-primary mb-2">Cross-Reference</h3>
         <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Ask AI for source-backed equivalent inserts and grades with confidence reasoning, risk notes and verification gaps.</p>
         <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Open Cross-Reference <span class="material-symbols-outlined text-base">arrow_forward</span></span>
       </a>
     
-      <a href="compare.html" class="block bg-white rounded-2xl p-7 card-shadow border border-border-warm hover:-translate-y-1 transition-all group">
+      <a href="compare.html" class="ta-tilt relative block bg-white rounded-2xl p-7 card-shadow border border-border-warm transition-all group" data-tilt="5" data-ta-reveal="scale">
         <span class="material-symbols-outlined text-3xl text-primary mb-4 block">fact_check</span>
         <h3 class="font-product-grade text-primary mb-2">Compare</h3>
         <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Compare two or three grades with an AI-generated text table, source gaps and production risk notes.</p>
         <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Open Compare <span class="material-symbols-outlined text-base">arrow_forward</span></span>
       </a>
     
-      <a href="knowledge.html" class="block bg-white rounded-2xl p-7 card-shadow border border-border-warm hover:-translate-y-1 transition-all group">
+      <a href="knowledge.html" class="ta-tilt relative block bg-white rounded-2xl p-7 card-shadow border border-border-warm transition-all group" data-tilt="5" data-ta-reveal="scale">
         <span class="material-symbols-outlined text-3xl text-primary mb-4 block">menu_book</span>
         <h3 class="font-product-grade text-primary mb-2">Knowledge</h3>
         <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Engineering guides: insert code reading, ISO groups, chipbreaker logic, stainless strategy, positive vs negative.</p>
@@ -277,12 +277,12 @@
 <footer class="w-full rounded-t-xl bg-surface-container dark:bg-surface-dim border-t border-border-warm flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
 <div class="mb-4 md:mb-0">
 <p class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor</p>
-<p class="text-on-surface-variant text-sm mt-1">© 2024 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
+<p class="text-on-surface-variant text-sm mt-1">© 2026 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
 </div>
 <div class="flex gap-8 items-center">
-<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Terms of Service</a>
-<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Privacy Policy</a>
-<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Contact Engineering</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="privacy.html">Privacy Policy</a>
+<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="contact.html">Contact Engineering</a>
 </div>
 </footer>
 </main>

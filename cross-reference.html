@@ -1,19 +1,350 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Insert Cross-Reference AI | ToolAdvisor</title>
 <meta name="description" content="Ask ToolAdvisor AI for cutting insert and grade equivalents across brands, with plain-text confidence reasoning."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Nunito:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Nunito:wght@500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="tw-config.js"></script>
 <link rel="stylesheet" href="polish.css"/>
+<link rel="stylesheet" href="premium.css"/>
+<script src="premium.js"></script>
+<style>
+  /* ── Hero ── */
+  .xref-hero {
+    background: linear-gradient(140deg, #0c1f38 0%, #123356 55%, #1a3f62 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .xref-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(59,130,246,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 15% 80%, rgba(245,158,11,0.10) 0%, transparent 55%);
+  }
+  .xref-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1.4px);
+    background-size: 30px 30px;
+    pointer-events: none;
+  }
+
+  /* ── Glass search ── */
+  .xref-glass {
+    background: rgba(255,255,255,0.09);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 20px;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .xref-glass:focus-within {
+    border-color: rgba(255,255,255,0.38);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.22), 0 12px 40px rgba(0,0,0,0.22);
+  }
+  #xref-input {
+    background: transparent;
+    color: #fff;
+    outline: none;
+    width: 100%;
+  }
+  #xref-input::placeholder { color: rgba(255,255,255,0.38); }
+
+  /* ── Quick chips ── */
+  .xref-chip {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 13px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.09);
+    color: rgba(255,255,255,0.70);
+    border: 1px solid rgba(255,255,255,0.14);
+    cursor: pointer;
+    transition: background .18s, color .18s, border-color .18s, transform .18s;
+  }
+  .xref-chip:hover {
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    border-color: rgba(255,255,255,0.30);
+    transform: translateY(-1px);
+  }
+
+  /* ── Hero 3D insert (decorative, right side) ── */
+  .xref-hero-insert {
+    position: absolute;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.80;
+    pointer-events: none;
+    filter: drop-shadow(0 24px 40px rgba(0,0,0,0.45));
+  }
+
+  /* ── Matched input bar ── */
+  .xref-matched-bar {
+    background: #fff;
+    border: 1.5px solid #E8E4DE;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(18,51,86,0.06), 0 1px 2px rgba(18,51,86,0.04);
+  }
+
+  /* ── Filter tabs ── */
+  .xref-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 10px;
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    color: #43474e;
+    background: transparent;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .xref-tab:hover:not(.active) { background: #f4f3f6; color: #123356; }
+  .xref-tab.active { background: #123356; color: #fff; border-color: #123356; }
+  .xref-tab-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    border-radius: 999px;
+    font-size: 10px;
+  }
+  .xref-tab.active .xref-tab-badge { background: rgba(255,255,255,0.22); }
+  .xref-tab:not(.active) .xref-tab-badge { background: #e3e2e5; color: #43474e; }
+
+  /* ── Result cards ── */
+  .xref-card {
+    background: #fff;
+    border: 1.5px solid #E8E4DE;
+    border-radius: 20px;
+    transition:
+      transform .28s cubic-bezier(.22,.61,.36,1),
+      box-shadow .28s cubic-bezier(.22,.61,.36,1),
+      border-color .28s;
+  }
+  .xref-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(18,51,86,0.10), 0 2px 8px rgba(18,51,86,0.05);
+    border-color: rgba(18,51,86,0.14);
+  }
+
+  /* Card reveal */
+  @keyframes xref-reveal {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .xref-card { animation: xref-reveal .36s cubic-bezier(.22,.61,.36,1) both; }
+  .xref-card:nth-child(1) { animation-delay: 0ms; }
+  .xref-card:nth-child(2) { animation-delay: 55ms; }
+  .xref-card:nth-child(3) { animation-delay: 110ms; }
+  .xref-card:nth-child(4) { animation-delay: 160ms; }
+  .xref-card:nth-child(5) { animation-delay: 205ms; }
+  .xref-card:nth-child(6) { animation-delay: 245ms; }
+
+  /* ── Score ring ── */
+  .xref-ring {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+  }
+  .xref-ring svg {
+    width: 64px;
+    height: 64px;
+    transform: rotate(-90deg);
+    display: block;
+  }
+  .xref-ring-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "DM Mono", monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: #123356;
+    line-height: 1;
+    gap: 1px;
+  }
+  .xref-ring-text small {
+    font-size: 8px;
+    font-weight: 600;
+    color: #8A8A9A;
+    letter-spacing: 0.1em;
+  }
+  /* Animated ring fill */
+  @keyframes ring-draw {
+    from { stroke-dashoffset: 163.4; }
+    to   { stroke-dashoffset: var(--offset, 0); }
+  }
+  .ring-arc {
+    animation: ring-draw .9s cubic-bezier(.22,.61,.36,1) both;
+    animation-delay: var(--ring-delay, 80ms);
+  }
+
+  /* ── 3D insert thumb ── */
+  .xref-insert-thumb {
+    width: 68px;
+    height: 68px;
+    background: linear-gradient(135deg, #F8F7F5 0%, #EEECE8 100%);
+    border: 1.5px solid #E8E4DE;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .xref-card:hover .xref-insert-thumb {
+    border-color: rgba(18,51,86,0.18);
+    box-shadow: 0 4px 12px rgba(18,51,86,0.09);
+  }
+
+  /* ── Tier badge ── */
+  .xref-tier {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+  .xref-tier[data-t="exact"]   { background: rgba(16,185,129,.13); color: #047857; }
+  .xref-tier[data-t="near"]    { background: rgba(59,130,246,.11); color: #1D4ED8; }
+  .xref-tier[data-t="premium"] { background: rgba(245,158,11,.13); color: #92400E; }
+  .xref-tier[data-t="economy"] { background: rgba(100,116,139,.11); color: #475569; }
+
+  /* ── Dimension bars ── */
+  .xref-dim {
+    display: grid;
+    grid-template-columns: 74px 1fr 36px;
+    align-items: center;
+    gap: 8px;
+  }
+  .xref-dim-label {
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    color: #9AA0AA;
+  }
+  .xref-dim-track {
+    height: 5px;
+    background: #EAE6DF;
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+  }
+  .xref-dim-fill {
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    border-radius: 999px;
+  }
+  @keyframes bar-grow {
+    from { width: 0; }
+    to   { width: var(--w, 100%); }
+  }
+  .xref-dim-fill {
+    animation: bar-grow .7s cubic-bezier(.22,.61,.36,1) both;
+    animation-delay: var(--bar-delay, 120ms);
+  }
+  .xref-dim-fill[data-q="ident"] { background: linear-gradient(90deg,#10B981,#059669); }
+  .xref-dim-fill[data-q="match"] { background: linear-gradient(90deg,#10B981,#34D399); }
+  .xref-dim-fill[data-q="close"] { background: linear-gradient(90deg,#3B82F6,#60A5FA); }
+  .xref-dim-fill[data-q="diff"]  { background: linear-gradient(90deg,#F59E0B,#FBBF24); }
+  .xref-dim-fill[data-q="weak"]  { background: linear-gradient(90deg,#EF4444,#F87171); }
+  .xref-dim-value {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #123356;
+    text-align: right;
+  }
+
+  /* ── Compare button ── */
+  .xref-cmp-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: 1.5px solid #E8E4DE;
+    font-size: 13px;
+    font-weight: 500;
+    color: #43474e;
+    background: transparent;
+    cursor: pointer;
+    transition: all .2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .xref-cmp-btn:hover { background: #f4f3f6; color: #123356; border-color: rgba(18,51,86,0.18); }
+  .xref-cmp-btn.selected { background: #123356; color: #fff; border-color: #123356; }
+
+  /* ── Sticky compare bar ── */
+  .xref-bar {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: var(--sidebar-left, 260px);
+    z-index: 50;
+    background: rgba(18,51,86,0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255,255,255,0.09);
+    padding: 14px 24px;
+    transform: translateY(110%);
+    transition: transform .32s cubic-bezier(.22,.61,.36,1);
+  }
+  .xref-bar.visible { transform: translateY(0); }
+
+  /* ── Skeleton loader ── */
+  @keyframes shimmer {
+    from { background-position: -600px 0; }
+    to   { background-position: 600px 0; }
+  }
+  .xref-skeleton {
+    background: linear-gradient(90deg, #f4f3f6 25%, #eeede9 50%, #f4f3f6 75%);
+    background-size: 600px 100%;
+    animation: shimmer 1.4s infinite linear;
+    border-radius: 8px;
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .ring-arc, .xref-dim-fill, .xref-card,
+    .xref-chip, .xref-card { animation: none; }
+  }
+</style>
 </head>
+
 <body class="font-body-md text-on-surface selection:bg-primary/20">
-<!-- Sidebar Navigation -->
-<!-- Main Content Area -->
+
 <main class="ml-sidebar-width min-h-screen">
 <!-- Top Navigation -->
 <!-- Cross-Reference Header -->
@@ -60,19 +391,19 @@
   </div>
 </section>
 
+  <!-- Footer -->
+  <footer class="w-full rounded-t-xl bg-surface-container border-t border-border-warm flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
+    <div class="mb-4 md:mb-0">
+      <p class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor</p>
+      <p class="text-on-surface-variant text-sm mt-1">© 2026 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
+    </div>
+    <div class="flex gap-8 items-center">
+      <a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Terms of Service</a>
+      <a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Privacy Policy</a>
+      <a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Contact Engineering</a>
+    </div>
+  </footer>
 
-<!-- Footer -->
-<footer class="w-full rounded-t-xl bg-surface-container dark:bg-surface-dim border-t border-border-warm flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
-<div class="mb-4 md:mb-0">
-<p class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor</p>
-<p class="text-on-surface-variant text-sm mt-1">© 2024 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
-</div>
-<div class="flex gap-8 items-center">
-<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Terms of Service</a>
-<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Privacy Policy</a>
-<a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Contact Engineering</a>
-</div>
-</footer>
 </main>
 <script>
 (function () {
