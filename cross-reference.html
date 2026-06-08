@@ -481,6 +481,25 @@
     status.textContent = 'Error';
   }
 
+  function renderQuotaExceeded() {
+    output.innerHTML = `
+      <div class="rounded-xl border p-6 text-sm" style="border-color:#FDE68A;background:#FFFBEB;">
+        <p class="font-bold mb-2" style="color:#92400E;font-size:15px;">Daily free limit reached</p>
+        <p class="leading-relaxed text-on-surface-variant mb-5">You've used all 5 free queries today. Upgrade to Pro for unlimited access.</p>
+        <a href="pro.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm" style="background:#F59E0B;color:#451a03;">
+          <span class="material-symbols-outlined text-base">workspace_premium</span>Upgrade to Pro
+        </a>
+      </div>`;
+    status.textContent = 'Limit reached';
+  }
+
+  function syncQuotaFromHeader(response) {
+    const rem = parseInt(response.headers.get('X-TA-Quota-Remaining') || '', 10);
+    if (isNaN(rem)) return;
+    const today = new Date().toISOString().slice(0, 10);
+    try { localStorage.setItem('ta:ai:count', JSON.stringify({day: today, used: Math.max(0, 5 - rem)})); } catch {}
+  }
+
   function renderLoading(query) {
     output.innerHTML = `
       <div class="flex items-start gap-3 text-on-surface">
@@ -517,6 +536,11 @@ Return plain text only:
           }]
         })
       });
+      syncQuotaFromHeader(response);
+      if (response.status === 429) {
+        renderQuotaExceeded();
+        return;
+      }
       const data = await response.json();
       const textBlock = data.content?.filter((block) => block.type === 'text').pop();
       const reply = textBlock?.text || data.error?.message || data.error;

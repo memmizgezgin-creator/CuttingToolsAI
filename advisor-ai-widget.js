@@ -329,6 +329,16 @@
     if (isAdmin()) return 999;
     return Math.max(0, FREE_DAILY - getCount().used);
   }
+  // Sync local quota display from a server-returned X-TA-Quota-Remaining header.
+  // When KV is active the server is the source of truth; localStorage becomes a cache.
+  function syncFromServer(remainingStr) {
+    const rem = parseInt(remainingStr, 10);
+    if (isNaN(rem)) return;
+    const used = Math.max(0, FREE_DAILY - rem);
+    const today = new Date().toISOString().slice(0, 10);
+    try { localStorage.setItem(LS_KEY, JSON.stringify({ day: today, used })); } catch {}
+    updateQuota();
+  }
 
   // ── open pro modal ─────────────────────────────────────────────────────────
   function openPro() {
@@ -548,8 +558,9 @@
     setInputState();
     const typingRow = showTyping();
 
+    let res;
     try {
-      const res = await fetch(API_URL, {
+      res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -568,7 +579,13 @@
 
       if (!res.ok) {
         if (res.status === 429) {
-          addErrorMessage('Rate limit reached — wait a moment and try again.', prompt);
+          if (res.headers.get('X-TA-Quota-Remaining') === '0') {
+            syncFromServer('0');
+            addErrorMessage('Daily free limit reached. Upgrade to Pro for unlimited access.', null);
+            showUpgradeCta();
+          } else {
+            addErrorMessage('Rate limit reached — wait a moment and try again.', prompt);
+          }
         } else if (res.status === 401) {
           addErrorMessage('API key not authorised. Contact support if this persists.', null);
         } else if (res.status === 500) {
@@ -600,8 +617,14 @@
       );
     }
 
-    incrCount();
-    updateQuota();
+    // Sync quota: prefer server header (KV-backed), fall back to localStorage
+    const serverRem = res && res.headers ? res.headers.get('X-TA-Quota-Remaining') : null;
+    if (serverRem !== null) {
+      syncFromServer(serverRem);
+    } else {
+      incrCount();
+      updateQuota();
+    }
 
     const rem = remaining();
     if (rem === 1) showQuotaWarning();
