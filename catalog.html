@@ -8511,11 +8511,11 @@ async function loadGeneratedProducts() {
       clearTimeout(timeout);
     }
     if (!res.ok) {
-      if (res.status !== 404) console.warn('[ToolAdvisor] generated DB HTTP', res.status);
+      if (res.status !== 404) console.warn('[CuttingToolsAI] generated DB HTTP', res.status);
       return;
     }
     let raw;
-    try { raw = await res.json(); } catch (e) { console.warn('[ToolAdvisor] generated DB JSON parse error'); return; }
+    try { raw = await res.json(); } catch (e) { console.warn('[CuttingToolsAI] generated DB JSON parse error'); return; }
     if (!Array.isArray(raw) || raw.length === 0) return;
 
     // Sanitise every entry — drop malformed ones silently
@@ -8527,10 +8527,10 @@ async function loadGeneratedProducts() {
     if (typeof _productSearchIndex !== 'undefined' && _productSearchIndex?.clear) _productSearchIndex.clear();
     if (typeof _productFacetCache !== 'undefined') _productFacetCache.signature = '';
     if (typeof filterProducts === 'function') filterProducts();
-    console.info(`[ToolAdvisor] Generated products: ${sanitized.length} loaded (${raw.length - sanitized.length} rejected)`);
+    console.info(`[CuttingToolsAI] Generated products: ${sanitized.length} loaded (${raw.length - sanitized.length} rejected)`);
   } catch (e) {
-    if (e.name !== 'AbortError') console.warn('[ToolAdvisor] loadGeneratedProducts:', e.message);
-    else console.info('[ToolAdvisor] Generated DB fetch timed out — skipping');
+    if (e.name !== 'AbortError') console.warn('[CuttingToolsAI] loadGeneratedProducts:', e.message);
+    else console.info('[CuttingToolsAI] Generated DB fetch timed out — skipping');
   }
 }
 
@@ -8690,7 +8690,7 @@ function loadRemoteProducts() {
       _writeProductCache(_remoteProductDB);
       return _remoteProductDB;
     } catch(e) {
-      console.warn('[ToolAdvisor] Product fetch failed, using local fallback.', e.message);
+      console.warn('[CuttingToolsAI] Product fetch failed, using local fallback.', e.message);
       return null;
     } finally {
       _productsRemoteLoadAttempted = true;
@@ -8716,7 +8716,7 @@ async function initRemoteCrossRefs() {
       });
     }
   } catch(e) {
-    console.warn('[ToolAdvisor] Cross-ref load failed, using local fallback.', e.message);
+    console.warn('[CuttingToolsAI] Cross-ref load failed, using local fallback.', e.message);
   }
 }
 
@@ -14005,7 +14005,7 @@ function renderProductTechnicalStrip(product, maxCount = 6) {
       <span class="tech-chip-v">${chip.value}</span>
     </span>
   `).join('')}</div>` : '';
-  const badgeHtml = renderToolAdvisorTechnicalBadges(product, { maxCount: 4, compact: true });
+  const badgeHtml = renderCuttingToolsAITechnicalBadges(product, { maxCount: 4, compact: true });
   return [chipHtml, badgeHtml].filter(Boolean).join('');
 }
 const TA_TECH_BADGE_ICONS = {
@@ -14075,7 +14075,7 @@ function inferTechnicalBadgeValue(product, field) {
   }
   return '';
 }
-function buildToolAdvisorTechnicalBadgeModel(product) {
+function buildCuttingToolsAITechnicalBadgeModel(product) {
   const defs = [
     { field: 'standard', label: 'STD', icon: 'standard', keys: ['standard', 'toolStandard'] },
     { field: 'depthRatio', label: 'DEPTH', icon: 'depth', keys: ['depthRatio', 'depthClass', 'drillDepthClass'] },
@@ -14107,9 +14107,9 @@ function renderSingleTechnicalBadge(badge) {
     ${icon}<span class="ta-tech-badge-k">${escapeHtmlAttr(badge.label)}</span><span class="ta-tech-badge-v">${escapeHtmlAttr(badge.value)}</span>
   </span>`;
 }
-function renderToolAdvisorTechnicalBadges(product, options = {}) {
+function renderCuttingToolsAITechnicalBadges(product, options = {}) {
   const maxCount = Number.isFinite(options.maxCount) ? options.maxCount : 6;
-  const badges = buildToolAdvisorTechnicalBadgeModel(product).slice(0, Math.max(0, maxCount));
+  const badges = buildCuttingToolsAITechnicalBadgeModel(product).slice(0, Math.max(0, maxCount));
   if (!badges.length) return '';
   return `<div class="ta-tech-badge-strip">${badges.map(renderSingleTechnicalBadge).join('')}</div>`;
 }
@@ -14143,8 +14143,8 @@ function renderIsoSuitability(product) {
     ${TA_ISO_GROUPS.map(group => `<span class="ta-iso-pill ${states[group]}"><span class="iso-letter">${group}</span><span class="iso-state">${states[group]}</span></span>`).join('')}
   </div>`;
 }
-function renderToolAdvisorTechnicalDetail(product) {
-  const badges = buildToolAdvisorTechnicalBadgeModel(product);
+function renderCuttingToolsAITechnicalDetail(product) {
+  const badges = buildCuttingToolsAITechnicalBadgeModel(product);
   const iso = renderIsoSuitability(product);
   const sourceUrl = normalizeCoreLabel(product?.sourceUrl || '');
   if (!badges.length && !iso && !sourceUrl) return '';
@@ -14596,7 +14596,7 @@ function openProductDetail(productId, sourceSurface = 'products', event) {
         ${product.toolLife ? `<div class="detail-chip"><div class="detail-k">Tool life</div><div class="detail-v">${escapeHtmlAttr(product.toolLife)}</div></div>` : ''}
         ${product.applicationNotes ? `<div class="detail-chip"><div class="detail-k">Application notes</div><div class="detail-v small">${escapeHtmlAttr(product.applicationNotes)}</div></div>` : ''}
       </div>
-      ${renderToolAdvisorTechnicalDetail(product)}
+      ${renderCuttingToolsAITechnicalDetail(product)}
     </section>
 
     <section class="detail-alt-section" aria-label="Alternatives">
@@ -17940,7 +17940,7 @@ function updateOfflineBanner() {
 function registerOfflineWorker() {
   if (!('serviceWorker' in navigator)) return;
   navigator.serviceWorker.register('/sw.js').catch(() => {
-    console.info('[ToolAdvisor]', 'Service worker not installed yet; static site continues online.');
+    console.info('[CuttingToolsAI]', 'Service worker not installed yet; static site continues online.');
   });
 }
 

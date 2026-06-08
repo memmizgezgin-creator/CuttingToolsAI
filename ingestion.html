@@ -706,7 +706,7 @@ Add "linked_cutting_data_pending" to risk_flags if Vc/feed could not be extracte
     ? `SCOPE: AUTO-DETECT MODE — No specific family requested. Scan the full PDF and extract the best and most complete products across ALL families present (drills, inserts, reamers, end mills, taps, boring bars, etc.). Correctly set product_family for each record. Aim for diversity across families. Extract up to 30 products total, prioritising completeness.`
     : `SCOPE: FAMILY MODE — Focus exclusively on "${family}". Extract up to 25 products from this family, prioritising records with the most complete data.`;
 
-  return `You are a cutting tools data extraction specialist for ToolAdvisor, a brand-neutral cutting tool intelligence platform.
+  return `You are a cutting tools data extraction specialist for CuttingToolsAI, a brand-neutral cutting tool intelligence platform.
 
 ${catalogType === 'A' ? typeANote : typeBNote}
 

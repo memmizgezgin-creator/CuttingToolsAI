@@ -154,7 +154,8 @@
       "Bash(ls -lht /tmp/pipeline-*.log 2>/dev/null | head -5)",
       "Bash(pkill -f \"pipeline.js|catalogue-crawler.js\")",
       "Bash(node ingestion/scripts/pipeline.js)",
-      "Bash(node /Users/muratonder/Desktop/ToolAdvisor/ingestion/scripts/extract-page-text.js /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/processed/2026-06-01T08-57-32-461_\\\\[YE-TP23\\\\]_TitaNox_Power_Metric_spread.pdf)"
+      "Bash(node /Users/muratonder/Desktop/ToolAdvisor/ingestion/scripts/extract-page-text.js /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/processed/2026-06-01T08-57-32-461_\\\\[YE-TP23\\\\]_TitaNox_Power_Metric_spread.pdf)",
+      "Bash(git remote *)"
     ]
   }
 }
