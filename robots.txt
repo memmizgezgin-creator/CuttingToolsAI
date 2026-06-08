@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /*?*
 
-Sitemap: https://tooladvisor.eu/sitemap.xml
+Sitemap: https://cuttingtoolsai.eu/sitemap.xml
