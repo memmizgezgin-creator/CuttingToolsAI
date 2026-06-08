@@ -75,8 +75,8 @@
 
         <div class="ta-nav-search" style="flex:1;max-width:340px;margin-left:auto;min-width:0;">
           <div style="position:relative;width:100%;">
-            <span class="material-symbols-outlined" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#73777f;font-size:18px;pointer-events:none;">search</span>
-            <input type="search" placeholder="Search tools, materials, geometries…" aria-label="Search" style="
+            <span class="material-symbols-outlined" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#73777f;font-size:18px;pointer-events:none;">auto_awesome</span>
+            <input id="ta-nav-search-input" type="search" placeholder="Ask about any grade, insert or material…" aria-label="Ask Advisor AI" style="
                 width:100%;height:38px;
                 padding:0 14px 0 38px;
                 background:#F5F2EE;
@@ -86,7 +86,8 @@
                 outline:none;
                 transition:background .15s, border-color .15s, box-shadow .15s;"
               onfocus="this.style.background='#fff';this.style.borderColor='#123356';this.style.boxShadow='0 0 0 3px rgba(18,51,86,.12)';"
-              onblur="this.style.background='#F5F2EE';this.style.borderColor='transparent';this.style.boxShadow='';">
+              onblur="this.style.background='#F5F2EE';this.style.borderColor='transparent';this.style.boxShadow='';"
+              onkeydown="if(event.key==='Enter'&&this.value.trim()){var q=encodeURIComponent(this.value.trim());window.location.href='ToolAdvisor.html?q='+q;}">
           </div>
         </div>
 
