@@ -367,11 +367,22 @@
       </button>
     </div>
   </form>
+  <!-- Quick chips -->
+  <div class="mt-5">
+    <p class="font-technical-data text-[10px] uppercase tracking-widest mb-2.5" style="color:rgba(255,255,255,0.45)">Try an example</p>
+    <div class="flex flex-wrap gap-2">
+      <button type="button" class="xref-chip">CNMG120408-PM</button>
+      <button type="button" class="xref-chip">GC4325</button>
+      <button type="button" class="xref-chip">IC908</button>
+      <button type="button" class="xref-chip">KC522M</button>
+      <button type="button" class="xref-chip">TP2500</button>
+    </div>
+  </div>
   </div>
 </section>
 
 <!-- AI output -->
-<section class="px-gutter py-8 pb-20">
+<section class="px-gutter py-8 pb-20" style="background:linear-gradient(180deg,#F7F9FC 0%,#FFFFFF 65%);">
   <div class="max-w-4xl mx-auto">
     <div class="mb-5 flex items-center gap-2">
       <span class="material-symbols-outlined text-sm text-on-surface-variant">auto_awesome</span>
@@ -384,9 +395,21 @@
         <span id="xref-status" class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Ready</span>
       </div>
       <div id="xref-output" class="p-6 md:p-8 min-h-[320px]">
-        <div class="max-w-2xl">
-          <p class="font-product-grade text-primary text-xl mb-3">Enter a code or grade above.</p>
-          <p class="text-sm text-on-surface-variant leading-relaxed">The response will be rendered as text, not catalog cards. It should name likely brand equivalents, explain High / Medium / Low match confidence, and flag where public source evidence is weak.</p>
+        <div style="text-align:center;padding:16px 0;">
+          <span class="material-symbols-outlined" style="font-size:44px;color:#1e3a5f;opacity:0.15;display:block;margin-bottom:12px;">compare_arrows</span>
+          <p style="font-family:'Nunito',sans-serif;font-weight:700;font-size:16px;color:#1e3a5f;margin-bottom:6px;">Equivalents appear here</p>
+          <p style="font-size:13px;color:#6B7280;max-width:400px;margin:0 auto 20px;">Enter a code or grade above — or click an example chip. The response names brand equivalents with source-backed confidence reasoning.</p>
+          <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:999px;font-size:11px;font-weight:600;background:#EFF6FF;color:#1d4ed8;border:1px solid #BFDBFE;">
+              <span class="material-symbols-outlined" style="font-size:14px;">verified</span>High / Med / Low confidence
+            </span>
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:999px;font-size:11px;font-weight:600;background:#F0FDF4;color:#15803d;border:1px solid #BBF7D0;">
+              <span class="material-symbols-outlined" style="font-size:14px;">category</span>ISO geometry + coating
+            </span>
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:999px;font-size:11px;font-weight:600;background:#FEF9C3;color:#854d0e;border:1px solid #FDE68A;">
+              <span class="material-symbols-outlined" style="font-size:14px;">warning</span>Not-verified source gaps
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -514,6 +537,14 @@ Return plain text only:
       return;
     }
     runCrossReference(query);
+  });
+
+  document.querySelectorAll('.xref-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const q = chip.textContent.trim();
+      input.value = q;
+      runCrossReference(q);
+    });
   });
 
   const queryFromUrl = new URLSearchParams(window.location.search).get('q');

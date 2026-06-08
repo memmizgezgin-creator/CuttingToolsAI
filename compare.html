@@ -11,6 +11,10 @@
 <link rel="stylesheet" href="polish.css"/>
 <link rel="stylesheet" href="premium.css"/>
 <script src="premium.js"></script>
+<style>
+.adv-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:999px;border:1px solid #E8E4DE;background:#fff;font-size:11px;font-weight:600;color:#123356;cursor:pointer;transition:all .15s;font-family:'DM Mono',monospace;letter-spacing:.01em;white-space:nowrap;line-height:1.5;}
+.adv-chip:hover{border-color:#3B82F6;background:rgba(59,130,246,0.06);color:#1e40af;transform:translateY(-1px);}
+</style>
 </head>
 <body class="font-body-md text-on-surface selection:bg-primary/20">
 <!-- Sidebar Navigation -->
@@ -50,13 +54,23 @@
         </button>
         <p id="compare-input-note" class="text-xs text-on-surface-variant">At least two inputs are required. Unknown values stay marked as not verified.</p>
       </div>
+      <!-- Quick example chips -->
+      <div class="mt-5 pt-4 border-t border-border-warm">
+        <p class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant mb-2.5">Compare an example</p>
+        <div class="flex flex-wrap gap-2">
+          <button type="button" class="adv-chip" data-g1="GC4325" data-g2="KCP25C">GC4325 vs KCP25C</button>
+          <button type="button" class="adv-chip" data-g1="IC8150" data-g2="GC1115">IC8150 vs GC1115</button>
+          <button type="button" class="adv-chip" data-g1="TP2500" data-g2="T9315">TP2500 vs T9315</button>
+          <button type="button" class="adv-chip" data-g1="GC4035" data-g2="IC8150" data-g3="KCP25C">GC4035 vs IC8150 vs KCP25C</button>
+        </div>
+      </div>
     </div>
   </form>
   </div>
 </section>
 
 <!-- AI comparison output -->
-<section class="px-gutter py-8 pb-20">
+<section class="px-gutter py-8 pb-20" style="background:linear-gradient(180deg,#F7F9FC 0%,#FFFFFF 65%);">
   <div class="max-w-5xl mx-auto">
     <div class="mb-5 flex items-center gap-2">
       <span class="material-symbols-outlined text-sm text-on-surface-variant">fact_check</span>
@@ -69,9 +83,21 @@
         <span id="compare-status" class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Ready</span>
       </div>
       <div id="compare-output" class="p-6 md:p-8 min-h-[360px]">
-        <div class="max-w-2xl">
-          <p class="font-product-grade text-primary text-xl mb-3">Enter two or three grades above.</p>
-          <p class="text-sm text-on-surface-variant leading-relaxed">The AI response will be rendered as a readable text/table comparison with source-backed fields, confidence notes and production risks. Unknown fields stay marked as not verified.</p>
+        <div style="text-align:center;padding:20px 0;">
+          <span class="material-symbols-outlined" style="font-size:44px;color:#1e3a5f;opacity:0.15;display:block;margin-bottom:12px;">fact_check</span>
+          <p style="font-family:'Nunito',sans-serif;font-weight:700;font-size:16px;color:#1e3a5f;margin-bottom:6px;">Comparison appears here</p>
+          <p style="font-size:13px;color:#6B7280;max-width:420px;margin:0 auto 20px;">Enter two or three grades — or click an example chip. The response is a text table comparing grade family, coating, ISO material groups, strengths and limits.</p>
+          <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;">
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:999px;font-size:11px;font-weight:600;background:#EFF6FF;color:#1d4ed8;border:1px solid #BFDBFE;">
+              <span class="material-symbols-outlined" style="font-size:14px;">table_chart</span>Side-by-side text table
+            </span>
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:999px;font-size:11px;font-weight:600;background:#F0FDF4;color:#15803d;border:1px solid #BBF7D0;">
+              <span class="material-symbols-outlined" style="font-size:14px;">verified</span>Source-backed fields only
+            </span>
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:999px;font-size:11px;font-weight:600;background:#FEF9C3;color:#854d0e;border:1px solid #FDE68A;">
+              <span class="material-symbols-outlined" style="font-size:14px;">warning</span>Risk + not-verified gaps
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -233,6 +259,18 @@ Return plain text only:
   });
 
   inputs.forEach((input) => input.addEventListener('input', clearValidationError));
+
+  // Quick example chips
+  document.querySelectorAll('.adv-chip[data-g1]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (inputs[0]) inputs[0].value = chip.dataset.g1 || '';
+      if (inputs[1]) inputs[1].value = chip.dataset.g2 || '';
+      if (inputs[2]) inputs[2].value = chip.dataset.g3 || '';
+      clearValidationError();
+      const grades = selectedGrades();
+      if (grades.length >= 2) runCompare(grades);
+    });
+  });
 })();
 </script>
 <script src="ta-3d-insert.js"></script>
