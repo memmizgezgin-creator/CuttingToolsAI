@@ -1,10 +1,10 @@
-# ToolAdvisor Worklog
+# CuttingToolsAI Worklog
 
-This file records operational updates for ToolAdvisor.
+This file records operational updates for CuttingToolsAI.
 
 CLOUDFLARE_MIGRATION.md is the single source of truth for architecture, deployment, data strategy, security rules, working protocol and active project decisions.
 
-All assistants and coding agents must read CLOUDFLARE_MIGRATION.md before doing ToolAdvisor work.
+All assistants and coding agents must read CLOUDFLARE_MIGRATION.md before doing CuttingToolsAI work.
 
 ---
 

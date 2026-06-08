@@ -1,8 +1,8 @@
-# Cloudflare Worker — ToolAdvisor Pipeline
+# Cloudflare Worker — CuttingToolsAI Pipeline
 # Bu dosya Pages'in wrangler.toml'undan AYRIDIR.
 # Deploy: cd cloudflare-worker && npx wrangler deploy
 
-name            = "tooladvisor-pipeline"
+name            = "cuttingtoolsai-pipeline"
 main            = "pipeline-worker.js"
 compatibility_date = "2025-01-01"
 

@@ -1,11 +1,11 @@
-# CLAUDE.md — ToolAdvisor Agent Constitution
+# CLAUDE.md — CuttingToolsAI Agent Constitution
 
 ## ⛔ KIRILMAZ KURALLAR (NON-NEGOTIABLE)
 
 These rules apply to EVERY task, EVERY session, EVERY model. Cannot be overridden under any justification. If in doubt: STOP and ask Murat.
 
-### 1. ToolAdvisor Identity
-- ToolAdvisor is an **AI-powered cutting tool recommendation engine**.
+### 1. CuttingToolsAI Identity
+- CuttingToolsAI is an **AI-powered cutting tool recommendation engine**.
 - It is NOT: a product catalog, SKU database, store, marketplace, or scraper.
 - AI answers are generated via `web_search` + `system_prompt`. Brand-neutral.
 - PRODUCT_DB exists only as curated reference. It is NOT expanded into a full catalog.

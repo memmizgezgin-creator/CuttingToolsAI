@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Insert Cross-Reference AI | ToolAdvisor</title>
-<meta name="description" content="Ask ToolAdvisor AI for cutting insert and grade equivalents across brands, with plain-text confidence reasoning."/>
+<title>Insert Cross-Reference AI | CuttingToolsAI</title>
+<meta name="description" content="Ask CuttingToolsAI AI for cutting insert and grade equivalents across brands, with plain-text confidence reasoning."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Nunito:wght@500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="tw-config.js"></script>
@@ -352,7 +352,7 @@
   <div class="relative z-10 max-w-5xl mx-auto">
   <p class="font-technical-data text-xs uppercase tracking-widest mb-3" style="color:rgba(255,255,255,0.55)">Cross-Reference</p>
   <h1 class="font-display-hero text-display-hero mb-3 text-white">Ask AI for equivalent inserts and grades.</h1>
-  <p class="font-body-lg max-w-3xl mb-10" style="color:rgba(255,255,255,0.65)">Enter one ISO insert code, manufacturer grade or brand reference. ToolAdvisor searches public engineering sources and returns a plain-text equivalence rationale.</p>
+  <p class="font-body-lg max-w-3xl mb-10" style="color:rgba(255,255,255,0.65)">Enter one ISO insert code, manufacturer grade or brand reference. CuttingToolsAI searches public engineering sources and returns a plain-text equivalence rationale.</p>
 
   <form id="xref-ai-form" class="max-w-4xl">
     <label class="font-technical-data text-xs uppercase tracking-widest mb-3 block" style="color:rgba(255,255,255,0.55)" for="xref-query">Insert code or grade</label>
@@ -419,8 +419,8 @@
   <!-- Footer -->
   <footer class="w-full rounded-t-xl bg-surface-container border-t border-border-warm flex flex-col md:flex-row justify-between items-center px-gutter py-stack-gap-lg">
     <div class="mb-4 md:mb-0">
-      <p class="font-label-caps text-label-caps uppercase tracking-widest text-primary">ToolAdvisor</p>
-      <p class="text-on-surface-variant text-sm mt-1">© 2026 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
+      <p class="font-label-caps text-label-caps uppercase tracking-widest text-primary">CuttingToolsAI</p>
+      <p class="text-on-surface-variant text-sm mt-1">© 2026 CuttingToolsAI Intelligence Platform. Brand-Neutral Decision Platform.</p>
     </div>
     <div class="flex gap-8 items-center">
       <a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
@@ -434,7 +434,7 @@
 (function () {
   const API_URL = '/proxy';
   const SYSTEM_PROMPT = [
-    'You are ToolAdvisor Cross-Reference AI for CNC cutting tools.',
+    'You are CuttingToolsAI Cross-Reference AI for CNC cutting tools.',
     'Use web search to find public manufacturer or distributor specifications for the user input.',
     'Find brand equivalents across major cutting-tool brands and explain match confidence in plain text.',
     'Rank likely equivalents as High, Medium, or Low confidence and explain the evidence: ISO geometry, grade/coating class, chipbreaker, material group, and operation envelope.',

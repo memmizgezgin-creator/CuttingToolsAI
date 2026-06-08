@@ -1,11 +1,11 @@
 # Architecture
 
 ## Deploy Stack
-- Frontend: Cloudflare Pages — project name: `tooladvisor-v2`
-- API proxy: Cloudflare Worker — name: `tooladvisor-ai-proxy`
+- Frontend: Cloudflare Pages — project name: `cuttingtoolsai-v2`
+- API proxy: Cloudflare Worker — name: `cuttingtoolsai-ai-proxy`
 - AI: Anthropic API called from Worker (never from frontend directly)
 - Env var: `ANTHROPIC_API_KEY` set in Cloudflare dashboard
-- Domain: tooladvisor.eu — DNS via TransIP nameservers pointing to Cloudflare
+- Domain: cuttingtoolsai.eu — DNS via TransIP nameservers pointing to Cloudflare
 - OLD: Netlify — do NOT deploy here, pending deletion after domain cutover
 
 ## Frontend Structure

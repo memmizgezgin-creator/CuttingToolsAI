@@ -1,18 +1,18 @@
 # Cloudflare Setup
 
 ## Pages
-Project: `tooladvisor-v2`
+Project: `cuttingtoolsai-v2`
 Connected to: github.com/memmizgezgin-creator/ToolAdvisor (main branch)
 Build command: none (static files)
 Output directory: / (root)
 
 ## Worker
-Name: `tooladvisor-ai-proxy`
+Name: `cuttingtoolsai-ai-proxy`
 Route: handles `/api/claude` requests from frontend
 Env var: `ANTHROPIC_API_KEY` (set in Cloudflare dashboard, NOT in code)
 
 ## Domain
-tooladvisor.eu
+cuttingtoolsai.eu
 Registrar: TransIP
 DNS: TransIP nameservers pointing to Cloudflare
 Status: pending full cutover from Netlify
@@ -28,7 +28,7 @@ Status: pending full cutover from Netlify
 wrangler publish
 
 # Tail worker logs
-wrangler tail tooladvisor-ai-proxy
+wrangler tail cuttingtoolsai-ai-proxy
 
 # Set env var via CLI (alternative to dashboard)
 wrangler secret put ANTHROPIC_API_KEY

@@ -7,8 +7,8 @@
 
 ## Waiting On
 
-- [ ] **Domain cutover** - tooladvisor.eu TransIP → Cloudflare bağlantısı tamamlanacak
-- [ ] **Netlify sil** - domain tooladvisor.eu Cloudflare'e geçtikten sonra Netlify sitesini kaldır
+- [ ] **Domain cutover** - cuttingtoolsai.eu TransIP → Cloudflare bağlantısı tamamlanacak
+- [ ] **Netlify sil** - domain cuttingtoolsai.eu Cloudflare'e geçtikten sonra Netlify sitesini kaldır
 
 ## Someday
 
