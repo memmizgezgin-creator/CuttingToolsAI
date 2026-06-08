@@ -348,13 +348,14 @@
 <main class="ml-sidebar-width min-h-screen">
 <!-- Top Navigation -->
 <!-- Cross-Reference Header -->
-<section class="px-gutter pt-12 pb-8 bg-gradient-to-br from-surface to-border-warm">
-  <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-3">Cross-Reference</p>
-  <h1 class="font-display-hero text-display-hero text-primary mb-3">Ask AI for equivalent inserts and grades.</h1>
-  <p class="font-body-lg text-on-surface-variant max-w-3xl">Enter one ISO insert code, manufacturer grade or brand reference. ToolAdvisor searches public engineering sources and returns a plain-text equivalence rationale.</p>
+<section class="xref-hero px-gutter pt-14 pb-12">
+  <div class="relative z-10 max-w-5xl mx-auto">
+  <p class="font-technical-data text-xs uppercase tracking-widest mb-3" style="color:rgba(255,255,255,0.55)">Cross-Reference</p>
+  <h1 class="font-display-hero text-display-hero mb-3 text-white">Ask AI for equivalent inserts and grades.</h1>
+  <p class="font-body-lg max-w-3xl mb-10" style="color:rgba(255,255,255,0.65)">Enter one ISO insert code, manufacturer grade or brand reference. ToolAdvisor searches public engineering sources and returns a plain-text equivalence rationale.</p>
 
-  <form id="xref-ai-form" class="mt-10 max-w-4xl">
-    <label class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant mb-3 block" for="xref-query">Insert code or grade</label>
+  <form id="xref-ai-form" class="max-w-4xl">
+    <label class="font-technical-data text-xs uppercase tracking-widest mb-3 block" style="color:rgba(255,255,255,0.55)" for="xref-query">Insert code or grade</label>
     <div class="bg-white rounded-2xl border border-border-warm card-shadow p-3 flex flex-col sm:flex-row sm:items-center gap-3">
       <div class="flex items-center gap-3 flex-1 min-w-0">
         <span class="material-symbols-outlined text-on-surface-variant ml-1 sm:ml-3 text-2xl">search</span>
@@ -366,11 +367,12 @@
       </button>
     </div>
   </form>
+  </div>
 </section>
 
 <!-- AI output -->
 <section class="px-gutter py-8 pb-20">
-  <div class="max-w-4xl">
+  <div class="max-w-4xl mx-auto">
     <div class="mb-5 flex items-center gap-2">
       <span class="material-symbols-outlined text-sm text-on-surface-variant">auto_awesome</span>
       <p class="font-technical-data text-xs uppercase tracking-widest text-on-surface-variant">AI-generated answer with confidence reasoning</p>
@@ -398,9 +400,9 @@
       <p class="text-on-surface-variant text-sm mt-1">© 2026 ToolAdvisor Intelligence Platform. Brand-Neutral Decision Platform.</p>
     </div>
     <div class="flex gap-8 items-center">
-      <a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Terms of Service</a>
-      <a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Privacy Policy</a>
-      <a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="#">Contact Engineering</a>
+      <a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+      <a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="privacy.html">Privacy Policy</a>
+      <a class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors" href="contact.html">Contact Engineering</a>
     </div>
   </footer>
 
