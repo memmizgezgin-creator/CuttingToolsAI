@@ -23,6 +23,7 @@ Status legend: [ ] empty · [~] partial · [x] done
 - [ ] M (stainless): why positive rake + sharp PVD edge matters on 316L specifically — work-hardening mechanics as seen at the machine, not in theory
 - [ ] S (superalloy): edge prep (honed vs sharp) trade-off on Inconel — what fails first and how it looks
 - [ ] H (hardened): CBN vs coated carbide decision point in real shops (batch size, machine rigidity), not just HRC number
+- [x] Over-reinforced edges on hard materials show a plowing signature: sound change, chip/tool visual change, edge discoloration without coolant, and measurably degrading feed on the machine display. When you see this pattern, back off the edge prep, not the speed.
 
 ### 1.2 Grades & coatings — when the catalog value lies
 - [ ] Why a CVD grade that performs in the catalog test bar fails on interrupted cuts — what the catalog test doesn't replicate
@@ -35,7 +36,7 @@ Status legend: [ ] empty · [~] partial · [x] done
 - [ ] Vc derating rules of thumb by machine condition / setup rigidity
 
 ### 1.4 Failure diagnosis — what the operator actually sees
-- [x] First diagnostic signal at the machine: sound first, feed behavior second, chips last. An experienced operator knows the machine like a daily-driven car — tone deviation is the earliest warning, before any measurable symptom. When a problem is found via chips or measurement, it has been developing for a while. Ask "did the sound change?" first; treat chip evidence as confirmation, not detection.
+- [x] Diagnostic chain: (1) sound — deviation from the machine's known tone is the first signal; (2) chip form — readable live during the cut; (3) dimension and surface on the finished part — the last and slowest signal. Chip reading is material-relative: on soft gummy materials the chip must break SHORT (long chips smear and weld; geometry is sharper); on hard materials a LONG chip is a HEALTH sign (steady cutting; edge is reinforced). Never judge chip length without asking the material first.
 - [ ] Flank wear vs notch wear vs crater: how to tell at the machine with a loupe, and the ONE parameter to change first for each
 - [ ] BUE on stainless: early visual/audible signs before the insert chips
 - [ ] Plastic deformation: how it looks vs how chipping looks (commonly confused)
@@ -72,6 +73,7 @@ Status legend: [ ] empty · [~] partial · [x] done
 - [ ] Peck drilling: when modern drills make pecking counterproductive
 
 ### 3.3 Failure diagnosis
+- [x] On aluminum (N), chip smearing is often a SECONDARY symptom of corner wear: the outer corner dulls, the edge plows a wider zone instead of shearing thin, and the chip welds to the tool. First question on N-group smearing: edge condition ("inspect the outer corner — still sharp?"), before coolant or parameters.
 - [ ] Corner wear vs margin wear vs chisel edge wear — root cause of each in one line
 - [ ] Oversized holes: the 3 causes in order of how often you actually saw them
 
@@ -88,6 +90,8 @@ Status legend: [ ] empty · [~] partial · [x] done
 
 ## 5. CROSS-BRAND JUDGMENT (the brand-neutral edge)
 
+- [x] Small and mid-size shops rarely resist equivalents out of habit; the numbers decide. The adoption pattern is: buy ONE trial unit, test it on a real job, and if it performs, the brand stops mattering. Never push a bulk switch — frame every equivalent recommendation as a low-risk single-unit trial, judged against the process requirement.
+- [x] Large-volume OEMs behave differently: high quantities mean they default to established brands, because the premium includes application support — when a problem appears, the supplier's engineers come on site and own the fix. For high-volume series production, "premium brand + application support" can genuinely be the right recommendation. Brand-neutral means honest about this too.
 - [ ] Grade equivalence tables: where official cross-refs are honest and where "equivalent" grades behave differently in the field (specific pairs you remember)
 - [ ] When to recommend the premium brand despite price, and when the second-tier brand is genuinely identical
 - [ ] The questions a good distributor asks before recommending — encode your sales-engineering checklist
@@ -96,6 +100,7 @@ Status legend: [ ] empty · [~] partial · [x] done
 
 ## 6. META RULES (how the AI should reason)
 
+- [x] A tool is never better in isolation; it is better FOR a process chain. Example: an outstanding surface finish caused a failure because paint could no longer adhere. Before declaring tool A better than tool B, ask what happens to the surface next (coating, painting, bonding, sealing, fits). "Better finish" can be a defect.
 - [ ] Always ask for: machine condition/rigidity, batch size, coolant capability — before trusting catalog Vc
 - [ ] Confidence language: when to say "this is standard practice" vs "this depends on your setup, test at the low end"
 - [ ] Red lines: what the AI should never claim without data (tool life numbers, exact cost savings)
