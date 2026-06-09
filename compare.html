@@ -209,10 +209,8 @@
   }
 
   function syncQuotaFromHeader(response) {
-    const rem = parseInt(response.headers.get('X-TA-Quota-Remaining') || '', 10);
-    if (isNaN(rem)) return;
-    const today = new Date().toISOString().slice(0, 10);
-    try { localStorage.setItem('ta:ai:count', JSON.stringify({day: today, used: Math.max(0, 5 - rem)})); } catch {}
+    // Server is authoritative; no client-side quota state needed for single-use pages like compare.
+    // Headers are read by the page for UI decisions (e.g., showing 429 upgrade prompt).
   }
 
   function renderValidationError() {
@@ -244,6 +242,7 @@
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',

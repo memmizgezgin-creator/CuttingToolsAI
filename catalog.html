@@ -16571,7 +16571,7 @@ function showResults() {
   document.getElementById('resultsSection').style.display = 'block';
   renderAdvisorResultsView(true);
   renderAdvisorAIPanel(selMat, selOp);
-  incrementQuota();
+  // Quota is now enforced server-side via the /proxy endpoint; no client-side tracking needed.
 }
 
 function resetAdvisor() {
@@ -17351,24 +17351,39 @@ function sendChatMsg() {
   msgs.innerHTML += `<div class="chat-bubble ai" id="${id}" style="opacity:.4">…</div>`;
   msgs.scrollTop = msgs.scrollHeight;
 
-  // Worker proxy mode — routes through tooladvisor-ai-proxy Cloudflare Worker
-  fetch('https://tooladvisor-ai-proxy.memmizgezgin.workers.dev', {
+  // Routes through the Pages Function proxy (/proxy) for server-side quota enforcement.
+  fetch('/proxy', {
     method: 'POST',
+    credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message: msg })
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 1024,
+      system: 'You are ToolAdvisor\'s metalworking AI assistant. Help machinists and engineers choose cutting tools across all brands (Sandvik, Kennametal, Seco, Walter, Mitsubishi, Iscar, Tungaloy, OSG, Mapal, etc). Use web search to find current product information, grades, coatings, and specifications. Be brand-neutral and recommend the best tool for the application regardless of manufacturer. Be concise, technical, and direct.',
+      messages: [{ role: 'user', content: msg }]
+    })
   })
-  .then(r => r.json())
+  .then(r => {
+    const el = document.getElementById(id);
+    if (!el) return r.json();
+    // Check for quota exceeded; show upgrade prompt
+    if (r.status === 429) {
+      el.innerHTML = 'Daily limit reached. <a href="pro.html" style="color:var(--primary);font-weight:bold;">Upgrade to Pro</a> for unlimited access.';
+      el.style.opacity = '1';
+      msgs.scrollTop = msgs.scrollHeight;
+      return Promise.reject(new Error('quota_exceeded'));
+    }
+    return r.json();
+  })
   .then(data => {
     const el = document.getElementById(id);
     if (!el) return;
-    if (data.reply) {
-      el.innerHTML = data.reply.replace(/\n/g, '<br>');
+    const reply = data.content?.[0]?.text || data.error?.message || data.error;
+    if (data.content && data.content.length > 0) {
+      el.innerHTML = escapeHtmlAttr(reply).replace(/\n/g, '<br>');
       el.style.opacity = '1';
-      if (typeof data.remaining === 'number') {
-        el.innerHTML += `<div style="font-size:10px;color:var(--ink3);margin-top:8px">${data.remaining} free requests left today.</div>`;
-      }
     } else if (data.error) {
-      el.innerHTML = escapeHtmlAttr(data.error);
+      el.innerHTML = escapeHtmlAttr(reply || 'An error occurred.');
       el.style.opacity = '1';
     }
     msgs.scrollTop = msgs.scrollHeight;
@@ -17986,9 +18001,6 @@ function renderSessionSummary() {
   el.textContent = `${getSessionCounter('ta_searches_today')} searches today, ${getSessionCounter('ta_products_viewed')} products viewed`;
 }
 
-const _QUOTA_KEY = 'ta_daily_quota_v1';
-const _QUOTA_MAX = 5;
-
 (function init() {
   resetInteractionLayers();
   applyDarkModePreference();
@@ -18006,7 +18018,7 @@ const _QUOTA_MAX = 5;
   renderResourceFaq();
   renderCookieConsent();
   renderSessionSummary();
-  updateQuotaBar();
+  // Quota bar removed; server enforces quota via /proxy endpoint.
   renderTabLastUpdated();
   renderAdvisorQuickSearchHistory();
   renderSidebar();
@@ -19534,73 +19546,10 @@ window.QA_MANUAL_TEST_MATRIX = Object.freeze([
   { id:'MT-16', area:'Cross-Ref',      test:'Enter CNMG120408 → ≥3 brand alternatives shown with buy action',                              expected:'PASS',       priority:'P1' },
   { id:'MT-17', area:'Cross-Ref',      test:'Clear input or submit empty → instructions panel (no blank <strong>)',                         expected:'PASS',       priority:'P2' },
   { id:'MT-18', area:'Cross-Ref',      test:'Enter "CNMG" (partial) → partial-code hint shown with size suffix guidance',                   expected:'PASS',       priority:'P2' },
-  { id:'MT-19', area:'Navigation',     test:'Back/Forward after opening detail modal — no frozen overlay remains',                          expected:'PASS',       priority:'P1' },
-  { id:'MT-20', area:'Quota',          test:'Refresh page mid-session — quota persists from localStorage, daily reset works',               expected:'PASS',       priority:'P1' }
+  { id:'MT-19', area:'Navigation',     test:'Back/Forward after opening detail modal — no frozen overlay remains',                          expected:'PASS',       priority:'P1' }
 ]);
 // ─────────────────────────────────────────────────────────────────────────────
-
-/* ============================================================
-   QUOTA (localStorage, daily reset, max 5 free queries)
-============================================================ */
-function _isAdmin() {
-  try { return localStorage.getItem('ta_admin') === 'true'; } catch (_) { return false; }
-}
-
-function _getQuotaData() {
-  try {
-    const today = new Date().toISOString().slice(0, 10);
-    const raw = localStorage.getItem(_QUOTA_KEY);
-    if (raw) {
-      const d = JSON.parse(raw);
-      if (d && d.date === today) return d;
-    }
-    return { date: today, used: 0 };
-  } catch (_) { return { date: new Date().toISOString().slice(0, 10), used: 0 }; }
-}
-
-function _saveQuotaData(d) {
-  try { localStorage.setItem(_QUOTA_KEY, JSON.stringify(d)); } catch (_) {}
-}
-
-function incrementQuota() {
-  if (_isAdmin()) return;
-  const d = _getQuotaData();
-  d.used = Math.min(d.used + 1, _QUOTA_MAX);
-  _saveQuotaData(d);
-  updateQuotaBar();
-}
-
-function updateQuotaBar() {
-  const textEl    = document.getElementById('quota-text');
-  const fillEl    = document.getElementById('quota-bar-fill');
-  const upgradeEl = document.getElementById('quota-upgrade');
-  if (!textEl) return;
-  if (_isAdmin()) {
-    textEl.textContent = 'Admin: unlimited queries';
-    textEl.style.color = '#2C4A6E';
-    if (fillEl) { fillEl.style.width = '100%'; fillEl.style.background = '#2C4A6E'; }
-    if (upgradeEl) upgradeEl.style.display = 'none';
-    return;
-  }
-  const d = _getQuotaData();
-  const used = d.used;
-  textEl.textContent = `Free plan: ${used} / ${_QUOTA_MAX} queries used`;
-  const pct = Math.round((used / _QUOTA_MAX) * 100);
-  if (fillEl) { fillEl.style.width = pct + '%'; }
-  if (used >= _QUOTA_MAX) {
-    textEl.style.color = '#ef4444';
-    if (fillEl) fillEl.style.background = '#ef4444';
-    if (upgradeEl) upgradeEl.style.display = 'inline';
-  } else if (used >= 3) {
-    textEl.style.color = '#f59e0b';
-    if (fillEl) fillEl.style.background = '#f59e0b';
-    if (upgradeEl) upgradeEl.style.display = 'none';
-  } else {
-    textEl.style.color = '#10b981';
-    if (fillEl) fillEl.style.background = '#10b981';
-    if (upgradeEl) upgradeEl.style.display = 'none';
-  }
-}
+// Quota enforcement moved to server-side (/proxy endpoint). No client-side quota functions.
 
 /* ============================================================
    PRO MODAL

@@ -294,9 +294,8 @@
   document.head.appendChild(style);
 
   // ── constants ──────────────────────────────────────────────────────────────
-  const API_URL = '/proxy';
-  const FREE_DAILY  = 5;
-  const LS_KEY      = 'ta:ai:count';
+  const API_URL    = '/proxy';
+  const FREE_DAILY = 5;   // initial display default; server is authoritative after first call
   const QUICK_ACTIONS = [
     { id:'iso-pm',    icon:'school',        label:'ISO P vs M inserts', prompt:'In 4 short bullet points, explain when to use ISO P (steel) vs ISO M (stainless) inserts. Focus on practical CNC operator criteria.', pro:false },
     { id:'wear',      icon:'build',         label:'Diagnose tool wear', prompt:'I\'m seeing flank wear on my insert. What are the most common causes and how do I fix each one?', pro:false },
@@ -304,40 +303,30 @@
     { id:'cheapswap', icon:'savings',       label:'Cheapest cross-brand swap', prompt:null, pro:true },
   ];
 
-  // ── admin bypass ───────────────────────────────────────────────────────────
+  // ── admin bypass (cosmetic UI only — server enforces all real limits) ────────
   function isAdmin() {
     try { return localStorage.getItem('ta_admin') === 'true'; } catch { return false; }
   }
 
-  // ── quota ──────────────────────────────────────────────────────────────────
-  function getCount() {
-    try {
-      const today = new Date().toISOString().slice(0, 10);
-      const st = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
-      if (st.day !== today) return { day: today, used: 0 };
-      return st;
-    } catch { return { day: new Date().toISOString().slice(0, 10), used: 0 }; }
-  }
-  function incrCount() {
-    if (isAdmin()) return getCount();
-    const c = getCount();
-    c.used += 1;
-    try { localStorage.setItem(LS_KEY, JSON.stringify(c)); } catch {}
-    return c;
-  }
+  // ── server-authoritative quota state ─────────────────────────────────────
+  // Populated from X-Plan / X-Quota-Remaining / X-Quota-Limit response headers.
+  // null = unknown (first request not yet made); display FREE_DAILY as default.
+  let serverState = { plan: null, remaining: null, limit: FREE_DAILY };
+
   function remaining() {
     if (isAdmin()) return 999;
-    return Math.max(0, FREE_DAILY - getCount().used);
+    if (serverState.plan === 'pro') return 999;
+    return serverState.remaining !== null ? serverState.remaining : FREE_DAILY;
   }
-  // Sync local quota display from a server-returned X-TA-Quota-Remaining header.
-  // When KV is active the server is the source of truth; localStorage becomes a cache.
-  function syncFromServer(remainingStr) {
-    const rem = parseInt(remainingStr, 10);
-    if (isNaN(rem)) return;
-    const used = Math.max(0, FREE_DAILY - rem);
-    const today = new Date().toISOString().slice(0, 10);
-    try { localStorage.setItem(LS_KEY, JSON.stringify({ day: today, used })); } catch {}
-    updateQuota();
+
+  function syncFromHeaders(headers) {
+    if (!headers) return;
+    const plan = headers.get('X-Plan');
+    const rem  = headers.get('X-Quota-Remaining');
+    const lim  = headers.get('X-Quota-Limit');
+    if (plan) serverState.plan = plan;
+    if (lim  !== null && lim  !== undefined) { const n = parseInt(lim,  10); if (!isNaN(n)) serverState.limit     = n; }
+    if (rem  !== null && rem  !== undefined) { const n = parseInt(rem,  10); if (!isNaN(n)) serverState.remaining = n; }
   }
 
   // ── open pro modal ─────────────────────────────────────────────────────────
@@ -443,6 +432,7 @@
   // ── state helpers ─────────────────────────────────────────────────────────
   function updateQuota() {
     const r = remaining();
+
     if (isAdmin()) {
       badge.textContent      = 'Admin';
       badge.style.background = '#2C4A6E';
@@ -455,13 +445,28 @@
       input.placeholder = 'Ask about tools, speeds, materials…';
       return;
     }
-    badge.textContent      = `${r}/${FREE_DAILY} free`;
+
+    if (serverState.plan === 'pro') {
+      badge.textContent      = 'Pro';
+      badge.style.background = '#10B981';
+      badge.style.color      = '#fff';
+      quotaLabel.textContent = 'Pro — unlimited';
+      if (quotaBar) { quotaBar.style.width = '0%'; quotaBar.style.background = '#10B981'; }
+      creditsBar.classList.remove('show');
+      input.disabled   = busy;
+      sendBtn.disabled = busy || !input.value.trim();
+      input.placeholder = 'Ask about tools, speeds, materials…';
+      return;
+    }
+
+    const limit = serverState.limit ?? FREE_DAILY;
+    badge.textContent      = `${r}/${limit} free`;
     badge.style.background = '';
     badge.style.color      = '';
-    quotaLabel.textContent = `${r}/${FREE_DAILY} free today`;
+    quotaLabel.textContent = `${r}/${limit} free today`;
     if (quotaBar) {
-      const used = getCount().used;
-      const pct  = Math.min(100, (used / FREE_DAILY) * 100);
+      const used = limit - Math.max(0, r);
+      const pct  = Math.min(100, limit > 0 ? (used / limit) * 100 : 0);
       quotaBar.style.width      = pct + '%';
       quotaBar.style.background = r === 0 ? '#EF4444' : r === 1 ? '#F59E0B' : '#10B981';
     }
@@ -472,8 +477,14 @@
   }
 
   function setInputState() {
-    sendBtn.disabled = busy || !input.value.trim() || remaining() <= 0;
-    input.disabled = busy || remaining() <= 0;
+    const r = remaining();
+    if (serverState.plan === 'pro' || isAdmin()) {
+      sendBtn.disabled = busy || !input.value.trim();
+      input.disabled   = busy;
+      return;
+    }
+    sendBtn.disabled = busy || !input.value.trim() || r <= 0;
+    input.disabled   = busy || r <= 0;
   }
 
   function addMessage(role, text) {
@@ -552,7 +563,10 @@
 
   // ── send message ───────────────────────────────────────────────────────────
   async function ask(prompt) {
-    if (busy || !prompt || remaining() <= 0) return;
+    if (busy || !prompt) return;
+    // Block client-side only once the server has confirmed quota is exhausted.
+    if (serverState.plan !== 'pro' && !isAdmin() && serverState.remaining !== null && serverState.remaining <= 0) return;
+
     busy = true;
     addMessage('user', escapeHtml(prompt));
     setInputState();
@@ -562,6 +576,7 @@
     try {
       res = await fetch(API_URL, {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
@@ -579,19 +594,17 @@
 
       if (!res.ok) {
         if (res.status === 429) {
-          if (res.headers.get('X-TA-Quota-Remaining') === '0') {
-            syncFromServer('0');
-            addErrorMessage('Daily free limit reached. Upgrade to Pro for unlimited access.', null);
-            showUpgradeCta();
-          } else {
-            addErrorMessage('Rate limit reached — wait a moment and try again.', prompt);
-          }
+          // Server is the source of truth — update state and show upgrade UI.
+          serverState.remaining = 0;
+          syncFromHeaders(res.headers);
+          updateQuota();
+          showUpgradeCta();
         } else if (res.status === 401) {
           addErrorMessage('API key not authorised. Contact support if this persists.', null);
         } else if (res.status === 500) {
           const msg = (data.error || '');
           if (typeof msg === 'string' && msg.includes('API key')) {
-            addErrorMessage('The advisor isn't configured yet. Check back soon.', null);
+            addErrorMessage('The advisor isn\'t configured yet. Check back soon.', null);
           } else {
             addErrorMessage('Server error — please try again in a moment.', prompt);
           }
@@ -603,8 +616,7 @@
           || data.error?.message
           || (typeof data.error === 'string' ? data.error : null)
           || 'Sorry, I had trouble answering that. Please try again.';
-        addMessage('ai', escapeHtml(reply).replace(/
-/g, '<br>'));
+        addMessage('ai', escapeHtml(reply).replace(/\n/g, '<br>'));
       }
     } catch (fetchErr) {
       typingRow.remove();
@@ -617,14 +629,11 @@
       );
     }
 
-    // Sync quota: prefer server header (KV-backed), fall back to localStorage
-    const serverRem = res && res.headers ? res.headers.get('X-TA-Quota-Remaining') : null;
-    if (serverRem !== null) {
-      syncFromServer(serverRem);
-    } else {
-      incrCount();
-      updateQuota();
+    // Server headers are the sole source of truth for quota state.
+    if (res && res.headers) {
+      syncFromHeaders(res.headers);
     }
+    updateQuota();
 
     const rem = remaining();
     if (rem === 1) showQuotaWarning();
