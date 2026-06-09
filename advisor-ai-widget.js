@@ -96,7 +96,7 @@
       color:#6b6880; font-weight:700; font-family:'DM Mono',monospace;
       margin-bottom:6px; display:flex; align-items:center;
     }
-    #ta-ai-quick-label span { margin-left:auto; font-family:'DM Mono',monospace; font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; }
+    #ta-ai-quick-label span { margin-left:auto; font-family:'DM Mono',monospace; font-size:9px; font-weight:400; text-transform:none; letter-spacing:0; white-space:nowrap; min-width:0; }
     #ta-ai-quota-bar-bg {
       height:3px; background:#e8e6f0; border-radius:99px;
       overflow:hidden; margin-bottom:9px;
@@ -111,6 +111,7 @@
       border:1px solid #e8e6f0; background:#fff; cursor:pointer;
       font-size:11px; font-weight:700; line-height:1.3; color:#1A1A2E;
       transition:border-color .12s, background .12s; position:relative;
+      overflow-wrap:break-word; word-break:break-word; min-width:0;
     }
     .ta-ai-qa-btn:hover { border-color:#2C4A6E; background:#f0f4ff; }
     .ta-ai-qa-btn.pro-qa { background:#fffbeb; border-color:#fde68a; color:#78350f; }
@@ -157,6 +158,7 @@
     .ta-ai-msg-bubble {
       max-width:80%; padding:9px 12px; border-radius:12px;
       font-size:12.5px; line-height:1.55; white-space:pre-wrap;
+      overflow-wrap:break-word; word-break:break-word;
     }
     .ta-ai-msg.user .ta-ai-msg-bubble { background:#2C4A6E; color:#fff; border-top-right-radius:3px; }
     .ta-ai-msg.ai  .ta-ai-msg-bubble { background:#f0f4ff; color:#1A1A2E; border-top-left-radius:3px; white-space:normal; }

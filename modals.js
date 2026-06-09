@@ -125,8 +125,8 @@
       <div class="ta-modal-header" style="background:linear-gradient(135deg,#123356 0%,#2c4a6e 100%);color:#fff;border:none;">
         <div style="position:relative;z-index:1;">
           <p class="ta-eyebrow" style="color:#F59E0B;">ToolAdvisor Pro — Coming July 2026</p>
-          <h2 style="color:#fff;">More depth. Same neutrality.</h2>
-          <p class="ta-sub" style="color:rgba(255,255,255,.78);max-width:560px;">Pro is launching soon. Join the waitlist and we'll email you when it's ready — early-access pricing included.</p>
+          <h2 style="color:#fff;">You've used today's 5 free queries</h2>
+          <p class="ta-sub" style="color:rgba(255,255,255,.78);max-width:560px;">Pro launches in July. Join the waitlist now — the first 50 sign-ups get 50% off the first 3 months.</p>
         </div>
         <button class="ta-modal-close" data-modal-close aria-label="Close" style="background:rgba(255,255,255,.14);color:#fff;"><span class="material-symbols-outlined">close</span></button>
       </div>
