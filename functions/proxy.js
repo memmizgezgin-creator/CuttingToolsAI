@@ -168,6 +168,8 @@ export async function onRequestPost(context) {
   const adminIPs  = (env.ADMIN_IP || '').split(',').map(s => s.trim()).filter(Boolean);
   const isAdminIP = adminIPs.includes(ip);
 
+  console.log('[QUOTA_DEBUG] supabaseReady:', supabaseReady, 'isAdminIP:', isAdminIP, 'hasUrl:', !!env.SUPABASE_URL, 'hasKey:', !!env.SUPABASE_SERVICE_ROLE_KEY);
+
   // ── Identity resolution ─────────────────────────────────────────────────────
   let userId     = null;
   let isPro      = false;
@@ -243,7 +245,8 @@ export async function onRequestPost(context) {
           p_day:   today,
           p_limit: CONFIG.FREE_DAILY,
         });
-      } catch {
+      } catch (e) {
+        console.error('[QUOTA_DEBUG] check_and_increment_daily failed:', e.message);
         subjectResult = null; // Supabase down → degrade gracefully
       }
 
