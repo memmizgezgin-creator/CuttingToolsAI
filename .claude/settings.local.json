@@ -174,7 +174,8 @@
       "Bash(curl -s -i -X POST https://cuttingtoolsai.eu/proxy -H 'Content-Type: application/json' --data '{\"model\":\"claude-haiku-4-5-20251001\",\"max_tokens\":10,\"system\":\"x\",\"messages\":[{\"role\":\"user\",\"content\":\"x\"}]}')",
       "Bash(curl -s -i -X POST https://cuttingtoolsai.eu/proxy -H 'Content-Type: application/json' --data '{\"model\":\"claude-haiku-4-5-20251001\",\"max_tokens\":5,\"system\":\"x\",\"messages\":[{\"role\":\"user\",\"content\":\"x\"}]}')",
       "Bash(rm -f /tmp/final_jar.txt *)",
-      "Bash(git pull *)"
+      "Bash(git pull *)",
+      "Read(//Users/muratonder/**)"
     ]
   }
 }

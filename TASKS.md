@@ -2,11 +2,9 @@
 
 ## Active
 
-- [ ] **Cross-reference empty state** - sonuç yoksa submission form göster, cross-ref DB büyüt
-- [ ] **Freemium quota: localStorage → Supabase** - quota takibini güvenilir hale getir
-
 ## Waiting On
 
+- [ ] **Stripe integration** - blocked until July 2026, waitlist collecting emails until then
 - [ ] **Domain cutover** - cuttingtoolsai.eu TransIP → Cloudflare bağlantısı tamamlanacak
 - [ ] **Netlify sil** - domain cuttingtoolsai.eu Cloudflare'e geçtikten sonra Netlify sitesini kaldır
 
@@ -18,7 +16,10 @@
 
 ## Done
 
-- [x] **AI graceful fallback** - API timeout/error → kullanıcıya düzgün mesaj
+- [x] **AI graceful fallback (2026-06-09)** - 503/502 + retry + refund on Anthropic failure
+- [x] **Cross-reference empty state (2026-06-09)** - sonuç yoksa submission form göster
+- [x] **Pro button → waitlist (2026-06-09)** - Supabase table + functions/waitlist.js endpoint, live & verified: new/duplicate/invalid all pass
+- [x] **Freemium quota: localStorage → Supabase (2026-06-08)** - server-side enforced in functions/proxy.js, Supabase 3 tables + RLS, curl test passed: 5x200 then 429
 - [x] **Quota UX overhaul** - FREE_DAILY=5, yeşil→sarı→kırmızı bar, Pro modal
 - [x] **Stripe Pro flow UI** - checkout → success/cancel dönüşü, hero + pricing butonları wired
 - [x] **Compare URL param pre-fill** - ?grade= → input pre-fill + auto-run
