@@ -505,7 +505,7 @@
   }
 
   function renderMarkdown(text) {
-    // Clean artifacts: collapse 3+ newlines → 2, remove lone-dash/whitespace lines
+    // Clean artifacts: collapse 3+ newlines to 2, remove lone-dash/whitespace lines
     let s = text
       .replace(/\n{3,}/g, '\n\n')
       .replace(/^[ \t]*-[ \t]*$/gm, '');
@@ -517,21 +517,23 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
 
-    // **bold** → <strong>
+    // **bold** -> <strong>
     s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 
-    // Process double-newline-separated blocks into paragraphs / lists
+    // Process double-newline-separated blocks into paragraphs / lists / headings
     const out = [];
     for (const block of s.split(/\n\n+/)) {
       if (!block.trim()) continue;
       const lines = block.split('\n');
       const filled = lines.filter(l => l.trim());
-      if (filled.length && filled.every(l => /^-\s/.test(l))) {
-        out.push('<ul>' + filled.map(l => `<li>${l.replace(/^-\s/, '')}</li>`).join('') + '</ul>');
+      if (filled.length === 1 && /^#{2,3} /.test(filled[0])) {
+        out.push('<p><strong>' + filled[0].replace(/^#{2,3} /, '') + '</strong></p>');
+      } else if (filled.length && filled.every(l => /^-\s/.test(l))) {
+        out.push('<ul>' + filled.map(l => '<li>' + l.replace(/^-\s/, '') + '</li>').join('') + '</ul>');
       } else if (filled.length && filled.every(l => /^\d+\.\s/.test(l))) {
-        out.push('<ol>' + filled.map(l => `<li>${l.replace(/^\d+\.\s/, '')}</li>`).join('') + '</ol>');
+        out.push('<ol>' + filled.map(l => '<li>' + l.replace(/^\d+\.\s/, '') + '</li>').join('') + '</ol>');
       } else {
-        out.push(`<p>${lines.join('<br>')}</p>`);
+        out.push('<p>' + lines.join('<br>') + '</p>');
       }
     }
     return out.join('');
