@@ -704,4 +704,7 @@
   }, 4000);
 
   updateQuota();
+
+  // Expose ask() so external callers (e.g. homepage preset buttons) can fire queries
+  window.TAAdvisor = { ask };
 })();

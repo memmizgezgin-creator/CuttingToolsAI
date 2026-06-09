@@ -1,28 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>CuttingToolsAI | AI-Powered Cutting Tool Advisor</title>
+  <meta name="description" content="Brand-neutral AI advisor for cutting tools. Instant insert recommendations, cross-references and ISO grade guidance for turning, milling and drilling."/>
+  <link rel="canonical" href="https://cuttingtoolsai.eu/"/>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYKHPBW6H0"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
+    window.dataLayer=window.dataLayer||[];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-LYKHPBW6H0');
+    gtag('js',new Date());
+    gtag('config','G-LYKHPBW6H0');
   </script>
-  <meta name="description" content="Brand-neutral AI advisor for cutting tools. Instant insert recommendations, cross-references and ISO grade guidance for turning, milling and drilling."/>
-  <link rel="canonical" href="https://cuttingtoolsai.eu/">
-  <link rel="stylesheet" href="/assets/tailwind.css"/>
-  <!-- React CDN -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- Fonts: Archivo + IBM Plex Mono via Google Fonts (CSP-safe) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/modals.css"/>
+  <style>
+
+:root{
+  --paper:#ECEAE2; --paper2:#F4F2EC; --card:#F8F7F2; --ink:#17181B; --ink2:#3C3E44;
+  --mu:#74757B; --line:#19191c1f; --line2:#19191c12; --hair:#19191c0f;
+  /* ISO machining groups — the real color code */
+  --P:#2F5BD6; --M:#C79400; --K:#C0392B; --N:#1F9D6B; --S:#B85C2C; --H:#5C6066;
+  --sans:'Archivo',sans-serif; --exp:'Archivo Expanded','Archivo',sans-serif; --mono:'IBM Plex Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:radial-gradient(var(--hair) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+::selection{background:var(--ink);color:var(--paper)}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--mono)}
+
+/* shared layout */
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mu)}
+.rule{height:1px;background:var(--line)}
+
+/* register / crosshair marks */
+.reg{position:fixed;width:14px;height:14px;z-index:60;pointer-events:none;opacity:.5}
+.reg::before,.reg::after{content:'';position:absolute;background:var(--ink)}
+.reg::before{left:50%;top:0;bottom:0;width:1px;transform:translateX(-.5px)}
+.reg::after{top:50%;left:0;right:0;height:1px;transform:translateY(-.5px)}
+.reg.tl{top:14px;left:14px}.reg.tr{top:14px;right:14px}
+.reg.bl{bottom:14px;left:14px}.reg.br{bottom:14px;right:14px}
+
+/* ── MASTHEAD ── */
+header{position:sticky;top:0;z-index:50;background:rgba(236,234,226,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.mast{display:flex;align-items:stretch;height:60px}
+.mast-l{display:flex;align-items:center;gap:14px;padding-right:26px;border-right:1px solid var(--line)}
+.brand-mk{width:22px;height:22px;border:1.5px solid var(--ink);position:relative;display:flex;align-items:center;justify-content:center}
+.brand-mk::before{content:'';width:8px;height:8px;background:var(--ink);transform:rotate(45deg)}
+.brand-tx{font-family:var(--exp);font-weight:800;font-size:15px;letter-spacing:.01em}
+.brand-tx span{font-weight:600;color:var(--mu)}
+.mast-mid{flex:1;display:flex;align-items:center}
+.mast-nav{display:flex;height:100%}
+.mast-nav a{display:flex;align-items:center;padding:0 22px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink2);border-right:1px solid var(--line);transition:background .2s,color .2s}
+.mast-nav a:first-child{border-left:1px solid var(--line)}
+.mast-nav a:hover{background:var(--ink);color:var(--paper)}
+.mast-r{display:flex;align-items:center;gap:18px;padding-left:24px;border-left:1px solid var(--line)}
+.idx{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--mu)}
+.idx .dot{width:6px;height:6px;border-radius:50%;background:var(--N);box-shadow:0 0 0 0 rgba(31,157,107,.5);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,157,107,.45)}70%{box-shadow:0 0 0 7px rgba(31,157,107,0)}100%{box-shadow:0 0 0 0 rgba(31,157,107,0)}}
+.cta-h{font-family:var(--mono);font-size:12px;font-weight:500;background:var(--ink);color:var(--paper);padding:9px 16px;letter-spacing:.02em;transition:opacity .2s}
+.cta-h:hover{opacity:.82}
+
+/* ── HERO ── */
+.hero{border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr}
+.hero-l{padding:64px 40px 54px;border-right:1px solid var(--line);position:relative}
+.hero-tag{display:flex;flex-wrap:wrap;gap:7px 16px;margin-bottom:46px}
+.hero-tag span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu)}
+.hero-tag b{color:var(--ink);font-weight:600}
+.hero-h1{font-family:var(--exp);font-weight:700;font-size:clamp(40px,5.1vw,72px);line-height:.98;letter-spacing:-.018em;margin-bottom:30px;text-wrap:balance}
+.hero-h1 em{font-style:normal;color:var(--accent,var(--P));transition:color .45s cubic-bezier(.2,.7,.2,1)}
+.hero-lead{font-size:18px;line-height:1.6;color:var(--ink2);max-width:520px;margin-bottom:40px;text-wrap:pretty}
+.hero-act{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{font-family:var(--mono);font-size:13px;letter-spacing:.02em;padding:14px 24px;display:inline-flex;align-items:center;gap:10px;transition:all .2s;cursor:pointer;border:1px solid var(--ink)}
+.btn-fill{background:var(--ink);color:var(--paper)}
+.btn-fill:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.btn-line{background:transparent;color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--paper)}
+.hero-foot{display:flex;gap:40px;margin-top:54px;padding-top:26px;border-top:1px solid var(--line)}
+.hf-n{font-family:var(--exp);font-weight:700;font-size:30px;letter-spacing:-.02em}
+.hf-l{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-top:5px}
+
+/* dimension ticks on hero-l */
+.dim{position:absolute;font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--mu)}
+.dim.top{top:16px;left:40px;display:flex;align-items:center;gap:8px}
+.dim.top::after{content:'';width:120px;height:1px;background:var(--line);position:relative}
+
+/* ── ISO SELECTOR (right) ── */
+.iso{padding:30px;display:flex;flex-direction:column;gap:18px;background:
+  linear-gradient(var(--line2) 1px,transparent 1px),
+  linear-gradient(90deg,var(--line2) 1px,transparent 1px);
+  background-size:44px 44px}
+.iso-head{display:flex;justify-content:space-between;align-items:baseline}
+.iso-head .t{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.iso-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.iso-sw{position:relative;aspect-ratio:1/1.18;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;justify-content:space-between;padding:9px;cursor:pointer;transition:transform .18s,box-shadow .18s}
+.iso-sw .bar{position:absolute;top:0;left:0;right:0;height:5px;background:var(--c)}
+.iso-sw .L{font-family:var(--exp);font-weight:800;font-size:22px;line-height:1;margin-top:7px}
+.iso-sw .n{font-family:var(--mono);font-size:8.5px;letter-spacing:.04em;color:var(--mu);text-transform:uppercase}
+.iso-sw:hover{transform:translateY(-3px)}
+.iso-sw.on{box-shadow:inset 0 0 0 2px var(--ink)}
+.iso-sw.on .L{color:var(--c)}
+
+/* readout panel */
+.read{border:1px solid var(--line);background:var(--card)}
+.read-top{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--line)}
+.read-grp{display:flex;align-items:center;gap:11px}
+.read-chip{width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-family:var(--exp);font-weight:800;font-size:16px;color:#fff;background:var(--accent,var(--P));transition:background .4s}
+.read-name{font-weight:700;font-size:15px;line-height:1.1}
+.read-name s{display:block;font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.06em;color:var(--mu);text-decoration:none;margin-top:2px}
+.read-conf{font-family:var(--mono);font-size:10px;color:var(--mu);text-align:right}
+.read-conf b{display:block;font-size:18px;color:var(--ink);font-weight:600}
+.read-body{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.rb{padding:13px 16px;border-right:1px solid var(--line)}
+.rb:nth-child(2n){border-right:0}
+.rb:nth-child(n+3){border-top:1px solid var(--line)}
+.rb-k{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:5px}
+.rb-v{font-family:var(--mono);font-size:14px;font-weight:500}
+.read-note{padding:13px 16px;font-size:12.5px;line-height:1.55;color:var(--ink2)}
+.read-note b{color:var(--ink);font-weight:600}
+.vc-bar{height:6px;background:#19191c14;margin-top:9px;position:relative;overflow:hidden}
+.vc-bar i{position:absolute;top:0;bottom:0;background:var(--accent,var(--P));transition:left .5s,right .5s,background .4s}
+
+/* ── MEASURE STRIP ── */
+.measure{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.ms{padding:26px 30px;border-right:1px solid var(--line);position:relative}
+.ms:last-child{border-right:0}
+.ms-n{font-family:var(--exp);font-weight:700;font-size:clamp(30px,3.4vw,46px);letter-spacing:-.03em;line-height:1}
+.ms-l{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-top:8px}
+.ms::after{content:'';position:absolute;left:30px;bottom:18px;width:18px;height:1px;background:var(--ink)}
+
+/* ── SECTION HEAD ── */
+.sec{padding:78px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:38px;flex-wrap:wrap}
+.sec-no{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--mu);margin-bottom:16px}
+.sec-h2{font-family:var(--exp);font-weight:700;font-size:clamp(30px,3.8vw,52px);line-height:1;letter-spacing:-.02em;max-width:13ch}
+.sec-desc{font-size:15px;line-height:1.6;color:var(--ink2);max-width:380px}
+
+/* ── TAXONOMY (the many kinds of tools) ── */
+.tax{border:1px solid var(--line);border-bottom:0}
+.tax-row{display:grid;grid-template-columns:54px 1.1fr 1.5fr 1fr 90px;align-items:center;border-bottom:1px solid var(--line);transition:background .2s;cursor:default;position:relative}
+.tax-row:hover{background:var(--paper2)}
+.tax-row.hd{background:var(--ink);color:var(--paper)}
+.tax-row.hd .tc{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);padding:12px 18px}
+.tc{padding:20px 18px;border-right:1px solid var(--line)}
+.tax-row.hd .tc{border-right-color:#ffffff22}
+.tc:last-child{border-right:0}
+.tc-no{font-family:var(--mono);font-size:12px;color:var(--mu)}
+.tc-ic{display:flex;align-items:center;gap:14px}
+.tc-ic svg{flex-shrink:0}
+.tc-name{font-family:var(--exp);font-weight:700;font-size:19px;letter-spacing:-.01em}
+.tc-codes{font-family:var(--mono);font-size:12px;color:var(--ink2);line-height:1.5}
+.tc-codes b{color:var(--ink)}
+.tc-ops{display:flex;gap:5px;flex-wrap:wrap}
+.op{font-family:var(--mono);font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:var(--mu);border:1px solid var(--line);padding:3px 7px}
+.tc-grp{display:flex;gap:3px;justify-content:flex-end}
+.tc-grp i{width:11px;height:11px;display:inline-block}
+
+/* ── ADVISOR CONSOLE ── */
+.adv{border:1px solid var(--line);background:var(--card);display:grid;grid-template-columns:300px 1fr}
+.adv-side{border-right:1px solid var(--line);display:flex;flex-direction:column}
+.adv-side .h{padding:15px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}
+.preset{padding:15px 18px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .2s;font-size:13px;line-height:1.5;color:var(--ink2)}
+.preset:hover,.preset.on{background:var(--paper2);color:var(--ink)}
+.preset.on{box-shadow:inset 3px 0 0 var(--accent,var(--P))}
+.preset .pl{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:5px;display:flex;justify-content:space-between}
+.adv-main{display:flex;flex-direction:column;min-height:520px}
+.adv-bar{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--mu)}
+.adv-bar .live{width:7px;height:7px;border-radius:50%;background:var(--N)}
+.adv-bar .sp{margin-left:auto}
+.adv-feed{flex:1;padding:24px 26px;display:flex;flex-direction:column;gap:18px;overflow-y:auto;max-height:560px}
+.msg-q{align-self:flex-end;max-width:78%;background:var(--ink);color:var(--paper);padding:12px 16px;font-size:13.5px;line-height:1.5}
+.msg-a{font-size:13.5px;line-height:1.62;color:var(--ink2);max-width:92%}
+.msg-a .lead-line{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:9px}
+.result{border:1px solid var(--line);margin-top:12px;background:var(--paper2)}
+.result-top{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line)}
+.result-code{font-family:var(--exp);font-weight:800;font-size:21px;letter-spacing:-.01em}
+.result-grade{font-family:var(--mono);font-size:11px;color:#fff;padding:4px 9px;background:var(--accent,var(--P))}
+.result-specs{display:grid;grid-template-columns:repeat(4,1fr)}
+.rs{padding:12px 14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rs:nth-child(4n){border-right:0}
+.rs-k{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin-bottom:4px}
+.rs-v{font-family:var(--mono);font-size:13px;font-weight:500}
+.result-alt{padding:12px 16px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.result-alt .al{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-right:4px}
+.result-alt span{font-family:var(--mono);font-size:11px;border:1px solid var(--line);padding:3px 9px;color:var(--ink2)}
+.cursor{display:inline-block;width:7px;height:14px;background:var(--ink);vertical-align:-2px;animation:bl .9s step-end infinite}
+@keyframes bl{50%{opacity:0}}
+.adv-input{display:flex;border-top:1px solid var(--line)}
+.adv-input input{flex:1;border:0;background:transparent;padding:15px 20px;font-family:var(--mono);font-size:13px;color:var(--ink);outline:none}
+.adv-input input::placeholder{color:var(--mu)}
+.adv-input button{border:0;border-left:1px solid var(--line);background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:12px;padding:0 26px;cursor:pointer;transition:opacity .2s}
+.adv-input button:hover{opacity:.82}
+
+/* ── TITLE BLOCK FOOTER ── */
+footer{border-top:1px solid var(--line);margin-top:8px}
+.tb{display:grid;grid-template-columns:1.6fr repeat(3,1fr);border-bottom:1px solid var(--line)}
+.tb-cell{padding:22px 24px;border-right:1px solid var(--line)}
+.tb-cell:last-child{border-right:0}
+.tb-k{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
+.tb-v{font-family:var(--mono);font-size:13px;color:var(--ink)}
+.tb-title .bn{font-family:var(--exp);font-weight:800;font-size:24px;letter-spacing:.01em;margin-bottom:6px}
+.tb-title .bs{font-size:13px;color:var(--ink2);line-height:1.5;max-width:30ch}
+.tb-bot{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;flex-wrap:wrap;gap:10px}
+.tb-bot .lk{display:flex;gap:22px;flex-wrap:wrap}
+.tb-bot a{font-family:var(--mono);font-size:11px;color:var(--mu);transition:color .2s}
+.tb-bot a:hover{color:var(--ink)}
+.tb-bot .cp{font-family:var(--mono);font-size:11px;color:var(--mu)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:1000px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-l{border-right:0;border-bottom:1px solid var(--line)}
+  .adv{grid-template-columns:1fr}
+  .adv-side{border-right:0;border-bottom:1px solid var(--line)}
+  .measure{grid-template-columns:1fr 1fr}
+  .ms:nth-child(2){border-right:0}
+  .tb{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .wrap{padding:0 20px}
+  .mast-nav{display:none}
+  .iso-grid{grid-template-columns:repeat(3,1fr)}
+  .tax-row,.tax-row.hd{grid-template-columns:42px 1fr;grid-auto-rows:auto}
+  .tax-row .tc:nth-child(n+3){display:none}
+  .result-specs{grid-template-columns:1fr 1fr}
+  .reg{display:none}
+}
+
+  </style>
 </head>
 <body>
-  <div id="catalog-root"></div>
-  <!-- Data must load before the app -->
-  <script src="/directory-data.js"></script>
-  <script src="/assets/directory-app.js"></script>
+
+
+
+
+
+<div class="reg tl"></div><div class="reg tr"></div><div class="reg bl"></div><div class="reg br"></div>
+
+<!-- ── MASTHEAD ── -->
+<header>
+  <div class="wrap">
+    <div class="mast">
+      <div class="mast-l">
+        <div class="brand-mk"></div>
+        <div class="brand-tx">CUTTINGTOOLS<span> / advisor</span></div>
+      </div>
+      <div class="mast-mid">
+        <nav class="mast-nav">
+          <a href="#system">System</a>
+          <a href="#tools">Tooling</a>
+          <a href="#advisor">Advisor</a>
+          <a href="#index">Index</a>
+        </nav>
+      </div>
+      <div class="mast-r">
+        <div class="idx"><span class="dot"></span>INDEX <span id="toolCountHeader">50,247</span> · LIVE</div>
+        <a href="#advisor" class="cta-h">Open advisor →</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero" id="system">
+  <div class="wrap">
+    <div class="hero-grid">
+      <!-- left: editorial -->
+      <div class="hero-l">
+        <div class="dim top">A · TOOLING ADVISOR</div>
+        <div class="hero-tag" style="margin-top:18px">
+          <span>BRAND‑NEUTRAL</span>
+          <span>ISO <b>P·M·K·N·S·H</b></span>
+          <span>TURNING / MILLING / DRILLING</span>
+        </div>
+        <h1 class="hero-h1">The right cutting tool for <em id="accentWord">steel</em>, decided in one second.</h1>
+        <p class="hero-lead">Not just inserts. Describe the workpiece and the operation — turning, milling, drilling, threading, grooving — and the advisor cross-references 50,000+ tools across every brand to return the exact grade, geometry and cutting data.</p>
+        <div class="hero-act">
+          <a href="#advisor" class="btn btn-fill">Ask the advisor →</a>
+          <a href="#tools" class="btn btn-line">Browse tooling</a>
+        </div>
+        <div class="hero-foot">
+          <div><div class="hf-n"><span id="toolCountHero">50,247</span></div><div class="hf-l">Tools indexed</div></div>
+          <div><div class="hf-n">46</div><div class="hf-l">Brands cross-referenced</div></div>
+          <div><div class="hf-n">98.2<span style="font-size:18px">%</span></div><div class="hf-l">Expert-validated</div></div>
+        </div>
+      </div>
+
+      <!-- right: ISO selector + readout -->
+      <div class="iso">
+        <div class="iso-head">
+          <span class="t">ISO Material Group</span>
+          <span class="t">Select →</span>
+        </div>
+        <div class="iso-grid" id="isoGrid"></div>
+        <div class="read">
+          <div class="read-top">
+            <div class="read-grp">
+              <div class="read-chip" id="rChip">P</div>
+              <div class="read-name" id="rName">Steel<s id="rSub">Unalloyed &amp; low-alloy</s></div>
+            </div>
+            <div class="read-conf">match<b id="rConf">96%</b></div>
+          </div>
+          <div class="read-body">
+            <div class="rb"><div class="rb-k">Recommended family</div><div class="rb-v" id="rFam">CNMG · −PM turning</div></div>
+            <div class="rb"><div class="rb-k">Grade / coating</div><div class="rb-v" id="rGrade">GC4325 · CVD Ti(C,N)</div></div>
+            <div class="rb"><div class="rb-k">Geometry</div><div class="rb-v" id="rGeo">80° rhombus · −MF</div></div>
+            <div class="rb"><div class="rb-k">Cutting speed Vc</div><div class="rb-v" id="rVc">220–320 m/min</div></div>
+          </div>
+          <div class="read-note">
+            <span id="rNote"><b>P-group:</b> tough substrate with a CVD multilayer resists plastic deformation at high cutting speeds. Optimise for crater wear on continuous cuts.</span>
+            <div class="vc-bar"><i id="vcFill" style="left:18%;right:24%"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MEASURE STRIP ── -->
+<div class="measure">
+  <div class="ms"><div class="ms-n">7</div><div class="ms-l">Tool categories</div></div>
+  <div class="ms"><div class="ms-n">6</div><div class="ms-l">ISO material groups</div></div>
+  <div class="ms"><div class="ms-n">&lt;0.8s</div><div class="ms-l">Avg response</div></div>
+  <div class="ms"><div class="ms-n">$0</div><div class="ms-l">To start — 10/day</div></div>
+</div>
+
+<!-- ── TAXONOMY ── -->
+<section class="sec" id="tools">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="sec-no">02 — TOOLING CATEGORIES</div>
+        <h2 class="sec-h2">Cutting tools are a world, not one insert.</h2>
+      </div>
+      <p class="sec-desc">The index covers the full machining stack — turning, milling, drilling and hole-making, threading, grooving and parting, reaming, and boring — across every ISO material group.</p>
+    </div>
+    <div class="tax rv" id="taxTable"></div>
+  </div>
+</section>
+
+<!-- ── ADVISOR ── -->
+<section class="sec" id="advisor" style="padding-top:8px">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="sec-no">03 — THE ADVISOR</div>
+        <h2 class="sec-h2">Describe the job. Get a decision.</h2>
+      </div>
+      <p class="sec-desc">Plain language in, structured recommendation out — grade, geometry, cutting data and cross-brand alternatives, with a confidence score you can defend on the floor.</p>
+    </div>
+    <div class="adv rv">
+      <div class="adv-side">
+        <div class="h">Example jobs</div>
+        <div class="preset on" data-i="0" onclick="sendPreset(0)"><div class="pl"><span>JOB 01</span><span>TURNING</span></div>316L stainless, external finishing, Vc 220, wet</div>
+        <div class="preset" data-i="1" onclick="sendPreset(1)"><div class="pl"><span>JOB 02</span><span>MILLING</span></div>Shoulder milling D2 at 52 HRC, interrupted</div>
+        <div class="preset" data-i="2" onclick="sendPreset(2)"><div class="pl"><span>JOB 03</span><span>DRILLING</span></div>Ø12 hole, Inconel 718, through-coolant</div>
+      </div>
+            <div class="adv-main">
+        <div class="adv-bar">
+          <span class="live"></span>ADVISOR v2.6
+          <span class="sp">brand-neutral · <span id="toolCount">50,247</span> indexed</span>
+        </div>
+        <!-- static example card — illustration of output format -->
+        <div class="adv-feed adv-demo" style="pointer-events:none;border-bottom:1px solid var(--line)">
+          <div class="kick" style="margin-bottom:10px;opacity:.6">↓ example output (illustration)</div>
+          <div class="msg-q">316L stainless, external finishing, Vc 220 m/min, wet</div>
+          <div class="msg-a">
+            <div class="lead-line">RECOMMENDATION · ISO M · TURNING</div>
+            316L work-hardens fast — you want a sharp PVD geometry and a positive rake to keep a clean shear plane and avoid built-up edge.
+            <div class="result" style="--accent:#C79400">
+              <div class="result-top">
+                <div class="result-code">WNMG 080404-MM</div>
+                <div class="result-grade" style="background:#C79400">GC2220</div>
+              </div>
+              <div class="result-specs">
+                <div class="rs"><div class="rs-k">Geometry</div><div class="rs-v">−MM medium</div></div>
+                <div class="rs"><div class="rs-k">Coating</div><div class="rs-v">PVD TiAlN</div></div>
+                <div class="rs"><div class="rs-k">Vc</div><div class="rs-v">180–230 m/min</div></div>
+                <div class="rs"><div class="rs-k">fn</div><div class="rs-v">0.10–0.20</div></div>
+              </div>
+              <div class="result-alt">
+                <span class="al">Cross-ref</span>
+                <span>Kennametal MM2220</span><span>Walter WSM20S</span><span>Iscar IC807</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- live advisor widget (inline mode) -->
+        <div id="ta-main-ai-widget"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TITLE BLOCK FOOTER ── -->
+<footer id="index">
+  <div class="wrap">
+    <div class="tb">
+      <div class="tb-cell tb-title">
+        <div class="bn">CUTTINGTOOLS</div>
+        <div class="bs">Brand-neutral AI tooling advisor for turning, milling, drilling and hole-making.</div>
+      </div>
+      <div class="tb-cell"><div class="tb-k">Index</div><div class="tb-v">50,247 tools<br>46 brands</div></div>
+      <div class="tb-cell"><div class="tb-k">Standard</div><div class="tb-v">ISO 513<br>P·M·K·N·S·H</div></div>
+      <div class="tb-cell"><div class="tb-k">Revision</div><div class="tb-v">v2.6 — 2026<br>SHEET 01/01</div></div>
+    </div>
+    <div class="wrap" style="padding:0">
+      <div class="tb-bot">
+        <div class="lk">
+          <a href="#system">System</a><a href="#tools">Tooling</a><a href="#advisor">Advisor</a><a href="#index">Index</a>
+        </div>
+        <div class="cp">© 2026 CUTTINGTOOLS — drawn for machinists</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+
+/* ── ISO MATERIAL SYSTEM ── */
+const ISO=[
+  {k:'P',name:'Steel',sub:'Unalloyed & low-alloy',c:'#2F5BD6',word:'steel',conf:'96%',
+   fam:'CNMG · −PM turning',grade:'GC4325 · CVD Ti(C,N)',geo:'80° rhombus · −MF',vc:'220–320 m/min',
+   fill:'left:18%;right:24%',note:'<b>P-group:</b> tough substrate with a CVD multilayer resists plastic deformation at high cutting speeds. Optimise for crater wear on continuous cuts.'},
+  {k:'M',name:'Stainless',sub:'Austenitic & duplex',c:'#C79400',word:'stainless',conf:'94%',
+   fam:'WNMG · −MM turning',grade:'GC2220 · PVD TiAlN',geo:'80° trigon · sharp edge',vc:'140–220 m/min',
+   fill:'left:30%;right:32%',note:'<b>M-group:</b> work-hardening and built-up edge are the enemies. A sharp PVD geometry keeps a clean shear plane and controls notch wear.'},
+  {k:'K',name:'Cast Iron',sub:'Grey & nodular',c:'#C0392B',word:'cast iron',conf:'95%',
+   fam:'SNMG · −KR roughing',grade:'GC3210 · CVD Al₂O₃',geo:'90° square · negative',vc:'250–400 m/min',
+   fill:'left:14%;right:14%',note:'<b>K-group:</b> abrasive but short-chipping. A thick alumina layer carries heat away and gives long, predictable tool life at high speed.'},
+  {k:'N',name:'Non-Ferrous',sub:'Aluminium & copper',c:'#1F9D6B',word:'aluminium',conf:'97%',
+   fam:'DCGT · polished AL',grade:'CD10 · uncoated / DLC',geo:'55° rhombus · positive',vc:'500–1200 m/min',
+   fill:'left:6%;right:8%',note:'<b>N-group:</b> run sharp, polished and uncoated to stop aluminium welding to the edge. Diamond (PCD) for high-silicon alloys and volume.'},
+  {k:'S',name:'Superalloy',sub:'Titanium & HRSA',c:'#B85C2C',word:'titanium',conf:'92%',
+   fam:'RCGT · round button',grade:'S205 · PVD whisker',geo:'round · positive · honed',vc:'40–90 m/min',
+   fill:'left:42%;right:46%',note:'<b>S-group:</b> low speed, high heat at the edge. A round insert spreads load and a tough whisker grade survives the notch wear titanium loves to create.'},
+  {k:'H',name:'Hardened',sub:'45–65 HRC steel',c:'#5C6066',word:'hardened steel',conf:'91%',
+   fam:'CBN tipped turning',grade:'CB7015 · CBN',geo:'negative · large chamfer',vc:'120–200 m/min',
+   fill:'left:34%;right:38%',note:'<b>H-group:</b> hard turning replaces grinding. A chamfered CBN edge runs continuous, dry, and holds tolerance to a mirror finish.'}
+];
+const grid=document.getElementById('isoGrid');
+ISO.forEach((g,i)=>{
+  const d=document.createElement('div');
+  d.className='iso-sw'+(i===0?' on':'');
+  d.style.setProperty('--c',g.c);
+  d.innerHTML=`<div class="bar"></div><div class="L">${g.k}</div><div class="n">${g.name}</div>`;
+  d.onclick=()=>selISO(i,d);
+  grid.appendChild(d);
+});
+window._selectedISO=ISO[0].k;
+function selISO(i,el){
+  document.querySelectorAll('.iso-sw').forEach(s=>s.classList.remove('on'));
+  el.classList.add('on');
+  window._selectedISO=ISO[i].k;
+  const g=ISO[i];
+  document.documentElement.style.setProperty('--accent',g.c);
+  document.getElementById('accentWord').style.color=g.c;
+  document.getElementById('rChip').style.background=g.c;
+  document.getElementById('vcFill').style.background=g.c;
+  document.getElementById('rChip').textContent=g.k;
+  document.getElementById('rName').childNodes[0].textContent=g.name;
+  document.getElementById('rSub').textContent=g.sub;
+  document.getElementById('rConf').textContent=g.conf;
+  document.getElementById('rFam').textContent=g.fam;
+  document.getElementById('rGrade').textContent=g.grade;
+  document.getElementById('rGeo').textContent=g.geo;
+  document.getElementById('rVc').textContent=g.vc;
+  document.getElementById('rNote').innerHTML=g.note;
+  document.getElementById('accentWord').textContent=g.word;
+  document.getElementById('vcFill').style.cssText=g.fill;
+}
+
+/* ── TAXONOMY DATA ── */
+function ic(p){return `<svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="#17181B" stroke-width="1.3">${p}</svg>`}
+const TAX=[
+  {no:'T1',name:'Turning',ic:ic('<circle cx="17" cy="17" r="11"/><path d="M17 6v22M6 17h22" stroke-width=".7"/><path d="M17 11l5 8H12z" fill="#17181B" stroke="none"/>'),
+   codes:'CNMG · DNMG · WNMG · VBMT',ops:['External','Internal','Facing','Profiling'],grp:['P','M','K','N','S','H']},
+  {no:'T2',name:'Milling',ic:ic('<rect x="11" y="6" width="12" height="16"/><path d="M11 22l-3 6M23 22l3 6M14 22l1 6M20 22l-1 6" stroke-width=".9"/>'),
+   codes:'APKT · ADMT · square/face/ball',ops:['Shoulder','Face','Slot','Ball'],grp:['P','M','K','N','S','H']},
+  {no:'T3',name:'Drilling',ic:ic('<path d="M17 4v18"/><path d="M17 22l-4 6h8z" fill="#17181B" stroke="none"/><path d="M13 8h8M12 13h10M13 18h8" stroke-width=".7"/>'),
+   codes:'Solid carbide · indexable · gun',ops:['Through','Blind','Deep'],grp:['P','M','K','N','S']},
+  {no:'T4',name:'Threading',ic:ic('<path d="M9 9h16M9 14h16M9 19h16M9 24h16" /><path d="M11 6l4 22M19 6l4 22" stroke-width=".7"/>'),
+   codes:'Full / partial profile · taps · mills',ops:['ISO metric','UN','NPT'],grp:['P','M','K','N']},
+  {no:'T5',name:'Grooving & Parting',ic:ic('<rect x="7" y="13" width="20" height="8"/><path d="M14 13v8M20 13v8" stroke-width=".8"/>'),
+   codes:'GX · external / internal / face',ops:['Parting','Grooving','Profiling'],grp:['P','M','K','N','S']},
+  {no:'T6',name:'Reaming',ic:ic('<path d="M17 5v17"/><circle cx="17" cy="25" r="4"/><path d="M13 9h8M13 13h8M13 17h8" stroke-width=".7"/>'),
+   codes:'Carbide · adjustable · H7 fit',ops:['Finishing','H7','Bore'],grp:['P','M','K','N']},
+  {no:'T7',name:'Boring',ic:ic('<circle cx="17" cy="17" r="10"/><circle cx="17" cy="17" r="4"/><path d="M17 13V7" stroke-width=".9"/>'),
+   codes:'Anti-vibration bars · fine bore',ops:['Rough','Fine','Damped'],grp:['P','M','K','N','S','H']},
+];
+const GC={P:'#2F5BD6',M:'#C79400',K:'#C0392B',N:'#1F9D6B',S:'#B85C2C',H:'#5C6066'};
+let tax='<div class="tax-row hd"><div class="tc">No.</div><div class="tc">Category</div><div class="tc">Common codes</div><div class="tc">Operations</div><div class="tc" style="text-align:right">Groups</div></div>';
+TAX.forEach(t=>{
+  tax+=`<div class="tax-row">
+    <div class="tc"><span class="tc-no">${t.no}</span></div>
+    <div class="tc"><div class="tc-ic">${t.ic}<span class="tc-name">${t.name}</span></div></div>
+    <div class="tc"><div class="tc-codes">${t.codes}</div></div>
+    <div class="tc"><div class="tc-ops">${t.ops.map(o=>`<span class="op">${o}</span>`).join('')}</div></div>
+    <div class="tc"><div class="tc-grp">${t.grp.map(g=>`<i style="background:${GC[g]}" title="${g}"></i>`).join('')}</div></div>
+  </div>`;
+});
+document.getElementById('taxTable').innerHTML=tax;
+
+/* ── ADVISOR ── */
+
+const feed=document.getElementById('advFeed');
+
+
+
+
+
+
+/* ── reveal ── */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ── PRESET → LIVE ADVISOR ── */
+const PRESET_QUERIES=[
+  '316L stainless, external finishing, Vc 220 m/min, wet',
+  'Shoulder milling D2 at 52 HRC, interrupted cut',
+  'Ø12 mm hole in Inconel 718, through-coolant'
+];
+function sendPreset(i){
+  document.querySelectorAll('.preset').forEach(function(p){p.classList.remove('on');});
+  var els=document.querySelectorAll('.preset');
+  if(els[i])els[i].classList.add('on');
+  sendToAdvisor(PRESET_QUERIES[i]);
+}
+function sendToAdvisor(prompt){
+  var iso=window._selectedISO||'P';
+  var full='ISO '+iso+' selected. '+prompt;
+  if(window.TAAdvisor&&typeof window.TAAdvisor.ask==='function'){
+    window.TAAdvisor.ask(full);
+  }
+}
+
+/* ── LIVE TOOL COUNT ── */
+function updateToolCount(){
+  var n=window.TA_TOOLS&&window.TA_TOOLS.length;
+  if(!n)return;
+  var fmt=n.toLocaleString('en');
+  ['toolCount','toolCountHeader','toolCountHero'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el)el.textContent=fmt;
+  });
+}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',updateToolCount);
+}else{
+  updateToolCount();
+}
+
+</script>
+
+<!-- Data + modal system + AI advisor widget -->
+<script src="/directory-data.js"></script>
+<script src="/modals.js"></script>
+<script src="/advisor-ai-widget.js"></script>
+
 </body>
 </html>
