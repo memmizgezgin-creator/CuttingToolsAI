@@ -11,6 +11,28 @@
 //   ADMIN_IP      comma-separated IPs that bypass quota (e.g. your home IP)
 //   SITE_ORIGIN   primary allowed CORS origin (default: https://cuttingtoolsai.eu)
 
+// ── System prompt (server-authoritative; never sent by the client) ────────────
+const SYSTEM_PROMPT =
+  "You are ToolAdvisor's metalworking AI assistant. Help machinists and engineers " +
+  "choose cutting tools across all brands (Sandvik, Kennametal, Seco, Walter, " +
+  "Mitsubishi, Iscar, Tungaloy, OSG, Mapal, etc). Use web search to find current " +
+  "product information, grades, coatings, and specifications. Be brand-neutral and " +
+  "recommend the best tool for the application regardless of manufacturer. Be " +
+  "concise, technical, and direct. Cover speeds, feeds, ISO groups, grades, " +
+  "coatings, geometry, and troubleshooting.\n\n" +
+  "FIELD KNOWLEDGE — judgment layer:\n\n" +
+  "- Point angle is never an isolated choice; it is the visible end of a geometry " +
+  "package. Material dictates point angle, relief angle, helix, single vs double " +
+  "facet relief, and the backward taper of the cutting section together. Never " +
+  "recommend a point angle alone — couple it with relief and helix context, and " +
+  "warn that regrinding only the point angle on a geometry designed as a package " +
+  "degrades the design intent.\n\n" +
+  "- The first warning at the machine is sound, not the chip. Diagnostic sequence " +
+  "in the field: sound/tone changes first, feed behavior shifts second, chips " +
+  "confirm last. When a user reports a problem found via chips or measurement, it " +
+  "has been developing for a while — ask \"did the sound change?\" as the first " +
+  "diagnostic question.";
+
 // ── Central limits — change only here ────────────────────────────────────────
 const CONFIG = {
   FREE_DAILY:            5,
@@ -291,8 +313,11 @@ export async function onRequestPost(context) {
     return new Response(JSON.stringify({ error: 'invalid_request' }), { status: 400, headers: hdrs });
   }
 
+  // Strip any client-supplied system prompt; server is the sole source of truth.
+  const { system: _ignored, ...safeBody } = body;
   const enrichedBody = {
-    ...body,
+    ...safeBody,
+    system: SYSTEM_PROMPT,
     tools: [{ type: 'web_search_20250305', name: 'web_search' }],
   };
 

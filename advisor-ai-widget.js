@@ -635,7 +635,6 @@
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
           max_tokens: 1024,
-          system: 'You are ToolAdvisor\'s metalworking AI assistant. Help machinists and engineers choose cutting tools across all brands (Sandvik, Kennametal, Seco, Walter, Mitsubishi, Iscar, Tungaloy, OSG, Mapal, etc). Use web search to find current product information, grades, coatings, and specifications. Be brand-neutral and recommend the best tool for the application regardless of manufacturer. Be concise, technical, and direct. Cover speeds, feeds, ISO groups, grades, coatings, geometry, and troubleshooting.',
           messages: [{ role: 'user', content: prompt }]
         })
       });
