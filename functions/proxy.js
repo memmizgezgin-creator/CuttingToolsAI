@@ -105,6 +105,7 @@ async function supabaseFetch(env, path, init = {}) {
   });
   if (!res.ok) {
     const text = await res.text().catch(() => '');
+    console.error('[SUPABASE_DEBUG] url:', url, 'status:', res.status, 'body:', text);
     throw new Error(`Supabase ${res.status}: ${text}`);
   }
   return res.json();
