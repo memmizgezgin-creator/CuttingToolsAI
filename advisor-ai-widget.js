@@ -267,7 +267,12 @@
       #ta-ai-launcher { bottom:16px; right:16px; }
     }
 
-    #ta-ai-widget.ta-ai-inline { width:100%; }
+    /* Desktop inline: sticky within the advisor section; stops at section bottom naturally */
+    #ta-ai-widget.ta-ai-inline {
+      width:100%;
+      position:sticky;
+      top:72px; /* 60px header + 12px gap */
+    }
     #ta-ai-widget.ta-ai-inline #ta-ai-launcher { display:none!important; }
     #ta-ai-widget.ta-ai-inline #ta-ai-panel {
       position:relative; bottom:auto; right:auto; z-index:1;
@@ -287,6 +292,8 @@
     #ta-ai-widget.ta-ai-inline #ta-ai-input { height:48px; font-size:15px; }
     #ta-ai-widget.ta-ai-inline #ta-ai-send { width:48px; height:48px; }
     @media (max-width:780px) {
+      /* Mobile: plain flow, no sticky — would eat the screen */
+      #ta-ai-widget.ta-ai-inline { position:relative; top:auto; }
       #ta-ai-widget.ta-ai-inline #ta-ai-quick-grid { grid-template-columns:1fr 1fr; }
     }
     @media (max-width:480px) {
