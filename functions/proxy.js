@@ -221,6 +221,10 @@ export async function onRequestPost(context) {
   const adminIPs  = (env.ADMIN_IP || '').split(',').map(s => s.trim()).filter(Boolean);
   const isAdminIP = adminIPs.includes(ip);
 
+  // Key-based admin bypass: X-Admin-Key header must match ADMIN_TEST_KEY env var
+  const sentAdminKey = request.headers.get('X-Admin-Key');
+  const isAdminKey   = !!(env.ADMIN_TEST_KEY && sentAdminKey && sentAdminKey === env.ADMIN_TEST_KEY);
+
 
   // ── Identity resolution ─────────────────────────────────────────────────────
   let userId     = null;
@@ -262,7 +266,7 @@ export async function onRequestPost(context) {
 
   const today = new Date().toISOString().slice(0, 10);  // YYYY-MM-DD UTC
 
-  if (!isAdminIP && supabaseReady) {
+  if (!isAdminIP && !isAdminKey && supabaseReady) {
     const firstOfMonth = today.slice(0, 7) + '-01';
 
     if (isPro) {

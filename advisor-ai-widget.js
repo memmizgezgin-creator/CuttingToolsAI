@@ -3,7 +3,8 @@
 (function () {
   'use strict';
 
-  const inlineHost = document.getElementById('ta-main-ai-widget');
+  // Always floating, never inline. Hidden when demo section is in view.
+  let launcherHiddenByScroll = false;
 
   // Hide the generic page-switcher FAB that this widget replaces
   const style = document.createElement('style');
@@ -263,44 +264,8 @@
     #ta-ai-send:disabled { opacity:.4; cursor:not-allowed; }
 
     @media (max-width:480px) {
-      #ta-ai-panel { bottom:0; right:0; width:100vw; max-width:100vw; border-radius:18px 18px 0 0; height:70vh; max-height:70vh; }
+      #ta-ai-panel { bottom:0; right:0; width:100vw; max-width:100vw; border-radius:18px 18px 0 0; height:85vh; max-height:85vh; }
       #ta-ai-launcher { bottom:16px; right:16px; }
-    }
-
-    /* Desktop inline: sticky within the advisor section; stops at section bottom naturally */
-    #ta-ai-widget.ta-ai-inline {
-      width:100%;
-      position:sticky;
-      top:72px; /* 60px header + 12px gap */
-    }
-    #ta-ai-widget.ta-ai-inline #ta-ai-launcher { display:none!important; }
-    #ta-ai-widget.ta-ai-inline #ta-ai-panel {
-      position:relative; bottom:auto; right:auto; z-index:1;
-      display:flex; width:100%; max-width:none; height:auto; min-height:620px; max-height:none;
-      border-radius:18px; animation:none;
-    }
-    #ta-ai-widget.ta-ai-inline #ta-ai-header { padding:16px 18px; }
-    #ta-ai-widget.ta-ai-inline #ta-ai-minimize { display:none; }
-    #ta-ai-widget.ta-ai-inline #ta-ai-quick { padding:14px 16px; }
-    #ta-ai-widget.ta-ai-inline #ta-ai-quick-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
-    #ta-ai-widget.ta-ai-inline #ta-ai-messages { min-height:360px; padding:18px; }
-    #ta-ai-widget.ta-ai-inline .ta-ai-msg-bubble {
-      max-width:min(820px,86%); font-size:14.5px; line-height:1.7;
-    }
-    #ta-ai-widget.ta-ai-inline #ta-ai-empty { padding:54px 18px; }
-    #ta-ai-widget.ta-ai-inline #ta-ai-form { padding:16px; }
-    #ta-ai-widget.ta-ai-inline #ta-ai-input { height:48px; font-size:15px; }
-    #ta-ai-widget.ta-ai-inline #ta-ai-send { width:48px; height:48px; }
-    @media (max-width:780px) {
-      /* Mobile: plain flow, no sticky — would eat the screen */
-      #ta-ai-widget.ta-ai-inline { position:relative; top:auto; }
-      #ta-ai-widget.ta-ai-inline #ta-ai-quick-grid { grid-template-columns:1fr 1fr; }
-    }
-    @media (max-width:480px) {
-      #ta-ai-widget.ta-ai-inline #ta-ai-panel {
-        bottom:auto; right:auto; width:100%; max-width:none; height:auto; max-height:none;
-        min-height:620px; border-radius:18px;
-      }
     }
   `;
   document.head.appendChild(style);
@@ -331,7 +296,11 @@
 
   // ── admin bypass (cosmetic UI only — server enforces all real limits) ────────
   function isAdmin() {
-    try { return localStorage.getItem('ta_admin') === 'true'; } catch { return false; }
+    try { return localStorage.getItem('ta_admin') === 'true' || !!localStorage.getItem('ta_admin_key'); } catch { return false; }
+  }
+
+  function getAdminKey() {
+    try { return localStorage.getItem('ta_admin_key') || null; } catch { return null; }
   }
 
   // ── server-authoritative quota state ─────────────────────────────────────
@@ -414,8 +383,8 @@
 
       <div id="ta-ai-credits-bar">
         <span style="color:#92400e;flex-shrink:0;display:flex;align-items:center">${IC.crown}</span>
-        <span>Free questions used. Unlock unlimited with Pro.</span>
-        <button id="ta-ai-credits-upgrade" type="button">Upgrade</button>
+        <span>Pro launches in July — join the waitlist for early access.</span>
+        <button id="ta-ai-credits-upgrade" type="button">Join waitlist</button>
       </div>
 
       <form id="ta-ai-form" autocomplete="off">
@@ -424,12 +393,7 @@
       </form>
     </div>
   `;
-  if (inlineHost) {
-    root.classList.add('ta-ai-inline');
-    inlineHost.appendChild(root);
-  } else {
-    document.body.appendChild(root);
-  }
+  document.body.appendChild(root);
 
   // ── element refs ──────────────────────────────────────────────────────────
   const launcher    = document.getElementById('ta-ai-launcher');
@@ -448,12 +412,6 @@
   const launcherIcon = document.getElementById('ta-ai-launcher-icon');
 
   let busy = false;
-
-  if (inlineHost) {
-    panel.classList.add('open');
-    launcher.style.display = 'none';
-    launcherIcon.classList.remove('pulse');
-  }
 
   // ── state helpers ─────────────────────────────────────────────────────────
   function updateQuota() {
@@ -499,7 +457,7 @@
     creditsBar.classList.toggle('show', r <= 0);
     input.disabled   = busy || r <= 0;
     sendBtn.disabled = busy || !input.value.trim() || r <= 0;
-    input.placeholder = r > 0 ? 'Ask about tools, speeds, materials…' : 'Out of free questions — upgrade to continue';
+    input.placeholder = r > 0 ? 'Ask about tools, speeds, materials…' : 'Out of free queries — join the waitlist';
   }
 
   function setInputState() {
@@ -591,10 +549,10 @@
     wrap.innerHTML = `
       <div class="ta-upgrade-card">
         <div class="ta-upgrade-card-title">
-          <span>${IC.crown}</span> Free queries used up
+          <span>${IC.crown}</span> You've used today's 5 free queries
         </div>
-        <div class="ta-upgrade-card-body">Upgrade to Pro for unlimited advisor runs, deep cross-reference tiers, multi-tool compare exports, and no daily limits.</div>
-        <button class="ta-upgrade-card-btn" id="ta-cta-upgrade-btn">Upgrade to Pro — €29/mo</button>
+        <div class="ta-upgrade-card-body">Pro launches in July. Join the waitlist now — the first 50 sign-ups get 50% off the first 3 months.</div>
+        <button class="ta-upgrade-card-btn" id="ta-cta-upgrade-btn">Join the waitlist</button>
       </div>`;
     messages.appendChild(wrap);
     wrap.querySelector('#ta-cta-upgrade-btn').addEventListener('click', openPro);
@@ -638,7 +596,7 @@
       res = await fetch(API_URL, {
         method: 'POST',
         credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
+        headers: Object.assign({ 'Content-Type': 'application/json' }, getAdminKey() ? { 'X-Admin-Key': getAdminKey() } : {}),
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
           max_tokens: 1024,
@@ -720,9 +678,8 @@
   });
 
   minimize.addEventListener('click', () => {
-    if (inlineHost) return;
     panel.classList.remove('open');
-    launcher.style.display = '';
+    launcher.style.display = launcherHiddenByScroll ? 'none' : '';
     updateQuota();
   });
 
@@ -753,15 +710,31 @@
   input.addEventListener('input', setInputState);
 
   document.addEventListener('keydown', e => {
-    if (!inlineHost && e.key === 'Escape' && panel.classList.contains('open')) {
+    if (e.key === 'Escape' && panel.classList.contains('open')) {
       panel.classList.remove('open');
-      launcher.style.display = '';
+      launcher.style.display = launcherHiddenByScroll ? 'none' : '';
     }
   });
 
+  // ── Hide launcher when advisor demo section is in view (IntersectionObserver) ──
+  const demoSection = document.getElementById('advisor');
+  if (demoSection && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        launcherHiddenByScroll = entry.isIntersecting;
+        if (entry.isIntersecting && !panel.classList.contains('open')) {
+          launcher.style.display = 'none';
+        } else if (!entry.isIntersecting && !panel.classList.contains('open')) {
+          launcher.style.display = '';
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(demoSection);
+  }
+
   // ── pulse after 4s to draw attention ──────────────────────────────────────
   setTimeout(() => {
-    if (!inlineHost && !panel.classList.contains('open')) launcherIcon.classList.add('pulse');
+    if (!panel.classList.contains('open')) launcherIcon.classList.add('pulse');
   }, 4000);
 
   updateQuota();
