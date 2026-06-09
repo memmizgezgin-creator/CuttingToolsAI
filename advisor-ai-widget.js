@@ -159,7 +159,13 @@
       font-size:12.5px; line-height:1.55; white-space:pre-wrap;
     }
     .ta-ai-msg.user .ta-ai-msg-bubble { background:#2C4A6E; color:#fff; border-top-right-radius:3px; }
-    .ta-ai-msg.ai  .ta-ai-msg-bubble { background:#f0f4ff; color:#1A1A2E; border-top-left-radius:3px; }
+    .ta-ai-msg.ai  .ta-ai-msg-bubble { background:#f0f4ff; color:#1A1A2E; border-top-left-radius:3px; white-space:normal; }
+    .ta-ai-msg.ai .ta-ai-msg-bubble p { margin:0 0 6px; }
+    .ta-ai-msg.ai .ta-ai-msg-bubble p:last-child { margin-bottom:0; }
+    .ta-ai-msg.ai .ta-ai-msg-bubble ul,
+    .ta-ai-msg.ai .ta-ai-msg-bubble ol { margin:3px 0 6px; padding-left:16px; }
+    .ta-ai-msg.ai .ta-ai-msg-bubble li { margin-bottom:2px; }
+    .ta-ai-msg.ai .ta-ai-msg-bubble strong { font-weight:700; }
     .ta-ai-typing { display:flex; gap:4px; align-items:center; padding:10px 12px; }
     .ta-ai-typing span {
       width:6px; height:6px; border-radius:50%; background:#6b6880;
@@ -498,6 +504,39 @@
     input.disabled   = busy || r <= 0;
   }
 
+  function renderMarkdown(text) {
+    // Clean artifacts: collapse 3+ newlines → 2, remove lone-dash/whitespace lines
+    let s = text
+      .replace(/\n{3,}/g, '\n\n')
+      .replace(/^[ \t]*-[ \t]*$/gm, '');
+
+    // Escape HTML first to prevent XSS
+    s = s
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+
+    // **bold** → <strong>
+    s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+    // Process double-newline-separated blocks into paragraphs / lists
+    const out = [];
+    for (const block of s.split(/\n\n+/)) {
+      if (!block.trim()) continue;
+      const lines = block.split('\n');
+      const filled = lines.filter(l => l.trim());
+      if (filled.length && filled.every(l => /^-\s/.test(l))) {
+        out.push('<ul>' + filled.map(l => `<li>${l.replace(/^-\s/, '')}</li>`).join('') + '</ul>');
+      } else if (filled.length && filled.every(l => /^\d+\.\s/.test(l))) {
+        out.push('<ol>' + filled.map(l => `<li>${l.replace(/^\d+\.\s/, '')}</li>`).join('') + '</ol>');
+      } else {
+        out.push(`<p>${lines.join('<br>')}</p>`);
+      }
+    }
+    return out.join('');
+  }
+
   function addMessage(role, text) {
     if (empty) empty.style.display = 'none';
     const row = document.createElement('div');
@@ -630,7 +669,7 @@
           || data.error?.message
           || (typeof data.error === 'string' ? data.error : null)
           || 'Sorry, I had trouble answering that. Please try again.';
-        addMessage('ai', escapeHtml(reply).replace(/\n/g, '<br>'));
+        addMessage('ai', renderMarkdown(reply));
       }
     } catch (fetchErr) {
       typingRow.remove();
