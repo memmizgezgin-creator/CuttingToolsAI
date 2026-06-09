@@ -364,8 +364,11 @@ export async function onRequestPost(context) {
 
   try { data = await upstream.json(); } catch { /* non-JSON */ }
 
-  // Empty or malformed completion
-  if (!data.content?.[0]?.text) {
+  // web_search responses contain multiple block types; collect all text blocks
+  const textBlocks = (data.content || []).filter(b => b.type === 'text');
+  const answer = textBlocks.map(b => b.text).join('\n\n').trim();
+
+  if (!answer) {
     await refundQuota();
     return aiErrorResponse(502, 'ai_empty');
   }
@@ -385,7 +388,7 @@ export async function onRequestPost(context) {
 
   if (setCookie) responseHeaders['Set-Cookie'] = setCookie;
 
-  return new Response(JSON.stringify(data), {
+  return new Response(JSON.stringify({ ...data, answer }), {
     status: upstream.status,
     headers: responseHeaders,
   });
