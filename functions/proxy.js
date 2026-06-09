@@ -206,8 +206,9 @@ export async function onRequestPost(context) {
   let subjectId   = null;
   let quotaRemaining = null;   // null = unknown (skip header); set for free users
 
+  const today = new Date().toISOString().slice(0, 10);  // YYYY-MM-DD UTC
+
   if (!isAdminIP && supabaseReady) {
-    const today        = new Date().toISOString().slice(0, 10);     // YYYY-MM-DD UTC
     const firstOfMonth = today.slice(0, 7) + '-01';
 
     if (isPro) {
@@ -280,54 +281,96 @@ export async function onRequestPost(context) {
     }
   }
 
-  // ── Forward to Anthropic ───────────────────────────────────────────────────
-  let upstream;
-  let anthropicOk = false;
-
+  // ── Forward to Anthropic (25s timeout, one retry on 5xx/network) ────────────
+  let body;
   try {
-    const body = await request.json();
-    const enrichedBody = {
-      ...body,
-      tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-    };
+    body = await request.json();
+  } catch {
+    const hdrs = { ...CORS, 'Content-Type': 'application/json' };
+    if (setCookie) hdrs['Set-Cookie'] = setCookie;
+    return new Response(JSON.stringify({ error: 'invalid_request' }), { status: 400, headers: hdrs });
+  }
 
-    upstream = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type':    'application/json',
-        'x-api-key':       env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'anthropic-beta':  'web-search-2025-03-05',
-      },
-      body: JSON.stringify(enrichedBody),
-    });
+  const enrichedBody = {
+    ...body,
+    tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+  };
 
-    anthropicOk = upstream.ok;
-  } catch (err) {
-    // Network failure calling Anthropic → refund quota
+  const refundQuota = async () => {
     if (subjectType && subjectId && supabaseReady) {
-      const today = new Date().toISOString().slice(0, 10);
       await callRPC(env, 'refund_daily', {
         p_type: subjectType, p_id: subjectId, p_day: today,
       }).catch(() => {});
     }
+  };
+
+  const callAnthropic = async () => {
+    const ctrl  = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 25000);
+    try {
+      return await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type':      'application/json',
+          'x-api-key':         env.ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01',
+          'anthropic-beta':    'web-search-2025-03-05',
+        },
+        body: JSON.stringify(enrichedBody),
+        signal: ctrl.signal,
+      });
+    } finally {
+      clearTimeout(timer);
+    }
+  };
+
+  const aiErrorResponse = (status, errorCode) => {
     const hdrs = { ...CORS, 'Content-Type': 'application/json' };
     if (setCookie) hdrs['Set-Cookie'] = setCookie;
-    return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: hdrs });
-  }
+    return new Response(
+      JSON.stringify({ error: errorCode, retryable: true }),
+      { status, headers: hdrs }
+    );
+  };
 
-  // Refund on Anthropic 5xx (our error, not the user's fault)
-  if (!anthropicOk && upstream.status >= 500 && subjectType && subjectId && supabaseReady) {
-    const today = new Date().toISOString().slice(0, 10);
-    await callRPC(env, 'refund_daily', {
-      p_type: subjectType, p_id: subjectId, p_day: today,
-    }).catch(() => {});
-  }
-
+  let upstream;
   let data = {};
-  try { data = await upstream.json(); } catch { /* non-JSON body */ }
 
-  // ── Build response ─────────────────────────────────────────────────────────
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    if (attempt === 2) await new Promise(r => setTimeout(r, 800));
+
+    try {
+      upstream = await callAnthropic();
+    } catch {
+      if (attempt < 2) continue;
+      await refundQuota();
+      return aiErrorResponse(503, 'ai_unavailable');
+    }
+
+    if (upstream.ok) break;
+
+    if (upstream.status >= 500) {
+      if (attempt < 2) continue;
+      await refundQuota();
+      return aiErrorResponse(503, 'ai_unavailable');
+    }
+
+    // Anthropic 4xx — pass through without retry
+    try { data = await upstream.json(); } catch { /* non-JSON */ }
+    const hdrs4xx = { ...CORS, 'Content-Type': 'application/json' };
+    if (setCookie) hdrs4xx['Set-Cookie'] = setCookie;
+    return new Response(JSON.stringify(data), { status: upstream.status, headers: hdrs4xx });
+  }
+
+  try { data = await upstream.json(); } catch { /* non-JSON */ }
+
+  // Empty or malformed completion
+  if (!data.content?.[0]?.text) {
+    await refundQuota();
+    return aiErrorResponse(502, 'ai_empty');
+  }
+
+  // ── Build success response ─────────────────────────────────────────────────
   const plan = isPro ? 'pro' : 'free';
   const responseHeaders = {
     ...CORS,
@@ -335,8 +378,6 @@ export async function onRequestPost(context) {
     'X-Plan': plan,
   };
 
-  // Only emit quota headers when Supabase is live; when it's not configured
-  // the counter is inactive and we must not send stale/stuck values.
   if (!isPro && !isAdminIP && supabaseReady && quotaRemaining !== null) {
     responseHeaders['X-Quota-Limit']     = String(CONFIG.FREE_DAILY);
     responseHeaders['X-Quota-Remaining'] = String(quotaRemaining);

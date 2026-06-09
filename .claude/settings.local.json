@@ -155,7 +155,26 @@
       "Bash(pkill -f \"pipeline.js|catalogue-crawler.js\")",
       "Bash(node ingestion/scripts/pipeline.js)",
       "Bash(node /Users/muratonder/Desktop/ToolAdvisor/ingestion/scripts/extract-page-text.js /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/processed/2026-06-01T08-57-32-461_\\\\[YE-TP23\\\\]_TitaNox_Power_Metric_spread.pdf)",
-      "Bash(git remote *)"
+      "Bash(git remote *)",
+      "Bash(supabase --version)",
+      "Bash(cat)",
+      "Bash(chmod +x /tmp/quota_test.sh)",
+      "Bash(/tmp/quota_test.sh)",
+      "Bash(chmod +x /tmp/quota_test2.sh)",
+      "Bash(/tmp/quota_test2.sh)",
+      "Bash(curl -s 'https://cuttingtoolsai.eu/admin/quota-debug')",
+      "Bash(chmod +x /tmp/wait_for_deploy.sh)",
+      "Bash(/tmp/wait_for_deploy.sh)",
+      "Bash(chmod +x /tmp/quota_final_test.sh)",
+      "Bash(/tmp/quota_final_test.sh)",
+      "Bash(wrangler pages *)",
+      "Bash(chmod +x /tmp/quota_redeploy_test.sh)",
+      "Bash(/tmp/quota_redeploy_test.sh)",
+      "Bash(curl -s -I -X POST https://cuttingtoolsai.eu/proxy -H 'Content-Type: application/json' --data '{\"model\":\"claude-haiku-4-5-20251001\",\"max_tokens\":10,\"system\":\"x\",\"messages\":[{\"role\":\"user\",\"content\":\"x\"}]}')",
+      "Bash(curl -s -i -X POST https://cuttingtoolsai.eu/proxy -H 'Content-Type: application/json' --data '{\"model\":\"claude-haiku-4-5-20251001\",\"max_tokens\":10,\"system\":\"x\",\"messages\":[{\"role\":\"user\",\"content\":\"x\"}]}')",
+      "Bash(curl -s -i -X POST https://cuttingtoolsai.eu/proxy -H 'Content-Type: application/json' --data '{\"model\":\"claude-haiku-4-5-20251001\",\"max_tokens\":5,\"system\":\"x\",\"messages\":[{\"role\":\"user\",\"content\":\"x\"}]}')",
+      "Bash(rm -f /tmp/final_jar.txt *)",
+      "Bash(git pull *)"
     ]
   }
 }

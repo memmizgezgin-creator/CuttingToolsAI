@@ -124,14 +124,14 @@
     body: () => `
       <div class="ta-modal-header" style="background:linear-gradient(135deg,#123356 0%,#2c4a6e 100%);color:#fff;border:none;">
         <div style="position:relative;z-index:1;">
-          <p class="ta-eyebrow" style="color:#F59E0B;">ToolAdvisor Pro</p>
+          <p class="ta-eyebrow" style="color:#F59E0B;">ToolAdvisor Pro — Coming July 2026</p>
           <h2 style="color:#fff;">More depth. Same neutrality.</h2>
-          <p class="ta-sub" style="color:rgba(255,255,255,.78);max-width:560px;">Pro unlocks the full decision platform. We still don't take money from manufacturers — your recommendations stay neutral.</p>
+          <p class="ta-sub" style="color:rgba(255,255,255,.78);max-width:560px;">Pro is launching soon. Join the waitlist and we'll email you when it's ready — early-access pricing included.</p>
         </div>
         <button class="ta-modal-close" data-modal-close aria-label="Close" style="background:rgba(255,255,255,.14);color:#fff;"><span class="material-symbols-outlined">close</span></button>
       </div>
       <div class="ta-modal-body">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:24px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:28px;">
           ${PRO_FEATURES.map(f => `
             <div style="padding:14px;border:1px solid var(--ta-warm);border-radius:14px;">
               <span class="material-symbols-outlined" style="font-size:22px;color:var(--ta-primary);">${f.icon}</span>
@@ -141,20 +141,68 @@
           `).join('')}
         </div>
 
-        <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ta-text-muted);font-weight:600;margin:0 0 12px;">Plans</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
-          ${proPlanCard('Free', '€0', '', ['5 advisor runs / mo', 'Top-tier cross-ref only', '2-tool compare', 'Knowledge guides'], 'Current plan', 'ghost')}
-          ${proPlanCard('Pro',  '€29', '/ user / mo', ['Unlimited advisor runs', 'All cross-ref tiers', '6-tool compare', 'Projects & saved', 'PDF / CSV / JSON exports'], 'Start 14-day trial', 'amber', true)}
-          ${proPlanCard('Team', '€79', '/ seat / mo', ['Everything in Pro', 'Shared team projects', 'Decision audit log', 'SSO + roles', 'Priority support'], 'Contact us', 'primary')}
+        <div id="ta-waitlist-wrap" style="max-width:480px;margin:0 auto;">
+          <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ta-text-muted);font-weight:600;margin:0 0 12px;">Get early access</p>
+          <form id="ta-waitlist-form" style="display:flex;gap:8px;flex-wrap:wrap;">
+            <input id="ta-waitlist-email" type="email" placeholder="you@workshop.com" required autocomplete="email"
+              style="flex:1;min-width:200px;height:42px;padding:0 14px;border:1.5px solid var(--ta-warm);border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;color:var(--ta-primary);"/>
+            <button type="submit" id="ta-waitlist-submit"
+              style="height:42px;padding:0 20px;border-radius:10px;border:none;background:#F59E0B;color:#451a03;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;cursor:pointer;white-space:nowrap;">
+              Join waitlist
+            </button>
+          </form>
+          <p id="ta-waitlist-msg" style="margin:10px 0 0;font-size:13px;min-height:18px;"></p>
         </div>
       </div>
       <div class="ta-modal-footer">
-        <span style="font-size:12px;color:var(--ta-text-muted);">14-day trial · cancel anytime · no card needed</span>
-        <div style="display:flex;gap:8px;">
-          <button class="ta-btn ta-btn-text" data-modal-close>Maybe later</button>
-          <button class="ta-btn ta-btn-amber ta-btn-lg" onclick="TA.closeModal('pro-upgrade'); TA.toast('Pro trial started (demo)');">Start 14-day trial</button>
-        </div>
-      </div>`
+        <span style="font-size:12px;color:var(--ta-text-muted);">No payment needed. We'll email you when Pro launches.</span>
+        <button class="ta-btn ta-btn-text" data-modal-close>Maybe later</button>
+      </div>`,
+    onOpen(host) {
+      const form   = host.querySelector('#ta-waitlist-form');
+      const emailInput = host.querySelector('#ta-waitlist-email');
+      const submit = host.querySelector('#ta-waitlist-submit');
+      const msg    = host.querySelector('#ta-waitlist-msg');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        submit.disabled = true;
+        submit.textContent = 'Joining…';
+        msg.style.color = '';
+        msg.textContent = '';
+
+        try {
+          const res  = await fetch('/waitlist', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ email, source: 'pro_cta' }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (data.ok) {
+            form.style.display  = 'none';
+            msg.style.color     = '#047857';
+            msg.style.fontWeight = '600';
+            msg.textContent = "You're on the list. We'll email you when Pro launches.";
+          } else if (data.error === 'invalid_email') {
+            msg.style.color = '#DC2626';
+            msg.textContent = 'Please enter a valid email address.';
+            submit.disabled = false;
+            submit.textContent = 'Join waitlist';
+          } else {
+            msg.style.color = '#DC2626';
+            msg.textContent = 'Something went wrong. Please try again.';
+            submit.disabled = false;
+            submit.textContent = 'Join waitlist';
+          }
+        } catch {
+          msg.style.color = '#DC2626';
+          msg.textContent = 'Something went wrong. Please try again.';
+          submit.disabled = false;
+          submit.textContent = 'Join waitlist';
+        }
+      });
+    }
   };
   function proPlanCard(name, price, period, features, cta, variant, highlighted) {
     const ring = highlighted ? 'box-shadow:0 0 0 2px var(--ta-amber);position:relative;' : '';

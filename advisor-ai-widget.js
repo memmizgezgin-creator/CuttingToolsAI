@@ -608,6 +608,8 @@
           } else {
             addErrorMessage('Server error — please try again in a moment.', prompt);
           }
+        } else if ((res.status === 503 || res.status === 502) && data.retryable) {
+          addErrorMessage('AI is temporarily unavailable. Please try again in a moment.', prompt);
         } else {
           addErrorMessage(`Something went wrong (${res.status}). Please try again.`, prompt);
         }

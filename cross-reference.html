@@ -501,6 +501,48 @@
     status.textContent = 'Limit reached';
   }
 
+  function renderEmpty(query) {
+    output.innerHTML = `
+      <div style="text-align:center;padding:52px 16px;">
+        <span class="material-symbols-outlined" style="font-size:48px;color:#1e3a5f;opacity:0.15;display:block;margin-bottom:12px;">search_off</span>
+        <p style="font-family:'Nunito',sans-serif;font-weight:700;font-size:16px;color:#1e3a5f;margin:0 0 8px;">No cross-reference found for this code.</p>
+        <p style="font-size:13px;color:#6B7280;max-width:400px;margin:0 auto 22px;line-height:1.65;">Check the ISO format (e.g. CNMG120408-PM) or try a brand-specific grade like GC4325. The AI Advisor can suggest alternatives based on your application.</p>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+          <button type="button" id="xref-empty-refine" style="display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;border:1.5px solid #E8E4DE;background:#fff;color:#123356;font-size:13px;font-weight:600;cursor:pointer;">
+            <span class="material-symbols-outlined" style="font-size:16px;">edit</span>Refine search
+          </button>
+          <button type="button" id="xref-empty-advisor" style="display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;border:none;background:#123356;color:#fff;font-size:13px;font-weight:600;cursor:pointer;">
+            <span class="material-symbols-outlined" style="font-size:16px;">auto_awesome</span>Ask AI Advisor
+          </button>
+        </div>
+      </div>`;
+    status.textContent = 'No results';
+    document.getElementById('xref-empty-refine')?.addEventListener('click', () => input.focus());
+    document.getElementById('xref-empty-advisor')?.addEventListener('click', () => {
+      const aiInput    = document.getElementById('ta-ai-input');
+      const aiPanel    = document.getElementById('ta-ai-panel');
+      const aiLauncher = document.getElementById('ta-ai-launcher');
+      if (aiInput)    { aiInput.value = query; aiInput.dispatchEvent(new Event('input')); }
+      if (aiPanel)    { aiPanel.classList.add('open'); }
+      if (aiLauncher) { aiLauncher.style.display = 'none'; }
+      if (aiInput)    { aiInput.focus(); }
+    });
+  }
+
+  function renderRetryable(query) {
+    output.innerHTML = `
+      <div style="text-align:center;padding:52px 16px;">
+        <span class="material-symbols-outlined" style="font-size:44px;color:#F59E0B;display:block;margin-bottom:12px;">cloud_off</span>
+        <p style="font-family:'Nunito',sans-serif;font-weight:700;font-size:16px;color:#1e3a5f;margin:0 0 8px;">AI is temporarily unavailable.</p>
+        <p style="font-size:13px;color:#6B7280;max-width:400px;margin:0 auto 22px;line-height:1.65;">The service is experiencing high load. Please try again in a moment.</p>
+        <button type="button" id="xref-retry-btn" style="display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;background:#123356;color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;">
+          <span class="material-symbols-outlined" style="font-size:16px;">refresh</span>Try again
+        </button>
+      </div>`;
+    status.textContent = 'Unavailable';
+    document.getElementById('xref-retry-btn')?.addEventListener('click', () => runCrossReference(query));
+  }
+
   function syncQuotaFromHeader(response) {
     // Server is authoritative; no client-side quota state needed for single-use pages like cross-reference.
     // Headers are read by the page for UI decisions (e.g., showing 429 upgrade prompt).
@@ -548,11 +590,16 @@ Return plain text only:
         renderQuotaExceeded();
         return;
       }
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
+      if ((response.status === 503 || response.status === 502) && data.retryable) {
+        renderRetryable(query);
+        return;
+      }
       const textBlock = data.content?.filter((block) => block.type === 'text').pop();
-      const reply = textBlock?.text || data.error?.message || data.error;
-      if (!response.ok) throw new Error(typeof reply === 'string' ? reply : `Request failed with status ${response.status}`);
-      renderText(reply || 'No answer returned.');
+      const reply = textBlock?.text || data.error?.message || (typeof data.error === 'string' ? data.error : null);
+      if (!response.ok) throw new Error(reply || `Request failed with status ${response.status}`);
+      if (!reply) { renderEmpty(query); return; }
+      renderText(reply);
     } catch (error) {
       renderError(error.message);
     } finally {
