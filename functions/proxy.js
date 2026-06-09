@@ -105,7 +105,6 @@ async function supabaseFetch(env, path, init = {}) {
   });
   if (!res.ok) {
     const text = await res.text().catch(() => '');
-    console.error('[SUPABASE_DEBUG] url:', url, 'status:', res.status, 'body:', text);
     throw new Error(`Supabase ${res.status}: ${text}`);
   }
   return res.json();
@@ -168,7 +167,6 @@ export async function onRequestPost(context) {
   const adminIPs  = (env.ADMIN_IP || '').split(',').map(s => s.trim()).filter(Boolean);
   const isAdminIP = adminIPs.includes(ip);
 
-  console.log('[QUOTA_DEBUG] supabaseReady:', supabaseReady, 'isAdminIP:', isAdminIP, 'hasUrl:', !!env.SUPABASE_URL, 'hasKey:', !!env.SUPABASE_SERVICE_ROLE_KEY);
 
   // ── Identity resolution ─────────────────────────────────────────────────────
   let userId     = null;
@@ -245,8 +243,7 @@ export async function onRequestPost(context) {
           p_day:   today,
           p_limit: CONFIG.FREE_DAILY,
         });
-      } catch (e) {
-        console.error('[QUOTA_DEBUG] check_and_increment_daily failed:', e.message);
+      } catch {
         subjectResult = null; // Supabase down → degrade gracefully
       }
 
