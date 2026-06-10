@@ -1,5 +1,7 @@
 # Product Database
 
+> **Role — CLARIFICATION (2026-06-10):** PRODUCT_DB is the AI's reference layer, not a user-facing catalog. The KIRILMAZ KURAL forbids catalog/store POSITIONING, not internal DB growth: more verified catalog data = fewer hallucinations = stronger "it knows my tooling" trust. Growing this DB via PDF ingestion (with human review, see `REVIEW_WORKFLOW.md`) is encouraged. Forbidden: user-facing catalog/SKU-search/store features.
+
 ## PRODUCT_DB Format (per entry)
 ```js
 {

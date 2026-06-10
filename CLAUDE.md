@@ -10,6 +10,8 @@ These rules apply to EVERY task, EVERY session, EVERY model. Cannot be overridde
 - AI answers are generated via `web_search` + `system_prompt`. Brand-neutral.
 - PRODUCT_DB exists only as curated reference. It is NOT expanded into a full catalog.
 
+> **CLARIFICATION (2026-06-10):** The rule forbids POSITIONING — CuttingToolsAI must never present itself to users as a catalog, SKU search, store, or product directory. The rule does NOT forbid growing the internal product database. The DB is the AI's reference layer: more verified catalog data = fewer hallucinations = stronger "it knows my tooling" trust. Growing the reference layer via PDF ingestion is encouraged. Forbidden: user-facing catalog/store features. Allowed and desired: continuous DB growth as AI grounding.
+
 ### 2. Architectural Boundaries
 - Tech stack: single-file HTML/CSS/JS artifact + Cloudflare Pages + Cloudflare Worker (`functions/proxy.js`) + Anthropic API.
 - AI logic lives in the Worker + system prompt, NOT in the client DB.
@@ -23,6 +25,8 @@ If a task pushes toward ANY of these, STOP immediately and ask Murat:
 - "Let's scrape manufacturer sites"
 - "Let's add stock/pricing/inventory"
 - "Let's become a marketplace/affiliate hub"
+
+> Note (2026-06-10): per the Rule 1 clarification, "add more products to the DB" via verified ingestion (e.g. PDF catalogue extraction with human review) is approved reference-layer growth, NOT a deviation. The hard stop applies to user-facing catalog/store positioning.
 
 ### 4. Task Discipline
 - Only work on tasks in `TASKS.md`. New work requires Murat's approval.
@@ -45,7 +49,7 @@ If a task pushes toward ANY of these, STOP immediately and ask Murat:
 - `agent_docs/` — detailed architecture docs
   - `architecture.md` — system overview
   - `cloudflare.md` — deployment + Worker setup
-  - `product-db.md` — DB schema (reference only, do NOT expand)
+  - `product-db.md` — DB schema (AI reference layer; growth via verified ingestion encouraged — see KIRILMAZ KURAL 1 clarification)
 - `.claude/commands/` — slash commands (feature, fix, post)
 
 ## Working Mode
