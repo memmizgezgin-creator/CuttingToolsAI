@@ -4,7 +4,6 @@
 
 ## Waiting On
 
-- [ ] **Weekly research email — Resend kurulumu** - Worker `cuttingtoolsai-research` deploy edildi ve test edildi; e-posta için Resend hesabı + domain doğrulaması + `npx wrangler secret put RESEND_API_KEY` (research-worker/ içinde) gerekiyor
 - [ ] **Stripe integration** - blocked until July 2026, waitlist collecting emails until then
 - [ ] **Domain cutover** - cuttingtoolsai.eu TransIP → Cloudflare bağlantısı tamamlanacak
 - [ ] **Netlify sil** - domain cuttingtoolsai.eu Cloudflare'e geçtikten sonra Netlify sitesini kaldır
@@ -17,7 +16,7 @@
 
 ## Done
 
-- [x] **Weekly research agent (2026-06-10)** - research-worker/ standalone Worker: Pazartesi 06:00 UTC cron, 5 kaynak crawl, TA_RESEARCH KV dedup (SHA-256), Claude why-layer değerlendirmesi, Resend HTML rapor; deploy + manuel run OK (e-posta Resend key bekliyor)
+- [x] **Weekly research agent (2026-06-10)** - research-worker/ standalone Worker: Pazartesi 06:00 UTC cron, 5 kaynak crawl, TA_RESEARCH KV dedup (SHA-256), Claude why-layer değerlendirmesi (usefulness sıralı, max 8 madde), Resend HTML rapor; uçtan uca doğrulandı — test e-postası inbox'a ulaştı (research@cuttingtoolsai.eu → memmizgezgin@gmail.com)
 - [x] **AI graceful fallback (2026-06-09)** - 503/502 + retry + refund on Anthropic failure
 - [x] **Cross-reference empty state (2026-06-09)** - sonuç yoksa submission form göster
 - [x] **Pro button → waitlist (2026-06-09)** - Supabase table + functions/waitlist.js endpoint, live & verified: new/duplicate/invalid all pass
