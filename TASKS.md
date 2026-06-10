@@ -2,6 +2,8 @@
 
 ## Active
 
+- [ ] **Research worker Supabase secrets** - Murat: `cd research-worker && npx wrangler secret put SUPABASE_URL && npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY` (değerler Supabase dashboard → tooladvisor → Settings → API). Yoksa haftalık e-postadaki "DB misses" bölümü sessizce atlanır.
+
 ## Waiting On
 
 - [ ] **Stripe integration** - blocked until July 2026, waitlist collecting emails until then
@@ -15,6 +17,8 @@
 - [ ] **AI Chat PRO** - sınırsız chat modu
 
 ## Done
+
+- [x] **Advisor answer quality + query logging (2026-06-10)** - system prompt: metric-first kuralı, yapısal cevap formatı (spec block + CROSS-REF + start advice, <200 kelime), fallback protokolü (ISO decode + en yakın DB kaydından ekstrapolasyon, grade uydurma yasak); proxy'ye retrieveTools eklendi (Supabase products tablosundan SKU/grade eşleşmesi → system prompt'a verified reference block); advisor_queries tablosu (anonim, GDPR-safe: user id/IP yok) + her çağrıda log; research worker e-postasına "DB misses this week" bölümü; NOT: prod products şeması supabase-schema.sql'den farklı (sku boşluklu, grade=coating kolonu) — kod prod şemasına göre yazıldı
 
 - [x] **Proxy 503 timeout fix (2026-06-10)** - "AI is temporarily unavailable" hatasının kökü: web_search'lü sorgular 22-50s sürerken proxy 25s'te abort ediyordu; timeout 50s, timeout'ta retry yok, web_search max_uses:2; ayrıca JS/CSS URL'lerine ?v= versiyonu eklendi (zone Browser Cache TTL 4h eski JS'i saatlerce tutuyordu); canlıda 3/3 sorgu 200 ile doğrulandı
 - [x] **Homepage UX dead-end fixes (2026-06-10)** - floating launcher artık her scroll pozisyonunda görünür (IntersectionObserver gizlemesi kaldırıldı, cookie banner çakışması çözüldü); header/hero CTA'ları canlı widget'ı açıyor; JOB 01-03 kartları ve örnek çıktı kartı sorguyu pre-fill ederek widget'ı açıyor; canlıda doğrulandı (cuttingtoolsai.eu, proxy 200 + AI cevap)

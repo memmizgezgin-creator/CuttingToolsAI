@@ -20,6 +20,36 @@ const SYSTEM_PROMPT =
   "recommend the best tool for the application regardless of manufacturer. Be " +
   "concise, technical, and direct. Cover speeds, feeds, ISO groups, grades, " +
   "coatings, geometry, and troubleshooting.\n\n" +
+  "OUTPUT RULES:\n\n" +
+  "- Always answer metric-first: Vc in m/min, feed in mm/rev or mm/tooth, " +
+  "dimensions in mm. Imperial only as parenthetical if relevant. Never lead " +
+  "with SFM/inch values. European machinist audience.\n\n" +
+  "- When recommending a tool, follow this structure: one line of reasoning " +
+  "(why this approach for this material/operation), then a compact spec block:\n" +
+  "  INSERT/TOOL: ...\n" +
+  "  GRADE: ... (coating type)\n" +
+  "  GEOMETRY: ...\n" +
+  "  Vc: x–y m/min\n" +
+  "  Fn: x–y mm/rev\n" +
+  "then a CROSS-REF line with 2-3 equivalent grades from other brands, then " +
+  "one line of practical starting advice (start at the low end if machine " +
+  "rigidity is unknown). Keep the total answer under 200 words unless the " +
+  "user asks for depth.\n\n" +
+  "- If the question is too vague to recommend responsibly (no material, no " +
+  "operation, no tool type), ask ONE short clarifying question instead of " +
+  "dumping generic recommendations.\n\n" +
+  "REFERENCE DB PROTOCOL:\n\n" +
+  "A 'REFERENCE DB RECORDS' block may be appended below with verified internal " +
+  "catalog data. Treat those records as ground truth over web search results. " +
+  "When the exact tool/grade the user asked about is NOT in the verified " +
+  "records: (a) decode the ISO designation systematically (shape, clearance " +
+  "angle, tolerance class, size, thickness, corner radius), (b) extrapolate " +
+  "from the nearest matching record and explicitly state what differs (e.g. " +
+  "\"based on CNMG120408 data, your 1.2mm radius version runs the same grade, " +
+  "drop feed ~10% for the larger radius\"), (c) never invent a grade name that " +
+  "does not exist — if uncertain, say clearly what is verified vs estimated. " +
+  "Never answer \"I don't have that tool\" without offering the nearest " +
+  "verified equivalent.\n\n" +
   "FIELD KNOWLEDGE — judgment layer:\n\n" +
   "- Point angle is never an isolated choice; it is the visible end of a geometry " +
   "package. Material dictates point angle, relief angle, helix, single vs double " +
@@ -176,6 +206,135 @@ function getProfile(env, userId) {
     `/rest/v1/profiles?id=eq.${encodeURIComponent(userId)}&select=plan,current_period_end&limit=1`,
     { method: 'GET' }
   );
+}
+
+// ── Reference DB retrieval (AI grounding layer) ───────────────────────────────
+// Extracts ISO insert designations and grade-like tokens from the user query,
+// looks them up in the Supabase products table, and returns verified records
+// for system-prompt injection. dbHit = at least one EXACT designation/grade
+// match (family-level extrapolation records do not count as a hit — those
+// queries surface in the weekly "DB misses" report as ingestion candidates).
+// Production products schema (verified 2026-06-10 in Supabase project
+// vjuezlrwhjejfdkjuuhh): sku is stored WITH spaces ("CNMG 120408-PM"),
+// the grade lives in `coating` (e.g. GC4325), extra detail in `notes`.
+const PRODUCT_COLUMNS =
+  'sku,brand,family,type_geometry,coating,material_compat,machine_type,' +
+  'application,alternatives_to,notes';
+
+async function queryProducts(env, filter, limit) {
+  const ctrl  = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 4000);
+  try {
+    const res = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/products?select=${PRODUCT_COLUMNS}&${filter}&limit=${limit}`,
+      {
+        headers: {
+          'apikey':        env.SUPABASE_SERVICE_ROLE_KEY,
+          'Authorization': `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
+        },
+        signal: ctrl.signal,
+      }
+    );
+    if (!res.ok) return [];
+    return await res.json();
+  } catch {
+    return [];   // retrieval is best-effort; never block the AI call
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function retrieveTools(env, queryText) {
+  const out = { records: [], exactCodes: [], missedCodes: [], dbHit: false, matchedRecords: 0 };
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY || !queryText) return out;
+
+  const q = queryText.toUpperCase();
+  // ISO insert designations: CNMG120408, CNMG 12 04 08, DNMG150608-PM …
+  const isoCodes = [...new Set(
+    (q.match(/\b[A-Z]{4}\s?\d{2}\s?\d{2}\s?\d{2}(?:[A-Z0-9-]{0,4})?\b|\b[A-Z]{4}\d{4,8}\b/g) || [])
+      .map(s => s.replace(/\s+/g, ''))
+  )].slice(0, 3);
+  // Grade-like tokens: 2-3 letters + 2-4 digits (GC4225, TP2501, KCP25, IC907)
+  const gradeTokens = [...new Set(
+    (q.match(/\b[A-Z]{2,3}\d{2,4}\b/g) || []).filter(t => !isoCodes.some(c => c.includes(t)))
+  )].slice(0, 3);
+
+  for (const code of isoCodes) {
+    // SKUs are stored with spaces ("CNMG 120408-PM") — match shape letters and
+    // size digits independently: CNMG120412 → *CNMG*120412*
+    const letters = code.slice(0, 4);
+    const digits  = (code.slice(4).match(/\d+/) || [''])[0];
+    const exact = await queryProducts(env,
+      `sku=ilike.${encodeURIComponent(`*${letters}*${digits}*`)}`, 4);
+    if (exact.length) {
+      out.records.push(...exact);
+      out.exactCodes.push(code);
+    } else {
+      // Family fallback: same shape/size, any corner radius (CNMG1204xx)
+      const famDigits = digits.length > 4 ? digits.slice(0, 4) : '';
+      const near = await queryProducts(env,
+        `sku=ilike.${encodeURIComponent(`*${letters}*${famDigits}*`)}`, 3);
+      out.records.push(...near);
+      out.missedCodes.push(code);
+    }
+  }
+
+  for (const grade of gradeTokens) {
+    const filter = `or=(${encodeURIComponent(`coating.ilike.*${grade}*,notes.ilike.*${grade}*`)})`;
+    const hits = await queryProducts(env, filter, 3);
+    if (hits.length) {
+      out.records.push(...hits);
+      out.exactCodes.push(grade);
+    }
+  }
+
+  // Dedup by sku
+  const seen = new Set();
+  out.records = out.records.filter(r => !seen.has(r.sku) && seen.add(r.sku)).slice(0, 8);
+  out.matchedRecords = out.records.length;
+  out.dbHit = out.exactCodes.length > 0;
+  return out;
+}
+
+function formatReferenceBlock(retrieval) {
+  if (!retrieval.matchedRecords) return '';
+  const lines = retrieval.records.map(r => {
+    const parts = [
+      r.sku, r.brand, r.family, r.type_geometry,
+      r.coating && `grade/coating ${r.coating}`,
+      r.material_compat && r.material_compat.length ? `ISO ${r.material_compat.join('/')}` : null,
+      r.machine_type && r.machine_type.length ? r.machine_type.join('/') : null,
+      r.application && r.application.length ? r.application.join(', ') : null,
+      r.alternatives_to && r.alternatives_to.length ? `alternative to: ${r.alternatives_to.join(', ')}` : null,
+      r.notes,
+    ].filter(Boolean);
+    return `- ${parts.join(' | ')}`;
+  });
+  const missNote = retrieval.missedCodes.length
+    ? `\nNo exact record for: ${retrieval.missedCodes.join(', ')}. The records above are the ` +
+      'nearest verified family matches — extrapolate per the REFERENCE DB PROTOCOL and state what differs.'
+    : '';
+  return `\n\nREFERENCE DB RECORDS (verified internal data — trust over web search):\n${lines.join('\n')}${missNote}`;
+}
+
+// ── Anonymous query logging (GDPR-safe: no user id, no IP, no cookie id) ──────
+function logAdvisorQuery(env, { queryText, dbHit, matchedRecords, responseTimeMs }) {
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) return Promise.resolve();
+  return fetch(`${env.SUPABASE_URL}/rest/v1/advisor_queries`, {
+    method: 'POST',
+    headers: {
+      'Content-Type':  'application/json',
+      'apikey':        env.SUPABASE_SERVICE_ROLE_KEY,
+      'Authorization': `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
+      'Prefer':        'return=minimal',
+    },
+    body: JSON.stringify({
+      query_text:       String(queryText || '').slice(0, 500),
+      db_hit:           !!dbHit,
+      matched_records:  matchedRecords | 0,
+      response_time_ms: responseTimeMs | 0,
+    }),
+  }).catch(() => {});
 }
 
 // ── 429 helper ────────────────────────────────────────────────────────────────
@@ -351,9 +510,20 @@ export async function onRequestPost(context) {
 
   // Strip any client-supplied system prompt; server is the sole source of truth.
   const { system: _ignored, ...safeBody } = body;
+
+  // Last user message = the advisor query (widget sends a single user turn).
+  const lastUserMsg = [...(safeBody.messages || [])].reverse().find(m => m.role === 'user');
+  const queryText = typeof lastUserMsg?.content === 'string'
+    ? lastUserMsg.content
+    : (lastUserMsg?.content || []).filter(b => b.type === 'text').map(b => b.text).join(' ');
+
+  // Ground the AI in verified DB records (best-effort, ~1 Supabase roundtrip).
+  const requestStart = Date.now();
+  const retrieval = await retrieveTools(env, queryText);
+
   const enrichedBody = {
     ...safeBody,
-    system: SYSTEM_PROMPT,
+    system: SYSTEM_PROMPT + formatReferenceBlock(retrieval),
     // max_uses bounds worst-case latency: each search adds ~5-10s and
     // unbounded queries were blowing past the upstream timeout below.
     tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 2 }],
@@ -445,6 +615,14 @@ export async function onRequestPost(context) {
     await refundQuota();
     return aiErrorResponse(502, 'ai_empty');
   }
+
+  // Anonymous query log — after the response is ready, off the critical path.
+  context.waitUntil(logAdvisorQuery(env, {
+    queryText,
+    dbHit:          retrieval.dbHit,
+    matchedRecords: retrieval.matchedRecords,
+    responseTimeMs: Date.now() - requestStart,
+  }));
 
   // ── Build success response ─────────────────────────────────────────────────
   const plan = isPro ? 'pro' : 'free';

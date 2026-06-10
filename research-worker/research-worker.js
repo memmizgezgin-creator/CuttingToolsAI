@@ -17,8 +17,10 @@
  * Durum:           GET  https://<worker-url>/status
  *
  * Gerekli Secrets (wrangler secret put <KEY>):
- *   ANTHROPIC_API_KEY — makale değerlendirme
- *   RESEND_API_KEY    — e-posta gönderimi
+ *   ANTHROPIC_API_KEY         — makale değerlendirme
+ *   RESEND_API_KEY            — e-posta gönderimi
+ *   SUPABASE_URL              — advisor_queries okuması ("DB misses" bölümü)
+ *   SUPABASE_SERVICE_ROLE_KEY — advisor_queries okuması (yoksa bölüm atlanır)
  */
 
 'use strict';
@@ -164,9 +166,19 @@ async function runWeeklyResearch(env) {
     }
   }
 
+  // "DB misses this week" — advisor_queries'ten db_hit=false sorguları topla.
+  // Best-effort: Supabase secrets yoksa veya sorgu hata verirse bölüm atlanır.
+  let dbMisses = [];
+  try {
+    dbMisses = await fetchDbMisses(env);
+    log(`db misses: ${dbMisses.length} distinct quer${dbMisses.length === 1 ? 'y' : 'ies'}`);
+  } catch (e) {
+    log(`! db misses failed: ${e.message}`);
+  }
+
   // E-posta — sıfır sonuçta bile gönder ki sessizlik ≠ bozuk cron
   try {
-    await sendEmail(env, items, parseFailed, sourceErrors);
+    await sendEmail(env, items, parseFailed, sourceErrors, dbMisses);
     log(`email sent: ${items.length} items, ${parseFailed.length} parse-failed`);
   } catch (e) {
     log(`! email failed: ${e.message}`);
@@ -328,9 +340,41 @@ function tryParseJSON(s) {
   try { return JSON.parse(s); } catch { return null; }
 }
 
+// ─── DB Misses (advisor_queries) ───────────────────────────────────────────
+// Son 7 günde db_hit=false sorguları çek, metin bazında grupla, sayıya göre
+// sırala. Dönen: [{ query, count }] (max 10). Secrets yoksa boş döner.
+
+async function fetchDbMisses(env) {
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) return [];
+
+  const since = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
+  const url = `${env.SUPABASE_URL}/rest/v1/advisor_queries` +
+    `?select=query_text&db_hit=eq.false&created_at=gte.${encodeURIComponent(since)}` +
+    `&order=created_at.desc&limit=1000`;
+
+  const res = await fetch(url, {
+    headers: {
+      'apikey':        env.SUPABASE_SERVICE_ROLE_KEY,
+      'Authorization': `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`
+    }
+  });
+  if (!res.ok) throw new Error(`supabase ${res.status}`);
+  const rows = await res.json();
+
+  const counts = new Map();
+  for (const r of rows) {
+    const key = (r.query_text || '').trim().toLowerCase().slice(0, 200);
+    if (!key) continue;
+    const cur = counts.get(key) || { query: r.query_text.trim().slice(0, 200), count: 0 };
+    cur.count++;
+    counts.set(key, cur);
+  }
+  return [...counts.values()].sort((a, b) => b.count - a.count).slice(0, 10);
+}
+
 // ─── E-posta (Resend) ──────────────────────────────────────────────────────
 
-async function sendEmail(env, items, parseFailed, sourceErrors) {
+async function sendEmail(env, items, parseFailed, sourceErrors, dbMisses = []) {
   if (!env.RESEND_API_KEY) throw new Error('RESEND_API_KEY missing');
 
   const date = new Date().toISOString().slice(0, 10);
@@ -374,6 +418,21 @@ async function sendEmail(env, items, parseFailed, sourceErrors) {
       ${sourceErrors.map(s => `<li>${esc(s.source)}: ${esc(s.reason)}</li>`).join('')}
     </ul>` : '';
 
+  const dbMissHtml = dbMisses.length ? `
+    <h3 style="font-size:14px;color:#0f172a;margin:24px 0 8px;">DB misses this week (${dbMisses.length})</h3>
+    <p style="font-size:12px;color:#64748b;margin:0 0 8px;">Advisor sorguları (anonim) — referans DB'de tam karşılığı bulunamayanlar. İngestion adayları.</p>
+    <table style="border-collapse:collapse;width:100%;font-size:13px;">
+      <tr>
+        <th style="text-align:left;padding:6px 8px;border-bottom:2px solid #e2e8f0;color:#475569;">Query</th>
+        <th style="text-align:right;padding:6px 8px;border-bottom:2px solid #e2e8f0;color:#475569;">Count</th>
+      </tr>
+      ${dbMisses.map(m => `
+      <tr>
+        <td style="padding:6px 8px;border-bottom:1px solid #f1f5f9;color:#0f172a;">${esc(m.query)}</td>
+        <td style="padding:6px 8px;border-bottom:1px solid #f1f5f9;text-align:right;color:#334155;">${m.count}</td>
+      </tr>`).join('')}
+    </table>` : '';
+
   const body = shown.length
     ? itemHtml
     : `<p style="font-size:14px;color:#334155;">No new technical content this week.</p>`;
@@ -387,6 +446,7 @@ async function sendEmail(env, items, parseFailed, sourceErrors) {
     <h2 style="font-size:18px;margin:0 0 4px;">CuttingToolsAI — Weekly Research</h2>
     <div style="font-size:12px;color:#64748b;margin-bottom:20px;">${date} · ${shown.length} of ${ranked.length} relevant item(s)</div>
     ${body}
+    ${dbMissHtml}
     ${failedHtml}
     ${sourceErrHtml}
     <div style="border-top:1px solid #e2e8f0;margin-top:24px;padding-top:12px;font-size:12px;color:#64748b;">
