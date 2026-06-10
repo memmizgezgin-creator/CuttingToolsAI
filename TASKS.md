@@ -16,6 +16,7 @@
 
 ## Done
 
+- [x] **Proxy 503 timeout fix (2026-06-10)** - "AI is temporarily unavailable" hatasının kökü: web_search'lü sorgular 22-50s sürerken proxy 25s'te abort ediyordu; timeout 50s, timeout'ta retry yok, web_search max_uses:2; ayrıca JS/CSS URL'lerine ?v= versiyonu eklendi (zone Browser Cache TTL 4h eski JS'i saatlerce tutuyordu); canlıda 3/3 sorgu 200 ile doğrulandı
 - [x] **Homepage UX dead-end fixes (2026-06-10)** - floating launcher artık her scroll pozisyonunda görünür (IntersectionObserver gizlemesi kaldırıldı, cookie banner çakışması çözüldü); header/hero CTA'ları canlı widget'ı açıyor; JOB 01-03 kartları ve örnek çıktı kartı sorguyu pre-fill ederek widget'ı açıyor; canlıda doğrulandı (cuttingtoolsai.eu, proxy 200 + AI cevap)
 - [x] **Weekly research agent (2026-06-10)** - research-worker/ standalone Worker: Pazartesi 06:00 UTC cron, 5 kaynak crawl, TA_RESEARCH KV dedup (SHA-256), Claude why-layer değerlendirmesi (usefulness sıralı, max 8 madde), Resend HTML rapor; uçtan uca doğrulandı — test e-postası inbox'a ulaştı (research@cuttingtoolsai.eu → memmizgezgin@gmail.com)
 - [x] **AI graceful fallback (2026-06-09)** - 503/502 + retry + refund on Anthropic failure
