@@ -16,6 +16,7 @@
 
 ## Done
 
+- [x] **Homepage UX dead-end fixes (2026-06-10)** - floating launcher artık her scroll pozisyonunda görünür (IntersectionObserver gizlemesi kaldırıldı, cookie banner çakışması çözüldü); header/hero CTA'ları canlı widget'ı açıyor; JOB 01-03 kartları ve örnek çıktı kartı sorguyu pre-fill ederek widget'ı açıyor; canlıda doğrulandı (cuttingtoolsai.eu, proxy 200 + AI cevap)
 - [x] **Weekly research agent (2026-06-10)** - research-worker/ standalone Worker: Pazartesi 06:00 UTC cron, 5 kaynak crawl, TA_RESEARCH KV dedup (SHA-256), Claude why-layer değerlendirmesi (usefulness sıralı, max 8 madde), Resend HTML rapor; uçtan uca doğrulandı — test e-postası inbox'a ulaştı (research@cuttingtoolsai.eu → memmizgezgin@gmail.com)
 - [x] **AI graceful fallback (2026-06-09)** - 503/502 + retry + refund on Anthropic failure
 - [x] **Cross-reference empty state (2026-06-09)** - sonuç yoksa submission form göster
