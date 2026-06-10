@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/modals.css"/>
+  <link rel="stylesheet" href="/modals.css?v=20260610-2"/>
   <style>
 
 :root{
@@ -590,10 +590,13 @@ if(document.readyState==='loading'){
 
 </script>
 
-<!-- Data + modal system + AI advisor widget -->
-<script src="/directory-data.js"></script>
-<script src="/modals.js"></script>
-<script src="/advisor-ai-widget.js"></script>
+<!-- Data + modal system + AI advisor widget.
+     ?v= busts browser/edge caches — bump on every JS change. The zone's
+     Browser Cache TTL (4h) overrides short max-age on unversioned URLs,
+     so without the version bump users keep stale JS for hours. -->
+<script src="/directory-data.js?v=20260610-2"></script>
+<script src="/modals.js?v=20260610-2"></script>
+<script src="/advisor-ai-widget.js?v=20260610-2"></script>
 
 </body>
 </html>
