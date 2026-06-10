@@ -3,8 +3,9 @@
 (function () {
   'use strict';
 
-  // Always floating, never inline. Hidden when demo section is in view.
-  let launcherHiddenByScroll = false;
+  // Always floating, never inline. Visible at every scroll position —
+  // the on-page advisor section is a static illustration, so this launcher
+  // is the only live entry point and must never be hidden.
 
   // Hide the generic page-switcher FAB that this widget replaces
   const style = document.createElement('style');
@@ -413,6 +414,21 @@
 
   let busy = false;
 
+  // ── keep the launcher clear of the cookie consent banner ───────────────────
+  // The banner (modals.js, .ta-cookie-banner) spans the bottom edge on first
+  // visit; without this the launcher covers its consent buttons.
+  function avoidCookieBanner() {
+    const banner = document.querySelector('.ta-cookie-banner');
+    if (banner) {
+      launcher.style.bottom = (banner.getBoundingClientRect().height + 36) + 'px';
+    } else {
+      launcher.style.bottom = '';
+    }
+  }
+  avoidCookieBanner();
+  window.addEventListener('resize', avoidCookieBanner);
+  new MutationObserver(avoidCookieBanner).observe(document.body, { childList: true });
+
   // ── state helpers ─────────────────────────────────────────────────────────
   function updateQuota() {
     const r = remaining();
@@ -583,6 +599,9 @@
   // ── send message ───────────────────────────────────────────────────────────
   async function ask(prompt) {
     if (busy || !prompt) return;
+    // External callers (homepage presets, header CTA) may fire while the
+    // panel is closed — a query must never run invisibly.
+    if (!panel.classList.contains('open')) openPanel();
     // Block client-side only once the server has confirmed quota is exhausted.
     if (serverState.plan !== 'pro' && !isAdmin() && serverState.remaining !== null && serverState.remaining <= 0) return;
 
@@ -668,20 +687,36 @@
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  // ── events ────────────────────────────────────────────────────────────────
-  launcher.addEventListener('click', () => {
+  // ── open/close helpers ─────────────────────────────────────────────────────
+  function openPanel() {
     panel.classList.add('open');
     launcher.style.display = 'none';
     launcherIcon.classList.remove('pulse');
     input.focus();
     updateQuota();
-  });
+  }
 
-  minimize.addEventListener('click', () => {
+  function closePanel() {
     panel.classList.remove('open');
-    launcher.style.display = launcherHiddenByScroll ? 'none' : '';
+    launcher.style.display = '';
     updateQuota();
-  });
+  }
+
+  // Open the panel with a query pre-filled in the input (not auto-sent —
+  // the user confirms with Send, so a stray click never burns quota).
+  function openWith(query) {
+    openPanel();
+    if (query) {
+      input.value = query;
+      setInputState();
+      input.focus();
+    }
+  }
+
+  // ── events ────────────────────────────────────────────────────────────────
+  launcher.addEventListener('click', openPanel);
+
+  minimize.addEventListener('click', closePanel);
 
   proBtns.forEach(btn => btn && btn.addEventListener('click', openPro));
 
@@ -692,8 +727,6 @@
       if (!action) return;
       if (action.pro) { openPro(); return; }
       if (!action.prompt) return;
-      panel.classList.add('open');
-      launcher.style.display = 'none';
       ask(action.prompt);
     });
   });
@@ -710,27 +743,8 @@
   input.addEventListener('input', setInputState);
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && panel.classList.contains('open')) {
-      panel.classList.remove('open');
-      launcher.style.display = launcherHiddenByScroll ? 'none' : '';
-    }
+    if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
   });
-
-  // ── Hide launcher when advisor demo section is in view (IntersectionObserver) ──
-  const demoSection = document.getElementById('advisor');
-  if (demoSection && 'IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        launcherHiddenByScroll = entry.isIntersecting;
-        if (entry.isIntersecting && !panel.classList.contains('open')) {
-          launcher.style.display = 'none';
-        } else if (!entry.isIntersecting && !panel.classList.contains('open')) {
-          launcher.style.display = '';
-        }
-      });
-    }, { threshold: 0.1 });
-    observer.observe(demoSection);
-  }
 
   // ── pulse after 4s to draw attention ──────────────────────────────────────
   setTimeout(() => {
@@ -739,6 +753,9 @@
 
   updateQuota();
 
-  // Expose ask() so external callers (e.g. homepage preset buttons) can fire queries
-  window.TAAdvisor = { ask };
+  // Public API for external callers (homepage CTAs, preset job cards):
+  //   open()          — expand the chat panel
+  //   openWith(query) — expand the panel with a query pre-filled (user confirms send)
+  //   ask(prompt)     — send a query immediately (opens the panel first)
+  window.TAAdvisor = { ask, open: openPanel, openWith };
 })();

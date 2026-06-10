@@ -30,6 +30,8 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+/* anchored sections clear the 60px sticky masthead */
+section[id],footer[id]{scroll-margin-top:72px}
 body{
   background:var(--paper);color:var(--ink);font-family:var(--sans);
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
@@ -204,6 +206,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(236,234,226,.86);backdro
 .adv-input input::placeholder{color:var(--mu)}
 .adv-input button{border:0;border-left:1px solid var(--line);background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:12px;padding:0 26px;cursor:pointer;transition:opacity .2s}
 .adv-input button:hover{opacity:.82}
+/* example card is a live affordance — clicking opens the real advisor pre-filled */
+.adv-demo{cursor:pointer;transition:background .2s,box-shadow .2s}
+.adv-demo:hover,.adv-demo:focus-visible{background:var(--paper2);box-shadow:inset 0 0 0 2px var(--ink);outline:none}
 
 /* ── TITLE BLOCK FOOTER ── */
 footer{border-top:1px solid var(--line);margin-top:8px}
@@ -271,7 +276,7 @@ footer{border-top:1px solid var(--line);margin-top:8px}
       </div>
       <div class="mast-r">
         <div class="idx"><span class="dot"></span>INDEX <span id="toolCountHeader">36</span> · LIVE</div>
-        <a href="#advisor" class="cta-h">Open advisor →</a>
+        <a href="#advisor" class="cta-h" onclick="return openAdvisor(event)">Open advisor →</a>
       </div>
     </div>
   </div>
@@ -292,7 +297,7 @@ footer{border-top:1px solid var(--line);margin-top:8px}
         <h1 class="hero-h1">The right cutting tool for <em id="accentWord">steel</em>, decided in one second.</h1>
         <p class="hero-lead">Not just inserts. Describe the workpiece and the operation — turning, milling, drilling, threading, grooving — and the advisor cross-references tools across every brand to return the exact grade, geometry and cutting data.</p>
         <div class="hero-act">
-          <a href="#advisor" class="btn btn-fill">Ask the advisor →</a>
+          <a href="#advisor" class="btn btn-fill" onclick="return openAdvisor(event)">Ask the advisor →</a>
           <a href="#tools" class="btn btn-line">Browse tooling</a>
         </div>
         <div class="hero-foot">
@@ -377,9 +382,11 @@ footer{border-top:1px solid var(--line);margin-top:8px}
           <span class="live"></span>ADVISOR v2.6
           <span class="sp">brand-neutral · <span id="toolCount">36</span> indexed</span>
         </div>
-        <!-- static example card — illustration of output format -->
-        <div class="adv-feed adv-demo" style="pointer-events:none;border-bottom:1px solid var(--line)">
-          <div class="kick" style="margin-bottom:10px;opacity:.6">↓ example output (illustration)</div>
+        <!-- example card — illustration of output format; click opens the live advisor pre-filled -->
+        <div class="adv-feed adv-demo" id="advDemo" role="button" tabindex="0"
+             aria-label="Try this example in the live advisor"
+             style="border-bottom:1px solid var(--line)">
+          <div class="kick" style="margin-bottom:10px;opacity:.75">↓ example output — <b style="color:var(--ink)">click to try this query live</b></div>
           <div class="msg-q">316L stainless, external finishing, Vc 220 m/min, wet</div>
           <div class="msg-a">
             <div class="lead-line">RECOMMENDATION · ISO M · TURNING</div>
@@ -518,13 +525,6 @@ TAX.forEach(t=>{
 });
 document.getElementById('taxTable').innerHTML=tax;
 
-/* ── ADVISOR ── */
-
-const feed=document.getElementById('advFeed');
-
-
-
-
 
 
 /* ── reveal ── */
@@ -537,19 +537,40 @@ const PRESET_QUERIES=[
   'Shoulder milling D2 at 52 HRC, interrupted cut',
   'Ø12 mm hole in Inconel 718, through-coolant'
 ];
+/* Open the floating advisor widget. Used by "Open advisor →" (header) and
+   "Ask the advisor →" (hero). Falls back to the #advisor anchor if the
+   widget script failed to load, so the link is never dead. */
+function openAdvisor(e){
+  if(window.TAAdvisor&&typeof window.TAAdvisor.open==='function'){
+    if(e)e.preventDefault();
+    window.TAAdvisor.open();
+    return false;
+  }
+  return true; /* fall through to anchor scroll */
+}
 function sendPreset(i){
   document.querySelectorAll('.preset').forEach(function(p){p.classList.remove('on');});
   var els=document.querySelectorAll('.preset');
   if(els[i])els[i].classList.add('on');
   sendToAdvisor(PRESET_QUERIES[i]);
 }
+/* Open the real advisor with the query pre-filled (not auto-sent — the user
+   confirms with Send, so an exploratory click never spends a free query). */
 function sendToAdvisor(prompt){
-  var iso=window._selectedISO||'P';
-  var full='ISO '+iso+' selected. '+prompt;
-  if(window.TAAdvisor&&typeof window.TAAdvisor.ask==='function'){
-    window.TAAdvisor.ask(full);
+  if(window.TAAdvisor&&typeof window.TAAdvisor.openWith==='function'){
+    window.TAAdvisor.openWith(prompt);
   }
 }
+/* Example output card → live advisor with the illustrated query pre-filled */
+(function(){
+  var demo=document.getElementById('advDemo');
+  if(!demo)return;
+  function go(){sendToAdvisor(PRESET_QUERIES[0]);}
+  demo.addEventListener('click',go);
+  demo.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}
+  });
+})();
 
 /* ── LIVE TOOL COUNT ── */
 function updateToolCount(){
