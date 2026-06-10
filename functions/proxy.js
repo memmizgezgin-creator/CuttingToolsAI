@@ -354,7 +354,9 @@ export async function onRequestPost(context) {
   const enrichedBody = {
     ...safeBody,
     system: SYSTEM_PROMPT,
-    tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+    // max_uses bounds worst-case latency: each search adds ~5-10s and
+    // unbounded queries were blowing past the upstream timeout below.
+    tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 2 }],
   };
 
   const refundQuota = async () => {
@@ -365,9 +367,12 @@ export async function onRequestPost(context) {
     }
   };
 
+  // 50s per attempt: web_search queries routinely take 22-30s+ end-to-end
+  // (the previous 25s cap aborted healthy requests mid-flight). Kept under
+  // Cloudflare's ~100s response window even with the quick-failure retry.
   const callAnthropic = async () => {
     const ctrl  = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 25000);
+    const timer = setTimeout(() => ctrl.abort(), 50000);
     try {
       return await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
@@ -402,7 +407,14 @@ export async function onRequestPost(context) {
 
     try {
       upstream = await callAnthropic();
-    } catch {
+    } catch (err) {
+      // A timed-out attempt already burned 50s — retrying would push the
+      // total past Cloudflare's response window. Fail fast; the widget
+      // offers a Retry button. Only quick network failures get a retry.
+      if (err && err.name === 'AbortError') {
+        await refundQuota();
+        return aiErrorResponse(503, 'ai_unavailable');
+      }
       if (attempt < 2) continue;
       await refundQuota();
       return aiErrorResponse(503, 'ai_unavailable');
