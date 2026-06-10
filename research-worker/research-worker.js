@@ -26,6 +26,7 @@
 const ANTHROPIC_MODEL    = 'claude-sonnet-4-20250514';
 const MAX_LINKS_PER_SOURCE = 5;
 const ARTICLE_TEXT_LIMIT   = 8000;
+const MAX_EMAIL_ITEMS      = 8; // e-postaya giren max madde; fazlası KV'de işaretli kalır
 
 // ─── Kaynaklar ─────────────────────────────────────────────────────────────
 // linkHint: href'in eşleşmesi beklenen alt-string/regex ipucu. Sayfa yapıları
@@ -281,6 +282,7 @@ not product announcements, corporate news, or catalog-style spec listings.
 Respond with STRICT JSON only — no markdown fences, no commentary. Schema:
 {
   "relevant": true/false,
+  "usefulness": 1-10 integer (how much judgment-layer value this adds beyond the existing principles; 0 if not relevant),
   "summary": "2-3 sentence technical summary",
   "related_principle": "principle name or null",
   "new_principle_candidate": true/false,
@@ -334,7 +336,13 @@ async function sendEmail(env, items, parseFailed, sourceErrors) {
   const date = new Date().toISOString().slice(0, 10);
   const subject = `[CuttingToolsAI] Weekly Research – ${date}`;
 
-  const itemHtml = items.map(it => `
+  // Faydaya göre sırala, e-postayı MAX_EMAIL_ITEMS ile sınırla.
+  // Kesilenler de değerlendirilmiş ve hash'leri KV'ye yazılmıştır.
+  const ranked  = [...items].sort((a, b) => (b.eval.usefulness || 0) - (a.eval.usefulness || 0));
+  const shown   = ranked.slice(0, MAX_EMAIL_ITEMS);
+  const skipped = ranked.length - shown.length;
+
+  const itemHtml = shown.map(it => `
     <div style="border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin:0 0 16px;">
       <div style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#0ea5e9;margin-bottom:6px;">${esc(it.source)}</div>
       <div style="font-size:15px;font-weight:600;margin-bottom:8px;">
@@ -366,19 +374,24 @@ async function sendEmail(env, items, parseFailed, sourceErrors) {
       ${sourceErrors.map(s => `<li>${esc(s.source)}: ${esc(s.reason)}</li>`).join('')}
     </ul>` : '';
 
-  const body = items.length
+  const body = shown.length
     ? itemHtml
     : `<p style="font-size:14px;color:#334155;">No new technical content this week.</p>`;
+
+  const skippedNote = skipped > 0
+    ? `<div style="margin-top:6px;">${skipped} more item(s) evaluated but cut for brevity, stored in KV.</div>`
+    : '';
 
   const html = `
   <div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:640px;margin:0 auto;padding:24px;color:#0f172a;">
     <h2 style="font-size:18px;margin:0 0 4px;">CuttingToolsAI — Weekly Research</h2>
-    <div style="font-size:12px;color:#64748b;margin-bottom:20px;">${date} · ${items.length} relevant item(s)</div>
+    <div style="font-size:12px;color:#64748b;margin-bottom:20px;">${date} · ${shown.length} of ${ranked.length} relevant item(s)</div>
     ${body}
     ${failedHtml}
     ${sourceErrHtml}
     <div style="border-top:1px solid #e2e8f0;margin-top:24px;padding-top:12px;font-size:12px;color:#64748b;">
       Nothing is auto-committed. Review and add manually to <code>agent_docs/why-layer.md</code>.
+      ${skippedNote}
     </div>
   </div>`;
 
