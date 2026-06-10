@@ -17,7 +17,7 @@ id      = "33e221aab02a4fbb839ca35a3c14c1b9"
 
 [vars]
 # Resend'de doğrulanmış gönderici adresi
-RESEND_FROM = "CuttingToolsAI Research <research@tooladvisor.eu>"
+RESEND_FROM = "CuttingToolsAI Research <research@cuttingtoolsai.eu>"
 REPORT_TO   = "memmizgezgin@gmail.com"
 
 # Secrets (wrangler.toml'a yazılmaz, ayrıca set edilir):

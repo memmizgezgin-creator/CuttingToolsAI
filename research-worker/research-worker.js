@@ -389,7 +389,7 @@ async function sendEmail(env, items, parseFailed, sourceErrors) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      from: env.RESEND_FROM || 'CuttingToolsAI Research <research@tooladvisor.eu>',
+      from: env.RESEND_FROM || 'CuttingToolsAI Research <research@cuttingtoolsai.eu>',
       to: [env.REPORT_TO || 'memmizgezgin@gmail.com'],
       subject,
       html
