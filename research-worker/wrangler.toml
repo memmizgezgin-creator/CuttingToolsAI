@@ -1,0 +1,25 @@
+# Cloudflare Worker — CuttingToolsAI Weekly Research Agent
+# Bu dosya Pages'in ve pipeline worker'ın wrangler.toml'larından AYRIDIR.
+# Deploy: cd research-worker && npx wrangler deploy
+
+name               = "cuttingtoolsai-research"
+main               = "research-worker.js"
+compatibility_date = "2025-01-01"
+
+# Cron: her Pazartesi 06:00 UTC
+[triggers]
+crons = ["0 6 * * 1"]
+
+# Dedup KV — görülen makale URL'lerinin SHA-256 hash'leri (key), value = ilk görülme ISO tarihi
+[[kv_namespaces]]
+binding = "TA_RESEARCH"
+id      = "33e221aab02a4fbb839ca35a3c14c1b9"
+
+[vars]
+# Resend'de doğrulanmış gönderici adresi
+RESEND_FROM = "CuttingToolsAI Research <research@tooladvisor.eu>"
+REPORT_TO   = "memmizgezgin@gmail.com"
+
+# Secrets (wrangler.toml'a yazılmaz, ayrıca set edilir):
+#   npx wrangler secret put ANTHROPIC_API_KEY
+#   npx wrangler secret put RESEND_API_KEY
