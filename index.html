@@ -278,7 +278,7 @@ footer{border-top:1px solid var(--line);margin-top:8px}
         </nav>
       </div>
       <div class="mast-r">
-        <div class="idx"><span class="dot"></span>INDEX <span id="toolCountHeader">36</span> · LIVE</div>
+        <div class="idx"><span class="dot"></span>INDEX <span id="toolCountHeader" data-ta-metric="tools">1,202</span> · LIVE</div>
         <a href="#advisor" class="cta-h" onclick="return openAdvisor(event)">Ask the AI Advisor</a>
       </div>
     </div>
@@ -298,13 +298,13 @@ footer{border-top:1px solid var(--line);margin-top:8px}
           <span>TURNING / MILLING / DRILLING</span>
         </div>
         <h1 class="hero-h1">The right cutting tool for <em id="accentWord">steel</em>, decided in one second.</h1>
-        <p class="hero-lead">Independent advice across 10 brands. We don't sell tools, so we don't push brands. You get the right insert for your material, machine and budget.</p>
+        <p class="hero-lead">Independent advice across <span data-ta-metric="brands">8</span> brands. We don't sell tools, so we don't push brands. You get the right insert for your material, machine and budget.</p>
         <div class="hero-act">
           <a href="#advisor" class="btn btn-fill" onclick="return openAdvisor(event)">Ask the AI Advisor</a>
         </div>
         <div class="hero-foot">
-          <div><div class="hf-n"><span id="toolCountHero">36</span></div><div class="hf-l">Tools indexed</div></div>
-          <div><div class="hf-n">10</div><div class="hf-l">Brands cross-referenced</div></div>
+          <div><div class="hf-n"><span id="toolCountHero" data-ta-metric="tools">1,202</span></div><div class="hf-l">Tools indexed</div></div>
+          <div><div class="hf-n" data-ta-metric="brands">8</div><div class="hf-l">Brands cross-referenced</div></div>
           <div><div class="hf-n">&#10003;</div><div class="hf-l">Expert-curated</div></div>
         </div>
       </div>
@@ -389,7 +389,7 @@ footer{border-top:1px solid var(--line);margin-top:8px}
             <div class="adv-main">
         <div class="adv-bar">
           <span class="live"></span>ADVISOR v2.6
-          <span class="sp">brand-neutral · <span id="toolCount">36</span> indexed</span>
+          <span class="sp">brand-neutral · <span id="toolCount" data-ta-metric="tools">1,202</span> indexed</span>
         </div>
         <!-- example card — illustration of output format; click opens the live advisor pre-filled -->
         <div class="adv-feed adv-demo" id="advDemo" role="button" tabindex="0"
@@ -431,7 +431,7 @@ footer{border-top:1px solid var(--line);margin-top:8px}
         <div class="bn">CUTTINGTOOLS</div>
         <div class="bs">Brand-neutral AI tooling advisor for turning, milling, drilling and hole-making.</div>
       </div>
-      <div class="tb-cell"><div class="tb-k">Index</div><div class="tb-v">36 tools<br>10 brands</div></div>
+      <div class="tb-cell"><div class="tb-k">Index</div><div class="tb-v"><span data-ta-metric="tools">1,202</span> tools<br><span data-ta-metric="brands">8</span> brands</div></div>
       <div class="tb-cell"><div class="tb-k">Standard</div><div class="tb-v">ISO 513<br>P·M·K·N·S·H</div></div>
       <div class="tb-cell"><div class="tb-k">Revision</div><div class="tb-v">v2.6 — 2026<br>SHEET 01/01</div></div>
     </div>
@@ -602,14 +602,16 @@ function sendToAdvisor(prompt){
   });
 })();
 
-/* ── LIVE TOOL COUNT ── */
+/* ── CATALOG METRICS ──
+   Real counts from the product DB (js/catalog-metrics.js, verified against
+   data/extracted-productdb-candidates.json by scripts/verify-catalog-metrics.mjs).
+   The 36-entry TA_TOOLS browse directory is a curated sample, NOT the index. */
 function updateToolCount(){
-  var n=window.TA_TOOLS&&window.TA_TOOLS.length;
-  if(!n)return;
-  var fmt=n.toLocaleString('en');
-  ['toolCount','toolCountHeader','toolCountHero'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el)el.textContent=fmt;
+  var m=window.TA_CATALOG_METRICS;
+  if(!m)return;
+  document.querySelectorAll('[data-ta-metric]').forEach(function(el){
+    var v=m[el.getAttribute('data-ta-metric')];
+    if(typeof v==='number')el.textContent=v.toLocaleString('en');
   });
 }
 if(document.readyState==='loading'){
@@ -624,6 +626,7 @@ if(document.readyState==='loading'){
      ?v= busts browser/edge caches — bump on every JS change. The zone's
      Browser Cache TTL (4h) overrides short max-age on unversioned URLs,
      so without the version bump users keep stale JS for hours. -->
+<script src="/js/catalog-metrics.js?v=20260611-1"></script>
 <script src="/directory-data.js?v=20260610-2"></script>
 <script src="/modals.js?v=20260611-5"></script>
 <script src="/js/auth.js"></script>
