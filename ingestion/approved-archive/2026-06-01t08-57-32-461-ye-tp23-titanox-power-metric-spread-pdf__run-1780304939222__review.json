@@ -1,0 +1,226 @@
+[
+  {
+    "brand": "YG-1",
+    "product_name": "TitaNox-Power 4 Flute Double Core End Mill",
+    "article_number": null,
+    "family": "GMG40/GMG41",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 6,
+    "diameter_max": 25,
+    "material_grade": "Y-Coating",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Series name and size range visible, no article number, material suitability derived from selection guide matrix"
+  },
+  {
+    "brand": "YG-1",
+    "product_name": "TitaNox-Power 5 Flute Multiple Helix End Mill",
+    "article_number": null,
+    "family": "EMI94/EMI96",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 6,
+    "diameter_max": 25,
+    "material_grade": "AlTiN",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Series name and size range visible, no article number, material suitability derived from selection guide matrix"
+  },
+  {
+    "brand": "YG-1",
+    "product_name": "TitaNox-Power 5 Flute Multiple Helix End Mill",
+    "article_number": null,
+    "family": "EMI93/EMI95",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 6,
+    "diameter_max": 25,
+    "material_grade": "AlTiN",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Series name and size range visible, no article number, material suitability derived from selection guide matrix"
+  },
+  {
+    "brand": "YG-1",
+    "product_name": "TitaNox-Power HPC 5 Flute End Mill",
+    "article_number": null,
+    "family": "GMG28/GMG29",
+    "shank_form": null,
+    "depth_multiplier": "Short Length",
+    "diameter_min": 6,
+    "diameter_max": 25,
+    "material_grade": "Y-Coating",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Series name and size range visible, no article number, material suitability derived from selection guide matrix"
+  },
+  {
+    "brand": "YG-1",
+    "product_name": "TitaNox-Power 5 Flute End Mill",
+    "article_number": null,
+    "family": "GMG30/GMG31",
+    "shank_form": null,
+    "depth_multiplier": "Long Length",
+    "diameter_min": 6,
+    "diameter_max": 25,
+    "material_grade": "Y-Coating",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Series name and size range visible, no article number, material suitability derived from selection guide matrix"
+  },
+  {
+    "brand": "YG-1",
+    "product_name": "TitaNox-Power 5 Flute End Mill",
+    "article_number": null,
+    "family": "GMG24/GMG25",
+    "shank_form": null,
+    "depth_multiplier": "Short Length",
+    "diameter_min": 6,
+    "diameter_max": 25,
+    "material_grade": "Y-Coating",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Series name and size range visible, no article number, material suitability derived from selection guide matrix"
+  },
+  {
+    "brand": "YG-1",
+    "product_name": "TitaNox-Power 5 Flute End Mill",
+    "article_number": null,
+    "family": "GMG26/GMG27",
+    "shank_form": null,
+    "depth_multiplier": "Long Length",
+    "diameter_min": 6,
+    "diameter_max": 25,
+    "material_grade": "Y-Coating",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Series name and size range visible, no article number, material suitability derived from selection guide matrix"
+  },
+  {
+    "brand": "YG-1",
+    "product_name": "TitaNox-Power 5 Flute End Mill - Roughing Corner Radius",
+    "article_number": null,
+    "family": "EHE54/EHE55",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 6,
+    "diameter_max": 25,
+    "material_grade": "TiAlN",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Series name and size range visible, no article number, material suitability derived from selection guide matrix"
+  }
+]

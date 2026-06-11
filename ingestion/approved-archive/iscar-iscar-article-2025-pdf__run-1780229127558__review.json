@@ -1,0 +1,1542 @@
+[
+  {
+    "brand": "ISCAR",
+    "product_name": "SUMO-CHAM",
+    "article_number": null,
+    "family": "Drilling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "IC954",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Product name and brand present, material grade identified (IC954), but no article number found; no cutting data, shank form, or diameter specifications provided; product description is marketing-oriented rather than technical specification sheet",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:31.573Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "SUMO-CHAM MULTI-MASTER",
+    "article_number": null,
+    "family": "Drilling",
+    "shank_form": "MULTI-MASTER",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Product name and shank form identified (MULTI-MASTER), but no article number; no technical specifications, cutting data, or material suitability information provided; descriptive text only",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:31.575Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "QUICK-X-FLUTE",
+    "article_number": null,
+    "family": "QUICK-X-FLUTE",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Product family name mentioned but no article number, dimensions, or PMKNSH symbols provided. Description indicates extended flute shell mills with double-sided square inserts for cavity/pocket milling.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:37.818Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "DO-GRIP",
+    "article_number": null,
+    "family": "DO-GRIP",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 7,
+    "confidence": 60,
+    "confidence_reason": "Product family name mentioned but no article number, dimensions, or PMKNSH symbols. Description indicates double-sided inserts for narrow parting on Swiss-Type lathes.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:37.818Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "IC1017",
+    "article_number": null,
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "IC1017",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 7,
+    "confidence": 70,
+    "confidence_reason": "Tungsten carbide grade for ISO-standard turning inserts, specifically designed for HTSA (high temperature superalloys). No article number or specific dimensions provided. S (Superalloy) suitability clearly indicated.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:37.818Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "LOGIQ-6-TURN",
+    "article_number": null,
+    "family": "LOGIQ-6-TURN",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 7,
+    "confidence": 70,
+    "confidence_reason": "Triangular insert designed for HTSA turning with 55° corner angle and 6 cutting edges. Product name and family identified. No article number or cutting data provided. S (Superalloy) suitability indicated by HTSA application.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:37.818Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "IC1017 carbide grade",
+    "article_number": "IC1017",
+    "family": "Turning inserts",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "IC1017",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 13,
+    "confidence": 60,
+    "confidence_reason": "Product mentioned but no article number format confirmation, no cutting data, material suitability inferred from text (nickel-based superalloys)",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:45.815Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "QUICK-T-LOCK",
+    "article_number": null,
+    "family": "Multi-directional turning tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 13,
+    "confidence": 60,
+    "confidence_reason": "Product name only, no article number, no material grades or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:45.815Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "CUT-V-GRIP",
+    "article_number": null,
+    "family": "V-shape inserts",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 13,
+    "confidence": 60,
+    "confidence_reason": "Product name only, no article number, no material grades or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:45.815Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "PICCO",
+    "article_number": null,
+    "family": "PICCO tool system",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 14,
+    "confidence": 60,
+    "confidence_reason": "Product name only, no article number, no material grades or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:45.816Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "PICCO-INDEX",
+    "article_number": null,
+    "family": "PICCO tool system",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 14,
+    "confidence": 60,
+    "confidence_reason": "Product name only, no article number, material suitability inferred from text (steel and carbide boring bars)",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:45.816Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "QUICK-SWISS",
+    "article_number": null,
+    "family": "Modular system for Swiss-Type lathes",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 15,
+    "confidence": 60,
+    "confidence_reason": "Product name only, no article number, no material grades or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:45.816Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "QUICK-2-CUT",
+    "article_number": null,
+    "family": "Grooving and parting tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 15,
+    "confidence": 60,
+    "confidence_reason": "Product name only, no article number, no material grades or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:45.816Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "LOGIQ-4-TURN",
+    "article_number": null,
+    "family": "LOGIQ-4-TURN",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 16,
+    "confidence": 60,
+    "confidence_reason": "Product name and family identified but no article number, dimensions, grades, or material suitability data provided. Only descriptive marketing text available.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:54.674Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "JET-CUT",
+    "article_number": null,
+    "family": "JET-CUT",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": true,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 17,
+    "confidence": 65,
+    "confidence_reason": "Product name identified with application to stainless steel and superalloys inferred from text. No article number, dimensions, or cutting data provided. Material suitability partially inferred from context.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:54.674Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "MULTI-MASTER",
+    "article_number": null,
+    "family": "MULTI-MASTER",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 17,
+    "confidence": 60,
+    "confidence_reason": "Product name mentioned as option for turn-milling machines and fast feed cutters. No article number, technical specifications, or material suitability data provided.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:54.674Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "IC808",
+    "article_number": null,
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "IC808",
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 17,
+    "confidence": 65,
+    "confidence_reason": "Material grade IC808 referenced for ISO-P materials. Inferred as suitable for steel. No article number or dimensional/cutting data provided.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:54.674Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "IC807",
+    "article_number": null,
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "IC807",
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 17,
+    "confidence": 65,
+    "confidence_reason": "Material grade IC807 referenced as harder grade for ISO-P materials. Inferred as suitable for steel. No article number or dimensional/cutting data provided.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:54.674Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "IC830",
+    "article_number": null,
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "IC830",
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 17,
+    "confidence": 65,
+    "confidence_reason": "Material grade IC830 referenced as tougher grade for ISO-P materials with impact resistance. Inferred as suitable for steel. No article number or dimensional/cutting data provided.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:54.674Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "SUMO-CHAM",
+    "article_number": null,
+    "family": "SUMO-CHAM",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 19,
+    "confidence": 60,
+    "confidence_reason": "Product family name identified as drilling tool with exchangeable carbide cutting heads. No article number, dimensions, grades, or technical specifications provided.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:05:54.674Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "MODU-DRILL",
+    "article_number": null,
+    "family": "MODU-DRILL",
+    "shank_form": null,
+    "depth_multiplier": "8:1",
+    "diameter_min": 30,
+    "diameter_max": 40,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 21,
+    "confidence": 60,
+    "confidence_reason": "Product name and diameter range present, but no article number, material grade, or PMKNSH symbols provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:05.068Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "SUMO-L-DRILL",
+    "article_number": null,
+    "family": "SUMO-L-DRILL",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "high-grade steel",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 21,
+    "confidence": 60,
+    "confidence_reason": "Product name and description present, but no article number, diameter range, or PMKNSH symbols provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:05.068Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "PICCO",
+    "article_number": null,
+    "family": "PICCO",
+    "shank_form": "PICCO connection",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 22,
+    "confidence": 60,
+    "confidence_reason": "Product name and shank form present, but no article number, diameter range, or PMKNSH symbols provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:05.068Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "PICCO solid carbide drill",
+    "article_number": null,
+    "family": "PICCO",
+    "shank_form": "PICCO connection",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "solid carbide",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 22,
+    "confidence": 60,
+    "confidence_reason": "Product variant described with material grade and shank form, but no article number or PMKNSH symbols",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:05.068Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "SUMO-CHAM PICCO combination drill",
+    "article_number": null,
+    "family": "PICCO",
+    "shank_form": "PICCO connection",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 22,
+    "confidence": 60,
+    "confidence_reason": "Product variant combining SUMO-CHAM and PICCO described, but no article number or PMKNSH symbols",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:05.068Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "PICCO insert with three cutting edges",
+    "article_number": null,
+    "family": "PICCO",
+    "shank_form": "PICCO connection",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 22,
+    "confidence": 60,
+    "confidence_reason": "Product variant for internal turning and chamfering described, but no article number or PMKNSH symbols",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:05.068Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "MULTI-MASTER",
+    "article_number": null,
+    "family": "MULTI-MASTER",
+    "shank_form": "threaded connection",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "solid carbide",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 23,
+    "confidence": 60,
+    "confidence_reason": "Product name, shank form, and material grade present, but no article number or PMKNSH symbols",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:05.068Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "QUICK-3-CHAM drill",
+    "article_number": null,
+    "family": "MULTI-MASTER",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 23,
+    "confidence": 60,
+    "confidence_reason": "Product name provided with three-flute design description, but no article number or PMKNSH symbols",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:05.068Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "HELI-MILL",
+    "article_number": null,
+    "family": "HELI-MILL",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "parallelogram-shaped carbide insert",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 25,
+    "confidence": 60,
+    "confidence_reason": "Product name and historical information provided, but no article number, diameter range, or PMKNSH symbols",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:05.068Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "HELI-MILL",
+    "article_number": null,
+    "family": "HELI-MILL",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 27,
+    "confidence": 60,
+    "confidence_reason": "Product name identified but no article number, specifications, or material suitability data present",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:10.520Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "HELI-3-MILL",
+    "article_number": null,
+    "family": "HELI-MILL",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 28,
+    "confidence": 60,
+    "confidence_reason": "Product name identified with triangular insert reference but no article number or specifications",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:10.520Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "HELI2000",
+    "article_number": null,
+    "family": "HELI2000",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "IC5600, IC716",
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 30,
+    "confidence": 70,
+    "confidence_reason": "Product name and carbide grades present (IC5600 for steel, IC716 for titanium); material suitability inferred from text context; no article number or dimensional/cutting data",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:10.520Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "HELI-ALU",
+    "article_number": null,
+    "family": "HELI2000",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 30,
+    "confidence": 65,
+    "confidence_reason": "Product name and aluminum alloy application identified; no article number, dimensions, or cutting data; material suitability inferred from aluminum alloy mention",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:10.520Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "CHATTER-FREE EC-E7/H7-CF",
+    "article_number": null,
+    "family": "EC-E7/H7-CF",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 35,
+    "confidence": 60,
+    "confidence_reason": "Product name and family explicitly mentioned. Intended for trochoidal milling (aluminum alloys, deep slots). Material suitability inferred from text mentioning aluminum alloys and hard steels/superalloys. No article number, dimensions, or cutting data provided. Limited explicit technical specifications.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:15.101Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "90° indexable milling cutter",
+    "article_number": null,
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": 33000,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 35,
+    "confidence": 50,
+    "confidence_reason": "Product type described but no article number or family name given. Specifications inferred: designed for high-speed aluminum milling (33000 rpm), accepts large inserts with depth of cut up to 22mm. Material suitability partly inferred from context (aluminum, hard steels). Insufficient explicit data for confident extraction.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:15.101Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "Solid Carbide Endmill",
+    "article_number": null,
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "Carbide",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": 1000,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 36,
+    "confidence": 60,
+    "confidence_reason": "Product mentioned generically without article number; material suitability inferred from HTSA context only; no dimensions or feed data",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:23.499Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "MULTI-MASTER Exchangeable Head",
+    "article_number": null,
+    "family": "MULTI-MASTER",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "Carbide",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": 1000,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 36,
+    "confidence": 60,
+    "confidence_reason": "Product family name mentioned; no article number; inferred for HTSA applications; insufficient technical specifications",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:23.499Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "Ceramic Endmill Solid",
+    "article_number": null,
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "Ceramic (Black Ceramic, Whisker-Reinforced, SiAlON)",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": 1000,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 36,
+    "confidence": 60,
+    "confidence_reason": "Product type and cutting speed documented; no article number or dimensional data; material grades inferred from text",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:23.499Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "Ceramic Indexable Cutter with Double-Sided Round Inserts",
+    "article_number": null,
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "Ceramic (Black Ceramic, Whisker-Reinforced, SiAlON)",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": 1000,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 36,
+    "confidence": 60,
+    "confidence_reason": "Product type and cutting speed documented; no article number; insert configuration specified but no dimensions",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:23.499Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "LOGIQ-4-FEED",
+    "article_number": null,
+    "family": "LOGIQ-4-FEED",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 37,
+    "confidence": 60,
+    "confidence_reason": "Family name and application noted (HFM, bone-shaped inserts, Die/Mold); no article number, material grade, or cutting data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:23.499Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "NEO-FEED",
+    "article_number": null,
+    "family": "NEO-FEED",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 37,
+    "confidence": 60,
+    "confidence_reason": "Family name and insert configuration noted (double-sided square, 8 cutting edges); no article number, material, or specifications",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_iscar_article_2025.pdf",
+    "run_id": "run-1780229127558",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:06:23.499Z"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CoroTurn Prime A-type",
+    "article_number": "CP-A1108-L5 4325",
+    "family": "CoroTurn Prime",
+    "shank_form": "Coromant Capto",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 300,
+      "vc_max": 300,
+      "feed_min": 0.2,
+      "feed_max": 0.5
+    },
+    "source_page": 2,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed with cutting data; material suitability explicitly stated (P, S, M); cutting data from page 2 specification range; vc values from page 4 example but single value; ap range 0.25-3mm from page 2, fn range 0.2-0.5mm from page 2",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1040-191.pdf",
+    "run_id": "run-1780229810505",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:57.777Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CoroTurn Prime B-type",
+    "article_number": "CP-B1108-M5 2025",
+    "family": "CoroTurn Prime",
+    "shank_form": "Coromant Capto",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 300,
+      "vc_max": 300,
+      "feed_min": 0.3,
+      "feed_max": 1.2
+    },
+    "source_page": 2,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed; cutting data from page 2 specification range (ap 0.5-4mm, fn 0.3-1.2mm); vc values from page 4 example; material suitability not explicitly stated for B-type; material suitability only mentioned for A-type",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1040-191.pdf",
+    "run_id": "run-1780229810505",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:57.778Z"
+  }
+]

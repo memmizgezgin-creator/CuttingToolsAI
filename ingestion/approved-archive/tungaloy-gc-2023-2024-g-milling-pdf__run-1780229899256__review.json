@@ -1,0 +1,2151 @@
+[
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Endmill, shank type, for 4-corner double sided inserts",
+    "article_number": "EXN02R008M08.0-01",
+    "family": "EXN02",
+    "shank_form": null,
+    "depth_multiplier": 0.5,
+    "diameter_min": 8,
+    "diameter_max": 8,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 75,
+    "confidence_reason": "Article number present with dimensional data, but PMKNSH symbols not explicitly mapped to this specific variant",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:10.667Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Endmill, shank type, for 4-corner double sided inserts",
+    "article_number": "EXN02R008M08.0-01L",
+    "family": "EXN02",
+    "shank_form": "L",
+    "depth_multiplier": 0.5,
+    "diameter_min": 8,
+    "diameter_max": 8,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 75,
+    "confidence_reason": "Article number present with dimensional data, L shank form indicated, but PMKNSH symbols not explicitly mapped",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:10.669Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Endmill, shank type, for 4-corner double sided inserts",
+    "article_number": "EXN02R010M10.0-02",
+    "family": "EXN02",
+    "shank_form": null,
+    "depth_multiplier": 0.5,
+    "diameter_min": 10,
+    "diameter_max": 10,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 75,
+    "confidence_reason": "Article number present with dimensional data, but PMKNSH symbols not explicitly mapped",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:10.669Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Endmill, shank type, for 4-corner double sided inserts",
+    "article_number": "EXN02R010M10.0-02L",
+    "family": "EXN02",
+    "shank_form": "L",
+    "depth_multiplier": 0.5,
+    "diameter_min": 10,
+    "diameter_max": 10,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 75,
+    "confidence_reason": "Article number present with dimensional data, L shank form indicated, but PMKNSH symbols not explicitly mapped",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:10.669Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Endmill, shank type, for 4-corner double sided inserts",
+    "article_number": "EXN02R012M12.0-02",
+    "family": "EXN02",
+    "shank_form": null,
+    "depth_multiplier": 0.5,
+    "diameter_min": 12,
+    "diameter_max": 12,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 75,
+    "confidence_reason": "Article number present with dimensional data, but PMKNSH symbols not explicitly mapped",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:10.669Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Endmill, shank type, for 4-corner double sided inserts",
+    "article_number": "EXN02R012M12.0-02L",
+    "family": "EXN02",
+    "shank_form": "L",
+    "depth_multiplier": 0.5,
+    "diameter_min": 12,
+    "diameter_max": 12,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 75,
+    "confidence_reason": "Article number present with dimensional data, L shank form indicated, but PMKNSH symbols not explicitly mapped",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:10.669Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Endmill, shank type, for 4-corner double sided inserts",
+    "article_number": "EXN02R016M16.0-04",
+    "family": "EXN02",
+    "shank_form": null,
+    "depth_multiplier": 0.5,
+    "diameter_min": 16,
+    "diameter_max": 16,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 75,
+    "confidence_reason": "Article number present with dimensional data, but PMKNSH symbols not explicitly mapped",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:10.669Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Endmill, shank type, for 4-corner double sided inserts",
+    "article_number": "EXN02R016M16.0-03L",
+    "family": "EXN02",
+    "shank_form": "L",
+    "depth_multiplier": 0.5,
+    "diameter_min": 16,
+    "diameter_max": 16,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 75,
+    "confidence_reason": "Article number present with dimensional data, L shank form indicated, but PMKNSH symbols not explicitly mapped",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:10.669Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Endmill, shank type, for 4-corner double sided inserts",
+    "article_number": "EXN02R020M20.0-04L",
+    "family": "EXN02",
+    "shank_form": "L",
+    "depth_multiplier": 0.5,
+    "diameter_min": 20,
+    "diameter_max": 20,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 75,
+    "confidence_reason": "Article number present with dimensional data, L shank form indicated, but PMKNSH symbols not explicitly mapped",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:10.669Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Endmill, shank type, for 4-corner double sided inserts",
+    "article_number": "EXN02R020M20.0-05",
+    "family": "EXN02",
+    "shank_form": null,
+    "depth_multiplier": 0.5,
+    "diameter_min": 20,
+    "diameter_max": 20,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 75,
+    "confidence_reason": "Article number present with dimensional data, but PMKNSH symbols not explicitly mapped",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:10.669Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Endmill, shank type, for 4-corner double sided inserts",
+    "article_number": "EXN02R025M25.0-07",
+    "family": "EXN02",
+    "shank_form": null,
+    "depth_multiplier": 0.5,
+    "diameter_min": 25,
+    "diameter_max": 25,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 75,
+    "confidence_reason": "Article number present with dimensional data, but PMKNSH symbols not explicitly mapped",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:10.669Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Endmill, shank type, for 4-corner double sided inserts",
+    "article_number": "EXN02R025M25.0-06L",
+    "family": "EXN02",
+    "shank_form": "L",
+    "depth_multiplier": 0.5,
+    "diameter_min": 25,
+    "diameter_max": 25,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 75,
+    "confidence_reason": "Article number present with dimensional data, L shank form indicated, but PMKNSH symbols not explicitly mapped",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:10.669Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "H008",
+    "article_number": "H008",
+    "family": "Face Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 25,
+    "diameter_max": 200,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 16,
+    "confidence": 60,
+    "confidence_reason": "Product identifier present but material suitability symbols and cutting data not provided in text",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:16.535Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "H009",
+    "article_number": "H009",
+    "family": "Face Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 50,
+    "diameter_max": 315,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 17,
+    "confidence": 60,
+    "confidence_reason": "Product identifier and diameter range present but material suitability symbols and cutting data not provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:16.535Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "H010",
+    "article_number": "H010",
+    "family": "Face Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 6,
+    "diameter_max": 160,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 18,
+    "confidence": 60,
+    "confidence_reason": "Product identifier and diameter ranges present but material suitability symbols and cutting data not provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:16.535Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "H011",
+    "article_number": "H011",
+    "family": "Face Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 12,
+    "diameter_max": 160,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 19,
+    "confidence": 60,
+    "confidence_reason": "Product identifier and diameter ranges present but material suitability symbols and cutting data not provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:16.535Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "H012",
+    "article_number": "H012",
+    "family": "Face Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 32,
+    "diameter_max": 250,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 20,
+    "confidence": 60,
+    "confidence_reason": "Product identifier and diameter ranges present but material suitability symbols and cutting data not provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:16.535Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Face Milling H013",
+    "article_number": null,
+    "family": "APMX",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 25,
+    "diameter_max": 125,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 21,
+    "confidence": 60,
+    "confidence_reason": "Product family H013 identified but no specific article numbers or material grades provided; PMKNSH symbols not present in extracted text",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:27.690Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "High Feed Milling H014",
+    "article_number": null,
+    "family": "H014",
+    "shank_form": null,
+    "depth_multiplier": "1.6 - 4.1, 4 - 8, 9 - 16, 16 - 25",
+    "diameter_min": 63,
+    "diameter_max": 250,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 22,
+    "confidence": 60,
+    "confidence_reason": "Tool family H014 identified with depth of cut ranges and diameter ranges, but no specific article numbers or material suitability data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:27.690Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Profile Milling H015",
+    "article_number": null,
+    "family": "APMX",
+    "shank_form": null,
+    "depth_multiplier": "12.5 - 1, 11.8 / 13.6 / 17.7, 4 / 5 / 6",
+    "diameter_min": 8,
+    "diameter_max": 63,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 23,
+    "confidence": 60,
+    "confidence_reason": "Tool family H015 identified with APMX designation and diameter ranges, but no specific article numbers or material suitability symbols",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:27.690Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Chamfering and Counterboring H016",
+    "article_number": null,
+    "family": "H016",
+    "shank_form": null,
+    "depth_multiplier": "14.5 / 20.5 / 25.5, 4 / 5 / 6 / 8 / 10, 7 / 9 / 11",
+    "diameter_min": 10,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 24,
+    "confidence": 60,
+    "confidence_reason": "Tool family H016 identified with multiple cutting edge angles (45°, 30°-60°, 90°) and diameter ranges, but no specific article numbers or material suitability data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:27.690Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Thread Milling H017",
+    "article_number": null,
+    "family": "APMX",
+    "shank_form": null,
+    "depth_multiplier": "0.25 - 3.5, 0.5 - 4.5, 1.5 - 3, 1.5 - 6",
+    "diameter_min": 0.7,
+    "diameter_max": 80,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 25,
+    "confidence": 60,
+    "confidence_reason": "Tool family H017 identified with APMX designation and diameter ranges, but no specific article numbers or material suitability data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:27.690Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Face Milling NMS",
+    "article_number": null,
+    "family": "NMS",
+    "shank_form": null,
+    "depth_multiplier": "0.2",
+    "diameter_min": 80,
+    "diameter_max": 200,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 25,
+    "confidence": 60,
+    "confidence_reason": "Tool designation NMS identified with specific depth of cut and diameter range, but no article numbers or material suitability data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:27.690Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Face Milling MS",
+    "article_number": null,
+    "family": "MS",
+    "shank_form": null,
+    "depth_multiplier": "0.1",
+    "diameter_min": 100,
+    "diameter_max": 300,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 25,
+    "confidence": 60,
+    "confidence_reason": "Tool designation MS identified with specific depth of cut and diameter range, but no article numbers or material suitability data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:27.690Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Face Milling SFP",
+    "article_number": null,
+    "family": "SFP",
+    "shank_form": null,
+    "depth_multiplier": "0.1",
+    "diameter_min": 100,
+    "diameter_max": 200,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 25,
+    "confidence": 60,
+    "confidence_reason": "Tool designation SFP identified with specific depth of cut and diameter range, but no article numbers or material suitability data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:19:27.690Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Insert",
+    "article_number": "SQMU1206ZSR-MJ",
+    "family": "SQMU",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 71,
+    "confidence": 60,
+    "confidence_reason": "Article number present but insufficient data; no material grades, cutting conditions, or PMKNSH symbols specified",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:22:14.801Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Ball nose endmill for semi-finishing, for CBN inserts",
+    "article_number": "EBB020MS",
+    "family": "High Feed Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 12,
+    "diameter_max": 12,
+    "material_grade": "ZPCW2003-QBN",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 216,
+    "confidence": 75,
+    "confidence_reason": "Article number, diameter, and material grade present. PMKNSH symbols partially visible but incomplete.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Ball nose endmill for semi-finishing, for CBN inserts",
+    "article_number": "EBB025MS",
+    "family": "High Feed Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 15.5,
+    "diameter_max": 15.5,
+    "material_grade": "ZPCW25H3-QBN",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 216,
+    "confidence": 75,
+    "confidence_reason": "Article number, diameter, and material grade present. PMKNSH symbols partially visible but incomplete.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Ball nose endmill for semi-finishing, for CBN inserts",
+    "article_number": "EBB030MS",
+    "family": "High Feed Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 18,
+    "diameter_max": 18,
+    "material_grade": "ZPCW30T3-QBN",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 216,
+    "confidence": 75,
+    "confidence_reason": "Article number, diameter, and material grade present. PMKNSH symbols partially visible but incomplete.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Ball nose endmill for semi-finishing, for CBN inserts",
+    "article_number": "EBB040MS",
+    "family": "High Feed Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 23,
+    "diameter_max": 23,
+    "material_grade": "ZPCW4004-QBN",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 216,
+    "confidence": 75,
+    "confidence_reason": "Article number, diameter, and material grade present. PMKNSH symbols partially visible but incomplete.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Ball nose endmill for semi-finishing, for CBN inserts",
+    "article_number": "EBB050MS",
+    "family": "High Feed Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 28,
+    "diameter_max": 28,
+    "material_grade": "ZPCW5004-QBN",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 216,
+    "confidence": 75,
+    "confidence_reason": "Article number, diameter, and material grade present. PMKNSH symbols partially visible but incomplete.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Ball nose endmill for roughing",
+    "article_number": "EBD040SSE",
+    "family": "High Feed Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 40,
+    "diameter_max": 45,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 217,
+    "confidence": 65,
+    "confidence_reason": "Article number and diameter present. Material suitability and cutting data not provided.",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Ball nose endmill for roughing",
+    "article_number": "EBD040MSE",
+    "family": "High Feed Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 40,
+    "diameter_max": 45,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 217,
+    "confidence": 65,
+    "confidence_reason": "Article number and diameter present. Material suitability and cutting data not provided.",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Ball nose endmill for roughing",
+    "article_number": "EBD050SSE",
+    "family": "High Feed Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 50,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 217,
+    "confidence": 65,
+    "confidence_reason": "Article number and diameter present. Material suitability and cutting data not provided.",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Ball nose endmill for roughing",
+    "article_number": "EBD050MSE",
+    "family": "High Feed Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 50,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 217,
+    "confidence": 65,
+    "confidence_reason": "Article number and diameter present. Material suitability and cutting data not provided.",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Ball nose endmill for roughing",
+    "article_number": "EBD050SCE",
+    "family": "High Feed Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 50,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 217,
+    "confidence": 65,
+    "confidence_reason": "Article number and diameter present. Material suitability and cutting data not provided.",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Ball nose endmill for roughing",
+    "article_number": "EBD050MCE",
+    "family": "High Feed Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 50,
+    "diameter_max": 59,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 217,
+    "confidence": 65,
+    "confidence_reason": "Article number and diameter present. Material suitability and cutting data not provided.",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Chamfering endmill",
+    "article_number": "EASD05M006C12.0R01",
+    "family": "Chamfering, Counterbore",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 12,
+    "diameter_max": 12,
+    "material_grade": "SDMT050204PN-MJ or SDHT050204FN-AJ",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": true,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 80,
+      "vc_max": 120,
+      "feed_min": 0.03,
+      "feed_max": 0.08
+    },
+    "source_page": 218,
+    "confidence": 80,
+    "confidence_reason": "Article number, diameter, insert grades, and cutting conditions present. PMKNSH partially documented.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Chamfering endmill",
+    "article_number": "EASD05M008C12.0R02",
+    "family": "Chamfering, Counterbore",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 14,
+    "diameter_max": 14,
+    "material_grade": "SDMT050204PN-MJ or SDHT050204FN-AJ",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": true,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 80,
+      "vc_max": 120,
+      "feed_min": 0.03,
+      "feed_max": 0.08
+    },
+    "source_page": 218,
+    "confidence": 80,
+    "confidence_reason": "Article number, diameter, insert grades, and cutting conditions present. PMKNSH partially documented.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Chamfering endmill",
+    "article_number": "EASD05M016C16.0R04",
+    "family": "Chamfering, Counterbore",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 22,
+    "diameter_max": 22,
+    "material_grade": "SDMT050204PN-MJ or SDHT050204FN-AJ",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": true,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 80,
+      "vc_max": 120,
+      "feed_min": 0.03,
+      "feed_max": 0.08
+    },
+    "source_page": 218,
+    "confidence": 80,
+    "confidence_reason": "Article number, diameter, insert grades, and cutting conditions present. PMKNSH partially documented.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:30:19.071Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "NMS09 High Precision Finishing Face Mill",
+    "article_number": "NMS09080R",
+    "family": "Finishing Face Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 80,
+    "diameter_max": 80,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 60,
+      "vc_max": 7000,
+      "feed_min": 7,
+      "feed_max": 25
+    },
+    "source_page": 240,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, dimensions specified, cutting conditions inferred from standard conditions, but material suitability symbols not explicitly present",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:31:28.656Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "NMS09 High Precision Finishing Face Mill",
+    "article_number": "NMS09100R",
+    "family": "Finishing Face Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 100,
+    "diameter_max": 100,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 60,
+      "vc_max": 7000,
+      "feed_min": 7,
+      "feed_max": 25
+    },
+    "source_page": 240,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, dimensions specified, cutting conditions inferred from standard conditions, but material suitability symbols not explicitly present",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:31:28.656Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "NMS09 High Precision Finishing Face Mill",
+    "article_number": "NMS09125R",
+    "family": "Finishing Face Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 125,
+    "diameter_max": 125,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 60,
+      "vc_max": 7000,
+      "feed_min": 7,
+      "feed_max": 25
+    },
+    "source_page": 240,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, dimensions specified, cutting conditions inferred from standard conditions, but material suitability symbols not explicitly present",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:31:28.656Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "NMS09 High Precision Finishing Face Mill",
+    "article_number": "NMS09160R",
+    "family": "Finishing Face Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 160,
+    "diameter_max": 160,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 60,
+      "vc_max": 7000,
+      "feed_min": 7,
+      "feed_max": 25
+    },
+    "source_page": 240,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, dimensions specified, cutting conditions inferred from standard conditions, but material suitability symbols not explicitly present",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:31:28.656Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "NMS09 High Precision Finishing Face Mill",
+    "article_number": "NMS09200R",
+    "family": "Finishing Face Milling",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 200,
+    "diameter_max": 200,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 60,
+      "vc_max": 7000,
+      "feed_min": 7,
+      "feed_max": 25
+    },
+    "source_page": 240,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, dimensions specified, cutting conditions inferred from standard conditions, but material suitability symbols not explicitly present",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:31:28.656Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "EMS09 High Precision Finishing Endmill",
+    "article_number": "EMS09080R",
+    "family": "Finishing Face Milling",
+    "shank_form": "Shank type",
+    "depth_multiplier": null,
+    "diameter_min": 80,
+    "diameter_max": 80,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 60,
+      "vc_max": 7000,
+      "feed_min": 7,
+      "feed_max": 25
+    },
+    "source_page": 240,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, dimensions specified, cutting conditions inferred from standard conditions, but material suitability symbols not explicitly present",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:31:28.656Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-DIA endmill for high speed aluminium machining",
+    "article_number": "DEB1000",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 4,
+    "diameter_max": 12,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 120,
+      "vc_max": 180,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 302,
+    "confidence": 80,
+    "confidence_reason": "Article number confirmed, diameter range and cutting speed found, but material suitability inferred from application description (aluminium alloys)",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-DIA endmill for high speed aluminium machining",
+    "article_number": "DEB1040",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 4,
+    "diameter_max": 4,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 302,
+    "confidence": 75,
+    "confidence_reason": "Article number and diameter confirmed, but cutting parameters not explicitly listed for this specific variant",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-DIA endmill for high speed aluminium machining",
+    "article_number": "DEB1050",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 5,
+    "diameter_max": 5,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 302,
+    "confidence": 75,
+    "confidence_reason": "Article number and diameter confirmed, but cutting parameters not explicitly listed for this specific variant",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-DIA endmill for high speed aluminium machining",
+    "article_number": "DEB1060",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 6,
+    "diameter_max": 6,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 302,
+    "confidence": 75,
+    "confidence_reason": "Article number and diameter confirmed, but cutting parameters not explicitly listed for this specific variant",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-DIA endmill for high speed aluminium machining",
+    "article_number": "DEB1080",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 8,
+    "diameter_max": 8,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 302,
+    "confidence": 75,
+    "confidence_reason": "Article number and diameter confirmed, but cutting parameters not explicitly listed for this specific variant",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-DIA endmill for high speed aluminium machining",
+    "article_number": "DEB1100",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 10,
+    "diameter_max": 10,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 302,
+    "confidence": 75,
+    "confidence_reason": "Article number and diameter confirmed, but cutting parameters not explicitly listed for this specific variant",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-DIA endmill for high speed aluminium machining",
+    "article_number": "DEB1120",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 12,
+    "diameter_max": 12,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 302,
+    "confidence": 75,
+    "confidence_reason": "Article number and diameter confirmed, but cutting parameters not explicitly listed for this specific variant",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-CBN ball nose endmill for dies and molds",
+    "article_number": "BBB2000",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 0.3,
+    "diameter_max": 1,
+    "material_grade": "T-CBN",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.01,
+      "feed_max": 0.1
+    },
+    "source_page": 303,
+    "confidence": 75,
+    "confidence_reason": "Article number and ball radius range confirmed, material grade is T-CBN (CBN), application for hardened steel confirmed, but cutting speeds not explicitly stated in table",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-CBN ball nose endmill for dies and molds",
+    "article_number": "BX850",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 0.3,
+    "diameter_max": 1,
+    "material_grade": "T-CBN",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 303,
+    "confidence": 70,
+    "confidence_reason": "Article number confirmed as toolholder designation, but limited data available for this specific variant",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-CBN ball nose endmill for dies and molds",
+    "article_number": "BBB2006",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 0.6,
+    "diameter_max": 0.6,
+    "material_grade": "T-CBN",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 303,
+    "confidence": 70,
+    "confidence_reason": "Article number and diameter confirmed, but cutting parameters not explicitly listed for this specific variant",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-CBN ball nose endmill for dies and molds",
+    "article_number": "BBB2008",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 0.8,
+    "diameter_max": 0.8,
+    "material_grade": "T-CBN",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 303,
+    "confidence": 70,
+    "confidence_reason": "Article number and diameter confirmed, but cutting parameters not explicitly listed for this specific variant",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-CBN ball nose endmill for dies and molds",
+    "article_number": "BBB2010",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 1,
+    "diameter_max": 1,
+    "material_grade": "T-CBN",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 303,
+    "confidence": 70,
+    "confidence_reason": "Article number and diameter confirmed, but cutting parameters not explicitly listed for this specific variant",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "T-CBN ball nose endmill for dies and molds",
+    "article_number": "BBB2020",
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 2,
+    "diameter_max": 2,
+    "material_grade": "T-CBN",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 303,
+    "confidence": 70,
+    "confidence_reason": "Article number and diameter confirmed, but cutting parameters not explicitly listed for this specific variant",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780229899256",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:35:02.780Z"
+  }
+]

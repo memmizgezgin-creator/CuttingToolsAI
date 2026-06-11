@@ -1,0 +1,187 @@
+[
+  {
+    "brand": "ISCAR",
+    "product_name": "Oval Barrel Endmill",
+    "article_number": "EOB",
+    "family": "Barrel Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 51,
+    "confidence": 60,
+    "confidence_reason": "Product name and identifier present, but no article number, dimensions, or material suitability data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_multi_master_indexable_solid.pdf",
+    "run_id": "run-1780220338626",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T09:41:50.635Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "Taper Barrel Endmill",
+    "article_number": "ETB",
+    "family": "Barrel Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 51,
+    "confidence": 60,
+    "confidence_reason": "Product name and identifier present, but no article number, dimensions, or material suitability data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_multi_master_indexable_solid.pdf",
+    "run_id": "run-1780220338626",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T09:41:50.638Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "Lens Barrel Endmill",
+    "article_number": "ELB",
+    "family": "Barrel Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 51,
+    "confidence": 60,
+    "confidence_reason": "Product name and identifier present, but no article number, dimensions, or material suitability data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_multi_master_indexable_solid.pdf",
+    "run_id": "run-1780220338626",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T09:41:50.638Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "Oval Barrel MULTI-MASTER Head",
+    "article_number": "MM EOB",
+    "family": "Barrel Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 51,
+    "confidence": 60,
+    "confidence_reason": "Product name and identifier present, but no article number, dimensions, or material suitability data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_multi_master_indexable_solid.pdf",
+    "run_id": "run-1780220338626",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T09:41:50.638Z"
+  },
+  {
+    "brand": "ISCAR",
+    "product_name": "Lens Barrel MULTI-MASTER Head",
+    "article_number": "MM ELB",
+    "family": "Barrel Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 51,
+    "confidence": 60,
+    "confidence_reason": "Product name and identifier present, but no article number, dimensions, or material suitability data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "iscar_multi_master_indexable_solid.pdf",
+    "run_id": "run-1780220338626",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T09:41:50.638Z"
+  }
+]
