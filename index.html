@@ -429,7 +429,7 @@ footer{border-top:1px solid var(--line);margin-top:8px}
     <div class="wrap" style="padding:0">
       <div class="tb-bot">
         <div class="lk">
-          <a href="#system">System</a><a href="#tools">Tooling</a><a href="#advisor">Advisor</a><a href="#index">Index</a>
+          <a href="#system">System</a><a href="#tools">Tooling</a><a href="#advisor">Advisor</a><a href="#index">Index</a><a href="/ref/">Cross-Ref</a>
         </div>
         <div class="cp">© 2026 CUTTINGTOOLS — drawn for machinists</div>
       </div>
@@ -561,6 +561,22 @@ function sendToAdvisor(prompt){
     window.TAAdvisor.openWith(prompt);
   }
 }
+/* /ref/ SEO pages link here with ?ask=<query>#advisor — pre-fill the advisor
+   (not auto-sent; the user confirms with Send). Widget loads async, so retry
+   briefly until TAAdvisor is available. */
+(function(){
+  var q;
+  try{q=new URLSearchParams(window.location.search).get('ask');}catch(e){return;}
+  if(!q)return;
+  var tries=0;
+  var t=setInterval(function(){
+    tries++;
+    if(window.TAAdvisor&&typeof window.TAAdvisor.openWith==='function'){
+      clearInterval(t);
+      window.TAAdvisor.openWith(q);
+    }else if(tries>40){clearInterval(t);}
+  },250);
+})();
 /* Example output card → live advisor with the illustrated query pre-filled */
 (function(){
   var demo=document.getElementById('advDemo');

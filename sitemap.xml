@@ -2,37 +2,152 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
           <loc>https://cuttingtoolsai.eu/</loc>
-          <lastmod>2026-06-08</lastmod>
+          <lastmod>2026-06-11</lastmod>
           <priority>1.0</priority>
     </url>
     <url>
           <loc>https://cuttingtoolsai.eu/ToolAdvisor.html</loc>
-          <lastmod>2026-06-08</lastmod>
+          <lastmod>2026-06-11</lastmod>
           <priority>0.9</priority>
     </url>
     <url>
           <loc>https://cuttingtoolsai.eu/tools-directory.html</loc>
-          <lastmod>2026-06-08</lastmod>
+          <lastmod>2026-06-11</lastmod>
           <priority>0.8</priority>
     </url>
     <url>
           <loc>https://cuttingtoolsai.eu/cross-reference.html</loc>
-          <lastmod>2026-06-08</lastmod>
+          <lastmod>2026-06-11</lastmod>
           <priority>0.8</priority>
     </url>
     <url>
           <loc>https://cuttingtoolsai.eu/compare.html</loc>
-          <lastmod>2026-06-08</lastmod>
+          <lastmod>2026-06-11</lastmod>
           <priority>0.7</priority>
     </url>
     <url>
           <loc>https://cuttingtoolsai.eu/knowledge.html</loc>
-          <lastmod>2026-06-08</lastmod>
+          <lastmod>2026-06-11</lastmod>
           <priority>0.7</priority>
     </url>
     <url>
           <loc>https://cuttingtoolsai.eu/pro.html</loc>
-          <lastmod>2026-06-08</lastmod>
+          <lastmod>2026-06-11</lastmod>
           <priority>0.6</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.8</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/apmt1604pder/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/ccgt09t304/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/ccmt09t304/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/cnmg120408/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/cnmg120412/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/dcgt11t304/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/dcmt11t304/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/dnmg150608/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/ncmx120412/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/rcmt1204/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/scmt09t308/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/snmg120408/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/tcgt16t304/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/tcmt16t304/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/tnmg160404/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/tnmg160408/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/vbmt160404/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/vbmt160408/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/vcgt160404/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/wcmx050308/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/wnmg060408/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://cuttingtoolsai.eu/ref/wnmg080408/</loc>
+          <lastmod>2026-06-11</lastmod>
+          <priority>0.7</priority>
     </url>
 </urlset>
