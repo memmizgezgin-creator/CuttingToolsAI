@@ -1,0 +1,372 @@
+[
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn RC rigid clamp design",
+    "article_number": "570-DTFNR/L-80-16",
+    "family": "General Turning - Internal machining - Boring bars and cutting heads",
+    "shank_form": "Quick change",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 1,
+    "confidence": 80,
+    "confidence_reason": "Article number and dimensions confirmed, material suitability not specified",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765079_catalog.pdf",
+    "run_id": "run-1780300000232",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-06-01T07:46:51.719Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn RC rigid clamp design",
+    "article_number": "570-DTFNR/L-80-22",
+    "family": "General Turning - Internal machining - Boring bars and cutting heads",
+    "shank_form": "Quick change",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 1,
+    "confidence": 80,
+    "confidence_reason": "Article number and dimensions confirmed, material suitability not specified",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765079_catalog.pdf",
+    "run_id": "run-1780300000232",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-06-01T07:46:51.720Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn 107 screw clamp design",
+    "article_number": "570-SDUCR/L-80-11",
+    "family": "General Turning - Internal machining - Boring bars and cutting heads",
+    "shank_form": "Quick change",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 2,
+    "confidence": 80,
+    "confidence_reason": "Article number and dimensions confirmed, material suitability not specified",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765079_catalog.pdf",
+    "run_id": "run-1780300000232",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-06-01T07:46:51.720Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn 107 screw clamp design",
+    "article_number": "570-SVLBR/L-80-16",
+    "family": "General Turning - Internal machining - Boring bars and cutting heads",
+    "shank_form": "Quick change",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 3,
+    "confidence": 80,
+    "confidence_reason": "Article number and dimensions confirmed, material suitability not specified",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765079_catalog.pdf",
+    "run_id": "run-1780300000232",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-06-01T07:46:51.720Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "T-Max U-Lock screw design for threading",
+    "article_number": "R566.0KFC-804557-27",
+    "family": "General Turning - Threading",
+    "shank_form": "Quick change",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 4,
+    "confidence": 80,
+    "confidence_reason": "Article number and dimensions confirmed, material suitability not specified",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765079_catalog.pdf",
+    "run_id": "run-1780300000232",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-06-01T07:46:51.720Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Damped boring bar with CoroTurn SL quick change - Short design",
+    "article_number": "570-3C 80 880",
+    "family": "General Turning - Boring bars",
+    "shank_form": "Quick change",
+    "depth_multiplier": 7,
+    "diameter_min": 80,
+    "diameter_max": 80,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 80,
+    "confidence_reason": "Article number and dimensions confirmed, material suitability not specified",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765079_catalog.pdf",
+    "run_id": "run-1780300000232",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-06-01T07:46:51.720Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Damped boring bar with CoroTurn SL quick change - Short design",
+    "article_number": "570-3C 100 1100",
+    "family": "General Turning - Boring bars",
+    "shank_form": "Quick change",
+    "depth_multiplier": 7,
+    "diameter_min": 100,
+    "diameter_max": 100,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 80,
+    "confidence_reason": "Article number and dimensions confirmed, material suitability not specified",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765079_catalog.pdf",
+    "run_id": "run-1780300000232",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-06-01T07:46:51.720Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Damped boring bar with CoroTurn SL quick change - Long design",
+    "article_number": "570-3C 80 1200",
+    "family": "General Turning - Boring bars",
+    "shank_form": "Quick change",
+    "depth_multiplier": 10,
+    "diameter_min": 80,
+    "diameter_max": 80,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 80,
+    "confidence_reason": "Article number and dimensions confirmed, material suitability not specified",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765079_catalog.pdf",
+    "run_id": "run-1780300000232",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-06-01T07:46:51.720Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Damped boring bar with CoroTurn SL quick change - Long design",
+    "article_number": "570-3C 100 1500",
+    "family": "General Turning - Boring bars",
+    "shank_form": "Quick change",
+    "depth_multiplier": 10,
+    "diameter_min": 100,
+    "diameter_max": 100,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 80,
+    "confidence_reason": "Article number and dimensions confirmed, material suitability not specified",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765079_catalog.pdf",
+    "run_id": "run-1780300000232",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-06-01T07:46:51.720Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Boring bar adaptor - 580 Coupling to CoroTurn SL quick change",
+    "article_number": "570-80 17-580-80",
+    "family": "General Turning - Boring bar adaptors",
+    "shank_form": "Quick change",
+    "depth_multiplier": null,
+    "diameter_min": 80,
+    "diameter_max": 80,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 80,
+    "confidence_reason": "Article number and dimensions confirmed, material suitability not specified",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765079_catalog.pdf",
+    "run_id": "run-1780300000232",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-06-01T07:46:51.720Z"
+  }
+]

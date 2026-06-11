@@ -1,0 +1,154 @@
+[
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn® 111",
+    "article_number": null,
+    "family": "CoroTurn® 111",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 6.5,
+    "diameter_max": 32,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Product name found but no article number, material suitability, or cutting data present in text",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229265646",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:07:52.179Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn® 107",
+    "article_number": null,
+    "family": "CoroTurn® 107",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 16,
+    "diameter_max": 75,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Product name found but no article number, material suitability, or cutting data present in text",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229265646",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:07:52.181Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "T-Max P",
+    "article_number": null,
+    "family": "T-Max P",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Product name found but no article number, dimensions, material suitability, or cutting data present in text",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229265646",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:07:52.181Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn® RC",
+    "article_number": null,
+    "family": "CoroTurn® RC",
+    "shank_form": "Coromant Capto®",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Product name and shank form found but no article number, material suitability, or cutting data present in text",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229265646",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:07:52.181Z"
+  }
+]

@@ -1,0 +1,11 @@
+claude-extract run: run-1780228508629
+PDF: walter_technical-compendium-holemaking-2024-en.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-31T12:01:51.028Z
+
+Total records extracted: 175
+Auto-approved (conf >= 85): 37
+Review required (conf < 85): 138
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/walter-technical-compendium-holemaking-2024-en-pdf/run-1780228508629

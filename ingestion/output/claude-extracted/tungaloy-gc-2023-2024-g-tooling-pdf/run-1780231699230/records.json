@@ -1,0 +1,1113 @@
+[
+  {
+    "brand": "Tungaloy",
+    "product_name": "TungCap Tooling System",
+    "article_number": "K003",
+    "family": "Tooling System",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 11,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no technical specifications, material grades, or cutting data provided in text",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:49:00.152Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TungCap Tooling",
+    "article_number": "K004",
+    "family": "Tooling System",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 12,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no technical specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:49:00.153Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TungCap Tooling for Multi-Tasking Machine",
+    "article_number": "K005",
+    "family": "Tooling System",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 13,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no technical specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:49:00.153Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TungCap Tooling System",
+    "article_number": "K006",
+    "family": "Tooling System",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 14,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no technical specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:49:00.153Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "System for Multi-Tasking Machine",
+    "article_number": "K007",
+    "family": "Tooling System",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 15,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no technical specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:49:00.153Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "PINZBOHR® Boring System - Arbor BT40/50",
+    "article_number": "BT35042160",
+    "family": "PINZBOHR® Boring System",
+    "shank_form": "BT40/50",
+    "depth_multiplier": null,
+    "diameter_min": 24,
+    "diameter_max": 220,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 186,
+    "confidence": 60,
+    "confidence_reason": "Arbor designation only, limited product details, no PMKNSH data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:58:29.200Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "PINZBOHR® Boring System - Arbor BT50",
+    "article_number": null,
+    "family": "PINZBOHR® Boring System",
+    "shank_form": "BT50",
+    "depth_multiplier": null,
+    "diameter_min": 24,
+    "diameter_max": 220,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 187,
+    "confidence": 60,
+    "confidence_reason": "No article number provided, system component without detailed specifications",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:58:29.200Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "PINZBOHR® Boring System - Adapter ADT10050",
+    "article_number": "ADT10050",
+    "family": "PINZBOHR® Boring System",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 5.5,
+    "diameter_max": 32,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 187,
+    "confidence": 60,
+    "confidence_reason": "System adapter component, limited specification data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:58:29.200Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "PINZBOHR® Boring Cartridge PN PTFN-CA - PTFNR/L10CA-11",
+    "article_number": "PTFNR/L10CA-11",
+    "family": "PINZBOHR® Boring Cartridge",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 40,
+    "diameter_max": 55,
+    "material_grade": "TN**1103...",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 190,
+    "confidence": 75,
+    "confidence_reason": "Product designation and dimensional data present, material grade incomplete, no PMKNSH symbols",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:58:29.200Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "PINZBOHR® Boring Cartridge PN PTFN-CA - PTFNR/L12CA-16",
+    "article_number": "PTFNR/L12CA-16",
+    "family": "PINZBOHR® Boring Cartridge",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 50,
+    "diameter_max": 75,
+    "material_grade": "TN**1604...",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 190,
+    "confidence": 75,
+    "confidence_reason": "Product designation and dimensional data present, material grade incomplete, no PMKNSH symbols",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:58:29.200Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "PINZBOHR® Boring Cartridge PN PTFN-CA - PTFNR/L16CA",
+    "article_number": "PTFNR/L16CA",
+    "family": "PINZBOHR® Boring Cartridge",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 55,
+    "diameter_max": null,
+    "material_grade": "TN**1604...",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 190,
+    "confidence": 75,
+    "confidence_reason": "Product designation present, diameter max not specified, no PMKNSH symbols",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:58:29.200Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "PINZBOHR® Boring Cartridge PN PTFN-CA - PTFNR/L20CA",
+    "article_number": "PTFNR/L20CA",
+    "family": "PINZBOHR® Boring Cartridge",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 70,
+    "diameter_max": null,
+    "material_grade": "TN**2204...",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 190,
+    "confidence": 75,
+    "confidence_reason": "Product designation present, diameter max not specified, no PMKNSH symbols",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:58:29.200Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "PINZBOHR® Boring Cartridge CP CTFP-CA - CTFPR/L10CA-11",
+    "article_number": "CTFPR/L10CA-11",
+    "family": "PINZBOHR® Boring Cartridge",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 40,
+    "diameter_max": 55,
+    "material_grade": "TP**1103...",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 190,
+    "confidence": 75,
+    "confidence_reason": "Product designation and dimensional data present, material grade incomplete, no PMKNSH symbols",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:58:29.200Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "PINZBOHR® Boring Cartridge CP CTFP-CA - CTFPR/L12CA-16",
+    "article_number": "CTFPR/L12CA-16",
+    "family": "PINZBOHR® Boring Cartridge",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 50,
+    "diameter_max": 75,
+    "material_grade": "TP**1603...",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 190,
+    "confidence": 75,
+    "confidence_reason": "Product designation and dimensional data present, material grade incomplete, no PMKNSH symbols",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:58:29.200Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "PINZBOHR® Boring Cartridge CP CTFP-CA - CTFPR/L16CA",
+    "article_number": "CTFPR/L16CA",
+    "family": "PINZBOHR® Boring Cartridge",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 55,
+    "diameter_max": null,
+    "material_grade": "TP**1603...",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 190,
+    "confidence": 75,
+    "confidence_reason": "Product designation present, diameter max not specified, no PMKNSH symbols",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:58:29.200Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "PINZBOHR® Boring Cartridge CP CTFP-CA - CTFPR/L20CA",
+    "article_number": "CTFPR/L20CA",
+    "family": "PINZBOHR® Boring Cartridge",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 70,
+    "diameter_max": null,
+    "material_grade": "TP**2204...",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 190,
+    "confidence": 75,
+    "confidence_reason": "Product designation present, diameter max not specified, no PMKNSH symbols",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:58:29.200Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 80° trigon inserts with 5° clearance, screw-on type",
+    "article_number": "S1008-SWUBR03",
+    "family": "S/C-SWUBR",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 8,
+    "diameter_max": 10,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 80° trigon inserts with 5° clearance, screw-on type",
+    "article_number": "S1208-SWUBR03",
+    "family": "S/C-SWUBR",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 8,
+    "diameter_max": 12,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 80° trigon inserts with 5° clearance, screw-on type",
+    "article_number": "C1008-SWUBR03",
+    "family": "S/C-SWUBR",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 8,
+    "diameter_max": 10,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 80° trigon inserts with 5° clearance, screw-on type",
+    "article_number": "C1208-SWUBR03",
+    "family": "S/C-SWUBR",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 8,
+    "diameter_max": 12,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 60° triangular inserts with 11° clearance, screw-on type",
+    "article_number": "S0810-STUPR08",
+    "family": "S/C-STUPR/L",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 10,
+    "diameter_max": 8,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 60° triangular inserts with 11° clearance, screw-on type",
+    "article_number": "S1010-STUPR08",
+    "family": "S/C-STUPR/L",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 10,
+    "diameter_max": 10,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 60° triangular inserts with 11° clearance, screw-on type",
+    "article_number": "S1210-STUPR08",
+    "family": "S/C-STUPR/L",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 10,
+    "diameter_max": 12,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 60° triangular inserts with 11° clearance, screw-on type",
+    "article_number": "S1212-STUPR08",
+    "family": "S/C-STUPR/L",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 12,
+    "diameter_max": 12,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 60° triangular inserts with 11° clearance, screw-on type",
+    "article_number": "S1212-STUPR11",
+    "family": "S/C-STUPR/L",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 12,
+    "diameter_max": 12,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 60° triangular inserts with 11° clearance, screw-on type",
+    "article_number": "S1214-STUPR11",
+    "family": "S/C-STUPR/L",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 14,
+    "diameter_max": 12,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 60° triangular inserts with 11° clearance, screw-on type",
+    "article_number": "C1010-STUPR08",
+    "family": "S/C-STUPR/L",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 10,
+    "diameter_max": 10,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 60° triangular inserts with 11° clearance, screw-on type",
+    "article_number": "C1210-STUPR08",
+    "family": "S/C-STUPR/L",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 10,
+    "diameter_max": 12,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 60° triangular inserts with 11° clearance, screw-on type",
+    "article_number": "C1212-STUPR11",
+    "family": "S/C-STUPR/L",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 12,
+    "diameter_max": 12,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Top borer tool, for positive 60° triangular inserts with 11° clearance, screw-on type",
+    "article_number": "C1214-STUPR11",
+    "family": "S/C-STUPR/L",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 14,
+    "diameter_max": 12,
+    "material_grade": "K203",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 211,
+    "confidence": 75,
+    "confidence_reason": "Article number confirmed, dimensions present, grade present, material suitability symbols not provided in table",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_tooling.pdf",
+    "run_id": "run-1780231699230",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:59:51.942Z"
+  }
+]

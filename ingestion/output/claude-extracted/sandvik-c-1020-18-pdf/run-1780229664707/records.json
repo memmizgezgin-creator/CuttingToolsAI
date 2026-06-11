@@ -1,0 +1,1822 @@
+[
+  {
+    "brand": "Sandvik",
+    "product_name": "SNMG 1204",
+    "article_number": "SNMG 1204",
+    "family": "SNMG",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Insert mentioned in example only; no material suitability or cutting data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:14:49.760Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "SNMG 43",
+    "article_number": "SNMG 43",
+    "family": "SNMG",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Insert mentioned in example only; no material suitability or cutting data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:14:49.762Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "SNMG 1506",
+    "article_number": "SNMG 1506",
+    "family": "SNMG",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Insert mentioned in example only; no material suitability or cutting data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:14:49.762Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "SNMG 54",
+    "article_number": "SNMG 54",
+    "family": "SNMG",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Insert mentioned in example only; no material suitability or cutting data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:14:49.762Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CNMG 120408",
+    "article_number": "CNMG 120408",
+    "family": "CNMG",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 9,
+    "confidence": 60,
+    "confidence_reason": "Insert mentioned in geometry example; no material suitability or complete cutting data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:14:49.762Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CNMG 432",
+    "article_number": "CNMG 432",
+    "family": "CNMG",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 9,
+    "confidence": 60,
+    "confidence_reason": "Insert mentioned in geometry diagram; no material suitability or complete cutting data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:14:49.762Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "GC4325",
+    "article_number": "GC4325",
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC4325",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 10,
+    "confidence": 60,
+    "confidence_reason": "Grade mentioned in example recommendation only; no material suitability or cutting data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:14:49.762Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "GC4315",
+    "article_number": "GC4315",
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC4315",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 10,
+    "confidence": 60,
+    "confidence_reason": "Grade mentioned in example recommendation only; no material suitability or cutting data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:14:49.762Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": null,
+    "article_number": "GC1125",
+    "family": "Grooving insert",
+    "shank_form": "-CL",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1125",
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 27,
+    "confidence": 60,
+    "confidence_reason": "Article number extracted but limited context; PMKNSH symbols incomplete",
+    "validation_issues": [
+      "missing_product_name"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:38.486Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": null,
+    "article_number": "GC1125/4225",
+    "family": "Grooving insert",
+    "shank_form": "-GF",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1125/4225",
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 27,
+    "confidence": 60,
+    "confidence_reason": "Article number extracted but limited context; PMKNSH symbols incomplete",
+    "validation_issues": [
+      "missing_product_name"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:38.486Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": null,
+    "article_number": "GC1135/2135",
+    "family": "Grooving insert",
+    "shank_form": "-TF",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1135/2135",
+    "material_suitability": {
+      "P": null,
+      "M": true,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 27,
+    "confidence": 60,
+    "confidence_reason": "Article number extracted but limited context; PMKNSH symbols incomplete",
+    "validation_issues": [
+      "missing_product_name"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:38.486Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": null,
+    "article_number": "GC1135/3115",
+    "family": "Grooving insert",
+    "shank_form": "-TM",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1135/3115",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 27,
+    "confidence": 60,
+    "confidence_reason": "Article number extracted but limited context; PMKNSH symbols incomplete",
+    "validation_issues": [
+      "missing_product_name"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:38.486Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": null,
+    "article_number": "GC1105",
+    "family": "Grooving insert",
+    "shank_form": "-TF",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1105",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 27,
+    "confidence": 60,
+    "confidence_reason": "Article number extracted but limited context; PMKNSH symbols incomplete",
+    "validation_issues": [
+      "missing_product_name"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:38.486Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": null,
+    "article_number": "CB7015",
+    "family": "Grooving insert",
+    "shank_form": "-GF",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "CB7015",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 27,
+    "confidence": 60,
+    "confidence_reason": "Article number extracted but limited context; PMKNSH symbols incomplete",
+    "validation_issues": [
+      "missing_product_name"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:38.486Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": null,
+    "article_number": "GC1125",
+    "family": "Internal grooving insert",
+    "shank_form": "-GF",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1125",
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 29,
+    "confidence": 60,
+    "confidence_reason": "Article number extracted but limited context; PMKNSH symbols incomplete",
+    "validation_issues": [
+      "missing_product_name"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:38.486Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": null,
+    "article_number": "GC4225",
+    "family": "Internal grooving insert",
+    "shank_form": "-TF",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC4225",
+    "material_suitability": {
+      "P": true,
+      "M": null,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 29,
+    "confidence": 60,
+    "confidence_reason": "Article number extracted but limited context; PMKNSH symbols incomplete",
+    "validation_issues": [
+      "missing_product_name"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:38.486Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": null,
+    "article_number": "GC2135",
+    "family": "Internal grooving insert",
+    "shank_form": "-TF",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC2135",
+    "material_suitability": {
+      "P": null,
+      "M": true,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 29,
+    "confidence": 60,
+    "confidence_reason": "Article number extracted but limited context; PMKNSH symbols incomplete",
+    "validation_issues": [
+      "missing_product_name"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:38.486Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": null,
+    "article_number": "GC1105",
+    "family": "Internal grooving insert",
+    "shank_form": "-TF",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1105",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 29,
+    "confidence": 60,
+    "confidence_reason": "Article number extracted but limited context; PMKNSH symbols incomplete",
+    "validation_issues": [
+      "missing_product_name"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:38.486Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": null,
+    "article_number": "CB7015",
+    "family": "Internal grooving insert",
+    "shank_form": "-S",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "CB7015",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 29,
+    "confidence": 60,
+    "confidence_reason": "Article number extracted but limited context; PMKNSH symbols incomplete",
+    "validation_issues": [
+      "missing_product_name"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:38.486Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "GC1125",
+    "article_number": "GC1125",
+    "family": "Parting and grooving",
+    "shank_form": "-TF",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1125",
+    "material_suitability": {
+      "P": true,
+      "M": false,
+      "K": false,
+      "N": false,
+      "S": false,
+      "H": false
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 31,
+    "confidence": 70,
+    "confidence_reason": "Grade and basic article number present; material suitability symbol interpretation for P clear; other technical specifications absent",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:51.225Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "GC2135",
+    "article_number": "GC2135",
+    "family": "Parting and grooving",
+    "shank_form": "-TF",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC2135",
+    "material_suitability": {
+      "P": false,
+      "M": true,
+      "K": false,
+      "N": false,
+      "S": false,
+      "H": false
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 31,
+    "confidence": 70,
+    "confidence_reason": "Grade and basic article number present; material suitability symbol for M (stainless) clear; other technical specifications absent",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:51.225Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "GC1105",
+    "article_number": "GC1105",
+    "family": "Parting and grooving",
+    "shank_form": "-TF",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1105",
+    "material_suitability": {
+      "P": false,
+      "M": false,
+      "K": false,
+      "N": true,
+      "S": false,
+      "H": false
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 31,
+    "confidence": 70,
+    "confidence_reason": "Grade and basic article number present; material suitability symbol for N (non-ferrous) clear; other technical specifications absent",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:51.225Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "GC4225",
+    "article_number": "GC4225",
+    "family": "Parting and grooving",
+    "shank_form": "-TF",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC4225",
+    "material_suitability": {
+      "P": false,
+      "M": false,
+      "K": true,
+      "N": false,
+      "S": false,
+      "H": false
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 31,
+    "confidence": 70,
+    "confidence_reason": "Grade and basic article number present; material suitability symbol for K (cast iron) clear; other technical specifications absent",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:51.225Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CB7015",
+    "article_number": "CB7015",
+    "family": "Parting and grooving",
+    "shank_form": "-S",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "CB7015",
+    "material_suitability": {
+      "P": false,
+      "M": false,
+      "K": false,
+      "N": false,
+      "S": false,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 31,
+    "confidence": 70,
+    "confidence_reason": "Grade and basic article number present; material suitability symbol for H (hardened steel) clear; other technical specifications absent",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:51.225Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CoroCut® XS",
+    "article_number": null,
+    "family": "Thread turning",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 4,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.2,
+      "feed_max": 2
+    },
+    "source_page": 32,
+    "confidence": 60,
+    "confidence_reason": "Product name present; pitch area (0.2-2 mm) interpreted as feed range; DMIN 4 mm for diameter; no article number, grade, or material suitability data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:51.225Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CoroThread® 266",
+    "article_number": null,
+    "family": "Thread turning",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 12,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.5,
+      "feed_max": 8
+    },
+    "source_page": 32,
+    "confidence": 60,
+    "confidence_reason": "Product name present; pitch area (0.5-8 mm) interpreted as feed range; DMIN 12 mm for diameter; no article number, grade, or material suitability data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:51.225Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CoroTurn® XS",
+    "article_number": null,
+    "family": "Thread turning",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 4,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.5,
+      "feed_max": 3
+    },
+    "source_page": 32,
+    "confidence": 60,
+    "confidence_reason": "Product name present; pitch area (0.5-3 mm) interpreted as feed range; DMIN 4 mm for diameter; no article number, grade, or material suitability data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:51.225Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CoroCut®MB",
+    "article_number": null,
+    "family": "Thread turning",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 10,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.5,
+      "feed_max": 3
+    },
+    "source_page": 32,
+    "confidence": 60,
+    "confidence_reason": "Product name present; pitch area (0.5-3 mm) interpreted as feed range; DMIN 10 mm for diameter; no article number, grade, or material suitability data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:51.225Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Thread turning insert - Full profile",
+    "article_number": null,
+    "family": "Thread turning insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1125, GC1135",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 36,
+    "confidence": 60,
+    "confidence_reason": "Product type identified but no article number provided. Material grades mentioned but material suitability symbols not explicitly stated. Geometry types (A, F, C) referenced but no cutting data provided.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:00.507Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Thread turning insert - V-profile",
+    "article_number": null,
+    "family": "Thread turning insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 36,
+    "confidence": 60,
+    "confidence_reason": "Product type identified but no article number. No material grades, suitability symbols, or cutting data provided.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:00.507Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Thread turning insert - Multi-point",
+    "article_number": null,
+    "family": "Thread turning insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 36,
+    "confidence": 60,
+    "confidence_reason": "Product type identified but no article number. No material grades, suitability symbols, or cutting data provided.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:00.507Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "GC1125 grade insert",
+    "article_number": null,
+    "family": "Cutting insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1125",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 38,
+    "confidence": 60,
+    "confidence_reason": "Grade mentioned for high heat resistance applications. No article number, specific family designation, or cutting data. Material suitability inferred from context but not explicitly confirmed.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:00.507Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "GC1135 grade insert",
+    "article_number": null,
+    "family": "Cutting insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "GC1135",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 38,
+    "confidence": 60,
+    "confidence_reason": "Grade mentioned for secure machining. No article number, specific family designation, or cutting data. Material suitability inferred from context but not explicitly confirmed.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:00.507Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "H13A grade insert",
+    "article_number": null,
+    "family": "Cutting insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "H13A",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 38,
+    "confidence": 60,
+    "confidence_reason": "Grade mentioned for ISO N and H materials. No article number or cutting data. Material suitability inferred from explicit material designation.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:00.507Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CB7015 grade insert",
+    "article_number": null,
+    "family": "Cutting insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "CB7015",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 38,
+    "confidence": 60,
+    "confidence_reason": "Grade mentioned for ISO N and H materials. No article number or cutting data. Material suitability inferred from explicit material designation.",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:00.507Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CBN insert",
+    "article_number": null,
+    "family": "CBN",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.3,
+      "feed_max": 0.5
+    },
+    "source_page": 42,
+    "confidence": 60,
+    "confidence_reason": "Product type identified but no article number found; material suitability only inferred from hardened steel context; feed rates explicitly stated for Xcel inserts",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:06.446Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "Coromant Capto",
+    "article_number": null,
+    "family": "Tool holder system",
+    "shank_form": "Capto",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 43,
+    "confidence": 60,
+    "confidence_reason": "Product name and brand confirmed but no article number; tool holder system referenced for rigid machine setup",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:06.446Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "Silent Tools",
+    "article_number": null,
+    "family": "Turning tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 44,
+    "confidence": 60,
+    "confidence_reason": "Product name and brand confirmed; mentioned for high speed and productivity enhancement; no technical specifications provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:06.446Z"
+  },
+  {
+    "brand": "Sandvik Coromant",
+    "product_name": "CoroTurn HP",
+    "article_number": null,
+    "family": "Turning tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 45,
+    "confidence": 60,
+    "confidence_reason": "Product name and brand confirmed; mentioned for reducing chip problems and tool breakage; no technical specifications provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:06.446Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Coromant Capto",
+    "article_number": null,
+    "family": "Quick change clamping units",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 32,
+    "diameter_max": 100,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 46,
+    "confidence": 60,
+    "confidence_reason": "Product name and brand present; no article number; material suitability and cutting data not specified; sizes mentioned but limited detail",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:19.837Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Coromant Capto HP",
+    "article_number": null,
+    "family": "Quick change clamping units",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 46,
+    "confidence": 60,
+    "confidence_reason": "Product name present; high pressure coolant capability noted (400 bar); no article number; material suitability unknown",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:19.837Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn SL",
+    "article_number": null,
+    "family": "Boring bars and adaptors",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 47,
+    "confidence": 60,
+    "confidence_reason": "Modular system for turning, parting, grooving and threading described; no article number; no specific dimensions or material suitability data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:19.837Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn HP",
+    "article_number": null,
+    "family": "Tool holders with high precision coolant",
+    "shank_form": "boring bar and shank",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 48,
+    "confidence": 60,
+    "confidence_reason": "Product name and application clear; boring bars for internal turning and shanks for fine to medium turning mentioned; coolant pressure 5-275 bar specified; no article number; material suitability not provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:19.837Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroCut QD",
+    "article_number": null,
+    "family": "Parting blades and shank tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 49,
+    "confidence": 60,
+    "confidence_reason": "Product mentioned with plug and play coolant adaptors; no article number; dimensions and material suitability not specified",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:19.837Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroCut 1-2",
+    "article_number": null,
+    "family": "Parting blades and shank tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 49,
+    "confidence": 60,
+    "confidence_reason": "Product mentioned with plug and play coolant adaptors; no article number; dimensions and material suitability not specified",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:19.837Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "EasyFix",
+    "article_number": null,
+    "family": "Sleeves for cylindrical boring bars",
+    "shank_form": "cylindrical boring bar sleeves",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 49,
+    "confidence": 60,
+    "confidence_reason": "Product name and function described; spring plunger and metallic sealing mentioned; no article number; dimensions and material suitability not provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:19.837Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Silent Tools",
+    "article_number": null,
+    "family": "Dampened boring bars and adaptors",
+    "shank_form": "steel dampened and carbide reinforced dampened",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 50,
+    "confidence": 70,
+    "confidence_reason": "Product name and types clearly described; maximum overhangs specified (4-14 x DMM depending on type and application); bar type 570-3C and 570-4C referenced; no material suitability or cutting data",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:19.837Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Silent Tools 570-3C",
+    "article_number": "570-3C",
+    "family": "Steel dampened boring bar",
+    "shank_form": "steel dampened",
+    "depth_multiplier": "10 x DMM",
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 50,
+    "confidence": 80,
+    "confidence_reason": "Article number 570-3C explicitly mentioned; application for internal turning specified; maximum overhang 10 x DMM for turning, 5 x DMM for grooving/threading; material grade and cutting data not provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:19.837Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Silent Tools 570-4C",
+    "article_number": "570-4C",
+    "family": "Steel dampened boring bar",
+    "shank_form": "steel dampened",
+    "depth_multiplier": "5 x DMM",
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 50,
+    "confidence": 80,
+    "confidence_reason": "Article number 570-4C explicitly mentioned; recommended for grooving and threading; maximum overhang 5 x DMM; material grade and cutting data not provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_c-1020-18.pdf",
+    "run_id": "run-1780229664707",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:16:19.837Z"
+  }
+]

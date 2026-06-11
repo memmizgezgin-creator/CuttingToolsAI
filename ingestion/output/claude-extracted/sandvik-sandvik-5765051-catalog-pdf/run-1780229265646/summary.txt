@@ -1,0 +1,11 @@
+claude-extract run: run-1780229265646
+PDF: sandvik_sandvik_5765051_catalog.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-31T12:07:52.183Z
+
+Total records extracted: 4
+Auto-approved (conf >= 85): 0
+Review required (conf < 85): 4
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/sandvik-sandvik-5765051-catalog-pdf/run-1780229265646

@@ -1,0 +1,11 @@
+claude-extract run: run-1780228994041
+PDF: kennametal_kennametal_catalogue_2.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-31T12:04:58.114Z
+
+Total records extracted: 3
+Auto-approved (conf >= 85): 0
+Review required (conf < 85): 3
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/kennametal-kennametal-catalogue-2-pdf/run-1780228994041

@@ -1,0 +1,76 @@
+name: Ingestion Pipeline
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ingestion/inbox/**'
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+# Never run two ingestion jobs in parallel — prevents merge conflicts on product DB.
+# cancel-in-progress: false so a queued run still completes after the active one finishes.
+concurrency:
+  group: ingestion-pipeline
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    permissions:
+      contents: write   # required for the bot commit-and-push step
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history so git push works; token defaults to GITHUB_TOKEN (write permission above)
+          fetch-depth: 1
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ingestion pipeline
+        id: pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node ingestion/scripts/ci-inbox.js
+
+      - name: Commit and push results
+        # Always run this step so staging files and failed/ logs are committed even on partial failure.
+        # [skip ci] prevents this commit from re-triggering the pipeline.
+        if: always()
+        run: |
+          git config user.name  "CuttingToolsAI Ingestion Bot"
+          git config user.email "ingestion-bot@cuttingtoolsai.eu"
+
+          # Stage output files (force-add because they are gitignored by default)
+          git add -f ingestion/output/claude-extracted/ 2>/dev/null || true
+          git add    data/extracted-productdb-candidates.json 2>/dev/null || true
+          git add -f ingestion/failed/ 2>/dev/null || true
+          git add    ingestion/output/processed/ 2>/dev/null || true
+
+          # Only commit if there is something to commit
+          if git diff --cached --quiet; then
+            echo "ℹ️  Nothing to commit — skipping bot commit."
+          else
+            git commit -m "data: ingestion pipeline run $(date -u +%Y-%m-%d) [skip ci]"
+            git push
+          fi
+
+      - name: Report pipeline stats
+        if: always()
+        run: |
+          echo "Pipeline complete."
+          echo "ingest_stats=${{ steps.pipeline.outputs.ingest_stats }}"

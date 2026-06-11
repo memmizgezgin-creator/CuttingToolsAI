@@ -1,0 +1,113 @@
+[
+  {
+    "brand": "Kennametal",
+    "product_name": "CMM65",
+    "article_number": "CMM65",
+    "family": "CM Series",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Product name identified but no article number confirmation, no technical specifications provided, no material suitability data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal_catalogue_2.pdf",
+    "run_id": "run-1780228994041",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:03:18.158Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "CM66",
+    "article_number": "CM66",
+    "family": "CM Series",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Product name identified but no article number confirmation, no technical specifications provided, no material suitability data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal_catalogue_2.pdf",
+    "run_id": "run-1780228994041",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:03:18.159Z"
+  },
+  {
+    "brand": "Kennametal",
+    "product_name": "C31FSRHD Conical",
+    "article_number": "C31FSRHD",
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 5,
+    "confidence": 60,
+    "confidence_reason": "Product name identified but no technical specifications provided, no material suitability data, no dimensional data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kennametal_kennametal_catalogue_2.pdf",
+    "run_id": "run-1780228994041",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:03:18.159Z"
+  }
+]

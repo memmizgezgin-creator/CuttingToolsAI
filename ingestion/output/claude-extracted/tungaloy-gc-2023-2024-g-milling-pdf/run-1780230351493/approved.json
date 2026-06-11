@@ -1,0 +1,107 @@
+[
+  {
+    "brand": "Tungaloy",
+    "product_name": "Plunge mill for roughing, with wedge clamp system",
+    "article_number": "TZP19080R",
+    "family": "TZP19",
+    "shank_form": "BT50",
+    "depth_multiplier": null,
+    "diameter_min": 80,
+    "diameter_max": 80,
+    "material_grade": "TZP19",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": true,
+      "S": true,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": 60,
+      "vc_max": 7000,
+      "feed_min": 7,
+      "feed_max": 25
+    },
+    "source_page": 236,
+    "confidence": 85,
+    "confidence_reason": "Article number confirmed, dimensions present, PMKNSH symbols present but all marked as suitable, cutting conditions partially visible",
+    "validation_issues": [],
+    "auto_approved": true,
+    "review_required": false,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780230351493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:39:12.884Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Plunge mill for roughing, with wedge clamp system",
+    "article_number": "TZP19100R",
+    "family": "TZP19",
+    "shank_form": "BT50",
+    "depth_multiplier": null,
+    "diameter_min": 100,
+    "diameter_max": 100,
+    "material_grade": "TZP19",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": true,
+      "S": true,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": 60,
+      "vc_max": 7000,
+      "feed_min": 7,
+      "feed_max": 25
+    },
+    "source_page": 236,
+    "confidence": 85,
+    "confidence_reason": "Article number confirmed, dimensions present, PMKNSH symbols present but all marked as suitable, cutting conditions partially visible",
+    "validation_issues": [],
+    "auto_approved": true,
+    "review_required": false,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780230351493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:39:12.884Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Plunge mill for roughing, with wedge clamp system",
+    "article_number": "TZP19125R",
+    "family": "TZP19",
+    "shank_form": "BT50",
+    "depth_multiplier": null,
+    "diameter_min": 125,
+    "diameter_max": 125,
+    "material_grade": "TZP19",
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": true,
+      "S": true,
+      "H": true
+    },
+    "cutting_data": {
+      "vc_min": 60,
+      "vc_max": 7000,
+      "feed_min": 7,
+      "feed_max": 25
+    },
+    "source_page": 236,
+    "confidence": 85,
+    "confidence_reason": "Article number confirmed, dimensions present, PMKNSH symbols present but all marked as suitable, cutting conditions partially visible",
+    "validation_issues": [],
+    "auto_approved": true,
+    "review_required": false,
+    "source_pdf": "tungaloy_gc_2023-2024_g_milling.pdf",
+    "run_id": "run-1780230351493",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:39:12.884Z"
+  }
+]

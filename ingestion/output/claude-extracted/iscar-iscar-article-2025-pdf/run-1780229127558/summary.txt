@@ -1,0 +1,11 @@
+claude-extract run: run-1780229127558
+PDF: iscar_iscar_article_2025.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-31T12:06:23.501Z
+
+Total records extracted: 41
+Auto-approved (conf >= 85): 0
+Review required (conf < 85): 41
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/iscar-iscar-article-2025-pdf/run-1780229127558

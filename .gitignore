@@ -26,8 +26,16 @@ __pycache__/
 
 # PDF catalogs — large binary files, processed locally only
 *.pdf
+# Exception: inbox PDFs can be committed to trigger the CI ingestion pipeline.
+# GitHub hard limit is 100 MB per file. Use workflow_dispatch for larger PDFs.
+!ingestion/inbox/*.pdf
+# Exception: failed PDFs committed for audit and retry (error.txt alongside them)
+!ingestion/failed/*.pdf
+!ingestion/failed/*.txt
 ingestion/input/
-ingestion/output/
+ingestion/output/processed/
+# ingestion/output/claude-extracted/ is force-added by the CI workflow so staging
+# review.json files are committed and visible in the human review UI.
 
 # Large text dumps from PDF extraction
 *.txt

@@ -1,0 +1,12 @@
+claude-extract-vision run: run-1780304939222
+PDF: 2026-06-01T08-57-32-461_[YE-TP23]_TitaNox_Power_Metric_spread.pdf
+Pages: 1–15
+Model: claude-sonnet-4-6
+Date: 2026-06-01T09:10:40.327Z
+
+Total records extracted: 8
+Auto-approved (conf >= 70): 0
+Review required (conf < 70): 8
+Chunks failed: 0
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/2026-06-01t08-57-32-461-ye-tp23-titanox-power-metric-spread-pdf/run-1780304939222

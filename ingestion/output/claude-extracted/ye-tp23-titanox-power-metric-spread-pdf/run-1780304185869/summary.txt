@@ -1,0 +1,11 @@
+claude-extract run: run-1780304185869
+PDF: [YE-TP23]_TitaNox_Power_Metric_spread.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-06-01T08:57:19.478Z
+
+Total records extracted: 0
+Auto-approved (conf >= 70): 0
+Review required (conf < 70): 0
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/ye-tp23-titanox-power-metric-spread-pdf/run-1780304185869

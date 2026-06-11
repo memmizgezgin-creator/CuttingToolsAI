@@ -1,0 +1,11 @@
+claude-extract run: run-1780229810505
+PDF: sandvik_c-1040-191.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-31T12:16:57.779Z
+
+Total records extracted: 2
+Auto-approved (conf >= 85): 0
+Review required (conf < 85): 2
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/sandvik-c-1040-191-pdf/run-1780229810505

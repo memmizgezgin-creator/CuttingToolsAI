@@ -1,0 +1,11 @@
+claude-extract run: run-1780230351493
+PDF: tungaloy_gc_2023-2024_g_milling.pdf
+Pages: 1–end
+Model: claude-haiku-4-5
+Date: 2026-05-31T12:47:50.197Z
+
+Total records extracted: 56
+Auto-approved (conf >= 85): 3
+Review required (conf < 85): 53
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/tungaloy-gc-2023-2024-g-milling-pdf/run-1780230351493

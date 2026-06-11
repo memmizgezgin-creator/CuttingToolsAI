@@ -1,0 +1,523 @@
+[
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn® 111",
+    "article_number": null,
+    "family": "Internal machining turning insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 6.5,
+    "diameter_max": 32,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Product name and application range present, but no article number, material suitability data, or cutting parameters found in text",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.775Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn® 107",
+    "article_number": null,
+    "family": "Internal machining turning insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 16,
+    "diameter_max": 75,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Product name and application range present, but no article number, material suitability data, or cutting parameters found in text",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "T-Max P",
+    "article_number": null,
+    "family": "Internal machining turning insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Product name only, no dimensional, material suitability or cutting data present",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn® RC",
+    "article_number": "A163",
+    "family": "External machining turning - Coromant Capto cutting",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no dimensional, material suitability or cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn® RC",
+    "article_number": "A166",
+    "family": "External machining turning - Coromant Capto cutting",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no dimensional, material suitability or cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn® 107",
+    "article_number": "A168",
+    "family": "External machining turning - Coromant Capto cutting",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no dimensional, material suitability or cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "CoroTurn® 111",
+    "article_number": "A178",
+    "family": "External machining turning - Coromant Capto cutting",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no dimensional, material suitability or cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Shank holder",
+    "article_number": "A169",
+    "family": "External machining turning - Rigid clamp design",
+    "shank_form": "Rigid clamp design",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Article number and shank form present but no dimensional or cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Shank holder",
+    "article_number": "A171",
+    "family": "External machining turning - Lever design",
+    "shank_form": "Lever design",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Article number and shank form present but no dimensional or cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Shank holder",
+    "article_number": "A173",
+    "family": "External machining turning - Wedge clamp design",
+    "shank_form": "Wedge clamp design",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Article number and shank form present but no dimensional or cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Shank holder",
+    "article_number": "A175",
+    "family": "External machining turning - Screw and top clamp design",
+    "shank_form": "Screw and top clamp design",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Article number and shank form present but no dimensional or cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Shank holder",
+    "article_number": "A183",
+    "family": "External machining turning - Screw clamp design",
+    "shank_form": "Screw clamp design",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Article number and shank form present but no dimensional or cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Shank holder",
+    "article_number": "A190",
+    "family": "External machining turning - Screw clamp design",
+    "shank_form": "Screw clamp design",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Article number and shank form present but no dimensional or cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  },
+  {
+    "brand": "Sandvik",
+    "product_name": "Shank holder",
+    "article_number": "A198",
+    "family": "External machining turning - Top clamp design",
+    "shank_form": "Top clamp design",
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 6,
+    "confidence": 60,
+    "confidence_reason": "Article number and shank form present but no dimensional or cutting data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "sandvik_sandvik_5765051_catalog.pdf",
+    "run_id": "run-1780229840951",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:17:37.776Z"
+  }
+]

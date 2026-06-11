@@ -1,0 +1,11 @@
+claude-extract run: run-1780229524560
+PDF: kyocera_11_chapter_k_2024_kap.pdf
+Pages: 41–96
+Model: claude-haiku-4-5
+Date: 2026-05-31T12:14:54.883Z
+
+Total records extracted: 21
+Auto-approved (conf >= 85): 15
+Review required (conf < 85): 6
+
+Output: /Users/muratonder/Desktop/ToolAdvisor/ingestion/output/claude-extracted/kyocera-11-chapter-k-2024-kap-pdf/run-1780229524560

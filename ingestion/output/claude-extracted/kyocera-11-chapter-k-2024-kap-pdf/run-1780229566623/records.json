@@ -1,0 +1,222 @@
+[
+  {
+    "brand": "Kyocera",
+    "product_name": "MagicDrill DRC",
+    "article_number": null,
+    "family": "DRC",
+    "shank_form": "Flanged shank SF",
+    "depth_multiplier": "3D",
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 100,
+      "vc_max": 100,
+      "feed_min": 0.2,
+      "feed_max": 0.3
+    },
+    "source_page": 46,
+    "confidence": 70,
+    "confidence_reason": "Product name and shank form confirmed, but no article number found. Cutting conditions extracted from test data only.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kyocera_11_chapter_k_2024_kap.pdf",
+    "run_id": "run-1780229566623",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:19.679Z"
+  },
+  {
+    "brand": "Kyocera",
+    "product_name": "MagicDrill DRV",
+    "article_number": null,
+    "family": "DRV",
+    "shank_form": null,
+    "depth_multiplier": "6D",
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "CA520D, PR1225, CA415D, PR1535",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 100,
+      "vc_max": 250,
+      "feed_min": 0.06,
+      "feed_max": 0.12
+    },
+    "source_page": 48,
+    "confidence": 75,
+    "confidence_reason": "Product name and family confirmed with CVD and PVD insert grades. Cutting data extracted from multiple test conditions. No article number or shank form specified.",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kyocera_11_chapter_k_2024_kap.pdf",
+    "run_id": "run-1780229566623",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:19.680Z"
+  },
+  {
+    "brand": "Kyocera",
+    "product_name": "MagicDrill DRV",
+    "article_number": "S20-DRV...M-O-03",
+    "family": "DRV",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": true,
+      "M": true,
+      "K": true,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 50,
+    "confidence": 65,
+    "confidence_reason": "Article number found but incomplete (S20-DRV...M-O-03). PMKNSH: P, M, K confirmed as applicable. No cutting data provided for this specific toolholder variant.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kyocera_11_chapter_k_2024_kap.pdf",
+    "run_id": "run-1780229566623",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:19.681Z"
+  },
+  {
+    "brand": "Kyocera",
+    "product_name": "LCMT 030203-GH-E",
+    "article_number": "LCMT 030203-GH-E",
+    "family": "LCMT",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 2,
+    "diameter_max": 2,
+    "material_grade": "CVD, PVD",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 50,
+    "confidence": 80,
+    "confidence_reason": "Insert article number confirmed with full dimensions. Tough edge (GH) variant for cast iron. Dimension data (S=2, D1=2, RE=2.3, W1=0.3, L=5.54, AN=7) explicitly listed. No cutting data provided.",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kyocera_11_chapter_k_2024_kap.pdf",
+    "run_id": "run-1780229566623",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:19.681Z"
+  },
+  {
+    "brand": "Kyocera",
+    "product_name": "LCMT 030203-GM-E",
+    "article_number": "LCMT 030203-GM-E",
+    "family": "LCMT",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 2,
+    "diameter_max": 2,
+    "material_grade": "CVD, PVD",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 50,
+    "confidence": 80,
+    "confidence_reason": "Insert article number confirmed with full dimensions. General purpose (GM) variant. Dimension data (S=2, D1=2, RE=2.3, W1=0.3, L=5.54, AN=7) explicitly listed. No cutting data provided.",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kyocera_11_chapter_k_2024_kap.pdf",
+    "run_id": "run-1780229566623",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:19.681Z"
+  },
+  {
+    "brand": "Kyocera",
+    "product_name": "LCMT 030203-SM-E",
+    "article_number": "LCMT 030203-SM-E",
+    "family": "LCMT",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": 2,
+    "diameter_max": 2,
+    "material_grade": "CVD, PVD",
+    "material_suitability": {
+      "P": null,
+      "M": true,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 50,
+    "confidence": 80,
+    "confidence_reason": "Insert article number confirmed with full dimensions. Stainless steel (SM) variant. Dimension data (S=2, D1=2, RE=2.3, W1=0.3, L=5.54, AN=7) explicitly listed. M (stainless steel) applicability confirmed.",
+    "validation_issues": [],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "kyocera_11_chapter_k_2024_kap.pdf",
+    "run_id": "run-1780229566623",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T12:15:19.681Z"
+  }
+]

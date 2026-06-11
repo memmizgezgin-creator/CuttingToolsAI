@@ -1,0 +1,2567 @@
+[
+  {
+    "brand": "Tungaloy",
+    "product_name": null,
+    "article_number": "A020",
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 26,
+    "confidence": 60,
+    "confidence_reason": "Article number identified but only designation code shown; insufficient product specification data available",
+    "validation_issues": [
+      "missing_product_name",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:05:03.285Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": null,
+    "article_number": "A021",
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 27,
+    "confidence": 60,
+    "confidence_reason": "Article number identified but only designation code shown; insufficient product specification data available",
+    "validation_issues": [
+      "missing_product_name",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:05:03.286Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": null,
+    "article_number": "L002",
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 30,
+    "confidence": 60,
+    "confidence_reason": "Article number identified only; no product specifications provided",
+    "validation_issues": [
+      "missing_product_name",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:05:03.286Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": null,
+    "article_number": "L003",
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 30,
+    "confidence": 60,
+    "confidence_reason": "Article number identified only; no product specifications provided",
+    "validation_issues": [
+      "missing_product_name",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:05:03.286Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": null,
+    "article_number": "L111",
+    "family": null,
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 30,
+    "confidence": 60,
+    "confidence_reason": "Article number identified only; no product specifications provided",
+    "validation_issues": [
+      "missing_product_name",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:05:03.286Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "CBN Insert",
+    "article_number": "CNGA120404-LQP",
+    "family": "CBN Insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 50,
+    "confidence": 60,
+    "confidence_reason": "Article number found but limited context; appears in designation system example without complete product specifications",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:05:10.216Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "CBN Insert",
+    "article_number": "TNGA160402-QBN",
+    "family": "CBN Insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 50,
+    "confidence": 60,
+    "confidence_reason": "Article number found but limited context; appears in designation system example without complete product specifications",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:05:10.216Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DGM Grooving Insert",
+    "article_number": "DGM4-030",
+    "family": "Grooving and Parting Tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 78,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no material suitability, cutting data, or specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:46.715Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DGS Grooving Insert",
+    "article_number": "DGS4-030",
+    "family": "Grooving and Parting Tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 78,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no material suitability, cutting data, or specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:46.715Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DTE Grooving Insert",
+    "article_number": "DTE4-040",
+    "family": "Grooving and Parting Tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 78,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no material suitability, cutting data, or specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:46.715Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DTX Grooving Insert",
+    "article_number": "DTX4-040",
+    "family": "Grooving and Parting Tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 78,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no material suitability, cutting data, or specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:46.715Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DTE Grooving Insert",
+    "article_number": "DTE400-040",
+    "family": "Grooving and Parting Tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 78,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no material suitability, cutting data, or specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:46.715Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DTM Grooving Insert",
+    "article_number": "DTM4-040",
+    "family": "Grooving and Parting Tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 78,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no material suitability, cutting data, or specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:46.715Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DGL Grooving Insert",
+    "article_number": "DGL3-025",
+    "family": "Grooving and Parting Tools",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 50,
+      "vc_max": 100,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 80,
+    "confidence": 70,
+    "confidence_reason": "Article number and cutting speed data found, but material suitability not provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:46.715Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "STH Turning Insert",
+    "article_number": "STH300-SR",
+    "family": "Turning",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 80,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no material suitability or detailed cutting data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:46.715Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "STH Turning Insert",
+    "article_number": "STH500-SR",
+    "family": "Turning",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 80,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no material suitability or detailed cutting data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:46.715Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Grooving and Parting Tool",
+    "article_number": "DTE300-040",
+    "family": "Grooving",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 82,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no material suitability, cutting data, or specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:57.892Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Grooving and Parting Tool",
+    "article_number": "CTER2525-3T09",
+    "family": "Grooving",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 82,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no material suitability, cutting data, or specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:57.892Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Grooving and Parting Tool",
+    "article_number": "DTE400-040",
+    "family": "Grooving",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 82,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no material suitability, cutting data, or specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:57.892Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Grooving and Parting Tool",
+    "article_number": "CTER2525-4T10",
+    "family": "Grooving",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 82,
+    "confidence": 60,
+    "confidence_reason": "Article number found but no material suitability, cutting data, or specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:57.892Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DoPent TungMill",
+    "article_number": null,
+    "family": "Milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 83,
+    "confidence": 60,
+    "confidence_reason": "Product name found but no article number or specifications provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:57.892Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DoTriple-Mill",
+    "article_number": null,
+    "family": "Milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 83,
+    "confidence": 60,
+    "confidence_reason": "Product name found but no article number or specifications provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:57.892Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TFE12",
+    "article_number": null,
+    "family": "Milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 83,
+    "confidence": 60,
+    "confidence_reason": "Product name found but no article number or specifications provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:57.892Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DPD09",
+    "article_number": null,
+    "family": "Milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 83,
+    "confidence": 60,
+    "confidence_reason": "Product name found but no article number or specifications provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:57.892Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Insert",
+    "article_number": "SPCN42ZFR",
+    "family": "Turning insert",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 0.03,
+      "vc_max": 0.08,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 85,
+    "confidence": 60,
+    "confidence_reason": "Article number and feed range found but units unclear and no material suitability data",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:06:57.892Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "THF4400",
+    "article_number": "THF4400",
+    "family": "Milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 86,
+    "confidence": 60,
+    "confidence_reason": "Product name identified in chart but no detailed specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:06.134Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TGP4100",
+    "article_number": "TGP4100",
+    "family": "Milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 86,
+    "confidence": 60,
+    "confidence_reason": "Product name identified in chart but no detailed specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:06.134Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TGP4200",
+    "article_number": "TGP4200",
+    "family": "Milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 86,
+    "confidence": 60,
+    "confidence_reason": "Product name identified in chart but no detailed specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:06.134Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TSP4000",
+    "article_number": "TSP4000",
+    "family": "Milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 86,
+    "confidence": 60,
+    "confidence_reason": "Product name identified in chart but no detailed specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:06.134Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TGD4400",
+    "article_number": "TGD4400",
+    "family": "Milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 86,
+    "confidence": 60,
+    "confidence_reason": "Product name identified in chart but no detailed specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:06.134Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TSE4000",
+    "article_number": "TSE4000",
+    "family": "Milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 86,
+    "confidence": 60,
+    "confidence_reason": "Product name identified in chart but no detailed specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:06.134Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TGN4200",
+    "article_number": "TGN4200",
+    "family": "Milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 86,
+    "confidence": 60,
+    "confidence_reason": "Product name identified in chart but no detailed specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:06.134Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TRD6000",
+    "article_number": "TRD6000",
+    "family": "Milling cutter",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 86,
+    "confidence": 60,
+    "confidence_reason": "Product name identified in chart but no detailed specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:06.134Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Square endmill",
+    "article_number": null,
+    "family": "Endmill",
+    "shank_form": "Cylindrical",
+    "depth_multiplier": null,
+    "diameter_min": 0.6,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 96,
+    "confidence": 60,
+    "confidence_reason": "Product type identified from designation system table but no article number, material grade, or cutting data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:14.166Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Square endmill for Ti",
+    "article_number": null,
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": true,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 96,
+    "confidence": 60,
+    "confidence_reason": "Product type identified from designation system but no article number or specifications provided",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:14.167Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Square endmill for aluminium",
+    "article_number": null,
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": true,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 96,
+    "confidence": 60,
+    "confidence_reason": "Product type identified from designation system but no article number or specifications provided",
+    "validation_issues": [
+      "missing_article_number"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:14.167Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Ball nose endmill",
+    "article_number": null,
+    "family": "Endmill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 98,
+    "confidence": 60,
+    "confidence_reason": "Product type identified from designation system but no article number or specifications provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:14.167Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Twist drill",
+    "article_number": null,
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 99,
+    "confidence": 60,
+    "confidence_reason": "Product type identified from nomenclature section but no article number, diameter range, or material suitability data provided",
+    "validation_issues": [
+      "missing_article_number",
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:14.167Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DMP Drill Head",
+    "article_number": "DMP100-109",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.2,
+      "feed_max": 0.2
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no material suitability symbols, diameter range, or grade information provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DMP Drill Head",
+    "article_number": "DMP110-119",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.2,
+      "feed_max": 0.2
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no material suitability symbols, diameter range, or grade information provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DMP Drill Head",
+    "article_number": "DMP120-129",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.25,
+      "feed_max": 0.25
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no material suitability symbols, diameter range, or grade information provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DMP Drill Head",
+    "article_number": "DMP130-139",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.25,
+      "feed_max": 0.25
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no material suitability symbols, diameter range, or grade information provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DMP Drill Head",
+    "article_number": "DMP140-149",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.3,
+      "feed_max": 0.3
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no material suitability symbols, diameter range, or grade information provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DMP Drill Head",
+    "article_number": "DMP150-159",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.3,
+      "feed_max": 0.3
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no material suitability symbols, diameter range, or grade information provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DMP Drill Head",
+    "article_number": "DMP160-169",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.35,
+      "feed_max": 0.35
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no material suitability symbols, diameter range, or grade information provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DMP Drill Head",
+    "article_number": "DMP170-179",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.35,
+      "feed_max": 0.35
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no material suitability symbols, diameter range, or grade information provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DMP Drill Head",
+    "article_number": "DMP180-189",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.4,
+      "feed_max": 0.4
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no material suitability symbols, diameter range, or grade information provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DMP Drill Head",
+    "article_number": "DMP190-199",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": 0.4,
+      "feed_max": 0.4
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Article number present but no material suitability symbols, diameter range, or grade information provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DMC Drill Head",
+    "article_number": "DMC",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Product name identified but minimal specification data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DMF Drill Head",
+    "article_number": "DMF",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Product name identified but minimal specification data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TID-F Drill Holder",
+    "article_number": "TID-F",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Product name identified but minimal specification data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "TID-R Drill Holder",
+    "article_number": "TID-R",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 104,
+    "confidence": 60,
+    "confidence_reason": "Product name identified but minimal specification data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "SMF Drill Head",
+    "article_number": "SMF",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 105,
+    "confidence": 60,
+    "confidence_reason": "Product name identified but minimal specification data provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:28.591Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DeepTri-Drill TRLG Type",
+    "article_number": "TRLG",
+    "family": "Indexable Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 100,
+      "vc_max": 100,
+      "feed_min": 0.05,
+      "feed_max": 0.1
+    },
+    "source_page": 120,
+    "confidence": 60,
+    "confidence_reason": "Product name and family identified, but no material suitability symbols, diameter range, or material grade explicitly stated",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:41.222Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Indexable Drill MCTR",
+    "article_number": "MCTR",
+    "family": "Indexable Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 120,
+    "confidence": 60,
+    "confidence_reason": "Article number identified but no diameter range, material suitability, or cutting data explicitly provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:41.222Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DeepTri-Drill MCTRCH",
+    "article_number": "MCTRCH",
+    "family": "Indexable Drill",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 120,
+    "confidence": 60,
+    "confidence_reason": "Article number identified but no diameter range, material suitability, or cutting data explicitly provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:41.222Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "FH3125",
+    "article_number": "FH3125",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 100,
+      "vc_max": 100,
+      "feed_min": 0.1,
+      "feed_max": 0.25
+    },
+    "source_page": 119,
+    "confidence": 60,
+    "confidence_reason": "Article number identified from chart with cutting speed data, but no diameter range or material suitability information",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:41.222Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "FH3135",
+    "article_number": "FH3135",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 100,
+      "vc_max": 100,
+      "feed_min": 0.1,
+      "feed_max": 0.25
+    },
+    "source_page": 119,
+    "confidence": 60,
+    "confidence_reason": "Article number identified from chart with cutting speed data, but no diameter range or material suitability information",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:41.222Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "F1122",
+    "article_number": "F1122",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": 100,
+      "vc_max": 100,
+      "feed_min": 0.05,
+      "feed_max": 0.1
+    },
+    "source_page": 119,
+    "confidence": 60,
+    "confidence_reason": "Article number identified from chart with cutting speed data, but no diameter range or material suitability information",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:41.222Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DeepTri-Drill",
+    "article_number": "MCTR",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 124,
+    "confidence": 60,
+    "confidence_reason": "Article number identified from designation system table, but no material suitability symbols, cutting data, or diameter specifications provided in text",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:47.060Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DeepTri-Drill",
+    "article_number": "MCTRCH",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 124,
+    "confidence": 60,
+    "confidence_reason": "Article number identified from designation system table as variant of MCTR, but no material suitability symbols, cutting data, or diameter specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:47.060Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DeepTri-Drill",
+    "article_number": "TRLG",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 124,
+    "confidence": 60,
+    "confidence_reason": "Article number identified from designation system table, but no material suitability symbols, cutting data, or diameter specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:47.060Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "DeepTri-Drill",
+    "article_number": "TRLGCH",
+    "family": "Drilling tool",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 124,
+    "confidence": 60,
+    "confidence_reason": "Article number identified from designation system table as variant of TRLG, but no material suitability symbols, cutting data, or diameter specifications provided",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:47.060Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Deep hole drilling head series - Single Tube System (STS)",
+    "article_number": "06-085",
+    "family": "Deep hole drilling head",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "F1122",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 129,
+    "confidence": 60,
+    "confidence_reason": "Article number found but minimal product specifications available; no cutting data, diameter range, or material suitability symbols present",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:54.799Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Deep hole drilling head series - Double Tube System (DTS)",
+    "article_number": "FH313506-20-085",
+    "family": "Deep hole drilling head",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": "FH3135",
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 129,
+    "confidence": 60,
+    "confidence_reason": "Article number found but minimal specifications; no cutting data or material suitability symbols",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:54.799Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Guide pad cartridge OZ402",
+    "article_number": "OZ402-04",
+    "family": "Guide pad",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 129,
+    "confidence": 60,
+    "confidence_reason": "Article number and size (6.4mm) present but no other specifications; part specification incomplete",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:54.799Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Guide pad cartridge OZ402",
+    "article_number": "OZ402-32",
+    "family": "Guide pad",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 129,
+    "confidence": 60,
+    "confidence_reason": "Article number and size (7.2mm) present but no other specifications; part specification incomplete",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:54.799Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Guide pad cartridge OZ402",
+    "article_number": "OZ402-43",
+    "family": "Guide pad",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 129,
+    "confidence": 60,
+    "confidence_reason": "Article number and size (10.4mm) present but no other specifications; part specification incomplete",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:54.799Z"
+  },
+  {
+    "brand": "Tungaloy",
+    "product_name": "Guide pad cartridge OZ402",
+    "article_number": "OZ402-63",
+    "family": "Guide pad",
+    "shank_form": null,
+    "depth_multiplier": null,
+    "diameter_min": null,
+    "diameter_max": null,
+    "material_grade": null,
+    "material_suitability": {
+      "P": null,
+      "M": null,
+      "K": null,
+      "N": null,
+      "S": null,
+      "H": null
+    },
+    "cutting_data": {
+      "vc_min": null,
+      "vc_max": null,
+      "feed_min": null,
+      "feed_max": null
+    },
+    "source_page": 129,
+    "confidence": 60,
+    "confidence_reason": "Article number and size (12.0mm) present but no other specifications; part specification incomplete",
+    "validation_issues": [
+      "pmknsh_all_null"
+    ],
+    "auto_approved": false,
+    "review_required": true,
+    "source_pdf": "tungaloy_gc_2023-2024_g_usersguide.pdf",
+    "run_id": "run-1780232628271",
+    "merge_status": "preview_only_not_merged",
+    "extracted_at": "2026-05-31T13:07:54.799Z"
+  }
+]
