@@ -17,6 +17,10 @@
 - [ ] **Visual ID PRO** - insert fotoğrafından tanımlama özelliği
 - [ ] **AI Chat PRO** - sınırsız chat modu
 
+## Post-launch
+
+- [ ] (1 Temmuz sonrası) **Prompt regression testi** - advisor promptu için sabit 20 soruluk test seti oluştur, eski vs yeni prompt cevaplarını Haiku ile puanlayan script yaz. Why-layer değişikliklerinde kalite düşüşünü yakalamak için.
+
 ## Done
 
 - [x] **Inter-agent event bus + chief-of-staff daily digest (2026-06-11)** - Supabase `agent_events` tablosu (migration 20260611000000, RLS deny-by-default, service_role only); `agents-shared/departments.js` tek kaynak departman config (site_dev, market_intel, tech_research, chief_of_staff rol prompt'ları + WHY_LAYER_PRINCIPLES buraya taşındı, research-worker import eder); yeni `daily-agents-worker/` (cuttingtoolsai-daily-agents): 07:00 UTC collectors (site_dev canlı homepage analizi + market_intel web_search; bulgular ikinci Claude çağrısıyla event'lere çevrilir), 07:20 evaluation pass (status=eq.new PATCH guard — çifte değerlendirme imkânsız, Claude hatası = defer), 07:40 chief-of-staff digest e-postası (Decisions needed / Routed and evaluated / Department reports, footer'da deferred sayısı); research worker relevant adaylarını tech_research→chief_of_staff finding'i olarak bus'a yazar (best-effort); hiçbir içerik otomatik commit edilmez. NOT: "mevcut günlük ajanlar" repoda/deploy'da yoktu — collectors sıfırdan yazıldı. Lokal uçtan uca test: 2 sahte event → eval (1 escalated, 1 evaluated, re-run 0) → digest HTML üretildi (test-local.mjs). Her iki worker deploy edildi; go-live Murat'ın SQL + secrets adımına bağlı (Active'e bakın).
