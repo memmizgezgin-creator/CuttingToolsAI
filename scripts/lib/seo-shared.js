@@ -235,6 +235,7 @@ ${GTAG}
   <nav>
     <a href="/ref/">Cross-Ref Index</a>
     <a href="/grade/">Grade Index</a>
+    <a href="/material/">Materials</a>
     <a href="/#advisor">AI Advisor</a>
     <a href="/#tools">Tooling</a>
   </nav>
@@ -244,7 +245,7 @@ ${body}
 </div></main>
 <footer><div class="wrap"><div class="foot">
   <div class="cp">© 2026 CUTTINGTOOLS — drawn for machinists · Brand-neutral reference data, verify on a sample part before production.</div>
-  <div class="lk"><a href="/">Advisor</a><a href="/ref/">Cross-Ref Index</a><a href="/grade/">Grade Index</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a></div>
+  <div class="lk"><a href="/">Advisor</a><a href="/ref/">Cross-Ref Index</a><a href="/grade/">Grade Index</a><a href="/material/">Materials</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a></div>
 </div></div></footer>
 </body>
 </html>`;
@@ -261,14 +262,18 @@ const CORE_URLS = [
   { loc: `${SITE}/pro.html`,              priority: '0.6' },
 ];
 
-// Both builders call this with the same inputs (derived from the same DB),
-// so whichever runs last writes an identical sitemap — order-independent.
-function buildSitemap(designations, gradeSlugs) {
+// All three builders call this with the same inputs — whichever runs last
+// writes an identical sitemap (order-independent). materialSlugs defaults to
+// [] when called from the older ref/grade builders without that argument.
+function buildSitemap(designations, gradeSlugs, materialSlugs) {
+  materialSlugs = materialSlugs || [];
   const urls = CORE_URLS.concat(
     { loc: `${SITE}/ref/`, priority: '0.8' },
     designations.map(code => ({ loc: `${SITE}/ref/${slugOf(code)}/`, priority: '0.7' })),
     { loc: `${SITE}/grade/`, priority: '0.8' },
     gradeSlugs.map(slug => ({ loc: `${SITE}/grade/${slug}/`, priority: '0.7' })),
+    materialSlugs.length ? { loc: `${SITE}/material/`, priority: '0.8' } : [],
+    materialSlugs.map(slug => ({ loc: `${SITE}/material/${slug}/`, priority: '0.7' })),
   ).flat();
   const entries = urls.map(u => `    <url>
           <loc>${u.loc}</loc>
@@ -278,9 +283,11 @@ function buildSitemap(designations, gradeSlugs) {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries}\n</urlset>\n`;
 }
 
-function writeSitemap(designations, gradeSlugs) {
-  fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(designations, gradeSlugs));
-  return CORE_URLS.length + 1 + designations.length + 1 + gradeSlugs.length;
+function writeSitemap(designations, gradeSlugs, materialSlugs) {
+  materialSlugs = materialSlugs || [];
+  fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(designations, gradeSlugs, materialSlugs));
+  return CORE_URLS.length + 1 + designations.length + 1 + gradeSlugs.length +
+    (materialSlugs.length ? 1 + materialSlugs.length : 0);
 }
 
 module.exports = {

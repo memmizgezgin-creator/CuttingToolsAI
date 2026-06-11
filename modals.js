@@ -28,7 +28,7 @@
       <div class="ta-modal-header no-border">
         <div>
           <p class="ta-eyebrow">Welcome back</p>
-          <h2>Sign in to ToolAdvisor</h2>
+          <h2>Sign in to CuttingToolsAI</h2>
           <p class="ta-sub">Access saved projects, decisions and Pro features.</p>
         </div>
         <button class="ta-modal-close" data-modal-close aria-label="Close"><span class="material-symbols-outlined">close</span></button>
@@ -68,7 +68,7 @@
       <div class="ta-modal-header no-border">
         <div>
           <p class="ta-eyebrow">Create account</p>
-          <h2>Start using ToolAdvisor</h2>
+          <h2>Start using CuttingToolsAI</h2>
           <p class="ta-sub">Free tier · no card required. Upgrade anytime.</p>
         </div>
         <button class="ta-modal-close" data-modal-close aria-label="Close"><span class="material-symbols-outlined">close</span></button>
@@ -124,7 +124,7 @@
     body: () => `
       <div class="ta-modal-header" style="background:linear-gradient(135deg,#123356 0%,#2c4a6e 100%);color:#fff;border:none;">
         <div style="position:relative;z-index:1;">
-          <p class="ta-eyebrow" style="color:#F59E0B;">ToolAdvisor Pro — Coming July 2026</p>
+          <p class="ta-eyebrow" style="color:#F59E0B;">CuttingToolsAI Pro — Coming July 2026</p>
           <h2 style="color:#fff;">You've used today's 5 free queries</h2>
           <p class="ta-sub" style="color:rgba(255,255,255,.78);max-width:560px;">Pro launches in July. Join the waitlist now — the first 50 sign-ups get 50% off the first 3 months.</p>
         </div>
@@ -667,7 +667,7 @@
     b.className = 'ta-cookie-banner';
     b.innerHTML = `
       <div class="ta-cookie-text">
-        <strong>Cookies & analytics.</strong> ToolAdvisor uses cookies for essential functionality and anonymous usage analytics. We don't sell data to manufacturers — we never have.
+        <strong>Cookies & analytics.</strong> CuttingToolsAI uses cookies for essential functionality and anonymous usage analytics. We don't sell data to manufacturers — we never have.
       </div>
       <div class="ta-cookie-actions">
         <button class="ta-btn ta-btn-text" onclick="TA.acceptCookies('reject')">Reject</button>
