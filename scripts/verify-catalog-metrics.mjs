@@ -4,14 +4,15 @@
 // hardcoded initial values in index.html). Also greps for stale "36"-era
 // metric strings. No network, no dependencies.
 //
-// Brand normalization (must mirror the comment in js/catalog-metrics.js):
-// case-insensitive; "Sandvik Coromant" counts as Sandvik (same manufacturer).
+// Brand normalization comes from scripts/lib/brand-canonical.js — the single
+// source of truth (case-insensitive; "Sandvik Coromant" counts as Sandvik).
 //
 // Usage: node scripts/verify-catalog-metrics.mjs
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { normalizeBrand } from './lib/brand-canonical.js';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DATA    = path.join(ROOT, 'data/extracted-productdb-candidates.json');
@@ -27,10 +28,6 @@ function check(name, pass, detail) {
 // ── 1. Recompute from the product DB file ────────────────────────────────────
 const db = JSON.parse(fs.readFileSync(DATA, 'utf8'));
 const tools = db.tools.length;
-const normalizeBrand = (b) => {
-  const k = String(b || '').trim().toLowerCase();
-  return k.startsWith('sandvik') ? 'sandvik' : k;
-};
 const brandSet = new Set(db.tools.map(t => normalizeBrand(t.brand)).filter(Boolean));
 const brands = brandSet.size;
 console.log(`computed from ${path.relative(ROOT, DATA)}: tools=${tools}, brands=${brands} (${[...brandSet].join(', ')})`);

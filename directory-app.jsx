@@ -1373,6 +1373,21 @@ function retrieveTools(query, filters, top = 15) {
     ],
   };
 
+  // Brand synonyms: historical spellings and ASCII variants all map to the
+  // canonical brand, so "guhring" or "sandvik coromant" matches with full
+  // weight. Data side is normalized by scripts/normalize-brands.js using the
+  // same rule (scripts/lib/brand-canonical.js). Keys are lowercase canonical.
+  const BRAND_KW = {
+    'gühring':    ['gühring', 'guhring', 'guehring'],
+    'iscar':      ['iscar'],
+    'sandvik':    ['sandvik coromant', 'coromant', 'sandvik'],
+    'walter':     ['walter'],
+    'kennametal': ['kennametal'],
+    'kyocera':    ['kyocera'],
+    'tungaloy':   ['tungaloy'],
+    'yg-1':       ['yg-1', 'yg1'],
+  };
+
   // Detect ISO groups implied by the query
   const impliedISO = new Set();
   for (const [iso, kws] of Object.entries(ISO_KW)) {
@@ -1383,6 +1398,12 @@ function retrieveTools(query, filters, top = 15) {
   const impliedFam = new Set();
   for (const [fam, kws] of Object.entries(FAM_KW)) {
     if (kws.some(kw => q.includes(kw))) impliedFam.add(fam);
+  }
+
+  // Detect brands implied by the query (canonical lowercase keys)
+  const impliedBrand = new Set();
+  for (const [brand, kws] of Object.entries(BRAND_KW)) {
+    if (kws.some(kw => q.includes(kw))) impliedBrand.add(brand);
   }
 
   const scored = TOOLS.map(t => {
@@ -1409,6 +1430,10 @@ function retrieveTools(query, filters, top = 15) {
 
     // Query-implied family bonus (check against original family name in data)
     if (impliedFam.size > 0 && (impliedFam.has(t.family) || impliedFam.has(mappedFamily))) score += 15;
+
+    // Query-implied brand bonus: a variant spelling counts as a full token
+    // hit (+10), same weight as the brand appearing verbatim in the query.
+    if (impliedBrand.has(String(t.brand || '').toLowerCase())) score += 10;
 
     // Subtle confidence boost (0–5 pts)
     score += ((t.confidence || 70) - 70) * 0.1;
