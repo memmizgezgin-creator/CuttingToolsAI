@@ -601,7 +601,8 @@ export async function onRequestPost(context) {
   }));
 
   // ── Build success response ─────────────────────────────────────────────────
-  const plan = isPro ? 'pro' : 'free';
+  // Admin bypass renders as 'pro' so the widget hides the upsell/counter.
+  const plan = (isPro || isAdminIP || isAdminKey) ? 'pro' : 'free';
   const responseHeaders = {
     ...CORS,
     'Content-Type': 'application/json',
@@ -615,8 +616,8 @@ export async function onRequestPost(context) {
 
   if (setCookie) responseHeaders['Set-Cookie'] = setCookie;
 
-  // Signed-in users get their plan in the body; anonymous responses are unchanged.
-  const responseBody = userId ? { ...data, answer, plan } : { ...data, answer };
+  // Plan rides on every response body so the widget can render plan-aware UI.
+  const responseBody = { ...data, answer, plan };
 
   return new Response(JSON.stringify(responseBody), {
     status: upstream.status,

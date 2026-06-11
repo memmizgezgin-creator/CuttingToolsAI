@@ -133,8 +133,9 @@ async function main() {
   record('2-anon', anonOk,
     anonOk ? `proxy answered without auth header (HTTP ${anon.status})`
            : `expected success, got HTTP ${anon.status} ${JSON.stringify(anon.json.error || '')}`);
-  if (anonOk && anon.json.plan !== undefined) {
-    record('2-anon-no-plan', false, `anonymous response unexpectedly contains plan:"${anon.json.plan}"`);
+  // Plan now rides on every response body (plan-aware widget UI); anon = free.
+  if (anonOk && anon.json.plan !== 'free') {
+    record('2-anon-plan', false, `anonymous response should carry plan:"free", got "${anon.json.plan}"`);
   }
   const anonState = await userQuotaCount(userId);
   if (anonState !== null) {

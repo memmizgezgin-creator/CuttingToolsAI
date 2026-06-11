@@ -410,7 +410,10 @@
   const badge       = document.getElementById('ta-ai-launcher-badge');
   const quotaLabel  = document.getElementById('ta-ai-quota-label');
   const quotaBar    = document.getElementById('ta-ai-quota-bar');
+  const quotaBarBg  = document.getElementById('ta-ai-quota-bar-bg');
   const launcherIcon = document.getElementById('ta-ai-launcher-icon');
+  const proHeaderBtn = document.getElementById('ta-ai-pro-btn');
+  const launcherPlanLabel = launcher.querySelector('#ta-ai-launcher-label span:last-child');
 
   let busy = false;
 
@@ -433,25 +436,15 @@
   function updateQuota() {
     const r = remaining();
 
-    if (isAdmin()) {
-      badge.textContent      = 'Admin';
-      badge.style.background = '#2C4A6E';
-      badge.style.color      = '#fff';
-      quotaLabel.textContent = 'Admin: unlimited';
-      if (quotaBar) { quotaBar.style.width = '0%'; quotaBar.style.background = '#10B981'; }
-      creditsBar.classList.remove('show');
-      input.disabled   = busy;
-      sendBtn.disabled = busy || !input.value.trim();
-      input.placeholder = 'Ask about tools, speeds, materials…';
-      return;
-    }
-
-    if (serverState.plan === 'pro') {
+    // Admin bypass renders as pro: no upsell, no numeric counter.
+    if (isAdmin() || serverState.plan === 'pro') {
       badge.textContent      = 'Pro';
       badge.style.background = '#10B981';
       badge.style.color      = '#fff';
-      quotaLabel.textContent = 'Pro — unlimited';
-      if (quotaBar) { quotaBar.style.width = '0%'; quotaBar.style.background = '#10B981'; }
+      launcherPlanLabel.textContent = 'Unlimited queries';
+      quotaLabel.textContent = 'Pro';
+      if (quotaBarBg) quotaBarBg.style.display = 'none';
+      if (proHeaderBtn) proHeaderBtn.style.display = 'none';
       creditsBar.classList.remove('show');
       input.disabled   = busy;
       sendBtn.disabled = busy || !input.value.trim();
@@ -459,6 +452,10 @@
       return;
     }
 
+    // Free (or unknown/anonymous): counter + Unlock Pro upsell.
+    launcherPlanLabel.textContent = 'Free: 5 queries/day';
+    if (quotaBarBg) quotaBarBg.style.display = '';
+    if (proHeaderBtn) proHeaderBtn.style.display = '';
     const limit = serverState.limit ?? FREE_DAILY;
     badge.textContent      = `${r}/${limit} free`;
     badge.style.background = '';
