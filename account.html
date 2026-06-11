@@ -201,22 +201,41 @@ footer{border-top:1px solid var(--line);padding:34px 0;margin-top:40px}
     confirmationBox.style.display = 'none';
   }
 
+  // Entitled = an active/trialing subscription row whose period hasn't ended.
+  // RLS scopes the query to the signed-in user. Any error → 'free' silently.
+  async function getPlan() {
+    try {
+      const client = await window.TA_Auth.initSupabase();
+      if (!client) return 'free';
+      const { data, error } = await client
+        .from('subscriptions')
+        .select('status,current_period_end')
+        .in('status', ['active', 'trialing'])
+        .limit(1);
+      if (error || !data || data.length === 0) return 'free';
+      const end = data[0].current_period_end;
+      return (!end || new Date(end) > new Date()) ? 'pro' : 'free';
+    } catch (err) {
+      return 'free';
+    }
+  }
+
   async function checkSession() {
     const user = await window.TA_Auth.getUser();
-    const subscription = user ? await window.TA_Auth.getUserSubscription() : null;
+    const plan = user ? await getPlan() : 'free';
 
     if (user) {
       // Signed in
       signedOutState.style.display = 'none';
       signedInState.style.display = 'block';
       displayEmail.textContent = user.email;
-      planBadge.textContent = subscription?.plan === 'pro' ? 'Pro' : 'Free';
+      planBadge.textContent = plan === 'pro' ? 'Pro' : 'Free';
       hideConfirmation();
 
       // Fire GA4 event
       if (typeof gtag !== 'undefined') {
         gtag('event', 'auth_signed_in', {
-          plan: subscription?.plan || 'free'
+          plan: plan
         });
       }
     } else {

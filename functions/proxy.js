@@ -5,7 +5,6 @@
 //   ANTHROPIC_API_KEY          (already exists)
 //   SUPABASE_URL               wrangler pages secret put SUPABASE_URL --project-name cuttingtoolsai-v2
 //   SUPABASE_SERVICE_ROLE_KEY  wrangler pages secret put SUPABASE_SERVICE_ROLE_KEY --project-name cuttingtoolsai-v2
-//   SUPABASE_JWT_SECRET        wrangler pages secret put SUPABASE_JWT_SECRET --project-name cuttingtoolsai-v2
 //
 // Optional env:
 //   ADMIN_IP      comma-separated IPs that bypass quota (e.g. your home IP)
@@ -99,8 +98,6 @@ const SYSTEM_PROMPT =
 const CONFIG = {
   FREE_DAILY:            5,
   IP_DAILY:             20,   // per-IP abuse backstop across all anon users
-  PRO_MONTHLY_ADVISOR: 1200,
-  PRO_MONTHLY_VISUAL:   150,
 };
 
 // ── CORS helpers ─────────────────────────────────────────────────────────────
@@ -129,38 +126,6 @@ function corsHeaders(origin) {
 }
 
 // ── Crypto helpers (Web Crypto — no external library needed) ─────────────────
-function base64urlDecode(str) {
-  const padded = str.replace(/-/g, '+').replace(/_/g, '/');
-  const pad = (4 - (padded.length % 4)) % 4;
-  const b64 = padded + '='.repeat(pad);
-  const binary = atob(b64);
-  return Uint8Array.from(binary, c => c.charCodeAt(0));
-}
-
-async function verifyJWT(token, secret) {
-  const parts = token.split('.');
-  if (parts.length !== 3) throw new Error('malformed jwt');
-  const [headerB64, payloadB64, sigB64] = parts;
-
-  const key = await crypto.subtle.importKey(
-    'raw',
-    new TextEncoder().encode(secret),
-    { name: 'HMAC', hash: 'SHA-256' },
-    false,
-    ['verify']
-  );
-  const valid = await crypto.subtle.verify(
-    'HMAC', key,
-    base64urlDecode(sigB64),
-    new TextEncoder().encode(`${headerB64}.${payloadB64}`)
-  );
-  if (!valid) throw new Error('invalid signature');
-
-  const payload = JSON.parse(new TextDecoder().decode(base64urlDecode(payloadB64)));
-  if (payload.exp && payload.exp < Math.floor(Date.now() / 1000)) throw new Error('expired');
-  return payload;
-}
-
 async function sha256hex(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
@@ -201,11 +166,30 @@ function callRPC(env, fn, params) {
   });
 }
 
-function getProfile(env, userId) {
-  return supabaseFetch(env,
-    `/rest/v1/profiles?id=eq.${encodeURIComponent(userId)}&select=plan,current_period_end&limit=1`,
+// Verify a Supabase access token via GoTrue. Returns the user id, or null on
+// any non-200 (invalid/expired token) — callers fall back to the anon path.
+async function verifySupabaseToken(env, token) {
+  const res = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'apikey':        env.SUPABASE_SERVICE_ROLE_KEY,
+    },
+  });
+  if (!res.ok) return null;
+  const user = await res.json();
+  return user && user.id ? user.id : null;
+}
+
+// Entitled = an active/trialing subscription row whose period hasn't ended.
+async function isEntitled(env, userId) {
+  const rows = await supabaseFetch(env,
+    `/rest/v1/subscriptions?user_id=eq.${encodeURIComponent(userId)}` +
+    `&status=in.(active,trialing)&select=status,current_period_end&limit=1`,
     { method: 'GET' }
   );
+  if (!rows || rows.length === 0) return false;
+  const end = rows[0].current_period_end;
+  return !end || new Date(end) > new Date();
 }
 
 // ── Reference DB retrieval (AI grounding layer) ───────────────────────────────
@@ -408,20 +392,17 @@ export async function onRequestPost(context) {
   let anonId     = null;
 
   const authHeader = request.headers.get('Authorization') || '';
-  if (authHeader.startsWith('Bearer ') && env.SUPABASE_JWT_SECRET && supabaseReady) {
+  if (authHeader.startsWith('Bearer ') && supabaseReady) {
     try {
-      const payload = await verifyJWT(authHeader.slice(7), env.SUPABASE_JWT_SECRET);
-      userId = payload.sub;
-      const profiles = await getProfile(env, userId);
-      if (profiles && profiles.length > 0) {
-        const { plan, current_period_end } = profiles[0];
-        if (plan === 'pro' && current_period_end && new Date(current_period_end) > new Date()) {
-          isPro = true;
-        }
+      userId = await verifySupabaseToken(env, authHeader.slice(7));
+      if (userId) {
+        isPro = await isEntitled(env, userId);
       }
-    } catch {
-      // Invalid/expired JWT → fall through to anon
+    } catch (err) {
+      // Auth layer must never break the advisor → silent anon fallback
+      console.error('[proxy] auth/entitlement check failed:', err);
       userId = null;
+      isPro  = false;
     }
   }
 
@@ -441,76 +422,54 @@ export async function onRequestPost(context) {
 
   const today = new Date().toISOString().slice(0, 10);  // YYYY-MM-DD UTC
 
-  if (!isAdminIP && !isAdminKey && supabaseReady) {
-    const firstOfMonth = today.slice(0, 7) + '-01';
+  // Entitled (Pro) users skip the quota check and increment entirely.
+  if (!isAdminIP && !isAdminKey && supabaseReady && !isPro) {
+    // Free: daily per-subject quota + IP abuse backstop.
+    // Signed-in free users are keyed on user id (stable across devices).
+    subjectType = userId ? 'user' : 'anon';
+    subjectId   = userId || anonId;
 
-    if (isPro) {
-      // Pro: invisible monthly soft cap (never surfaced to client)
-      let monthResult;
-      try {
-        monthResult = await callRPC(env, 'increment_monthly', {
-          p_id:          userId,
-          p_month:       firstOfMonth,
-          p_kind:        'advisor',
-          p_advisor_cap: CONFIG.PRO_MONTHLY_ADVISOR,
-          p_visual_cap:  CONFIG.PRO_MONTHLY_VISUAL,
-        });
-      } catch {
-        // Supabase unreachable → degrade gracefully, allow through
-        monthResult = [{ allowed: true }];
-      }
-      if (monthResult && monthResult[0] && !monthResult[0].allowed) {
-        return quotaExceeded(CORS, setCookie, 'pro',
-          'Monthly advisor limit reached. Contact support if you need more.');
-      }
+    let subjectResult;
+    try {
+      subjectResult = await callRPC(env, 'check_and_increment_daily', {
+        p_type:  subjectType,
+        p_id:    subjectId,
+        p_day:   today,
+        p_limit: CONFIG.FREE_DAILY,
+      });
+    } catch {
+      subjectResult = null; // Supabase down → degrade gracefully
+    }
 
-    } else {
-      // Free: daily per-subject quota + IP abuse backstop
-      subjectType = userId ? 'user' : 'anon';
-      subjectId   = userId || anonId;
+    if (subjectResult && subjectResult[0] && !subjectResult[0].allowed) {
+      return quotaExceeded(CORS, setCookie, 'free',
+        'Daily free limit reached. Upgrade to Pro for unlimited access.');
+    }
 
-      let subjectResult;
-      try {
-        subjectResult = await callRPC(env, 'check_and_increment_daily', {
-          p_type:  subjectType,
-          p_id:    subjectId,
-          p_day:   today,
-          p_limit: CONFIG.FREE_DAILY,
-        });
-      } catch {
-        subjectResult = null; // Supabase down → degrade gracefully
-      }
+    // Capture remaining for response headers
+    if (subjectResult && subjectResult[0]) {
+      quotaRemaining = subjectResult[0].remaining;
+    }
 
-      if (subjectResult && subjectResult[0] && !subjectResult[0].allowed) {
+    // IP abuse backstop (best-effort, do not block on Supabase error)
+    try {
+      const ipHash   = await sha256hex(`ip:${ip}`);
+      const ipResult = await callRPC(env, 'check_and_increment_daily', {
+        p_type:  'ip',
+        p_id:    ipHash,
+        p_day:   today,
+        p_limit: CONFIG.IP_DAILY,
+      });
+      if (ipResult && ipResult[0] && !ipResult[0].allowed) {
+        // Refund the subject increment before blocking
+        await callRPC(env, 'refund_daily', {
+          p_type: subjectType, p_id: subjectId, p_day: today,
+        }).catch(() => {});
         return quotaExceeded(CORS, setCookie, 'free',
-          'Daily free limit reached. Upgrade to Pro for unlimited access.');
+          'Too many requests from this network. Try again tomorrow.');
       }
-
-      // Capture remaining for response headers
-      if (subjectResult && subjectResult[0]) {
-        quotaRemaining = subjectResult[0].remaining;
-      }
-
-      // IP abuse backstop (best-effort, do not block on Supabase error)
-      try {
-        const ipHash   = await sha256hex(`ip:${ip}`);
-        const ipResult = await callRPC(env, 'check_and_increment_daily', {
-          p_type:  'ip',
-          p_id:    ipHash,
-          p_day:   today,
-          p_limit: CONFIG.IP_DAILY,
-        });
-        if (ipResult && ipResult[0] && !ipResult[0].allowed) {
-          // Refund the subject increment before blocking
-          await callRPC(env, 'refund_daily', {
-            p_type: subjectType, p_id: subjectId, p_day: today,
-          }).catch(() => {});
-          return quotaExceeded(CORS, setCookie, 'free',
-            'Too many requests from this network. Try again tomorrow.');
-        }
-      } catch {
-        // IP check failed — do not block the user
-      }
+    } catch {
+      // IP check failed — do not block the user
     }
   }
 
@@ -656,7 +615,10 @@ export async function onRequestPost(context) {
 
   if (setCookie) responseHeaders['Set-Cookie'] = setCookie;
 
-  return new Response(JSON.stringify({ ...data, answer }), {
+  // Signed-in users get their plan in the body; anonymous responses are unchanged.
+  const responseBody = userId ? { ...data, answer, plan } : { ...data, answer };
+
+  return new Response(JSON.stringify(responseBody), {
     status: upstream.status,
     headers: responseHeaders,
   });
