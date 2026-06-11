@@ -3,7 +3,6 @@
 ## Active
 
 
-- [ ] **Quality Inspector SQL migration** — Supabase SQL Editor'da çalıştır (inspector bu olmadan çalışır ama denetleyecek yanıt verisi olmaz; proxy fallback sayesinde mevcut query loglama kesilmez): `ALTER TABLE advisor_queries ADD COLUMN IF NOT EXISTS ai_answer TEXT;`
 
 - [ ] **Research worker Supabase secrets** - Murat: `cd research-worker && npx wrangler secret put SUPABASE_URL && npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY` (değerler Supabase dashboard → tooladvisor → Settings → API). Yoksa haftalık e-postadaki "DB misses" bölümü VE event-bus yazımı sessizce atlanır.
 - [ ] **Agent event bus go-live (Murat)** - 1) Supabase SQL Editor'da `supabase/migrations/20260611000000_agent_events.sql` çalıştır; 2) `cd daily-agents-worker && npx wrangler secret put RESEND_API_KEY && npx wrangler secret put SUPABASE_URL && npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY` (ANTHROPIC_API_KEY set edildi). Bunlar yapılmadan cron'lar çalışır ama event yazamaz/e-posta atamaz (hata loglanır, crash yok).
@@ -27,6 +26,8 @@
 - [ ] (1 Temmuz sonrası) **Prompt regression testi** - advisor promptu için sabit 20 soruluk test seti oluştur, eski vs yeni prompt cevaplarını Haiku ile puanlayan script yaz. Why-layer değişikliklerinde kalite düşüşünü yakalamak için.
 
 ## Done
+
+- [x] **Quality Inspector SQL migration — kolon prod'da ZATEN VAR (2026-06-11)** - GitHub Actions run 27356694467 (db-migrate.yml) PostgREST probe ile doğruladı: `advisor_queries.ai_answer` 200 dönüyor → ALTER bir noktada SQL Editor'dan çalıştırılmış, DDL gerekmedi. Kalıcı altyapı eklendi: `supabase/migrations/20260611000001_advisor_queries_ai_answer.sql` (idempotent, IF NOT EXISTS) + `.github/workflows/db-migrate.yml` (sadece workflow_dispatch; verify-first → kolon varsa no-op PASS; eksikse SUPABASE_DB_URL secret'ı ile psql apply + re-verify; o secret yoksa "MISSING SECRET: SUPABASE_DB_URL" basıp durur — PostgREST DDL çalıştıramaz, başka yazma yolu yok). Quality inspector (daily-agents-worker) artık bloklu değil.
 
 - [x] **Widget plan-aware UI (2026-06-11)** - advisor-ai-widget.js: pro/admin durumunda UNLOCK PRO butonu gizlenir, sayaç + quota bar yerine yeşil "Pro" badge ("Unlimited queries"); free/anonim davranış birebir aynı (sayaç + upsell). functions/proxy.js: `plan` artık HER response body'sinde (önceden sadece signed-in); admin bypass (X-Admin-Key / ADMIN_IP) plan:"pro" döner — quota enforcement'a dokunulmadı, sadece sunum. scripts/smoke-auth.mjs: anon assertion eski "plan alanı YOK" kontratından yeni `plan:"free"` kontratına güncellendi (deploy'dan önceki prod run'da bu adım FAIL verir — beklenen). Yeni scripts/verify-plan-field.mjs (proxy'yi import edip Anthropic'i mock'lar, network/secret gerekmez): 6/6 PASS. Lokal preview: free + admin durumları görsel doğrulandı. Deploy edilmedi — Murat görsel review yapacak.
 
