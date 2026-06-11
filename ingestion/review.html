@@ -46,6 +46,10 @@
 <body>
 <h1>Staging Review</h1>
 <p class="sub">PDF ingestion candidates awaiting human approval. Approve merges into the product DB (same logic as the pipeline); reject removes from staging (kept in rejected.json).</p>
+<h2 style="font-size:16px;margin:0 0 6px">Batches by source</h2>
+<p class="sub">Batch approve merges only validation-clean records; flagged records stay below for per-record review. The button first shows a dry-run count, then asks to confirm.</p>
+<div id="batches"><div class="empty">Loading…</div></div>
+<h2 style="font-size:16px;margin:18px 0 6px">Per-file review</h2>
 <div id="app"><div class="empty">Loading…</div></div>
 <div id="toast"></div>
 
@@ -82,10 +86,91 @@ async function load() {
   }
   if (!files.length) {
     app.innerHTML = '<div class="empty">No staging files awaiting review. 🎉</div>';
+    loadBatches();
     return;
   }
   app.innerHTML = '';
   files.forEach((f, fi) => app.appendChild(renderFile(f, fi)));
+  loadBatches();
+}
+
+// ─── Batch view (per source_file, validated) ───────────────────────────────
+const batchesEl = document.getElementById('batches');
+
+function recRow(r, extra) {
+  return `<tr>
+    <td><span class="mono">${esc(r.article_number)}</span>
+        ${r.product_name && r.product_name !== r.article_number ? '<div class="reason">' + esc(r.product_name) + '</div>' : ''}</td>
+    <td>${esc(r.brand)}</td><td>${esc(r.grade)}</td>
+    <td class="num">${r.confidence ?? '—'}</td>
+    <td class="num">p. ${Array.isArray(r.source_page) ? r.source_page.join(', ') : (r.source_page ?? '—')}</td>
+    <td>${extra}</td>
+  </tr>`;
+}
+
+async function loadBatches() {
+  batchesEl.innerHTML = '<div class="empty">Loading…</div>';
+  let groups;
+  try {
+    groups = await (await fetch('/api/staging?group=source_file')).json();
+  } catch (e) {
+    batchesEl.innerHTML = '<div class="empty">Could not load batches: ' + esc(e.message) + '</div>';
+    return;
+  }
+  if (!groups.length) {
+    batchesEl.innerHTML = '<div class="empty">No staged batches.</div>';
+    return;
+  }
+  batchesEl.innerHTML = '';
+  for (const g of groups) {
+    const box = document.createElement('div');
+    box.className = 'filebox';
+    box.innerHTML = `
+      <div class="filehead">
+        <strong>${esc(g.source_file)}</strong>
+        <span class="meta">${g.total} staged · <b style="color:#1a7f37">${g.clean} clean</b> · <b style="color:#b03022">${g.flagged} flagged</b> · ${g.files.length} file(s)</span>
+        <span class="actions">
+          <button class="approve batch-approve" ${g.clean === 0 ? 'disabled' : ''}>Approve batch (${g.clean} clean)</button>
+        </span>
+      </div>
+      <details style="padding:8px 14px">
+        <summary style="cursor:pointer;color:#555">Flagged records (${g.flagged}) + spot-check sample (${g.cleanSample.length} of ${g.clean} clean)</summary>
+        ${g.flagged ? `<p class="reason" style="margin:8px 0 4px">Flagged — excluded from batch approve, review per-file below:</p>
+        <table><thead><tr><th>Designation</th><th>Brand</th><th>Grade</th><th>Conf.</th><th>Page</th><th>Reasons</th></tr></thead>
+        <tbody>${g.flaggedRecords.map(r => recRow(r, '<span class="reason">' + esc(r.reasons.join(', ')) + '</span>')).join('')}</tbody></table>` : ''}
+        ${g.cleanSample.length ? `<p class="reason" style="margin:10px 0 4px">Random clean sample (spot check against the source pages):</p>
+        <table><thead><tr><th>Designation</th><th>Brand</th><th>Grade</th><th>Conf.</th><th>Page</th><th></th></tr></thead>
+        <tbody>${g.cleanSample.map(r => recRow(r, '')).join('')}</tbody></table>` : ''}
+      </details>`;
+    box.querySelector('.batch-approve')?.addEventListener('click', async (e) => {
+      const btn = e.currentTarget;
+      btn.disabled = true;
+      try {
+        // 1. dry run — server-side counts, nothing written
+        const dry = await (await fetch('/api/approve-batch', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ source_file: g.source_file })
+        })).json();
+        if (dry.error) throw new Error(dry.error);
+        if (!confirm(`Merge ${dry.wouldMerge} clean record(s) from ${g.source_file} into the product DB?\n(${dry.flaggedKept} flagged record(s) stay in staging.)`)) {
+          btn.disabled = false; return;
+        }
+        // 2. confirmed merge
+        const res = await (await fetch('/api/approve-batch', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ source_file: g.source_file, confirm: true })
+        })).json();
+        if (res.error) throw new Error(res.error);
+        toast(`Batch approved: ${res.merged} merged, ${res.skippedDuplicates} duplicate(s) skipped, ${res.remainingFlagged} flagged kept` +
+              (res.archivedFiles ? `, ${res.archivedFiles} file(s) archived` : ''));
+        await load();
+      } catch (err) {
+        toast('Batch approve failed: ' + err.message, true);
+        btn.disabled = false;
+      }
+    });
+    batchesEl.appendChild(box);
+  }
 }
 
 function renderFile(f, fi) {
