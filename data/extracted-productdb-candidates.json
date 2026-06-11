@@ -13595,7 +13595,7 @@
     },
     {
       "id": "X0428",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -13628,11 +13628,12 @@
       "article": "326R06-B1502006-CH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0429",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -13665,11 +13666,12 @@
       "article": "326R06-B2502006-CH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0430",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -13702,11 +13704,12 @@
       "article": "326R08-B2502012-CH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0431",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -13739,11 +13742,12 @@
       "article": "326R08-B3502012-CH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0432",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -13776,11 +13780,12 @@
       "article": "A326R06-M1502006-CH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0433",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -13813,11 +13818,12 @@
       "article": "A326R06-M2502006-CH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0434",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -13850,11 +13856,12 @@
       "article": "A326R08-M2502012-CH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0435",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -13887,11 +13894,12 @@
       "article": "A326R08-M3502012-CH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0436",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -13924,11 +13932,12 @@
       "article": "326R06-B15050VM-TH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0437",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -13961,11 +13970,12 @@
       "article": "326R08-B25050VM-TH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0438",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -13998,11 +14008,12 @@
       "article": "326R08-B25100VM-TH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0439",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -14035,11 +14046,12 @@
       "article": "A326R06-M15050VM-TH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0440",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -14072,11 +14084,12 @@
       "article": "A326R08-M25050VM-TH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0441",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CoroMill® 326",
       "grade": "GC1025",
       "shape": "-",
@@ -14109,7 +14122,8 @@
       "article": "A326R08-M25100VM-TH",
       "source_file": "sandvik_solid_round_tools",
       "source_page": null,
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0442",
@@ -26839,7 +26853,7 @@
     },
     {
       "id": "X0798",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "GC1125",
       "grade": "GC1125",
       "shape": "-",
@@ -26868,11 +26882,12 @@
       "article": "GC1125",
       "source_pdf": "sandvik_c-1020-18.pdf",
       "source": "initial-import",
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0799",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "GC2135",
       "grade": "GC2135",
       "shape": "-",
@@ -26901,11 +26916,12 @@
       "article": "GC2135",
       "source_pdf": "sandvik_c-1020-18.pdf",
       "source": "initial-import",
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0800",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "GC1105",
       "grade": "GC1105",
       "shape": "-",
@@ -26934,11 +26950,12 @@
       "article": "GC1105",
       "source_pdf": "sandvik_c-1020-18.pdf",
       "source": "initial-import",
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0801",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "GC4225",
       "grade": "GC4225",
       "shape": "-",
@@ -26967,11 +26984,12 @@
       "article": "GC4225",
       "source_pdf": "sandvik_c-1020-18.pdf",
       "source": "initial-import",
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0802",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CB7015",
       "grade": "CB7015",
       "shape": "-",
@@ -27000,7 +27018,8 @@
       "article": "CB7015",
       "source_pdf": "sandvik_c-1020-18.pdf",
       "source": "initial-import",
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0803",
@@ -27097,7 +27116,7 @@
     },
     {
       "id": "X0806",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CP-A1108-L5 4325",
       "grade": "",
       "shape": "-",
@@ -27128,11 +27147,12 @@
       "article": "CP-A1108-L5 4325",
       "source_pdf": "sandvik_c-1040-191.pdf",
       "source": "initial-import",
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0807",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "CP-B1108-M5 2025",
       "grade": "",
       "shape": "-",
@@ -27159,7 +27179,8 @@
       "article": "CP-B1108-M5 2025",
       "source_pdf": "sandvik_c-1040-191.pdf",
       "source": "initial-import",
-      "dateAdded": "2025-01-01"
+      "dateAdded": "2025-01-01",
+      "brand_raw": "Sandvik Coromant"
     },
     {
       "id": "X0808",
@@ -31322,7 +31343,7 @@
     },
     {
       "id": "X0932",
-      "brand": "GÜHRING",
+      "brand": "Gühring",
       "code": "4959",
       "grade": "",
       "shape": "-",
@@ -31350,11 +31371,12 @@
       "lastVerified": "2026-06-11",
       "article": "4959",
       "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
-      "source_page": 1321
+      "source_page": 1321,
+      "brand_raw": "GÜHRING"
     },
     {
       "id": "X0933",
-      "brand": "GÜHRING",
+      "brand": "Gühring",
       "code": "4386",
       "grade": "",
       "shape": "-",
@@ -31382,11 +31404,12 @@
       "lastVerified": "2026-06-11",
       "article": "4386",
       "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
-      "source_page": 1322
+      "source_page": 1322,
+      "brand_raw": "GÜHRING"
     },
     {
       "id": "X0934",
-      "brand": "GÜHRING",
+      "brand": "Gühring",
       "code": "4385",
       "grade": "",
       "shape": "-",
@@ -31414,11 +31437,12 @@
       "lastVerified": "2026-06-11",
       "article": "4385",
       "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
-      "source_page": 1323
+      "source_page": 1323,
+      "brand_raw": "GÜHRING"
     },
     {
       "id": "X0935",
-      "brand": "GÜHRING",
+      "brand": "Gühring",
       "code": "4387",
       "grade": "",
       "shape": "-",
@@ -31446,11 +31470,12 @@
       "lastVerified": "2026-06-11",
       "article": "4387",
       "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
-      "source_page": 1324
+      "source_page": 1324,
+      "brand_raw": "GÜHRING"
     },
     {
       "id": "X0936",
-      "brand": "GÜHRING",
+      "brand": "Gühring",
       "code": "4355",
       "grade": "",
       "shape": "-",
@@ -31478,7 +31503,8 @@
       "lastVerified": "2026-06-11",
       "article": "4355",
       "source_pdf": "GUE_general-catalogue_EN_compressed.pdf",
-      "source_page": 1325
+      "source_page": 1325,
+      "brand_raw": "GÜHRING"
     },
     {
       "id": "X0937",
@@ -40166,7 +40192,7 @@
     },
     {
       "id": "X1202",
-      "brand": "Sandvik Coromant",
+      "brand": "Sandvik",
       "code": "",
       "grade": "",
       "shape": "-",
@@ -40194,7 +40220,8 @@
       "lastVerified": "2026-06-11",
       "article": "",
       "source_pdf": "Solid round tools catalogue 26.1_C-1040-400 (en-gb).pdf",
-      "source_page": 13
+      "source_page": 13,
+      "brand_raw": "Sandvik Coromant"
     }
   ]
 }
