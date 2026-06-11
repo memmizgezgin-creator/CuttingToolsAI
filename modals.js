@@ -125,8 +125,11 @@
       <div class="ta-modal-header" style="background:linear-gradient(135deg,#123356 0%,#2c4a6e 100%);color:#fff;border:none;">
         <div style="position:relative;z-index:1;">
           <p class="ta-eyebrow" style="color:#F59E0B;">CuttingToolsAI Pro — Coming July 2026</p>
-          <h2 style="color:#fff;">You've used today's 5 free queries</h2>
-          <p class="ta-sub" style="color:rgba(255,255,255,.78);max-width:560px;">Pro launches in July. Join the waitlist now — the first 50 sign-ups get 50% off the first 3 months.</p>
+          <h2 style="color:#fff;">Today's 3 free answers are used.</h2>
+          <p class="ta-sub" style="color:rgba(255,255,255,.78);max-width:560px;">The next question is usually the expensive one: a feed and speed you are not sure about, a material you do not run every day, a zero you cannot afford to get wrong.</p>
+          <p class="ta-sub" style="color:rgba(255,255,255,.78);max-width:560px;">One broken tool and a stopped machine cost more than a month of Pro.</p>
+          <p class="ta-sub" style="color:rgba(255,255,255,.78);max-width:560px;">Pro gives you unlimited queries, the full reasoning behind every recommendation, and the catalog source behind every tool we suggest.</p>
+          <p class="ta-sub" style="color:#F59E0B;font-weight:700;max-width:560px;">€29/month. First 50 on the waitlist get 50% off at launch.</p>
         </div>
         <button class="ta-modal-close" data-modal-close aria-label="Close" style="background:rgba(255,255,255,.14);color:#fff;"><span class="material-symbols-outlined">close</span></button>
       </div>

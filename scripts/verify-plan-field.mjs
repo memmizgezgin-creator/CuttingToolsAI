@@ -2,9 +2,9 @@
 // Node 20+, no dependencies, no network: imports the Pages function directly
 // and mocks the Anthropic upstream. Verifies the plan field rides on every
 // response body / X-Plan header with the expected value:
-//   - no auth, no admin key (anonymous)  → plan "free"
+//   - no auth, no admin key (anonymous)  → plan "anon"
 //   - X-Admin-Key matching ADMIN_TEST_KEY → plan "pro" (admin renders as pro)
-//   - wrong X-Admin-Key                   → plan "free"
+//   - wrong X-Admin-Key                   → plan "anon"
 //
 // Usage: node scripts/verify-plan-field.mjs
 
@@ -60,9 +60,9 @@ async function runCase(name, headers, expectedPlan) {
     `X-Plan="${res.headers.get('X-Plan')}" (expected "${expectedPlan}")`);
 }
 
-await runCase('anon-no-admin-key', {}, 'free');
+await runCase('anon-no-admin-key', {}, 'anon');
 await runCase('admin-key',         { 'X-Admin-Key': 'test-admin-key' }, 'pro');
-await runCase('wrong-admin-key',   { 'X-Admin-Key': 'nope' }, 'free');
+await runCase('wrong-admin-key',   { 'X-Admin-Key': 'nope' }, 'anon');
 
 console.log(allPass ? '\nALL PASS' : '\nFAILURES PRESENT');
 process.exit(allPass ? 0 : 1);

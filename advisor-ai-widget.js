@@ -220,6 +220,31 @@
     }
     .ta-upgrade-card-btn:hover { background:#FBBF24; }
 
+    /* Sign-in prompt (anonymous visitor's 1 free answer used) */
+    #ta-ai-signin-panel {
+      display:none; padding:10px 12px; margin-bottom:9px;
+      background:#f0f4ff; border:1px solid #c7d6ef; border-radius:10px;
+    }
+    #ta-ai-signin-panel.show { display:block; animation:ta-credits-in .3s ease both; }
+    #ta-ai-signin-panel p:first-child {
+      font-size:11.5px; line-height:1.55; color:#1A1A2E; margin:0 0 8px; font-weight:600;
+    }
+    #ta-ai-signin-form { display:flex; gap:6px; }
+    #ta-ai-signin-email {
+      flex:1; min-width:0; height:32px; padding:0 10px; border-radius:7px;
+      border:1px solid #c7d6ef; background:#fff; font-size:12px; color:#1A1A2E; outline:none;
+      font-family:'DM Sans',system-ui,sans-serif;
+    }
+    #ta-ai-signin-email:focus { border-color:#2C4A6E; }
+    #ta-ai-signin-btn {
+      height:32px; padding:0 12px; border-radius:7px; border:none;
+      background:#2C4A6E; color:#fff; cursor:pointer;
+      font-size:11px; font-weight:800; white-space:nowrap;
+    }
+    #ta-ai-signin-btn:hover { background:#1A1A2E; }
+    #ta-ai-signin-btn:disabled { opacity:.5; cursor:not-allowed; }
+    #ta-ai-signin-msg { font-size:11px; margin:6px 0 0; min-height:0; }
+
     /* Quota warning (1 remaining) */
     .ta-quota-warning {
       text-align:center; font-size:11px; color:#92400e; font-weight:600;
@@ -273,7 +298,10 @@
 
   // ── constants ──────────────────────────────────────────────────────────────
   const API_URL    = '/proxy';
-  const FREE_DAILY = 5;   // initial display default; server is authoritative after first call
+  // Display defaults; the server is authoritative after the first call.
+  // Anonymous visitors get 1 taste query/day; a free account gets 3/day.
+  const ANON_DAILY = 1;
+  const FREE_DAILY = 3;
 
   const IC = {
     sparkle: `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:block"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2zm6 10.5.75 2.25L21 15.75l-2.25.75L18 18.75l-.75-2.25L15 15.75l2.25-.75L18 12.5zM6 14.5l.5 1.5L8 16.5l-1.5.5L6 18.5l-.5-1.5L4 16.5l1.5-.5L6 14.5z"/></svg>`,
@@ -306,13 +334,19 @@
 
   // ── server-authoritative quota state ─────────────────────────────────────
   // Populated from X-Plan / X-Quota-Remaining / X-Quota-Limit response headers.
-  // null = unknown (first request not yet made); display FREE_DAILY as default.
-  let serverState = { plan: null, remaining: null, limit: FREE_DAILY };
+  // plan: null = unknown (no request yet; a local session probe sets a
+  // provisional 'free'/'anon'), then 'anon' | 'free' | 'pro' from the server.
+  let serverState = { plan: null, remaining: null, limit: null };
+
+  function planLimit() {
+    if (serverState.limit !== null) return serverState.limit;
+    return serverState.plan === 'free' ? FREE_DAILY : ANON_DAILY;
+  }
 
   function remaining() {
     if (isAdmin()) return 999;
     if (serverState.plan === 'pro') return 999;
-    return serverState.remaining !== null ? serverState.remaining : FREE_DAILY;
+    return serverState.remaining !== null ? serverState.remaining : planLimit();
   }
 
   function syncFromHeaders(headers) {
@@ -348,9 +382,9 @@
       </span>
       <span id="ta-ai-launcher-label">
         <span>Advisor AI</span>
-        <span>Free: 5 queries/day</span>
+        <span>Ask one question free</span>
       </span>
-      <span id="ta-ai-launcher-badge">${remaining()}/${FREE_DAILY} free</span>
+      <span id="ta-ai-launcher-badge">${remaining()}/${planLimit()} free</span>
     </button>
 
     <div id="ta-ai-panel" role="dialog" aria-label="Advisor AI" aria-modal="true">
@@ -369,8 +403,16 @@
       </div>
 
       <div id="ta-ai-quick">
-        <div id="ta-ai-quick-label">Quick actions <span id="ta-ai-quota-label">${remaining()}/${FREE_DAILY} free today</span></div>
+        <div id="ta-ai-quick-label">Quick actions <span id="ta-ai-quota-label">${remaining()} of ${planLimit()} left today</span></div>
         <div id="ta-ai-quota-bar-bg"><div id="ta-ai-quota-bar"></div></div>
+        <div id="ta-ai-signin-panel">
+          <p>That was your free answer for today. Sign in with your email and you get 3 free answers every day. No password, no card.</p>
+          <form id="ta-ai-signin-form">
+            <input id="ta-ai-signin-email" type="email" placeholder="you@workshop.com" required autocomplete="email"/>
+            <button id="ta-ai-signin-btn" type="submit">Sign in with email</button>
+          </form>
+          <p id="ta-ai-signin-msg"></p>
+        </div>
         <div id="ta-ai-quick-grid">${quickBtns}</div>
       </div>
 
@@ -413,6 +455,12 @@
   const quotaBarBg  = document.getElementById('ta-ai-quota-bar-bg');
   const launcherIcon = document.getElementById('ta-ai-launcher-icon');
   const proHeaderBtn = document.getElementById('ta-ai-pro-btn');
+  const signinPanel  = document.getElementById('ta-ai-signin-panel');
+  const signinForm   = document.getElementById('ta-ai-signin-form');
+  const signinEmail  = document.getElementById('ta-ai-signin-email');
+  const signinBtn    = document.getElementById('ta-ai-signin-btn');
+  const signinMsg    = document.getElementById('ta-ai-signin-msg');
+  const quickLabelEl = document.getElementById('ta-ai-quick-label');
   const launcherPlanLabel = launcher.querySelector('#ta-ai-launcher-label span:last-child');
 
   let busy = false;
@@ -435,6 +483,7 @@
   // ── state helpers ─────────────────────────────────────────────────────────
   function updateQuota() {
     const r = remaining();
+    const isAnon = serverState.plan !== 'free';   // anon or unknown-yet
 
     // Admin bypass renders as pro: no upsell, no numeric counter.
     if (isAdmin() || serverState.plan === 'pro') {
@@ -444,6 +493,7 @@
       launcherPlanLabel.textContent = 'Unlimited queries';
       quotaLabel.textContent = 'Pro';
       if (quotaBarBg) quotaBarBg.style.display = 'none';
+      signinPanel.classList.remove('show');
       if (proHeaderBtn) proHeaderBtn.style.display = 'none';
       creditsBar.classList.remove('show');
       input.disabled   = busy;
@@ -452,25 +502,39 @@
       return;
     }
 
-    // Free (or unknown/anonymous): counter + Unlock Pro upsell.
-    launcherPlanLabel.textContent = 'Free: 5 queries/day';
-    if (quotaBarBg) quotaBarBg.style.display = '';
+    // Anon or signed-in free: counter; exhaustion path differs per plan.
+    launcherPlanLabel.textContent = isAnon ? 'Ask one question free' : '3 free answers a day';
     if (proHeaderBtn) proHeaderBtn.style.display = '';
-    const limit = serverState.limit ?? FREE_DAILY;
+    const limit = planLimit();
     badge.textContent      = `${r}/${limit} free`;
     badge.style.background = '';
     badge.style.color      = '';
-    quotaLabel.textContent = `${r}/${limit} free today`;
+    quotaLabel.textContent = `${r} of ${limit} left today`;
     if (quotaBar) {
       const used = limit - Math.max(0, r);
       const pct  = Math.min(100, limit > 0 ? (used / limit) * 100 : 0);
       quotaBar.style.width      = pct + '%';
       quotaBar.style.background = r === 0 ? '#EF4444' : r === 1 ? '#F59E0B' : '#10B981';
     }
-    creditsBar.classList.toggle('show', r <= 0);
-    input.disabled   = busy || r <= 0;
-    sendBtn.disabled = busy || !input.value.trim() || r <= 0;
-    input.placeholder = r > 0 ? 'Ask about tools, speeds, materials…' : 'Out of free queries — join the waitlist';
+
+    const exhausted = r <= 0;
+    if (isAnon) {
+      // Anonymous after the 1 free answer: the quota bar area becomes a
+      // sign-in prompt (magic link → 3 free answers/day). No Pro upsell yet.
+      if (quotaBarBg) quotaBarBg.style.display = exhausted ? 'none' : '';
+      quotaLabel.style.display = exhausted ? 'none' : '';
+      signinPanel.classList.toggle('show', exhausted);
+      creditsBar.classList.remove('show');
+      input.placeholder = exhausted ? 'Sign in for 3 free answers a day' : 'Ask about tools, speeds, materials…';
+    } else {
+      if (quotaBarBg) quotaBarBg.style.display = '';
+      quotaLabel.style.display = '';
+      signinPanel.classList.remove('show');
+      creditsBar.classList.toggle('show', exhausted);
+      input.placeholder = exhausted ? "Today's free answers are used — unlock Pro" : 'Ask about tools, speeds, materials…';
+    }
+    input.disabled   = busy || exhausted;
+    sendBtn.disabled = busy || !input.value.trim() || exhausted;
   }
 
   function setInputState() {
@@ -555,6 +619,9 @@
 
   let upgradeCTAShown = false;
   function showUpgradeCta() {
+    // Anonymous exhaustion shows the sign-in panel instead (updateQuota);
+    // the Pro upsell is reserved for signed-in free users.
+    if (serverState.plan !== 'free') return;
     if (upgradeCTAShown) return;
     upgradeCTAShown = true;
     if (empty) empty.style.display = 'none';
@@ -562,10 +629,10 @@
     wrap.innerHTML = `
       <div class="ta-upgrade-card">
         <div class="ta-upgrade-card-title">
-          <span>${IC.crown}</span> You've used today's 5 free queries
+          <span>${IC.crown}</span> Today's 3 free answers are used
         </div>
-        <div class="ta-upgrade-card-body">Pro launches in July. Join the waitlist now — the first 50 sign-ups get 50% off the first 3 months.</div>
-        <button class="ta-upgrade-card-btn" id="ta-cta-upgrade-btn">Join the waitlist</button>
+        <div class="ta-upgrade-card-body">Pro gives you unlimited queries, the full reasoning behind every recommendation, and the catalog source behind every tool we suggest.</div>
+        <button class="ta-upgrade-card-btn" id="ta-cta-upgrade-btn">Unlock Pro</button>
       </div>`;
     messages.appendChild(wrap);
     wrap.querySelector('#ta-cta-upgrade-btn').addEventListener('click', openPro);
@@ -650,11 +717,16 @@
 
       if (!res.ok) {
         if (res.status === 429) {
-          // Server is the source of truth — update state and show upgrade UI.
+          // Server is the source of truth — update state, then route by
+          // upgrade_path: 'signin' (anon → magic link) or 'pro' (free → upsell).
           serverState.remaining = 0;
           syncFromHeaders(res.headers);
           updateQuota();
-          showUpgradeCta();
+          if (data.upgrade_path === 'pro' || serverState.plan === 'free') {
+            showUpgradeCta();
+            openPro();
+          }
+          // anon: updateQuota() already swapped the quota bar for the sign-in panel
         } else if (res.status === 401) {
           addErrorMessage('API key not authorised. Contact support if this persists.', null);
         } else if (res.status === 500) {
@@ -761,6 +833,34 @@
 
   input.addEventListener('input', setInputState);
 
+  // ── anonymous → magic link sign-in (existing TA_Auth flow) ────────────────
+  signinForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = signinEmail.value.trim();
+    if (!email) return;
+    if (!(window.TA_Auth && window.TA_Auth.sendMagicLink)) {
+      // Auth module not on this page — fall back to the account page flow.
+      window.location.href = 'account.html';
+      return;
+    }
+    signinBtn.disabled = true;
+    signinBtn.textContent = 'Sending…';
+    signinMsg.style.color = '';
+    signinMsg.textContent = '';
+    try {
+      await window.TA_Auth.sendMagicLink(email);
+      signinForm.style.display = 'none';
+      signinMsg.style.color = '#047857';
+      signinMsg.style.fontWeight = '600';
+      signinMsg.textContent = 'Check your inbox — click the sign-in link and come back for your 3 free answers.';
+    } catch {
+      signinMsg.style.color = '#DC2626';
+      signinMsg.textContent = 'Could not send the link. Please check the address and try again.';
+      signinBtn.disabled = false;
+      signinBtn.textContent = 'Sign in with email';
+    }
+  });
+
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
   });
@@ -771,6 +871,21 @@
   }, 4000);
 
   updateQuota();
+
+  // Provisional plan from the local session before any server call: a signed-in
+  // visitor sees the 3/day counter, an anonymous one the single taste query.
+  // The server's X-Plan header overrides this after the first request.
+  (async () => {
+    try {
+      if (window.TA_Auth && window.TA_Auth.getSession) {
+        const session = await window.TA_Auth.getSession();
+        if (serverState.plan === null) {
+          serverState.plan = session ? 'free' : 'anon';
+          updateQuota();
+        }
+      }
+    } catch { /* stay on anonymous defaults */ }
+  })();
 
   // Public API for external callers (homepage CTAs, preset job cards):
   //   open()          — expand the chat panel

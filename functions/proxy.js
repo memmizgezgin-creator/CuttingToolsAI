@@ -95,9 +95,12 @@ const SYSTEM_PROMPT =
   "edge prep, not the speed.";
 
 // ── Central limits — change only here ────────────────────────────────────────
+// Free tier is account-bound: anonymous visitors get a single taste query,
+// signing in (magic link, no card) raises it to 3/day keyed on the account id.
 const CONFIG = {
-  FREE_DAILY:            5,
-  IP_DAILY:             20,   // per-IP abuse backstop across all anon users
+  ANON_DAILY:            1,   // no session: one taste query per device/day
+  FREE_DAILY:            3,   // signed-in free account, keyed on user id
+  IP_DAILY:             10,   // per-IP abuse backstop across all subjects
 };
 
 // ── CORS helpers ─────────────────────────────────────────────────────────────
@@ -338,19 +341,19 @@ function logAdvisorQuery(env, { queryText, dbHit, matchedRecords, responseTimeMs
 }
 
 // ── 429 helper ────────────────────────────────────────────────────────────────
-function quotaExceeded(cors, setCookie, plan, message) {
+// upgrade_path tells the widget what unlocks more queries:
+//   anon → 'signin' (3/day with a free account), free → 'pro' (unlimited).
+function quotaExceeded(cors, setCookie, plan, limit, upgradePath, message) {
   const headers = {
     ...cors,
     'Content-Type': 'application/json',
     'X-Plan': plan,
+    'X-Quota-Remaining': '0',
+    'X-Quota-Limit':     String(limit),
   };
-  if (plan === 'free') {
-    headers['X-Quota-Remaining'] = '0';
-    headers['X-Quota-Limit']     = String(CONFIG.FREE_DAILY);
-  }
   if (setCookie) headers['Set-Cookie'] = setCookie;
   return new Response(
-    JSON.stringify({ error: 'quota_exceeded', plan, remaining: 0, message }),
+    JSON.stringify({ error: 'quota_exceeded', plan, remaining: 0, upgrade_path: upgradePath, message }),
     { status: 429, headers }
   );
 }
@@ -415,17 +418,23 @@ export async function onRequestPost(context) {
     }
   }
 
+  // ── Plan resolution (admin > pro subscription > signed-in free > anon) ──────
+  const plan = (isPro || isAdminIP || isAdminKey) ? 'pro' : (userId ? 'free' : 'anon');
+  const planLimit   = userId ? CONFIG.FREE_DAILY : CONFIG.ANON_DAILY;
+  const upgradePath = userId ? 'pro' : 'signin';
+
   // ── Quota gate ──────────────────────────────────────────────────────────────
   let subjectType = null;
   let subjectId   = null;
-  let quotaRemaining = null;   // null = unknown (skip header); set for free users
+  let quotaRemaining = null;   // null = unknown (skip header); set for quota'd users
 
   const today = new Date().toISOString().slice(0, 10);  // YYYY-MM-DD UTC
 
-  // Entitled (Pro) users skip the quota check and increment entirely.
-  if (!isAdminIP && !isAdminKey && supabaseReady && !isPro) {
-    // Free: daily per-subject quota + IP abuse backstop.
-    // Signed-in free users are keyed on user id (stable across devices).
+  // Entitled (Pro) and admin users skip the quota check and increment entirely.
+  if (plan !== 'pro' && supabaseReady) {
+    // Per-subject daily quota + IP abuse backstop.
+    // Signed-in free users are keyed on user id (stable across devices);
+    // anonymous visitors on the device cookie.
     subjectType = userId ? 'user' : 'anon';
     subjectId   = userId || anonId;
 
@@ -435,15 +444,17 @@ export async function onRequestPost(context) {
         p_type:  subjectType,
         p_id:    subjectId,
         p_day:   today,
-        p_limit: CONFIG.FREE_DAILY,
+        p_limit: planLimit,
       });
     } catch {
       subjectResult = null; // Supabase down → degrade gracefully
     }
 
     if (subjectResult && subjectResult[0] && !subjectResult[0].allowed) {
-      return quotaExceeded(CORS, setCookie, 'free',
-        'Daily free limit reached. Upgrade to Pro for unlimited access.');
+      return quotaExceeded(CORS, setCookie, plan, planLimit, upgradePath,
+        plan === 'anon'
+          ? 'That was your free answer for today. Sign in with your email for 3 free answers every day.'
+          : "Today's 3 free answers are used. Upgrade to Pro for unlimited access.");
     }
 
     // Capture remaining for response headers
@@ -451,7 +462,8 @@ export async function onRequestPost(context) {
       quotaRemaining = subjectResult[0].remaining;
     }
 
-    // IP abuse backstop (best-effort, do not block on Supabase error)
+    // IP abuse backstop: one ceiling across all subjects (anon cookies AND
+    // accounts) so a single IP cannot farm quota indefinitely.
     try {
       const ipHash   = await sha256hex(`ip:${ip}`);
       const ipResult = await callRPC(env, 'check_and_increment_daily', {
@@ -465,7 +477,7 @@ export async function onRequestPost(context) {
         await callRPC(env, 'refund_daily', {
           p_type: subjectType, p_id: subjectId, p_day: today,
         }).catch(() => {});
-        return quotaExceeded(CORS, setCookie, 'free',
+        return quotaExceeded(CORS, setCookie, plan, planLimit, upgradePath,
           'Too many requests from this network. Try again tomorrow.');
       }
     } catch {
@@ -602,15 +614,14 @@ export async function onRequestPost(context) {
 
   // ── Build success response ─────────────────────────────────────────────────
   // Admin bypass renders as 'pro' so the widget hides the upsell/counter.
-  const plan = (isPro || isAdminIP || isAdminKey) ? 'pro' : 'free';
   const responseHeaders = {
     ...CORS,
     'Content-Type': 'application/json',
     'X-Plan': plan,
   };
 
-  if (!isPro && !isAdminIP && supabaseReady && quotaRemaining !== null) {
-    responseHeaders['X-Quota-Limit']     = String(CONFIG.FREE_DAILY);
+  if (plan !== 'pro' && supabaseReady && quotaRemaining !== null) {
+    responseHeaders['X-Quota-Limit']     = String(planLimit);
     responseHeaders['X-Quota-Remaining'] = String(quotaRemaining);
   }
 

@@ -8,11 +8,12 @@
 // Optional env:
 //   SITE_URL                   deployed site (default https://cuttingtoolsai.eu)
 //
-// Flow: create disposable test user → anon /proxy call → authed free calls
-// (usage_daily keyed on user id, increments) → activate subscription → pro
-// call (no increment, plan:"pro" in body) → teardown (always, even on fail).
-// Touches ONLY rows belonging to the disposable test user. Never logs keys
-// or tokens.
+// Flow: create disposable test user → anon /proxy contract (1×200 plan:"anon",
+// then 429 with upgrade_path:"signin" on the same device cookie) → authed free
+// quota (usage_daily keyed on user id, 3/day, 4th call 429 upgrade_path:"pro")
+// → activate subscription → pro call (no increment, plan:"pro" in body) →
+// teardown (always, even on fail). Touches ONLY rows belonging to the
+// disposable test user. Never logs keys or tokens.
 
 const SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/$/, '');
 const SERVICE_KEY  = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
@@ -73,12 +74,15 @@ function advisorPayload(tag) {
 }
 
 // Advisor calls run web_search and routinely take 20-50s; allow 90s.
-async function callProxy(accessToken, tag) {
+// `cookie` replays the ta_uid device cookie so consecutive anon calls hit the
+// same usage_daily subject (Node fetch has no cookie jar).
+async function callProxy(accessToken, tag, cookie) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 90_000);
   try {
     const headers = { 'Content-Type': 'application/json' };
     if (accessToken) headers['Authorization'] = `Bearer ${accessToken}`;
+    if (cookie) headers['Cookie'] = cookie;
     const res = await fetch(`${SITE_URL}/proxy`, {
       method: 'POST',
       headers,
@@ -88,7 +92,10 @@ async function callProxy(accessToken, tag) {
     const text = await res.text();
     let json = {};
     try { json = JSON.parse(text); } catch { /* non-JSON */ }
-    return { ok: res.ok, status: res.status, json };
+    // Extract the ta_uid device cookie for replay on follow-up anon calls.
+    const setCookie = res.headers.get('set-cookie') || '';
+    const m = setCookie.match(/ta_uid=[^;]+/);
+    return { ok: res.ok, status: res.status, json, plan: res.headers.get('x-plan'), cookie: m ? m[0] : null };
   } finally {
     clearTimeout(timer);
   }
@@ -125,24 +132,34 @@ async function main() {
   }
   record('1-setup', true, `test user created and signed in (id ${userId})`);
 
-  // ── 2. Anon path ────────────────────────────────────────────────────────────
+  // ── 2. Anon path: 1 free answer, then 429 with upgrade_path:"signin" ───────
   const anon = await callProxy(null, 'anon');
-  // 429 means this IP/cookie already hit today's free cap — not an auth bug,
-  // but the smoke test can't proceed meaningfully on the anon leg.
+  // 429 here means this runner IP/cookie already hit today's cap — not an auth
+  // bug, but the smoke test can't proceed meaningfully on the anon leg.
   const anonOk = anon.ok && typeof anon.json.answer === 'string' && anon.json.answer.length > 0;
   record('2-anon', anonOk,
     anonOk ? `proxy answered without auth header (HTTP ${anon.status})`
            : `expected success, got HTTP ${anon.status} ${JSON.stringify(anon.json.error || '')}`);
-  // Plan now rides on every response body (plan-aware widget UI); anon = free.
-  if (anonOk && anon.json.plan !== 'free') {
-    record('2-anon-plan', false, `anonymous response should carry plan:"free", got "${anon.json.plan}"`);
+  if (anonOk && anon.json.plan !== 'anon') {
+    record('2-anon-plan', false, `anonymous response should carry plan:"anon", got "${anon.json.plan}"`);
+  }
+  if (anonOk && anon.cookie) {
+    const anon2 = await callProxy(null, 'anon-2', anon.cookie);
+    const blockOk = anon2.status === 429 &&
+      anon2.json.plan === 'anon' &&
+      anon2.json.upgrade_path === 'signin';
+    record('2-anon-429', blockOk,
+      blockOk ? `second anon call on same device cookie blocked (429, plan:"anon", upgrade_path:"signin")`
+              : `HTTP ${anon2.status}, plan:"${anon2.json.plan}", upgrade_path:"${anon2.json.upgrade_path}" (expected 429/anon/signin)`);
+  } else if (anonOk) {
+    record('2-anon-429', false, 'no ta_uid Set-Cookie on first anon response — cannot test anon 429 contract');
   }
   const anonState = await userQuotaCount(userId);
   if (anonState !== null) {
     record('2-anon-isolation', false, `usage_daily already has a user row for test user before any authed call`);
   }
 
-  // ── 3. Free-user path ───────────────────────────────────────────────────────
+  // ── 3. Free-user path: 3 answers/day keyed on user id, 4th call 429 ────────
   const free1 = await callProxy(accessToken, 'free-1');
   const free1Ok = free1.ok && typeof free1.json.answer === 'string';
   const countAfter1 = await userQuotaCount(userId);
@@ -160,6 +177,21 @@ async function main() {
   record('3-free-increment', incOk,
     incOk ? `second authed call incremented count ${countAfter1} → ${countAfter2}`
           : `HTTP ${free2.status}, count ${countAfter1} → ${countAfter2} (expected +1)`);
+
+  const free3 = await callProxy(accessToken, 'free-3');
+  const countAfter3 = await userQuotaCount(userId);
+  const thirdOk = free3.ok && countAfter3 === 3;
+  record('3-free-third', thirdOk,
+    thirdOk ? `third authed call succeeded (count=${countAfter3})`
+            : `HTTP ${free3.status}, count=${countAfter3} (expected 3)`);
+
+  const free4 = await callProxy(accessToken, 'free-4');
+  const free4Ok = free4.status === 429 &&
+    free4.json.plan === 'free' &&
+    free4.json.upgrade_path === 'pro';
+  record('3-free-429', free4Ok,
+    free4Ok ? `fourth authed call blocked (429, plan:"free", upgrade_path:"pro")`
+            : `HTTP ${free4.status}, plan:"${free4.json.plan}", upgrade_path:"${free4.json.upgrade_path}" (expected 429/free/pro)`);
 
   // ── 4. Pro path ─────────────────────────────────────────────────────────────
   const sub = await rest('/rest/v1/subscriptions', {
