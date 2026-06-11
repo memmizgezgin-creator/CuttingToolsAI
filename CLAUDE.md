@@ -50,6 +50,7 @@ If a task pushes toward ANY of these, STOP immediately and ask Murat:
   - `architecture.md` — system overview
   - `cloudflare.md` — deployment + Worker setup
   - `product-db.md` — DB schema (AI reference layer; growth via verified ingestion encouraged — see KIRILMAZ KURAL 1 clarification)
+  - `strategy.md` — company strategy, phase gates, founder threshold. Check before any new feature/direction decision.
 - `.claude/commands/` — slash commands (feature, fix, post)
 
 ## Working Mode
