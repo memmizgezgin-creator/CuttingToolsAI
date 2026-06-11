@@ -612,10 +612,31 @@
 
     let res;
     try {
+      // Build request headers
+      const headers = { 'Content-Type': 'application/json' };
+
+      // Add admin key if present
+      if (getAdminKey()) {
+        headers['X-Admin-Key'] = getAdminKey();
+      }
+
+      // Add JWT token from Supabase session if available
+      if (typeof window.TA_Auth !== 'undefined' && window.TA_Auth.getAccessToken) {
+        try {
+          const token = await window.TA_Auth.getAccessToken();
+          if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+          }
+        } catch (e) {
+          // Silently continue if token retrieval fails
+          console.debug('[Advisor] Token retrieval failed:', e);
+        }
+      }
+
       res = await fetch(API_URL, {
         method: 'POST',
         credentials: 'include',
-        headers: Object.assign({ 'Content-Type': 'application/json' }, getAdminKey() ? { 'X-Admin-Key': getAdminKey() } : {}),
+        headers,
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
           max_tokens: 1024,

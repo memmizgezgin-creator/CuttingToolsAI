@@ -238,6 +238,7 @@ ${GTAG}
     <a href="/material/">Materials</a>
     <a href="/#advisor">AI Advisor</a>
     <a href="/#tools">Tooling</a>
+    <a href="/account.html">Account</a>
   </nav>
 </div></div></header>
 <main><div class="wrap">
@@ -245,7 +246,7 @@ ${body}
 </div></main>
 <footer><div class="wrap"><div class="foot">
   <div class="cp">© 2026 CUTTINGTOOLS — drawn for machinists · Brand-neutral reference data, verify on a sample part before production.</div>
-  <div class="lk"><a href="/">Advisor</a><a href="/ref/">Cross-Ref Index</a><a href="/grade/">Grade Index</a><a href="/material/">Materials</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a></div>
+  <div class="lk"><a href="/">Advisor</a><a href="/ref/">Cross-Ref Index</a><a href="/grade/">Grade Index</a><a href="/material/">Materials</a><a href="/account.html">Account</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a></div>
 </div></div></footer>
 </body>
 </html>`;
