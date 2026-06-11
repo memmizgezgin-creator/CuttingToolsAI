@@ -1,0 +1,102 @@
+name: DB Migrate
+
+# Applies idempotent Supabase migrations with scripted verification.
+# Dispatch-only: never runs on push/schedule.
+#
+# Strategy (no arbitrary-SQL endpoint exists for the service role key —
+# PostgREST can read/write rows but cannot run DDL):
+#   1. VERIFY-FIRST via PostgREST: select the target column. If it already
+#      exists, the migration is a no-op → PASS without touching anything.
+#   2. If the column is missing and SUPABASE_DB_URL (a postgres:// connection
+#      string, Supabase dashboard → Connect → Direct connection) is set,
+#      apply the migration with psql, then re-verify via PostgREST.
+#   3. If the column is missing and SUPABASE_DB_URL is not set, fail and
+#      print exactly which secret Murat must add. No other write paths.
+#
+# Required repo Actions secrets:
+#   SUPABASE_URL               — already exists (smoke-auth workflow)
+#   SUPABASE_SERVICE_ROLE_KEY  — already exists (JWT, starts with eyJ;
+#                                sbp_ PATs are NOT valid for PostgREST)
+# Optional (only needed when a migration must actually be applied):
+#   SUPABASE_DB_URL            — postgres:// connection string
+
+on:
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Apply + verify ai_answer migration
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          set -u
+          MIGRATION="supabase/migrations/20260611000001_advisor_queries_ai_answer.sql"
+          URL="${SUPABASE_URL%/}"
+          KEY="$SUPABASE_SERVICE_ROLE_KEY"
+          FAIL=0
+
+          if [ -z "$URL" ] || [ -z "$KEY" ]; then
+            echo "FAIL secrets: SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY is empty"
+            exit 1
+          fi
+          case "$KEY" in
+            sbp_*) echo "FAIL secrets: SUPABASE_SERVICE_ROLE_KEY is a sbp_ PAT — PostgREST needs the eyJ… service role JWT"; exit 1 ;;
+            eyJ*)  echo "PASS secrets: service role key has JWT shape" ;;
+            *)     echo "WARN secrets: service role key has unexpected shape (not eyJ…); continuing" ;;
+          esac
+
+          # Read-only column-existence probe. 200 = column exists;
+          # 42703 (undefined column) = table exists, column missing.
+          check_column() {
+            CODE=$(curl -sS -o /tmp/probe.json -w '%{http_code}' \
+              "$URL/rest/v1/advisor_queries?select=ai_answer&limit=1" \
+              -H "apikey: $KEY" -H "Authorization: Bearer $KEY")
+          }
+
+          check_column
+          if [ "$CODE" = "200" ]; then
+            echo "PASS verify: advisor_queries.ai_answer exists (PostgREST 200) — migration already applied, nothing to do"
+            echo "RESULT: PASS"
+            exit 0
+          fi
+
+          if [ "$CODE" = "400" ] && grep -q '42703' /tmp/probe.json; then
+            echo "INFO verify: column ai_answer is missing (PostgREST 400/42703) — apply needed"
+          else
+            echo "FAIL verify: unexpected probe result HTTP $CODE: $(cat /tmp/probe.json)"
+            echo "RESULT: FAIL"
+            exit 1
+          fi
+
+          if [ -z "${SUPABASE_DB_URL:-}" ]; then
+            echo "FAIL apply: cannot run DDL — PostgREST has no SQL endpoint and no DB connection string is configured."
+            echo "MISSING SECRET: SUPABASE_DB_URL (postgres:// connection string, Supabase dashboard → Connect → Direct connection)"
+            echo "RESULT: FAIL"
+            exit 1
+          fi
+
+          echo "INFO apply: running $MIGRATION via psql"
+          psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -f "$MIGRATION" \
+            && echo "PASS apply: psql migration applied" \
+            || { echo "FAIL apply: psql returned an error"; echo "RESULT: FAIL"; exit 1; }
+
+          check_column
+          if [ "$CODE" = "200" ]; then
+            echo "PASS verify: advisor_queries.ai_answer exists after apply (PostgREST 200)"
+            echo "RESULT: PASS"
+          else
+            echo "FAIL verify: column still not visible after apply (HTTP $CODE): $(cat /tmp/probe.json)"
+            echo "RESULT: FAIL"
+            exit 1
+          fi
