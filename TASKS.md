@@ -2,6 +2,8 @@
 
 ## Active
 
+- [ ] **Smoke test secret (Murat)** — GitHub repo → Settings → Secrets and variables → Actions → New repository secret: `SUPABASE_ANON_KEY` (js/auth.js içindeki public anon key ile aynı değer). `SUPABASE_URL` ve `SUPABASE_SERVICE_ROLE_KEY` ingestion workflow'undan zaten mevcut. Sonra Actions → "Auth Smoke Test" → Run workflow ile ilk prod çalıştırmayı yap; yeşilse günlük 05:30 UTC cron devrede.
+
 - [ ] **Quality Inspector SQL migration** — Supabase SQL Editor'da çalıştır (inspector bu olmadan çalışır ama denetleyecek yanıt verisi olmaz; proxy fallback sayesinde mevcut query loglama kesilmez): `ALTER TABLE advisor_queries ADD COLUMN IF NOT EXISTS ai_answer TEXT;`
 
 - [ ] **Research worker Supabase secrets** - Murat: `cd research-worker && npx wrangler secret put SUPABASE_URL && npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY` (değerler Supabase dashboard → tooladvisor → Settings → API). Yoksa haftalık e-postadaki "DB misses" bölümü VE event-bus yazımı sessizce atlanır.
@@ -26,6 +28,8 @@
 - [ ] (1 Temmuz sonrası) **Prompt regression testi** - advisor promptu için sabit 20 soruluk test seti oluştur, eski vs yeni prompt cevaplarını Haiku ile puanlayan script yaz. Why-layer değişikliklerinde kalite düşüşünü yakalamak için.
 
 ## Done
+
+- [x] **Auth/entitlement smoke test + günlük workflow (2026-06-11)** - `scripts/smoke-auth.mjs` (Node 20, bağımlılıksız): disposable test user (admin API, smoke+<ts>@cuttingtoolsai.eu) → anon /proxy çağrısı (plan alanı YOK doğrulaması) → authed free (usage_daily subject_type='user' satırı + ikinci çağrıda increment) → subscriptions'a active satır → pro çağrısı (increment YOK + body'de plan:"pro") → teardown her durumda (subscriptions + usage_daily + user silinir, sadece test user id'ye filtreli; token/key loglanmaz). `.github/workflows/smoke-auth.yml`: workflow_dispatch + günlük 05:30 UTC cron. Lokal doğrulama: servis key bu makinede yok → GoTrue/PostgREST/proxy semantiğini birebir taklit eden mock'a karşı ALL PASS (exit 0) + negatif test (yanlış anon key → FAIL, exit 1, teardown yine çalıştı). İlk prod run: SUPABASE_ANON_KEY secret'ı eklendikten sonra (Active'e bakın).
 
 - [x] **Fix: advisor JWT hiç gönderilmiyordu (2026-06-11)** - usage_daily'de sıfır 'user' satırı bug'ı: js/auth.js SADECE account.html'de yükleniyordu; advisor widget'taki token kodu `window.TA_Auth` guard'ına takılıp header'ı sessizce atlıyordu. Fix: 8 advisor sayfasına (index, ToolAdvisor, compare, contact, cross-reference, knowledge, pro, profile) `<script src="js/auth.js">` eklendi (supabase-js'i auth.js zaten CDN'den lazy yüklüyor, ekstra CDN tag gerekmez); widget'a `console.debug('[Advisor] auth header attached: …')` teşhis satırı; index.html widget cache-buster v4. SEO material sayfalarında launcher yok (sadece footer linki) → değişiklik gerekmez. Lokal preview doğrulaması: anon istek header'sız (birebir eski davranış), TA_Auth varken header ekleniyor. NOT: catalog.html'in ayrı AI chat'i /proxy'ye header'sız fetch atıyor (ayrı yüzey, bu fix kapsamı dışı).
 

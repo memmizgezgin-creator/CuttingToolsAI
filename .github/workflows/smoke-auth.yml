@@ -1,0 +1,41 @@
+name: Auth Smoke Test
+
+# End-to-end smoke test of the auth/entitlement chain against production:
+# disposable test user → anon /proxy call → authed free quota (user-keyed,
+# increments) → active subscription → pro call (no increment, plan:"pro").
+# The script cleans up after itself even on failure.
+#
+# Required repo Actions secrets (Settings → Secrets and variables → Actions):
+#   SUPABASE_URL               — already exists (added for the ingestion workflow)
+#   SUPABASE_SERVICE_ROLE_KEY  — already exists (added for the ingestion workflow)
+#   SUPABASE_ANON_KEY          — may need adding (public anon key; same value
+#                                as SUPABASE_ANON_KEY in js/auth.js)
+
+on:
+  schedule:
+    - cron: '30 5 * * *'   # daily 05:30 UTC
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run auth/entitlement smoke test
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SITE_URL: https://cuttingtoolsai.eu
+        run: node scripts/smoke-auth.mjs
