@@ -348,7 +348,7 @@
       </span>
       <span id="ta-ai-launcher-label">
         <span>Advisor AI</span>
-        <span>Ask a question</span>
+        <span>Free: 5 queries/day</span>
       </span>
       <span id="ta-ai-launcher-badge">${remaining()}/${FREE_DAILY} free</span>
     </button>
