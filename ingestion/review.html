@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ToolAdvisor — Staging Review</title>
+<style>
+  :root { --amber: #fff3cd; --amber-border: #f0ad4e; }
+  * { box-sizing: border-box; }
+  body { font: 14px/1.45 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+         margin: 0; padding: 24px; background: #f6f7f8; color: #1c1e21; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: #666; margin: 0 0 20px; }
+  .filebox { background: #fff; border: 1px solid #ddd; border-radius: 6px;
+             margin-bottom: 22px; overflow: hidden; }
+  .filehead { display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+              padding: 10px 14px; background: #eef1f4; border-bottom: 1px solid #ddd; }
+  .filehead strong { font-size: 15px; }
+  .meta { color: #555; font-size: 12.5px; }
+  .actions { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  button { padding: 6px 14px; border-radius: 4px; border: 1px solid #bbb;
+           background: #fff; cursor: pointer; font-size: 13px; }
+  button.approve { background: #1a7f37; border-color: #1a7f37; color: #fff; }
+  button.reject  { background: #fff; border-color: #c0392b; color: #c0392b; }
+  button:disabled { opacity: .45; cursor: default; }
+  .counter { font-size: 12.5px; color: #444; min-width: 90px; text-align: right; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 6px 10px; border-bottom: 1px solid #eee; text-align: left;
+           vertical-align: top; }
+  th { background: #fafbfc; font-weight: 600; white-space: nowrap;
+       position: sticky; top: 0; }
+  tr.low td { background: var(--amber); }
+  tr.low td:first-child { border-left: 3px solid var(--amber-border); }
+  td.num { text-align: right; white-space: nowrap; }
+  .mono { font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; }
+  .reason { color: #777; font-size: 11.5px; }
+  .empty { padding: 40px; text-align: center; color: #777; }
+  #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+           background: #1c1e21; color: #fff; padding: 12px 20px; border-radius: 6px;
+           font-size: 14px; opacity: 0; transition: opacity .25s; pointer-events: none;
+           max-width: 80vw; }
+  #toast.show { opacity: 1; }
+  #toast.err { background: #b03022; }
+</style>
+</head>
+<body>
+<h1>Staging Review</h1>
+<p class="sub">PDF ingestion candidates awaiting human approval. Approve merges into the product DB (same logic as the pipeline); reject removes from staging (kept in rejected.json).</p>
+<div id="app"><div class="empty">Loading…</div></div>
+<div id="toast"></div>
+
+<script>
+const app = document.getElementById('app');
+const toastEl = document.getElementById('toast');
+let toastTimer;
+
+function toast(msg, isErr) {
+  toastEl.textContent = msg;
+  toastEl.className = 'show' + (isErr ? ' err' : '');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.className = '', 4500);
+}
+
+function fmtRange(a, b, unit) {
+  if (a == null && b == null) return '—';
+  if (a != null && b != null) return a + '–' + b + (unit || '');
+  return (a ?? b) + (unit || '');
+}
+
+function esc(s) {
+  return String(s ?? '—').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+
+async function load() {
+  app.innerHTML = '<div class="empty">Loading…</div>';
+  let files;
+  try {
+    files = await (await fetch('/api/staging')).json();
+  } catch (e) {
+    app.innerHTML = '<div class="empty">Could not load staging data: ' + esc(e.message) + '</div>';
+    return;
+  }
+  if (!files.length) {
+    app.innerHTML = '<div class="empty">No staging files awaiting review. 🎉</div>';
+    return;
+  }
+  app.innerHTML = '';
+  files.forEach((f, fi) => app.appendChild(renderFile(f, fi)));
+}
+
+function renderFile(f, fi) {
+  const box = document.createElement('div');
+  box.className = 'filebox';
+  const date = f.extractedAt ? f.extractedAt.slice(0, 16).replace('T', ' ') : '?';
+
+  box.innerHTML = `
+    <div class="filehead">
+      <strong>${esc(f.pdf)}</strong>
+      <span class="meta">${esc(f.runId)} · extracted ${esc(date)} · ${f.count} record${f.count === 1 ? '' : 's'}</span>
+      <span class="actions">
+        <span class="counter"><span class="sel">0</span>/${f.count} selected</span>
+        <button class="reject">Reject selected</button>
+        <button class="approve">Approve selected</button>
+      </span>
+    </div>
+    <div style="max-height:420px;overflow:auto">
+    <table>
+      <thead><tr>
+        <th><input type="checkbox" class="all" title="Select all"></th>
+        <th>Designation</th><th>Brand</th><th>Grade</th><th>Ø (mm)</th>
+        <th>Vc (m/min)</th><th>Feed (mm)</th><th>Conf.</th><th>Page</th>
+      </tr></thead>
+      <tbody>
+        ${f.records.map(r => `
+        <tr class="${r.low ? 'low' : ''}">
+          <td><input type="checkbox" class="rec" data-id="${r.id}"></td>
+          <td><span class="mono">${esc(r.article_number)}</span>
+              ${r.product_name && r.product_name !== r.article_number ? '<div class="reason">' + esc(r.product_name) + '</div>' : ''}</td>
+          <td>${esc(r.brand)}</td>
+          <td>${esc(r.grade)}</td>
+          <td class="num">${fmtRange(r.diameter_min, r.diameter_max)}</td>
+          <td class="num">${fmtRange(r.vc_min, r.vc_max)}</td>
+          <td class="num">${fmtRange(r.feed_min, r.feed_max)}</td>
+          <td class="num" title="${esc(r.confidence_reason)}${r.validation_issues.length ? ' [' + esc(r.validation_issues.join(', ')) + ']' : ''}">${r.confidence ?? '—'}</td>
+          <td class="num">${r.source_page ?? '—'}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+    </div>`;
+
+  const boxes   = [...box.querySelectorAll('.rec')];
+  const all     = box.querySelector('.all');
+  const selEl   = box.querySelector('.sel');
+  const btnA    = box.querySelector('.approve');
+  const btnR    = box.querySelector('.reject');
+
+  function refresh() {
+    const n = boxes.filter(b => b.checked).length;
+    selEl.textContent = n;
+    btnA.disabled = btnR.disabled = n === 0;
+    all.checked = n === boxes.length;
+  }
+  boxes.forEach(b => b.addEventListener('change', refresh));
+  all.addEventListener('change', () => { boxes.forEach(b => b.checked = all.checked); refresh(); });
+  refresh();
+
+  async function act(endpoint, verb) {
+    const recordIds = boxes.filter(b => b.checked).map(b => Number(b.dataset.id));
+    if (!recordIds.length) return;
+    if (verb === 'Rejected' && !confirm(`Reject ${recordIds.length} record(s) from ${f.pdf}?`)) return;
+    btnA.disabled = btnR.disabled = true;
+    try {
+      const resp = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ file: f.file, recordIds })
+      });
+      const json = await resp.json();
+      if (!resp.ok) throw new Error(json.error || resp.statusText);
+      if (verb === 'Approved') {
+        toast(`Approved: ${json.merged} merged, ${json.skippedDuplicates} duplicate(s) skipped` +
+              (json.archived ? ' — file archived' : ` — ${json.remaining} left in file`));
+      } else {
+        toast(`Rejected: ${json.rejected} removed from staging` +
+              (json.archived ? ' — file archived' : ` — ${json.remaining} left in file`));
+      }
+      await load();
+    } catch (e) {
+      toast(verb + ' failed: ' + e.message, true);
+      refresh();
+    }
+  }
+  btnA.addEventListener('click', () => act('/api/approve', 'Approved'));
+  btnR.addEventListener('click', () => act('/api/reject', 'Rejected'));
+  return box;
+}
+
+load();
+</script>
+</body>
+</html>

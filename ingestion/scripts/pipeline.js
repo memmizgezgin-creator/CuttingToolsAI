@@ -152,83 +152,25 @@ function stepInbox() {
 
 // ─── Step 2: Merge all approved records ────────────────────────────────────
 // Confidence eşiği: 70+ otomatik kabul (eski 85 çok katıydı)
+// Mapping + dedup + write logic paylaşımlı modülde (serve-review.js de kullanır)
+const { mergeRecords } = require('./merge-records.js');
 const CONF_MERGE_MIN = 70;
-
-function detectFamily(text) {
-  const t = (text || '').toLowerCase();
-  if (t.includes('drill') || t.includes('boring bar') || t.includes('countersink')) return 'Drilling';
-  if (t.includes('tap') || t.includes('thread mill') || t.includes('threading')) return 'Threading';
-  if (t.includes('ream')) return 'Reaming';
-  if (t.includes('groove') || t.includes('parting') || t.includes('cut-off')) return 'Grooving';
-  if (t.includes('turning') || t.includes('insert') || t.includes('cnmg') || t.includes('cngg')) return 'Turning';
-  if (t.includes('mill') || t.includes('end mill') || t.includes('slot') || t.includes('face mill')) return 'Milling';
-  return 'Drilling';
-}
-
-function mapRawRecord(r, id) {
-  if (!r.article_number && !r.product_name) return null;
-  const ms = r.material_suitability || {};
-  const isoAll = ['P','M','K','N','S','H'].filter(k => ms[k] === true);
-  const brand = r.brand || 'Gühring';
-  const family = detectFamily((r.family || '') + ' ' + (r.product_name || ''));
-  const opMap = { Drilling:'Solid', Threading:'Internal', Reaming:'Finishing',
-                  Turning:'Mixed', Milling:'Solid', Grooving:'External' };
-  const bestFor = [r.product_name, r.family, r.shank_form, r.depth_multiplier]
-    .filter(Boolean).join(' | ').slice(0, 200);
-  return {
-    id, brand,
-    code: r.article_number || '',
-    grade: r.material_grade || '',
-    shape: '-', tone: 'iso-p',
-    iso: isoAll[0] || (ms.P !== false ? 'P' : 'K'),
-    iso_all: isoAll.length > 0 ? isoAll : null,
-    family,
-    op: opMap[family] || 'Solid',
-    vcMin: r.cutting_data?.vc_min || null,
-    vcMax: r.cutting_data?.vc_max || null,
-    fMin: r.cutting_data?.feed_min || null,
-    fMax: r.cutting_data?.feed_max || null,
-    apMin: null, apMax: null,
-    coolant: '', stability: '', bestFor,
-    confidence: Math.round(r.confidence || 70),
-    supply: 3, equivalents: 0, equivIds: [], betterValueId: null,
-    source: r.source || 'initial-import',
-    dateAdded: r.dateAdded || '2025-01-01',
-    lastVerified: new Date().toISOString().slice(0, 10),
-    article: String(r.article_number || ''),
-    source_pdf: r.source_pdf || ''
-  };
-}
 
 function stepMerge() {
   log('\n🔀 ADIM 2: Onaylı kayıtları birleştir (conf >= ' + CONF_MERGE_MIN + ')');
 
-  // Load existing candidates
-  let existing = [];
-  if (fs.existsSync(CANDIDATES)) {
-    try {
-      const raw = JSON.parse(fs.readFileSync(CANDIDATES, 'utf8'));
-      existing = Array.isArray(raw) ? raw : (raw.tools || []);
-      log(`  Mevcut kayıt: ${existing.length}`);
-    } catch (e) {
-      log('  ⚠ candidates.json okunamadı:', e.message);
-    }
-  }
-
-  // De-dup by article+source_pdf (more robust than id alone)
-  const existingIds = new Set(existing.map(r => r.id));
-  const existingKeys = new Set(existing.map(r => (r.article || '') + '|' + (r.source_pdf || '')));
-  let idCounter = existing.length + 1;
-
-  let newRecords = [];
   if (!fs.existsSync(EXTRACTED_OUT)) {
     log('  ⚠ Extraction output klasörü yok, merge atlandı');
-    return existing;
+    return mergeRecords({}, { dryRun: true }).tools;
   }
 
   const pdfDirs = fs.readdirSync(EXTRACTED_OUT).filter(d =>
     fs.statSync(path.join(EXTRACTED_OUT, d)).isDirectory()
   );
+
+  // Gather candidate records; mergeRecords() does mapping, dedup and the write
+  const preMapped = [];
+  const rawRecords = [];
 
   for (const pdfDir of pdfDirs) {
     const pdfPath = path.join(EXTRACTED_OUT, pdfDir);
@@ -238,8 +180,7 @@ function stepMerge() {
       .reverse(); // en yeni run önce
 
     if (runs.length === 0) continue;
-    const latestRun = runs[0];
-    const runPath = path.join(pdfPath, latestRun);
+    const runPath = path.join(pdfPath, runs[0]);
 
     // Read approved.json (already mapped to our schema) AND review.json (raw format, needs mapping)
     const filesToCheck = [
@@ -247,56 +188,35 @@ function stepMerge() {
       { file: path.join(runPath, 'review.json'), raw: true },
     ];
 
-    let pdfAdded = 0;
     for (const { file, raw } of filesToCheck) {
       if (!fs.existsSync(file)) continue;
       try {
         const records = JSON.parse(fs.readFileSync(file, 'utf8'));
-        if (!Array.isArray(records) || records.length === 0) continue;
-
+        if (!Array.isArray(records)) continue;
         for (const r of records) {
-          const conf = r.confidence || 0;
-          if (conf < CONF_MERGE_MIN) continue;
-          if (r.auto_approved && !raw) {
-            // approved.json: use as-is (already has our id)
-            if (!r.id || existingIds.has(r.id)) continue;
-            existingIds.add(r.id);
-            newRecords.push(r);
-            pdfAdded++;
-          } else if (raw) {
-            // review.json: map to our schema
-            const key = (r.article_number || '') + '|' + (r.source_pdf || '');
-            if (existingKeys.has(key)) continue;
-            existingKeys.add(key);
-            const id = 'X' + String(idCounter++).padStart(4, '0');
-            const mapped = mapRawRecord(r, id);
-            if (!mapped) continue;
-            existingIds.add(id);
-            newRecords.push(mapped);
-            pdfAdded++;
-          }
+          if ((r.confidence || 0) < CONF_MERGE_MIN) continue;
+          if (r.auto_approved && !raw) preMapped.push(r);
+          else if (raw) rawRecords.push(r);
         }
       } catch (e) {
         log(`  ⚠ ${file} okunamadı:`, e.message);
       }
     }
-    if (pdfAdded > 0) log(`  + ${pdfDir}: ${pdfAdded} yeni kayıt`);
   }
 
-  if (newRecords.length === 0) {
+  const { tools, added, skippedDuplicates } = mergeRecords(
+    { preMapped, raw: rawRecords },
+    { dryRun }
+  );
+
+  if (added === 0) {
     log('  → Yeni kayıt yok');
-    return existing;
+  } else {
+    log(`  ✅ ${added} yeni kayıt eklendi (${skippedDuplicates} duplicate atlandı) → toplam ${tools.length}`);
+    if (!dryRun) log(`  💾 ${CANDIDATES} güncellendi`);
   }
 
-  const merged = [...existing, ...newRecords];
-  log(`  ✅ ${newRecords.length} yeni kayıt eklendi → toplam ${merged.length}`);
-
-  if (!dryRun) {
-    fs.writeFileSync(CANDIDATES, JSON.stringify({ total: merged.length, tools: merged }, null, 2));
-    log(`  💾 ${CANDIDATES} güncellendi`);
-  }
-
-  return merged;
+  return tools;
 }
 
 // ─── Step 3: Generate directory-data-extracted.js ──────────────────────────
