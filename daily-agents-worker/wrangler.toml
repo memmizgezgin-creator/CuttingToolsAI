@@ -6,11 +6,13 @@ name               = "cuttingtoolsai-daily-agents"
 main               = "daily-agents-worker.js"
 compatibility_date = "2025-01-01"
 
-# Europe/Amsterdam 09:00/09:20/09:40 yaz saati (CEST = UTC+2).
-# DİKKAT: cron UTC'dir; kış saatine (CET = UTC+1) geçince 08:00 lokal olur —
+# Europe/Amsterdam yaz saati (CEST = UTC+2):
+#   06:45 inspect, 09:00 collect, 09:20 evaluate, 09:40 digest
+# DİKKAT: cron UTC'dir; kış saatine (CET = UTC+1) geçince 1s kayar —
 # 09:00 lokal istenmeye devam ediyorsa Ekim sonunda "0 8 * * *" vb. yapılmalı.
 [triggers]
 crons = [
+  "45 6 * * *",  # inspect     — quality_inspector: son 24s advisor yanıtlarını denetle
   "0 7 * * *",   # collectors  — site_dev + market_intel bulgu üretir, event yazar
   "20 7 * * *",  # evaluation  — status='new' event'leri departman rolüyle değerlendirir
   "40 7 * * *"   # digest      — chief-of-staff günlük e-postası (Resend)

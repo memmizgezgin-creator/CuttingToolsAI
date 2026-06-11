@@ -1,8 +1,12 @@
 /**
  * CuttingToolsAI Daily Agents — Cloudflare Worker
  * ================================================
- * Üç cron, tek worker (event.cron üzerinden dallanır):
+ * Dört cron, tek worker (event.cron üzerinden dallanır):
  *
+ *   06:45 UTC — INSPECT  : quality_inspector — son 24s advisor sorgu+yanıtlarını denetler;
+ *                          bulgular (zayıf yanıtlar, uydurma veri, DB boşlukları) event
+ *                          bus'a yazılır. Collector'lardan ÖNCE çalışır ki 07:20 evaluation'a
+ *                          katılsın.
  *   07:00 UTC — COLLECT  : site_dev + market_intel ajanları bulgularını üretir,
  *                          ikinci bir Claude çağrısıyla yönlendirilebilir event'lere
  *                          çevirir ve Supabase agent_events'e yazar.
@@ -23,7 +27,7 @@
  *     her şey Murat'a öneri olarak gider.
  *
  * Manuel tetikleme:
- *   POST /run/collect | /run/evaluate | /run/digest
+ *   POST /run/inspect | /run/collect | /run/evaluate | /run/digest
  *   GET  /status
  *
  * Gerekli Secrets (wrangler secret put <KEY>):
@@ -37,10 +41,12 @@ import {
   supabaseHeaders, insertAgentEvents
 } from '../agents-shared/departments.js';
 
-const ANTHROPIC_MODEL   = 'claude-sonnet-4-20250514';
+const ANTHROPIC_MODEL    = 'claude-sonnet-4-20250514';
 const MAX_EVENTS_PER_RUN = 100;  // evaluation pass üst sınırı (kalan ertesi güne kalır)
 const MAX_DIGEST_ITEMS   = 40;
+const MAX_INSPECT_QUERIES = 30;  // cost guard: en fazla 30 sorgu denetlenir
 
+const CRON_INSPECT  = '45 6 * * *';
 const CRON_COLLECT  = '0 7 * * *';
 const CRON_EVALUATE = '20 7 * * *';
 const CRON_DIGEST   = '40 7 * * *';
@@ -49,6 +55,7 @@ const CRON_DIGEST   = '40 7 * * *';
 
 export default {
   async scheduled(event, env, ctx) {
+    if (event.cron === CRON_INSPECT)  ctx.waitUntil(runInspector(env));
     if (event.cron === CRON_COLLECT)  ctx.waitUntil(runCollectors(env));
     if (event.cron === CRON_EVALUATE) ctx.waitUntil(runEvaluationPass(env));
     if (event.cron === CRON_DIGEST)   ctx.waitUntil(runDigest(env));
@@ -59,6 +66,7 @@ export default {
 
     if (request.method === 'POST') {
       // waitUntil HTTP isteklerinde erken kesilebiliyor; manuel testte sonuna kadar bekle
+      if (url.pathname === '/run/inspect')  return json(await runInspector(env));
       if (url.pathname === '/run/collect')  return json(await runCollectors(env));
       if (url.pathname === '/run/evaluate') return json(await runEvaluationPass(env));
       if (url.pathname === '/run/digest')   return json(await runDigest(env));
@@ -72,6 +80,7 @@ export default {
 
     return new Response(
       'CuttingToolsAI Daily Agents Worker\n' +
+      'POST /run/inspect  — quality inspector (son 24s advisor yanıtlarını denetle)\n' +
       'POST /run/collect  — toplayıcıları çalıştır (site_dev + market_intel)\n' +
       'POST /run/evaluate — evaluation pass\n' +
       'POST /run/digest   — chief-of-staff digest e-postası\n' +
@@ -80,6 +89,307 @@ export default {
     );
   }
 };
+
+// ═══ 0. QUALITY INSPECTOR ══════════════════════════════════════════════════
+// Runs at 06:45 UTC (before collectors) so findings flow into the 07:20 evaluation.
+// Reads advisor_queries table (query_text + ai_answer) from last 24h.
+// Prereq: ALTER TABLE advisor_queries ADD COLUMN IF NOT EXISTS ai_answer TEXT;
+
+async function runInspector(env) {
+  const { logs, log } = makeLogger();
+  const date = today();
+  log(`inspect start ${new Date().toISOString()}`);
+
+  // ── Fetch last 24h queries (cap at MAX_INSPECT_QUERIES) ──────────────────
+  let rawRows = [];
+  let fetchError = null;
+  try {
+    rawRows = await fetchAdvisorQueries(env, MAX_INSPECT_QUERIES);
+  } catch (e) {
+    fetchError = e.message;
+    log(`! advisor_queries fetch failed: ${e.message}`);
+  }
+
+  // ── No traffic → emit visible "silence" event, skip Claude calls ─────────
+  if (!fetchError && rawRows.length === 0) {
+    try {
+      await insertAgentEvents(env, 'quality_inspector', [{
+        to_agent:    'chief_of_staff',
+        event_type:  'finding',
+        priority:    'low',
+        title:       'Quality Inspector: no traffic to audit',
+        body:        `No advisor queries were logged in the 24h window ending ${new Date().toISOString().slice(0, 19)}Z. ` +
+                     'Either no users asked the advisor, or the ai_answer column migration has not yet run ' +
+                     '(run: ALTER TABLE advisor_queries ADD COLUMN IF NOT EXISTS ai_answer TEXT;).',
+        source_ref:  null
+      }]);
+    } catch (e) { log(`! event insert failed: ${e.message}`); }
+    await finishRun(env, 'inspect', logs);
+    return { ok: true, audited: 0, skipped: 0, log: logs };
+  }
+
+  // ── Dedup identical queries; skip rows missing ai_answer (pre-migration) ──
+  const seen = new Set();
+  const toAudit = [];
+  let dupes = 0, noAnswer = 0;
+  for (const q of rawRows) {
+    if (!q.ai_answer) { noAnswer++; continue; }
+    const key = (q.query_text || '').toLowerCase().trim();
+    if (seen.has(key)) { dupes++; continue; }
+    seen.add(key);
+    toAudit.push(q);
+  }
+  log(`${rawRows.length} rows fetched; ${toAudit.length} unique+answerable, ${dupes} dupes, ${noAnswer} no-ai_answer`);
+
+  // ── All rows lack ai_answer → migration needed ────────────────────────────
+  if (toAudit.length === 0 && rawRows.length > 0) {
+    try {
+      await insertAgentEvents(env, 'quality_inspector', [{
+        to_agent:    'chief_of_staff',
+        event_type:  'finding',
+        priority:    'low',
+        title:       'Quality Inspector: ai_answer column not yet active',
+        body:        `${rawRows.length} query row(s) found but none have ai_answer populated. ` +
+                     'Run the migration and answers will be audited on the next run: ' +
+                     'ALTER TABLE advisor_queries ADD COLUMN IF NOT EXISTS ai_answer TEXT;',
+        source_ref:  null
+      }]);
+    } catch (e) { log(`! event insert failed: ${e.message}`); }
+    await finishRun(env, 'inspect', logs);
+    return { ok: true, audited: 0, skipped: rawRows.length, log: logs };
+  }
+
+  // ── Score each query/answer pair ──────────────────────────────────────────
+  const scores   = [];
+  const issueEvs = [];
+  let deferred   = 0;
+
+  for (const q of toAudit) {
+    try {
+      const result = await scoreAnswer(env, q);
+      scores.push(result);
+      issueEvs.push(...buildIssueEvents(q, result));
+      log(`scored "${(q.query_text || '').slice(0, 60)}" → G:${result.grounding.score} J:${result.judgment_quality.score} R:${result.relevance.score} C:${result.compliance.score}`);
+    } catch (e) {
+      deferred++;
+      log(`! defer "${(q.query_text || '').slice(0, 60)}": ${e.message}`);
+    }
+  }
+
+  // ── Aggregate ─────────────────────────────────────────────────────────────
+  const audited   = scores.length;
+  const weakCount = scores.filter(s =>
+    s.grounding.score <= 2 || s.judgment_quality.score <= 2 ||
+    s.relevance.score  <= 2 || s.compliance.score    <= 2
+  ).length;
+
+  const avgG = audited ? arrAvg(scores.map(s => s.grounding.score))        : null;
+  const avgJ = audited ? arrAvg(scores.map(s => s.judgment_quality.score)) : null;
+  const avgR = audited ? arrAvg(scores.map(s => s.relevance.score))        : null;
+  const avgC = audited ? arrAvg(scores.map(s => s.compliance.score))       : null;
+
+  const summaryLine = audited
+    ? `Audited ${audited} answer(s). Avg scores — Grounding: ${avgG.toFixed(1)}, ` +
+      `Judgment: ${avgJ.toFixed(1)}, Relevance: ${avgR.toFixed(1)}, ` +
+      `Compliance: ${avgC.toFixed(1)}. Weak answers (any criterion ≤2): ${weakCount}.` +
+      (deferred ? ` ${deferred} deferred.` : '')
+    : 'No scoreable answers in this window.';
+
+  // Store for digest "Department reports" section
+  await env.TA_AGENT_BUS.put(`summary:${date}:quality_inspector`, summaryLine.slice(0, 1500),
+    { expirationTtl: 3 * 86400 });
+
+  if (deferred > 0) {
+    await env.TA_AGENT_BUS.put(`inspector_deferred:${date}`, String(deferred),
+      { expirationTtl: 2 * 86400 });
+  }
+
+  // ── Emit events ───────────────────────────────────────────────────────────
+  const allEvents = [
+    {
+      to_agent:    'chief_of_staff',
+      event_type:  'finding',
+      priority:    weakCount > 0 ? 'normal' : 'low',
+      title:       `Quality Inspector: ${audited} answers audited, ${weakCount} weak`,
+      body:        summaryLine +
+                   (audited ? ` Score breakdown: grounding=${avgG.toFixed(1)}/5, ` +
+                     `judgment=${avgJ.toFixed(1)}/5, relevance=${avgR.toFixed(1)}/5, ` +
+                     `compliance=${avgC.toFixed(1)}/5.` : ''),
+      source_ref:  null
+    },
+    ...issueEvs
+  ];
+
+  try {
+    const inserted = await insertAgentEvents(env, 'quality_inspector', allEvents);
+    log(`inserted ${inserted} event(s) (${issueEvs.length} issue(s))`);
+  } catch (e) {
+    log(`! event insert failed: ${e.message}`);
+  }
+
+  log(`inspect done: audited=${audited} weak=${weakCount} deferred=${deferred}`);
+  await finishRun(env, 'inspect', logs);
+  return { ok: true, audited, weak: weakCount, deferred, log: logs };
+}
+
+// ── Fetch advisor_queries last 24h ────────────────────────────────────────
+async function fetchAdvisorQueries(env, limit) {
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) {
+    throw new Error('Supabase secrets missing');
+  }
+  const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+  const res = await fetch(
+    `${env.SUPABASE_URL}/rest/v1/advisor_queries` +
+    `?select=query_text,ai_answer,db_hit,matched_records,created_at` +
+    `&created_at=gte.${encodeURIComponent(since)}` +
+    `&order=created_at.desc&limit=${limit}`,
+    { headers: supabaseHeaders(env) }
+  );
+  if (!res.ok) throw new Error(`advisor_queries fetch ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  return res.json();
+}
+
+// ── Score one query/answer pair via Claude ────────────────────────────────
+async function scoreAnswer(env, row) {
+  const system =
+    `${DEPARTMENTS.quality_inspector.role}
+
+You are scoring one advisor interaction. Be concise — one justification line per criterion.
+Respond with STRICT JSON only — no markdown fences, no commentary. Schema:
+{
+  "grounding":        { "score": <1-5>, "justification": "<one line>" },
+  "judgment_quality": { "score": <1-5>, "justification": "<one line>" },
+  "relevance":        { "score": <1-5>, "justification": "<one line>" },
+  "compliance":       { "score": <1-5>, "justification": "<one line>" },
+  "invented_data":    <true|false>,
+  "db_gap":           <true|false>,
+  "ux_issue":         <true|false>
+}
+invented_data: true if the answer names a grade, tool code, or cutting spec that appears
+  fabricated (not traceable to a known manufacturer or the DB records shown).
+db_gap: true if the question could NOT be answered from verified DB data and represents
+  a real ingestion gap (not a hallucination — just missing coverage).
+ux_issue: true if the answer skips the structured spec block (INSERT/GRADE/Vc/Fn/CROSS-REF),
+  or buries the answer in prose, or fails the metric-first rule.`;
+
+  const user =
+    `MACHINIST QUERY:\n${(row.query_text || '').slice(0, 500)}\n\n` +
+    `AI ANSWER:\n${(row.ai_answer || '').slice(0, 1500)}\n\n` +
+    `DB HIT: ${row.db_hit ? 'yes' : 'no'} (${row.matched_records || 0} verified records matched)`;
+
+  const raw    = await callClaude(env, { system, user, max_tokens: 600 });
+  const parsed = parseJsonLoose(raw);
+  if (!parsed || typeof parsed.grounding?.score !== 'number') {
+    throw new Error('score JSON parse failed');
+  }
+  // Clamp and round scores
+  for (const dim of ['grounding', 'judgment_quality', 'relevance', 'compliance']) {
+    if (parsed[dim]) {
+      parsed[dim].score = Math.min(5, Math.max(1, Math.round(parsed[dim].score)));
+    }
+  }
+  return parsed;
+}
+
+// ── Route a weak answer to the appropriate department ─────────────────────
+function buildIssueEvents(row, result) {
+  const events = [];
+  const qSnip  = (row.query_text || '').slice(0, 120);
+  const aSnip  = (row.ai_answer  || '').slice(0, 500);
+  const label  = `"${qSnip.slice(0, 80)}"`;
+
+  // Grounding: invented data → tech_research HIGH
+  if (result.invented_data) {
+    events.push({
+      to_agent:    'tech_research',
+      event_type:  'issue',
+      priority:    'high',
+      title:       `Invented data detected in advisor answer: ${label}`,
+      body:        `The AI advisor appears to have fabricated tool data not traceable to any ` +
+                   `verified source.\n\nQuery: ${qSnip}\n\nAnswer excerpt: ${aSnip}\n\n` +
+                   `Grounding score: ${result.grounding.score}/5. ${result.grounding.justification}`,
+      source_ref:  null
+    });
+  } else if (result.grounding.score <= 2) {
+    events.push({
+      to_agent:    'tech_research',
+      event_type:  'issue',
+      priority:    'normal',
+      title:       `Weak grounding (${result.grounding.score}/5): ${label}`,
+      body:        `Answer scored ${result.grounding.score}/5 on grounding.\n\n` +
+                   `Query: ${qSnip}\n\nAnswer excerpt: ${aSnip}\n\n` +
+                   `Justification: ${result.grounding.justification}`,
+      source_ref:  null
+    });
+  }
+
+  // DB gap → tech_research (ingestion opportunity)
+  if (result.db_gap) {
+    events.push({
+      to_agent:    'tech_research',
+      event_type:  'issue',
+      priority:    'normal',
+      title:       `DB coverage gap (no records matched): ${label}`,
+      body:        `The advisor had no matching reference DB records for this query ` +
+                   `(db_hit=${row.db_hit}, matched_records=${row.matched_records || 0}). ` +
+                   `Ingestion of relevant catalogue data would improve answer grounding.\n\n` +
+                   `Query: ${qSnip}\n\nAnswer excerpt: ${aSnip}`,
+      source_ref:  null
+    });
+  }
+
+  // Judgment quality → tech_research (why-layer gap)
+  if (result.judgment_quality.score <= 2 && !result.invented_data) {
+    events.push({
+      to_agent:    'tech_research',
+      event_type:  'issue',
+      priority:    'normal',
+      title:       `Weak judgment quality (${result.judgment_quality.score}/5): ${label}`,
+      body:        `Answer scored ${result.judgment_quality.score}/5 on judgment — ` +
+                   `not demonstrating why-layer reasoning.\n\n` +
+                   `Query: ${qSnip}\n\nAnswer excerpt: ${aSnip}\n\n` +
+                   `Justification: ${result.judgment_quality.justification}`,
+      source_ref:  null
+    });
+  }
+
+  // Relevance or UX → site_dev
+  if (result.relevance.score <= 2 || result.ux_issue) {
+    events.push({
+      to_agent:    'site_dev',
+      event_type:  'issue',
+      priority:    'normal',
+      title:       `Relevance/UX issue in advisor answer: ${label}`,
+      body:        `Answer scored ${result.relevance.score}/5 on relevance.` +
+                   (result.ux_issue ? ' UX formatting issue also detected (missing spec block or prose-only answer).' : '') +
+                   `\n\nQuery: ${qSnip}\n\nAnswer excerpt: ${aSnip}\n\n` +
+                   `Justification: ${result.relevance.justification}`,
+      source_ref:  null
+    });
+  }
+
+  // KIRILMAZ KURAL compliance → chief_of_staff HIGH (founder decision)
+  if (result.compliance.score <= 2) {
+    events.push({
+      to_agent:    'chief_of_staff',
+      event_type:  'issue',
+      priority:    'high',
+      title:       `KIRILMAZ KURAL compliance failure (${result.compliance.score}/5): ${label}`,
+      body:        `Advisor answer scored ${result.compliance.score}/5 on compliance — possible ` +
+                   `brand-neutrality or catalog-positioning violation requiring founder review.\n\n` +
+                   `Query: ${qSnip}\n\nAnswer excerpt: ${aSnip}\n\n` +
+                   `Justification: ${result.compliance.justification}`,
+      source_ref:  null
+    });
+  }
+
+  return events;
+}
+
+function arrAvg(arr) {
+  if (!arr.length) return 0;
+  return arr.reduce((a, b) => a + b, 0) / arr.length;
+}
 
 // ═══ 1. COLLECTORS ═════════════════════════════════════════════════════════
 
@@ -329,9 +639,13 @@ async function runDigest(env) {
   const decisions = fresh.filter(e => e.status === 'escalated');
   const routed    = fresh.filter(e => e.status === 'evaluated');
 
-  // Departman raporları (collector özetleri) + haftalık tech_research notu KV'de değil,
-  // event olarak gelir — özet bölümü sadece günlük toplayıcılar içindir.
+  // Departman raporları: collector özetleri + quality_inspector özeti
   const reports = [];
+  // Inspector summary first (it ran earlier, at 06:45)
+  const inspectorSummary = await env.TA_AGENT_BUS.get(`summary:${date}:quality_inspector`);
+  if (inspectorSummary) {
+    reports.push({ agent: 'quality_inspector', name: DEPARTMENTS.quality_inspector.name, summary: inspectorSummary });
+  }
   for (const c of COLLECTORS) {
     const s = await env.TA_AGENT_BUS.get(`summary:${date}:${c.id}`);
     if (s) reports.push({ agent: c.id, name: DEPARTMENTS[c.id].name, summary: s });
@@ -340,11 +654,12 @@ async function runDigest(env) {
   // Footer: hâlâ 'new' kalan event'ler = bu koşuda değerlendirilemeyenler
   const deferredCount = await countEvents(env, 'status=eq.new');
   const collectorErrors = JSON.parse(await env.TA_AGENT_BUS.get(`collector_errors:${date}`) || '[]');
+  const inspectorDeferred = Number(await env.TA_AGENT_BUS.get(`inspector_deferred:${date}`) || '0');
 
-  const html = buildDigestHtml({ date, decisions, routed, reports, deferredCount, collectorErrors });
+  const html = buildDigestHtml({ date, decisions, routed, reports, deferredCount, collectorErrors, inspectorDeferred });
 
   await sendDigestEmail(env, date, html);
-  log(`email sent: ${decisions.length} decision(s), ${routed.length} evaluated, ${deferredCount} deferred`);
+  log(`email sent: ${decisions.length} decision(s), ${routed.length} evaluated, ${deferredCount} deferred, ${inspectorDeferred} inspector-deferred`);
 
   // E-posta BAŞARILI olduktan sonra işaretle — gönderim düşerse ertesi gün tekrar gelir
   for (const ev of fresh) {
@@ -352,10 +667,10 @@ async function runDigest(env) {
   }
 
   await finishRun(env, 'digest', logs);
-  return { ok: true, decisions: decisions.length, routed: routed.length, deferred: deferredCount, html, log: logs };
+  return { ok: true, decisions: decisions.length, routed: routed.length, deferred: deferredCount, inspectorDeferred, html, log: logs };
 }
 
-function buildDigestHtml({ date, decisions, routed, reports, deferredCount, collectorErrors }) {
+function buildDigestHtml({ date, decisions, routed, reports, deferredCount, collectorErrors, inspectorDeferred = 0 }) {
   const decisionsHtml = decisions.length ? decisions.map(ev => `
     <div style="border:1px solid #fca5a5;border-left:4px solid #dc2626;border-radius:8px;padding:16px;margin:0 0 14px;">
       <div style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#dc2626;margin-bottom:6px;">
@@ -395,6 +710,9 @@ function buildDigestHtml({ date, decisions, routed, reports, deferredCount, coll
   const deferredNote = deferredCount > 0
     ? `<div style="margin-top:6px;">${deferredCount} event(s) deferred — evaluation will retry on the next run.</div>`
     : '';
+  const inspectorDeferredNote = inspectorDeferred > 0
+    ? `<div style="margin-top:6px;">${inspectorDeferred} answer(s) deferred by quality inspector — scoring will retry on the next run.</div>`
+    : '';
 
   return `
   <div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:640px;margin:0 auto;padding:24px;color:#0f172a;">
@@ -413,6 +731,7 @@ function buildDigestHtml({ date, decisions, routed, reports, deferredCount, coll
     <div style="border-top:1px solid #e2e8f0;margin-top:24px;padding-top:12px;font-size:12px;color:#64748b;">
       Nothing is auto-committed. Every item above is a recommendation only.
       ${deferredNote}
+      ${inspectorDeferredNote}
       ${errNote}
     </div>
   </div>`;

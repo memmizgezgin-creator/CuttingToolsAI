@@ -318,9 +318,22 @@ function formatReferenceBlock(retrieval) {
 }
 
 // ── Anonymous query logging (GDPR-safe: no user id, no IP, no cookie id) ──────
-function logAdvisorQuery(env, { queryText, dbHit, matchedRecords, responseTimeMs }) {
+// ai_answer requires: ALTER TABLE advisor_queries ADD COLUMN IF NOT EXISTS ai_answer TEXT;
+// Backwards-safe: if that column doesn't exist yet, falls back to base columns so
+// existing query logging is never interrupted regardless of migration status.
+function logAdvisorQuery(env, { queryText, dbHit, matchedRecords, responseTimeMs, answerText }) {
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) return Promise.resolve();
-  return fetch(`${env.SUPABASE_URL}/rest/v1/advisor_queries`, {
+  const baseRow = {
+    query_text:       String(queryText || '').slice(0, 500),
+    db_hit:           !!dbHit,
+    matched_records:  matchedRecords | 0,
+    response_time_ms: responseTimeMs | 0,
+  };
+  const fullRow = answerText
+    ? { ...baseRow, ai_answer: String(answerText).slice(0, 2000) }
+    : baseRow;
+
+  const doInsert = (row) => fetch(`${env.SUPABASE_URL}/rest/v1/advisor_queries`, {
     method: 'POST',
     headers: {
       'Content-Type':  'application/json',
@@ -328,13 +341,16 @@ function logAdvisorQuery(env, { queryText, dbHit, matchedRecords, responseTimeMs
       'Authorization': `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
       'Prefer':        'return=minimal',
     },
-    body: JSON.stringify({
-      query_text:       String(queryText || '').slice(0, 500),
-      db_hit:           !!dbHit,
-      matched_records:  matchedRecords | 0,
-      response_time_ms: responseTimeMs | 0,
-    }),
-  }).catch(() => {});
+    body: JSON.stringify(row),
+  });
+
+  return doInsert(fullRow)
+    .then(res => {
+      // If INSERT fails and we included ai_answer, column likely doesn't exist yet.
+      // Retry with base columns so query logging is never lost.
+      if (!res.ok && answerText) return doInsert(baseRow);
+    })
+    .catch(() => {});
 }
 
 // ── 429 helper ────────────────────────────────────────────────────────────────
@@ -622,6 +638,7 @@ export async function onRequestPost(context) {
     dbHit:          retrieval.dbHit,
     matchedRecords: retrieval.matchedRecords,
     responseTimeMs: Date.now() - requestStart,
+    answerText:     answer,
   }));
 
   // ── Build success response ─────────────────────────────────────────────────
