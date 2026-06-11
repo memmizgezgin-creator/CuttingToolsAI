@@ -1,0 +1,94 @@
+name: Waitlist Domain Report
+
+# Read-only aggregate report over the waitlist table, for launch pricing
+# copy targeting. Dispatch-only. Prints ONLY aggregate counts and company
+# domain names — full email addresses are never written to the log.
+#
+# Required repo Actions secrets (already exist):
+#   SUPABASE_URL
+#   SUPABASE_SERVICE_ROLE_KEY
+
+on:
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Aggregate waitlist domains (read-only)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          cat > /tmp/waitlist-report.mjs <<'EOF'
+          const URL = (process.env.SUPABASE_URL || '').replace(/\/$/, '');
+          const KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+          if (!URL || !KEY) { console.log('FAIL: SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY missing'); process.exit(1); }
+
+          const FREEMAIL_LABELS = new Set([
+            'gmail', 'googlemail', 'hotmail', 'outlook', 'yahoo', 'proton',
+            'protonmail', 'icloud', 'live', 'gmx', 'ziggo', 'kpn',
+          ]);
+          const FREEMAIL_EXACT = new Set(['web.de']);
+          const DISTRIBUTOR_PATTERNS = [
+            'guhring', 'taegutec', 'sandvik', 'iscar', 'kennametal',
+            'walter-tools', 'tungaloy', 'seco', 'hoffmann-group',
+            'mmc-hardmetal', 'ceratizit',
+          ];
+
+          // Paginated read: Supabase PostgREST caps responses at 1000 rows.
+          const PAGE = 1000;
+          const emails = [];
+          for (let from = 0; ; from += PAGE) {
+            const res = await fetch(`${URL}/rest/v1/waitlist?select=email`, {
+              headers: {
+                'apikey': KEY,
+                'Authorization': `Bearer ${KEY}`,
+                'Range-Unit': 'items',
+                'Range': `${from}-${from + PAGE - 1}`,
+              },
+            });
+            if (!res.ok) { console.log(`FAIL: PostgREST HTTP ${res.status}`); process.exit(1); }
+            const rows = await res.json();
+            for (const r of rows) if (r.email) emails.push(String(r.email).toLowerCase());
+            if (rows.length < PAGE) break;
+          }
+
+          if (emails.length === 0) { console.log('TOTAL: 0'); process.exit(0); }
+
+          let freemail = 0, distributor = 0, company = 0;
+          const companyDomains = new Map();
+          for (const e of emails) {
+            const at = e.lastIndexOf('@');
+            const domain = at >= 0 ? e.slice(at + 1).trim() : '';
+            if (!domain) continue;
+            const label = domain.split('.')[0];
+            if (DISTRIBUTOR_PATTERNS.some(p => domain.includes(p))) {
+              distributor++;
+            } else if (FREEMAIL_LABELS.has(label) || FREEMAIL_EXACT.has(domain)) {
+              freemail++;
+            } else {
+              company++;
+              companyDomains.set(domain, (companyDomains.get(domain) || 0) + 1);
+            }
+          }
+
+          console.log('=== WAITLIST DOMAIN REPORT (aggregates only) ===');
+          console.log(`TOTAL: ${emails.length}`);
+          console.log(`FREEMAIL: ${freemail}`);
+          console.log(`COMPANY: ${company}`);
+          console.log(`DISTRIBUTOR/MANUFACTURER: ${distributor}`);
+          console.log('TOP 10 COMPANY DOMAINS:');
+          const top = [...companyDomains.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
+          if (top.length === 0) console.log('  (none)');
+          for (const [d, n] of top) console.log(`  ${d}: ${n}`);
+          console.log('RESULT: PASS');
+          EOF
+          node /tmp/waitlist-report.mjs
