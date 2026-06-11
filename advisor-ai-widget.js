@@ -632,6 +632,7 @@
           console.debug('[Advisor] Token retrieval failed:', e);
         }
       }
+      console.debug('[Advisor] auth header attached:', !!headers['Authorization']);
 
       res = await fetch(API_URL, {
         method: 'POST',
