@@ -2,7 +2,6 @@
 
 ## Active
 
-- [ ] **Smoke test secret (Murat)** — GitHub repo → Settings → Secrets and variables → Actions → New repository secret: `SUPABASE_ANON_KEY` (js/auth.js içindeki public anon key ile aynı değer). `SUPABASE_URL` ve `SUPABASE_SERVICE_ROLE_KEY` ingestion workflow'undan zaten mevcut. Sonra Actions → "Auth Smoke Test" → Run workflow ile ilk prod çalıştırmayı yap; yeşilse günlük 05:30 UTC cron devrede.
 
 - [ ] **Quality Inspector SQL migration** — Supabase SQL Editor'da çalıştır (inspector bu olmadan çalışır ama denetleyecek yanıt verisi olmaz; proxy fallback sayesinde mevcut query loglama kesilmez): `ALTER TABLE advisor_queries ADD COLUMN IF NOT EXISTS ai_answer TEXT;`
 
@@ -28,6 +27,8 @@
 - [ ] (1 Temmuz sonrası) **Prompt regression testi** - advisor promptu için sabit 20 soruluk test seti oluştur, eski vs yeni prompt cevaplarını Haiku ile puanlayan script yaz. Why-layer değişikliklerinde kalite düşüşünü yakalamak için.
 
 ## Done
+
+- [x] **Smoke test ilk prod run YEŞİL (2026-06-11)** - `SUPABASE_ANON_KEY` secret'ı gh CLI ile eklendi (js/auth.js'teki public anon key), workflow gh ile tetiklendi: run 27353908632 → 6/6 PASS + ALL PASS (https://cuttingtoolsai.eu'ya karşı: anon 200, free user row + increment, pro plan:"pro" + increment yok, teardown temiz). Günlük 05:30 UTC cron artık devrede. Not: GitHub "Node.js 20 actions deprecated" uyarısı veriyor (16 Haziran 2026'da default Node 24) — workflow'lardaki setup-node sürümleri bir ara gözden geçirilmeli.
 
 - [x] **Auth/entitlement smoke test + günlük workflow (2026-06-11)** - `scripts/smoke-auth.mjs` (Node 20, bağımlılıksız): disposable test user (admin API, smoke+<ts>@cuttingtoolsai.eu) → anon /proxy çağrısı (plan alanı YOK doğrulaması) → authed free (usage_daily subject_type='user' satırı + ikinci çağrıda increment) → subscriptions'a active satır → pro çağrısı (increment YOK + body'de plan:"pro") → teardown her durumda (subscriptions + usage_daily + user silinir, sadece test user id'ye filtreli; token/key loglanmaz). `.github/workflows/smoke-auth.yml`: workflow_dispatch + günlük 05:30 UTC cron. Lokal doğrulama: servis key bu makinede yok → GoTrue/PostgREST/proxy semantiğini birebir taklit eden mock'a karşı ALL PASS (exit 0) + negatif test (yanlış anon key → FAIL, exit 1, teardown yine çalıştı). İlk prod run: SUPABASE_ANON_KEY secret'ı eklendikten sonra (Active'e bakın).
 
