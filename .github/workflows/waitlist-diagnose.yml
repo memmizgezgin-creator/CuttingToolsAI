@@ -1,0 +1,106 @@
+name: Waitlist Funnel Diagnosis
+
+# Diagnoses why the waitlist has zero rows. Dispatch-only.
+#
+# CHECK A (read-only): has anyone ever exhausted the daily free quota since
+#   launch (2026-06-09)? The upgrade CTA/modal only appears when remaining
+#   hits 0, so usage_daily rows with count >= 5 (anon/user subjects; the
+#   'ip' backstop has a different limit and is excluded) are a direct proxy
+#   for "modal was shown". Prints aggregates only — no subject ids.
+#
+# CHECK B (end-to-end, self-cleaning): POST to the production /waitlist
+#   endpoint exactly as modals.js does ({email, source:'pro_cta'}, expects
+#   body.ok), assert the row landed in the waitlist table via PostgREST,
+#   then DELETE that single synthetic row and re-assert it is gone. The
+#   row-present assertion specifically catches the silent-success mode in
+#   functions/waitlist.js (returns ok:true when Supabase env is missing).
+#
+# Required repo Actions secrets (already exist):
+#   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
+
+on:
+  workflow_dispatch:
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Diagnose waitlist funnel
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SITE_URL: https://cuttingtoolsai.eu
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -u
+          URL="${SUPABASE_URL%/}"
+          KEY="$SUPABASE_SERVICE_ROLE_KEY"
+          FAIL=0
+          sb() { curl -sS -H "apikey: $KEY" -H "Authorization: Bearer $KEY" "$@"; }
+
+          echo "=== CHECK A: quota exhaustion since 2026-06-09 (aggregates only) ==="
+          # Free limit is 5 for anon/user subjects. check_and_increment_daily
+          # stops incrementing at the limit, so count>=5 == quota fully used.
+          ROWS=$(sb "$URL/rest/v1/usage_daily?day=gte.2026-06-09&subject_type=in.(anon,user)&select=subject_id,count&limit=10000")
+          if ! echo "$ROWS" | jq -e 'type=="array"' > /dev/null 2>&1; then
+            echo "FAIL check-a: unexpected PostgREST response: $(echo "$ROWS" | head -c 200)"
+            FAIL=1; ROWS='[]'
+          fi
+          TOTAL_DAYS=$(echo "$ROWS" | jq 'length')
+          HIT_DAYS=$(echo "$ROWS"   | jq '[.[] | select(.count >= 5)] | length')
+          HIT_USERS=$(echo "$ROWS"  | jq '[.[] | select(.count >= 5) | .subject_id] | unique | length')
+          echo "user-days tracked (anon+user): $TOTAL_DAYS"
+          echo "user-days that hit the limit:  $HIT_DAYS"
+          echo "distinct subjects that hit it: $HIT_USERS"
+
+          echo
+          echo "=== CHECK B: end-to-end signup against $SITE_URL/waitlist ==="
+          TEST_EMAIL="diag-test-${RUN_ID}@cuttingtoolsai.eu"
+
+          # 1. Submit exactly as modals.js does
+          SUBMIT=$(curl -sS -X POST "$SITE_URL/waitlist" \
+            -H "Content-Type: application/json" \
+            -H "Origin: https://cuttingtoolsai.eu" \
+            -d "{\"email\":\"$TEST_EMAIL\",\"source\":\"pro_cta\"}")
+          if echo "$SUBMIT" | jq -e '.ok == true' > /dev/null 2>&1; then
+            echo "PASS submit: endpoint returned ok:true"
+          else
+            echo "FAIL submit: response was: $(echo "$SUBMIT" | head -c 200)"
+            FAIL=1
+          fi
+
+          # 2. Row actually landed? (catches silent-success modes)
+          PRESENT=$(sb "$URL/rest/v1/waitlist?email=eq.$TEST_EMAIL&select=email" | jq 'length')
+          if [ "$PRESENT" = "1" ]; then
+            echo "PASS row-present: test row found in waitlist table"
+          else
+            echo "FAIL row-present: expected 1 row for test email, found $PRESENT"
+            FAIL=1
+          fi
+
+          # 3. Cleanup: delete ONLY the synthetic row, re-assert gone
+          sb -X DELETE "$URL/rest/v1/waitlist?email=eq.$TEST_EMAIL" -o /dev/null
+          REMAIN=$(sb "$URL/rest/v1/waitlist?email=eq.$TEST_EMAIL&select=email" | jq 'length')
+          if [ "$REMAIN" = "0" ]; then
+            echo "PASS cleanup: test row deleted (count for test email is 0)"
+          else
+            echo "FAIL cleanup: $REMAIN row(s) remain for test email — manual cleanup needed"
+            FAIL=1
+          fi
+
+          echo
+          echo "=== SUMMARY ==="
+          if [ "$HIT_DAYS" -gt 0 ] 2>/dev/null; then MODAL="yes"; else MODAL="no"; fi
+          if [ "$FAIL" = "0" ]; then ENDPOINT="PASS"; else ENDPOINT="FAIL"; fi
+          echo "MODAL EVER SHOWN: $MODAL"
+          echo "WAITLIST ENDPOINT: $ENDPOINT"
+          if [ "$ENDPOINT" = "FAIL" ]; then
+            echo "INTERPRETATION: signup path is broken — fix the endpoint before drawing funnel conclusions"
+          elif [ "$MODAL" = "no" ]; then
+            echo "INTERPRETATION: endpoint works but nobody has exhausted the 5-query quota yet — the modal was never shown, so zero signups is a traffic/funnel fact, not a bug"
+          else
+            echo "INTERPRETATION: modal was shown and the endpoint works — users saw the upsell but did not convert (copy/UX issue)"
+          fi
+          exit "$FAIL"
