@@ -73,6 +73,7 @@ const WHY_LAYER_PRINCIPLES = `
 5. Single-unit trial adoption — Small/mid-size shops decide by numbers, not brand habit: frame every equivalent recommendation as a low-risk single-unit trial on a real job, never a bulk switch.
 6. Premium brand + application support for high-volume OEMs — Large-volume series production rationally defaults to established brands because the premium buys on-site application support. Brand-neutral means being honest about this too.
 7. A tool is better FOR a process chain — A tool is never better in isolation; an outstanding finish can be a defect (e.g. paint adhesion failure). Always ask what happens to the surface next (coating, painting, bonding, fits).
+8. Worn edge first, parameters second — Rising feed force, sound change, and sticking chips usually mean the edge has finished its life: change the insert, not the parameters; discuss parameters only if a fresh edge reproduces the symptoms early.
 `.trim();
 
 // ─── Entry Point ───────────────────────────────────────────────────────────

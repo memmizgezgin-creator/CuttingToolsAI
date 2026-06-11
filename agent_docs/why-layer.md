@@ -101,6 +101,7 @@ Status legend: [ ] empty · [~] partial · [x] done
 ## 6. META RULES (how the AI should reason)
 
 - [x] A tool is never better in isolation; it is better FOR a process chain. Example: an outstanding surface finish caused a failure because paint could no longer adhere. Before declaring tool A better than tool B, ask what happens to the surface next (coating, painting, bonding, sealing, fits). "Better finish" can be a defect.
+- [x] Worn edge first, parameters second. When feed force rises, sound changes, and chips start sticking, the shop-floor reflex is correct: change the insert, not the parameters. Those symptoms usually mean the edge has already finished its life; tuning speeds or feeds on a dead edge wastes time and masks the real state of the process. Parameter discussion only starts if a FRESH edge reproduces the same symptoms early in its life. The advisor should never respond to wear symptoms with a parameter list alone; it should first ask how long the current edge has been cutting.
 - [ ] Always ask for: machine condition/rigidity, batch size, coolant capability — before trusting catalog Vc
 - [ ] Confidence language: when to say "this is standard practice" vs "this depends on your setup, test at the low end"
 - [ ] Red lines: what the AI should never claim without data (tool life numbers, exact cost savings)
