@@ -18,6 +18,8 @@
 
 ## Done
 
+- [x] **Programmatic SEO phase 1: /ref/ cross-reference pages (2026-06-11)** - scripts/build-ref-pages.js build-time generator: catalog.html CROSSREF_DB'den 22 insert designation sayfası (/ref/<code>/) + /ref/ index; her sayfa: marka eşdeğer tablosu, ISO 1832 decode, TechArticle JSON-LD, canonical, unique title/desc, related links, AI advisor CTA (?ask= prefill — index.html'e handler eklendi); sitemap.xml otomatik yenileniyor (30 URL); footer'a Cross-Ref linki; canlıda doğrulandı (cnmg120408 + apmt1604pder 200, tam HTML); GSC sitemap submit Murat'ta
+
 - [x] **Advisor answer quality + query logging (2026-06-10)** - system prompt: metric-first kuralı, yapısal cevap formatı (spec block + CROSS-REF + start advice, <200 kelime), fallback protokolü (ISO decode + en yakın DB kaydından ekstrapolasyon, grade uydurma yasak); proxy'ye retrieveTools eklendi (Supabase products tablosundan SKU/grade eşleşmesi → system prompt'a verified reference block); advisor_queries tablosu (anonim, GDPR-safe: user id/IP yok) + her çağrıda log; research worker e-postasına "DB misses this week" bölümü; NOT: prod products şeması supabase-schema.sql'den farklı (sku boşluklu, grade=coating kolonu) — kod prod şemasına göre yazıldı
 
 - [x] **Proxy 503 timeout fix (2026-06-10)** - "AI is temporarily unavailable" hatasının kökü: web_search'lü sorgular 22-50s sürerken proxy 25s'te abort ediyordu; timeout 50s, timeout'ta retry yok, web_search max_uses:2; ayrıca JS/CSS URL'lerine ?v= versiyonu eklendi (zone Browser Cache TTL 4h eski JS'i saatlerce tutuyordu); canlıda 3/3 sorgu 200 ile doğrulandı
