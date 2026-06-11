@@ -2,6 +2,8 @@
 
 ## Active
 
+- [ ] **Quality Inspector SQL migration** — Supabase SQL Editor'da çalıştır (inspector bu olmadan çalışır ama denetleyecek yanıt verisi olmaz; proxy fallback sayesinde mevcut query loglama kesilmez): `ALTER TABLE advisor_queries ADD COLUMN IF NOT EXISTS ai_answer TEXT;`
+
 - [ ] **Research worker Supabase secrets** - Murat: `cd research-worker && npx wrangler secret put SUPABASE_URL && npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY` (değerler Supabase dashboard → tooladvisor → Settings → API). Yoksa haftalık e-postadaki "DB misses" bölümü VE event-bus yazımı sessizce atlanır.
 - [ ] **Agent event bus go-live (Murat)** - 1) Supabase SQL Editor'da `supabase/migrations/20260611000000_agent_events.sql` çalıştır; 2) `cd daily-agents-worker && npx wrangler secret put RESEND_API_KEY && npx wrangler secret put SUPABASE_URL && npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY` (ANTHROPIC_API_KEY set edildi). Bunlar yapılmadan cron'lar çalışır ama event yazamaz/e-posta atamaz (hata loglanır, crash yok).
 
