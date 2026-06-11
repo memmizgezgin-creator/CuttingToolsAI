@@ -1,0 +1,33 @@
+# Cloudflare Worker — CuttingToolsAI Daily Agents (event bus + chief-of-staff digest)
+# Bu dosya Pages'in, pipeline worker'ın ve research worker'ın wrangler.toml'larından AYRIDIR.
+# Deploy: cd daily-agents-worker && npx wrangler deploy
+
+name               = "cuttingtoolsai-daily-agents"
+main               = "daily-agents-worker.js"
+compatibility_date = "2025-01-01"
+
+# Europe/Amsterdam 09:00/09:20/09:40 yaz saati (CEST = UTC+2).
+# DİKKAT: cron UTC'dir; kış saatine (CET = UTC+1) geçince 08:00 lokal olur —
+# 09:00 lokal istenmeye devam ediyorsa Ekim sonunda "0 8 * * *" vb. yapılmalı.
+[triggers]
+crons = [
+  "0 7 * * *",   # collectors  — site_dev + market_intel bulgu üretir, event yazar
+  "20 7 * * *",  # evaluation  — status='new' event'leri departman rolüyle değerlendirir
+  "40 7 * * *"   # digest      — chief-of-staff günlük e-postası (Resend)
+]
+
+# Event-bus KV: günlük departman özetleri, digest dedup işaretleri, run log
+[[kv_namespaces]]
+binding = "TA_AGENT_BUS"
+id      = "732e92b72d5543218456e16ab6422e87"
+
+[vars]
+RESEND_FROM = "CuttingToolsAI Daily <research@cuttingtoolsai.eu>"
+REPORT_TO   = "memmizgezgin@gmail.com"
+SITE_URL    = "https://cuttingtoolsai.eu"
+
+# Secrets (wrangler.toml'a yazılmaz, ayrıca set edilir):
+#   npx wrangler secret put ANTHROPIC_API_KEY
+#   npx wrangler secret put RESEND_API_KEY
+#   npx wrangler secret put SUPABASE_URL
+#   npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY

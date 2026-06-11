@@ -25,6 +25,8 @@
 
 'use strict';
 
+import { WHY_LAYER_PRINCIPLES, insertAgentEvents } from '../agents-shared/departments.js';
+
 const ANTHROPIC_MODEL    = 'claude-sonnet-4-20250514';
 const MAX_LINKS_PER_SOURCE = 5;
 const ARTICLE_TEXT_LIMIT   = 8000;
@@ -63,18 +65,8 @@ const RESEARCH_SOURCES = [
 ];
 
 // ─── Why-Layer İlkeleri ────────────────────────────────────────────────────
-// Keep in sync with agent_docs/why-layer.md
-
-const WHY_LAYER_PRINCIPLES = `
-1. Plowing signature on hard materials — Over-reinforced edges on hard materials show a plowing signature (sound change, chip/tool visual change, edge discoloration without coolant, degrading feed on the display); the fix is backing off edge prep, not speed.
-2. Diagnostic chain & material-relative chip reading — Diagnose in order: sound → chip form → finished-part dimension/surface. Chip reading is material-relative: soft gummy materials need SHORT chips, on hard materials a LONG chip is a health sign. Never judge chip length without asking the material first.
-3. Drill point geometry is a package — Point angle is never an isolated choice; it ships with relief, helix, facet style and backward taper as one designed package. Never recommend a point angle alone; regrinding only the point degrades the design intent.
-4. Aluminum smearing is a secondary symptom — On N-group, chip smearing usually follows outer-corner wear: the dulled corner plows instead of shearing and the chip welds. First question: "is the outer corner still sharp?" — before coolant or parameters.
-5. Single-unit trial adoption — Small/mid-size shops decide by numbers, not brand habit: frame every equivalent recommendation as a low-risk single-unit trial on a real job, never a bulk switch.
-6. Premium brand + application support for high-volume OEMs — Large-volume series production rationally defaults to established brands because the premium buys on-site application support. Brand-neutral means being honest about this too.
-7. A tool is better FOR a process chain — A tool is never better in isolation; an outstanding finish can be a defect (e.g. paint adhesion failure). Always ask what happens to the surface next (coating, painting, bonding, fits).
-8. Worn edge first, parameters second — Rising feed force, sound change, and sticking chips usually mean the edge has finished its life: change the insert, not the parameters; discuss parameters only if a fresh edge reproduces the symptoms early.
-`.trim();
+// Tek kaynak: agents-shared/departments.js (oradaki kopya agent_docs/why-layer.md
+// ile senkron tutulur). WHY_LAYER_PRINCIPLES yukarıda import edilir.
 
 // ─── Entry Point ───────────────────────────────────────────────────────────
 
@@ -165,6 +157,26 @@ async function runWeeklyResearch(env) {
       sourceErrors.push({ source: source.name, reason: e.message });
       log(`! source failed: ${source.name} — ${e.message}`);
     }
+  }
+
+  // Event bus: relevant adayları agent_events'e yaz (tech_research → chief_of_staff)
+  // ki ertesi sabahki günlük digest'te görünsünler. Best-effort: Supabase secrets
+  // yoksa veya insert düşerse haftalık e-posta akışı etkilenmez.
+  try {
+    const inserted = await insertAgentEvents(env, 'tech_research', items.map(it => ({
+      to_agent:   'chief_of_staff',
+      event_type: 'finding',
+      priority:   it.eval.new_principle_candidate ? 'high' : 'normal',
+      title:      it.title,
+      body:       [
+        it.eval.summary || '',
+        it.eval.proposed_why_layer_text ? `Proposed why-layer text: ${it.eval.proposed_why_layer_text}` : ''
+      ].filter(Boolean).join(' — '),
+      source_ref: it.url
+    })));
+    log(`agent_events: ${inserted} finding(s) written to bus`);
+  } catch (e) {
+    log(`! agent_events write failed: ${e.message}`);
   }
 
   // "DB misses this week" — advisor_queries'ten db_hit=false sorguları topla.
