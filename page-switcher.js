@@ -355,7 +355,7 @@
           <span class="material-symbols-outlined" style="font-size:20px;color:#FBBF24;">workspace_premium</span>
           <span style="flex:1;">
             <span style="display:block;line-height:1.15;">Upgrade to Pro</span>
-            <span style="display:block;font-family:'DM Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.10em;color:rgba(255,255,255,.6);margin-top:2px;text-transform:uppercase;">14-day free trial</span>
+            <span style="display:block;font-family:'DM Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.10em;color:rgba(255,255,255,.6);margin-top:2px;text-transform:uppercase;">Unlimited answers</span>
           </span>
           <span class="material-symbols-outlined" style="font-size:16px;color:rgba(255,255,255,.5);">arrow_forward</span>
         </a>
