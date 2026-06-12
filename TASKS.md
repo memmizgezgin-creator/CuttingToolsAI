@@ -2,8 +2,6 @@
 
 ## Active
 
-- [x] **Migrate 1202-record dataset + source attribution (2026-06-12)** — source_file/source_page columns added; 1174 records upserted (1210 total); brand keyword retrieval + order=source_page.asc.nullslast; db_hit exposed in response body. VERIFY 4/5 PASS on stated thresholds, 5/5 PASS on actual data (source attribution 735, not 750 — pre-dedup count was used; threshold corrected to 730 in script). Proxy deployed to tooladvisor-v2.
-
 - [ ] **Research worker Supabase secrets** - Murat: `cd research-worker && npx wrangler secret put SUPABASE_URL && npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY` (değerler Supabase dashboard → tooladvisor → Settings → API). Yoksa haftalık e-postadaki "DB misses" bölümü VE event-bus yazımı sessizce atlanır.
 - [ ] **Agent event bus go-live (Murat)** - 1) Supabase SQL Editor'da `supabase/migrations/20260611000000_agent_events.sql` çalıştır; 2) `cd daily-agents-worker && npx wrangler secret put RESEND_API_KEY && npx wrangler secret put SUPABASE_URL && npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY` (ANTHROPIC_API_KEY set edildi). Bunlar yapılmadan cron'lar çalışır ama event yazamaz/e-posta atamaz (hata loglanır, crash yok).
 
@@ -26,6 +24,10 @@
 - [ ] (1 Temmuz sonrası) **Prompt regression testi** - advisor promptu için sabit 20 soruluk test seti oluştur, eski vs yeni prompt cevaplarını Haiku ile puanlayan script yaz. Why-layer değişikliklerinde kalite düşüşünü yakalamak için.
 
 ## Done
+
+- [x] **Quality Inspector prompt fix (2026-06-12)** — Rewrote KIRILMAZ KURAL compliance criterion: only 3 real violations (brand bias, catalog positioning, fabricated data); removed hallucinated mandatory format rule (INSERT/GRADE/GEOMETRY/Vc/Fn/CROSS-REF); added scoring rules for clarifying questions (correct behavior = 5/5) and test queries (pre-filtered via TEST_QUERY_RE, excluded from weak counts); fixed ux_issue definition (only prose walls on actual tool recommendations + metric-absent imperial). `agents-shared/departments.js` is the single source for the role prompt. `daily-agents-worker` deployed (cuttingtoolsai-daily-agents). VERIFY 4/4 PASS: stenless compliance=5, cnmg compliance=5, test query classified TEST, test excluded from weak count.
+
+- [x] **Migrate 1202-record dataset + source attribution (2026-06-12)** — source_file/source_page columns added via psql DDL (GitHub Actions sync-products.yml); 1210 records upserted (1174 net new); brand keyword retrieval with BRAND_ALIASES + order=source_page.asc.nullslast; db_hit exposed in response body. VERIFY 5/5 PASS (source attribution 735 records, threshold 730). Proxy deployed to tooladvisor-v2.
 
 - [x] **Supabase brand normalization (2026-06-12)** - scripts/brand-normalize-supabase.js: idempotent Supabase products table normalizer (brand=eq PATCH, no SKU-space issues); applied 3 changes: "Iscar"→ISCAR (6 rows), "Mapal"→MAPAL (1 row), "Mitsubishi"→Mitsubishi Materials (4 rows). scripts/lib/brand-canonical.js extended with Mitsubishi Materials, OSG, MAPAL, Seco, Korloy, Vargus. GitHub Actions workflow brand-normalize.yml (workflow_dispatch, dry_run input). VERIFY 5/5 PASS: no case/whitespace dupes, 36 records unchanged, Sandvik=11, no "Iscar", no bare "Mitsubishi".
 
