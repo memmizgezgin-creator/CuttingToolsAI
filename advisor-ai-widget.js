@@ -651,6 +651,15 @@
     messages.scrollTop = messages.scrollHeight;
   }
 
+  // Anonymous quota exhaustion must be visible inside the thread, not just in
+  // the quota-bar swap — once per page load.
+  let quotaNoticeShown = false;
+  function showQuotaNotice(msg) {
+    if (quotaNoticeShown) return;
+    quotaNoticeShown = true;
+    addMessage('ai', escapeHtml(msg || 'You’ve used today’s free answer — sign in below to get 3 free answers a day.'));
+  }
+
   let upgradeCTAShown = false;
   function showUpgradeCta() {
     // Anonymous exhaustion shows the sign-in panel instead (updateQuota);
@@ -700,8 +709,13 @@
     // External callers (homepage presets, header CTA) may fire while the
     // panel is closed — a query must never run invisibly.
     if (!panel.classList.contains('open')) openPanel();
-    // Block client-side only once the server has confirmed quota is exhausted.
-    if (serverState.plan !== 'pro' && !isAdmin() && serverState.remaining !== null && serverState.remaining <= 0) return;
+    // Block client-side only once the server has confirmed quota is exhausted —
+    // but never silently: external callers (preset cards, retry) need feedback.
+    if (serverState.plan !== 'pro' && !isAdmin() && serverState.remaining !== null && serverState.remaining <= 0) {
+      if (serverState.plan === 'free') showUpgradeCta();
+      else showQuotaNotice();
+      return;
+    }
 
     busy = true;
     addMessage('user', escapeHtml(prompt));
@@ -759,8 +773,11 @@
           if (data.upgrade_path === 'pro' || serverState.plan === 'free') {
             showUpgradeCta();
             openPro();
+          } else {
+            // Anonymous: updateQuota() swapped the quota bar for the sign-in
+            // panel, but the thread itself must never stay silent.
+            showQuotaNotice(typeof data.message === 'string' ? data.message + ' Sign in below to get 3 free answers a day.' : null);
           }
-          // anon: updateQuota() already swapped the quota bar for the sign-in panel
         } else if (res.status === 401) {
           addErrorMessage('API key not authorised. Contact support if this persists.', null);
         } else if (res.status === 500) {
