@@ -314,15 +314,16 @@ function formatReferenceBlock(retrieval) {
   return `\n\nREFERENCE DB RECORDS (verified internal data — trust over web search):\n${lines.join('\n')}${missNote}`;
 }
 
-// SOURCE_LOOKUP: sku → {file, page} — generated from the local JSON by
-// scripts/gen-source-lookup.js. Only records with both fields populated are
-// included, so any sku absent from the map contributes nothing to attribution.
+// SOURCE_LOOKUP: keyed by article (= Supabase sku) OR by grade code (= Supabase coating).
+// Generated from data/extracted-productdb-candidates.json by scripts/gen-source-lookup.js.
+// For each retrieved Supabase record we try sku first, then coating, so grade-token
+// retrieval paths (coating match) can surface attribution even when sku differs.
 function buildSources(retrieval) {
   if (!retrieval.dbHit) return [];
   const seen = new Set();
   const sources = [];
   for (const r of retrieval.records) {
-    const entry = SOURCE_LOOKUP[r.sku];
+    const entry = SOURCE_LOOKUP[r.sku] || SOURCE_LOOKUP[r.coating];
     if (!entry) continue;
     const key = `${entry.file}|${entry.page}`;
     if (seen.has(key)) continue;
