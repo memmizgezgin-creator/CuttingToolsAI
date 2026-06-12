@@ -24,6 +24,9 @@ __pycache__/
 *.backup-*
 .env
 
+# Test & scratch artifacts (ephemeral local outputs)
+daily-agents-worker/test-*.html
+
 # PDF catalogs — large binary files, processed locally only
 *.pdf
 # Exception: inbox PDFs can be committed to trigger the CI ingestion pipeline.

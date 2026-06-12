@@ -175,7 +175,17 @@
       "Bash(curl -s -i -X POST https://cuttingtoolsai.eu/proxy -H 'Content-Type: application/json' --data '{\"model\":\"claude-haiku-4-5-20251001\",\"max_tokens\":5,\"system\":\"x\",\"messages\":[{\"role\":\"user\",\"content\":\"x\"}]}')",
       "Bash(rm -f /tmp/final_jar.txt *)",
       "Bash(git pull *)",
-      "Read(//Users/muratonder/**)"
+      "Read(//Users/muratonder/**)",
+      "Bash(wrangler deploy *)",
+      "Bash(curl -s https://tooladvisor-v2.pages.dev/)",
+      "Bash(curl -s https://tooladvisor-v2.pages.dev/data/extracted-productdb-candidates.json)",
+      "Bash(curl -s https://cuttingtoolsai.eu/)",
+      "Bash(curl -s 'https://tooladvisor-v2.pages.dev/')",
+      "Bash(curl -sI https://cuttingtoolsai.eu/)",
+      "Bash(curl -s 'https://cuttingtoolsai.eu/data/extracted-productdb-candidates.json')",
+      "Bash(node daily-agents-worker/test-inspect.mjs)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('engines:', d.get\\('engines',{}\\)\\); print\\('node:', d.get\\('engines',{}\\).get\\('node','not set'\\)\\)\")",
+      "Bash(grep -i \"price\\\\|sku\\\\|shop\\\\|buy\\\\|€\\\\|\\\\$\" /Users/muratonder/Desktop/ToolAdvisor/material/p01-low-carbon-steel/index.html)"
     ]
   }
 }
