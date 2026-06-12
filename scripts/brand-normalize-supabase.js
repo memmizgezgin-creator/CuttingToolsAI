@@ -54,15 +54,15 @@ async function rest(path, opts = {}) {
 
 async function main() {
   // ── 1. Count records before ──────────────────────────────────────────────
-  const countRes = await fetch(`${SUPABASE_URL}/rest/v1/products?select=id`, {
+  const countRes = await fetch(`${SUPABASE_URL}/rest/v1/products?select=sku`, {
     headers: { ...headers(), 'Prefer': 'count=exact' },
   });
   const rangeBefore = countRes.headers.get('content-range') || '';
   const totalBefore = parseInt(rangeBefore.split('/')[1] || '0', 10);
   console.log(`records before: ${totalBefore}`);
 
-  // ── 2. Fetch all records (brand + id) ────────────────────────────────────
-  const records = await rest('/products?select=id,brand&limit=10000');
+  // ── 2. Fetch all records (brand + sku) ───────────────────────────────────
+  const records = await rest('/products?select=sku,brand&limit=10000');
   console.log(`fetched: ${records.length} records`);
 
   // ── 3. Build canonical mapping & print it ────────────────────────────────
@@ -96,24 +96,20 @@ async function main() {
     return { alreadyNormalized: false, totalBefore };
   }
 
-  // ── 5. Group records by old brand, batch PATCH ───────────────────────────
+  // ── 5. PATCH by old brand value (one PATCH per distinct old brand) ───────
+  // Filtering by brand=eq.<old> avoids SKU-space encoding issues entirely.
   for (const { raw, canon } of mappingLines) {
-    const ids = records.filter(r => r.brand === raw).map(r => r.id);
-    console.log(`\nupdating "${raw}" → "${canon}" (${ids.length} records)...`);
-
-    for (let i = 0; i < ids.length; i += BATCH_SIZE) {
-      const batch = ids.slice(i, i + BATCH_SIZE);
-      const idList = batch.map(id => `"${id}"`).join(',');
-      await rest(`/products?id=in.(${idList})`, {
-        method: 'PATCH',
-        body: JSON.stringify({ brand: canon }),
-      });
-      console.log(`  batch ${Math.floor(i / BATCH_SIZE) + 1}: ${batch.length} records updated`);
-    }
+    const count = records.filter(r => r.brand === raw).length;
+    console.log(`\nupdating "${raw}" → "${canon}" (${count} records)...`);
+    await rest(`/products?brand=eq.${encodeURIComponent(raw)}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ brand: canon }),
+    });
+    console.log(`  done`);
   }
 
   // ── 6. Re-count to confirm total unchanged ───────────────────────────────
-  const countResAfter = await fetch(`${SUPABASE_URL}/rest/v1/products?select=id`, {
+  const countResAfter = await fetch(`${SUPABASE_URL}/rest/v1/products?select=sku`, {
     headers: { ...headers(), 'Prefer': 'count=exact' },
   });
   const rangeAfter = countResAfter.headers.get('content-range') || '';
