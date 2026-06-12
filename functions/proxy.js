@@ -216,7 +216,25 @@ async function isEntitled(env, userId) {
 // the grade lives in `coating` (e.g. GC4325), extra detail in `notes`.
 const PRODUCT_COLUMNS =
   'sku,brand,family,type_geometry,coating,material_compat,machine_type,' +
-  'application,alternatives_to,notes';
+  'application,alternatives_to,notes,source_file,source_page';
+
+// Brand aliases for keyword retrieval (query text → canonical Supabase brand value).
+// Handles common misspellings / umlaut variants.
+const BRAND_ALIASES = {
+  'gühring': 'Gühring', 'guhring': 'Gühring',
+  'walter': 'Walter', 'tungaloy': 'Tungaloy', 'sandvik': 'Sandvik',
+  'iscar': 'ISCAR', 'kyocera': 'Kyocera', 'kennametal': 'Kennametal',
+  'yg-1': 'YG-1', 'yg1': 'YG-1', 'seco': 'Seco',
+  'mitsubishi': 'Mitsubishi Materials',
+};
+// Family keyword → Supabase family value (first match wins).
+const FAMILY_PATTERNS = [
+  [/\bdrilling?\b/i,               'Drilling'],
+  [/\b(milling|end[\s-]?mill)\b/i, 'Milling'],
+  [/\b(turning|lathe)\b/i,         'Turning'],
+  [/\b(threading|tapping|\btap\b)\b/i, 'Threading'],
+  [/\b(grooving|groove)\b/i,       'Grooving'],
+];
 
 async function queryProducts(env, filter, limit) {
   const ctrl  = new AbortController();
@@ -285,6 +303,28 @@ async function retrieveTools(env, queryText) {
     }
   }
 
+  // Brand keyword retrieval: handles queries like "Gühring drill" that carry no
+  // ISO code or grade token. Matches one brand per query; narrows by family if
+  // a family keyword is also present.
+  if (out.exactCodes.length === 0 && out.missedCodes.length === 0) {
+    const ql = queryText.toLowerCase();
+    for (const [alias, canonical] of Object.entries(BRAND_ALIASES)) {
+      if (ql.includes(alias)) {
+        let familyClause = '';
+        for (const [pat, fam] of FAMILY_PATTERNS) {
+          if (pat.test(queryText)) { familyClause = `&family=eq.${encodeURIComponent(fam)}`; break; }
+        }
+        const filter = `brand=eq.${encodeURIComponent(canonical)}${familyClause}`;
+        const hits = await queryProducts(env, filter, 4);
+        if (hits.length) {
+          out.records.push(...hits);
+          out.exactCodes.push(canonical);
+        }
+        break; // one brand per query
+      }
+    }
+  }
+
   // Dedup by sku
   const seen = new Set();
   out.records = out.records.filter(r => !seen.has(r.sku) && seen.add(r.sku)).slice(0, 8);
@@ -314,21 +354,25 @@ function formatReferenceBlock(retrieval) {
   return `\n\nREFERENCE DB RECORDS (verified internal data — trust over web search):\n${lines.join('\n')}${missNote}`;
 }
 
-// SOURCE_LOOKUP: keyed by article (= Supabase sku) OR by grade code (= Supabase coating).
-// Generated from data/extracted-productdb-candidates.json by scripts/gen-source-lookup.js.
-// For each retrieved Supabase record we try sku first, then coating, so grade-token
-// retrieval paths (coating match) can surface attribution even when sku differs.
+// buildSources: prefers source_file/source_page columns written during migration;
+// falls back to the static SOURCE_LOOKUP for the 36 curated records that predate
+// the column addition. SOURCE_LOOKUP keys are article (= sku) OR grade code (= coating).
 function buildSources(retrieval) {
   if (!retrieval.dbHit) return [];
   const seen = new Set();
   const sources = [];
   for (const r of retrieval.records) {
-    const entry = SOURCE_LOOKUP[r.sku] || SOURCE_LOOKUP[r.coating];
-    if (!entry) continue;
-    const key = `${entry.file}|${entry.page}`;
+    let file = r.source_file;
+    let page = r.source_page;
+    if (!file || page == null) {
+      const entry = SOURCE_LOOKUP[r.sku] || SOURCE_LOOKUP[r.coating];
+      if (entry) { file = entry.file; page = entry.page; }
+    }
+    if (!file || page == null) continue;
+    const key = `${file}|${page}`;
     if (seen.has(key)) continue;
     seen.add(key);
-    sources.push({ file: entry.file, page: entry.page });
+    sources.push({ file, page });
     if (sources.length >= 3) break;
   }
   return sources;
