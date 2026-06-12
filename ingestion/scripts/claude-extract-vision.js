@@ -262,7 +262,7 @@ async function main() {
       }
     }
 
-    allRecords.push(...records);
+    allRecords.push(...records.map(r => ({ ...r, source_pdf: pdfName })));
     const count = records.length;
     console.log(`  [${i + 1}/${chunks.length}] ${percent}% — ${pageRange}... ${count} records`);
     progressLog.push(`[${i + 1}/${chunks.length}] ${percent}% — ${pageRange}... ${count} records (total: ${allRecords.length})`);

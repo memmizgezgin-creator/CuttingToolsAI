@@ -59,7 +59,8 @@ function mapRawRecord(r, id) {
     dateAdded: r.dateAdded || '2025-01-01',
     lastVerified: new Date().toISOString().slice(0, 10),
     article: String(r.article_number || ''),
-    source_pdf: r.source_pdf || '',
+    source_file: r.source_pdf || '',
+    source_pdf:  r.source_pdf || '',
     source_page: r.source_page ?? null
   };
 }
