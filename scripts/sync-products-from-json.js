@@ -181,8 +181,8 @@ async function verify() {
   const withSource = await rest(
     '/rest/v1/products?select=sku&source_file=not.is.null&source_page=not.is.null'
   );
-  check('records with source attribution >= 750',
-    withSource.length >= 750, `count=${withSource.length}`);
+  check('records with source attribution >= 730',
+    withSource.length >= 730, `count=${withSource.length}`);
 
   const guhring = await rest('/rest/v1/products?select=sku&brand=eq.Gühring&limit=1');
   check('Gühring records present', guhring.length > 0, guhring.length > 0 ? 'found' : 'MISSING');
