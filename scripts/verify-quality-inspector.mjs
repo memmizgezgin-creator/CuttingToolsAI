@@ -27,11 +27,14 @@ if (!ANTHROPIC_KEY) {
 
 // ── Fetch stored advisor answers (best-effort; falls back to built-ins) ───
 
-async function fetchStoredAnswer(querySnippet) {
+// Fetch using case-insensitive exact match (ilike without wildcards = exact).
+// Returns null if not found or no credentials — callers fall back to built-ins.
+async function fetchStoredAnswer(exactQuery) {
   if (!SUPABASE_URL || !SERVICE_KEY) return null;
   const res = await fetch(
     `${SUPABASE_URL}/rest/v1/advisor_queries` +
-    `?select=query_text,ai_answer&query_text=ilike.*${encodeURIComponent(querySnippet)}*` +
+    `?select=query_text,ai_answer,db_hit,matched_records` +
+    `&query_text=ilike.${encodeURIComponent(exactQuery)}` +
     `&ai_answer=not.is.null&order=created_at.desc&limit=1`,
     {
       headers: {
