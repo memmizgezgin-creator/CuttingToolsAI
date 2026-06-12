@@ -1,3 +1,5 @@
+import { SOURCE_LOOKUP } from './source-lookup.js';
+
 // ToolAdvisor — Cloudflare Pages Function: Claude API Proxy
 // Route: /proxy
 //
@@ -214,7 +216,7 @@ async function isEntitled(env, userId) {
 // the grade lives in `coating` (e.g. GC4325), extra detail in `notes`.
 const PRODUCT_COLUMNS =
   'sku,brand,family,type_geometry,coating,material_compat,machine_type,' +
-  'application,alternatives_to,notes,source_file,source_page';
+  'application,alternatives_to,notes';
 
 async function queryProducts(env, filter, limit) {
   const ctrl  = new AbortController();
@@ -312,16 +314,20 @@ function formatReferenceBlock(retrieval) {
   return `\n\nREFERENCE DB RECORDS (verified internal data — trust over web search):\n${lines.join('\n')}${missNote}`;
 }
 
+// SOURCE_LOOKUP: sku → {file, page} — generated from the local JSON by
+// scripts/gen-source-lookup.js. Only records with both fields populated are
+// included, so any sku absent from the map contributes nothing to attribution.
 function buildSources(retrieval) {
   if (!retrieval.dbHit) return [];
   const seen = new Set();
   const sources = [];
   for (const r of retrieval.records) {
-    if (!r.source_file || !r.source_page) continue;
-    const key = `${r.source_file}|${r.source_page}`;
+    const entry = SOURCE_LOOKUP[r.sku];
+    if (!entry) continue;
+    const key = `${entry.file}|${entry.page}`;
     if (seen.has(key)) continue;
     seen.add(key);
-    sources.push({ file: r.source_file, page: r.source_page });
+    sources.push({ file: entry.file, page: entry.page });
     if (sources.length >= 3) break;
   }
   return sources;
