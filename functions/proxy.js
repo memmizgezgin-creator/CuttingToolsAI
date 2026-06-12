@@ -314,7 +314,9 @@ async function retrieveTools(env, queryText) {
         for (const [pat, fam] of FAMILY_PATTERNS) {
           if (pat.test(queryText)) { familyClause = `&family=eq.${encodeURIComponent(fam)}`; break; }
         }
-        const filter = `brand=eq.${encodeURIComponent(canonical)}${familyClause}`;
+        // order=source_page.asc.nullslast ensures records WITH source attribution
+        // surface first; non-attributed records follow as AI grounding context.
+        const filter = `brand=eq.${encodeURIComponent(canonical)}${familyClause}&order=source_page.asc.nullslast`;
         const hits = await queryProducts(env, filter, 4);
         if (hits.length) {
           out.records.push(...hits);
