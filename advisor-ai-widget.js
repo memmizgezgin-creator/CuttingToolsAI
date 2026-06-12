@@ -48,11 +48,12 @@
 
     #ta-ai-panel {
       position:fixed; bottom:24px; right:24px; z-index:9900;
-      width:380px; max-width:calc(100vw - 32px);
-      height:560px; max-height:calc(100vh - 96px);
+      width:380px; min-width:380px; max-width:90vw;
+      height:560px; min-height:480px; max-height:90vh;
       background:#fff; border:1px solid #e8e6f0; border-radius:18px;
       box-shadow:0 24px 64px rgba(26,26,46,.22);
       display:none; flex-direction:column; overflow:hidden;
+      resize:both;
       animation:ta-slide-up-r .24s cubic-bezier(.4,0,.2,1) both;
     }
     #ta-ai-panel.open { display:flex; }
@@ -318,7 +319,7 @@
     }
 
     @media (max-width:480px) {
-      #ta-ai-panel { bottom:0; right:0; width:100vw; max-width:100vw; border-radius:18px 18px 0 0; height:85vh; max-height:85vh; }
+      #ta-ai-panel { bottom:0; right:0; width:100vw; min-width:unset; max-width:100vw; border-radius:18px 18px 0 0; height:85vh; min-height:unset; max-height:85vh; resize:none!important; }
       #ta-ai-launcher { bottom:16px; right:16px; }
       #ta-ai-expand { display:none!important; }
       #ta-ai-panel.ta-ai-expanded { width:100vw!important; height:85vh!important; }
