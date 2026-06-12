@@ -17,14 +17,23 @@
 
 // normalized key → canonical display spelling (the dominant form in the DB)
 const CANONICAL_DISPLAY = {
-  'gühring':    'Gühring',
-  'iscar':      'ISCAR',
-  'sandvik':    'Sandvik',
-  'walter':     'Walter',
-  'kennametal': 'Kennametal',
-  'kyocera':    'Kyocera',
-  'tungaloy':   'Tungaloy',
-  'yg-1':       'YG-1',
+  'gühring':             'Gühring',
+  'iscar':               'ISCAR',
+  'sandvik':             'Sandvik',
+  'walter':              'Walter',
+  'kennametal':          'Kennametal',
+  'kyocera':             'Kyocera',
+  'tungaloy':            'Tungaloy',
+  'yg-1':                'YG-1',
+  // brands present in Supabase products table (added 2026-06-12)
+  'mitsubishi':          'Mitsubishi Materials',
+  'mitsubishi materials':'Mitsubishi Materials',
+  'osg':                 'OSG',
+  'seco':                'Seco',
+  'seco tools':          'Seco',
+  'mapal':               'MAPAL',
+  'korloy':              'Korloy',
+  'vargus':              'Vargus',
 };
 
 function normalizeBrand(b) {

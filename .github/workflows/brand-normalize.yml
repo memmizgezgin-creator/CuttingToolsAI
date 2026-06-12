@@ -1,0 +1,33 @@
+name: Brand name normalization (Supabase)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (preview only, no writes)'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+
+jobs:
+  normalize:
+    name: Normalize product brand names
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run brand normalization
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            node scripts/brand-normalize-supabase.js --dry-run
+          else
+            node scripts/brand-normalize-supabase.js
+          fi
