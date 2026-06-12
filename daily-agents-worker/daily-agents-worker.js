@@ -160,11 +160,19 @@ async function runInspector(env) {
   }
 
   // ── Score each query/answer pair ──────────────────────────────────────────
-  const scores   = [];
-  const issueEvs = [];
-  let deferred   = 0;
+  const scores    = [];
+  const issueEvs  = [];
+  let deferred    = 0;
+  let testSkipped = 0;
 
   for (const q of toAudit) {
+    // Pre-filter system/smoke-test queries — they produce false compliance alarms
+    // and are not representative of real advisor quality.
+    if (looksLikeTestQuery(q.query_text)) {
+      testSkipped++;
+      log(`[TEST] excluded "${(q.query_text || '').slice(0, 60)}"`);
+      continue;
+    }
     try {
       const result = await scoreAnswer(env, q);
       scores.push(result);
@@ -227,7 +235,7 @@ async function runInspector(env) {
     log(`! event insert failed: ${e.message}`);
   }
 
-  log(`inspect done: audited=${audited} weak=${weakCount} deferred=${deferred}`);
+  log(`inspect done: audited=${audited} weak=${weakCount} deferred=${deferred} test_skipped=${testSkipped}`);
   await finishRun(env, 'inspect', logs);
   return { ok: true, audited, weak: weakCount, deferred, log: logs };
 }
@@ -247,6 +255,14 @@ async function fetchAdvisorQueries(env, limit) {
   );
   if (!res.ok) throw new Error(`advisor_queries fetch ${res.status}: ${(await res.text()).slice(0, 200)}`);
   return res.json();
+}
+
+// Test query patterns — pre-filtered before any Claude call.
+// Matches: fixed-reply commands, smoke test markers, prod verify probes.
+const TEST_QUERY_RE = /\breply with the single word\b|\bsmoke[\s_-]?test\b|\bprod[\s_-]?verify\b/i;
+
+function looksLikeTestQuery(text) {
+  return TEST_QUERY_RE.test(text || '');
 }
 
 // ── Score one query/answer pair via Claude ────────────────────────────────
@@ -269,8 +285,11 @@ invented_data: true if the answer names a grade, tool code, or cutting spec that
   fabricated (not traceable to a known manufacturer or the DB records shown).
 db_gap: true if the question could NOT be answered from verified DB data and represents
   a real ingestion gap (not a hallucination — just missing coverage).
-ux_issue: true if the answer skips the structured spec block (INSERT/GRADE/Vc/Fn/CROSS-REF),
-  or buries the answer in prose, or fails the metric-first rule.`;
+ux_issue: true ONLY if: (1) a tool recommendation WAS made but the answer is an
+  impenetrable wall of prose with no readable structure; OR (2) units are given
+  only in imperial (SFM/inch) with no metric equivalent at all.
+  Do NOT set true for clarifying questions, concept explanations, or answers that
+  mention imperial alongside metric as a secondary reference.`;
 
   const user =
     `MACHINIST QUERY:\n${(row.query_text || '').slice(0, 500)}\n\n` +

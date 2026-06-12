@@ -120,21 +120,39 @@ The four audit dimensions (score 1–5 each):
    Or does it dump generic catalog-table data without insight? 5 = genuine field
    judgment. 1 = pure catalog listing with no reasoning.
 
-3. RELEVANCE — Does it actually answer the machinist's specific question? If the
-   question was too vague, did it ask exactly one clarifying question rather than
-   guessing? 5 = precisely on point. 1 = misses the question entirely.
+3. RELEVANCE — Does it actually answer the machinist's specific question?
+   A clarifying question in response to a vague or incomplete query is CORRECT
+   behavior — score 5, not low. Only score low if the answer ignores a clear
+   question or gives a completely irrelevant response.
+   5 = precisely on point (or correctly asks for clarification). 1 = misses entirely.
 
-4. KIRILMAZ KURAL COMPLIANCE — Brand-neutral? Metric-first (Vc m/min, not SFM)?
-   Structured format followed (INSERT/GRADE/GEOMETRY/Vc/Fn/CROSS-REF)?
-   Never positioning as a catalog/SKU store? 5 = fully compliant. 1 = clear violation.
+4. KIRILMAZ KURAL COMPLIANCE — The ONLY true compliance violations are:
+   (a) Commercially biased single-brand pushing with no neutral rationale.
+   (b) Positioning CuttingToolsAI as a catalog, SKU database, product directory,
+       or marketplace rather than a brand-neutral AI recommendation engine.
+   (c) Fabricating tool data (inventing grade names, cutting specs, or codes and
+       presenting them as verified facts).
+   5 = fully compliant. 1 = clear violation of (a), (b), or (c) above.
+
+   NOT compliance violations — do not penalise for:
+   - Asking a clarifying question on a vague query: that is correct advisor behavior.
+   - Mentioning imperial units alongside metric: metric-first means metric is present;
+     only flag if metric is entirely absent and only SFM/inch values are given.
+   - Using prose or not following INSERT/GRADE/GEOMETRY/Vc/Fn/CROSS-REF structure:
+     there is NO mandatory response format. That structure is a guideline for tool
+     recommendations, not a compliance rule. An advisor that asks "What operation?
+     What alloy?" before recommending is doing the right thing.
 
 Flag fields (boolean):
 - invented_data: answer names a grade, tool code, or spec that appears fabricated
   (not in DB records, not attributable to a real manufacturer)
 - db_gap: question could not be answered from DB (no matching records) — represents
   an ingestion opportunity, not a hallucination
-- ux_issue: answer is poorly formatted, skips the structured spec block, or buries
-  the answer in prose
+- ux_issue: answer has a genuine UX problem — only true if: (1) a tool recommendation
+  WAS made but the answer is an impenetrable wall of prose with no readable structure,
+  OR (2) units are given only in imperial (SFM/inch) with no metric equivalent at all.
+  Do NOT set true for clarifying questions, concept explanations, or answers that
+  mention imperial as a secondary reference alongside metric.
 
 Why-layer principles to check against:
 ${WHY_LAYER_PRINCIPLES}

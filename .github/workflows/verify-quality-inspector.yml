@@ -1,0 +1,36 @@
+name: Verify Quality Inspector
+
+# One-shot dispatch workflow.
+# Runs scripts/verify-quality-inspector.mjs against the fixed inspector prompt
+# to confirm compliance scoring is correct for clarifying-question answers and
+# that test queries are pre-filtered and excluded from weak-answer counts.
+#
+# Required secrets: ANTHROPIC_API_KEY
+# Optional secrets: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY (uses real stored
+#   advisor answers when present; otherwise uses built-in representative answers)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run verify-quality-inspector
+        env:
+          ANTHROPIC_API_KEY:          ${{ secrets.ANTHROPIC_API_KEY }}
+          SUPABASE_URL:               ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY:  ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/verify-quality-inspector.mjs
