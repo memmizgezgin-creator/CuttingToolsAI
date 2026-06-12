@@ -1,0 +1,102 @@
+name: Sync Products
+
+# Applies source_file/source_page DDL migration (via psql) then upserts the
+# 1202-record local JSON dataset into the Supabase products table.
+# Dispatch-only. Run twice: first with dry_run=true to preview, then dry_run=false.
+#
+# Required secrets (all already exist in the repo):
+#   SUPABASE_URL               Supabase project URL
+#   SUPABASE_SERVICE_ROLE_KEY  service role JWT (eyJ…)
+#   SUPABASE_DB_URL            postgres:// direct connection string (for DDL)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run only — preview without writing to Supabase'
+        type: boolean
+        default: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Add source columns (DDL via psql if needed)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          set -u
+          URL="${SUPABASE_URL%/}"
+          KEY="$SUPABASE_SERVICE_ROLE_KEY"
+          MIGRATION="supabase/migrations/20260612000000_products_source_columns.sql"
+
+          if [ -z "$URL" ] || [ -z "$KEY" ]; then
+            echo "FAIL secrets: SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY is empty"
+            exit 1
+          fi
+          case "$KEY" in
+            sbp_*) echo "FAIL secrets: key is sbp_ PAT — PostgREST needs the eyJ… service role JWT"; exit 1 ;;
+            eyJ*)  echo "PASS secrets: service role key has JWT shape" ;;
+            *)     echo "WARN secrets: unexpected key shape; continuing" ;;
+          esac
+
+          # Probe for source_file column (200 = exists, 400+42703 = missing)
+          CODE=$(curl -sS -o /tmp/probe.json -w '%{http_code}' \
+            "$URL/rest/v1/products?select=source_file&limit=1" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY")
+
+          if [ "$CODE" = "200" ]; then
+            echo "PASS verify: products.source_file already exists — skipping DDL"
+          elif [ "$CODE" = "400" ] && grep -q '42703' /tmp/probe.json; then
+            echo "INFO verify: source_file missing (42703) — applying migration"
+
+            if [ -z "${SUPABASE_DB_URL:-}" ]; then
+              echo "FAIL apply: SUPABASE_DB_URL not set — cannot run DDL"
+              echo "Add SUPABASE_DB_URL secret: Supabase dashboard → Connect → Direct connection"
+              exit 1
+            fi
+
+            psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -f "$MIGRATION" \
+              && echo "PASS apply: migration applied" \
+              || { echo "FAIL apply: psql returned an error"; exit 1; }
+
+            CODE2=$(curl -sS -o /tmp/probe2.json -w '%{http_code}' \
+              "$URL/rest/v1/products?select=source_file&limit=1" \
+              -H "apikey: $KEY" -H "Authorization: Bearer $KEY")
+            if [ "$CODE2" = "200" ]; then
+              echo "PASS verify: source_file column confirmed after migration"
+            else
+              echo "FAIL verify: column not visible after migration (HTTP $CODE2): $(cat /tmp/probe2.json)"
+              exit 1
+            fi
+          else
+            echo "FAIL verify: unexpected probe result HTTP $CODE: $(cat /tmp/probe.json)"
+            exit 1
+          fi
+
+      - name: Sync products from JSON
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "=== DRY-RUN MODE: no records will be written ==="
+            node scripts/sync-products-from-json.js --dry-run
+          else
+            echo "=== LIVE MODE: writing records to Supabase ==="
+            node scripts/sync-products-from-json.js
+          fi

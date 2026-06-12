@@ -2,7 +2,7 @@
 
 ## Active
 
-
+- [ ] **Migrate 1202-record dataset + source attribution (2026-06-12)** — supabase/migrations/20260612000000_products_source_columns.sql; .github/workflows/sync-products.yml (dispatch, dry_run input); scripts/sync-products-from-json.js; functions/proxy.js updated (source_file/source_page in PRODUCT_COLUMNS, brand keyword retrieval, buildSources column-first fallback). NEXT: trigger sync-products.yml with dry_run=true, review, then dry_run=false. After migration PASS: deploy proxy (tooladvisor-v2). VERIFY targets: count≥1200 PASS, source attribution≥750 PASS, Gühring drill → db_hit=true + sources non-empty, GC4325 no regression, off-topic → sources:[].
 
 - [ ] **Research worker Supabase secrets** - Murat: `cd research-worker && npx wrangler secret put SUPABASE_URL && npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY` (değerler Supabase dashboard → tooladvisor → Settings → API). Yoksa haftalık e-postadaki "DB misses" bölümü VE event-bus yazımı sessizce atlanır.
 - [ ] **Agent event bus go-live (Murat)** - 1) Supabase SQL Editor'da `supabase/migrations/20260611000000_agent_events.sql` çalıştır; 2) `cd daily-agents-worker && npx wrangler secret put RESEND_API_KEY && npx wrangler secret put SUPABASE_URL && npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY` (ANTHROPIC_API_KEY set edildi). Bunlar yapılmadan cron'lar çalışır ama event yazamaz/e-posta atamaz (hata loglanır, crash yok).
