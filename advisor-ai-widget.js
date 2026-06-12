@@ -88,6 +88,28 @@
       font-size:20px; line-height:1; opacity:.7;
     }
     #ta-ai-minimize:hover { background:rgba(255,255,255,.1); opacity:1; }
+    #ta-ai-expand {
+      width:30px; height:30px; border-radius:6px; border:none;
+      background:transparent; color:#fff; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      font-size:20px; line-height:1; opacity:.7;
+    }
+    #ta-ai-expand:hover { background:rgba(255,255,255,.1); opacity:1; }
+
+    /* Expanded state — desktop only */
+    #ta-ai-panel.ta-ai-expanded {
+      width:720px; height:80vh; max-height:calc(100vh - 48px);
+      transition:all .3s cubic-bezier(.4,0,.2,1);
+    }
+    #ta-ai-panel.ta-ai-expanded #ta-ai-messages {
+      padding:14px;
+    }
+    #ta-ai-panel.ta-ai-expanded .ta-ai-msg-bubble {
+      font-size:15px; line-height:1.6;
+    }
+    #ta-ai-panel.ta-ai-expanded .ta-ai-source-attr {
+      font-size:10px;
+    }
 
     #ta-ai-quick {
       padding:10px 12px; border-bottom:1px solid #e8e6f0;
@@ -298,6 +320,8 @@
     @media (max-width:480px) {
       #ta-ai-panel { bottom:0; right:0; width:100vw; max-width:100vw; border-radius:18px 18px 0 0; height:85vh; max-height:85vh; }
       #ta-ai-launcher { bottom:16px; right:16px; }
+      #ta-ai-expand { display:none!important; }
+      #ta-ai-panel.ta-ai-expanded { width:100vw!important; height:85vh!important; }
     }
   `;
   document.head.appendChild(style);
@@ -405,6 +429,7 @@
         <button id="ta-ai-pro-btn" type="button">
           ${IC.crown} Unlock Pro
         </button>
+        <button id="ta-ai-expand" type="button" aria-label="Expand" style="display:none">⛶</button>
         <button id="ta-ai-minimize" type="button" aria-label="Minimize">&#8722;</button>
       </div>
 
@@ -448,6 +473,8 @@
   const launcher    = document.getElementById('ta-ai-launcher');
   const panel       = document.getElementById('ta-ai-panel');
   const minimize    = document.getElementById('ta-ai-minimize');
+  const expand      = document.getElementById('ta-ai-expand');
+  let   isExpanded  = false;  // session-scoped expanded state
   const proBtns     = [document.getElementById('ta-ai-pro-btn'), document.getElementById('ta-ai-credits-upgrade')];
   const messages    = document.getElementById('ta-ai-messages');
   const empty       = document.getElementById('ta-ai-empty');
@@ -805,12 +832,19 @@
     panel.classList.add('open');
     launcher.style.display = 'none';
     launcherIcon.classList.remove('pulse');
+    // Show expand button on desktop (min-width 481px)
+    if (window.innerWidth > 480) {
+      expand.style.display = '';
+    }
     input.focus();
     updateQuota();
   }
 
   function closePanel() {
     panel.classList.remove('open');
+    panel.classList.remove('ta-ai-expanded');
+    isExpanded = false;
+    expand.style.display = 'none';
     launcher.style.display = '';
     updateQuota();
   }
@@ -826,10 +860,26 @@
     }
   }
 
+  // ── toggle expanded state (desktop only) ──────────────────────────────────
+  function toggleExpanded() {
+    // Guard: expanded mode only on desktop (min-width 481px)
+    if (window.innerWidth <= 480) return;
+    isExpanded = !isExpanded;
+    if (isExpanded) {
+      panel.classList.add('ta-ai-expanded');
+      expand.setAttribute('aria-label', 'Collapse');
+    } else {
+      panel.classList.remove('ta-ai-expanded');
+      expand.setAttribute('aria-label', 'Expand');
+    }
+  }
+
   // ── events ────────────────────────────────────────────────────────────────
   launcher.addEventListener('click', openPanel);
 
   minimize.addEventListener('click', closePanel);
+
+  expand.addEventListener('click', toggleExpanded);
 
   proBtns.forEach(btn => btn && btn.addEventListener('click', openPro));
 
