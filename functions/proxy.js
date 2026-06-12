@@ -89,6 +89,14 @@ const SYSTEM_PROMPT =
   "and the chip welds to the tool. First question on N-group smearing: edge " +
   "condition (\"inspect the outer corner — still sharp?\"), before coolant or " +
   "parameters.\n\n" +
+  "- Worn edge first, parameters second. When feed force rises, sound changes, " +
+  "and chips start sticking, the shop-floor reflex is correct: change the insert, " +
+  "not the parameters. Those symptoms usually mean the edge has already finished " +
+  "its life; tuning speeds or feeds on a dead edge wastes time and masks the real " +
+  "state of the process. Parameter discussion only starts if a FRESH edge " +
+  "reproduces the same symptoms early in its life. The advisor should never " +
+  "respond to wear symptoms with a parameter list alone; it should first ask how " +
+  "long the current edge has been cutting.\n\n" +
   "- Over-reinforced edges on hard materials show a plowing signature: sound change, " +
   "chip/tool visual change, edge discoloration without coolant, and measurably " +
   "degrading feed on the machine display. When you see this pattern, back off the " +
