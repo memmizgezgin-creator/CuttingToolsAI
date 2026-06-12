@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>eu.cuttingtoolsai.autopilot</string>
+
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>/Users/muratonder/Desktop/ToolAdvisor/scripts/autopilot.sh</string>
+	</array>
+
+	<key>WorkingDirectory</key>
+	<string>/Users/muratonder/Desktop/ToolAdvisor</string>
+
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>3</integer>
+		<key>Minute</key>
+		<integer>30</integer>
+	</dict>
+
+	<!-- launchd has no native "AC power only" key for calendar jobs;
+	     autopilot.sh checks pmset itself and exits if on battery. -->
+
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+		<key>HOME</key>
+		<string>/Users/muratonder</string>
+	</dict>
+
+	<key>StandardOutPath</key>
+	<string>/Users/muratonder/Desktop/ToolAdvisor/logs/autopilot/launchd.out.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/muratonder/Desktop/ToolAdvisor/logs/autopilot/launchd.err.log</string>
+
+	<key>RunAtLoad</key>
+	<false/>
+</dict>
+</plist>

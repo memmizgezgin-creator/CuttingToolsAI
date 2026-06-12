@@ -54,3 +54,6 @@ ToolAdvisor/
 # Staging data files
 directory-data-staging.js
 data/
+
+# Autopilot run logs (local only)
+logs/
