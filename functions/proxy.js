@@ -52,25 +52,29 @@ const SYSTEM_PROMPT =
   "Never answer \"I don't have that tool\" without offering the nearest " +
   "verified equivalent.\n\n" +
   "GROUNDING RULE — MANDATORY, overrides all other instructions:\n\n" +
-  "When REFERENCE DB RECORDS are present, you MUST follow these rules without " +
-  "exception:\n" +
-  "1. NAME ONLY PRODUCTS IN THE RECORDS. Every specific product series name, " +
-  "grade code, and coating name you recommend must appear verbatim in the " +
-  "provided records. Example: if records show 'RT 100 VA' and 'RT 100 U', " +
-  "you may name those — you may NOT invent 'RT 100 InoxPro' or any other " +
-  "series name not in the records.\n" +
-  "2. NEVER INVENT COATING OR GRADE NAMES. Every grade code and coating name " +
-  "you state (e.g. 'Perrox', 'GC4325', 'TP2501') must appear in the records " +
-  "or be sourced from web search with explicit attribution. Silently invented " +
-  "names are a critical hallucination error.\n" +
-  "3. WHEN RECORDS DON'T COVER THE QUERY. If the provided records do not " +
-  "contain a suitable product for the application, say explicitly: 'The " +
-  "verified catalog data I have does not include a direct match for this " +
-  "application.' You may then provide web-search-based guidance, but label " +
-  "it clearly as web-sourced, not catalog-verified.\n" +
-  "4. DO NOT BLEND. Never present an AI-generated or web-search product name " +
-  "as if it came from the verified catalog. Separate what is in the records " +
-  "from what comes from web search.\n\n" +
+  "The REFERENCE DB RECORDS block (immediately below when present) is the " +
+  "ONLY source you may draw product names, series names, and grade codes from " +
+  "for your PRIMARY recommendation.\n\n" +
+  "1. CATALOG-FIRST RECOMMENDATION. When records are provided, your first and " +
+  "primary recommendation MUST come from those records. Lead with: " +
+  "'From the verified catalog: [product from records]...' Web search may " +
+  "supplement ONLY after you have given the catalog-based recommendation.\n" +
+  "2. NEVER NAME A PRODUCT AS PRIMARY UNLESS IT IS IN THE RECORDS. A product " +
+  "series name, grade code, or coating found only via web search must NOT " +
+  "appear as your main recommendation — it may only appear in a clearly " +
+  "labelled '(web search only, not catalog-verified)' supplementary note.\n" +
+  "3. NEVER INVENT COATING OR GRADE NAMES. Every grade code and coating name " +
+  "you state (e.g. 'Perrox', 'InoxPro', 'GC4325') must appear verbatim in " +
+  "the records or be sourced from web search with explicit '(web-sourced)' " +
+  "attribution. Silently invented names are a critical hallucination error.\n" +
+  "4. WHEN RECORDS DON'T COVER THE QUERY. If the records block says 'No " +
+  "catalog records were retrieved' or none of the records fit the application, " +
+  "say explicitly: 'The verified catalog data I have does not include a " +
+  "direct match for this application.' Then provide web-search-based guidance " +
+  "labelled clearly as web-sourced.\n" +
+  "5. DO NOT BLEND. Never present a web-search or AI-generated product name " +
+  "as if it came from the verified catalog. Keep catalog-verified and " +
+  "web-sourced recommendations visually and textually separated.\n\n" +
   "FIELD KNOWLEDGE — judgment layer:\n\n" +
   "- Point angle is never an isolated choice; it is the visible end of a geometry " +
   "package. Material dictates point angle, relief angle, helix, single vs double " +
@@ -356,7 +360,13 @@ async function retrieveTools(env, queryText) {
 }
 
 function formatReferenceBlock(retrieval) {
-  if (!retrieval.matchedRecords) return '';
+  // Always inject a block header so the GROUNDING RULE fires even when the
+  // retrieval returned nothing — the model must then acknowledge the gap.
+  if (!retrieval.matchedRecords) {
+    return '\n\nREFERENCE DB RECORDS: No catalog records were retrieved for this ' +
+      'query. Per the GROUNDING RULE: state explicitly that your answer is ' +
+      'web-sourced only and has not been verified against the internal catalog.';
+  }
   const lines = retrieval.records.map(r => {
     const parts = [
       r.sku, r.brand, r.family, r.type_geometry,
