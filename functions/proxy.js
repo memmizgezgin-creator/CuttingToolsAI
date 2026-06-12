@@ -702,7 +702,8 @@ export async function onRequestPost(context) {
   if (setCookie) responseHeaders['Set-Cookie'] = setCookie;
 
   // Plan rides on every response body so the widget can render plan-aware UI.
-  const responseBody = { ...data, answer, plan, sources: buildSources(retrieval) };
+  // db_hit is included for admin/testing visibility; widgets ignore unknown fields.
+  const responseBody = { ...data, answer, plan, sources: buildSources(retrieval), db_hit: retrieval.dbHit };
 
   return new Response(JSON.stringify(responseBody), {
     status: upstream.status,
