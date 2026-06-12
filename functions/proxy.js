@@ -214,7 +214,7 @@ async function isEntitled(env, userId) {
 // the grade lives in `coating` (e.g. GC4325), extra detail in `notes`.
 const PRODUCT_COLUMNS =
   'sku,brand,family,type_geometry,coating,material_compat,machine_type,' +
-  'application,alternatives_to,notes';
+  'application,alternatives_to,notes,source_file,source_page';
 
 async function queryProducts(env, filter, limit) {
   const ctrl  = new AbortController();
@@ -310,6 +310,21 @@ function formatReferenceBlock(retrieval) {
       'nearest verified family matches — extrapolate per the REFERENCE DB PROTOCOL and state what differs.'
     : '';
   return `\n\nREFERENCE DB RECORDS (verified internal data — trust over web search):\n${lines.join('\n')}${missNote}`;
+}
+
+function buildSources(retrieval) {
+  if (!retrieval.dbHit) return [];
+  const seen = new Set();
+  const sources = [];
+  for (const r of retrieval.records) {
+    if (!r.source_file || !r.source_page) continue;
+    const key = `${r.source_file}|${r.source_page}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    sources.push({ file: r.source_file, page: r.source_page });
+    if (sources.length >= 3) break;
+  }
+  return sources;
 }
 
 // ── Anonymous query logging (GDPR-safe: no user id, no IP, no cookie id) ──────
@@ -636,7 +651,7 @@ export async function onRequestPost(context) {
   if (setCookie) responseHeaders['Set-Cookie'] = setCookie;
 
   // Plan rides on every response body so the widget can render plan-aware UI.
-  const responseBody = { ...data, answer, plan };
+  const responseBody = { ...data, answer, plan, sources: buildSources(retrieval) };
 
   return new Response(JSON.stringify(responseBody), {
     status: upstream.status,

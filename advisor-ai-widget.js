@@ -289,6 +289,12 @@
     #ta-ai-send:hover:not(:disabled) { transform:translateY(-1px); }
     #ta-ai-send:disabled { opacity:.4; cursor:not-allowed; }
 
+    .ta-ai-source-attr {
+      margin-top:6px; padding-top:5px; border-top:1px solid #e0ddf0;
+      font-size:10px; color:#9ca3af; line-height:1.5;
+      font-family:'DM Mono',monospace;
+    }
+
     @media (max-width:480px) {
       #ta-ai-panel { bottom:0; right:0; width:100vw; max-width:100vw; border-radius:18px 18px 0 0; height:85vh; max-height:85vh; }
       #ta-ai-launcher { bottom:16px; right:16px; }
@@ -747,7 +753,15 @@
           || data.error?.message
           || (typeof data.error === 'string' ? data.error : null)
           || 'Sorry, I had trouble answering that. Please try again.';
-        addMessage('ai', renderMarkdown(reply));
+        const bubble = addMessage('ai', renderMarkdown(reply));
+        if (Array.isArray(data.sources) && data.sources.length) {
+          const attr = document.createElement('div');
+          attr.className = 'ta-ai-source-attr';
+          attr.innerHTML = data.sources
+            .map(s => 'Source: ' + escapeHtml(formatSourceFile(s.file)) + ', p.' + escapeHtml(String(s.page)))
+            .join('<br>');
+          bubble.appendChild(attr);
+        }
       }
     } catch (fetchErr) {
       typingRow.remove();
@@ -776,6 +790,14 @@
 
   function escapeHtml(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function formatSourceFile(fileName) {
+    return String(fileName)
+      .replace(/\.[^.]+$/, '')           // strip extension
+      .replace(/[_-]compressed$/i, '')   // strip trailing _compressed / -compressed
+      .replace(/[_-]/g, ' ')            // underscores and hyphens → spaces
+      .replace(/\s+/g, ' ').trim();
   }
 
   // ── open/close helpers ─────────────────────────────────────────────────────
