@@ -88,7 +88,10 @@ async function probeProxy(accessToken, tag, cookie) {
 }
 
 let userId = null;
+// Synthetic subjects for the RPC quota-math test, so it never touches the real
+// test user's quota (which the proxy plan-wiring probes rely on being fresh).
 const anonSubjectId = `smoke-anon-${crypto.randomUUID()}`;
+const userSubjectId = `smoke-user-${crypto.randomUUID()}`;
 
 async function main() {
   // ── 1. SETUP: disposable user + password-grant session ─────────────────────
@@ -136,12 +139,13 @@ async function main() {
     refundOk ? 'after refund_daily the quota is available again (the free question survives a refuse)'
              : `post-refund allowed=${allowedOf(a3)} (expected true)`);
 
-  // User subject, limit 3: three allowed, fourth blocked.
+  // User-type subject (synthetic id, NOT the real test user), limit 3: three
+  // allowed, fourth blocked.
   let userAllowed = 0;
   for (let i = 0; i < 3; i++) {
-    if (allowedOf(await rpc('check_and_increment_daily', { p_type: 'user', p_id: userId, p_day: today, p_limit: 3 })) === true) userAllowed++;
+    if (allowedOf(await rpc('check_and_increment_daily', { p_type: 'user', p_id: userSubjectId, p_day: today, p_limit: 3 })) === true) userAllowed++;
   }
-  const u4 = await rpc('check_and_increment_daily', { p_type: 'user', p_id: userId, p_day: today, p_limit: 3 });
+  const u4 = await rpc('check_and_increment_daily', { p_type: 'user', p_id: userSubjectId, p_day: today, p_limit: 3 });
   const freeCapOk = userAllowed === 3 && allowedOf(u4) === false;
   record('3-free-quota', freeCapOk,
     freeCapOk ? 'free limit 3: 3 allowed, 4th blocked'
@@ -182,6 +186,10 @@ async function teardown() {
   const delAnon = await rest(`/rest/v1/usage_daily?subject_type=eq.anon&subject_id=eq.${encodeURIComponent(anonSubjectId)}`, { method: 'DELETE' })
     .catch(() => ({ ok: false, status: 'ERR' }));
   steps.push(`anon usage_daily ${delAnon.ok ? 'deleted' : 'delete FAILED (HTTP ' + delAnon.status + ')'}`);
+
+  const delUserSubj = await rest(`/rest/v1/usage_daily?subject_type=eq.user&subject_id=eq.${encodeURIComponent(userSubjectId)}`, { method: 'DELETE' })
+    .catch(() => ({ ok: false, status: 'ERR' }));
+  steps.push(`synthetic user usage_daily ${delUserSubj.ok ? 'deleted' : 'delete FAILED (HTTP ' + delUserSubj.status + ')'}`);
 
   if (userId) {
     const delSub = await rest(`/rest/v1/subscriptions?user_id=eq.${encodeURIComponent(userId)}`, { method: 'DELETE' })
