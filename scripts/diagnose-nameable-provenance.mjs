@@ -35,12 +35,28 @@ const hasSource  = (r) => r.source_file != null && r.source_page != null;
 const norm = (sku) => String(sku || '').toUpperCase().replace(/\s+/g, '').trim();
 
 async function fetchAllLive() {
-  const res = await fetch(
-    `${SUPABASE_URL}/rest/v1/products?select=sku,source_file,source_page&limit=10000`,
-    { headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` } }
-  );
-  if (!res.ok) throw new Error(`Supabase ${res.status}: ${(await res.text()).slice(0, 200)}`);
-  return res.json();
+  // PostgREST caps each response at its max-rows (default 1000), so `limit=10000`
+  // silently truncates. Page with Range headers (stable order) until a short page.
+  const PAGE = 1000;
+  const all = [];
+  for (let from = 0; ; from += PAGE) {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/products?select=sku,source_file,source_page&order=sku.asc`,
+      {
+        headers: {
+          apikey: SERVICE_KEY,
+          Authorization: `Bearer ${SERVICE_KEY}`,
+          Range: `${from}-${from + PAGE - 1}`,
+          'Range-Unit': 'items',
+        },
+      }
+    );
+    if (!res.ok && res.status !== 206) throw new Error(`Supabase ${res.status}: ${(await res.text()).slice(0, 200)}`);
+    const rows = await res.json();
+    all.push(...rows);
+    if (rows.length < PAGE) break;
+  }
+  return all;
 }
 
 function loadJsonNameable() {

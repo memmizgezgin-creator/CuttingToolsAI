@@ -67,6 +67,26 @@ async function rest(urlPath, opts = {}) {
   return text ? JSON.parse(text) : null;
 }
 
+// Paginated GET: PostgREST caps each response at max-rows (default 1000), so a
+// plain `limit=10000` silently truncates. Page with Range headers (stable order)
+// until a short page. urlPath must NOT include its own limit/Range.
+async function restAll(urlPath) {
+  const PAGE = 1000;
+  const all = [];
+  for (let from = 0; ; from += PAGE) {
+    const res = await fetch(`${SUPABASE_URL}${urlPath}`, {
+      headers: authHeaders({ Range: `${from}-${from + PAGE - 1}`, 'Range-Unit': 'items' }),
+    });
+    if (!res.ok && res.status !== 206) {
+      throw new Error(`HTTP ${res.status} ${urlPath}: ${await res.text()}`);
+    }
+    const rows = JSON.parse((await res.text()) || '[]');
+    all.push(...rows);
+    if (rows.length < PAGE) break;
+  }
+  return all;
+}
+
 // ── Row construction ──────────────────────────────────────────────────────────
 function syntheticSku(r, index) {
   const brand = (r.brand || 'UNK').replace(/[^A-Za-z]/g, '').slice(0, 4).toUpperCase().padEnd(4, 'X');
@@ -185,8 +205,8 @@ async function verify() {
   const total = parseInt(range.split('/')[1] || '0', 10);
   check('total records >= 1200', total >= 1200, `count=${total}`);
 
-  const withSource = await rest(
-    '/rest/v1/products?select=sku&source_file=not.is.null&source_page=not.is.null'
+  const withSource = await restAll(
+    '/rest/v1/products?select=sku&source_file=not.is.null&source_page=not.is.null&order=sku.asc'
   );
   // Ratio-based floor instead of a brittle fixed count: source-attributed
   // records must be >= 55% of the table. A low floor (not a pin at the current
@@ -234,7 +254,7 @@ async function verify() {
   // them. Instead we lock the current ratio as a floor: provenance can only hold
   // or improve. TARGET 90% — bump scripts/sync-baseline.json as ingestion raises
   // it. Adding nameable records WITHOUT source attribution will (correctly) fail.
-  const allRecs = await rest('/rest/v1/products?select=sku,source_file,source_page&limit=10000');
+  const allRecs = await restAll('/rest/v1/products?select=sku,source_file,source_page&order=sku.asc');
   const ISO_DESIGNATION_RE = /^[A-Z]{4}\s?\d/;  // e.g. "CNMG 120408", "DNMG150608"
   const nameable = allRecs.filter(r => ISO_DESIGNATION_RE.test(String(r.sku || '').toUpperCase()));
   const nameableWithSrc = nameable.filter(r => r.source_file != null && r.source_page != null);

@@ -52,6 +52,27 @@ async function rest(path, opts = {}) {
   return text ? JSON.parse(text) : null;
 }
 
+// Paginated GET: PostgREST caps each response at max-rows (default 1000), so a
+// plain `limit=10000` silently truncates and we'd miss records (and brand
+// variants) past row 1000. Page with Range headers until a short page. `path`
+// must NOT include limit/Range; include a stable &order=.
+async function restAll(path) {
+  const PAGE = 1000;
+  const all = [];
+  for (let from = 0; ; from += PAGE) {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1${path}`, {
+      headers: { ...headers(), Range: `${from}-${from + PAGE - 1}`, 'Range-Unit': 'items' },
+    });
+    if (!res.ok && res.status !== 206) {
+      throw new Error(`HTTP ${res.status} ${path}: ${await res.text()}`);
+    }
+    const rows = JSON.parse((await res.text()) || '[]');
+    all.push(...rows);
+    if (rows.length < PAGE) break;
+  }
+  return all;
+}
+
 async function main() {
   // ── 1. Count records before ──────────────────────────────────────────────
   const countRes = await fetch(`${SUPABASE_URL}/rest/v1/products?select=sku`, {
@@ -62,7 +83,7 @@ async function main() {
   console.log(`records before: ${totalBefore}`);
 
   // ── 2. Fetch all records (brand + sku) ───────────────────────────────────
-  const records = await rest('/products?select=sku,brand&limit=10000');
+  const records = await restAll('/products?select=sku,brand&order=sku.asc');
   console.log(`fetched: ${records.length} records`);
 
   // ── 3. Build canonical mapping & print it ────────────────────────────────
@@ -131,7 +152,7 @@ async function verify(state) {
   }
 
   // Re-query distinct brands
-  const after = await rest('/products?select=brand&limit=10000');
+  const after = await restAll('/products?select=brand&order=sku.asc');
   const distinct = [...new Set(after.map(r => r.brand))].sort();
   console.log(`distinct brands after: ${distinct.join(', ')}`);
 
