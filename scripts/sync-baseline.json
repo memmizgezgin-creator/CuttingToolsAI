@@ -1,0 +1,5 @@
+{
+  "attributed": 735,
+  "total": 1210,
+  "note": "Provenance non-regression baseline for sync-products verify. 'attributed' = records with source_file AND source_page at last intentional sync. Verify FAILS if attributed regresses more than 2% below this floor (catches silent provenance decay). Bump both numbers after an intentional ingestion that legitimately changes the dataset. Updated 2026-06-13."
+}

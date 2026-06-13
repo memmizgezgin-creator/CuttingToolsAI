@@ -31,6 +31,13 @@ const BATCH_SIZE   = 50;
 
 const DATA_FILE = path.resolve(__dirname, '../data/extracted-productdb-candidates.json');
 
+// Provenance non-regression baseline (graceful: a missing/bad file disables the
+// guard rather than crashing the sync).
+let SYNC_BASELINE = { attributed: 0, total: 0 };
+try {
+  SYNC_BASELINE = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'sync-baseline.json'), 'utf8'));
+} catch { /* no baseline → regression guard is a no-op */ }
+
 if (!SUPABASE_URL || !SERVICE_KEY) {
   console.error('FAIL: missing env — need SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY');
   process.exit(1);
@@ -181,14 +188,58 @@ async function verify() {
   const withSource = await rest(
     '/rest/v1/products?select=sku&source_file=not.is.null&source_page=not.is.null'
   );
-  check('records with source attribution >= 730',
-    withSource.length >= 730, `count=${withSource.length}`);
+  // Ratio-based floor instead of a brittle fixed count: source-attributed
+  // records must be >= 55% of the table. A low floor (not a pin at the current
+  // 60.7%) is deliberate — bulk ingestion of new, not-yet-attributed records
+  // mechanically dilutes the ratio short-term, and a high pin would block the
+  // very growth we want. The floor only catches catastrophic provenance loss.
+  const MIN_SOURCE_RATIO = 0.55;
+  const sourceRatio = total > 0 ? withSource.length / total : 0;
+  check(`source attribution >= ${Math.round(MIN_SOURCE_RATIO * 100)}% of records`,
+    sourceRatio >= MIN_SOURCE_RATIO,
+    `${withSource.length}/${total} = ${(sourceRatio * 100).toFixed(1)}%`);
+
+  // Non-regression guard: the ratio floor allows ingestion dilution but would
+  // miss SILENT DECAY (attributed count quietly dropping with no growth). Guard
+  // the absolute attributed count against a committed baseline, with 2% slack so
+  // normal dedup churn doesn't flap. Bump scripts/sync-baseline.json after an
+  // intentional ingestion. (Catastrophic table collapse is already caught by the
+  // total >= 1200 check above.)
+  const REGRESSION_TOLERANCE = 0.98;
+  const baselineFloor = Math.floor((SYNC_BASELINE.attributed || 0) * REGRESSION_TOLERANCE);
+  check(`no provenance regression (attributed >= ${baselineFloor}, baseline ${SYNC_BASELINE.attributed})`,
+    withSource.length >= baselineFloor,
+    `attributed=${withSource.length}`);
+  if (withSource.length > (SYNC_BASELINE.attributed || 0)) {
+    console.log(`  INFO: attributed grew to ${withSource.length} — bump scripts/sync-baseline.json`);
+  }
 
   const guhring = await rest('/rest/v1/products?select=sku&brand=eq.Gühring&limit=1');
   check('Gühring records present', guhring.length > 0, guhring.length > 0 ? 'found' : 'MISSING');
 
   const cnmg = await rest('/rest/v1/products?select=sku&sku=ilike.*CNMG*&limit=1');
   check('curated CNMG records preserved', cnmg.length > 0, cnmg.length > 0 ? 'found' : 'MISSING');
+
+  // ── Nameable-record provenance (the real reliability lever) ────────────────
+  // The advisor's hard-stop trusts a record (dbHit) when an ISO designation in
+  // the query exact-matches a record's `sku` (see retrieveTools in proxy.js).
+  // Those ISO-designation records are exactly the ones the advisor may name as a
+  // specific verified product — so a NAMEABLE record with no source attribution
+  // is the precise fabrication-adjacent risk the guardrail exists to prevent.
+  // Synthetic/numeric SKUs are excluded: they never exact-match an ISO query and
+  // are only family-level grounding context, never named.
+  // NOTE: soft floor for now. Read the printed % from the first CI run, then
+  // ratchet MIN_NAMEABLE_PROVENANCE up toward the real value (target 0.90).
+  const allRecs = await rest('/rest/v1/products?select=sku,source_file,source_page&limit=10000');
+  const ISO_DESIGNATION_RE = /^[A-Z]{4}\s?\d/;  // e.g. "CNMG 120408", "DNMG150608"
+  const nameable = allRecs.filter(r => ISO_DESIGNATION_RE.test(String(r.sku || '').toUpperCase()));
+  const nameableWithSrc = nameable.filter(r => r.source_file != null && r.source_page != null);
+  const nameableCov = nameable.length ? nameableWithSrc.length / nameable.length : 1;
+  console.log(`nameable (ISO-designation) records: ${nameable.length}, with source: ${nameableWithSrc.length} (${(nameableCov * 100).toFixed(1)}%)`);
+  const MIN_NAMEABLE_PROVENANCE = 0.50;  // ratchet target: raise toward 0.90
+  check(`nameable-record provenance >= ${Math.round(MIN_NAMEABLE_PROVENANCE * 100)}% [ratchet target 90%]`,
+    nameable.length === 0 || nameableCov >= MIN_NAMEABLE_PROVENANCE,
+    `${(nameableCov * 100).toFixed(1)}%`);
 
   console.log(allPass ? '\nALL PASS' : '\nFAILURES PRESENT');
   return allPass;
