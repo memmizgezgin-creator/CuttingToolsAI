@@ -802,13 +802,19 @@ export async function onRequestPost(context) {
   }
 
   // Anonymous query log — after the response is ready, off the critical path.
-  context.waitUntil(logAdvisorQuery(env, {
-    queryText,
-    dbHit:          retrieval.dbHit,
-    matchedRecords: retrieval.matchedRecords,
-    responseTimeMs: Date.now() - requestStart,
-    answerText:     answer,
-  }));
+  // Skip admin/test traffic (founder, regression harness, smoke tests): it is
+  // NOT user demand and pollutes db_hit and any demand analysis. Combined with
+  // the preScreenQuery gate (which short-circuits injection/smoke BEFORE this
+  // point), the demand table stays clean of synthetic queries.
+  if (!isAdminIP && !isAdminKey) {
+    context.waitUntil(logAdvisorQuery(env, {
+      queryText,
+      dbHit:          retrieval.dbHit,
+      matchedRecords: retrieval.matchedRecords,
+      responseTimeMs: Date.now() - requestStart,
+      answerText:     answer,
+    }));
+  }
 
   // ── Build success response ─────────────────────────────────────────────────
   // Admin bypass renders as 'pro' so the widget hides the upsell/counter.
