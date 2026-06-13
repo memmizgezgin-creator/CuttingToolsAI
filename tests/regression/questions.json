@@ -1,0 +1,17 @@
+[
+  { "id": "iso-p-turning", "category": "ISO P", "question": "Turning 4140 steel at 280 HB, continuous external roughing on a stable lathe, wet. Which insert grade and geometry should I start with?" },
+  { "id": "iso-m-turning", "category": "ISO M", "question": "Rough turning 316L stainless, lightly interrupted cut, flood coolant. Which insert grade, geometry and starting Vc?" },
+  { "id": "iso-k-milling", "category": "ISO K", "question": "Face milling GG25 grey cast iron, dry, 100mm cutter. Which insert grade and geometry, and what Vc range?" },
+  { "id": "iso-n-finishing", "category": "ISO N", "question": "High-speed finishing of 6082 aluminium on a lathe. Which insert (geometry, coating or uncoated) and what cutting speed?" },
+  { "id": "iso-s-turning", "category": "ISO S", "question": "Finish turning Inconel 718, aged to 44 HRC. Which insert grade and what Vc and feed should I run?" },
+  { "id": "iso-h-hardturning", "category": "ISO H", "question": "Hard turning D2 die steel at 60 HRC, finishing pass. CBN or carbide, and which grade?" },
+  { "id": "vague-typo", "category": "vague", "question": "stenless" },
+  { "id": "system-ok", "category": "system-test", "question": "reply with the single word OK" },
+  { "id": "gap-grooving-h13", "category": "coverage-gap", "question": "Grooving hardened H13 at 50 HRC, 3mm wide groove, 6mm deep. Which grooving insert and grade?" },
+  { "id": "crossref-gc4325", "category": "cross-reference", "question": "What is the Kennametal and Walter equivalent of Sandvik GC4325 for steel turning?" },
+  { "id": "shop-interrupted", "category": "shop-floor", "question": "Turning a 1045 weldment with heavy interrupted cuts, inserts keep chipping. What geometry and grade change do you recommend?" },
+  { "id": "shop-chatter", "category": "shop-floor", "question": "Getting chatter on internal boring with a 5xD overhang in mild steel. How do I fix it and which insert geometry helps?" },
+  { "id": "shop-deephole-316l", "category": "shop-floor", "question": "I need to drill a Ø8mm hole 8xD deep in 316L stainless, through-coolant available. Which drill type and cutting data?" },
+  { "id": "shop-alu-finish", "category": "shop-floor", "question": "Finishing a 6061 aluminium pocket with a 10mm 3-flute carbide end mill. What feed per tooth and spindle speed should I use?" },
+  { "id": "shop-parting-tube", "category": "shop-floor", "question": "Parting off thin-wall 304 stainless tube, 1.5mm wall thickness. Which insert width, geometry and feed to avoid deformation?" }
+]
