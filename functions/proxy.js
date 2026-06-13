@@ -801,6 +801,16 @@ export async function onRequestPost(context) {
     return aiErrorResponse(502, 'ai_empty');
   }
 
+  // The free question is only "spent" on a REAL recommendation. If the advisor
+  // could not name a verified specific product (db_hit=false → refuse / material-
+  // only fallback), refund the quota so the user's question survives until they
+  // get a usable answer — no burning the one free try on a "can't recommend".
+  // (Errors and off-domain/injection are already refunded above / pre-gate.)
+  if (!retrieval.dbHit) {
+    await refundQuota();
+    if (quotaRemaining !== null) quotaRemaining += 1;
+  }
+
   // Anonymous query log — after the response is ready, off the critical path.
   // Skip admin/test traffic (founder, regression harness, smoke tests): it is
   // NOT user demand and pollutes db_hit and any demand analysis. Combined with
