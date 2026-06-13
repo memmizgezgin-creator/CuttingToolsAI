@@ -1,0 +1,23 @@
+name: Diagnose Nameable Provenance
+
+# One-shot, read-only diagnostic. Compares live Supabase nameable records against
+# the source JSON to disambiguate dedup-strip vs vanished vs legacy-dominance vs
+# ingestion-gap. Writes nothing. Safe to delete after the question is answered.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+      - name: Run diagnostic
+        env:
+          SUPABASE_URL:              ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/diagnose-nameable-provenance.mjs
