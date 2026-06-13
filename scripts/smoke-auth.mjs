@@ -1,19 +1,23 @@
-// CuttingToolsAI — auth/entitlement chain smoke test
+// CuttingToolsAI — auth/entitlement + quota smoke test
 // Node 20+, no npm dependencies, plain fetch.
 //
 // Required env:
 //   SUPABASE_URL               Supabase project URL
-//   SUPABASE_SERVICE_ROLE_KEY  service role key (admin API + PostgREST)
+//   SUPABASE_SERVICE_ROLE_KEY  service role key (admin API + PostgREST + RPC)
 //   SUPABASE_ANON_KEY          anon/publishable key (password grant sign-in)
 // Optional env:
 //   SITE_URL                   deployed site (default https://cuttingtoolsai.eu)
 //
-// Flow: create disposable test user → anon /proxy contract (1×200 plan:"anon",
-// then 429 with upgrade_path:"signin" on the same device cookie) → authed free
-// quota (usage_daily keyed on user id, 3/day, 4th call 429 upgrade_path:"pro")
-// → activate subscription → pro call (no increment, plan:"pro" in body) →
-// teardown (always, even on fail). Touches ONLY rows belonging to the
-// disposable test user. Never logs keys or tokens.
+// Cost-conscious design: the quota MATH (increment → cap → refund) is tested
+// directly against the Supabase RPCs (check_and_increment_daily / refund_daily)
+// for $0 — no Anthropic calls. The proxy is exercised only with cheap probe
+// queries that the server-side pre-filter short-circuits BEFORE any model/
+// web_search call, purely to confirm liveness + plan wiring (anon/free/pro).
+//
+// NOTE on the new quota semantics (functions/proxy.js): a query only SPENDS
+// quota on a real recommendation (db_hit=true). Refuse / material-only answers
+// and pre-filtered probes are refunded. That is exactly why quota is now tested
+// at the RPC layer rather than by counting proxy answers.
 
 const SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/$/, '');
 const SERVICE_KEY  = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
@@ -32,53 +36,32 @@ function record(step, pass, detail) {
 }
 
 function serviceHeaders(extra = {}) {
-  return {
-    'Content-Type':  'application/json',
-    'apikey':        SERVICE_KEY,
-    'Authorization': `Bearer ${SERVICE_KEY}`,
-    ...extra,
-  };
+  return { 'Content-Type': 'application/json', apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}`, ...extra };
 }
 
 async function rest(path, init = {}) {
-  const res = await fetch(`${SUPABASE_URL}${path}`, {
-    ...init,
-    headers: serviceHeaders(init.headers),
-  });
+  const res = await fetch(`${SUPABASE_URL}${path}`, { ...init, headers: serviceHeaders(init.headers) });
   const text = await res.text();
   let json = null;
   try { json = text ? JSON.parse(text) : null; } catch { /* non-JSON */ }
   return { ok: res.ok, status: res.status, json, text };
 }
 
+// PostgREST RPC: returns the function result (check_and_increment_daily yields
+// [{ allowed, remaining }]; refund_daily yields null/[]).
+async function rpc(fn, body) {
+  return rest(`/rest/v1/rpc/${fn}`, { method: 'POST', body: JSON.stringify(body) });
+}
+const allowedOf = (r) => Array.isArray(r.json) && r.json[0] ? r.json[0].allowed : undefined;
+
 const today = new Date().toISOString().slice(0, 10);
 
-// Read the test user's usage_daily count for today (null = no row).
-async function userQuotaCount(userId) {
-  const r = await rest(
-    `/rest/v1/usage_daily?subject_type=eq.user&subject_id=eq.${encodeURIComponent(userId)}` +
-    `&day=eq.${today}&select=count`
-  );
-  if (!r.ok) throw new Error(`usage_daily read failed: ${r.status}`);
-  return r.json && r.json.length ? r.json[0].count : null;
-}
-
-// Minimal payload matching what functions/proxy.js expects from the widget:
-// it reads body.messages (last user turn = query) and strips body.system.
-function advisorPayload(tag) {
-  return JSON.stringify({
-    model: 'claude-sonnet-4-20250514',
-    max_tokens: 256,
-    messages: [{ role: 'user', content: `Smoke test ${tag}: reply with the single word OK. Do not search the web.` }],
-  });
-}
-
-// Advisor calls run web_search and routinely take 20-50s; allow 90s.
-// `cookie` replays the ta_uid device cookie so consecutive anon calls hit the
-// same usage_daily subject (Node fetch has no cookie jar).
-async function callProxy(accessToken, tag, cookie) {
+// Cheap proxy probe: the pre-filter short-circuits this BEFORE any model call,
+// so it costs ~nothing. Used only to confirm the proxy is up and resolves the
+// caller's plan (anon/free/pro). `cookie` replays the ta_uid device cookie.
+async function probeProxy(accessToken, tag, cookie) {
   const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 90_000);
+  const timer = setTimeout(() => ctrl.abort(), 30_000);
   try {
     const headers = { 'Content-Type': 'application/json' };
     if (accessToken) headers['Authorization'] = `Bearer ${accessToken}`;
@@ -86,23 +69,26 @@ async function callProxy(accessToken, tag, cookie) {
     const res = await fetch(`${SITE_URL}/proxy`, {
       method: 'POST',
       headers,
-      body: advisorPayload(tag),
+      // "reply with the single word OK / do not search" trips the pre-filter →
+      // canned redirect, no model, no quota spent.
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 64,
+        messages: [{ role: 'user', content: `Smoke test ${tag}: reply with the single word OK. Do not search the web.` }],
+      }),
       signal: ctrl.signal,
     });
     const text = await res.text();
     let json = {};
     try { json = JSON.parse(text); } catch { /* non-JSON */ }
-    // Extract the ta_uid device cookie for replay on follow-up anon calls.
-    const setCookie = res.headers.get('set-cookie') || '';
-    const m = setCookie.match(/ta_uid=[^;]+/);
-    return { ok: res.ok, status: res.status, json, plan: res.headers.get('x-plan'), cookie: m ? m[0] : null };
+    return { ok: res.ok, status: res.status, json, plan: res.headers.get('x-plan') };
   } finally {
     clearTimeout(timer);
   }
 }
 
 let userId = null;
-let allPassed = true;
+const anonSubjectId = `smoke-anon-${crypto.randomUUID()}`;
 
 async function main() {
   // ── 1. SETUP: disposable user + password-grant session ─────────────────────
@@ -121,7 +107,7 @@ async function main() {
 
   const tokenRes = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'apikey': ANON_KEY },
+    headers: { 'Content-Type': 'application/json', apikey: ANON_KEY },
     body: JSON.stringify({ email, password }),
   });
   const tokenJson = await tokenRes.json().catch(() => ({}));
@@ -132,110 +118,85 @@ async function main() {
   }
   record('1-setup', true, `test user created and signed in (id ${userId})`);
 
-  // ── 2. Anon path: 1 free answer, then 429 with upgrade_path:"signin" ───────
-  const anon = await callProxy(null, 'anon');
-  // 429 here means this runner IP/cookie already hit today's cap — not an auth
-  // bug, but the smoke test can't proceed meaningfully on the anon leg.
-  const anonOk = anon.ok && typeof anon.json.answer === 'string' && anon.json.answer.length > 0;
-  record('2-anon', anonOk,
-    anonOk ? `proxy answered without auth header (HTTP ${anon.status})`
-           : `expected success, got HTTP ${anon.status} ${JSON.stringify(anon.json.error || '')}`);
-  if (anonOk && anon.json.plan !== 'anon') {
-    record('2-anon-plan', false, `anonymous response should carry plan:"anon", got "${anon.json.plan}"`);
+  // ── 2. QUOTA MATH via RPC ($0, no Anthropic) ───────────────────────────────
+  // Anonymous subject, limit 1: first allowed, second blocked, refund restores.
+  const a1 = await rpc('check_and_increment_daily', { p_type: 'anon', p_id: anonSubjectId, p_day: today, p_limit: 1 });
+  const a2 = await rpc('check_and_increment_daily', { p_type: 'anon', p_id: anonSubjectId, p_day: today, p_limit: 1 });
+  const anonCapOk = allowedOf(a1) === true && allowedOf(a2) === false;
+  record('2-anon-quota', anonCapOk,
+    anonCapOk ? 'anon limit 1: 1st allowed, 2nd blocked'
+              : `1st allowed=${allowedOf(a1)}, 2nd allowed=${allowedOf(a2)} (expected true,false)`);
+
+  // Refund the cap (this is the new "refuse/db_hit=false does not spend quota"
+  // mechanism) → the same subject is allowed again.
+  await rpc('refund_daily', { p_type: 'anon', p_id: anonSubjectId, p_day: today });
+  const a3 = await rpc('check_and_increment_daily', { p_type: 'anon', p_id: anonSubjectId, p_day: today, p_limit: 1 });
+  const refundOk = allowedOf(a3) === true;
+  record('2-refund-restores', refundOk,
+    refundOk ? 'after refund_daily the quota is available again (the free question survives a refuse)'
+             : `post-refund allowed=${allowedOf(a3)} (expected true)`);
+
+  // User subject, limit 3: three allowed, fourth blocked.
+  let userAllowed = 0;
+  for (let i = 0; i < 3; i++) {
+    if (allowedOf(await rpc('check_and_increment_daily', { p_type: 'user', p_id: userId, p_day: today, p_limit: 3 })) === true) userAllowed++;
   }
-  if (anonOk && anon.cookie) {
-    const anon2 = await callProxy(null, 'anon-2', anon.cookie);
-    const blockOk = anon2.status === 429 &&
-      anon2.json.plan === 'anon' &&
-      anon2.json.upgrade_path === 'signin';
-    record('2-anon-429', blockOk,
-      blockOk ? `second anon call on same device cookie blocked (429, plan:"anon", upgrade_path:"signin")`
-              : `HTTP ${anon2.status}, plan:"${anon2.json.plan}", upgrade_path:"${anon2.json.upgrade_path}" (expected 429/anon/signin)`);
-  } else if (anonOk) {
-    record('2-anon-429', false, 'no ta_uid Set-Cookie on first anon response — cannot test anon 429 contract');
-  }
-  const anonState = await userQuotaCount(userId);
-  if (anonState !== null) {
-    record('2-anon-isolation', false, `usage_daily already has a user row for test user before any authed call`);
-  }
+  const u4 = await rpc('check_and_increment_daily', { p_type: 'user', p_id: userId, p_day: today, p_limit: 3 });
+  const freeCapOk = userAllowed === 3 && allowedOf(u4) === false;
+  record('3-free-quota', freeCapOk,
+    freeCapOk ? 'free limit 3: 3 allowed, 4th blocked'
+              : `allowed ${userAllowed}/3, 4th allowed=${allowedOf(u4)} (expected 3 and false)`);
 
-  // ── 3. Free-user path: 3 answers/day keyed on user id, 4th call 429 ────────
-  const free1 = await callProxy(accessToken, 'free-1');
-  const free1Ok = free1.ok && typeof free1.json.answer === 'string';
-  const countAfter1 = await userQuotaCount(userId);
-  const row1Ok = free1Ok && countAfter1 !== null && countAfter1 >= 1;
-  record('3-free-row', row1Ok,
-    row1Ok ? `authed call succeeded, usage_daily user row exists (count=${countAfter1}, plan:"${free1.json.plan}")`
-           : `HTTP ${free1.status}, usage_daily user count=${countAfter1}`);
-  if (free1Ok && free1.json.plan !== 'free') {
-    record('3-free-plan', false, `expected plan:"free" in body, got "${free1.json.plan}"`);
-  }
+  // ── 3. PROXY WIRING (cheap probes, plan resolution) ────────────────────────
+  const anon = await probeProxy(null, 'anon');
+  const anonOk = anon.ok && typeof anon.json.answer === 'string' && anon.json.answer.length > 0 && (anon.plan === 'anon' || anon.json.plan === 'anon');
+  record('4-proxy-anon', anonOk,
+    anonOk ? `proxy live, no auth → plan:"anon" (HTTP ${anon.status})`
+           : `HTTP ${anon.status}, plan:"${anon.plan}", answer len ${(anon.json.answer || '').length}`);
 
-  const free2 = await callProxy(accessToken, 'free-2');
-  const countAfter2 = await userQuotaCount(userId);
-  const incOk = free2.ok && countAfter1 !== null && countAfter2 === countAfter1 + 1;
-  record('3-free-increment', incOk,
-    incOk ? `second authed call incremented count ${countAfter1} → ${countAfter2}`
-          : `HTTP ${free2.status}, count ${countAfter1} → ${countAfter2} (expected +1)`);
+  const free = await probeProxy(accessToken, 'free');
+  const freeOk = free.ok && (free.plan === 'free' || free.json.plan === 'free');
+  record('4-proxy-free', freeOk,
+    freeOk ? `authed (no subscription) → plan:"free" (HTTP ${free.status})`
+           : `HTTP ${free.status}, plan:"${free.plan}" (expected free)`);
 
-  const free3 = await callProxy(accessToken, 'free-3');
-  const countAfter3 = await userQuotaCount(userId);
-  const thirdOk = free3.ok && countAfter3 === 3;
-  record('3-free-third', thirdOk,
-    thirdOk ? `third authed call succeeded (count=${countAfter3})`
-            : `HTTP ${free3.status}, count=${countAfter3} (expected 3)`);
-
-  const free4 = await callProxy(accessToken, 'free-4');
-  const free4Ok = free4.status === 429 &&
-    free4.json.plan === 'free' &&
-    free4.json.upgrade_path === 'pro';
-  record('3-free-429', free4Ok,
-    free4Ok ? `fourth authed call blocked (429, plan:"free", upgrade_path:"pro")`
-            : `HTTP ${free4.status}, plan:"${free4.json.plan}", upgrade_path:"${free4.json.upgrade_path}" (expected 429/free/pro)`);
-
-  // ── 4. Pro path ─────────────────────────────────────────────────────────────
+  // Activate subscription → entitled → plan resolves to pro.
   const sub = await rest('/rest/v1/subscriptions', {
-    method: 'POST',
-    headers: { 'Prefer': 'return=minimal' },
+    method: 'POST', headers: { Prefer: 'return=minimal' },
     body: JSON.stringify({ user_id: userId, status: 'active' }),
   });
   if (!sub.ok) {
-    record('4-pro', false, `subscriptions insert failed (HTTP ${sub.status})`);
+    record('5-pro', false, `subscriptions insert failed (HTTP ${sub.status})`);
     return;
   }
-
-  const countBeforePro = await userQuotaCount(userId);
-  const pro = await callProxy(accessToken, 'pro');
-  const countAfterPro = await userQuotaCount(userId);
-  const proOk =
-    pro.ok &&
-    pro.json.plan === 'pro' &&
-    countAfterPro === countBeforePro;
-  record('4-pro', proOk,
-    proOk ? `entitled call returned plan:"pro", quota not incremented (count stays ${countAfterPro})`
-          : `HTTP ${pro.status}, plan:"${pro.json.plan}", count ${countBeforePro} → ${countAfterPro} (expected unchanged)`);
+  const pro = await probeProxy(accessToken, 'pro');
+  const proOk = pro.ok && (pro.plan === 'pro' || pro.json.plan === 'pro');
+  record('5-pro', proOk,
+    proOk ? `active subscription → plan:"pro" (HTTP ${pro.status})`
+          : `HTTP ${pro.status}, plan:"${pro.plan}" (expected pro)`);
 }
 
 async function teardown() {
-  if (!userId) return;
   const steps = [];
-
-  const delSub = await rest(`/rest/v1/subscriptions?user_id=eq.${encodeURIComponent(userId)}`, { method: 'DELETE' })
+  // Anon RPC test rows (always, even if user setup failed).
+  const delAnon = await rest(`/rest/v1/usage_daily?subject_type=eq.anon&subject_id=eq.${encodeURIComponent(anonSubjectId)}`, { method: 'DELETE' })
     .catch(() => ({ ok: false, status: 'ERR' }));
-  steps.push(`subscriptions ${delSub.ok ? 'deleted' : 'delete FAILED (HTTP ' + delSub.status + ')'}`);
+  steps.push(`anon usage_daily ${delAnon.ok ? 'deleted' : 'delete FAILED (HTTP ' + delAnon.status + ')'}`);
 
-  const delUsage = await rest(
-    `/rest/v1/usage_daily?subject_type=eq.user&subject_id=eq.${encodeURIComponent(userId)}`,
-    { method: 'DELETE' }
-  ).catch(() => ({ ok: false, status: 'ERR' }));
-  steps.push(`usage_daily ${delUsage.ok ? 'deleted' : 'delete FAILED (HTTP ' + delUsage.status + ')'}`);
+  if (userId) {
+    const delSub = await rest(`/rest/v1/subscriptions?user_id=eq.${encodeURIComponent(userId)}`, { method: 'DELETE' })
+      .catch(() => ({ ok: false, status: 'ERR' }));
+    steps.push(`subscriptions ${delSub.ok ? 'deleted' : 'delete FAILED (HTTP ' + delSub.status + ')'}`);
 
-  const delUser = await rest(`/auth/v1/admin/users/${userId}`, { method: 'DELETE' })
-    .catch(() => ({ ok: false, status: 'ERR' }));
-  steps.push(`test user ${delUser.ok ? 'deleted' : 'delete FAILED (HTTP ' + delUser.status + ')'}`);
+    const delUsage = await rest(`/rest/v1/usage_daily?subject_type=eq.user&subject_id=eq.${encodeURIComponent(userId)}`, { method: 'DELETE' })
+      .catch(() => ({ ok: false, status: 'ERR' }));
+    steps.push(`user usage_daily ${delUsage.ok ? 'deleted' : 'delete FAILED (HTTP ' + delUsage.status + ')'}`);
 
-  const allOk = delSub.ok && delUsage.ok && delUser.ok;
-  record('5-teardown', allOk, steps.join(', '));
+    const delUser = await rest(`/auth/v1/admin/users/${userId}`, { method: 'DELETE' })
+      .catch(() => ({ ok: false, status: 'ERR' }));
+    steps.push(`test user ${delUser.ok ? 'deleted' : 'delete FAILED (HTTP ' + delUser.status + ')'}`);
+  }
+  record('6-teardown', steps.every(s => !s.includes('FAILED')), steps.join(', '));
 }
 
 try {
@@ -246,6 +207,6 @@ try {
   await teardown();
 }
 
-allPassed = results.length > 0 && results.every(r => r.pass);
+const allPassed = results.length > 0 && results.every(r => r.pass);
 console.log(allPassed ? '\nALL PASS' : '\nFAILURES PRESENT');
 process.exit(allPassed ? 0 : 1);
