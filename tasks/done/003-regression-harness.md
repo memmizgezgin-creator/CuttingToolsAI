@@ -30,3 +30,6 @@ VERIFY (scripted — run these checks, then your final response MUST contain eac
    -> VERIFY: full regression run produced scored results - PASS|FAIL
 3. git status shows no changes outside tests/ (ignoring .claude/settings.local.json and logs/).
    -> VERIFY: no changes outside tests dir - PASS|FAIL
+
+---
+COMPLETED MANUALLY (Cowork session, 2026-06-13). Harness delivered in tests/regression/ (commit 2c417b2). Dry-run VERIFY PASS; full-run VERIFY deferred to host (sandbox egress cannot reach prod).

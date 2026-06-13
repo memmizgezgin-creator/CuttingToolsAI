@@ -18,3 +18,6 @@ VERIFY (scripted — run these checks, then your final response MUST contain eac
    -> VERIFY: title audit report written with homepage row - PASS|FAIL
 2. Zero repo writes: git status --porcelain (ignoring .claude/settings.local.json and logs/) prints nothing.
    -> VERIFY: zero repo writes - PASS|FAIL
+
+---
+COMPLETED MANUALLY (Cowork session, 2026-06-13 00:xx UTC). Report: logs/autopilot/title-audit-2026-06-13.md. VERIFY 2/2 PASS.
