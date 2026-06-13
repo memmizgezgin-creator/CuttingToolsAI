@@ -307,7 +307,7 @@
             <option value="M">ISO M — Stainless</option>
             <option value="K">ISO K — Cast iron</option>
             <option value="N">ISO N — Non-ferrous</option>
-            <option value="S">ISO S — Superalloys</option>
+            <option value="S">ISO S — Superalloys (Inconel, titanium)</option>
             <option value="H">ISO H — Hardened</option>
           </select>
         </div>

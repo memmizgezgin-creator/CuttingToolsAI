@@ -190,7 +190,7 @@
     {iso:'M', shape:'V', tone:'iso-m', label:'Stainless',    color:'#F59E0B'},
     {iso:'K', shape:'W', tone:'iso-k', label:'Cast iron',    color:'#EF4444'},
     {iso:'N', shape:'R', tone:'iso-n', label:'Non-ferrous',  color:'#10B981'},
-    {iso:'S', shape:'T', tone:'iso-s', label:'Superalloy',   color:'#F97316'},
+    {iso:'S', shape:'T', tone:'iso-s', label:'Superalloy (Inconel)', color:'#F97316'},
     {iso:'H', shape:'D', tone:'iso-h', label:'Hardened',     color:'#64748B'},
   ];
 
