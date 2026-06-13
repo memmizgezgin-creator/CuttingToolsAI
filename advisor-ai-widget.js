@@ -715,7 +715,12 @@
     if (typeof window.TA_Auth === 'undefined' || !window.TA_Auth.initSupabase) return null;
     const client = await window.TA_Auth.initSupabase();
     if (!client) return null;
-    const { data: { user } } = await client.auth.getUser();
+    // Prefer the cached session user (no network, reliable on the first turn);
+    // getUser() does a roundtrip that can return null before the session
+    // hydrates, which dropped the first message of a conversation.
+    let user = null;
+    try { const { data } = await client.auth.getSession(); user = data?.session?.user || null; } catch { /* fall through */ }
+    if (!user) { try { const { data } = await client.auth.getUser(); user = data?.user || null; } catch { /* ignore */ } }
     return user ? { client, user } : null;
   }
 
