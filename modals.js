@@ -113,8 +113,8 @@
   const PRO_FEATURES = [
     {icon:'auto_awesome',   title:'Unlimited advisor runs',     desc:'Run the decision advisor as often as needed, with full reasoning.'},
     {icon:'compare_arrows', title:'Cross-Reference deep mode',  desc:'Match into 4 result tiers, premium and economy alternatives.'},
-    {icon:'fact_check',     title:'6-tool compare matrix',      desc:'Side-by-side with PDF / CSV / JSON exports for purchasing.'},
-    {icon:'folder_special', title:'Saved projects',             desc:'Group inserts by job, machine or part family. Share with team.'},
+    {icon:'history',        title:'Chat memory & history',      desc:'Every advisor conversation saved to your account — revisit past recommendations anytime.'},
+    {icon:'fact_check',     title:'Compare matrix + export',    desc:'Side-by-side tools with PDF / CSV export for purchasing. (Coming soon)'},
     {icon:'shield_lock',    title:'Sourcing transparency',      desc:'Every spec tagged: manufacturer / generated / engineer-reviewed.'},
     {icon:'support_agent',  title:'Priority engineering help',  desc:'Email a real machining engineer if a decision is critical.'},
   ];

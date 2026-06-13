@@ -82,13 +82,14 @@
       font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.05em;
     }
     #ta-ai-pro-btn:hover { background:#FBBF24; }
-    #ta-ai-minimize {
+    #ta-ai-minimize, #ta-ai-history {
       width:30px; height:30px; border-radius:6px; border:none;
       background:transparent; color:#fff; cursor:pointer;
       display:flex; align-items:center; justify-content:center;
       font-size:20px; line-height:1; opacity:.7;
     }
-    #ta-ai-minimize:hover { background:rgba(255,255,255,.1); opacity:1; }
+    #ta-ai-history { font-size:15px; }
+    #ta-ai-minimize:hover, #ta-ai-history:hover { background:rgba(255,255,255,.1); opacity:1; }
     #ta-ai-expand {
       width:30px; height:30px; border-radius:6px; border:none;
       background:transparent; color:#fff; cursor:pointer;
@@ -430,6 +431,7 @@
         <button id="ta-ai-pro-btn" type="button">
           ${IC.crown} Unlock Pro
         </button>
+        <button id="ta-ai-history" type="button" aria-label="History" title="Your saved chats (Pro)">&#128338;</button>
         <button id="ta-ai-expand" type="button" aria-label="Expand" style="display:none">⛶</button>
         <button id="ta-ai-minimize" type="button" aria-label="Minimize">&#8722;</button>
       </div>
@@ -703,6 +705,101 @@
     return row;
   }
 
+  // ── Pro memory (persist + recall) ────────────────────────────────────────────
+  // All best-effort: any failure is swallowed so the advisor never breaks.
+  // DB-level RLS also enforces Pro (insert requires an active subscription), so
+  // the client-side plan check is convenience, not the security boundary.
+  let currentSessionId = null;
+
+  async function supaUser() {
+    if (typeof window.TA_Auth === 'undefined' || !window.TA_Auth.initSupabase) return null;
+    const client = await window.TA_Auth.initSupabase();
+    if (!client) return null;
+    const { data: { user } } = await client.auth.getUser();
+    return user ? { client, user } : null;
+  }
+
+  async function persistTurn(userText, aiText, dbHit) {
+    if (serverState.plan !== 'pro') return;            // Pro-only feature
+    try {
+      const ctx = await supaUser();
+      if (!ctx) return;
+      const { client, user } = ctx;
+      if (!currentSessionId) {
+        const { data: s, error } = await client.from('advisor_sessions')
+          .insert({ user_id: user.id, title: String(userText).slice(0, 60) })
+          .select('id').single();
+        if (error || !s) return;                       // RLS denies non-Pro → silent
+        currentSessionId = s.id;
+      } else {
+        client.from('advisor_sessions').update({ updated_at: new Date().toISOString() })
+          .eq('id', currentSessionId).then(() => {}, () => {});
+      }
+      await client.from('advisor_messages').insert([
+        { session_id: currentSessionId, user_id: user.id, role: 'user',      content: String(userText) },
+        { session_id: currentSessionId, user_id: user.id, role: 'assistant', content: String(aiText), db_hit: !!dbHit },
+      ]);
+    } catch (e) { console.debug('[Advisor] persist failed:', e); }
+  }
+
+  async function fetchSessions() {
+    try {
+      const ctx = await supaUser();
+      if (!ctx) return [];
+      const { data, error } = await ctx.client.from('advisor_sessions')
+        .select('id,title,updated_at').order('updated_at', { ascending: false }).limit(30);
+      return error ? [] : (data || []);
+    } catch { return []; }
+  }
+
+  async function loadSession(id) {
+    try {
+      const ctx = await supaUser();
+      if (!ctx) return;
+      const { data, error } = await ctx.client.from('advisor_messages')
+        .select('role,content').eq('session_id', id).order('created_at', { ascending: true });
+      if (error || !data) return;
+      messages.querySelectorAll('.ta-ai-msg, .ta-ai-upgrade, .ta-ai-warn, .ta-ai-hist').forEach(n => n.remove());
+      if (empty) empty.style.display = 'none';
+      for (const m of data) addMessage(m.role === 'user' ? 'user' : 'ai',
+        m.role === 'user' ? escapeHtml(m.content) : renderMarkdown(m.content));
+      currentSessionId = id;
+    } catch (e) { console.debug('[Advisor] loadSession failed:', e); }
+  }
+
+  async function showHistory() {
+    if (!panel.classList.contains('open')) openPanel();
+    if (serverState.plan !== 'pro' && !isAdmin()) {
+      addMessage('ai', '&#128338; <b>Chat memory is a Pro feature.</b> Upgrade to keep your conversations and revisit past recommendations. <a href="pro.html" style="color:inherit;text-decoration:underline">See Pro &#8594;</a>');
+      return;
+    }
+    const sessions = await fetchSessions();
+    if (empty) empty.style.display = 'none';
+    messages.querySelectorAll('.ta-ai-msg, .ta-ai-upgrade, .ta-ai-warn, .ta-ai-hist').forEach(n => n.remove());
+    const wrap = document.createElement('div');
+    wrap.className = 'ta-ai-hist';
+    wrap.style.cssText = 'padding:8px 4px;display:flex;flex-direction:column;gap:6px';
+    if (!sessions.length) {
+      wrap.innerHTML = '<p style="font-size:13px;opacity:.7;padding:8px">No saved chats yet. Ask something and it is saved here.</p>';
+    } else {
+      const head = document.createElement('div');
+      head.style.cssText = 'font-size:11px;text-transform:uppercase;letter-spacing:.08em;opacity:.6;padding:4px 8px';
+      head.textContent = 'Your saved chats';
+      wrap.appendChild(head);
+      for (const s of sessions) {
+        const it = document.createElement('button');
+        it.type = 'button';
+        it.style.cssText = 'text-align:left;background:#f7f6fb;border:1px solid #ece9f5;border-radius:10px;padding:10px 12px;cursor:pointer;font:inherit;color:inherit';
+        const when = new Date(s.updated_at).toLocaleDateString();
+        it.innerHTML = '<div style="font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + escapeHtml(s.title || 'Untitled') + '</div><div style="font-size:11px;opacity:.55">' + when + '</div>';
+        it.addEventListener('click', () => loadSession(s.id));
+        wrap.appendChild(it);
+      }
+    }
+    messages.appendChild(wrap);
+    messages.scrollTop = 0;
+  }
+
   // ── send message ───────────────────────────────────────────────────────────
   async function ask(prompt) {
     if (busy || !prompt) return;
@@ -807,6 +904,9 @@
             .join('<br>');
           bubble.appendChild(attr);
         }
+        // Pro memory: persist this turn so the user can revisit it later.
+        // Fire-and-forget; never blocks or breaks the advisor.
+        persistTurn(prompt, reply, data.db_hit);
       }
     } catch (fetchErr) {
       typingRow.remove();
@@ -898,6 +998,9 @@
   minimize.addEventListener('click', closePanel);
 
   expand.addEventListener('click', toggleExpanded);
+
+  const historyBtn = document.getElementById('ta-ai-history');
+  if (historyBtn) historyBtn.addEventListener('click', showHistory);
 
   proBtns.forEach(btn => btn && btn.addEventListener('click', openPro));
 
