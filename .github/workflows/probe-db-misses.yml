@@ -1,0 +1,23 @@
+name: Probe DB Misses
+
+# One-shot, read-only strategy probe. Classifies recent db_hit=false advisor
+# queries by intent (catalog gap vs why-layer) to decide whether to feed the DB
+# or invest in judgment. Writes nothing. Safe to delete after reading.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+      - name: Run probe
+        env:
+          SUPABASE_URL:              ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/probe-db-misses.mjs
