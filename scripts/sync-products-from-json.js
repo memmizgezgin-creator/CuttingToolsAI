@@ -134,26 +134,36 @@ async function main() {
   const { tools } = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
   console.log(`Loaded ${tools.length} records from JSON`);
 
-  const rows         = [];
-  const seenArticles = new Set();
-  let dupCount = 0, syntheticCount = 0, noSourceCount = 0;
+  const rows        = [];
+  const articleIdx  = new Map();   // article -> index in rows
+  let dupCount = 0, syntheticCount = 0;
+  const rowHasSource = (row) => !!row.source_file && row.source_page != null;
 
   for (let i = 0; i < tools.length; i++) {
     const r = tools[i];
-    let sku;
     if (!r.article) {
-      sku = syntheticSku(r, i);
+      // Synthetic SKUs are unique by construction — never a duplicate.
+      rows.push(buildRow(r, syntheticSku(r, i)));
       syntheticCount++;
-    } else {
-      const art = String(r.article).trim();
-      if (seenArticles.has(art)) { dupCount++; continue; }
-      seenArticles.add(art);
-      sku = art;
+      continue;
     }
-    const row = buildRow(r, sku);
-    if (!row.source_file || row.source_page == null) noSourceCount++;
+    const art = String(r.article).trim();
+    const row = buildRow(r, art);
+    if (articleIdx.has(art)) {
+      dupCount++;
+      // Duplicate article: prefer the occurrence WITH source attribution rather
+      // than blindly keeping the first. A source-bearing duplicate replaces a
+      // source-less winner (this is what was silently stripping provenance from
+      // nameable records that DO have a catalogue page in the dataset).
+      const kept = rows[articleIdx.get(art)];
+      if (!rowHasSource(kept) && rowHasSource(row)) rows[articleIdx.get(art)] = row;
+      continue;
+    }
+    articleIdx.set(art, rows.length);
     rows.push(row);
   }
+  // Count after dedup so the number reflects what is actually upserted.
+  const noSourceCount = rows.filter(row => !rowHasSource(row)).length;
 
   console.log(`\nRecords to upsert: ${rows.length}`);
   console.log(`  Duplicates skipped:        ${dupCount}`);
