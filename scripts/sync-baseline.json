@@ -1,7 +1,7 @@
 {
   "attributed": 735,
   "total": 1210,
-  "nameable": 56,
-  "nameableWithSource": 20,
+  "nameable": 81,
+  "nameableWithSource": 45,
   "note": "Provenance non-regression baselines for sync-products verify. 'attributed'/'total' = overall source-attribution at last intentional sync. 'nameable' = records whose sku is an ISO designation (what dbHit exact-matches and the advisor may name); 'nameableWithSource' = those with source_file AND source_page. Verify FAILS if either provenance ratio regresses below its baseline (minus a small tolerance) — catches silent decay without flapping. TARGET: nameable provenance -> 90%. As you raise it via ingestion, bump these numbers UP. Updated 2026-06-13."
 }
